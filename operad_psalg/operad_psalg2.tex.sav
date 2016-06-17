@@ -1,0 +1,570 @@
+\section{Operads in $\mb{Cat}$}
+
+This section will study those $\mb{G}$-operads for which each $P(n)$ is a category. The extra structure that this provides allows us to consider notions of pseudoalgebras for an operad, as well as pseudomaps of operads. The induced monad associated to an operad of this sort can be shown to be a $2$-monad (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated pseudomonad correspond precisely, i.e., there is an isomorphism of $2$-categories of pseudoalgebras.
+
+The associated monad $\underline{P}$ acquires the structure of a $2$-functor as follows. We define $\underline{P}$ on categories much like before as  the coproduct
+	\[
+		\underline{P}(X) = \coprod_n P(n) \times_{G(n)} X^n,
+	\]
+whose objects will be written as equivalence classes $[p;x_1,\ldots,x_n]$ where $p \in P(n)$ and each $x_i \in X$, sometimes written as $[p;\underline{x}]$ when there is no confusion. On functors we define $\underline{P}$ in a similar way, exactly as with functions of sets. Given a natural transformation $\alpha \colon f \Rightarrow g$ we define a new natural transformation $\underline{P}(\alpha)$ as follows. The component of $\underline{P}(\alpha)$ at the object
+	\[
+		[p;x_1,\ldots,x_n]
+	\]
+is given by the morphism
+	\[
+		[1_p;\alpha_{x_1},\ldots,\alpha_{x_n}]
+	\]
+in $\underline{P}(X)$.
+It is a simple observation that this constitutes a $2$-functor, and that the components of the unit and multiplication are functors and are $2$-natural.
+
+%
+%The unit of the monad is given by the composite
+%	\[
+%		\eta_X: X \cong 1 \times X \rightarrow P(1) \times_{G(1)} X \hookrightarrow \coprod_n P(n) \times_{G(n)} X^n = \underline{P}(X),
+%	\]
+%and the multiplication is given by the composite
+%	\begin{align*}
+%		\mu_X: \underline{P}^2(X) &= \coprod_n P(n) \times_{G(n)} \left(\coprod_m P(m) \times_{G(m)} X^m\right)^n \\
+%		&\cong \coprod_n P(n) \times_{G(n)} \coprod_{m_i} \left(\prod_{m_1}^{m_n} P(m_i) \times_{G(m_i)} X^{m_i}\right) \\
+%		&\rightarrow \coprod_n \coprod_{m_i} P(n) \times P(m_1) \times \ldots \times P(m_n) \times X^{m_1} \times \ldots \times X^{m_n} \\
+%		&\rightarrow \coprod_n P(n) \times_{G(n)} X^n = \underline{P}(X).
+%	\end{align*}
+%The first morphism in the composite which isn't an isomorphism is the map corresponding to $G$-equivariance of the $P(n)$, whilst the second is a coproduct of composition maps. Naturality of the these components follow easily from commuting squares involving these maps. **Axioms?
+%
+The algebras for $\underline{P}$ correspond to algebras for the operad, exactly as in Proposition \ref{opalg} when each $P(n)$ was a set. Since we are working with a $2$-monad we can also consider the pseudoalgebras and, as the operad is $\mathbf{Cat}$-enriched, a notion of pseudoalgebra for an operad makes sense and corresponds precisely with those for the $2$-monad. This happens similarly for the morphisms of algebras and the appropriate $2$-cells. For much of this section, for space considerations, we will denote $P(n)$ by $P_n$ and similarly for the $G(n)$. Throughout we will denote the unit map for an operad $P$ as $\eta^P \colon 1 \rightarrow P(1)$. First we will set out some definitions.
+
+Just as before, we will identify maps $\alpha_n \colon P(n) \times_{G(n)} X^n \rightarrow X$ with maps $\tilde{\alpha}_n \colon P(n) \times X^n \rightarrow X$ via the universal property of the coequalizer. Note also that in the following definitions we will often write the composite
+    \[
+        P(n) \times \prod(P(k_i) \times X^{k_i}) \rightarrow P(n) \times \prod P(k_i) \times X^{\Sigma k_i} \xrightarrow{\mu^P \times 1} P(\Sigma_{k_i}) \times X^{\Sigma k_i}
+    \]
+simply abbreviated as $\mu^P \times 1$.
+
+\begin{Defi}
+Let $P$ be a $\mb{G}$-operad. A \it{pseudoalgebra} for $P$ consists of:
+    \begin{itemize}
+        \item a category $X$
+        \item a family of functors
+            \[
+                \left(\alpha_n: P(n) \times_{G(n)} X^n \rightarrow X \right)_{n \in \mathbb{N}}
+            \]
+        \item for each $n, k_1, \ldots, k_n \in \mathbb{N}$, a natural isomorphism
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P_n \times \prod_{i=1}^n \left(P_{k_i} \times X^{k_i}\right)}="00";
+                    (0,-10)*+{\scriptstyle P_n \times \prod_{i=1}^n P_{k_i} \times X^{\Sigma k_i}}="01";
+                    (0,-20)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="02";
+                    (60,-20)*+{\scriptstyle X}="12";
+                    (60,0)*+{\scriptstyle P_n \times X^n}="11";
+                    %
+                    {\ar_{} "00" ; "01"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "00" ; "11"};
+                    {\ar^{\tilde{\alpha}_n} "11" ; "12"};
+                    {\ar_{\mu^P \times 1} "01" ; "02"};
+                    {\ar_>>>>>>>>>>>>>>>>>>>{\tilde{\alpha}_{\Sigma k_i}} "02" ; "12"};
+                    %
+                    {\ar@{=>}^{\phi_{k_1, \ldots, k_n}} (30,-8) ; (30,-12)};
+                \endxy
+            \]
+        \item and a natural isomorphism
+            \[
+                \xy
+                    (0,0)*+{X}="00";
+                    (0,-15)*+{1 \times X}="x10";
+                    (0,-30)*+{P(1) \times X}="10";
+                    (30,-30)*+{X}="11";
+                    %
+                    {\ar_{\eta^P \times 1} "x10" ; "10"};
+                    {\ar_{\tilde{\alpha}_1} "10" ; "11"};
+                    {\ar^{1} "00" ; "11"};
+                    {\ar_{\cong} "00" ; "x10"};
+                    %
+                    {\ar@{=>}^{\phi_\eta} (10,-18) ; (10,-22)};
+                \endxy
+            \]
+    \end{itemize}
+satisfying the following axioms.
+    \begin{itemize}
+        \item For all $n, k_i, m_{ij} \in \mathbb{N}$, the following equality of pasting diagrams holds.
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P_n \times \prod_i\left(P_{k_i} \times \prod_j \left(P_{m_{ij}} \times X^{m_{ij}}\right)\right)}="00";
+                    (60,0)*+{\scriptstyle P_n \times \prod_i \left(P_{k_i} \times X^{k_i}\right)}="10";
+                    (0,-30)*+{\scriptstyle P_{\Sigma k_i} \times \prod_i\prod_j\left(P_{m_{ij}} \times X^{m_{ij}}\right)}="02";
+                    (30,-50)*+{\scriptstyle P_{\Sigma\Sigma m_{ij}} \times X^{\Sigma \Sigma m_{ij}}}="04";
+                    (80,-20)*+{\scriptstyle P_n \times X^n}="12";
+                    (80,-50)*+{\scriptstyle X}="14";
+                    %
+                    {\ar^>>>>>>>>>>>>>>{1 \times \prod\left(1 \times \prod \tilde{\alpha}_{m_ij}\right)} "00" ; "10"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "10" ; "12"};
+                    {\ar^{\tilde{\alpha}_n} "12" ; "14"};
+                    {\ar_{\mu^P \times 1} "00" ; "02"};
+                    {\ar_{\mu^P \times 1} "02" ; "04"};
+                    {\ar_{\tilde{\alpha}_{\Sigma\Sigma m_{ij}}} "04" ; "14"};
+                    %
+                    (30,-20)*+{\scriptstyle P_n \times \prod_i\left(P_{\Sigma m_{ij}} \times X^{\Sigma m_{ij}}\right)}="22";
+                    %
+                    {\ar^{\mu^P \times 1} "00" ; "22"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{\Sigma m_{ij}}} "22" ; "12"};
+                    {\ar^{\mu^P \times 1} "22" ; "04"};
+                    %
+                    (0,-70)*+{\scriptstyle P_n \times \prod_i\left(P_{k_i} \times \prod_j \left(P_{m_{ij}} \times X^{m_{ij}}\right)\right)}="b00";
+                    (50,-70)*+{\scriptstyle P_n \times \prod_i \left(P_{k_i} \times X^{k_i}\right)}="b10";
+                    (0,-100)*+{\scriptstyle P_{\Sigma k_i} \times \prod_i\prod_j\left(P_{m_{ij}} \times X^{m_{ij}}\right)}="b02";
+                    (20,-120)*+{\scriptstyle P_{\Sigma\Sigma m_{ij}} \times X^{\Sigma \Sigma m_{ij}}}="b04";
+                    (80,-90)*+{\scriptstyle P_n \times X^n}="b12";
+                    (80,-120)*+{\scriptstyle X}="b14";
+                    %
+                    {\ar^>>>>>>>>>>>>>>{1 \times \prod\left(1 \times \prod \tilde{\alpha}_{m_ij}\right)} "b00" ; "b10"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "b10" ; "b12"};
+                    {\ar^{\tilde{\alpha}_n} "b12" ; "b14"};
+                    {\ar_{\mu^P \times 1} "b00" ; "b02"};
+                    {\ar_{\mu^P \times 1} "b02" ; "b04"};
+                    {\ar_{\tilde{\alpha}_{\Sigma\Sigma m_{ij}}} "b04" ; "b14"};
+                    %
+                    (50,-100)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="b22";
+                    %
+                    {\ar_{\mu^P \times 1} "b10" ; "b22"};
+                    {\ar^>>>>>>>>>>>>>>>>{1 \times \prod\prod \tilde{\alpha}_{m_{ij}}} "b02" ; "b22"};
+                    {\ar^{\tilde{\alpha}_{\Sigma k_i}} "b22" ; "b14"};
+                    %
+                    {\ar@{=>}^{1 \times \prod_i \phi_{m_{i1}, \ldots, m_{ik_{i}}}} (35,-8) ; (35,-12)};
+                    {\ar@{=>}^{\phi_{\Sigma m_{1j}, \ldots, \Sigma m_{nj}}} (50,-33) ; (50,-37)};
+                    %
+                    {\ar@{=>}^{\phi_{k_1,\ldots,k_n}} (60,-92) ; (60,-96)};
+                    {\ar@{=>}^{\phi_{m_{11}, \ldots, m_{nk_n}}} (30,-108) ; (30,-112)};
+                    %
+                    {\ar@{=} (45,-58) ; (45,-62)};
+                \endxy
+            \]
+        \item Each pasting diagram of the following form is an identity.
+            \[
+                \xy
+                    (0,0)*+{P_n \times X^n}="00";
+                    (12,-12)*+{P_n \times (1 \times X)^n}="11";
+                    (24,-24)*+{P_n \times (P_1 \times X)^n}="22";
+                    (60,-24)*+{P_n \times X^n}="32";
+                    (60,-48)*+{X}="34";
+                    (24,-36)*+{P_n \times P_1^n \times X^n}="23";
+                    (24,-48)*+{P_n \times X^n}="24";
+                    %
+                    {\ar@/^2.5pc/^{1} "00" ; "32"};
+                    {\ar^{\tilde{\alpha}_n} "32" ; "34"};
+                    {\ar^{\cong} "00" ; "11"};
+                    {\ar^{1 \times \left(\eta^P \times 1\right)^n} "11" ; "22"};
+                    {\ar^>>>>>>{1 \times \tilde{\alpha}_1^n} "22" ; "32"};
+                    {\ar@/_3pc/_{1} "00" ; "24"};
+                    {\ar_{\cong} "22" ; "23"};
+                    {\ar_{\mu^P \times 1} "23" ; "24"};
+                    {\ar_{\tilde{\alpha}_n} "24" ; "34"};
+                    %
+                    {\ar@{=>}^{1 \times \phi_\eta^n} (32,-8) ; (32,-12)};
+                    {\ar@{=>}^{\phi_{1,\ldots,1}} (40,-34) ; (40,-38)};
+                \endxy
+            \]
+    \end{itemize}
+\end{Defi}
+
+\begin{Defi}
+Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\mb{G}$-operad $P$. A \it{weak morphism} of $P$-algebras consists of:
+    \begin{itemize}
+        \item a functor $f \colon X \rightarrow Y$
+        \item and a family of natural isomorphisms
+            \[
+                \xy
+                    (0,0)*+{P_n \times X^n}="00";
+                    (20,0)*+{X}="10";
+                    (0,-15)*+{P_n \times Y^n}="01";
+                    (20,-15)*+{Y}="11";
+                    %
+                    {\ar^>>>>>{\tilde{\alpha}_n} "00" ; "10"};
+                    {\ar^{f} "10" ; "11"};
+                    {\ar_{1 \times f^n} "00" ; "01"};
+                    {\ar_>>>>>{\tilde{\beta}_n} "01" ; "11"};
+                    %
+                    {\ar@{=>}^{\overline{f}_n} (10,-5.5) ; (10,-9.5)};
+                \endxy
+            \]
+        \end{itemize}
+satisfying the following axioms.
+    \begin{itemize}
+        \item The following equality of pasting diagrams holds.
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times X^{k_i})}="00";
+                    (50,0)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times Y^{k_i})}="10";
+                    (0,-25)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="01";
+                    (50,-25)*+{\scriptstyle P_{\Sigma k_i} \times Y^{\Sigma k_i}}="11";
+                    (75,-15)*{\scriptstyle P_n \times Y^n}="21";
+                    (75,-40)*+{\scriptstyle Y}="22";
+                    (25,-40)*+{\scriptstyle X}="02";
+                    %
+                    {\ar^{1 \times \prod(1 \times f^{k_i})} "00" ; "10"};
+                    {\ar^{1 \times \prod \tilde{\beta}_{k_i}} "10" ; "21"};
+                    {\ar_{\mu^P \times 1} "00" ; "01"};
+                    {\ar_{\tilde{\alpha}_{\Sigma k_i}} "01" ; "02"};
+                    {\ar_{f} "02" ; "22"};
+                    {\ar^{1 \times f^{\Sigma k_i}} "01" ; "11"};
+                    {\ar_{\tilde{\beta}_{\Sigma k_i}} "11" ; "22"};
+                    {\ar_{\mu^P \times 1} "10" ; "11"};
+                    {\ar^{\tilde{\beta}_n} "21" ; "22"};
+                    %
+                    {\ar@{=>}^{\overline{f}_n} (37.5,-30.5) ; (37.5,-34.5)};
+                    {\ar@{=>}^{\psi_{k_1,\ldots,k_n}} (57.5,-16.5) ; (57.5,-20.5)};
+                    %
+                    (0,-55)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times X^{k_i})}="b00";
+                    (50,-55)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times Y^{k_i})}="b10";
+                    (0,-80)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="b01";
+                    (25,-70)*+{\scriptstyle P_n \times X^n}="b11";
+                    (75,-70)*{\scriptstyle P_n \times Y^n}="b21";
+                    (75,-95)*+{\scriptstyle Y}="b22";
+                    (25,-95)*+{\scriptstyle X}="b02";
+                    %
+                    {\ar^{1 \times \prod(1 \times f^{k_i})} "b00" ; "b10"};
+                    {\ar^{1 \times \prod \tilde{\beta}_{k_i}} "b10" ; "b21"};
+                    {\ar_{\mu^P \times 1} "b00" ; "b01"};
+                    {\ar_{\tilde{\alpha}_{\Sigma k_i}} "b01" ; "b02"};
+                    {\ar_{f} "b02" ; "b22"};
+                    {\ar^{\tilde{\beta}_n} "b21" ; "b22"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "b00" ; "b11"};
+                    {\ar^{1 \times f^n} "b11" ; "b21"};
+                    {\ar_{\tilde{\alpha}_n} "b11" ; "b02"};
+                    %
+                    {\ar@{=>}^{\overline{f}_n} (50,-80.5) ; (50,-84.5)};
+                    {\ar@{=>}^{1 \times \prod\overline{f}_{k_i}} (37.5,-60.5) ; (37.5,-64.5)};
+                    {\ar@{=>}^{\phi_{k_1,\ldots,k_n}} (9,-72) ; (9,-76)};
+                    {\ar@{=} (37.5,-45.5) ; (37.5,-49.5)};
+                \endxy
+            \]
+            \item The following equality of pasting diagrams holds.
+                \[
+                    \xy
+                        (0,0)*+{X}="00";
+                        (20,0)*+{Y}="10";
+                        (0,-15)*+{1 \times X}="01";
+                        (20,-15)*+{1 \times Y}="11";
+                        (0,-30)*+{P_1 \times X}="02";
+                        (20,-30)*+{P_1 \times Y} = "12";
+                        (20,-45)*+{X}="r02";
+                        (40,-45)*+{Y}="r12";
+                        %
+                        {\ar^{f} "00" ; "10"};
+                        {\ar@/^2pc/^{1} "10" ; "r12"};
+                        {\ar_{\cong} "00" ; "01"};
+                        {\ar_{\eta^P \times 1} "01" ; "02"};
+                        {\ar_{\tilde{\alpha}_1} "02" ; "r02"};
+                        {\ar^{1 \times f} "01" ; "11"};
+                        {\ar^{1 \times f} "02" ; "12"};
+                        {\ar^{\tilde{\beta}_1} "12" ; "r12"};
+                        {\ar_{\cong} "10" ; "11"};
+                        {\ar_{\eta^P \times 1} "11" ; "12"};
+                        {\ar_{f} "r02" ; "r12"};
+                        %
+                        {\ar@{=>}^{\overline{f}_1} (20,-35.5) ; (20,-39.5)};
+                        {\ar@{=>}^{\psi_{\eta}} (30,-20) ; (30,-24)};
+                        %
+                        (60,0)*+{X}="x00";
+                        (80,0)*+{Y}="x10";
+                        (60,-15)*+{1 \times X}="x01";
+                        (60,-30)*+{P_1 \times X}="x02";
+                        (80,-45)*+{X}="xr02";
+                        (100,-45)*+{Y}="xr12";
+                        %
+                        {\ar^{f} "x00" ; "x10"};
+                        {\ar@/^2pc/^{1} "x10" ; "xr12"};
+                        {\ar_{\cong} "x00" ; "x01"};
+                        {\ar_{\eta^P \times 1} "x01" ; "x02"};
+                        {\ar_{\tilde{\alpha}_1} "x02" ; "xr02"};
+                        {\ar_{f} "xr02" ; "xr12"};
+                        {\ar@/^2pc/^{1} "x00" ; "xr02"};
+                        %
+                        {\ar@{=>}^{\phi_\eta} (70,-20) ; (70,-24)};
+                        {\ar@{=} (45,-22.5) ; (49,-22.5)};
+                    \endxy
+                \]
+    \end{itemize}
+\end{Defi}
+
+\begin{Defi}
+Let $(f,\overline{f}), (g,\overline{g}) \colon (X, \alpha, \phi, \phi_\eta) \rightarrow (Y, \beta, \psi, \psi_\eta)$ be weak morphisms of pseudoalgebras. A \it{$P$-transformation} is then a natural transformation $\gamma \colon f \Rightarrow g$ such that the following following equality of pasting diagrams holds, for all $n$.
+    \[
+        \xy
+            (0,0)*+{P_n \times X^n}="00";
+            (30,0)*+{P_n \times Y^n}="10";
+            (0,-20)*+{X}="01";
+            (30,-20)*+{Y}="11";
+            %
+            {\ar@/^1.5pc/^{1 \times f^n} "00" ; "10"};
+            {\ar_{1 \times g^n} "00" ; "10"};
+            {\ar^{\tilde{\beta}_n} "10" ; "11"};
+            {\ar_{\tilde{\alpha}_n} "00" ; "01"};
+            {\ar_{f} "01" ; "11"};
+            %
+            {\ar@{=>}^{1 \times \gamma^n} (13.5,5.5) ; (13.5,1.5)};
+            {\ar@{=>}^{\overline{g}_n} (13.5,-8) ; (13.5,-12)};
+            %
+            (60,0)*+{P_n \times X^n}="x00";
+            (90,0)*+{P_n \times Y^n}="x10";
+            (60,-20)*+{X}="x01";
+            (90,-20)*+{Y}="x11";
+            %
+            {\ar^{1 \times f^n} "x00" ; "x10"};
+            {\ar^{\tilde{\beta}_n} "x10" ; "x11"};
+            {\ar_{\tilde{\alpha}_n} "x00" ; "x01"};
+            {\ar^{f} "x01" ; "x11"};
+            {\ar@/_1.5pc/_{g} "x01" ; "x11"};
+            %
+            {\ar@{=>}^{\gamma} (75,-21.5) ; (75,-25.5)};
+            {\ar@{=>}^{\overline{f}_n} (75,-8) ; (75,-12)};
+            {\ar@{=} (42.75,-10) ; (46.75,-10)};
+        \endxy
+    \]
+\end{Defi}
+\begin{rem}
+We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions. Of course, the usual definitions of algebra and algebra morphisms are retrieved if we were to consider identities in place of the isomorphisms in the definitions of pseudoalgebra and weak morphism.
+\end{rem}
+
+In the previous section we noted that there is an isomorphism of categories between the category of algebras for the operad $P$ and the category of algebras for the associated monad $\underline{P}$. This can again be done in the case of the $2$-category of strict algebras for both the operad $P$ and the associated $2$-monad $\underline{P}$.
+%
+\begin{Defi}
+Let $P$ be a $\mb{G}$-operad. The $2$-category $P\mbox{-}\mb{Alg}_{s}$ consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
+\end{Defi}
+%
+\begin{Defi}
+Let $T$ be a $2$-monad. The $2$-category $T\mbox{-}\mb{Alg}_s$ consists of strict $T$-algebras, strict morphisms, and $T$-transformations.
+
+\begin{prop}
+Let $P$ be a $\mb{G}$-operad. Then there is an isomorphism of $2$-categories
+    \[
+        P\mbox{-}\mb{Alg}_{s} \cong \underline{P}\mbox{-}\mb{Alg}_{s}.
+    \]
+\end{prop}
+\begin{proof}
+The isomorphism on the underlying categories is obvious, as in the previous section. All that remains to be seen is that there is a bijection of $2$-cells between each of the hom-categories. A $P$-transformation between strict morphisms is exactly as in the previous definition except that the squares in the pasting diagrams now commute. It is clear that a $2$-cell in either of the $2$-categories of algebras will satisfy the properties required of it in the other $2$-category.
+
+Since $\underline{P}$ has an underlying monad, the isomorphism on the underlying category of the $2$-category $P\mbox{-}\mb{Alg}_s$ is the same as in Proposition \ref{strict-alg}. 
+\end{proof}
+
+We now turn from the 2-category of algebras and strict morphisms to the 2-category of pseudoalgebras and pseudomorphisms (see \cite{BKP} for background on the different 2-categories of algebras for a 2-monad).
+
+\begin{prop}
+Let $P$ be a $\mb{G}$-operad. Then there is an isomorphism of $2$-categories
+    \[
+        \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg} \cong \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}.
+    \]
+\end{prop}
+\begin{proof}
+We begin by constructing a $2$-functor $R \colon \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg} \rightarrow \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$. We take a pseudo-$\underline{P}$-algebra $(X,\alpha,\Phi,\Phi_\eta)$, with $\Phi$ being the structure isomorphism for the pseudoalgebra as in the diagram below, to the following. First we define functor $\alpha_n$ to be the composite
+    \[
+        \xy
+            (0,0)*+{\alpha_n \colon P(n) \times_{G(n)} X^n}="00";
+            (35,0)*+{\underline{P}(X)}="10";
+            (55,0)*+{X.}="20";
+            %
+            {\ar@{^{(}->} "00" ; "10"};
+            {\ar^{\alpha} "10" ; "20"};
+        \endxy
+    \]
+The isomorphisms $\phi_{k_1,\ldots,k_n}$ are defined using $\Phi$ as in the following diagram
+%\[
+%         \xy
+%                    (0,0)*+{\scriptstyle P(n) \times \prod_{i=1}^n \left(P(k_i) \times_{G_{k_i}} X^{k_i}\right)}="00";
+%                    (0,-15)*+{\scriptstyle P(n) \times \prod_{i=1}^n P(k_i) \times X^{\Sigma_{i=1}^n k_i}}="01";
+%                    (0,-30)*+{\scriptstyle P(\Sigma_{i=1}^n k_i) \times_{G_{\Sigma k_i}} X^{k_1 + \ldots + k_n}}="02";
+%                    (80,-30)*+{\scriptstyle X}="22";
+%                    (80,0)*+{\scriptstyle P(n) \times_{G_n} X^n}="20";
+%                    %
+%                    (40,0)*+{\scriptstyle P_n \times_{G_{n}} \underline{P}(X)^n}="10";
+%                    (40,-15)*+{\scriptstyle \underline{P}^2(X)}="11";
+%                    (40,-30)*+{\scriptstyle \underline{P}(X)}="12";
+%                    (80,-15)*+{\scriptstyle \underline{P}(X)}="21";
+%                    %
+%                    {\ar_{} "00" ; "01"};
+%                    {\ar_{\mu^P \times 1} "01" ; "02"};
+%                    {\ar@{^{(}->} "00" ; "10"};
+%                    {\ar@{^{(}->} "10" ; "11"};
+%                    {\ar@{^{(}->} "02" ; "12"};
+%                    {\ar@{^{(}->} "20" ; "21"};
+%                    {\ar^{1 \times \alpha^n} "10" ; "20"};
+%                    {\ar^{\alpha} "21" ; "22"};
+%                    {\ar_{\alpha} "12"; "22"};
+%                    {\ar_{\mu_x} "11" ; "12"};
+%                    {\ar^{\underline{P}\alpha} "11" ; "21"};
+%                    %
+%                    {\ar@{=>}^{\Phi} (60,-20.5) ; (60,-24.5)};
+%                \endxy
+%    \]
+	\[
+		\xy
+			(-10,0)*+{\scriptstyle P_n \times \prod_{i=1}^n\left(P_{k_i} \times X^{k_i}\right)}="00";
+           	(30,0)*+{\scriptstyle P_n \times \prod_i \left( P_{k_i} \times_{G_{k_i}} X^{k_i} \right)}="10";
+            (60,0)*+{\scriptstyle P_n \times \underline{P}(X)^n}="20";
+            (90,0)*+{\scriptstyle P_n \times X^n}="30";
+            (-10,-15)*+{\scriptstyle P_n \times \prod_{i} P_{k_i} \times X^{\Sigma k_I}}="01";
+            (-10,-30)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_{i}}}="02";
+            (60,-7.5)*+{\scriptstyle P_n \times_{G_n} \underline{P}(X)^n}="21";
+            (60,-15)*+{\scriptstyle \underline{P}^2(X)}="22";
+            (90,-7.5)*+{\scriptstyle P_n \times_{G_n} X^n}="31";
+            (90,-15)*+{\scriptstyle \underline{P}(X)}="32";
+            (30,-30)*+{\scriptstyle P_{\Sigma k_i} \times_{G_{\Sigma k_i}} X^{\Sigma k_i}}="12";
+            (60,-30)*+{\scriptstyle \underline{P}(X)}="23";
+            (90,-30)*+{\scriptstyle X}="33";
+            %
+            {\ar "00" ; "10"};
+            {\ar "00" ; "01"};
+            {\ar_{\mu^P \times 1} "01" ; "02"};
+            {\ar@{^{(}->} "10" ; "20"};
+            {\ar "20" ; "21"};
+            {\ar^{1 \times \alpha^n} "20" ; "30"};
+            {\ar "30" ; "31"};
+            {\ar@{^{(}->} "21" ; "22"};
+            {\ar^{\underline{P}\alpha} "22" ; "32"};
+            {\ar@{^{(}->} "31" ; "32"};
+            {\ar_{\mu_X} "22" ; "23"};
+            {\ar_{\alpha} "23" ; "33"};
+            {\ar^{\alpha} "32" ; "33"};
+            {\ar "02" ; "12"};
+            {\ar@{^{(}->} "12" ; "23"};
+            %
+            {\ar@{=>}^{\Phi} (75,-20.5) ; (75,-24.5)};
+        \endxy
+    \]
+whilst $\Phi_\eta$ is simply sent to itself, since the composition of $\alpha$ with the composite of the coequalizer and inclusion map from $P(1) \times X$ into $\underline{P}(X)$ is just $\tilde{\alpha_1}$. Checking the axioms here is most easily done on components and it is easily seen that the axioms required of this data to be a pseudo-$P$-algebra are precisely those that they satisfy by virtue of $X$ being  a pseudo-$\underline{P}$-algebra.
+
+For a $1$-cell $(f,\overline{f}) \colon (X, \alpha) \rightarrow (Y, \beta)$, we send $f$ to itself whilst sending $\overline{f}$ to the obvious family of isomorphisms, as follows.
+    \[
+        \xy
+            (-30,0)*+{P(n) \times X^n}="-10";
+            (-30,-15)*+{P(n) \times Y^n}="-11";
+            (0,0)*+{P(n) \times_{G(n)} X^n}="00";
+            (30,0)*+{\underline{P}(X)}="10";
+            (60,0)*+{X}="20";
+            (0,-15)*+{P(n) \times_{G(n)} Y^n}="01";
+            (30,-15)*+{\underline{P}(Y)}="11";
+            (60,-15)*+{Y}="21";
+            %
+            {\ar@{^{(}->} "00" ; "10"};
+            {\ar^{\alpha} "10" ; "20"};
+            {\ar_{1 \times f^n} "00" ; "01"};
+            {\ar_{\underline{P}f} "10" ; "11"};
+            {\ar^{f} "20" ; "21"};
+            {\ar@{^{(}->} "01" ; "11"};
+            {\ar_{\beta} "11" ; "21"};
+            {\ar "-10" ; "00"};
+            {\ar "-11" ; "01"};
+            {\ar_{1 \times f^n} "-10" ; "-11"};
+            %
+            {\ar@{=>}^{\overline{f}} (45,-5.5) ; (45,-9.5)};
+        \endxy
+    \]
+This collection then satisfies the axioms for being a weak morphism of pseudo-$P$-algebras, following from the axioms for it being a weak morphism of pseudo-$\underline{P}$-algebras. The $2$-cells are sent in the same way as for strict algebras and can immediately be seen to satisfy the appropriate axioms. That $R$ is a $2$-functor is now obvious.
+
+For there to be an isomorphism of $2$-categories, we require an inverse to $R$, namely a $2$-functor $S \colon \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg} \rightarrow \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$. If $(X, \alpha_n, \phi_{\underline{k}_i}, \phi_\eta)$ is a pseudo-$P$-algebra then we need to give a pseudo-$\underline{P}$-algebra. We can induce a functor $\alpha \colon \underline{P}(X) \rightarrow X$ by using the universal property of the coproduct.
+    \[
+        \xy
+            (-30,0)*+{P(n) \times X^n}="-10";
+            (0,0)*+{P(n) \times_{G(n)} X^n}="00";
+            (30,0)*+{\underline{P}(X)}="10";
+            (30,-15)*+{X}="11";
+            %
+            {\ar "-10" ; "00"};
+            {\ar^{\alpha_n} "00" ; "11"};
+            {\ar@{^{(}->} "00" ; "10"};
+            {\ar^{\exists ! \alpha} "10" ; "11"};
+            {\ar_{\tilde{\alpha}_n} "-10" ; "11"};
+        \endxy
+    \]
+Of course, this can be induced using either $\alpha_n$ or $\tilde{\alpha}_n$, each giving the same functor $\alpha$ by uniqueness. The components of the isomorphism $\Phi \colon \alpha \underline{P}\alpha \Rightarrow \alpha \mu_X$ can be given as follows. Let $|\underline{x}_i|$ denote the number of objects in the list $\underline{x}_i$. Then define the component of $\Phi$ at the object
+    \[
+        [p;[q_1;\underline{x}_1],\ldots,[q_n;\underline{x}_n]]
+    \]
+to be component of $\phi_{|\underline{x}_1|, \ldots, |\underline{x}_n|}$ at the same object. The isomorphism $\phi_\eta$ is again sent to itself.
+
+Now given a $1$-cell $f$ with structure $2$-cells $\overline{f}_n \colon $ we can define a $1$-cell $(F,\overline{F}) = (f,\overline{F})$ as
+    \[
+        \overline{F}_{[p;\underline{x}]} := \left(\overline{f}_{|\underline{x}|}\right)_{p,\underline{x}}.
+    \]
+A mapping for $2$-cells is just the identity as before. These mappings again constitute a $2$-functor in the obvious way and from how they are defined it is also clear that this is an inverse to $R$.
+\end{proof}
+
+Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Just as algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad, we can define pseudomorphisms for a $\mathbf{Cat}$-enriched $\mb{G}$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad as defined in the previous section.
+
+\begin{Defi}
+Let $P$, $Q$ be $\mb{G}$-operads. A pseudomorphism of $\mb{G}$-operads $F \colon P \rightarrow Q$ consists of
+    \begin{itemize}
+        \item a family of $\mb{G}$-equivariant functors
+            \[
+                \left(F_n \colon P(n) \rightarrow Q(n)\right)_{n \in \mathbb{N}};
+            \]
+        \item for each $n, k_1, \ldots, k_n \in \mathbb{N}$, a natural isomorphism
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P(n) \times \prod_i P(k_i)}="00";
+                    (35,0)*+{\scriptstyle Q(n) \times \prod_i Q(k_i)}="10";
+                    (0,-15)*+{\scriptstyle P(\Sigma k_i)}="01";
+                    (35,-15)*+{\scriptstyle Q(\Sigma k_i)}="11";
+                    %
+                    {\ar^{F_n \times \prod_i F_{k_i}} "00" ; "10"};
+                    {\ar^{\mu^Q} "10" ; "11"};
+                    {\ar_{\mu^P} "00" ; "01"};
+                    {\ar_{F_{\Sigma k_i}} "01" ; "11"};
+                    %
+                    {\ar@{=>}^{\psi_{k_1,\ldots,k_n}} (15,-5.5) ; (15,-9.5)};
+                \endxy
+            \]
+        \item a natural isomorphism
+            \[
+                \xy
+                    (0,0)*+{1}="00";
+                    (0,-20)*+{P(1)}="01";
+                    (20,-20)*+{Q(1)}="11";
+                    %
+                    {\ar_{\eta^P} "00" ; "01"};
+                    {\ar_{F_1} "01" ; "11"};
+                    {\ar^{\eta^Q} "00" ; "11"};
+                    %
+                    {\ar@{=>}^{\psi_\eta} (6,-11) ; (6,-15)};
+                \endxy
+            \]
+    \end{itemize}
+satisfying axioms analogous to those of a pseudoalgebra for an operad.
+\end{Defi}
+
+If we now consider a pseudomorphism from $P$ into the endomorphism operad $\mathcal{E}_X$ then we have functors
+    \[
+        F_n \colon P(n) \rightarrow [X^n,X],
+    \]
+a family of isomorphisms
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P(n) \times \prod_i P(k_i)}="00";
+                    (40,0)*+{\scriptstyle [X^n,X] \times \prod_i [X^{k_i},X]}="10";
+                    (0,-15)*+{\scriptstyle P(\Sigma k_i)}="01";
+                    (40,-15)*+{\scriptstyle [X^{\Sigma k_i},X]}="11";
+                    %
+                    {\ar^>>>>>>>{F_n \times \prod_i F_{k_i}} "00" ; "10"};
+                    {\ar^{\mu^{\mathcal{E}_X}} "10" ; "11"};
+                    {\ar_{\mu^P} "00" ; "01"};
+                    {\ar_{F_{\Sigma k_i}} "01" ; "11"};
+                    %
+                    {\ar@{=>}^{\psi_{k_1,\ldots,k_n}} (15,-5.5) ; (15,-9.5)};
+                \endxy
+            \]
+and an isomorphism
+            \[
+                \xy
+                    (0,0)*+{1}="00";
+                    (0,-20)*+{P(1)}="01";
+                    (20,-20)*+{[X,X]}="11";
+                    %
+                    {\ar_{\eta^P} "00" ; "01"};
+                    {\ar_{F_1} "01" ; "11"};
+                    {\ar "00" ; "11"};
+                    %
+                    {\ar@{=>}^{\psi_\eta} (6,-11) ; (6,-15)};
+                \endxy
+            \]
+which then satisfy precisely the axioms for pseudoalgebras for the operad $P$. We characterize this with the following proposition.
+
+\begin{prop}
+There is a correspondence between pseudomorphisms $P \rightarrow \m{E}_X$ and pseudoalgebra structures on $X$.
+\end{prop} 

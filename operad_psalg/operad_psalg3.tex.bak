@@ -1,0 +1,356 @@
+\section{Basic properties}
+This section will be concerned with characterizing various properties of those $2$-monads induced by $\mb{G}$-operads. We first consider when these $2$-monads are finitary as this describes how they interact with colimits. We will then give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits (namely $2$-pullbacks). Finally in this section we will continue the study of algebras for these $2$-monads, showing that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\mb{G}$-operad $P$).
+
+ The $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these 2-categories can often be deduced from properties of the 2-monad $T$, the most common being that $T$ is finitary.  In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables.  If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}.  There are additional results of a purely 2-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod}, namely the existence of a left adjoint
+    \[
+        \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg} \rightarrow T\mbox{-}\mb{Alg}_s
+    \]
+to the forgetful $2$-functor which regards a strict algebra as a pseudoalgebra with identity structure isomorphisms.
+
+We begin by showing each associated $2$-monad is finitary.
+\begin{prop}
+Let $P$ be a $\mb{G}$-operad. Then $\underline{P}$ is finitary.
+\end{prop}
+\begin{proof}
+To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
+    \begin{align*}
+        \underline{P}(\text{colim}X_{i}) &= \coprod_n P(n) \times_{G(n)} (\text{colim}X_{i})^n \\
+                                                               &\cong \coprod_n P(n) \times_{G(n)} \text{colim}(X_{i}^n) \\
+                                                               &\cong \coprod_n \text{colim}(P(n) \times_{G(n)} X_{i}^n) \\
+                                                               &\cong \text{colim}\coprod_n P(n) \times_{G(n)} X_{i}^n = \text{colim}\underline{P}(X_{i}).
+    \end{align*}
+Since $\mathbf{Cat}$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
+\end{proof}
+
+The monads arising from a non-symmetric operad are always cartesian, as described in \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and so it is useful to be able to characterize exactly when they are. An example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\mb{G}$-operad is $2$-cartesian, as we now describe.
+
+\begin{Defi}
+A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit{$2$-cartesian} if
+    \begin{itemize}
+        \item the $2$-category $\mathcal{K}$ has $2$-pullbacks,
+        \item the functor $T$ preserves $2$-pullbacks, and
+        \item the naturality squares for the unit and multiplication of the $2$-monad are $2$-pullbacks.
+    \end{itemize}
+\end{Defi}
+
+It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. Since we will be computing with coequalizers of the form $A \times_{G} B$ repeatedly, we give the following useful lemma.
+
+\begin{lem}\label{coeq-lem}
+Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. There is then an action of $G$ on the product $A \times B$ given by
+    \[
+        (a,b) \cdot g \colon= (a \cdot g, g^{-1} \cdot b).
+    \]
+The category $A \times B/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $A \times_G B$.
+\end{lem}
+\begin{proof}
+The category $A \times_G B$ is defined as the coequalizer
+    \[
+        \xy
+            (0,0)*+{A \times G \times B}="00";
+            (30,0)*+{A \times B}="10";
+            (60,0)*+{A \times_G B}="20";
+            %
+            {\ar@<1ex>^{\lambda} "00" ; "10"};
+            {\ar@<-1ex>_{\rho} "00" ; "10"};
+            {\ar^{\varepsilon} "10" ; "20"};
+        \endxy
+    \]
+where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow A \times B/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
+    \[
+        [a \cdot g, b] = [(a \cdot g) \cdot g^{-1}, g \cdot b] = [a, g \cdot b].
+    \]
+
+Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we get a functor $\phi \colon A \times B/G \rightarrow X$ defined by $\phi[a,b] = \chi(a,b)$. That this is well defined is clear, since
+    \[
+        \phi[a \cdot g, g^{-1} \cdot b] = \chi(a \cdot g, g^{-1} \cdot b) = \chi(a \cdot (gg^{-1}), b) = \chi(a, b) = \phi[a,b].
+    \]
+This is also unique and so we find that $A \times B/G$ satisfies the universal property of the coequalizer.
+\end{proof}
+
+\begin{prop}
+Let $P$ be a $\mb{G}$-operad. Then the $2$-monad $\underline{P}$ is $2$-cartesian if and only if the action of each $G(n)$ on $P(n)$ has the following property:
+    \begin{itemize}
+        \item if $p \in P(n)$ and $g \in G(n)$ such that $p \cdot g = p$, then $g \in ker \pi_n$, where $\pi_n \colon G(n) \rightarrow \Sigma_n$.
+    \end{itemize}
+\end{prop}
+\begin{proof}
+Consider the following pullback of discrete categories.
+    \[
+        \xy
+            (0,0)*+{\lbrace (x,y), (x,y'), (x',y), (x',y') \rbrace}="00";
+            (40,0)*+{\lbrace y,y' \rbrace}="10";
+            (0,-15)*+{\lbrace x, x' \rbrace}="01";
+            (40,-15)*+{\lbrace z \rbrace}="11";
+            %
+            {\ar "00" ; "10"};
+            {\ar "10" ; "11"};
+            {\ar "00" ; "01"};
+            {\ar "01" ; "11"};
+        \endxy
+    \]
+Letting $\mathbf{4}$ denote the pullback and similarly writing $\mathbf{2}_X = \{ x, x' \}$ and $\mathbf{2}_Y = \{y, y'\}$, we get the following diagram as the image of this pullback square under $\underline{P}$.
+    \[
+        \xy
+            (0,0)*+{\coprod P(n) \times_{G(n)} \mathbf{4}^n}="00";
+            (40,0)*+{\coprod P(n) \times_{G(n)} \mathbf{2}_Y^n}="10";
+            (0,-15)*+{\coprod P(n) \times_{G(n)} \mathbf{2}_X^n}="01";
+            (40,-15)*+{\coprod P(n)/G(n)}="11";
+            %
+            {\ar "00" ; "10"};
+            {\ar "10" ; "11"};
+            {\ar "00" ; "01"};
+            {\ar "01" ; "11"}:
+        \endxy
+    \]
+The projection map $\underline{P}(\mb{4}) \rightarrow \underline{P}(\mb{2}_Y)$ maps an element
+    \[
+        [p;(x_1,y_1), \ldots, (x_n,y_n)]
+    \]
+to the element
+    \[
+        [p;y_1,\ldots,y_n]
+    \]
+and likewise for the projection to $\underline{P}(\mb{2}_X)$.
+
+Now assume, in order to derive a contradiction, that, for some $n$, that the action of $G(n)$ on $P(n)$ does not have the prescribed property. Then find some $p \in P(n)$ along with $g \notin \text{ker} \, \pi_n$ such that $p \cdot g = p$. We will show that the existence of $g$ proves that $\underline{P}$ is not cartesian.
+
+Now $\pi(g) \neq e$ since $g$ is not in the kernel, so there exists an $i$ such that $\pi(g)(i) \neq i$; without loss of generality, we may take $i=1$. Using this $g$ we can find two distinct elements
+    \[
+        [p;(x',y),(x,y),\ldots,(x,y),(x,y'),(x,y),\ldots,(x,y)]
+    \]
+and
+    \[
+        [p;(x,y),\ldots,(x,y),(x',y'),(x,y),\ldots,(x,y)]
+    \]
+in $\underline{P}(\mb{4})$.  In the first element we put $(x',y)$ in the first position and $(x,y')$ in position $\pi(g)(1)$, whilst in the second element we put $(x',y')$ in position $\pi(g)(1)$. Both of these elements, however, are mapped to the same elements in $\underline{P}(\mb{2}_X)$, since
+    \begin{align*}
+           [p; x', x, \ldots, x]&= [p \cdot g; (x', x, \ldots, x)]\\
+          &= [p;\pi(g)\cdot (x', x, \ldots, x)]\\
+          &= [p;x,x,\ldots,x',\ldots,x].
+    \end{align*}
+Similarly, both of the elements are mapped to the same element in $\underline{P}(\mathbf{2}_Y)$, simply
+    \[
+        [p;y,\ldots,y', \ldots, y].
+    \]
+The pullback of this diagram, however, has a unique element which is projected to the ones we have considered, so $\underline{P}(\mb{4})$ is not a pullback. Hence $\underline{P}$ does not preserve pullbacks if for some $n$ the action of $G(n)$ on $P(n)$ does not have the given property.
+
+For the rest of the proof we will assume that each $G(n)$ acts on $P(n)$ in the prescribed way. We require that the naturality squares for $\eta$ and $\mu$ are $2$-pullbacks. In the case of $\eta$ this is to require that for a functor $f \colon X \rightarrow Y$, the pullback of the following diagram is the category $X$.
+	\[
+		\xy
+			(40,0)*+{Y}="10";
+			(0,-15)*+{\coprod P(n) \times_{G(n)} X^n}="01";
+			(40,-15)*+{\coprod P(n) \times_{G(n)} Y^n}="11";
+			{\ar^{\eta_Y} "10" ; "11"};
+			{\ar_{\underline{P}(f)} "01" ; "11"};
+		\endxy
+	\]
+The pullback of this diagram is isomorphic to the coproduct of the pullbacks of diagrams of the following form.
+\[
+		\xy
+			(30,0)*+{Y}="10";
+			(0,-15)*+{P(n) \times_{G(n)} X^n}="01";
+			(30,-15)*+{P(n) \times_{G(n)} Y^n}="11";
+			{\ar^{} "10" ; "11"};
+			{\ar_{1 \times f^n} "01" ; "11"};
+		\endxy
+	\]
+
+Note that $P(1) \times_{G(1)} Y$ is isomorphic to $(P(1)/G(1)) \times Y$, the latter clearly satisfying the universal property of the coequalizer - since every element of $G(1)$ acts trivially on $Y$ we can write objects of $P(1) \times_{G(1)} Y$ as pairs $([p],y)$, where $p \in P(1)$ and $y \in Y$.
+
+Now since $\eta_Y$ lands in $P(1) \times_{G(1)} Y$, we need only check that $X$ is the pullback of the above cospan in the case that $n = 1$. The pullback is then the category consisting of pairs $(([p],x),y)$ such that $([p],f(x)) = ([id],y)$. Such pairs exist only when $y = f(x)$ and $[p] = [id]$, showing that $X$ is indeed the pullback. Thus naturality squares for $\eta$ are pullbacks.
+
+For $\mu$ we will use the fact that if all of the diagrams
+    \[
+        \xy
+            (0,0)*+{\underline{P}^2(X)}="00";
+            (20,0)*+{\underline{P}^2(1)}="10";
+            (0,-15)*+{\underline{P}(X)}="01";
+            (20,-15)*+{\underline{P}(1)}="11";
+            %
+            {\ar^{\underline{P}^2(!)} "00" ; "10"};
+            {\ar^{\mu_1} "10" ; "11"};
+            {\ar_{\mu_X} "00" ; "01"};
+            {\ar_{\underline{P}(!)} "01" ; "11"};
+        \endxy
+    \]
+are pullbacks then the outside of the diagram
+    \[
+        \xy
+            (0,0)*+{\underline{P}^2(X)}="00";
+            (20,0)*+{\underline{P}^2(Y)}="10";
+            (40,0)*+{\underline{P}^2(1)}="20";
+            (0,-15)*+{\underline{P}(X)}="01";
+            (20,-15)*+{\underline{P}(Y)}="11";
+            (40,-15)*+{\underline{P}(1)}="21";
+            %
+            {\ar^{\underline{P}^2(f)} "00" ; "10"};
+            {\ar^{\underline{P}^2(!)} "10" ; "20"};
+            {\ar^{\mu_{1}} "20" ; "21"};
+            {\ar_{\mu_X} "00" ; "01"};
+            {\ar_{\underline{P}(f)} "01" ; "11"};
+            {\ar_{\underline{P}(!)} "11" ; "21"};
+            {\ar_{\mu_Y} "10" ; "11"};
+        \endxy
+    \]
+is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares
+    \[
+        \xy
+            (0,0)*+{\coprod P(m) \times_{G(m)} \prod_i \left(P(k_i) \times_{G(k_i)} X^{k_i}\right)}="00";
+            (60,0)*+{\coprod P(m) \times_{G(m)} \prod_i \left(P(k_i) / G(k_i)\right)}="10";
+            (0,-20)*+{P(n) \times_{G(n)} X^n}="01";
+            (60,-20)*+{P(n) / G(n)}="11";
+            %
+            {\ar "00" ; "10"};
+            {\ar "00" ; "01"};
+            {\ar "01" ; "11"};
+            {\ar "10" ; "11"};
+        \endxy
+    \]
+is a pullback. The map along the bottom is the obvious one, sending $[p; x_1, \ldots, x_n]$ simply to the equivalence class $[p]$. Along the right hand side the map is the one corresponding to operadic composition, sending $[q;[p_1],\ldots,[p_m]]$ to $[\mu^P(q;p_1,\ldots,p_n)]$. The pullback of these maps would be the category consisting of pairs
+    \[
+        \left([p;x_1,\ldots,x_{\Sigma k_i}],[q;[p_1],\ldots,[p_n]]\right),
+    \]
+where $q \in P(n)$, $p_i \in P(k_i)$, $p \in P(\Sigma k_i)$, and for which $[p] = [\mu^P(q;p_1,\ldots,p_n)]$. The upper left category in the diagram, which we will refer to here as $Q$, has objects
+    \[
+        [q;[p_1;\underline{x}_1],\ldots,[p_n;\underline{x}_n]].
+    \]
+
+There are obvious maps out of $Q$ making the diagram commute and as such inducing a functor from $Q$ into the pullback via the universal property. This functor sends an object such as the one just described to the pair
+    \[
+        \left([\mu^P(q;p_1,\ldots,p_n);\underline{x}], [q;[p_1],\ldots,[p_n]]\right).
+    \]
+Given an object in the pullback, we then have a pair, as described above, which has $[p] = [\mu^P(q;p_1,\ldots,p_n)]$ meaning that we can find an element $g \in G(\Sigma k_i)$ such that $p  = \mu^P(q;p_1,\ldots,p_n) \cdot g$. Thus we can describe an inverse to the induced functor by sending a pair in the pullback to the object
+    \[
+        [q;[p_1;\pi(g)(\underline{x})_1],\ldots,[p_n;\pi(g)(\underline{x})_n]],
+    \]
+where $\pi(g)(\underline{x})_i$ denotes the $i$th block of $\underline{x}$ after applying the permutation $\pi(g)$. For example, if $\underline{x} = (x_{11}, x_{12}, x_{21}, x_{22}, x_{23}, x_{31})$ and $\pi(g) = (1\, 3\, 5)$, then $\pi(g)(\underline{x}) = (x_{23}, x_{12}, x_{11}, x_{22}, x_{21}, x_{31})$. Thus $\pi(g)(\underline{x})_1 = (x_{23}, x_{12})$, $\pi(g)(\underline{x})_2 = (x_{11}, x_{22}, x_{21})$ and $\pi(g)(\underline{x})_3 = (x_{31})$. Now applying the induced functor we find that we get back an object in the pullback for which the first entry is $[q;[p_1],\ldots,[p_n]]$ and whose second entry is
+    \[
+       [\mu^P(q;p_1,\ldots,p_n);\pi(g)(\underline{x})] = [\mu^P(q;p_1,\ldots,p_n) \cdot g;\underline{x}] = [p;\underline{x}],
+    \]
+which is what we started with. Showing the other composite is an identity is similar, here using the fact that the identity acts trivially on $\mu^P(q;p_1,\ldots,p_n)$. Taking the coproduct of these squares then gives us the original diagram that we wanted to show was a pullback and, since each individual square is a pullback, so is the original.
+
+To finish we must also show that $\underline{P}$ preserves pullbacks. Given a pullback
+    \[
+        \xy
+            (0,0)*+{A}="00";
+            (15,0)*+{B}="10";
+            (0,-15)*+{C}="01";
+            (15,-15)*+{D}="11";
+            %
+            {\ar^{F} "00" ; "10"};
+            {\ar^{S} "10" ; "11"};
+            {\ar_{R} "00" ; "01"};
+            {\ar_{H} "01" ; "11"};
+        \endxy
+    \]
+we must show that the image of the diagram under $\underline{P}$ is also a pullback. Now this will be true if and only if each individual diagram
+        \[
+            \xy
+                (0,0)*+{P(n) \times_{G(n)} A^n}="00";
+                (30,0)*+{P(n) \times_{G(n)} B^n}="10";
+                (0,-15)*+{P(n) \times_{G(n)} C^n}="01";
+                (30,-15)*+{P(n) \times_{G(n)} D^n}="11";
+                %
+                {\ar^{1 \times F^n} "00" ; "10"};
+                {\ar^{1 \times S^n} "10" ; "11"};
+                {\ar_{1 \times R^n} "00" ; "01"};
+                {\ar_{1 \times H^n} "01" ; "11"}:
+            \endxy
+    \]
+is also a pullback. The pullback of the functors $1 \times H^n$ and $1 \times S^n$ is a category consisting of pairs of objects $[p;\underline{c}]$ and $[q;\underline{b}]$, where $\underline{b}$ and $\underline{c}$ represent lists of elements in $B$ and $C$, respectively. These pairs are then required to satisfy the property that
+    \[
+        [p;\underline{H(c)}] = [q; \underline{S(b)}].
+    \]
+Using the previous lemma, we know that a pair
+    \[
+        \left([p;\underline{c}], [q;\underline{b}]\right)
+    \]
+is in the pullback if and only if there exists an element $g \in G(n)$ such that $p \cdot g = q$ and $Hc_i = (Sb_{\pi(g)^{-1}(i)})$. Using this we can define mutual inverses between $P(n) \times_{G(n)} A^n$ and the pullback $Q'$. Considering the category $A$ as the pullback of the diagram we started with, we can consider objects of $P(n) \times_{G(n)} A^n$ as being equivalence classes
+    \[
+        [p;(b_1,c_1),\ldots,(b_n,c_n)]
+    \]
+where $p \in P(n)$ and $Hc_i = Sb_i$ for all $i$.
+
+Taking such an object, we send it to the pair
+    \[
+        \left([p;c_1,\ldots,c_n],[p;b_1,\ldots,b_n]\right)
+    \]
+which lies in the pullback since the identity in $G(n)$ satisfies the condition given earlier. An inverse to this sends a pair of equivalence classes in $Q'$ to the single equivalence class
+    \[
+        [p;(c_1,b_{\pi(g)^{-1}(1)}),\ldots,(c_n,b_{\pi(g)^{-1}(n)})]
+    \]
+in $P(n) \times_{G(n)} A^n$. If we apply the map into $Q'$ we get the pair
+    \[
+        \left([p;c_1,\ldots,c_n],[p;b_{\pi(g)^{-1}(1)},\ldots,b_{\pi(g)^{-1}(n)}]\right)
+    \]
+which is equal to the original pair since $p \cdot g = q$. The other composite is trivially an identity since the identity in $G(n)$ has trivial permutation.
+\end{proof}
+\begin{cor}
+The $2$-monad associated to a symmetric operad $P$ is $2$-cartesian if and only if the action of $\Sigma_n$ is free on each $P(n)$.
+\end{cor}
+
+The final part of this section is motivated by the issue of coherence. At its most basic, a coherence theorem is a way of describing when a notion of weaker structure is in some way equivalent to a stricter structure. The prototypical case here is the coherence theorem for monoidal categories. In a monoidal category we require associator isomorphisms
+    \[
+        \left( A \otimes B \right) C \cong A \otimes \left( B \otimes C \right)
+    \]
+for all objects in the category. The coherence theorem tells us that, for any monoidal category $M$, there is a strict monoidal category which is equivalent to $M$.  In other words, we can treat the associators in $M$ as identities, and similarly for the unit isomorphisms.
+
+The abstract approach to coherence considers when the pseudoalgebras for a $2$-monad $T$ are equivalent to strict $T$-algebras, with the most comprehensive account appearing in \cite{lack-cod}.  Lack gives a general theorem which provides sufficient conditions for the existence of a left adjoint to the forgetful $2$-functor
+    \[
+        U \colon T\mbox{-}\mb{Alg}_s \rightarrow \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}
+    \]
+for which the components of the unit of the adjunction are equivalences. We focus on one version of this general result which has hypotheses that are quite easy to check in practice.  First we require that the base 2-category $\mathcal{K}$ has an enhanced factorization system. This is much like an orthogonal factorization system on a $2$-category, consisting of two classes of maps $(\mathcal{L},\mathcal{R})$, satisfying the lifting properties on $1$-cells and $2$-cells as follows. Given a commutative square
+     \[
+        \xy
+            (0,0)*+{A}="00";
+            (15,0)*+{C}="10";
+            (0,-15)*+{B}="01";
+            (15,-15)*+{D}="11";
+        %
+            {\ar^{f} "00" ; "10"};
+            {\ar^{r} "10" ; "11"};
+            {\ar_{l} "00" ; "01"};
+            {\ar_{g} "01" ; "11"};
+        \endxy
+     \]
+where $l \in \m{L}$ and $r \in {R}$, there exists a unique morphism $m \colon B \rightarrow C$ such that $rm = g$ and $ml = f$. Similarly, given two commuting squares for which $rf = gl$ and $rf' = f'l$, along with $2$-cells $\delta \colon f \Rightarrow f'$ and $\gamma \colon g \Rightarrow g'$ for which $\gamma \ast 1_l = 1_r \ast \delta$, there exists a unique $2$-cell $\mu \colon m \Rightarrow m'$, where $m$ and $m'$ are induced by the $1$-cell lifting property, satisfying $\mu \ast 1_l = \delta$ and $1_r \ast \mu = \gamma$. However, there is an additional $2$-dimensional property of the factorization system which says that given maps $l \in \m{L}$, $r \in \m{R}$ and an invertible $2$-cell $\alpha \colon rf \Rightarrow gl$
+    \[
+        \xy
+            (0,0)*+{A}="00";
+            (15,0)*+{C}="10";
+            (0,-15)*+{B}="01";
+            (15,-15)*+{D}="11";
+            %
+            {\ar^{f} "00" ; "10"};
+            {\ar^{r} "10" ; "11"};
+            {\ar_{l} "00" ; "01"};
+            {\ar_{g} "01" ; "11"};
+            %
+            {\ar@{=>}^{\alpha} (9.375,-5.625) ; (5.625,-9.375)};
+            %
+            (22.5,-7.5)*+{=};
+            %
+            (30,0)*+{A}="20";
+            (45,0)*+{C}="30";
+            (30,-15)*+{B}="21";
+            (45,-15)*+{D}="31";
+            %
+            {\ar^{f} "20" ; "30"};
+            {\ar^{r} "30" ; "31"};
+            {\ar_{l} "20" ; "21"};
+            {\ar_{g} "21" ; "31"};
+            {\ar^{m} "21" ; "30"};
+            %
+            {\ar@{=>}^{\beta} (41,-8) ; (38,-12)};
+        \endxy
+    \]
+there is a unique pair $(m,\beta)$ where $m \colon C \rightarrow B$ is a $1$-cell and $\beta \colon rm \Rightarrow g$ is an invertible $2$-cell such that $ml = f$ and $\beta \ast 1_{l} = \alpha$.
+
+Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which is a simple exercise involving coequalizers.
+
+\begin{prop}
+For any $\mb{G}$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
+\end{prop}
+\begin{cor}
+Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra.
+\end{cor} 

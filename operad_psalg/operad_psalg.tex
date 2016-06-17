@@ -1,0 +1,92 @@
+\documentclass{amsart} % default font size is 10pt
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{eucal}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+\usepackage{pdfsync}
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\mb}{\mathbf}
+\renewcommand{\dot}{\centerdot}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\m}[1]{\mathcal{#1}}
+%\pdfshift
+
+
+
+
+
+\begin{document}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+\newtheoremstyle{example}{\topsep}{\topsep}%
+     {}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% Thm head font
+     {.}%        Punctuation after thm head
+     {2pt}%     Space after thm head (\newline = linebreak)
+     {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}%         Thm head spec
+		
+		
+
+   \theoremstyle{example}
+	\newtheorem{conv}[thm]{Conventions}
+   \newtheorem{nota}[thm]{Notation}
+   \newtheorem{example}[thm]{Example}
+	\newtheorem{Defi}[thm]{Definition}
+   \newtheorem{rem}[thm]{Remark}
+
+   \title[Operads]{Operads with general groups of equivariance, and some 2-categorical aspects of operads in $\mb{Cat}$}
+
+\author{Alexander S. Corner}
+\address{
+School of Mathematics and Statistics,
+University of Sheffield,
+Sheffield, UK, S3 7RH
+}
+\email{a.s.corner@sheffield.ac.uk}
+\author{Nick Gurski}
+\address{
+School of Mathematics and Statistics,
+University of Sheffield,
+Sheffield, UK, S3 7RH
+}
+\email{nick.gurski@sheffield.ac.uk}
+\keywords{operad, 2-category, pseudo-commutativity}
+\subjclass{18D05, 18D10, 18D50}
+
+\begin{abstract}
+We give a definition of an operad with general groups of equivariance suitable for use in any symmetric monoidal category with appropriate colimits.  We then apply this notion to study the 2-category of algebras over an operad in $\mb{Cat}$.  We show that any operad is finitary, that an operad is cartesian if and only if the group actions are nearly free (in a precise fashion), and that the existence of a pseudo-commutative structure largely depends on the groups of equivariance.  We conclude by showing that the operad for braided strict monoidal categories has two canonical pseudo-commutative structures.
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+	
+\section*{Introduction}
+
+\input{operad_psalg_intro}
+
+\input{operad_psalg1}
+
+\input{operad_psalg2}
+
+\input{operad_psalg3}
+
+\input{operad_psalg4}
+
+
+\bibliographystyle{plain}
+\bibliography{operad_ref}
+
+
+
+\end{document} 

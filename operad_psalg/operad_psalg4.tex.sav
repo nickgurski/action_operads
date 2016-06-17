@@ -1,0 +1,374 @@
+\section{Pseudo-commutativity}
+
+Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two lists.  Then the set $\{ (a_{i}, b_{j})$ has $mn$ elements, and two natural lexicographic orderings.  One of these we write as $\underline{(a, \underline{b})}$, and it has the order given by
+\[
+(a_{p}, b_{q}) < (a_{r}, b_{s}) \textrm{ if } \left\{ \begin{array}{l} p < r, \textrm{ or } \\ p=r \textrm{ and } q < s. \end{array} \right.
+\]
+The other we write as $\underline{(\underline{a}, b)}$, and it has the order given by
+\[
+(a_{p}, b_{q}) < (a_{r}, b_{s}) \textrm{ if } \left\{ \begin{array}{l} q < s, \textrm{ or } \\ q=s \textrm{ and } p < r. \end{array} \right.
+\]
+There is a unique permutation $\tau_{mn} \in \Sigma_{mn}$ which has the property that $\tau_{mn}(i) = j$ if the $i$th element of the ordered set $\underline{(a, \underline{b})}$ is equal to the $j$th element of the ordered set $\underline{(\underline{a}, b)}$.  By construction, we have $\tau_{nm} = \tau_{mn}^{-1}$. We'll illustrate this with an example, the permutation $\tau_{3,2}$:
+    \[
+        braid-diagram
+    \]
+We wish to state conditions for the associated monad to have a pseudo-commutativity. We give the definition of pseudo-commutativity as in citeHylandPower. Before doing so, we note what we mean by a strength for a $2$-monad.
+\begin{Defi}
+A strength for an endo-$2$-functor $T \colon \m{K} \rightarrow \m{K}$ consists of a $2$-natural transformation $t$ with components
+    \[
+        t_{A,B} \colon A \times TB \rightarrow T(A \times B)
+    \]
+satisfying unit and associativity axioms. Similarly, a costrength for $T$ consists of a $2$-natural transformation $t^{\ast}$ with components
+    \[
+        t^{\ast}_{A,B} \colon TA \times B \rightarrow T(A \times B)
+    \]
+again satisfying unit and associativity axioms.
+\end{Defi}
+The strength and costrength for the associated $2$-monad $\underline{P}$ are quite simple to define. We define a strength $t$ for $\underline{P}$ as follows. The component $t_{A,B}$ is a functor
+    \[
+        t_{A,B} \colon A \times \left(\amalg P(n) \times_{G(n)} B^n\right) \rightarrow \amalg P(n) \times_{G(n)} \left(A \times B \right)^n
+    \]
+which sends an object $(a, [p,b_1,\ldots,b_n])$ to the object $[p,(a,b_1),\ldots,(a,b_n)]$. We can also define a costrength which works in a similar way, sending an object $([p,a_1,\ldots,a_n],b)$ to the object $[p,(a_1,b), \ldots, (a_n, b)]$. Both the strength and the costrength work similarly on morphisms.
+%
+\begin{Defi}
+    Given a $2$-monad $T \colon \m{K} \rightarrow \m{K}$ with strength $t$ and costrength $t^{\ast}$, a pseudo-commutativity consists of an invertible modification $\gamma$ with components
+        \[
+            \xy
+                (0,0)*+{TA \times TB}="00";
+                (30,0)*+{T(A \times TB)}="10";
+                (60,0)*+{T^2(A \times B)}="20";
+                (0,-15)*+{T(TA \times B)}="01";
+                (30,-15)*+{T^2(A \times B)}="11";
+                (60,-15)*+{T(A \times B)}="21";
+                %
+                {\ar^{t^{\ast}_{A,TB}} "00" ; "10"};
+                {\ar^{Tt_{A,B}} "10" ; "20"};
+                {\ar^{\mu_{A \times B}} "20" ; "21"};
+               %
+                {\ar_{t_{TA,B}} "00" ; "01"};
+                {\ar_{Tt^{\ast}_{A,B}} "01" ; "11"};
+                {\ar_{\mu_{A \times B}} "11" ; "21"};
+                %
+                {\ar@{=>}^{\gamma_{A,B}} (30,-5.5) ; (30,-9.5)};
+            \endxy
+        \]
+satisfying the following three strength axioms, two unit (or $\eta$) and two multiplication (or $\mu$) axioms for all $A$, $B$ and $C$:
+    \begin{enumerate}
+        \item $\gamma_{A \times B,c} \circ (t_{A,B} \times 1_{TC}) = t_{A,B \times C} \circ (1_A \times \gamma_{B,C})$
+        \item $\gamma_{A,B \times C} \circ (1_{TA} \times t_{B,C}) = \gamma_{A \times B, C} \circ (t^{\ast}_{A,B} \times 1_{TC})$
+        \item $\gamma_{A,B \times C} \circ (1_{TA} \times T^{\ast}_{B,C}) = t^{\ast}_{A \times B,C} \circ (\gamma_{A,B} \times 1_{C})$
+        \item $\gamma_{A,B} \circ (\eta_A \times 1_{TB})$  is an identity
+        \item $\gamma_{A,B} \circ (1_{TA} \times \eta_B)$ is an identity
+        \item $\gamma_{A,B} \circ (\mu_A \times 1_{TB})$ is equal to the pasting
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle T^2A \times TB}="00";
+                    (30,0)*+{\scriptstyle T(TA \times TB)}="10";
+                    (60,0)*+{\scriptstyle T^2(A \times TB)}="20";
+                    (90,0)*+{\scriptstyle T^3(A \times B)}="30";
+                    (0,-15)*+{\scriptstyle T(T^2A \times B)}="01";
+                    (30,-15)*+{\scriptstyle T^2(TA \times B)}="11";
+                    (60,-15)*+{\scriptstyle T^3(A \times B)}="21";
+                    (90,-15)*+{\scriptstyle T^2(A \times B)}="31";
+                    (0,-30)*+{\scriptstyle T^2(TA \times B)}="02";
+                    (30,-30)*+{\scriptstyle T(TA \times B)}="12";
+                    (60,-30)*+{\scriptstyle T^2(A \times B)}="22";
+                    (90,-30)*+{\scriptstyle T(A \times B)}="32";
+                    %
+                    {\ar^{t^{\ast}_{TA,TB}} "00" ; "10"};
+                    {\ar^{Tt^{\ast}_{A,TB}} "10" ; "20"};
+                    {\ar^{T^2t_{A,B}} "20" ; "30"};
+                    {\ar_{t_{T^2A,B}} "00" ; "01"};
+                    {\ar_{Tt_{TA,B}} "10" ; "11"};
+                    {\ar^{T\mu_{A \times B}} "30" ; "31"};
+                    {\ar_{T^2t^{\ast}_{A,B}} "11" ; "21"};
+                    {\ar_{T\mu_{A \times B}} "21" ; "31"};
+                    {\ar_{Tt^{\ast}_{TA,B}} "01" ; "02"};
+                    {\ar_{\mu_{TA \times B}} "11" ; "12"};
+                    {\ar_{\mu_{T(A \times B)}} "21" ; "22"};
+                    {\ar^{\mu_{A \times B}} "31" ; "32"};
+                    {\ar_{\mu_{TA \times B}} "02" ; "12"};
+                    {\ar_{Tt^{\ast}_{A,B}} "12" ; "22"};
+                    {\ar_{\mu_{A \times B}} "22" ; "32"};
+                    %
+                    {\ar@{=>}^{T\gamma_{A,B}} (60,-5.5) ; (60,-9.5)};
+                    {\ar@{=>}^{\gamma_{TA,B}} (12.5,-13) ; (12.5,-17)};
+                \endxy
+            \]
+        \item $\gamma_{A,B} \circ (1_{TA} \times \mu_B)$ is equal to the pasting
+                    \[
+                \xy
+                    (0,0)*+{\scriptstyle TA \times T^2B}="00";
+                    (30,0)*+{\scriptstyle T(A \times T^2B)}="10";
+                    (60,0)*+{\scriptstyle T^2(A \times TB)}="20";
+                    (0,-15)*+{\scriptstyle T(TA \times TB)}="01";
+                    (30,-15)*+{\scriptstyle T^2(A \times TB)}="11";
+                    (60,-15)*+{\scriptstyle T(A \times TB)}="21";
+                    (0,-30)*+{\scriptstyle T^2(TA \times B)}="02";
+                    (30,-30)*+{\scriptstyle T^3(A \times B)}="12";
+                    (60,-30)*+{\scriptstyle T^2(A \times B)}="22";
+                    (0,-45)*+{\scriptstyle T^3(A \times B)}="03";
+                    (30,-45)*+{\scriptstyle T^2(A \times B)}="13";
+                    (60,-45)*+{\scriptstyle T(A \times B)}="23";
+                    %
+                    {\ar^{t^{\ast}_{A,T^2B}} "00" ; "10"};
+                    {\ar^{Tt_{A,TB}} "10" ; "20"};
+                    {\ar_{t_{TA,TB}} "00" ; "01"};
+                    {\ar^{\mu_{A \times TB}} "20" ; "21"};
+                    {\ar_{Tt^{\ast}_{A,TB}} "01" ; "11"};
+                    {\ar_{\mu_{A \times TB}} "11" ; "21"};
+                    {\ar_{Tt_{TA,B}} "01" ; "02"};
+                    {\ar^{T^2t_{A,B}} "11" ; "12"};
+                    {\ar^{Tt_{A,B}} "21" ; "22"};
+                    {\ar^{\mu_{T(A \times B)}} "12" ; "22"};
+                    {\ar_{T^2t^{\ast}_{A,B}} "02" ; "03"};
+                    {\ar^{T\mu_{A \times B}} "12" ; "13"};
+                    {\ar^{\mu_{A \times B}} "22" ; "23"};
+                    {\ar_{T\mu_{A \times B}} "03" ; "13"};
+                    {\ar_{\mu_{A \times B}} "13" ; "23"};
+                    %
+                    {\ar@{=>}^{T\gamma_{A,B}} (13,-28) ; (13,-32)};
+                    {\ar@{=>}^{\gamma_{A,TB}} (30,-5.5) ; (30,-9.5)};
+                \endxy
+            \]
+    \end{enumerate}
+\end{Defi}
+%
+\begin{rem}
+    It is noted in citeHyland-Power that this definition has some redundancy and therein it is shown that any two of the strength axioms immediately implies the third. Furthermore, the three strength axioms are equivalent, when the $\eta$ and $\mu$ axioms hold, when the following associativity equation also holds:
+        \[
+            \gamma_{A,B \times C} \circ (1_{TA} \times \gamma_{B,C}) = \gamma_{A \times B,C} \times (\gamma_{A,B} \times 1_{TC}).
+        \]
+\end{rem}
+%
+We now state when a monad $\underline{P}$ for a $\mathbf{G}$-operad $P$ acquires a pseduo-commutative structure. 
+\begin{thm} Let $P$ be a $\mb{G}$-operad. Then the following equip $\underline{P}$ with a pseudo-commutative structure:
+    \begin{enumerate}
+        \item For all $(m,n) \in \mathbb{N}_{+}^2$ there exists $t_{m,n} \in G(mn)$ such that $\pi(t_{m,n}) = \tau_{m,n}$.
+        \item For all $p \in P(n)$, $q \in P(m)$, a natural isomorphism
+            \[
+                \lambda_{p,q} \colon \mu(p;q,\ldots,q) \cdot t_{m,n} \cong \mu(q;p,\ldots,p).
+            \]
+    \end{enumerate}
+These must satisfy the following:
+    \begin{itemize}
+        \item For all $n \in \mathbb{N}_+$,
+            \[
+                t_{1,n} = e_n = t_{n,1}
+            \]
+             and for all $p \in P(n)$, $p \cdot e_n \cong p$ (these are identities?).
+        \item For all $l, m_1, \ldots, m_l, n \in \mathbb{N}_+$, with $M = \Sigma m_i$,
+            \[
+                \mu(e_l; t_{m_1,n}, \ldots, t_{m_l,n}) \mu(t_{l,n};e_{m_1},\ldots,e_{m_l}) = t_{n,M}.
+            \]
+        \item For all $l, m, n_1,\ldots, n_m \in \mathbb{N}_+$, with $N = \Sigma n_i$,
+            \[
+                \mu(t_{m,l};e_{n_1},\ldots,e_{n_m}) \mu(e_m;t_{n_1,l},\ldots,t_{n_m,l}) = T_{N,l}.
+            \]
+        \item For any $l, m_i, n \in \mathbb{N}_+$, with $1 \leq i \leq n$, and $p \in P(l)$, $q_i \in P(m_i)$ and $r \in P(n)$, the following diagram commutes:
+            \[
+                \xy
+                    (0,0)*+{\mu(p;\underline{\mu(q_i;\underline{r})}) \cdot \mu(e_l;\underline{t_{n,m_i}})\mu(t_{n,l};\underline{\underline{e_{m_i}}})}="00";
+                    (60,0)*+{\mu(p;\underline{\mu(q_i;\underline{r})}) \cdot t_{n,M}}="10";
+                    (0,-15)*+{\mu(p;\underline{\mu(q_i;\underline{r})\cdot t_{n,m_i}}) \cdot \mu(t_{n,l};\underline{e_{m_1},\ldots,e_{m_l}})}="01";
+                    (60,-20)*+{\mu(\mu(p;q_1,\ldots,q_n);\underline{\underline{r}})\cdot t_{n,M}}="11";
+                    (0,-30)*+{\mu(p;\underline{\mu(r;\underline{q_i})} \cdot \mu(t_{n,l};\underline{e_{m_1},\ldots,e_{m_l}})}="02";
+                    (60,-40)*+{\mu(\mu(p;q_1,\ldots,q_l);\underline{\underline{r}})}="12";
+                    (0,-45)*+{\mu(\mu(p;\underline{r}) \cdot t_{n,l} ; \underline{q_1,\ldots,q_l})}="03";
+                    (60,-60)*+{\mu(r;\underline{\mu(p;q_1,\ldots,q_l)})}="13";
+                    (0,-60)*+{\mu(\mu(r,\underline{p});\underline{q_1,\ldots,q_n})}="04";
+                    %
+                    {\ar@{=} "00" ; "10"};
+                    {\ar@{=} "00" ; "01"};
+                    {\ar@{=} "10" ; "11"};
+                    {\ar_{\mu(1;\underline{\lambda_{q_i,r}}) \cdot 1} "01" ; "02"};
+                    {\ar@{=} "02" ; "03"};
+                    {\ar@{=} "03" ; "04"};
+                    {\ar_{\mu(\lambda{p,r};1)} "04" ; "13"};
+                    {\ar^{\lambda_{\mu(p;q_1,\ldots,q_n),r}} "11" ; "12"};
+                    {\ar@{=} "12" ; "13"};
+                \endxy
+            \]
+        \item For any $l,m, n_i \in \mathbb{N}_+$, with $1 \leq i \leq m$, and $p \in P(l)$, $q \in P(m)$ and $r_i \in P(n_i)$, the following diagram commutes:
+                \[
+                    \xy
+                        (0,0)*+{\mu(\mu(p;\underline{q}) \cdot t_{m,l} ; \underline{\underline{r_i}}) \cdot \mu(e_m;\underline{t_{n_i,l}})}="00";
+                        (60,0)*+{\mu(\mu(p;\underline{q});\underline{\underline{r_i}}) \cdot \mu(t_{m,l};\underline{\underline{e_{n_i}}})\mu(e_{m};\underline{t_{n_i,l}})}="10";
+                        (60,-15)*+{\mu(p;\underline{\mu(q;\underline{r_i})}) \cdot \mu(t_{m,l};\underline{\underline{e_{n_i}}})\mu(e_{m};\underline{t_{n_i,l}})}="11";
+                        (0,-20)*+{\mu(\mu(q;\underline{p}); \underline{r_1},\ldots,\underline{r_m}) \cdot \mu(e_m;\underline{t_{n_i,l}})}="01";
+                        (0,-40)*+{\mu(q;\underline{\underline{\mu(p;r_i)}}) \cdot \\mu(e_m;\underline{t_{n_i,l}})}="02";
+                        (0,-60)*+{\mu(q;\underline{\mu(p;\underline{r_i}) \cdot t_{n_i,l}})}="03";
+                        (60,-30)*+{\mu(p;\underline{\mu(q;r_1,\ldots,r_m)}) \cdot t_{N,l}}="12";
+                        (60,-45)*+{\mu(\mu(q;r_1,\ldots,r_m); \underline{\underline{p}})}="13";
+                        (60,-60)*+{\mu(q;\underline{\mu(r_i;\underline{p})})}="14";
+                        %
+                        {\ar@{=} "00" ; "10"};
+                        {\ar@{=} "10" ; "11"};
+                        {\ar@{=} "11" ; "12"};
+                        {\ar^{\lambda_{p,\mu(q;r_1,\ldots,r_m)}} "12" ; "13"};
+                        {\ar@{=} "13" ; "14"};
+                        %
+                        {\ar_{\mu(\lambda_{p,q};1) \cdot 1} "00" ; "01"};
+                        {\ar@{=} "01" ; "02"};
+                        {\ar@{=} "02" ; "03"};
+                        {\ar_{\mu(1;\underline{\lambda_{p,r_i}})} "03" ; "14"};
+                    \endxy
+                \]
+    \end{itemize}
+\end{thm}
+Before proving this theorem we require a lemma regarding the group actions.
+\begin{lem}
+Given categories (?) $A$ and $B$ and a group $G$, for which $A$ has a right action of $G$ and $B$ has a left action by $G$, then $A \times B/\sim$ satisfies the universal property of the coequalizer $A \times_G B$. The equivalence classes of $A \times B/\sim$ correspond to the action of $G$ on $A \times B$ for which $(a, b) \sim (ag,g^{-1}b)$.
+\end{lem}
+\begin{proof}
+We begin the proof by defining an invertible modifcation $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$ which in turn have components given by the isomorphisms
+    \[
+       (\gamma_{A,B})_{[p,a_1,\ldots,a_n],[q,b_1,\ldots,b_m]} = [\lambda_{p,q},1].
+    \]
+
+\end{proof}
+
+Notations:
+\begin{itemize}
+\item $\mu (p; q)$
+\item $p \star n, m \star q$ plus properties (maybe need to include some of these into our requirements on what $G$ can be)
+\item $h \sim h'$ for $h$ acts the same as $h'$
+\item $\circ$ for group multiplication
+\item always use $e$ as the identity element; do we need that the identity element of the operad is $e \in G(1)$?
+\end{itemize}
+
+\begin{prop}\label{pscommoperad}
+Let $P$ be a $G$-operad.  Then the data for a pseudo-commutativity for $P$ consists of
+\begin{itemize}
+\item for each $p \in P(m), q \in P(n),$ and pair of lists $\underline{a}, \underline{b}$ of length $m, n$, respectively, a group element $g_{mn} \in G(mn)$ such that $\pi(g_{mn}) = \tau_{mn}$, and
+\item isomorphisms $\mu (p; q) \cdot h_{mn} \cong \mu (q; p)$ in $P(mn)$.
+\end{itemize}
+These data must satisfy the following axioms.
+\begin{enumerate}
+\item Naturality
+\item Strength axioms for the monad
+\item Unit axioms for the monad
+\item for $p \in P(l), q \in P(m), r \in P(n)$, the equations for
+\[ (p,q; r) = (p;r) \star q \circ p \star (q;r) \] plus the other one
+\end{enumerate}
+\end{prop}
+
+\begin{rem}
+something about free actions meaning we can replace $\sim$ with =
+\end{rem}
+
+%\begin{thm}\label{primes}
+%Let $P$ be a $G$ operad in $\mb{Cat}$, and assume that there exists $g_{pq} \in G(pq)$ such that $\pi(g_{pq}) = \lambda_{pq}$ for every pair $p,q$ of prime numbers.  Then $P$ can be equipped with a pseudo-commutativity using the given $g_{pq}$ if
+%\begin{enumerate}
+%\item each category $P(n)$ is contractible,
+%\item for each triple $p,q,r$ of primes, the equation
+%\[
+%g_{pr} \star q \circ p \star g_{qr} = g_{qr} \star p \circ q \star g_{pr}
+%\]
+%holds in $G(pqr)$,
+%\item for each triple $p,q,r$ of primes, the equation
+%\[
+%q \star g_{pr} \circ g_{pq} \star r = r \star g_{pq} \circ g_{pr} \star q
+%\]
+%holds in $G(pqr)$, and
+%\item for any $g \in G(m), h \in G(n)$, the equation
+%\[
+%g \star n \circ m \star h = m \star h \circ g \star n
+%\]
+%holds in $G(mn)$.
+%\end{enumerate}
+%\end{thm}
+%%\begin{proof}
+%Since each $P(n)$ is contractible, all axioms involving the equality of a pair of parallel maps are automatic.  We will define the rest of the $g_{mn}$ inductively, starting with the given $g_{pq}$ and requiring that $g_{mn} = e$ whenever $m$ or $n$ is 1.  We define $g_{mn}$ by
+%\[
+%g_{mn} = \left\{ \begin{array}{lr}
+%g_{pq} & \textrm{if $m=p, n=q$ are primes}, \\
+%g_{an}\star b \circ a \star g_{bn} & \textrm{ if $m = ab$, and} \\
+%r \star g_{ms} \circ g_{mr} \star s & \textrm{ if $n=rs$ and $m$ is prime.}
+%\end{array} \right.
+%\]
+%Note immediately that since the group elements $g_{mn}$ do not depend on the particular strings $\underline{a}, \underline{b}$ nor the elements $p \in P(m), q \in P(n)$, only the natural numbers $m,n$, all of the axioms in Proposition \ref{pscommoperad} are immediate aside from the final one.  Thus we must check that the equations above give well-defined elements and that the final equation from Proposition \ref{pscommoperad} holds.
+
+%To show that the above formulas give well-defined group elements, we verify this inductively over the number of (not necessarily distinct) prime factors.  If $m, n$ are prime, then we can only factor $m$, say, as $m = 1m = m1$, and it is easy to check that these possible factorizations all yield the same element since $g_{1n} = e$ and the natural number 1 gives action maps $1 \star -$, $- \star 1$ which are the identity on any $G(n)$.  If $n$ is prime and $m=ab$ is the prime decomposition of $m$, then by definition we have
+%\[
+%g_{mn} = g_{an}\star b \circ a \star g_{bn}.
+%\]
+%But then we also have $m=ba$, which by definition gives
+%\[
+%g_{mn} = g_{bn}\star a \circ b \star g_{an}.
+%\]
+%By assumption $(2)$ above, these are equal so $g_{mn}$ is well-defined in this case; assumption $(3)$ gives the analogous case when $m$ is prime and $n$ factors into two primes.
+
+
+%Now assume $m=pq, n=rs$ are the prime factorizations of $m,n$.  Then the definition above gives
+%%\[
+%\begin{array}{rcl}
+%g_{pq,rs} & = & g_{p,rs} \star q \circ p \star g_{q, rs} \\
+% & = & \big( r \star g_{ps} \circ g_{pr} \star s\big) \star q \circ p \star \big(  r \star g_{qs} \circ g_{qr} \star s\big) \\
+%  & = & r \star g_{ps} \star q \circ g_{pr} \star sq \circ pr \star g_{qs} \circ p \star g_{qr} \star s \\
+%  & = & r \star g_{ps} \star q \circ pr \star g_{qs} \circ g_{pr} \star sq \circ p \star g_{qr} \star s,
+%  \end{array}
+%  \]
+%where the last equality is an instance of assumption $(4)$.  This last expression is equal to
+%\[
+%r \star \big( g_{ps} \star q \circ p \star g_{qs} \big) \circ \big(g_{pr} \star q \circ p \star g_{qr} \big) \star s,
+%\]
+%which in turn is
+%\[
+%r \star g_{pq, s} \circ g_{pq, r} \star s,
+%\]
+%verifying the final axiom of Proposition \ref{pscommoperad} in this case.  This shows that $g_{mn}$ is well-defined when $m,n$ each factor into at most two primes (note that each of $g_{pq,rs}, g_{qp,rs}, g_{pq,sr}, g_{qp,sr}$ are equal using the above calculations plus the calculations above using axioms $(2), (3)$).
+
+%If $m$ has more two factors, say $m=abc$, we have the following calculation.
+%\[
+%\begin{array}{rcl}
+%g_{abc,r} & = & g_{ar} \star bc \circ a \star g_{bc,r} \\
+% & = & g_{ar} \star bc \circ a \star \big( g_{br} \star c \circ b \star g_{cr} \big) \\
+% & = & g_{ar} \star bc \circ a \star g_{br} \star c \circ ab \star g_{cr} \\
+%  &= & \big( g_{ar} \star b \circ a \star g_{br} \big) \star c \circ ab \star g_{cr} \\
+%  & = & g_{ab,r} \star c \circ ab \star g_{cr}
+%  \end{array}
+%  \]
+%This shows that the $g_{mn}$ are independent of the order of the factorization of $m$.
+
+%One verifies the final axiom of  Proposition \ref{pscommoperad} and the fact that the $g_{mn}$ are well-defined for $m,n$ with more prime factors using the calculations above and straightforward induction.  There are no changes to the arguments for additional factors of $m$, but the arguments for additional factors for $n$ must all start with the analogous calculations when $m$ is prime (which are identical to those above) and then proceed by adding factors of $m$.
+%\end{proof}
+
+
+\begin{cor}
+Every contractible symmetric operad in $\mb{Cat}$ can be equipped with a pseudo-commutativity.
+\end{cor}
+\begin{proof}
+Since the map $\pi$ is the identity, we have $g_{mn} = \lambda_{mn}$ for any $m,n$.  The second and third equations are discussed in (cite Hyland-Power), and the fourth equation is a simple property of the symmetric groups. ***Correct this proof.***
+\end{proof}
+
+%\begin{rem}
+%The above results apply when the $G$-action on $P$ is free, hence the need for equality between group elements in the equations above.  If the group actions are not free, then we would only require the versions of the last three equations in Theorem \ref{primes} where the elements on both sides of the equality act the same on the relevant categories $P(n)$.  It is possible that this could be done on an individual basis, but we know of no examples.
+%\end{rem}
+
+We now apply the characterization above to give a proof of the hypothesized pseudo-commutativity on the operad for braided strict monoidal categories; one can easily adapt the proof to the non-strict case as well by using the parenthesized braid operad instead of the one we use here.
+
+\begin{Defi}
+The operad $\mb{B}$ in $\mb{Cat}$ has $\mb{B}(n) = E(B_{n})$, where $B_{n}$ is the $n$th braid group.  This is a braided operad in the sense of Fiedorowicz, so has structure groups given by the braid groups.
+\end{Defi}
+
+Free action, algebras are braided strict monoidal categories (cite Fiedorowicz).
+
+\begin{Defi}
+A braid $\gamma \in B_{n}$ is \textit{minimal} if no two strands cross twice.
+\end{Defi}
+
+We start by constructing elements $g_{pq} \in B_{pq}$ with the property that $\pi(g_{pq}) = \lambda_{pq}$ where $\pi$ is the canonical quotient map $\pi: B_{pq} \rightarrow \Sigma_{pq}$. Given that the underlying permutation is $\lambda_{pq}$, we define $g_{pq}$ in the following way.  Connect the point $(i,1) \in \R^{2}$ to $(\lambda_{pq}(i), 0)$ with a straight line, beginning at $(1,1)$ and going in order.  Any line drawn that would cross a previously drawn strand is deemed to go under that strand.  This method defines $g_{mn}$ for any natural numbers $m,n$, not just for primes, but we will use the inductive construction in Theorem \ref{primes} to simplify checking the axioms.
+
+Let $\gamma \in B_{n}, \delta \in B_{m}$ be any braids.  We write $\gamma + \delta \in B_{n+m}$ for the braid which restricts to $\gamma$ for the first $n$ strands, $\delta$ for the next $m$ strands, and has no other crossings.  Then $m \star \gamma \in B_{mn}$ is the braid $\gamma + \gamma + \cdots + \gamma$ ($m$ summands).  The braid $\gamma \star m \in B_{mn}$ is the braid obtained by taking $\gamma$ and replacing each strand with $m$ strands which do not cross each other.  The following lemma then expresses a ``naturality'' condition that all braids satisfy.
+
+
+
+\begin{itemize}
+\item A pseudo-commutativity for an operad $P$ consists of....
+\item Cor: If $\pi:G \rightarrow \Sigma$ is surjective and each $P(n)$ is contractible, then $P$ has a canonical pseudo-commutativity
+\item Cor 2: The operad for braided strict monoidal categories is pseudo-commutative.
+\item When is it symmetric ps-commutative?
+\item Compute the tensor product $\oslash$ and internal homs explicitly.
+\item Try to compute things like monoids for $\oslash$ in terms of the operad involved
+\end{itemize} 

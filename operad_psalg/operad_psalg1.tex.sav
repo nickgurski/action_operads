@@ -1,0 +1,381 @@
+\section{Operads in symmetric monoidal categories}
+
+In this section, we will explore the general definition of an operad $P$ in a symmetric monoidal category which is equipped with groups of equivariance $G(n)$.  The group $G(n)$ will act on the right on the object $P(n)$, and the operad structure of $P$ will be required to respect this action.  For certain choices of the groups $G(n)$, we will recover standard notions of operads such as symmetric operads, non-symmetric operads, and braided operads.  We note that unless otherwise stated, the term operad will mean a non-symmetric operad.
+
+We begin with the definition of an operad of structure groups which underlies the notion of an operad with given groups of equivariance.
+
+\begin{Defi}
+An \textit{operad of structure groups} $\mb{G}$ consists of
+\begin{itemize}
+\item an operad $G = \{ G(n) \}$ in the category of sets such that each $G(n)$ is equipped with the structure of a group and
+\item a map $\pi:G \rightarrow \Sigma$ which is simultaneously a map of operads and a group homomorphism $\pi_{n}:G(n) \rightarrow \Sigma_{n}$ for each $n$
+\end{itemize}
+such that one additional axiom holds.  Write
+\[
+\mu: G(n) \times G(k_{1}) \times \cdots \times G(k_{n}) \rightarrow G(k_{1} + \cdots + k_{n})
+\]
+for the multiplication in the operad $G$.  Let $(g, f_1, \ldots f_n)$ and $(g', f_1', \ldots, f_n')$ be elements in the direct product on the left above, and furthermore assume that if $\pi_{n}(g')(i) = j$ then $k_{i} = k_{j}$.  We require that
+\[
+\mu(g, f_1, \ldots f_n)  \mu(g', f_1', \ldots, f_n') = \mu (gg', f_{\pi(g')(1)}f_{1}', \ldots, f_{\pi(g')(n)}f_{n}')
+\]
+in the group $G(k_{1} + \cdots + k_{n})$.
+\end{Defi}
+
+\begin{rem}
+\begin{itemize}
+\item The final axiom is best explained using the operad $\Sigma$ of symmetric groups.  Reading symmetric group elements as permutations from top to bottom, below is a pictorial representation of the final axiom for the map $\mu:\Sigma_{3} \times \Sigma_{2} \times \Sigma_{2} \times \Sigma_{2} \rightarrow \Sigma_{6}.$
+\[
+\xy
+{\ar@{-} (0,0)*{}; (5,-5)*{} };
+{\ar@{-} (5,-5)*{}; (29,-10)*{} };
+{\ar@{-} (5,0)*{}; (0,-5)*{} };
+{\ar@{-} (0,-5)*{}; (24,-10)*{} };
+{\ar@{-} (12,0)*{}; (12,-5)*{} };
+{\ar@{-} (12,-5)*{}; (0,-10)*{} };
+{\ar@{-} (17,0)*{}; (17,-5)*{} };
+{\ar@{-} (17,-5)*{}; (5,-10)*{} };
+{\ar@{-} (24,0)*{}; (29,-5)*{} };
+{\ar@{-} (29,-5)*{}; (17,-10)*{} };
+{\ar@{-} (29,0)*{}; (24,-5)*{} };
+{\ar@{-} (24,-5)*{}; (12,-10)*{} };
+
+{\ar@{-} (0,-10)*{}; (5,-15)*{} };
+{\ar@{-} (5,-10)*{}; (0,-15)*{} };
+{\ar@{-} (12,-10)*{}; (17,-15)*{} };
+{\ar@{-} (17,-10)*{}; (12,-15)*{} };
+{\ar@{-} (24,-10)*{}; (24,-15)*{} };
+{\ar@{-} (29,-10)*{}; (29,-15)*{} };
+{\ar@{-} (0,-15)*{}; (0,-20)*{} };
+{\ar@{-} (0,-15)*{}; (0,-20)*{} };
+{\ar@{-} (0,-15)*{}; (0,-20)*{} };
+{\ar@{-} (0,-15)*{}; (0,-20)*{} };
+{\ar@{-} (0,-15)*{}; (0,-20)*{} };
+{\ar@{-} (0,-15)*{}; (0,-20)*{} };
+
+\item Our definition of an operad of structure groups is the same as that appearing in Wahl's thesis, but without the condition that each $\pi_{n}$ is surjective.
+\end{itemize}
+\end{rem}
+
+\begin{example}
+\begin{enumerate}
+\item Trivial examples:  $\mb{G} = \Sigma$ with the identity map (terminal in some category of operads of structure groups), $\mb{G} = *$ with the inclusion of identity elements (initial)
+\item Less trivial examples:  $\mb{G} = \mb{Br}$ or $\mb{G} = \mb{RBr}$
+\end{enumerate}
+\end{example}
+
+\begin{Defi}
+Let $\mb{G}$ be an operad of structure groups.  A \textit{$\mb{G}$-operad} $P$ (in $\mb{Sets}$) consists of
+\begin{itemize}
+\item an operad $P$ in $\mb{Sets}$ and
+\item for each $n$, an action $P(n) \times G(n) \rightarrow P(n)$ of $G(n)$ on $P(n)$
+\end{itemize}
+such that the following equivariance axiom holds for $P$:  insert diagram here.
+\end{Defi}
+
+\begin{rem}
+It is possible to consider $\mb{G}$-operads in categories other than the category of sets.  In this case we still use the notion of an operad of structure groups as given above, but then take the operad $P$ to have objects $P(n)$ which are the objects of some symmetric monoidal closed category $V$.  We will not explicitly use anything that might require the closed structure as such, only the fact that the tensor product distributes over colimits in each variable.  This is a consequence of the fact that both $X \otimes -$ and $- \otimes X$ are left adjoints in the case of a symmetric monoidal closed category.  Thus while we set up the foundations using only operads in $\mb{Sets}$, the diligent reader can easily modify this theory for their symmetric monoidal closed category of choice.  In fact, we later use the same theory in $\mb{Cat}$ with its cartesian structure, noting only that the same arguments work in $\mb{Cat}$ with essentially no modification.
+\end{rem}
+
+\begin{example}
+\begin{enumerate}
+\item Let $\mb{T}$ denote the terminal operad in $\mb{Sets}$ equipped with its unique structure of an operad of structure groups.  Then a $\mb{T}$-operad is just a non-symmetric operad in $\mb{Sets}$.
+\item Let $\mb{\Sigma}$ denote the operad of symmetric groups with $\pi:\Sigma \rightarrow \Sigma$ the identity map.  Then a $\mb{\Sigma}$-operad is a symmetric operad in the category of sets.
+\item Let $\mb{Br}$ denote the operad of braid groups with $\pi_{n}:Br_{n} \rightarrow \Sigma_{n}$ the canonical projection of a braid onto its underlying permutation.  Then a $\mb{Br}$-operad is a braided operad in the sense of Fiedorowicz.
+\end{enumerate}
+\end{example}
+
+\begin{Defi}
+Let $\mb{G}$ be an operad of structure groups.  The category $\mb{G\mbox{-}Coll}$ of $\mb{G}$-collections has objects $X = \{ X(n) \}$ which consist of a set $X(n)$ for each natural number $n$ together with an action $X(n) \times G(n) \rightarrow X(n)$ of $G(n)$ on $X(n)$.  A morphism $f:X \rightarrow Y$ in $\mb{G\mbox{-}Coll}$ consists of a $G(n)$-equivariant map $X(n) \rightarrow Y(n)$ for each natural number $n$.
+\end{Defi}
+
+\begin{rem}
+The definition of $\mb{G\mbox{-}Coll}$ does not require that $\mb{G}$ be an operad of structure groups, only that one has a natural number-indexed set of groups.  Given any such collection of groups $\{ G_{n} \}$, we can form the category $\mathbb{G}$ whose objects are natural numbers and whose hom-sets are given by $\mathbb{G}(m,n) = \emptyset$ if $m \neq n$ and $\mathbb{G}(n,n) = G_{n}$.  Then $\mb{G\mbox{-}Coll}$ is the functor category $[\mathbb{G}^{\textrm{op}}, \mb{Sets}]$, with the opposite category arising from our choice of right actions.
+\end{rem}
+
+\begin{Defi}
+Let $\mb{G}$ be an operad of structure groups, and let $X, Y$ be $\mb{G}$-collections.  Then there is a $\mb{G}$-collection $X \circ Y$ given by
+\[
+X \circ Y (n) = \Big( \coprod_{k_{1} + \cdots + k_{r} = n} X(r) \times Y(k_{1}) \times \cdots \times Y(k_{r}) \Big) \times G(n) / \sim
+\]
+where the equivalence relation is generated by
+\begin{enumerate}
+\item $(xh; y_{1}, \ldots, y_{r}; g) \sim (x; y_{\pi(h)(1)}, \ldots, y_{\pi(h)(r)}; \mu(h; e, \ldots, e)g)$ where the lefthand side is an element of $X(r) \times Y(k_1) \times \cdots \times Y(k_r) \times G(n)$ and the righthand side is an element of   $X(r) \times Y(k_{\pi(h)^{-1}(1)}) \times \cdots \times Y(k_{\pi(h)^{-1}(r)}) \times G(n)$; and
+\item $(x; y_{1}, \ldots, y_{r}; \mu(e; g_{1}, \ldots, g_{r})g) \sim (xe; y_{1}g_{1}, \ldots, y_{r}g_{r}; g)$ where $x \in X(r)$, $y_{i} \in Y(k_{i})$, $f \in G(r)$, $g_{i} \in G(k_{i})$, and $g \in G(n)$.
+\end{enumerate}
+\end{Defi}
+
+\begin{rem}
+explain how $X \circ Y$ can be construct as a coend/left Kan extension
+\end{rem}
+
+We will now develop the tools to prove that the category $\mb{G\mbox{-}Coll}$ has a monoidal structure given by $\circ$, and that operads are the monoids therein.
+
+\begin{thm}\label{operad=monoid}
+Let $\mb{G}$ be an operad of structure groups.
+\begin{enumerate}
+\item The category $\mb{G\mbox{-}Coll}$ has a monoidal structure with tensor product given by $\circ$ and unit given by the collection $I$ with $I(n) = \emptyset$ when $n \neq 1$, and $I(1) = G(1)$ with the $\mb{G}$-action given by multiplication on the right.
+\item The category $\mb{Mon}(\mb{G\mbox{-}Coll})$ of monoids in $\mb{G\mbox{-}Coll}$ is equivalent to the category of $\mb{G}$-operads with morphisms being those operad maps $P \rightarrow Q$ for which $P(n) \rightarrow Q(n)$ is $G(n)$-equivariant.
+\end{enumerate}
+\end{thm}
+
+While this theorem can be proven by direct calculation using the equivalence relation given above, such a proof is unenlightening.  Furthermore, we want to consider $\mb{G}$-operads in categories other than sets, so an element-wise proof might not apply.  Instead we now develop some general machinery that will apply to $\mb{G}$-operads in any cocomplete symmetric monoidal category in which all the functors $X \otimes -, - \otimes X$ preserve colimits (as is the case if the monoidal structure is closed).  This theory also demonstrates the importance of the final axiom in the definition of an operad of structure groups.  We begin with a calculational lemma.
+
+\begin{lem}\label{calclem}
+Let $\mb{G}$ be an operad of structure groups, and write $e_{n}$ for the unit element in the group $G_{n}$.
+\begin{enumerate}
+\item In $G_{1}$, the unit element $e_{1}$ is equal to the identity element for the operad structure, $\textrm{id}$.
+\item The equation
+\[
+\mu(e_{n}; e_{i_{1}}, \ldots, e_{i_{n}}) = e_{I}
+\]
+holds for any natural numbers $n, i_{j}, I = \sum i_{j}$.
+\item The group $G_{1}$ is abelian.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+For the first claim, let $g \in G_{1}$.  Then
+\[
+\begin{array}{rcl}
+g & = & g \cdot e_{1} \\
+& = & \mu(g; \textrm{id}) \cdot \mu(\textrm{id}; e_{1}) \\
+& = & \mu(g \cdot \textrm{id}; \textrm{id} \cdot e_{1}) \\
+& = & \mu(g \cdot \textrm{id}; \textrm{id}) \\
+& = & g \cdot \textrm{id}
+\end{array}
+\]
+using that $e_{1}$ is the unit element for the group structure, that $\textrm{id}$ is a two-sided unit for operad multiplication, and the final axiom for an operad of structure groups together with the fact that the only element of the symmetric group $\Sigma_{1}$ is the identity permutation.  Thus $g = g \cdot \textrm{id}$, so $\textrm{id} = e_{1}$.
+
+For the second claim, write the operadic product as $\mu(e; \overline{e})$, and consider the square of this element. We have
+\[
+\begin{array}{rcl}
+\mu(e; \overline{e}) \cdot \mu(e; \overline{e}) & = & \mu(e \cdot e; \overline{e} \cdot \overline{e}) \\
+&= & \mu(e; \overline{e})
+\end{array}
+\]
+where the first equality follows from the last operad of structure groups axiom together with the fact that $e$ gets mapped to the identity permutation; $\overline{e} \cdot \overline{e}$ is the sequence $e_{i_{1}} \cdot e_{i_{1}}, \ldots, e_{i_{n}} \cdot e_{i_{n}}$.  Thus $\mu(e; \overline{e})$ is an idempotent element of the group $G_{I}$, so must be the identity element $e_{I}$.
+
+For the final claim, note that operadic multiplication $\mu:G_{1} \times G_{1} \rightarrow G_{1}$ is a group homomorphism by the operad of structure groups axioms, and $\textrm{id} = e_{1}$ is a two-sided unit, so the Eckmann-Hilton argument shows that $\mu$ is actually group multiplication and that $G_{1}$ is abelian.
+\end{proof}
+
+Our construction of the monoidal structure on the category of $\mb{G}$-collections will use the Day convolution product.  This is a monoidal structure on the category of presheaves over a monoidal category.  Since the category of $\mb{G}$-collections is the presheaf category $[\mathbb{G}^{\textrm{op}}, \mb{Sets}]$, we need to show that $\mathbb{G}$ has a monoidal structure.
+
+\begin{prop}\label{Gmonoidal}
+The operad structure on $G$ gives $\mathbb{G}$ a strict monoidal structure.
+\end{prop}
+\begin{proof}
+The tensor product on $\mathbb{G}$ is given by addition on objects, with unit object 0.  The only thing to do is define the tensor product on morphisms and check naturality for the associativity and unit isomorphisms, which will both be identities.  On morphisms, $+$ must be given by a group homomorphism $+:G_{n} \times G_{m} \rightarrow G_{n+m}$, and this is given by the formula
+\[
++(g,h) = \mu(e_{2}; g,h);
+\]
+that this is a group homomorphism follows from the final axiom of an operad of structure groups and the second part of Lemma \ref{calclem}.  We now write $+(g,h)$ as $g+h$.
+
+For naturality of the associator, we must have $(f+g)+h = f+(g+h)$.  By operad associativity, the lefthand side is given by
+\[
+\mu(\mu(e_{2}; e_{2}, \textrm{id}); f,g,h),
+\]
+while the righthand side is then
+\[
+\mu(\mu(e_{2}; \textrm{id}, e_{2}); f,g,h).
+\]
+By Lemma \ref{calclem}, both of these are equal to $\mu(e_{3}; f,g,h)$, proving associativity.  Naturality of the unit follows similarly, using $e_{0}$.
+\end{proof}
+
+Now that $\mathbb{G}$ has a monoidal structure, we get a monoidal structure on $[\mathbb{G}^{\textrm{op}}, \mb{Sets}] = \hat{\mathbb{G}}$ using Day convolution, denoted $\star$.  This is a biclosed monoidal structure, and we refer the reader to ***reference*** for further details.  We do note, however, that the $n$-fold Day convolution product of a presheaf $Y$ is given by the following coend formula.
+\[
+Y^{\star n}(k) = \int^{(k_{1}, \ldots, k_{n}) \in \mathbb{G}^{n}} Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n})
+\]
+
+In order to express the substitution tensor product as a coend, we need one final result about the Day convolution product.
+
+\begin{lem}\label{calclem2}
+Let $Y \in \hat{\mathbb{G}}$, and let $k$ be a fixed natural number.  Then the assignment
+\[
+n \mapsto Y^{\star n}(k)
+\]
+can be given the structure of a functor $\mathbb{G} \rightarrow \mb{Sets}$.
+\end{lem}
+\begin{proof}
+Since the convolution product is given by a coend, it is the universal object with maps
+\[
+Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n}) \rightarrow Y^{\star n}(k)
+\]
+such that the following diagram commutes for every $g_{1} \in G(k_{1}), \ldots, g_{n} \in G(k_{n})$.
+\[
+\xy
+{\ar^{(-\cdot g_{1}, \ldots, -\cdot g_{n}) \times 1}  (0,0)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n})}; (40,15)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n})} };
+{\ar (40,15)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n})}; (80,0)*+{Y^{\star n}(k)} };
+{\ar_{1 \times \Big( (g_{1} + \cdots + g_{n})\cdot - \Big)} (0,0)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n})}; (40,-15)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n})} };
+{\ar (40,-15)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n})}; (80,0)*+{Y^{\star n}(k)} };
+\endxy
+\]
+The first map along the top acts using the $g_{i}$'s, while the first map along the bottom is given by
+\[
+h \mapsto \mu(e_{n}; g_{1}, \ldots, g_{n}) \cdot h).
+\]
+
+Let $f \in G(n)$, in other words a morphism $n \rightarrow n$ in $\mathbb{G}$.  We induce a map $f \bullet -:Y^{\star n}(k) \rightarrow Y^{\star n}(k)$ using the collection of maps
+\[
+Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n}) \rightarrow Y(k_{\pi (f)^{-1} 1}) \times \cdots \times Y(k_{\pi (f)^{-1} n}) \times \mathbb{G}(k, k_{1} + \cdots + k_{n})
+\]
+by using the symmetry $\pi(f)$ on the first $n$ factors and left multiplication by $\mu(f; e_{k_{1}}, \ldots, e_{k_{n}})$ on $\mathbb{G}(k, k_{1} + \cdots + k_{n})$.  To induce a map between the coends, we must show that these maps commute with the two lefthand maps in the diagram above.  For the top map, this is merely functoriality of the product together with naturality of the symmetry.  For the bottom map, this is the equation
+\[
+\mu(f; \overline{e}) \cdot \mu(e; g_{1}, \ldots, g_{n}) = \mu(e; g_{\pi (f)^{-1} 1}, \ldots, g_{\pi (f)^{-1} n}) \cdot \mu(f; \overline{e}).
+\]
+Both of these are equal to $\mu(f; g_{1}, \ldots, g_{n})$ by the operad of structure groups axiom.  Functoriality is then easy to check using that the maps inducing $(f_{1}f_{2}) \bullet -$ are given by the composite of the maps inducing $f_{1} \bullet (f_{2} \bullet -)$.
+\end{proof}
+
+We are now ready for the abstract description of the substitution tensor product.  The following proposition is then easily checked directly using the definition of the coend.
+
+\begin{prop}
+Let $X, Y \in \hat{\mathbb{G}}$.  Then
+\[
+(X \circ Y)(k) \cong \int^{n} X(n) \times Y^{\star n}(k).
+\]
+\end{prop}
+
+Finally we are in a position to prove Theorem \ref{operad=monoid}.
+
+\begin{proof}[Proof of \ref{operad=monoid}]
+For the first claim, we must give the unit and associativity isomorphisms and then check the monoidal category axioms.  First, note that $I = \mathbb{G}(-,1)$.  Then for the left unit isomorphism, we have
+\[
+\begin{array}{rcl}
+I \circ Y (k) & \cong & \int^{n} \mathbb{G}(n,1) \times Y^{\star n}(k) \\
+& \cong & Y^{\star 1}(k) \\
+& \cong & Y(k)
+\end{array}
+\]
+using only the properties of the coend and that $I(1)$ is the unit object in $\mb{Sets}$.  For the right unit isomorphism, we have
+\[
+\begin{array}{rcl}
+X \circ I (k) & \cong & \int^{n} X(n) \times I^{\star n}(k) \\
+& \cong & \int^{n} X(n) \times \int^{k_{1}, \ldots, k_{n}} \mathbb{G}(k_{1},1) \times \cdots \times \mathbb{G}(k_{n},1) \times \mathbb{G}(k, k_{1} + \cdots + k_{n}) \\
+& \cong & \int^{n} X(n) \times \mathbb{G}(k,n) \\
+& \cong & X(k)
+\end{array}
+\]
+using the same methods.
+
+For associativity, we compute $(X \circ Y) \circ Z$ and $X \circ (Y \circ Z)$.
+\[
+\begin{array}{rcl}
+(X \circ Y) \circ Z (k) & = & \int^{m} X \circ Y (m) \times Z^{star m}(k) \\
+& = & \int^{m} \big( \int^{l} X(l) \times Y^{\star l}(m) \big) \times Z^{star m}(k) \\
+& \cong & \int^{m,l} X(l) \times Y^{\star l}(m) \times Z^{star m}(k) \\
+& \cong & \int^{l} X(l) \times \int^{m} Y^{\star l}(m) \times Z^{star m}(k)
+\end{array}
+\]
+The first isomorphism is from product distributing over colimits and hence coends, and the second is that fact plus the Fubini Theorem for coends.  A similar calculation shows
+\[
+X \circ (Y \circ Z)(k) \cong \int^{l} X(l) \times (Y \circ Z)^{l}(k).
+\]
+Thus the associativity isomorphism will be induced once we construct an isomorphism $\int^{m} Y^{\star l}(m) \times Z^{star m} \cong (Y \circ Z)^{\star l}$.  We do this by induction, with the $l=1$ case being the isomorphism $Y^{\star 1} \cong Y$ together with the definition of $\circ.$  Assuming true for $l$, we prove the case for $l+1$ by the calculations below.
+\[
+\begin{array}{rcl}
+(Y \circ Z)^{\star l+1} & \cong & (Y \circ Z) \star (Y \circ Z)^{\star l} \\
+& \cong & (Y \circ Z) \star \big( \int^{m} Y^{\star l}(m) \times Z^{\star m} \big) \\
+& = & \big( \int^{n} Y(n) \times Z^{\star n} \big) \star \big( \int^{m} Y^{\star l}(m) \times Z^{\star m} \big) \\
+& \cong & \int^{a,b} \big( \int^{n} Y(n) \times Z^{\star n}(a) \big)  \times \big( \int^{m} Y^{\star l}(m) \times Z^{\star m}(b) \big) \times \mathbb{G}(-, a+b) \\
+& \cong & \int^{a,b,n,m} Y(n) \times Y^{\star l}(m) \times Z^{\star n}(a) \times Z^{\star m}(b) \times  \mathbb{G}(-, a+b) \\
+& \cong & \int^{n,m} Y(n) \times Y^{\star l}(m) \times Z^{\star n+m} \\
+& \cong & \int^{j} \int^{n,m} Y(n) \times Y^{\star l}(m) \times \mathbb{G}(j, n+m) \times Z^{\star j} \\
+& \cong & \int^{j} Y^{\star l+1}(j) \times Z^{\star j}
+\end{array}
+\]
+Each isomorphism above arises from the symmetric monoidal structure, the properties of the coend, or the fact that product distributes over colimits.
+
+For the monoidal category axioms on $\hat{\mathbb{G}}$, we only need to note that the unit and associativity isomorphisms arise, using the universal properties of the coend, from the same isomorphisms on the category of sets together with the interaction between products and colimits.  Hence the monoidal category axioms follow by those same axioms in $\mb{Sets}$ together with the universal property of the coend.
+
+Now we must show that monoids in $(\hat{\mathbb{G}}, \circ)$ are operads.  By the Yoneda lemma, a map of $\mb{G}$-collections $\eta: I \rightarrow X$ corresponds to an element $\textrm{id} \in X(1)$ since $I = \mathbb{G}(-,1)$.  A map $\mu:X \circ X \rightarrow X$ is given by a collection of $G(k)$-equivariant maps $X \circ X (k) \rightarrow X(k)$.  By the universal property of the coend, this is equivalent to giving maps
+\[
+\mu_{n, \underline{k}}:X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times \mathbb{G}(k, k_{1}+\cdots +k_{n}) \rightarrow X(k)
+\]
+which is compatible with the actions of $G(k)$ (using the hom-set in the source, and the standard right action in the target) as well as each of $G(n), G(k_{1}), \ldots, G(k_{n})$.  The hom-set in $\mathbb{G}$ is nonempty precisely when $k=k_{1} + \cdots + k_{n}$, so we define the operad multiplication $\mu$ for $X$ to be
+\[
+\mu (x; y_{1}, \ldots, y_{n}) = \mu_{n, \underline{k}}(x; y_{1}, \ldots, y_{n}; 1).
+\]
+Compatibility with the actions of the  $G(n), G(k_{1}), \ldots, G(k_{n})$ give the equivariance axioms, and the unit and associativity for the monoid structure give the unit and associativity axioms for the operad structure.  Finally, it is easy to check that a map of monoids is nothing more than an operad map which is appropriately equivariant for each $n$.
+\end{proof}
+
+\begin{rem}
+Changes for an arbitrary cocomplete symmetric monoidal category in which tensor distributes over colimits in each variable: units, products, product with hom-sets becomes copower
+\end{rem}
+
+
+Let $P$ be a $G$-operad, and let $X$ be any set.  Write $P(n) \times_{G(n)} X^{n}$ for the coequalizer of the pair of maps
+\[
+P(n) \times G(n) \times X^{n} \rightrightarrows P(n) \times X^{n}
+\]
+of which the first map is the action of $G(n)$ on $P(n)$ and the second map is
+\[
+P(n) \times G(n) \times X^{n} \rightarrow P(n) \times \Sigma_{n} \times X^{n} \rightarrow P(n) \times X^{n}
+\]
+using $\pi_{n}:G(n) \rightarrow \Sigma_{n}$ together with the canonical action of $\Sigma_{n}$ on $X^{n}$ by permutation of coordinates: $\sigma \cdot (x_{1}, \ldots, x_{n}) = (x_{\sigma(1)}, \ldots, x_{\sigma(n)})$.  By the universal property of the coequalizer, a function $f:P(n) \times_{G(n)} X^{n} \rightarrow Y$ can be identified with a function $\tilde{f}:P(n) \times X^{n} \rightarrow Y$ such that
+\[
+\tilde{f}(p\cdot g, x_{1}, \ldots, x_{n}) = \tilde{f}(p, x_{\pi(g)(1)}, \ldots, x_{\pi(g)(n)}).
+\]
+
+\begin{Defi}
+Let $P$ be a $G$-operad.  An \textit{algebra} for $P$ consists of a set $X$ together with maps $\alpha_{n}:P(n) \times_{G(n)} X^{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the usual operad algebra axioms.
+\end{Defi}
+
+\begin{Defi}
+The category of algebras for $P$, $P\mbox{-}\mb{Alg}$, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
+\[
+\xy
+{\ar^{1 \times f^{n}} (0,0)*+{P(n) \times X^{n}}; (50,0)*+{P(n) \times Y^{n}} };
+{\ar^{\tilde{\beta}_{n}} (50,0)*+{P(n) \times Y^{n}}; (50,-15)*+{Y} };
+{\ar_{\tilde{\alpha}_{n}} (0,0)*+{P(n) \times X^{n}}; (0,-15)*+{X} };
+{\ar_{f} (0,-15)*+{X}; (50,-15)*+{Y} };
+\endxy
+\]
+\end{Defi}
+
+Let $X$ be a set.  Then the endomorphism operad of $X$, denoted $\mathcal{E}_{X}$, is given by the sets $\mathcal{E}_{X}(n) = \mb{Sets}(X^{n}, X)$ with the identity function in $\mathcal{E}_{X}(1)$ giving the unit element and composition of functions giving the composition operation.
+
+\begin{lem}
+Let $G$ be an operad of structure groups, and let $X$ be a set.  Then $\mathcal{E}_{X}$ carries a canonical $\mb{G}$-operad structure.
+\end{lem}
+\begin{proof}
+$\mathcal{E}_{X}$ is a symmetric operad, so we define the actions by
+\[
+\mathcal{E}_{X}(n) \times G(n) \rightarrow \mathcal{E}_{X} \times \Sigma_{n} \rightarrow \mathcal{E}_{X}.
+\]
+\end{proof}
+
+The previous result is really a change-of-structure groups result.  We record the general result as the following proposition and note that the proof is essentially the same as that for the lemma.
+
+\begin{prop}
+Let $f:\mb{G} \rightarrow \mb{G'}$ be a map of operads of structure groups (i.e., a map of operads over $\Sigma$ which is also a group homomorphism in each dimension).  Then $f$ induces a functor $f^{*}$ from the category of $\mb{G'}$-operads to the category of $\mb{G}$-operads.
+\end{prop}
+
+We can now use endomorphism operads to characterize algebra structures.
+
+\begin{prop}
+Let $X$ be a set, and $P$ a $\mb{G}$-operad.  Then algebra structures on $X$ are in 1-to-1 correspondence with $\mb{G}$-operad maps $P \rightarrow \mathcal{E}_{X}$.
+\end{prop}
+\begin{proof}
+A map $P(k) \rightarrow \mathcal{E}_{X}(k)$ corresponds, using the closed structure on $\mb{Sets}$, to a map $P(k) \times X^{k} \rightarrow X$.  The monoid homomorphism axioms give the unit and associativity axioms, and the requirement that $P \rightarrow \mathcal{E}_{X}$ be a map of $\mb{G}$-operads gives the equivariance axioms.
+\end{proof}
+
+\begin{rem}
+The proposition above holds for $P$-algebras in any closed symmetric monoidal category.  Having a closed structure (in addition to all small colimits) is a stronger condition than the tensor preserving colimits in each variable, but it is a natural one that arises in many examples.
+\end{rem}
+
+\begin{Defi}
+Let $P$ be a $\mb{G}$-operad.  Then $P$ induces an endofunctor of $\mb{Sets}$, denoted $\underbar{P}$, by the following formula.
+ \[
+	\underbar{P}(X)	\coprod_n P(n) \times_{G(n)} X^n
+	\]
+\end{Defi}
+
+We now have the following proposition; its proof is standard, and we leave it to the reader.
+
+\begin{prop}  Let $P$ be a $\mb{G}$-operad.
+\begin{enumerate}
+\item The operad structure on $P$ induces a monad structure on $\underbar{P}$.
+\item The category of algebras for the operad $P$ is isomorphic to the category of algebras for the monad $\underbar{P}$.
+\end{enumerate}
+\end{prop}
+
+
+

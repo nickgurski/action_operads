@@ -1,0 +1,468 @@
+\section{Pseudo-commutativity}
+
+This final section gives conditions sufficient to equip the 2-monad $\underline{P}$ induced by a $\mb{G}$-operad $P$ in $\mb{Cat}$ with a pseudo-commutative structure.  Such a pseudo-commutativity will then give the 2-category $\mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$ some additional structure that we briefly explain here.  For a field $k$, the category $\mb{Vect}$ of vector spaces over $k$ has many nice features.  Of particular interest to us are the following three structures.  First, the category $\mb{Vect}$ is monoidal using the tensor product $\otimes_{k}$.  Second, the set of linear maps $V \rightarrow W$ is itself a vector space which we denote $[V,W]$.  Third, there is a notion of multilinear map $V_{1} \times \cdots \times V_{n} \rightarrow W$, with linear maps being the 1-ary version.  While these three structures are each useful in isolation, they are tied together by natural isomorphisms
+\[
+\mb{Vect}(V_{1} \otimes V_{2}, W) \cong \mb{Vect}(V_{1}, [V_{2}, W]) \cong \mb{Bilin}(V_{1} \times V_{2}, W)
+\]
+expressing that $\otimes$ gives a closed monoidal structure which represents the multicategory of multilinear maps.  Moreover, the adjunction between $\mb{Vect}$ and $\mb{Sets}$ respects all of this structure in the appropriate way.  This incredibly rich interplay between the tensor product, the internal mapping space, and the multicategory of multilinear maps all arises from the free vector space monad on $\mb{Sets}$ being a \textit{commutative} monad \cite{kock-monads, kock-closed, kock-strong}.  The notion of a pseudo-commutative 2-monad \cite{HP} is then a generalization of this machinery to a 2-categorical context, and can be viewed as a starting point for importing tools from linear algebra into category theory.
+
+The aim of this section is to give conditions that ensure that the 2-monad $\underline{P}$ associated to a $\mb{G}$-operad $P$ has a pseudo-commutative structure. We give the definition of pseudo-commutativity as in \cite{HP} but before doing so we note what we mean by a strength for a $2$-monad.
+%
+\begin{Defi}
+A \textit{strength} for an endo-$2$-functor $T \colon \m{K} \rightarrow \m{K}$ on a 2-category with products and terminal object $1$ consists of a $2$-natural transformation $t$ with components
+    \[
+        t_{A,B} \colon A \times TB \rightarrow T(A \times B)
+    \]
+satisfying the following unit and associativity axioms \cite{kock-strong}.
+\[
+\xy
+(0,0)*+{1 \times TA}="ul1";
+(30,0)*+{T(1 \times A)}="ur1";
+(30,-13)*+{TA}="br1";
+(50,0)*+{A \times B}="ul2";
+(80,0)*+{A \times TB}="ur2";
+(80,-13)*+{T(A \times B)}="br2";
+{\ar^{t_{1,A}} "ul1"; "ur1"};
+{\ar^{\cong} "ur1"; "br1"};
+{\ar_{\cong} "ul1"; "br1"};
+{\ar^{1 \times \eta} "ul2"; "ur2"};
+{\ar^{t_{A,B}} "ur2"; "br2"};
+{\ar_{\eta} "ul2"; "br2"};
+\endxy
+\]
+\[
+\xy
+(0,0)*+{(A \times B) \times TC}="ul";
+(70,0)*+{T \Big((A \times B) \times C \Big)}="ur";
+(0,-15)*+{A \times (B \times TC)}="ll";
+(35,-15)*+{A \times T(B \times C)}="m";
+(70,-15)*+{ T \Big(A \times (B \times C) \Big)}="lr";
+{\ar^{t_{AB,C}} "ul"; "ur"};
+{\ar^{Ta} "ur"; "lr"};
+{\ar_{a} "ul"; "ll"};
+{\ar_{1 \times t_{B,C}} "ll"; "m"};
+{\ar_{t_{A,BC}} "m"; "lr"};
+\endxy
+\]
+\[
+\xy
+(0,0)*+{A \times T^{2}B}="ul";
+(60,0)*+{T^{2}(A \times B)}="ur";
+(0,-15)*+{A \times TB}="ll";
+(30,0)*+{T(A \times TB)}="m";
+(60,-15)*+{ T(A \times B)}="lr";
+{\ar^{t_{A,TB}} "ul"; "m"};
+{\ar^{Tt_{A,B}} "m"; "ur"};
+{\ar^{\mu} "ur"; "lr"};
+{\ar_{1 \times \mu} "ul"; "ll"};
+{\ar_{t_{A,B}} "ll"; "lr"};
+\endxy
+\]
+Similarly, a costrength for $T$ consists of a $2$-natural transformation $t^{\ast}$ with components
+    \[
+        t^{\ast}_{A,B} \colon TA \times B \rightarrow T(A \times B)
+    \]
+again satisfying unit and associativity axioms.
+\end{Defi}
+The strength and costrength for the associated $2$-monad $\underline{P}$ are quite simple to define. We define the strength $t$ for $\underline{P}$ as follows. The component $t_{A,B}$ is a functor
+    \[
+        t_{A,B} \colon A \times \left(\amalg P(n) \times_{G(n)} B^n\right) \rightarrow \amalg P(n) \times_{G(n)} \left(A \times B \right)^n
+    \]
+which sends an object $(a, [p;b_1,\ldots,b_n])$ to the object $[p;(a,b_1),\ldots,(a,b_n)]$. We also define the costrength similarly, sending an object $([p;a_1,\ldots,a_n],b)$ to the object $[p;(a_1,b), \ldots, (a_n, b)]$. Both the strength and the costrength are defined in the obvious way on morphisms.
+%
+\begin{Defi}
+    Given a $2$-monad $T \colon \m{K} \rightarrow \m{K}$ with strength $t$ and costrength $t^{\ast}$, a \textit{pseudo-commutativity} consists of an invertible modification $\gamma$ with components
+        \[
+            \xy
+                (0,0)*+{TA \times TB}="00";
+                (30,0)*+{T(A \times TB)}="10";
+                (60,0)*+{T^2(A \times B)}="20";
+                (0,-15)*+{T(TA \times B)}="01";
+                (30,-15)*+{T^2(A \times B)}="11";
+                (60,-15)*+{T(A \times B)}="21";
+                %
+                {\ar^{t^{\ast}_{A,TB}} "00" ; "10"};
+                {\ar^{Tt_{A,B}} "10" ; "20"};
+                {\ar^{\mu_{A \times B}} "20" ; "21"};
+               %
+                {\ar_{t_{TA,B}} "00" ; "01"};
+                {\ar_{Tt^{\ast}_{A,B}} "01" ; "11"};
+                {\ar_{\mu_{A \times B}} "11" ; "21"};
+                %
+                {\ar@{=>}^{\gamma_{A,B}} (30,-5.5) ; (30,-9.5)};
+            \endxy
+        \]
+satisfying the following three strength axioms, two unit (or $\eta$) and two multiplication (or $\mu$) axioms for all $A$, $B$, and $C$.
+    \begin{enumerate}
+        \item $\gamma_{A \times B,C} \circ (t_{A,B} \times 1_{TC}) = t_{A,B \times C} \circ (1_A \times \gamma_{B,C})$
+        \item $\gamma_{A,B \times C} \circ (1_{TA} \times t_{B,C}) = \gamma_{A \times B, C} \circ (t^{\ast}_{A,B} \times 1_{TC})$
+        \item $\gamma_{A,B \times C} \circ (1_{TA} \times T^{\ast}_{B,C}) = t^{\ast}_{A \times B,C} \circ (\gamma_{A,B} \times 1_{C})$
+        \item $\gamma_{A,B} \circ (\eta_A \times 1_{TB})$  is an identity.
+        \item $\gamma_{A,B} \circ (1_{TA} \times \eta_B)$ is an identity.
+        \item $\gamma_{A,B} \circ (\mu_A \times 1_{TB})$ is equal to the pasting below.
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle T^2A \times TB}="00";
+                    (30,0)*+{\scriptstyle T(TA \times TB)}="10";
+                    (60,0)*+{\scriptstyle T^2(A \times TB)}="20";
+                    (90,0)*+{\scriptstyle T^3(A \times B)}="30";
+                    (0,-15)*+{\scriptstyle T(T^2A \times B)}="01";
+                    (30,-15)*+{\scriptstyle T^2(TA \times B)}="11";
+                    (60,-15)*+{\scriptstyle T^3(A \times B)}="21";
+                    (90,-15)*+{\scriptstyle T^2(A \times B)}="31";
+                    (0,-30)*+{\scriptstyle T^2(TA \times B)}="02";
+                    (30,-30)*+{\scriptstyle T(TA \times B)}="12";
+                    (60,-30)*+{\scriptstyle T^2(A \times B)}="22";
+                    (90,-30)*+{\scriptstyle T(A \times B)}="32";
+                    %
+                    {\ar^{t^{\ast}_{TA,TB}} "00" ; "10"};
+                    {\ar^{Tt^{\ast}_{A,TB}} "10" ; "20"};
+                    {\ar^{T^2t_{A,B}} "20" ; "30"};
+                    {\ar_{t_{T^2A,B}} "00" ; "01"};
+                    {\ar_{Tt_{TA,B}} "10" ; "11"};
+                    {\ar^{T\mu_{A \times B}} "30" ; "31"};
+                    {\ar_{T^2t^{\ast}_{A,B}} "11" ; "21"};
+                    {\ar_{T\mu_{A \times B}} "21" ; "31"};
+                    {\ar_{Tt^{\ast}_{TA,B}} "01" ; "02"};
+                    {\ar_{\mu_{TA \times B}} "11" ; "12"};
+                    {\ar_{\mu_{T(A \times B)}} "21" ; "22"};
+                    {\ar^{\mu_{A \times B}} "31" ; "32"};
+                    {\ar_{\mu_{TA \times B}} "02" ; "12"};
+                    {\ar_{Tt^{\ast}_{A,B}} "12" ; "22"};
+                    {\ar_{\mu_{A \times B}} "22" ; "32"};
+                    %
+                    {\ar@{=>}^{T\gamma_{A,B}} (60,-5.5) ; (60,-9.5)};
+                    {\ar@{=>}^{\gamma_{TA,B}} (12.5,-13) ; (12.5,-17)};
+                \endxy
+            \]
+        \item $\gamma_{A,B} \circ (1_{TA} \times \mu_B)$ is equal to the pasting below.
+                    \[
+                \xy
+                    (0,0)*+{\scriptstyle TA \times T^2B}="00";
+                    (30,0)*+{\scriptstyle T(A \times T^2B)}="10";
+                    (60,0)*+{\scriptstyle T^2(A \times TB)}="20";
+                    (0,-15)*+{\scriptstyle T(TA \times TB)}="01";
+                    (30,-15)*+{\scriptstyle T^2(A \times TB)}="11";
+                    (60,-15)*+{\scriptstyle T(A \times TB)}="21";
+                    (0,-30)*+{\scriptstyle T^2(TA \times B)}="02";
+                    (30,-30)*+{\scriptstyle T^3(A \times B)}="12";
+                    (60,-30)*+{\scriptstyle T^2(A \times B)}="22";
+                    (0,-45)*+{\scriptstyle T^3(A \times B)}="03";
+                    (30,-45)*+{\scriptstyle T^2(A \times B)}="13";
+                    (60,-45)*+{\scriptstyle T(A \times B)}="23";
+                    %
+                    {\ar^{t^{\ast}_{A,T^2B}} "00" ; "10"};
+                    {\ar^{Tt_{A,TB}} "10" ; "20"};
+                    {\ar_{t_{TA,TB}} "00" ; "01"};
+                    {\ar^{\mu_{A \times TB}} "20" ; "21"};
+                    {\ar_{Tt^{\ast}_{A,TB}} "01" ; "11"};
+                    {\ar_{\mu_{A \times TB}} "11" ; "21"};
+                    {\ar_{Tt_{TA,B}} "01" ; "02"};
+                    {\ar^{T^2t_{A,B}} "11" ; "12"};
+                    {\ar^{Tt_{A,B}} "21" ; "22"};
+                    {\ar^{\mu_{T(A \times B)}} "12" ; "22"};
+                    {\ar_{T^2t^{\ast}_{A,B}} "02" ; "03"};
+                    {\ar^{T\mu_{A \times B}} "12" ; "13"};
+                    {\ar^{\mu_{A \times B}} "22" ; "23"};
+                    {\ar_{T\mu_{A \times B}} "03" ; "13"};
+                    {\ar_{\mu_{A \times B}} "13" ; "23"};
+                    %
+                    {\ar@{=>}^{T\gamma_{A,B}} (13,-28) ; (13,-32)};
+                    {\ar@{=>}^{\gamma_{A,TB}} (30,-5.5) ; (30,-9.5)};
+                \endxy
+            \]
+    \end{enumerate}
+\end{Defi}
+%
+\begin{rem}
+    It is noted in \cite{HP} that this definition has some redundancy and therein it is shown that any two of the strength axioms immediately implies the third. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold, as well as the following associativity axiom:
+        \[
+            \gamma_{A,B \times C} \circ (1_{TA} \times \gamma_{B,C}) = \gamma_{A \times B,C} \times (\gamma_{A,B} \times 1_{TC}).
+        \]
+\end{rem}
+%
+
+
+
+
+We need some notation before stating our main theorem.  Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two lists.  Then the set $\{ (a_{i}, b_{j})\}$ has $mn$ elements, and two natural lexicographic orderings.  One of these we write as $\underline{(a, \underline{b})}$, and it has the order given by
+\[
+(a_{p}, b_{q}) < (a_{r}, b_{s}) \textrm{ if } \left\{ \begin{array}{l} p < r, \textrm{ or } \\ p=r \textrm{ and } q < s. \end{array} \right.
+\]
+The other we write as $\underline{(\underline{a}, b)}$, and it has the order given by
+\[
+(a_{p}, b_{q}) < (a_{r}, b_{s}) \textrm{ if } \left\{ \begin{array}{l} q < s, \textrm{ or } \\ q=s \textrm{ and } p < r. \end{array} \right.
+\]
+The notation $(a, \underline{b})$ is meant to indicate that we have a single $a$ but a list of $b$'s, so then $\underline{(a, \underline{b})}$ would represent a list which itself consists of lists of that form. There is a unique permutation $\tau_{m,n} \in \Sigma_{mn}$ which has the property that $\tau_{m,n}(i) = j$ if the $i$th element of the ordered set $\underline{(a, \underline{b})}$ is equal to the $j$th element of the ordered set $\underline{(\underline{a}, b)}$.  By construction, we have $\tau_{n,m} = \tau_{m,n}^{-1}$. We illustrate these permutations with a couple of examples.
+    \[
+        \xy
+            {\ar@{-} (0,0) ; (0,-10)};
+            {\ar@{-} (5,0) ; (10,-10)};
+            {\ar@{-} (10,0) ; (20,-10)};
+            {\ar@{-} (15,0) ; (5,-10)};
+            {\ar@{-} (20,0) ; (15,-10)};
+            {\ar@{-} (25,0) ; (25,-10)};
+            (12.5,-13)*{\tau_{2,3}};
+            {\ar@{-} (45,0) ; (45,-10)};
+            {\ar@{-} (50,0) ; (65,-10)};
+            {\ar@{-} (55,0) ; (50,-10)};
+            {\ar@{-} (60,0) ; (70,-10)};
+            {\ar@{-} (65,0) ; (55,-10)};
+            {\ar@{-} (70,0) ; (75,-10)};
+            {\ar@{-} (75,0) ; (60,-10)};
+            {\ar@{-} (80,0) ; (80,-10)};
+            (62.5,-13)*{\tau_{4,2}}
+        \endxy
+    \]
+Note then that $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$.
+
+
+We now give sufficient conditions for equipping the 2-monad $\underline{P}$ associated to a $\mathbf{G}$-operad $P$ with a pseudo-commutative structure.  Let $\mathbb{N}_{+}$ denote the set of positive natural numbers.
+\begin{thm}\label{pscomm}
+Let $P$ be a $\mb{G}$-operad. Then the following equip $\underline{P}$ with a pseudo-commutative structure.
+    \begin{enumerate}
+        \item For each pair $(m,n) \in \mathbb{N}_{+}^2$, we are given an element $t_{m,n} \in G(mn)$ such that $\pi(t_{m,n}) = \tau_{m,n}$.
+        \item For each $p \in P(n)$, $q \in P(m)$, we are given a natural isomorphism
+            \[
+                \lambda_{p,q} \colon \mu(p;q,\ldots,q) \cdot t_{m,n} \cong \mu(q;p,\ldots,p).
+            \]
+            We write this as $\lambda_{p,q}: \mu(p; \underline{q}) \cdot t_{m,n} \cong \mu(q; \underline{p})$.
+    \end{enumerate}
+These must satisfy the following:
+    \begin{itemize}
+        \item For all $n \in \mathbb{N}_+$,
+            \[
+                t_{1,n} = e_n = t_{n,1}
+            \]
+             and for all $p \in P(n)$, the isomorphism $\lambda_{p, \textrm{id}}: p \cdot e_n \cong p$ is the identity map.
+        \item For all $l, m_1, \ldots, m_l, n \in \mathbb{N}_+$, with $M = \Sigma m_i$,
+            \[
+                \mu^{G}(e_l; t_{m_1,n}, \ldots, t_{m_l,n}) \cdot \mu^{G}(t_{l,n};\underline{e_{m_1},\ldots,e_{m_l}}) = t_{n,M}.
+            \]
+            Here $\underline{e_{m_1},\ldots,e_{m_l}}$ is the list $e_{m_{1}}, \ldots, e_{m_{l}}$ repeated $n$ times.
+        \item For all $l, m, n_1,\ldots, n_m \in \mathbb{N}_+$, with $N = \Sigma n_i$,
+            \[
+                \mu^{G}(t_{m,l};\underline{e_{n_1}},\ldots,\underline{e_{n_m}}) \cdot \mu^{G}(e_m;t_{n_1,l},\ldots,t_{n_m,l}) = t_{N,l}.
+            \]
+            Here $\underline{e_{n_{i}}}$ indicates that each $e_{n_{i}}$ is repeated $l$ times.
+        \item For any $l, m_i, n \in \mathbb{N}_+$, with $1 \leq i \leq n$, and $p \in P(l)$, $q_i \in P(m_i)$ and $r \in P(n)$, the following diagram commutes.  (Note that we maintain the convention that anything underlined indicates a list, and double underlining indicates a list of lists.  Each instance should have an obvious meaning from context and the equations appearing above.)
+            \[
+                \xy
+                    (0,0)*+{\mu\Big(p;\underline{\mu(q_i;\underline{r})}\Big) \cdot \mu(e_l;\underline{t_{n,m_i}})\mu(t_{n,l};\underline{\underline{e_{m_i}}})}="00";
+                    (60,0)*+{\mu\Big(p;\underline{\mu(q_i;\underline{r})}\Big) \cdot t_{n,M}}="10";
+                    (0,-15)*+{\mu\Big(p;\underline{\mu(q_i;\underline{r})\cdot t_{n,m_i}}\Big) \cdot \mu(t_{n,l};\underline{e_{m_1},\ldots,e_{m_l}})}="01";
+                    (60,-20)*+{\mu\Big(\mu(p;q_1,\ldots,q_n);\underline{\underline{r}}\Big)\cdot t_{n,M}}="11";
+                    (0,-30)*+{\mu\Big(p;\underline{\mu(r;\underline{q_i})}\Big) \cdot \mu(t_{n,l};\underline{e_{m_1},\ldots,e_{m_l}})}="02";
+                    (60,-40)*+{\mu\Big(\mu(p;q_1,\ldots,q_n);\underline{\underline{r}}\Big)}="12";
+                    (0,-45)*+{\mu\Big(\mu(p;\underline{r}) \cdot t_{n,l} ; \underline{q_1,\ldots,q_n}\Big)}="03";
+                    (60,-60)*+{\mu\Big(r;\underline{\mu(p;q_1,\ldots,q_n)}\Big)}="13";
+                    (0,-60)*+{\mu\Big(\mu(r,\underline{p});\underline{q_1,\ldots,q_n}\Big)}="04";
+                    %
+                    {\ar@{=} "00" ; "10"};
+                    {\ar@{=} "00" ; "01"};
+                    {\ar@{=} "10" ; "11"};
+                    {\ar_{\mu(1;\underline{\lambda_{q_i,r}}) \cdot 1} "01" ; "02"};
+                    {\ar@{=} "02" ; "03"};
+                    {\ar@{=} "04" ; "13"};
+                    {\ar_{\mu(\lambda_{p,r};1)} "03" ; "04"};
+                    {\ar^{\lambda_{\mu(p;q_1,\ldots,q_n),r}} "11" ; "12"};
+                    {\ar@{=} "12" ; "13"};
+                \endxy
+            \]
+        \item For any $l,m, n_i \in \mathbb{N}_+$, with $1 \leq i \leq m$, and $p \in P(l)$, $q \in P(m)$ and $r_i \in P(n_i)$, the following diagram commutes.
+                \[
+                    \xy
+                        (0,0)*+{\mu\Big(\mu(p;\underline{q}) \cdot t_{m,l} ; \underline{\underline{r_i}}\Big) \cdot \mu(e_m;\underline{t_{n_i,l}})}="00";
+                        (60,0)*+{\mu\Big(\mu(p;\underline{q});\underline{\underline{r_i}}\Big) \cdot \mu(t_{m,l};\underline{\underline{e_{n_i}}})\mu(e_{m};\underline{t_{n_i,l}})}="10";
+                        (60,-15)*+{\mu\Big(p;\underline{\mu(q;\underline{r_i})}\Big) \cdot \mu(t_{m,l};\underline{\underline{e_{n_i}}})\mu(e_{m};\underline{t_{n_i,l}})}="11";
+                        (0,-20)*+{\mu\Big(\mu(q;\underline{p}); \underline{r_1},\ldots,\underline{r_m}\Big) \cdot \mu(e_m;\underline{t_{n_i,l}})}="01";
+                        (0,-40)*+{\mu\Big(q;\underline{\underline{\mu(p;r_i)}}\Big) \cdot \mu(e_m;\underline{t_{n_i,l}})}="02";
+                        (0,-60)*+{\mu\Big(q;\underline{\mu(p;\underline{r_i}) \cdot t_{n_i,l}}\Big)}="03";
+                        (60,-30)*+{\mu\Big(p;\underline{\mu(q;r_1,\ldots,r_m)}\Big) \cdot t_{N,l}}="12";
+                        (60,-45)*+{\mu\Big(\mu(q;r_1,\ldots,r_m); \underline{\underline{p}}\Big)}="13";
+                        (60,-60)*+{\mu\Big(q;\underline{\mu(r_i;\underline{p})}\Big)}="14";
+                        %
+                        {\ar@{=} "00" ; "10"};
+                        {\ar@{=} "10" ; "11"};
+                        {\ar@{=} "11" ; "12"};
+                        {\ar^{\lambda_{p,\mu(q;r_1,\ldots,r_m)}} "12" ; "13"};
+                        {\ar@{=} "13" ; "14"};
+                        %
+                        {\ar_{\mu(\lambda_{p,q};1) \cdot 1} "00" ; "01"};
+                        {\ar@{=} "01" ; "02"};
+                        {\ar@{=} "02" ; "03"};
+                        {\ar_{\mu(1;\underline{\lambda_{p,r_i}})} "03" ; "14"};
+                    \endxy
+                \]
+    \end{itemize}
+\end{thm}
+\begin{proof}
+We begin the proof by defining an invertible modifcation $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$.  Such a transformation $\gamma_{A,B}$ has components with source
+\[
+[\mu(p; \underline{q}); \underline{(x, \underline{y})}]
+\]
+and target
+\[
+[\mu(q; \underline{p}); \underline{(\underline{x},y)}].
+\]
+These are given by the isomorphisms
+    \[
+       (\gamma_{A,B})_{[p;a_1,\ldots,a_n],[q;b_1,\ldots,b_m]} = [\lambda_{p,q},\underline{1}],
+    \]
+    by which we mean the composite
+    \[
+    [\mu(p; \underline{q}); \underline{(x, \underline{y})}] = [\mu(p; \underline{q}) \cdot t_{m,n}; t_{m,n}^{-1} \cdot \underline{(x, \underline{y})}] \stackrel{[\lambda, 1]}{\longrightarrow} [\mu(q; \underline{p}); \underline{(\underline{x},y)}].
+    \]
+In the case that either $p$ or $q$ is an identity then we choose the component of $\gamma$ to be the isomorphism involving the appropriate identity element, as assumed to exist in the statement of the theorem.
+There are two things to note about the definition above before we continue.  First, it is easy to check that
+\[
+t_{m,n}^{-1} \cdot \underline{(x, \underline{y})} = \underline{(\underline{x},y)}
+\]
+since $\pi(t_{m,n}) = \tau_{m,n}$.  Second, the morphism above has second component the identity.  This is actually forced upon us by the requirement that $\gamma$ be a modification:  in the case that $A,B$ are discrete categories, the only possible morphism is an identity, and the modification axiom then forces that statement to be true for general $A,B$ by considering the inclusion $A_{0} \times B_{0} \hookrightarrow A \times B$ where $A_{0}, B_{0}$ are the discrete categories with the same objects as $A, B$.
+
+We show that this is a modification by noting that it does not rely on objects in the lists $a_1, \ldots, a_n$ or $b_1, \ldots, b_m$, only on their lengths and the operations $p$ and $q$. As a result, if we have functors $f \colon X \rightarrow X'$ and $g \colon Y \rightarrow Y'$, then it is clear that
+    \[
+        (\underline{P}(f\times g) \circ \gamma_{X,Y})_{[p;\underline{x}],[q;\underline{y}]} = [\lambda_{p,q},\underline{1}] = (\gamma_{X',Y'} \circ (\underline{P}f\times \underline{P}g))_{[p;\underline{x}],[q;\underline{y}]}.
+    \]
+As such we can simply write $(\gamma_{X,Y})_{[p;\underline{x}],[q;\underline{y}]}$ in shorthand as $\gamma_{p,q}$.
+
+The three strength axioms are immediately satisfied, again since $\gamma_{p,q}$ has no dependence on the objects in the lists and as such the isomorphisms are the same. The unit axioms follow from the assumption that $t_{1,n} = e_n = t_{n,1}$ and that components of $\gamma$ involving an identity operation are also identity maps. The multiplication axioms follow from the two diagrams assumed to commute in the statement of the theorem.  If we consider each axiom to consist of two equations, one in $P(n)$ and one in some power  $(A \times B)^{n}$, then the two diagrams at the end of the statement of the theorem actually force the first components of the two multiplication axioms to hold in $P(n)$ before taking equivalence classes in the coequalizer.
+\end{proof}
+
+A further property that a pseudo-commutativity can possess is that of symmetry.  This symmetry is then reflected in the monoidal structure on the 2-category of algebras, which will then also have a symmetric tensor product (in a suitable, 2-categorical sense).
+
+\begin{Defi}
+Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad on a symmetric monoidal $2$-category $\m{K}$ with symmetry $c$. We then say that a pseudo-commutativity $\gamma$ for $T$ is \textit{symmetric} when the following is satisfied for all $A$, $B \in \m{K}$:
+    \[
+        Tc_{A,B} \circ \gamma_{A,B} \circ c_{TB, TA} = \gamma_{B,A}.
+    \]
+\end{Defi}
+
+With the notion of symmetry at hand we are able to extend the above theorem, stating when $\underline{P}$ is symmetric.
+\begin{thm}
+The pseudo-commutative structure for $\underline{P}$ given by Theorem \ref{pscomm}  is symmetric if for all $m,n \in \mathbb{N}_+$ the two conditions below hold.
+    \begin{enumerate}
+        \item $t_{m,n} = t_{n,m}^{-1}$.
+        \item The following diagram commutes:
+            \[
+                \xy
+                    (0,0)*+{\mu(p;\underline{q}) \cdot t_{m,n}t_{n,m}}="00";
+                    (30,0)*+{\mu(p;\underline{q}) \cdot e_{mn}}="10";
+                    (0,-15)*+{\mu(q;\underline{p}) \cdot t_{n,m}}="01";
+                    (30,-15)*+{\mu(p;\underline{q})}="11";
+                    %
+                    {\ar@{=} "00" ; "10"};
+                    {\ar_{\lambda_{p,q} \cdot 1} "00" ; "01"};
+                    {\ar@{=} "10" ; "11"};
+                    {\ar_{\lambda_{q,p}} "01" ; "11"};
+                \endxy
+            \]
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+The commutativity of the diagram above ensures that the first component of the symmetry axiom commutes in $P(n)$ before taking equivalence classes in the coequalizer, just as in Theorem \ref{pscomm}.
+\end{proof}
+
+\begin{Defi}
+Let $P$ be a $\mb{G}$-operad in $\mb{Cat}$.  We say that $P$ is \textit{contractible} if each category $P(n)$ is equivalent to the terminal category.
+\end{Defi}
+
+\begin{cor}
+If $P$ is contractible and there exist $t_{m,n}$ as in Theorem \ref{pscomm}, then $\underline{P}$ acquires a pseudo-commutativity. Furthermore, it is symmetric if $t_{n,m} = t_{m,n}^{-1}$.
+\end{cor}
+\begin{proof}
+The only thing left to define is the collection of natural isomorphisms $\lambda_{p,q}$.  But since each $P(n)$ is contractible, $\lambda_{p,q}$ must be the unique isomorphism between its source and target, and furthermore the last two axioms hold since any pair of parallel arrows are equal in a contractible category.
+\end{proof}
+
+\begin{cor}
+If $P$ is a contractible symmetric operad then $\underline{P}$ has a symmetric pseudo-commutativity.
+\end{cor}
+\begin{proof}
+We choose $t_{m,n} = \tau_{m,n}$.
+\end{proof}
+
+\begin{cor}
+Let $P$ be a non-symmetric operad. Then $\underline{P}$ is never pseudo-commutative.
+\end{cor}
+\begin{proof}
+In the non-symmetric case, the 2-monad is just given using coproducts and products, there is no coequalizer. Thus when $A,B$ are discrete, there is no isomorphism $\underline{(x,\underline{y})} \cong \underline{(\underline{x},y)}$.
+\end{proof}
+
+
+
+
+We conclude with a computation using Theorem \ref{pscomm}.  This result was only conjectured in \cite{HP}, but we are able to prove it quite easily with the machinery developed thus far.
+
+\begin{thm}\label{braidpscomm}
+The 2-monad $\underline{B}$ for braided strict monoidal categories on $\mb{Cat}$ has two pseudo-commutative structures on it, neither of which are symmetric.
+\end{thm}
+
+In order to apply our theory, the 2-monad $\underline{B}$ must arise from a $\mb{G}$-operad.  The following proposition describes it as such, and can be found in the work of Fiedorowicz \cite{fie-br}.
+
+\begin{prop}
+The 2-monad $\underline{B}$ is the 2-monad associated to the $\mb{Br}$-operad $B$ with the category $B(n)$ having objects the elements of the $n$th braid group $Br_{n}$ and a unique isomorphism between any pair of objects; the action of $Br_{n}$ on $B(n)$ is given by right multiplication on objects and is then uniquely determined on morphisms.
+\end{prop}
+
+The interested reader can easily verify that algebras for the $\mb{Br}$-operad $B$ are braided strict monoidal categories.  The objects of $\underline{B}(X)$ can be identified with finite lists of objects of $X$, and morphisms are generated by the morphisms of $X$ together with new isomorphisms
+\[
+x_{1}, \ldots, x_{n} \stackrel{\gamma}{\longrightarrow} x_{\gamma^{-1}(1)}, \ldots, x_{\gamma^{-1}(n)}
+\]
+where $\gamma \in Br_{n}$ and the notation $\gamma^{-1}(i)$ means, as before, that we take the preimage of $i$ under the permutation $\pi(\gamma)$ associated to $\gamma$.  This shows that $\underline{B}(X)$ is the free braided strict monoidal category generated by $X$ according to \cite{js}, and it is easy to verify that the 2-monad structure on $\underline{B}$ arising from the $\mb{Br}$-operad structure on $B$ is the correct one to produce braided strict monoidal categories as algebras.
+
+
+
+\begin{Defi}
+A braid $\gamma \in Br_{n}$ is \textit{positive} if it is an element of the submonoid of $Br_{n}$ generated by the elements $\sigma_{1}, \sigma_{2}, \ldots, \sigma_{n-1}$.
+\end{Defi}
+
+\begin{Defi}
+ A braid $\gamma \in Br_{n}$ is \textit{minimal} if no pair of strands in $\gamma$ cross twice.
+\end{Defi}
+
+For our purposes, we are interested in braids which are both positive and minimal.  A proof of the following lemma can be found in \cite{EM2}.
+
+\begin{lem}\label{pmlem}
+Let $PM_{n}$ be the subset of $Br_{n}$ consisting of positive, minimal braids.  Then the function sending a braid to its underlying permutation is a bijection of sets $PM_{n} \rightarrow \Sigma_{n}$.
+\end{lem}
+
+\begin{rem}\label{pmrem}
+It is worth noting that this bijection is not an isomorphism of groups, since $PM_{n}$ is not a group or even a monoid.  The element $\sigma_{1} \in Br_{n}$ is certainly in $PM_{n}$, but $\sigma_{1}^{2}$ is not as the first two strands cross twice.  Thus we see that the product of two minimal braids is generally not minimal, but by definition the product of positive braids is positive.
+\end{rem}
+
+\begin{proof}[Proof of Theorem \ref{braidpscomm}]
+In order to use Theorem \ref{pscomm} with the action operad being the braid operad $\mb{Br}$, we must first construct elements $t_{m,n} \in Br_{mn}$ satisfying certain properties.  Using Lemma \ref{pmlem}, we define $t_{m,n}$ to be the unique positive braid such that $\pi(t_{m,n}) = \tau_{m,n}$.  Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in Br_{n}$ is positive and minimal, we have that $t_{1,n} = e_{n} = t_{n,1}$ in $Br_{n}$.  Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
+
+Let $l, m_{1}, \ldots, m_{l}, n$ be natural numbers, and let $M = \sum m_{i}$.  We must check that
+\[
+\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}}) \mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}}) = t_{N, l}
+\]
+in $Br_{lN}$.  These braids have the same underlying permutations by construction, and both are positive since each operadic composition on the left is positive.  The braid on the right is minimal by definition, so if we prove that the braid on the left is also minimal, they are necessarily equal.  Now $\mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}})$ is given by the braid for $t_{n,l}$ but with the first strand replaced by $m_{1}$ strands, the second strand replaced by $m_{2}$ strands, and so on for the first $l$ strands of $t_{n,l}$, and then repeating for each group of $l$ strands.  In particular, since strands $i, i+l, i+2l, \ldots, i + (n-1)l$ never cross in $t_{n,l}$, none of the $m_{i}$ strands that each of these is replaced with cross.  The braid $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ consists of the disjoint union of the braids for each $t_{n,m_{i}}$, so if two strands cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ then they must both cross in some $t_{n,m_{i}}$.  The strands in $t_{n,m_{i}}$ are those numbered from $n(m_{1} + \cdots + m_{i-1}) + 1$ to $n(m_{1} + \cdots + m_{i-1} + m_{i})$.  This is a consecutive collection of $nm_{i}$ strands, and it is simple to check that these strands are precisely those connected (via the group operation in $Br_{Nl}$, concatenation) to the duplicated copies of strands $i, i+l, i+2l, \ldots, i + (n-1)l$ in $t_{n,l}$.  Thus if a pair of strands were to cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$, that pair cannot also have crossed in $\mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}})$, showing that the resulting product braid
+\[
+\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}}) \mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}})
+\]
+is minimal.  The calculation showing that
+\[
+\mu(t_{m,l}; \underline{e_{1}}, \ldots, \underline{e_{n_{m}}}) \mu(e_{m}; t_{n_{1}, l}, \ldots, t_{n_{m}, l})
+\]
+is also minimal follows from the same argument, showing that it is equal to $t_{N, l}$ (here $N$ is the sum of the $n_{i}$, where once again $i$ ranges from 1 to $l$).
+
+These calculations show, using Theorem \ref{pscomm}, that the $\mb{Br}$-operad $B$ induces a 2-monad which has a pseudo-commutative structure.  As noted before, $B$-algebras are precisely braided strict monoidal categories.  The second pseudo-commutative structure arises by using negative, minimal braids instead of positive ones, and proceeds using the same arguments.  This finishes the first part of the proof of Theorem \ref{braidpscomm}.
+
+We will now show that neither of these pseudo-commutative structures is symmetric.  The symmetry axiom in this case reduces to the fact that, in some category which is given as a coequalizer, the morphism with first component
+\[
+f:\mu(p; \underline{q}) \cdot t_{n,m}t_{m,n} \rightarrow \mu(q; \underline{p}) \cdot t_{m,n} \rightarrow \mu(p; \underline{q})
+\]
+is the identity.  Now it is clear that that $t_{n,m}$ is not equal to $t_{m,n}^{-1}$ in general: taking $m=n=2$, we note that $t_{2,2} = \sigma_{2}$, and this element is certainly not of order two in $Br_{4}$.  $B(4)$ is the category whose objects are the elements of $Br_{4}$ with a unique isomorphism between any two pair of objects, and $Br_{4}$ acts by multiplication on the right; this action is clearly free and transitive.  We recall (see Lemma \ref{coeq-lem}) that in a coequalizer of the form $A \times_{G} B$, we have that a morphism $[f_{1}, f_{2}]$ equals $[g_{1}, g_{2}]$ if and only if there exists an $x \in G$ such that
+\[
+\begin{array}{rcl}
+f_{1} \cdot x & = & g_{1}, \\
+x^{-1} \cdot f_{2} & = & g_{2}.
+\end{array}
+\]
+For the coequalizer in question, for $f$ to be the first component of an identity morphism would imply that $f \cdot x$ would be a genuine identity in $B(4)$ for some $x$.  But $f \cdot x$ would have source $\mu(p; \underline{q}) t_{n,m}t_{m,n}x$ and target $\mu(p; \underline{q})x$, which requires $t_{n,m}t_{m,n}$ to be the identity group element for all $n,m$.  In particular, this would force $t_{2,2}$ to have order two, which we have noted above does not hold in $Br_{4}$, thus giving a contradiction.
+\end{proof}
+
+\begin{rem}
+The pseudo-commutativities given above are not necessarily the only ones that exist for the $\mb{Br}$-operad $B$, but we do not know a general strategy for producing others.
+\end{rem}
+

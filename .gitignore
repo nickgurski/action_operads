@@ -1,0 +1,24 @@
+# TeX generated files #
+#######################
+*.aux
+*.log
+*.out
+*.rel
+*.toc
+*.blg
+*.fls
+*.fdb_latexmk
+
+# Emacs #
+#########
+
+_region_.tex
+*~
+
+# TeX Maker #
+#############
+*.synctex.gz
+
+# JabRef #
+##########
+*.bib.bak
