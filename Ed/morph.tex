@@ -1,0 +1,850 @@
+\chapter{Morphisms of free invertible algebras}
+\label{morphisms}
+ 
+The goal of this chapter will be to show that we can reconstruct all of the morphisms of $L\mathbb{G}_n$ from the abelian group $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp, ab}}$, and therefore that we can actually use the adjunction from \cref{Moradj} to help find a description of the free $\mathrm{E}G$-algebra on $n$ invertible objects. 
+
+The first step towards this goal will involve splitting $\mathrm{Mor}(L\mathbb{G}_n)$ up as the product of two other monoids. The first of these will encode all of the possible combinations of source and target data for morphisms in $L\mathbb{G}_n$, while the second will just be the endomorphisms of the unit object, $L\mathbb{G}_n(I, I)$. In other words, we will see that the monoid $\mathrm{Mor}(L\mathbb{G}_n)$ can be broken down into a context where source and target are the only thing that matter, and another where they are irrelevant. 
+
+Once we have done this, we can then use the fact that $L\mathbb{G}_n(I, I)$ is always an abelian group to rewrite $\mathrm{Mor}(L\mathbb{G}_n)$ in terms of its abelian group completion, $\mathrm{Mor}(L\mathbb{G}_n)^{\mathrm{gp, ab}}$. This is not quite the same thing as $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp, ab}}$, but they are close enough that we can find a simple equation linking the two, which will in turn allow us to frame the former in terms of the quotient of $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp, ab}}$ we described last chapter. All together, this will constitute an expression for $\mathrm{Mor}(L\mathbb{G}_n)$ that is built up of pieces which we know how to calculate.
+
+\section{Sources and targets in $L\mathbb{G}_n$}  
+
+To get things started, we will spend this section considering the source and target information of morphisms in $L\mathbb{G}_n$. 
+
+\begin{defn}\label{st} For any $\mathrm{E}G$-algebra $X$, denote by $s: \mathrm{Mor}(X) \to \mathrm{Ob}(X)$ and $t: \mathrm{Mor}(X) \to \mathrm{Ob}X)$ the monoid homomorphisms which send each morphism of $X$ to its source and target, respectively. That is,
+\begin{eq*} s( \, f: x \to y) \, = \, x, \quad \quad t( \, f: x \to y) \, = \, y \end{eq*}
+\end{defn}
+
+If we use the universal property of products, we can combine these source and target homomorphisms into a single map, $s \times t: \mathrm{Mor}(X) \to \mathrm{Ob}(X) \times \mathrm{Ob}(X)$. The monoid we are interested in finding is the image $L\mathbb{G}_n$ under its instance of this map, which can be described using a pullback as follows:
+
+\begin{lem}\label{stmon} Let $X$ be an $\mathrm{E}G$-algebra, and $s \times t: \mathrm{Mor}(X) \to \mathrm{Ob}(X)^2$ the map built from $s$ and $t$ using the universal property of products. Then the image of this map is
+\begin{eq*} (s \times t)(X) \, = \, \mathrm{Ob}(X) \times_{\pi_0(X)} \mathrm{Ob}(X) \end{eq*}
+where this pullback is taken over the canonical maps sending objects of $X$ to their connected components:
+\begin{eq*} \begin{tikzcd}
+\mathrm{Ob}(X) \times_{\pi_0(X)} \mathrm{Ob}(X) \ar[dd, shift left=12] \ar[rr] \ar[ddrr, phantom, "\lrcorner", near start, shift left=4] & & \mathrm{Ob}(X) \ar[dd, "\lbrack \, \_ \, \rbrack"] & \\ 
+& & & \\
+\quad \quad \quad \quad \quad \quad \mathrm{Ob}(X) \ar[rr, "\lbrack \, \_ \, \rbrack"] & & \pi_0(X)
+\end{tikzcd} \end{eq*}
+\end{lem} 
+\begin{proof}
+By definition, there exists a morphism $f: x \to y$ between objects $x, y$ of $X$ if and only if they are in the same connected component, $[x] = [y]$. Thus
+\begin{eq*} \begin{array}{rll}
+		(x, y) \, \in \, (s \times t)(X) & \iff & \exists \, f \, : \quad s(f) \, = \, x, \quad t(f) \, = \, y \\
+		& \iff & [x] = [y] \\
+		& \iff & (x, y) \, \in \, \mathrm{Ob}(X) \times_{\pi_0(X)} \mathrm{Ob}(X)
+		\end{array}
+\end{eq*}
+as required.
+\end{proof}
+
+Recalling \cref{Gnobj,Gnconcomp,Zobj,crossconcomp}, we can immediately conclude the following:
+
+\begin{cor} \label{stpullback}
+\begin{eq*} \begin{array}{rll} 
+		(s \times t)(\mathbb{G}_n) & = & \begin{cases}
+								\quad \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & \text{if $G$ is crossed}\\
+								\quad \mathbb{N}^{\ast n} & \text{otherwise}
+							\end{cases} \\
+		& & \\
+		(s \times t)(L\mathbb{G}_n) & = & \begin{cases}
+								\quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  & \text{if $G$ is crossed}\\
+								\quad \mathbb{Z}^{\ast n} & \text{otherwise}
+							\end{cases} \\
+		\end{array}
+\end{eq*}
+where the pullbacks are taken over the quotients of abelianisation for $(\mathbb{N}^{\ast n})^{\mathrm{ab}} = \mathbb{N}^n$ and $(\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^n$ respectively.
+\end{cor}
+
+Next, we want to show that this $(s \times t)(L\mathbb{G}_n)$ we have described is in fact a submonoid of $\mathrm{Mor}(L\mathbb{G}_n)$. This is a little tricky though, since we don't currently know what the morphisms of $L\mathbb{G}_n$ even are. We will sidestep this problem by first proving the analogous statement for all $\mathbb{G}_n$, and then recovering the $L\mathbb{G}_n$ version from it later.
+
+Now, by \cref{Gnmor} we know that wanting $(s \times t)(\mathbb{G}_n)$ to be a submonoid of $\mathrm{Mor}(\mathbb{G}_n)$ is the same as asking if we can find an injective homomorphism $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \to G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$, assuming $G$ is crossed, or $\mathbb{N}^{\ast n} \to G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ if it is not. The latter case is pretty obvious, so we'll focus on crossed $G$ for the moment. Creating a injective \emph{function} $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \to G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is not especially hard. For any pair $(w, w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, the image of $w$ and $w'$ in the abelian group $\mathbb{N}^n$ is the same, which is to say that if $x_1, ..., x_m \in \{z_1, ..., z_n\}$ are the collection of generators for which 
+\begin{eq*} w \quad = \quad x_1 \otimes ... \otimes x_m \end{eq*}
+and there exists at least one permutation $\sigma \in S_m$ such that
+\begin{eq*} w' \quad = \quad x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)} \end{eq*}
+Then since the underlying permutation maps $\pi : G(m) \to \mathrm{S}_m$ of a crossed action operad $G$ are all surjective, we can always find an element of $g \in G(m)$ for which $\pi(g) = \sigma$. Thus in order to make our injective function all we need to do is make a choice $g =: \rho(w, w')$ like this to represent each $(w, w')$, and then set
+\begin{eq*} \begin{array}{rll}
+			\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & \to & G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
+			(w, w') & \mapsto & ( \, \rho(w, w'), w \, )
+		\end{array}
+\end{eq*}
+Injectivity follows because given a specific $( g, w )$, the only element that could map onto it is $(w, \pi(g)(w))$. 
+
+So how do we know if we can choose these representatives $\rho(w, w')$ in such a way that the resulting function $i$ is also a monoid homomorphism? If we could find a presentation of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ in terms of generators and relations then this would help a little, since we would only need to pick a $\rho(z, z')$ for each generator $(z, z')$, and then define all other $\rho(w, w')$ by way of tensor products:
+\begin{eq*} \rho(v \otimes w, v' \otimes w') \quad = \quad \rho(v, v') \otimes \rho(w, w') \end{eq*}
+But then we would still need make sure that our choice of $\rho(z, z')$ obeyed the necessary relations on the generators of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$. Luckily for us though, this turns out to be no problem at all. 
+
+\begin{prop}\label{freemon} $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid.
+\end{prop}
+\begin{proof}
+Given an element $(w, w')$ of the monoid $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, let $D(w, w')$ be the following set:
+\begin{eq*} D(w, w') \, = \, \left\{ \begin{array}{rlrll}
+							& & (w, w') & = & (u, u') \otimes (v, v'), \\
+							(u, u'), (v, v') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & : & (u, u') & \neq & (I, I), \\
+							& & (v, v') & \neq & (I,I)
+					\end{array} \right\} 
+\end{eq*}
+We can use these sets to recursively define a decomposition of any element $(w, w')$ as a product of other elements of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$. Specifically, if $D(w, w')$ is empty then we say that the decomposition of $(w, w')$ is just $(w, w')$ itself, and otherwise we choose any $\big( \, (u, u'), (v, v') \, \big) \in D(w, w')$ and say that the decomposition of $(w, w')$ is the concatenation of the decomposition of $(u, u')$ with the decomposition of $(v, v')$. Note that when we look at the lengths of these elements, as defined in \cref{lengthdef}, $|u|$ and $|v|$ are always strictly smaller that $|w|$, and any strictly decreasing sequence of natural numbers is finite, so this process definitely terminates.,
+
+Of course, we need to check that this decomposition of $(w, w')$ is well-defined, which amounts to checking that the choice of $(u, u'), (v, v')$ we make at each stage won't change the eventual output. To that end, suppose for the sake of contradiction that $(u_1, u'_1), ..., (u_m, u'_m)$ and $(v_1, v'_1), ..., (v_m', v'_{m'})$ are distinct decompositions of $(w, w')$ we could arrive at using the above process. Notice that we can assume without loss of generality that $|u_1| < |v_1|$. If instead $|u_1| > |w_1|$, we can just swap the labels of the sequences, and if $|u_1| = |v_1|$ then we can just discard those elements and  instead consider the decompositions $(u_2, u'_2), ..., (u_m, u'_m)$ and $(v_2, v'_2), ..., (v_m', v'_{m'})$ of $(u_2, u'_2) \otimes ... \otimes (u_m, u'_m) = (v_2, v'_2) \otimes ... \otimes (v_m', v'_{m'})$. Since $(u_1, u'_1), ..., (u_m, u'_m)$ and $(v_1, v'_1), ..., (v_m', v'_{m'})$ were distinct decompositions of $(w, w')$, in this way we will eventually reach some subsequences whose first elements are different; once we have, we can relabel them so that $|u_1| < |v_1|$. Then by definition,
+\begin{eq*} u_1 \otimes \big( \, \bigotimes_{i=2}^m u_i \, ) \, = \, w \, = \, v_1 \otimes \big( \, \bigotimes_{i=2}^{m'} v_i \, )\end{eq*}
+But $w, u_1, v_1, \bigotimes_{i=2}^m u_i, \bigotimes_{i=2}^{m'} v_i$ are all elements of $\mathbb{N}^{\ast n}$, which is a free monoid, and so they each have a unique decomposition as products of the generators $\{ z_1, ..., z_n \}$, and these all respect tensor products. Therefore, since $|u_1| < |v_1|$, there must exist some element $a$ of $\mathbb{N}^{\ast n}$ such that
+\begin{eq*} w \, = \, u_1 \otimes a \otimes \big( \, \bigotimes_{i=2}^{m'} v_i \, )  \quad \implies \quad v_1 \, = \, u_1 \otimes a \end{eq*}
+Since
+\begin{eq*} |u'_1| \, = \, |u_1| \, < \, |v_1| \, = \, |v'_1| \end{eq*}
+we can also use exactly the same reasoning to find an $a'$ in $\mathbb{N}^{\ast n}$ with $v'_1 = u'_1 \otimes a'$, and hence $(v_1, v'_1) = (u_1, u'_1) \otimes (a, a')$. Moreover, this $(a, a')$ is an element of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, because
+\begin{eq*}\begin{array}{rrcccl}
+			& v_1 & = & u_1 \otimes a & & \\
+			\implies \quad & [v_1] & = & [u_1 \otimes a] & = & [u_1] + [a] \\
+			& & & & & \\
+			& v'_1 & = & u'_1 \otimes a' & & \\
+			\implies \quad & [v'_1] & = & [u'_1 \otimes a'] & = & [u'_1] + [a'] \\
+			& & & & & \\
+			\implies \quad & [a] & = & [v_1] - [u_1] & & \\
+			& & & [v'_1] - [u'_1] & = & [a']
+		\end{array}
+\end{eq*}
+In other words, we have shown that the pair $\big( \, (u_1, u'_1) (a, a') \, \big)$ is an element of $D(v_1, v'_1)$. But by assumption $(v_1, v'_1), ..., (v_m', v'_{m'})$ was a decomposition of $(w, w')$, and hence the $D(v_i, v'_i)$ were supposed to be empty for each $i$, since that is when the decomposition finding process terminates. This is a contradiction, and hence our assumption that $(u_1, u'_1), ..., (u_m, u'_m)$ and $(v_1, v'_1), ..., (v_m', v'_{m'})$ were distinct decompositions of $(w, w')$ is false. Therefore, each $(w, w')$ in $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ has a unique decomposition in terms of elements $(v_i, v'_i)$ for which $D(v_i, v'_i)$ is empty, and so $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is the free monoid whose generators are all such elements.
+\end{proof}
+
+It follows immediately from this that our earlier construction of an injective function $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \to G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ can always be extended to be an inclusion of monoids.
+
+\begin{prop} \label{stGnsub} $(s \times t)(\mathbb{G}_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\mathbb{G}_n)$
+\end{prop}
+\begin{proof}
+First, assume that the action operad $G$ is non-crossed. Then there exists an obvious injective monoid homomorphism
+\begin{eq*} \begin{array}{rlrll}
+			i & : & (s \times t)(\mathbb{G}_n) & \to & \mathrm{Mor}(\mathbb{G}_n) \\
+			& : & \mathbb{N}^{\ast n} & \to & G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
+			& : & w & \mapsto & ( \, e_{|w|}, w \, )
+		\end{array}
+\end{eq*}
+The homomorphism property follows from the fact that the length $|w|$ defined in \cref{lengthdef} is itself a homomorphism, so $|w \otimes w'| = |w|+|w'|$. Thus $(s \times t)(\mathbb{G}_n) \subseteq \mathrm{Mor}(\mathbb{G}_n)$ for non-crossed $G$.
+
+Now assume that $G$ is crossed. For each generator $(z, z')$ of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, the words $z, z' \in \mathbb{N}^{\ast n}$ are permutations of each other, and the map $\pi : G(|z|) \to \mathrm{S}_{|z|}$ is surjective, and so there must be some $g \in G(|z|)$ with the property that $\pi(g)(z) = z'$. Choose from among these a representative element, which we'll call $\rho(z, z')$. Then because $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid  by \cref{freemon}, these choices will extend to a well-defined, monoid homomorphism
+\begin{eq*} \rho \, : \, \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \longrightarrow G \end{eq*}
+which preserves underlying permutation. This map will now possess the property that
+\begin{eq*} \pi(\rho(w, w'))(w) \quad = \quad w' \end{eq*}
+for any $(w, w') \in\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, not just the generators. Then from $\rho$ we'll define the homomorphism $i$ to be
+\begin{eq*} \begin{array}{rlrll}
+			i & : & (s \times t)(\mathbb{G}_n) & \to & \mathrm{Mor}(\mathbb{G}_n) \\
+			& : & \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & \to & G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
+			& : & (w, w') & \mapsto & ( \, \rho(w, w'), w \, )
+		\end{array}
+\end{eq*}
+Moreover, for any two elements $(v, v')$, $(w, w')$ of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ we'll have
+\begin{eq*} \begin{array}{rclcl}
+		( \, \rho(v, v'), v \, ) & = & ( \, \rho(w, w'), w \, ) & \implies & \rho(v, v') \, = \, \rho(w, w'), \quad \quad v \, = \, w \\
+		& & & \implies & v' \, = \, \pi(\rho(v, v'))(v) \, = \, \pi(\rho(w, w'))(w) \, = \, w'
+		\end{array}
+\end{eq*}
+and thus $i$ is injective. Therefore the image of this $i$ is a submonoid of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ which is isomorphic to $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, so again $(s \times t)(\mathbb{G}_n) \subseteq \mathrm{Mor}(\mathbb{G}_n)$ as required.
+\end{proof}
+
+In other words, this result says that the source and target data of $\mathbb{G}_n$ is isomorphic to the monoid made up of action morphisms
+\begin{eq*} \alpha\big( \, \rho(x_1 \otimes ... \otimes x_m, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(1)}) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \end{eq*}
+when $G$ is crossed, and
+\begin{eq*} \alpha(e_m; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \end{eq*}
+otherwise, for $\sigma \in S_m$, $x_1, ..., x_m \in \{z_1, ..., z_n\}$. Now, in theory the map $\rho : {\mathbb{N}^{\ast n} \times_{\mathbb{N}^n}} \mathbb{N}^{\ast n} \to G$ that we use to choose representatives can be any valid homomorphism between those monoids for which
+\begin{eq*} \pi(\rho(w, w'))(w) \quad = \quad w' \end{eq*}
+ but later on we will be able to make things easier on ourselves by making a more systematic choice.
+
+So now we have shown that $(s \times t)(\mathbb{G}_n)$ is a submonoid of $\mathrm{Mor}(\mathbb{G}_n)$, but what we were really interested in is whether or not $(s \times t)(L\mathbb{G}_n)$ is a submonoid of $\mathrm{Mor}(L\mathbb{G}_n)$. To recover the latter result from the former, we will use our cokernel map $q: \mathbb{G}_{2n} \to L\mathbb{G}_n$. In particular, the surjectivity of $q$ combined with the case $(s \times t)(\mathbb{G}_{2n}) \subseteq \mathrm{Mor}(\mathbb{G}_{2n})$ from \cref{stGnsub} immediately gives us what we need.
+
+\begin{cor} \label{stZsub} $(s \times t)(L\mathbb{G}_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(L\mathbb{G}_n)$
+\end{cor}
+\begin{proof}
+Let $i: (s \times t)(\mathbb{G}_{2n}) \hookrightarrow \mathrm{Mor}(\mathbb{G}_{2n})$ be an inclusion which allows us to view $(s \times t)(\mathbb{G}_{2n})$ as a submonoid of $\mathrm{Mor}(\mathbb{G}_{2n})$, as in \cref{stGnsub}. Also, let $\mathrm{Mor}(q): \mathrm{Mor}(\mathbb{G}_{2n}) \to \mathrm{Mor}(L\mathbb{G}_n)$ the restriction of the cokernel map $q: \mathbb{G}_{2n} \to L\mathbb{G}_n$ onto morphisms. Then the image of the composite of these two homomorphisms,
+\begin{eq*} \mathrm{im}\big( \, \mathrm{Mor}(q) \circ i \, \big) \quad = \quad q\big( \, \mathrm{im}(i) \, \big) \quad \cong \quad q\big( \, (s \times t)(\mathbb{G}_{2n}) \, \big)\end{eq*}
+is clearly a submonoid of $\mathrm{Mor}(L\mathbb{G}_n)$. 
+
+But by \cref{qsurj} $q$ is a surjective functor. This means that there can exist a morphism $w \to v$ in $L\mathbb{G}_n$ if and only if there exists at least one morphism $w' \to v'$ in $\mathbb{G}_{2n}$, for some $w', v'$ which have $q(w') = w$ and $q(v') = v$. In other words,
+\begin{eq*} q\big( \, (s \times t)(\mathbb{G}_{2n}) \, \big) \, = \, (s \times t)(L\mathbb{G}_n) \end{eq*}
+and therefore the monoid $\mathrm{im}\big( \, \mathrm{Mor}(q) \circ i \, \big)$ that we saw above is really a submonoid of $\mathrm{Mor}(L\mathbb{G}_n)$ isomorphic to $(s \times t)(L\mathbb{G}_n)$, as required.
+\end{proof} 
+
+\section{Unit endomorphisms of $L\mathbb{G}_n$}
+
+To help us understand $\mathrm{Mor}(L\mathbb{G}_n)$, we decided to break it down into two smaller pieces. The first of these was the source/target data $(s \times t)(L\mathbb{G}_n)$, which we explored in the previous section. The other piece that we now have to consider is the monoid of unit endomorphisms, $L\mathbb{G}_n(I,I)$. 
+
+This is a particularly important submonoid of the morphisms $\mathrm{Mor}(L\mathbb{G}_n)$, since it is the only submonoid which is also a homset of the category $L\mathbb{G}_n$. Moreover, because the maps in $L\mathbb{G}_n(I,I)$ all share the same source and target, what we have is not just a monoid under tensor product but also under composition as well. This fact leads to a series of special properties for $L\mathbb{G}_n(I,I)$, the first of which is just another instance of the classic Eckmann-Hilton argument.
+
+\begin{lem} \label{endcom} $L\mathbb{G}_n(I,I)$ is a commutative monoid under both tensor product and composition, with $f \otimes f' = f \circ f'$.
+\end{lem}
+\begin{proof}
+Let $f, f'$ be arbitrary elements of the monoid $L\mathbb{G}_n(I,I)$. Since both of these are morphisms in the monoidal category $L\mathbb{G}_n$, we can use the law of interchange to show that
+\begin{eq*} \begin{array}{rll}
+			f \otimes f' & = & (f \circ \mathrm{id}_I) \otimes (\mathrm{id}_I \circ f') \\
+			& = & (f \otimes \mathrm{id}_I) \circ (\mathrm{id}_I \otimes f') \\
+			& = & f \circ f' \\
+			& = & (\mathrm{id}_I \otimes f) \circ (f' \otimes \mathrm{id}_I) \\
+			& = & (f' \circ \mathrm{id}_I) \otimes (\mathrm{id}_I \circ f) \\
+			& = & f' \otimes f
+		\end{array}
+\end{eq*}
+\end{proof}
+
+In fact, since we already proved that the morphisms of $L\mathbb{G}_n$ are all actions morphisms, we can take this one step further.
+
+\begin{prop} \label{endab} $L\mathbb{G}_n(I,I)$ is an abelian group.
+\end{prop}
+\begin{proof}
+From \cref{allmapsaction} we know that every morphism $f$ in $L\mathbb{G}_n$ is of the form $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, for some $g \in G(m)$ and $x_i \in \mathbb{Z}^{\ast n}$. It follows immediately that
+\begin{eq*} \begin{array}{rl}
+			& \alpha( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \circ \alpha( \, g^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
+			= & \alpha( \, gg^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
+			= & \alpha( \, e_m \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
+			= & \mathrm{id}_{x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}} \\
+			& \\
+			& \alpha( \, g^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \circ \alpha( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+			= & \alpha( \, g^{-1}g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+			= & \alpha( \, e_m \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+			= & \mathrm{id}_{x_1 \otimes ... \otimes x_m}
+		\end{array}
+\end{eq*}
+In other words, every morphism $f: w \to v$ in $L\mathbb{G}_n$ has an inverse under composition, 
+\begin{eq*} f^{-1} \quad := \quad \alpha(g^{-1}; \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}}) \end{eq*}
+But we know from \cref{endcom} that tensor product and composition are the same for endomorphisms of the unit object of $L\mathbb{G}_n$. In particular this means that if some morphism $f: I \to I$ has a compositional inverse $f^{-1}$, then it will also be its monoidal inverse $f^*$. Thus every element of the commutative monoid $L\mathbb{G}_n(I,I)$ is invertible, or in other words $L\mathbb{G}_n(I,I)$ is an abelian group.
+\end{proof}
+
+Indeed, by using a slightly broader argument we can extend this result to every morphism of $L\mathbb{G}_n$.
+
+\begin{prop} \label{tensinv} Every morphism $f: w \to v$ in $L\mathbb{G}_n$ has an inverse under tensor product, $f^*: w^* \to v^*$. That is, the monoid $\mathrm{Mor}(L\mathbb{G}_n)$ is actually a group.
+\end{prop}
+\begin{proof}
+For any $f: w \to v$ in $L\mathbb{G}_n$, consider the map $\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$, where $f^{-1}$ is the compositional inverse of $f$, as in the proof of \cref{endab}. This morphism has source $w^* \otimes v \otimes v^* = w^*$ and target $w^* \otimes w \otimes v^* = v^*$, which allows us to apply the law of interchange to get
+\begin{longtable}{RLL}
+			f \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) & = & \big( \, f \circ \mathrm{id}_w \, \big) \otimes \big( \, \mathrm{id}_{v^*} \circ  (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
+			& = & \big( \, f \otimes \mathrm{id}_{v^*} \, \big) \circ \big( \, \mathrm{id}_w \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
+			& = & ( f \otimes \mathrm{id}_{v^*} ) \circ ( f^{-1} \otimes \mathrm{id}_{v^*}) \\
+			& = & (f \circ f^{-1}) \otimes (\mathrm{id}_{v^*} \circ \mathrm{id}_{v^*}) \\
+			& = & \mathrm{id}_v \otimes \mathrm{id}_{v^*} \\
+			& = & \mathrm{id}_I
+\end{longtable}
+and likewise
+\begin{longtable}{RLL}
+			(\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes f & = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \circ \mathrm{id}_{w^*} \, \big) \otimes \big( \, \mathrm{id}_v \circ f \, \big) \\
+			& = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes \mathrm{id}_v \, \big) \circ \big( \, \mathrm{id}_{w^*} \otimes f \, \big) \\
+			& = & (\mathrm{id}_{w^*} \otimes f^{-1}) \circ (\mathrm{id}_{w^*} \otimes f) \\
+			& = & (\mathrm{id}_{w^*} \circ \mathrm{id}_{w^*}) \otimes (f^{-1} \circ f)\\
+			& = & \mathrm{id}_{w^*} \otimes \mathrm{id}_w \\
+			& = & \mathrm{id}_I
+\end{longtable}
+In other words, $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the inverse of $f$ in the monoid $\mathrm{Mor}(L\mathbb{G}_n)$, as required.
+\end{proof}
+
+So $\mathrm{Mor}(L\mathbb{G}_n)$ and $L\mathbb{G}_n(I,I)$ both turn out to be groups under tensor product. Obviously it follows from this that $L\mathbb{G}_n(I,I)$ is a not just a submonoid of $\mathrm{Mor}(L\mathbb{G}_n)$ but a subgroup --- in particular an abelian subgroup, going by \cref{endab}. But $L\mathbb{G}_n(I,I)$ is actually an even more special subgroup than this.
+
+\begin{prop} \label{endnorm} $L\mathbb{G}_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L\mathbb{G}_n)$. Moreover, if $G$ is a crossed action operad, then $L\mathbb{G}_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L\mathbb{G}_n)$.
+\end{prop}
+\begin{proof}
+From \cref{endab,tensinv}, we know that $L\mathbb{G}_n(I,I)$ is a subgroup of $\mathrm{Mor}(L\mathbb{G}_n)$. For normality, we need to again consider both crossed and non-crossed action operads separately. 
+
+If $G$ is non-crossed, then by \cref{crossconcomp} we know that the map assigning objects of $L\mathbb{G}_n$ to their connected component is just the identity $\mathrm{id}_{\mathbb{Z}^{\ast n}}$. In other words, every object belongs to its own unique component, so that every morphism of $L\mathbb{G}_n$ is actually an endomorphism. It follows that the group $L\mathbb{G}_n(I,I)$ is the kernel of the source homomorphism $s$ from \cref{st} --- or equally the target homomorphism $t$.
+\begin{eq*} \begin{tikzcd}
+L\mathbb{G}_n(I,I) \ar[r] & \mathrm{Mor}(L\mathbb{G}_n) \ar[r, "s"] & \mathrm{Ob}(L\mathbb{G}_n)
+\end{tikzcd} \end{eq*}
+The kernel of a group homomorphism is always a normal subgroup of that homomorphism's source, and so in our case we have $L\mathbb{G}_n(I,I) \le \mathrm{Mor}(L\mathbb{G}_n)$. 
+
+For crossed $G$, recall from \cref{spacial} that all crossed $\mathrm{E}G$-algebras are spacial, and so in particular $L\mathbb{G}_n$ is. This means that for any $h \in L\mathbb{G}_n(I,I)$ and $w \in \mathrm{Ob}(L\mathbb{G}_n)$ we will always have $h \otimes \mathrm{id}_w = \mathrm{id}_w \otimes h$. Thus for any $f:w \to v$ in $\mathrm{Mor}(L\mathbb{G}_n)$, we get
+\begin{eq*} \begin{array}{rll}
+		h \otimes f & = & (\mathrm{id}_I \circ h) \otimes (f \circ \mathrm{id}_w) \\
+		& = & (\mathrm{id}_I \otimes f) \circ (h \otimes \mathrm{id}_w) \\
+		& = & (f \otimes \mathrm{id}_I) \circ (\mathrm{id}_w \otimes h) \\
+		& = & (f \circ \mathrm{id}_w) \otimes (\mathrm{id}_I \circ h) \\
+		& = & f \otimes h
+		\end{array}
+\end{eq*}
+That is, $L\mathbb{G}_n(I,I)$ is a subgroup of the centre of $\mathrm{Mor}(L\mathbb{G}_n)$. Then because
+\begin{eq*} f \otimes h \otimes f^* \, = \, h \otimes f \otimes f^* \, = \, h \, \in L\mathbb{G}_n(I,I) \end{eq*}
+it follows that $L\mathbb{G}_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L\mathbb{G}_n)$.
+\end{proof}
+
+\section{The morphisms of $L\mathbb{G}_n$} 
+
+We have finally described all of the important properties of $(s \times t)(L\mathbb{G}_n)$ and $L\mathbb{G}_n(I,I)$ that we will need. Putting these results together will let us characterize the morphisms of $L\mathbb{G}_n$ as a product of groups, as promised at the beginning of the chapter. Before we do though, it will be worth going over a few well-known pieces of group theory (from for example \cite{grouptheory}) that we will be using in the proof of \cref{morprod}.
+
+\begin{defn} Let $H$, $K$ and $N$ be groups. Then we say that $H$ is a \emph{group extension} of $K$ by $N$ if there exists a short exact sequence
+\begin{eq*} \begin{tikzcd}
+0 \ar[r] & N \ar[r, hookrightarrow, "i"] & H \ar[r, "p"] & K \ar[r] & 0
+\end{tikzcd} \end{eq*}
+In other words, $H$ is an extension of $K$ by $N$ whenever we have $K = H/N$. Moreover, if $N$ is a subgroup of the centre of $H$, we say that this is a \emph{central} extension, and if the map $p$ has a right-inverse, $r: K \to H$, $p \circ r = \mathrm{id}_K$, then we say that it is a \emph{split} extension.
+\end{defn}
+
+\begin{defn} Let $H$ be a group with subgroup $K$ and normal subgroup $N$. Then we say that $H$ is a \emph{semidirect product} $K \ltimes N$ if the underlying set of $H$ is the same as underlying set of $K \times N$, but multiplication is given by
+\begin{eq*} (k,n) \cdot (k',n') \quad = \quad ( \, kk', \, nkn'k^{-1} \, ) \end{eq*}
+\end{defn}
+
+\begin{lem} \label{splitex} If $H$ is a split extension of $K$ by $N$ then $H = K \ltimes N$, with $r: K \to H$ acting as the subgroup inclusion. Further, if $H$ is split and central, then $H \cong K \times N$.
+\end{lem}
+\begin{proof}
+Define a group homomorphism $f: H \to K \ltimes N$  by
+\begin{eq*} f(h) \quad := \quad \big( \, p(h), h \cdot rp(h)^{-1} \, \big) \end{eq*}
+This is a well-defined homomorphism, since
+\begin{eq*} \begin{array}{rll}
+			f(hh') & = & \big( \, p(hh'), hh' \cdot rp(hh')^{-1} \, \big) \\
+			& = & \big( \, p(h) \cdot p(h'), h \cdot h' \cdot rp(h')^{-1} \cdot rp(h)^{-1} \, \big) \\
+			& = & \big( \, p(h) \cdot p(h'), h \cdot rp(h)^{-1} \cdot rp(h) \cdot h' \cdot rp(h')^{-1} \cdot rp(h)^{-1} \, \big) \\
+			& = & \big( \, p(h'), h \cdot rp(h)^{-1}, p(h) \, \big) \cdot \big( \, h' \cdot rp(h')^{-1} \, \big) \\
+			& = & f(h) \cdot f(h')
+		\end{array}
+\end{eq*}
+Next, define another map $f^{-1}: K \times N \to H$ by
+\begin{eq*} f^{-1}(k, n) \quad := \quad n \cdot r(k) \end{eq*}
+$f^{-1}$ is also well-defined, because
+\begin{eq*} \begin{array}{rll}
+			f^{-1}\big( \, (k, n) \cdot (k',n') \, \big) & = & f^{-1}\big( \,  \, kk', \, n \cdot r(k) \cdot n' \cdot r(k)^{-1} \, \big) \\
+			& = & \big( \, n \cdot r(k) \cdot n' \cdot r(k)^{-1} \, \big) \cdot r(kk') \\
+			& = & n \cdot r(k) \cdot n' \cdot r(k)^{-1} \cdot r(k) \cdot r(k') \\
+			& = & n \cdot r(k) \cdot n' \cdot r(k') \\
+			& = & f^{-1}(k,n) \cdot f^{-1}(k',n')
+		\end{array} 
+\end{eq*}
+and due to the fact that $p: N \hookrightarrow H \to K$ is the zero map, $f$ and $f^{-1}$ are inverses:
+\begin{longtable}{RLL}
+	f^{-1}f(h) & = & f^{-1}\big( \, p(h), \, h \cdot rp(h)^{-1} \, \big) \\
+	& = & \big( \, h \cdot rp(h)^{-1} \, \big) \cdot r\big( \, p(h) \, \big) \\
+	& = & h \cdot rp(h)^{-1} \cdot rp(h) \\
+	& = & h \\
+	& & \\
+	ff^{-1}(k,n) & = & f\big( \, n \cdot r(k) \, \big) \\
+	& = & \Big( \, p\big( \, n \cdot r(k) \, \big), \, n \cdot r(k) \cdot rp\big( \, n \cdot r(k) \, \big)^{-1} \, \Big) \\
+	& = & \big( \, p(n) \cdot pr(k), \, n \cdot r(k) \cdot rpr(k)^{-1} \cdot rp(n)^{-1} \, \big) \\
+	& = & \big( \, e \cdot k, \, n \cdot r(k) \cdot r(k)^{-1} \cdot e \, \big) \\
+	& = & (k, n)
+\end{longtable}
+Thus $f$ is an isomorphism of groups $H \cong K \ltimes N$. Also, if $N$ is in the center of $H$ then the multiplication in $K \ltimes N$ becomes
+\begin{eq*} \begin{array}{rll}
+			(k,n) \cdot (k',n') & = & ( \, kk', nkn'k^{-1} \, ) \\
+			& = & ( \, kk', nn'kk^{-1} \, ) \\
+			& = & (kk', nn')
+		\end{array}
+\end{eq*}
+and so $H$ really is the direct product of groups $K \times N$.
+\end{proof}
+
+With that out of the way, we can now produce an expression for the morphisms of the algebra $L\mathbb{G}_n$.
+ 
+\begin{prop} \label{morprod} For any action operad $G$,
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad \cong \quad (s \times t)(L\mathbb{G}_n) \ltimes L\mathbb{G}_n(I,I) \end{eq*}
+Moreover, if $G$ is a crossed action operad, then
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad \cong \quad (s \times t)(L\mathbb{G}_n) \times L\mathbb{G}_n(I,I) \end{eq*}
+\end{prop}
+\begin{proof}
+We just saw in \cref{endnorm} that $L\mathbb{G}_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L\mathbb{G}_n)$, so we can consider the quotient group
+\begin{eq*} \begin{tikzcd}
+L\mathbb{G}_n(I,I) \ar[r, hookrightarrow] & \mathrm{Mor}(L\mathbb{G}_n) \ar[r] & \bigquotient{\mathrm{Mor}(L\mathbb{G}_n)}{L\mathbb{G}_n(I,I)}
+\end{tikzcd} \end{eq*}
+By the universal property of quotients, the map $\mathrm{Mor}(L\mathbb{G}_n) \to \mathrm{Mor}(L\mathbb{G}_n) / L\mathbb{G}_n(I,I)$ will uniquely factor any homomorphism whose composite with the inclusion $L\mathbb{G}_n(I,I) \hookrightarrow \mathrm{Mor}(L\mathbb{G}_n)$ is the zero map. But our source/target map $s \times t : \mathrm{Mor}(L\mathbb{G}_n) \to (s \times t)(L\mathbb{G}_n)$ is one such homomorphism, since for any $h: I \to I$ clearly $(s \times t)(h) = (I, I)$, which is the identity element in $(s \times t)(L\mathbb{G}_n)$. Therefore there must exist a unique homomorphism $u$ making the triangle below commute:
+\begin{eq*} \begin{tikzcd}
+\mathrm{Mor}(L\mathbb{G}_n) \ar[dd] \ar[ddrr, "s \times t"] & & \\
+& & \\
+\bigquotient{\mathrm{Mor}(L\mathbb{G}_n)}{L\mathbb{G}_n(I,I)} \ar[rr, "u"] & & (s \times t)(L\mathbb{G}_n)
+\end{tikzcd} \end{eq*}
+This map $u$ will be surjective --- because $s \times t$ is --- but in fact it will also be injective. This is because if two morphisms $f, f'$ of $L\mathbb{G}_n$ have the same source and target, then the map $h = f^* \otimes f'$ is an element of $L\mathbb{G}_n(I,I)$ for which $f \otimes h = f'$, and so clearly $f$ and $f'$ are part of the same equivalence class in $\mathrm{Mor}(L\mathbb{G}_n)/L\mathbb{G}_n(I,I)$. More precisely, 
+\begin{eq*} \begin{array}{rclcrcl}
+		[f] & \neq & [f'] & \implies & [f]^* \otimes [f'] & \neq & [I] \\
+		& & & \implies & [f^* \otimes f'] & \neq & [I] \\
+		& & & \implies & f^* \otimes f' & \notin & L\mathbb{G}_n(I,I)
+		\end{array}
+\end{eq*}
+\begin{eq*} \begin{array}{rrcl}
+		\implies & (s \times t)(f^* \otimes f') & \neq & (I, I) \\
+		\implies & (s \times t)(f)^* \otimes (s \times t)(f') & \neq & (I, I) \\
+		\implies & (s \times t)(f) & \neq & (s \times t)(f')
+		\end{array}
+\end{eq*}
+Thus $u$ is bijective, so that
+\begin{eq*} \bigquotient{\mathrm{Mor}(L\mathbb{G}_n)}{L\mathbb{G}_n(I,I)} \quad \cong \quad (s \times t)(L\mathbb{G}_n) \end{eq*}
+In other words, what have here is a group extension
+\begin{eq*} \begin{tikzcd}
+0 \ar[r] & L\mathbb{G}_n(I,I) \ar[r, hookrightarrow] & \mathrm{Mor}(L\mathbb{G}_n) \ar[r, "s \times t"] & (s \times t)(L\mathbb{G}_n) \ar[r] & 0
+\end{tikzcd} \end{eq*}
+But recall from \cref{stZsub} that $(s \times t)(L\mathbb{G}_n)$ is also a submonoid (and hence subgroup) of $\mathrm{Mor}(L\mathbb{G}_n)$, so that we have another map $i: (s \times t)(L\mathbb{G}_n) \to \mathrm{Mor}(L\mathbb{G}_n)$ for which $(s \times t) \circ i = \mathrm{id}_{(s \times t)(L\mathbb{G}_n)}$. That is, the above is a split extension of groups, or equivalently $\mathrm{Mor}(L\mathbb{G}_n)$ is a semi direct product $(s \times t)(L\mathbb{G}_n) \ltimes L\mathbb{G}_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L\mathbb{G}_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L\mathbb{G}_n)$, and so it will follow that $\mathrm{Mor}(L\mathbb{G}_n)$ is also a central extension of $(s \times t)(L\mathbb{G}_n)$. In that case $\mathrm{Mor}(L\mathbb{G}_n)$ is really just the direct product $(s \times t)(L\mathbb{G}_n) \times L\mathbb{G}_n(I,I)$, as required.
+\end{proof}
+
+In certain select cases, \cref{morprod} will actually be sufficient to fully determine $\mathrm{Mor}(L\mathbb{G}_n)$ --- specifically, whenever we know that the unit endomorphisms of $L\mathbb{G}_n$ are trivial. We already know of two examples like this, due to \cref{noscalarcross,noscalarnoncross}.
+
+\begin{cor} \label{trivendo} If $G$ is a crossed action operad with $G(m) = G(0)$ for all $m \in \mathbb{N}$, then
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad = \quad (s \times t)(L\mathbb{G}_n) \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n} \end{eq*}
+Instead if $G$ is a $G(1)$-generated action operad, then
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad = \quad (s \times t)(L\mathbb{G}_n) \quad = \quad \mathrm{Ob}(L\mathbb{G}_n) \quad = \quad \mathbb{Z}^{\ast n} \end{eq*}
+\end{cor} 
+
+In the latter case, what this is saying is that every morphism in $L\mathbb{G}_n$ is just the identity element of some object.
+
+But what about for more general $L\mathbb{G}_n$ with nontrivial unit endomorphisms? For crossed $G$, the key insight is that one half of the product in \cref{morprod}, $L\mathbb{G}_n(I, I)$, is always an abelian group. This means that it will remain untouched if we were to abelianise the entire product, thus providing a link between $\mathrm{Mor}(L\mathbb{G}_n)$ before and after abelianisation.
+
+\begin{prop}\label{Zmor1} Let $G$ be a crossed action operad. Then the endomorphisms of the unit object of $L\mathbb{G}_n$ are
+\begin{eq*} L\mathbb{G}_n(I, I) \quad = \quad \bigquotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}} \end{eq*}
+and therefore
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad = \quad (s \times t)(L\mathbb{G}_n) \, \times \, \bigquotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}} \end{eq*}
+\end{prop}
+\begin{proof}
+From \cref{morprod}, we know that
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad = \quad (s \times t)(L\mathbb{G}_n) \times L\mathbb{G}_n(I, I) \end{eq*}
+Abelianising both sides of this equation, we get
+\begin{eq*} \begin{array}{rll}
+			{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}} & = & \big( \, (s \times t)(L\mathbb{G}_n) \times L\mathbb{G}_n(I, I) \, \big)^{\mathrm{ab}} \\
+			& = & {(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}} \times {L\mathbb{G}_n(I, I)}^{\mathrm{ab}} \\
+			& = & {(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}} \times L\mathbb{G}_n(I, I) \\
+		\end{array}
+\end{eq*} 
+since $L\mathbb{G}_n(I, I)$ is already abelian. Now, there is an obvious inclusion ${(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}} \hookrightarrow (s \times t)(L\mathbb{G}_n)^{\mathrm{ab}} \times L\mathbb{G}_n(I, I)$, and since everything here is abelian, all subgroups are normal subgroups. Thus we can take the quotient of the above equation by this map, to obtain 
+\begin{eq*} L\mathbb{G}_n(I, I) \quad = \quad \bigquotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}} \end{eq*}
+Finally, we can now substitute this expression back into our original equation, giving
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad = \quad (s \times t)(L\mathbb{G}_n) \, \times \, \bigquotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}} \end{eq*}
+as required.
+\end{proof}
+
+Unfortunately, there is no general version of \cref{Zmor1} for when $G$ is not crossed. This is because if we try to abelianise the semidirect product from \cref{morprod}, we will arrive at a product of the relevant abelian group, but a new term will also appear indicating the degree to which $L\mathbb{G}_n(I, I)$ and $ (s \times t)(L\mathbb{G}_n)$ fail to commute.
+
+\begin{lem} If $H$ is semidirect product $K \ltimes N$, then its abelianisation is
+\begin{eq*} H^{\mathrm{ab}} \quad = \quad K^{\mathrm{ab}} \, \times \, \bigquotient{N^{\mathrm{ab}}}{[N,K]} \end{eq*}
+where $[N,K]$ is the commutator of $N$ with $K$.
+\end{lem}
+
+We do not know what the unit endomorphism of $L\mathbb{G}_n$ are yet -- indeed, that's the one thing we are trying to figure out using this abelianisation tactic --- and so this new term $[L\mathbb{G}_n(I, I), (s \times t)(L\mathbb{G}_n)]$ is not something we can understand. The obvious exception to this is when our non-crossed $G$ is $G(1)$-generated, where we do know that $L\mathbb{G}_n(I, I)$ is trivial and so of course $[L\mathbb{G}_n(I, I), (s \times t)(L\mathbb{G}_n)] = (s \times t)(L\mathbb{G}_n)$.
+
+If we stick to working with crossed action operads however, we are now only one step away from a complete expression for $\mathrm{Mor}(L\mathbb{G}_n)$. The last term whose value we do not know is $\mathrm{Mor}(L\mathbb{G}_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{Mor}(L\mathbb{G}_n)^{\mathrm{ab}}$, and as one might expect this is related to the value that the algebra takes under the collapsed morphism left adjoint, $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$
+
+\begin{prop} \label{colquot} Let $X$ be any monoidal category whose objects are morphisms are all invertible under tensor product. Then the group completion of the abelianisation of the collapsed morphisms of $X$ are
+\begin{eq*} \mathrm{M}(X)^{\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{Mor}(X)^{\mathrm{ab}}}{\mathrm{Ob}(X)^{\mathrm{ab}}} \end{eq*}
+where we are viewing $\mathrm{Ob}(X)$ as a subgroup of $\mathrm{Mor}(X)$ under tensor product by using the inclusion
+\begin{eq*} \begin{array}{rcl}
+			\mathrm{Ob}(X) & \to & \mathrm{Mor}(X) \\
+			x & \mapsto & \mathrm{id}_x
+		\end{array}
+\end{eq*}
+\end{prop}
+\begin{proof}
+Recall \cref{tenscomp}, which says that in any monoidal category with invertible objects,
+\begin{eq*} f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y*} \otimes f \end{eq*}
+We will proceed by checking what effect this relation in $\mathrm{Mor}(X)$ will have on the two quotients that we are comparing. 
+
+First, consider the canonical homomorphism $\psi: \mathrm{Mor}(X) \to \mathrm{M}(X) \to \mathrm{M}(X)^{\mathrm{ab}}$, where $\mathrm{Mor}(X)$ is being considered as a group under $\otimes$. Also $\mathrm{M}(X)$ is a group rather than just a monoid, since if $f^*$ is the inverse of $f$ under tensor product in $\mathrm{Mor}(X)$, then the equivalence class $\mathrm{M}(f^*)$ is an inverse of $\mathrm{M}(f)$ under the collapsed product of $\mathrm{M}(X)$. Clearly this map obeys the relation $\psi(f' \circ f) = \psi(f' \otimes f)$ for any $f: x \to y$, $f': y \to z$ in $X$, because it passes through $\mathrm{M}(X)$, and so we also have
+\begin{eq*} \begin{array}{rll}
+			\psi(f' \otimes f) & = & \psi(f' \circ f) \\
+			& = & \psi(f' \otimes \mathrm{id}_{y*} \otimes f) \\
+			& = & \psi(f') \otimes \psi(\mathrm{id}_{y*}) \otimes \psi(f) \\
+			& = & \psi(f') \otimes \psi(f) \otimes \psi(\mathrm{id}_{y*}) \\
+			& = & \psi(f' \otimes f) \otimes \psi(\mathrm{id}_{y*}) \\
+			& & \\
+			\implies \quad \psi(\mathrm{id}_{y*}) & = & e
+		\end{array}
+\end{eq*}
+But since $\psi$ is also a map from $\mathrm{Mor}(X)$ onto an abelian group, we know that it must factor uniquely though some other homomorphism $\mathrm{Mor}(X)^{\mathrm{ab}} \to \mathrm{M}(X)^{\mathrm{ab}}$, which we will call $\psi'$. This map will inherit from $\psi$ the property that
+\begin{eq*} \psi'\big( \, \mathrm{ab}(\mathrm{id}_{x}) \, \big) \quad = \quad \psi(\mathrm{id}_{x}) \quad = \quad e \end{eq*}
+for all  $x \in \mathrm{Ob}(X)$.
+
+Now let $A$ be an abelian group and $\phi: \mathrm{Mor}(X)^{\mathrm{ab}} \to A$ any homomorphism of groups which satisfies the condition $\phi(\mathrm{ab}(\mathrm{id}_x)) = e$ for all objects $x$. Then
+\begin{eq*} \begin{array}{rll}
+			\phi\big( \, \mathrm{ab}(f' \circ f) \, \big)  & = & \phi\big( \, \mathrm{ab}(f' \otimes \mathrm{id}_{y*} \otimes f) \, \big) \\
+			& = & \phi\big( \, \mathrm{ab}(f') \, \big) \otimes \phi\big( \, \mathrm{ab}(\mathrm{id}_{y*}) \, \big) \otimes \phi\big( \, \mathrm{ab}(f) \, \big) \\
+			& = & \phi\big( \, \mathrm{ab}(f') \, \big) \otimes \phi\big( \, \mathrm{ab}(f) \, \big) \\
+			& = & \phi\big( \, \mathrm{ab}(f' \otimes f) \, \big)
+		\end{array}
+\end{eq*}
+By \cref{Morder} this is the defining relation for the group $\mathrm{M}(X)^{\mathrm{ab}}$. It follows that for any $\phi$ with $\phi(\mathrm{ab}(\mathrm{id}_x)) = e$, there must exist a unique homomorphism $\mathrm{M}(X)^{\mathrm{ab}} \to A$ which factors $\phi$ through $\psi'$. But this in turn is just the universal property of the quotient $\mathrm{Mor}(X)^{\mathrm{ab}}/\mathrm{Ob}(X)^{\mathrm{ab}}$ in $\mathrm{Ab}$. Since colimits like quotient groups are unique up to isomorphism, we can therefore conclude that
+\begin{eq*} \mathrm{M}(X)^{\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{Mor}(X)^{\mathrm{ab}}}{\mathrm{Ob}(X)^{\mathrm{ab}}} \end{eq*}
+\end{proof}
+
+Now at last we are finished. All that remains for us to do is simply chain together all of our previous results from this chapter into a single description of the group $\mathrm{Mor}(L\mathbb{G}_n)$.
+
+\begin{prop} \label{Zmor} For crossed action operads $G$, the morphism monoid of $L\mathbb{G}_n$ is equal to
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \frac{\left(\quotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \end{eq*}
+\end{prop}
+\begin{proof}
+Consider the quotient group
+\begin{eq*} L\mathbb{G}_n(I,I) \quad = \quad \bigquotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}} \end{eq*}
+This quotient clearly depends on the way that have chosen to see $(s \times t)(L\mathbb{G}_n)$ as a subgroup of of the morphisms $L\mathbb{G}_n$. Recall that back in the proof of \cref{stGnsub}, we used the freeness of the monoid $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ to define a subgroup by choosing values for some function $\rho$ on generators. Since these $\rho(z,z')$ can be whichever element of the appropriate $G(m)$ we want, we can retroactively pick them in a way that makes our current calculations easier. Specifically, if we let $\rho(z_i, z_i) = e_1$ for each generator $z_i$ of $\mathbb{N}^{\ast n}$, then the corresponding element of the subgroup $(s \times t)(L\mathbb{G}_n)$ will be
+\begin{eq*} \alpha_{L\mathbb{G}_n}(e_1;z_i) \quad = \quad \mathrm{id}_{z_i}\end{eq*}
+Given this choice, clearly the group
+\begin{eq*} \mathrm{Ob}(L\mathbb{G}_n) \quad \cong \quad \{ \, \mathrm{id}_x \, ; \, x \in \, \mathrm{Ob}(L\mathbb{G}_n) \}\end{eq*}
+will be a subgroup of $(s \times t)(L\mathbb{G}_n)$, and thus $\mathrm{Ob}(L\mathbb{G}_n)^{\mathrm{ab}}$ a normal subgroup of $(s \times t)(L\mathbb{G}_n)^{\mathrm{ab}}$. It follows that
+\begin{eq*} \bigquotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L\mathbb{G}_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L\mathbb{G}_n)^{\mathrm{ab}}}\right)} \end{eq*}
+Using \cref{colquot} to change the numerator and \cref{Zobj,stpullback} to simplify the denominator, this quotient becomes
+\begin{eq*} \bigquotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \end{eq*}
+But from \cref{Zmor1} we know that
+\begin{eq*} \mathrm{Mor}(L\mathbb{G}_n) \quad = \quad (s \times t)(L\mathbb{G}_n) \, \times \, \bigquotient{{\mathrm{Mor}(L\mathbb{G}_n)}^{\mathrm{ab}}}{{(s \times t)(L\mathbb{G}_n)}^{\mathrm{ab}}} \end{eq*}
+and together these give the required description of the morphisms of $L\mathbb{G}_n$.
+\end{proof}
+
+\section{Abelianising sources and targets}
+ 
+To say that the expression for $\mathrm{Mor}(L\mathbb{G}_n)$ we just found is `complicated' would probably be an understatement. If we are to have any hope of eventually being able to use \cref{Zmor}, we need to work out a more explicit presentation for its quotient part. We'll start by trying to find the value of $(s \times t)(L\mathbb{G}_n)^{\mathrm{ab}}$ for crossed $G$, the abelian group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. This will require some careful consideration, since in general limits such as the pullback do not interact with abelianisation in a simple way. What would help is a suitable presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in terms of some generators and relations. 
+
+\begin{prop} \label{pushpres} The pullback group $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is generated by two families of elements,
+\begin{eq*} \langle x \rangle \quad := \quad (x, x) \quad \quad \text{and} \quad \quad \langle xy \rangle \quad := \quad (xy, yx) \end{eq*}
+where $x,y \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ are generators of the free group $\mathbb{Z}^{\ast n}$ or their inverses. These are subject to the relations
+\begin{eq*} \begin{array}{c}
+			\langle x \rangle^{-1} \quad = \quad \langle x^* \rangle, \quad \quad \quad \langle xy \rangle^{-1} \quad = \quad \langle y^*x^* \rangle \\
+			\\
+			\langle xx^* \rangle \quad = \quad e \quad = \quad \langle x^*x \rangle, \quad \quad \quad \langle xx \rangle \quad = \quad \langle x \rangle^2 \\
+			\\
+			\langle xy \rangle \langle x^* \rangle \langle xy^* \rangle \quad = \quad \langle x \rangle \\
+			\\
+			\langle xy \rangle \langle x^* \rangle \langle y^* \rangle \langle yx \rangle \quad = \quad \langle x \rangle \langle y \rangle  \quad = \quad \langle yx \rangle \langle x^* \rangle \langle y^* \rangle \langle xy \rangle \\
+			\\
+			\langle xy \rangle \langle x^* \rangle \langle xz \rangle \langle x^* \rangle \langle z^* \rangle \langle y^* \rangle \langle yz \rangle \langle y^* \rangle \langle yx \rangle \langle y \rangle \langle x^* \rangle \langle z^* \rangle^{-1} \langle zx \rangle \langle z^* \rangle \langle zy \rangle \quad = \quad \langle x \rangle\langle y \rangle\langle z \rangle 
+		\end{array}
+\end{eq*}
+\end{prop}
+\begin{proof}
+We'll begin by constructing a certain monoidal category, which we'll call $Z$. 
+\begin{itemize}
+\item The objects of $Z$ are the elements of the group $\mathbb{Z}^{\ast n}$, with the usual multiplication as the tensor product.
+\item There is a unique morphisms between any two objects $x$ and $y$ for which $\mathrm{ab}(x) = \mathrm{ab}(y)$, where $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$ is the quotient map of abelianisation. In other words, the morphisms of $Z$ are the elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, with multiplication as the tensor product and composition given by
+\begin{eq*} (x,y) \circ (y,z) \quad = \quad (x, z) \end{eq*}
+\item The identity map on an object $x$ is then the unique map $(x,x) : x \to x$.
+\end{itemize}
+$Z$ is almost the subcategory of $L\mathbb{G}_n$ whose morphisms are the subgroup isomorphic to $(s \times t)(L\mathbb{G}_n)$ that we chose in \cref{stZsub}. However, we never required those representatives to be closed under composition, so $Z$ is a strictly formal version of the subcategory on $(s \times t)(L\mathbb{G}_n)$, one that doesn't involve any specific choice of the map $\rho$. It is a well-defined monoidal category; the only thing that might not be immediately clear is the law of interchange, which is just given by
+\begin{eq*} \begin{array}{rll}
+			\big( \, (x,y) \circ (y,z) \, \big) \otimes \big( \, (x',y') \circ (y',z') \, \big) & = & (x,z) \otimes (x',z') \\
+			& = & (xx',zz') \\
+			& = & (xx',yy') \circ (yy',zz') \\
+			& = & \big( \, (x,y) \otimes (x',y') \, \big) \circ \big( \, (y,z) \otimes (y',z') \, \big) 
+		\end{array}
+\end{eq*}
+But now recall from \cref{tenscomp} that in any monoidal category the composition of morphisms along an intertible object can be rewritten in terms of only the tensor product. In the case of $Z$, where all of the objects have inverses, we will have
+\begin{eq*} (x,y) \circ (y, z) \quad = \quad (x, y) \otimes (y^*, y^*) \otimes (y, z) \end{eq*}
+Using this composition operation will make it easier to understand the structure of the group $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$.
+
+Next, let $\mathbb{S}_{2n}$ be the free $\mathrm{E}S$-algebra on $2n$ objects, where $S$ is the symmetric action operad. Then there is an obvious monoidal functor $\psi : \mathbb{S}_{2n} \to Z$, given by
+\begin{eq*} \begin{array}{rcrcl}
+			\psi & : & \mathbb{S}_{2n} & \to & Z \\
+			 & : & z_i & \mapsto & z_i \\
+			 & : & z_{n+i} & \mapsto & z_i^* \\
+			 & : & \alpha(\sigma; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) & \mapsto & (x_1 \otimes ... \otimes x_m, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)})
+		\end{array}
+\end{eq*}
+A necessary condition for $(y, y')$ to be an element of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is that there exists some sequence of generators and their inverses $x_1, ..., x_m \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ and some permutation $\sigma \in S_m$ for which
+\begin{eq*} y \, = \, x_1 \otimes ... \otimes x_m, \quad \quad \quad y' \, = \, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)} \end{eq*}
+Hence the functor $\psi$ is clearly surjective. It follows from this that if we can find a collection of morphisms which generate $\mathrm{Mor}(\mathbb{S}_{2n})$ under composition and tensor product, their images under $\psi$ will also generate $\mathrm{Mor}(Z) = \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ under composition and tensor product, and hence under just tensor product. To begin, we know that any permutation $\sigma \in S_m$ can be written as a product $\sigma_{i_k} \cdot ... \cdot \sigma_{i_1}$ of elementary transpositions, giving
+\begin{eq*} \begin{array}{rlll}
+			\alpha( \, \sigma \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha( \, \sigma_{i_k} \cdot ... \cdot \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+			& = &  \alpha( \, \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, )  \\
+			& & \circ \, \alpha( \, \sigma_{i_2} \, ; \,  \mathrm{id}_{x_{\sigma_{i_1}(1)}}, ..., \mathrm{id}_{x_{\sigma_{i_1}(m)}} \, ) \, \circ ... \\
+			& & \circ \, \alpha( \, \sigma_{i_k} \, ; \,  \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot ... \cdot \sigma_{i_1}(1)}}, ..., \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot ... \cdot \sigma_{i_1}(m)}} \, )
+		\end{array}
+\end{eq*}
+Then if $\sigma_i = (i \, \, i+1) \in S_m$ is some elementary transposition we will have
+\begin{eq*} \begin{array}{rll}
+			\alpha( \, (i \, \, i+1) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha( \, e_{i-1} \otimes (1 2) \otimes e_{m-i-1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+			& = & \mathrm{id}_{x_1 \otimes ... \otimes x_{i-1}} \otimes \alpha( \, (1 2) \, ; \, \mathrm{id}_{x_i}, \mathrm{id}_{x_{i+1}} \, ) \otimes \mathrm{id}_{x_{i+2} \otimes ... \otimes x_m}
+		\end{array}
+\end{eq*}
+Therefore all of the morphisms of $\mathbb{S}_{2n}$ are generated by just the identities and the action maps $\alpha( \, (1 2) \, ; \, \mathrm{id}_{x_1}, \mathrm{id}_{x_2} \, )$ for all pairs $x_1, x_2 \in \{z_1, ..., z_{2n} \}$. Passing through $\psi$, this means that elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ can always be expressed as a tensor product of elements of the form
+\begin{eq*} (x, x) \quad \quad \text{or} \quad \quad (x y, y x), \quad \quad \quad x, y \in \{z_1, ..., z_n, z_1^*, ..., z_n^* \} \end{eq*}
+These are exactly the $\langle x \rangle$ and $\langle xy \rangle$ given in the statement of the proposition.
+
+Now we need to consider what relations these generators will obey. Firstly, their definitions overlap in the following case:
+\begin{eq*} \langle xx \rangle \quad = \quad (xx,xx) \quad = \quad (x,x) \otimes (x,x) \quad = \quad \langle x \rangle\langle x \rangle \end{eq*}
+Next we have to account for the law of interchange we discussed earlier. Using \cref{tenscomp}, we see that this condition will induce the following relation:
+\begin{eq*} \begin{array}{rll}
+			\langle xy \rangle \langle x^* \rangle \langle y^* \rangle \langle yx \rangle & = & (xy, yx) \otimes (x^*, x^*) \otimes (y^*, y^*) \otimes (yx, xy) \\
+			& = & (xy, yx) \otimes (yx, yx)^* \otimes (yx, xy) \\
+			& = & (xy,yx) \circ (yx, xy) \\
+			& = & (yx, xy) \otimes (yx, yx)^* \otimes (yx, xy) \\
+			& = & (yx, xy) \otimes (x^*, x^*) \otimes (y^*, y^*) \otimes (xy, yx) \\
+			& = & \langle yx \rangle \langle x^* \rangle \langle y^* \rangle \langle xy \rangle
+		\end{array}
+\end{eq*}
+Also, by functoriality these generators will inherit any relations are obeyed to the corresponding morphisms of $\mathbb{S}_{2n}$, which in turn are just relations among different elementary transpositions. Each symmetric group $S_m$ is subject to three families of these, namely
+\begin{eq*} \begin{array}{rrll}
+			(\sigma_i)^2 & = & e & \\
+			\sigma_i \sigma_j & = & \sigma_j \sigma_i, & \quad j \neq i \pm 1 \\
+			(\sigma_i \sigma_{i+1})^3 & = & e &
+		\end{array}
+\end{eq*}
+The first one, the symmetry condition, corresponds to the relation
+\begin{eq*} \begin{array}{rrll}
+			& (xy, yx) \circ (yx, xy) & = & (xy, xy) \\
+			\implies & (xy, yx) \otimes (yx, yx)^* \otimes (yx, xy) & = & (x, x) \otimes (y,y) \\
+			\implies & (xy, yx) \otimes (x^*, x^*) \otimes (y^*, y^*)  \otimes (yx, xy) & = & (x, x) \otimes (y,y) \\
+			\implies & \langle xy \rangle\langle x^* \rangle\langle y^* \rangle\langle yx \rangle & = & \langle x \rangle\langle y \rangle \\
+		\end{array}
+\end{eq*}
+The second relation is just an example of interchange, which we have already looked at. The third yields
+\begin{eq*} \begin{array}{rll}
+			(xy, yx)(x^*,x^*)(xz,zx)(x^*,x^*)(z^*,z^*)(y^*,y^*)(yz,zy) & & \\
+			(y^*,y^*)(yx,xy)(y^*,y^*)(x^*,x^*)(z^*,z^*)(zx, xz)(z^*,z^*)(zy,yz) & = & (x,x)(y,y)(z,z) \\
+		\end{array}
+\end{eq*}
+or more simply,
+\begin{eq*} \langle xy \rangle \langle x^* \rangle \langle xz \rangle \langle x^* \rangle \langle z^* \rangle \langle y^* \rangle \langle yz \rangle \langle y^* \rangle \langle yx \rangle \langle y^* \rangle \langle x^* \rangle \langle z^* \rangle \langle zx \rangle \langle z^* \rangle \langle zy \rangle \quad = \quad \langle x \rangle\langle y \rangle\langle z \rangle \end{eq*}
+Finally, we need to check how the invertibility of the objects of $Z$ interacts with these generators. Most obviously, we have
+\begin{eq*} \begin{array}{rcccccl}
+			\langle x \rangle^{-1} & = & (x, x)^* & = & (x^*, x^*) & = & \langle x^* \rangle \\
+			\langle xy \rangle^{-1} & = & (xy, yx)^* & = & (y^*x^*, x^*y^*) & = & \langle y^*x^* \rangle \\
+		\end{array}
+\end{eq*}
+\begin{eq*} \begin{array}{rcccccl}
+			\langle xx^* \rangle & = & (xx^*, x^*x) & = & (I, I) & = & e \\
+			\langle x^*x \rangle & = & (x^*x, xx^*) & = & (I,I) & = & e \\
+		\end{array}
+\end{eq*}
+But we can also insert an element and its inverse into different points of the source and target:
+\begin{eq*} \begin{array}{rll}
+			\langle x \rangle & = & (x,x) \\
+			& = & (xyy^*, yy^*x) \\
+			& = & (xyy^*, yxy^*) \circ (yxy^*, yy^*x) \\
+			& = & (xyy^*, yxy^*) \otimes (yxy^*, yxy^*)^* \otimes (yxy^*, yy^*x) \\
+			& = & (xy, yx) \otimes (y^*,y^*) \otimes (y, y) \otimes (x,x)^*(y^*, y^*) \otimes (y, y) \otimes (xy^*, y^*x) \\
+			& = & \langle xy \rangle \langle x^* \rangle \langle xy^* \rangle
+		\end{array}
+\end{eq*}
+The relations $(xy, yx) = (zz^*xy, yzz^*x)$ and so forth are all composed of successive instance of the above, so these are all of the relations on our generators $\langle x \rangle$ and $\langle xy \rangle$.
+\end{proof}
+
+Of course, the collection of relations we just gave in \cref{pushpres} are nowhere near minimal. Many of them clearly interact with each other in ways that would let us simplify or cancel some relations, or even generators. However, we will not expend any effort trying to do this, because we do not need to. With this inefficient presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in hand, we have in a sense already found its abelianisation. After all, for any presentation of some group $H$, the group $H^{\mathrm{ab}}$ possesses a presentation consisting of the exact same generators, subject to the same relations, plus a commutativity condition. This too will not normally be the most efficient description of the new group, but that remains true even if the presentation of $H$ we started with was minimal, and so any time spent finding one will just be wasted. Instead, we'll suppress the urge to simplify \cref{pushpres} and move straight on to tackling $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$.
+
+\begin{prop} \label{abst}
+\begin{eq*} (\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}} \quad = \quad \mathbb{Z}^n \times {\mathbb{Z}}^{{n}\choose{2}} \end{eq*}
+\end{prop}
+\begin{proof}
+It follows immediately from \cref{pushpres} that the group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$ has a presentation on generators
+\begin{eq*} \langle x \rangle, \quad \langle xy \rangle, \quad x,y \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\} \end{eq*}
+subject to the relations
+\begin{eq*} \begin{array}{c}
+			\langle x \rangle^{-1} \quad = \quad \langle x^* \rangle, \quad \quad \quad \langle xy \rangle^{-1} \quad = \quad \langle y^*x^* \rangle \\
+			\\
+			\langle xx^* \rangle \quad = \quad e \quad = \quad \langle x^*x \rangle, \quad \quad \quad \langle xx \rangle \quad = \quad \langle x \rangle^2 \\
+			\\
+			\langle xy \rangle \langle x^* \rangle \langle xy^* \rangle \quad = \quad \langle x \rangle  \\
+			\\
+			\langle xy \rangle \langle x^* \rangle \langle y^* \rangle \langle yx \rangle \quad = \quad \langle x \rangle \langle y \rangle  \quad = \quad \langle yx \rangle \langle x^* \rangle \langle y^* \rangle \langle xy \rangle \\
+			\\
+			\langle xy \rangle \langle x^* \rangle \langle xz \rangle \langle x^* \rangle \langle z^* \rangle \langle y^* \rangle \langle yz \rangle \langle y^* \rangle \langle yx \rangle \langle y^* \rangle \langle x^* \rangle \langle z^* \rangle \langle zx \rangle \langle z^* \rangle \langle zy \rangle \quad = \quad \langle x \rangle\langle y \rangle\langle z \rangle 
+		\end{array}
+\end{eq*}
+but then also the commutativity conditions
+\begin{eq*} \langle x \rangle \langle y \rangle \, = \, \langle y \rangle \langle x \rangle, \quad \quad \langle x \rangle \langle yz \rangle \, = \, \langle z \rangle \langle xy \rangle, \quad \quad	\langle wx \rangle \langle yz \rangle \, = \, \langle yz \rangle \langle wx \rangle \end{eq*} 
+Rearranging all of the former equations with the latter in mind, we get
+\begin{eq*} \begin{array}{c}
+			\langle x \rangle^{-1} \quad = \quad \langle x^* \rangle, \quad \quad \quad \langle xy \rangle^{-1} \quad = \quad \langle y^*x^* \rangle \\
+			\\
+			\langle xx^* \rangle \quad = \quad e \quad = \quad \langle x^*x \rangle, \quad \quad \quad \langle xx \rangle \quad = \quad \langle x \rangle^2  \quad = \quad \langle xy \rangle \langle xy^* \rangle \\
+			\\
+			\langle xy \rangle \langle yx \rangle \quad = \quad \langle x \rangle^2 \langle y \rangle^2 \\
+			\\
+			\langle xy \rangle \langle yx \rangle \langle xz \rangle \langle zx \rangle \langle yz \rangle \langle zy \rangle \quad = \quad \langle x \rangle^4 \langle y \rangle^4 \langle z \rangle^4 
+		\end{array}
+\end{eq*}
+The last of these relations is just a consequence of the one above that,
+\begin{eq*} \begin{array}{rll}
+			\langle xy \rangle \langle yx \rangle \langle xz \rangle \langle zx \rangle \langle yz \rangle \langle zy \rangle & = & \big( \, \langle x \rangle^2 \langle y \rangle^2 \, \big)\big( \, \langle x \rangle^2 \langle z \rangle^2 \, \big)\big( \, \langle y \rangle^2 \langle y \rangle^2 \, \big) \\
+			& = & \langle x \rangle^4 \langle y \rangle^4 \langle z \rangle^4 
+		\end{array}
+\end{eq*}
+and in turn, the second-to-last follows from the relation above it,
+\begin{eq*} \begin{array}{rll}
+			\langle x \rangle^2 \langle y \rangle^2  & = & \big( \, \langle xy \rangle \langle xy^* \rangle \, \big)\big( \, \langle yx \rangle \langle yx^* \rangle \, \big) \\
+			& = & \langle xy \rangle \langle yx \rangle \langle xy^* \rangle  \langle xy^* \rangle^{-1} \\
+			& = & \langle xy \rangle \langle yx \rangle
+		\end{array}
+\end{eq*}
+Without these, we are just left with equations in two or fewer variables. Then for any two $z_i, z_j \in \mathbb{Z}^{\ast n}$, $i<j$, the first three relations tell us that we only need to consider generators of the form
+\begin{eq*} \langle z_i \rangle, \quad \langle z_j \rangle, \quad \langle z_i z_j \rangle, \quad \langle z_i^* z_j\rangle, \quad \langle z_i z_j^* \rangle, \quad \langle z_i^* z_j^* \rangle \end{eq*}
+Finally, the remaining relation $\langle x \rangle^2  =  \langle xy \rangle \langle xy^* \rangle$ induces a system of four linear equations on these six generators, which can be solved to give
+\begin{eq*} \begin{array}{rll}
+			\langle z_i^* z_j \rangle & = & \langle z_j \rangle^2 \langle z_i z_j \rangle^{-1} \\
+			\langle z_i z_j^* \rangle & = & \langle z_i \rangle^2 \langle z_i z_j \rangle^{-1} \\
+			\langle z_i^* z_j^* \rangle & = & \langle z_i \rangle^{-2} \langle z_j \rangle^{-2} \langle z_i z_j \rangle \\
+		\end{array}
+\end{eq*}
+and three independent variables, $\langle z_i \rangle$, $\langle z_j \rangle$, and $\langle z_i z_j \rangle$. In other words, $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$ is the free abelian group generated by elements of this form, for $1 \le i < j \le n$, which means that
+\begin{eq*} (\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}} \quad = \quad \mathbb{Z}^n \times \mathbb{Z}^{{n}\choose{2}} \end{eq*}
+\end{proof}
+
+From this presentation, it should be immediately obvious how to calculate the denominator from \cref{Zmor}.
+
+\begin{cor} \label{nchoose2}
+\begin{eq*} \begin{array}{rll}
+			 \bigquotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n} & = & \bigquotient{\mathbb{Z}^n \times \mathbb{Z}^{{n}\choose{2}}}{\mathbb{Z}^n} \\[\bigskipamount]
+			& = & \mathbb{Z}^{{n}\choose{2}} 
+		\end{array}
+\end{eq*}
+\end{cor}
+\begin{proof}
+The $\mathbb{Z}^n$ term in the product of \cref{abst} represents the free abelian group generated by the morphisms
+\begin{eq*} \langle x \rangle \quad := \quad (x,x) \quad = \quad \mathrm{id}_{x} \end{eq*}
+But this is exactly the same $\mathbb{Z}^n$ group that appears in the denominator of our quotient, $\mathrm{Ob}(L\mathbb{G}_n)^{\mathrm{ab}}$, so they cancel straightforwardly.
+\end{proof}
+
+Before moving on, we should be clear about exactly which $\mathbb{Z}^{{n}\choose{2}}$ subgroup of $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$ we have just identified --- after all, we will eventually need to perform a quotient involving it. In \cref{pushpres} we defined the generators $\langle z_i z_j \rangle$ to be the elements $(z_i \otimes z_j, z_j \otimes z_i)$ of the monoid $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, which are the source/target combinations of morphisms of $L\mathbb{G}_n$. Using \cref{stZsub} we can identify this with a particular submonoid of the morphisms of $L\mathbb{G}_n$, specifically the image under $q$ of the submonoid $\mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n} = (s \times t)(\mathbb{G}_{2n}) \subseteq \mathrm{Mor}(\mathbb{G}_{2n})$ we chose in \cref{stGnsub}. In particular, since on objects we have $q(z_i) = z_i$ for all $1 \le i \le n$, the generators $(z_i \otimes z_j, z_j \otimes z_i)$ of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ are clearly the image of the generators $(z_i \otimes z_j, z_j \otimes z_i)$ of $\mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n}$. 
+
+Thus, consider the following commutative diagram, whose top-left region comes from \cref{stZsub}, bottom-left from the naturality of the adjoint functor $\mathrm{M}( \, \_ \, )^{\mathrm{gp},\mathrm{ab}}$, and right-hand square from \cref{colquot}.
+\begin{eq*} \begin{tikzcd}[column sep=tiny] 
+& (s \times t)(\mathbb{G}_{2n}) \ar[dl, hookrightarrow] \ar[rr, "q"] & & (s \times t)(L\mathbb{G}_{n}) \ar[dl, hookrightarrow] \ar[dr] & \\
+\mathrm{Mor}(\mathbb{G}_{2n}) \ar[rr, "q"] \ar[dr] & & \mathrm{Mor}(L\mathbb{G}_n) \ar[dr] & & \frac{\displaystyle (s \times t)(L\mathbb{G}_{n})^{\mathrm{ab}}}{\displaystyle \mathrm{Ob}(L\mathbb{G}_n)^{\mathrm{ab}}} \ar[dl, hookrightarrow] \\
+& \mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp},\mathrm{ab}}
+\end{tikzcd} \end{eq*}
+What we've just said that if we start with the element $(z_i \otimes z_j, z_j \otimes z_i)$ of $(s \times t)(\mathbb{G}_{2n})$, moving clockwise around the diagram will send it to the generator $\langle z_i z_j \rangle$ in ${(s \times t)}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_n)^{\mathrm{ab}} = \mathbb{Z}^{{n}\choose{2}}$. If we instead move anticlockwise, then we will first pass to our chosen representative $\alpha_{\mathbb{G}_{2n}}(\rho(z_i \otimes z_j, z_j \otimes z_i); \mathrm{id}_{z_i}, \mathrm{id}_{z_j})$ in $\mathrm{Mor}(\mathbb{G}_{2n})$, then its equivalence class in $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}$, then its equivalence class in $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp},\mathrm{ab}}$, using the fact that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is the canonical map associated with the quotient
+\begin{eq*} \mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp, ab}}}{\Delta} \end{eq*}
+which we proved back in \cref{Zmor2}. Since the bottom-right inclusion completes this circuit, we see that the specific subgroup we are talking about in \cref{nchoose2} is
+\begin{eq*} \mathbb{Z}^{{n}\choose{2}} \, = \, \big\{ \, \big[ \, \alpha_{\mathbb{G}_{2n}}\big( \, \rho(z_i \otimes z_j, z_j \otimes z_i) \, ; \,  \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) \, \big] \, : \, 1 \le i < j \le n \, \big\} \, \subseteq \, \mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}\end{eq*}
+
+Of course, $\rho$ was an arbitrary permutation-preserving map $\mathbb{N}^{\ast n} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to G$, chosen using the freeness of its source monoid. Thus if we wanted to we could just pick the same element $\rho(2) \in \pi^{-1}((1 \, 2))$ to act as $\rho(z_i \otimes z_j, z_j \otimes z_i)$ for all $i, j$. For simplicity's sake, we will indeed be assuming this from now on.
+
+\section{Freely generated action operads}
+
+The next group we are interested in understanding a little better is $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}$. Per \cref{Morder}, the operations needed to produce this group out of $\mathrm{Mor}(\mathbb{G}_{2n}) = G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}$ can be done in any order we choose, and so we will save the identification of $\otimes$ and $\circ$ until last. This will let us keep the tensor product as simple as possible whilst we are in the process of group completing and abelianising it.
+
+So the obvious place to start is to ask how to simplify the expression $(G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n})^{\mathrm{gp}}$. In principle we might not be able to, since for generic $G$ we lack any sort of a presentation by generators and relations. It would help if we at least knew that the group completion map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ was injective --- or equivalently, that there exists any group $H$ and injective homomorphism $G \to H$ --- but proving this kind of statement is notoriously tricky. In 1935, a paper by Anton Sushkevich `proved' that a semigroup, and thus a monoid, could be embedded into a group if and only if it was cancellative.
+
+\begin{defn} We say that a monoid $M$ is \emph{left-cancellative} if for any $a, b, c \in M$, we have
+\begin{eq*} ab \, = \, ac \quad \implies \quad b \, = \, c \end{eq*}
+That is, common factors may be cancelled out on the left. Similarly, we call $M$ \emph{right-cancellative} if common factors can be cancelled on the right:
+\begin{eq*} ac \, = \, bc \quad \implies \quad a \, = \, b \end{eq*}
+A monoid that is both left- and right-cancellative is simply referred to as \emph{cancellative}.
+\end{defn}
+
+However, just two years later Anatoly Malcev published a simple counterexample \cite{immer1} to Sushkevich's proposition. To make matters worse, in 1939 Malcev would go on to show that the actual set of necessary and sufficient conditions for a semigroup to be embeddable in a group consisted of an infinite collection of independent relations \cite{immer2}. Thus the requirement that the group completion of monoid be injective is a deceptively complicated one. 
+
+Luckily for us though, there does exist a much simpler set of sufficient-but-not-necessary conditions for embeddability which all action operads $G$ happen to satisfy. These come from a 1948 paper by Raouf Doss \cite{semi}, and in addition to cancellativity they depend on the way that a monoid deals with multiples of different elements being equal.
+
+\begin{defn} An element $a$ of a monoid $M$ is said to be \emph{regular on the left} if it shares a common left-multiple with every other element of $M$. That is,
+\begin{eq*} \forall \, b \in M, \quad \exists \, c, d \in M \quad : \quad ca \, = \, db \end{eq*}
+The monoid as a whole is said to be \emph{regular on the left} if all of its elements are, but we can also define a notion of $M$ being \emph{quasi-regular on the left}. This means that any two elements $a,b$ of $M$ will share a common left-multiple if and only if
+\begin{eq*} \exists \, c, d \in M \quad : \quad ca \, = \, db, \quad \quad \text{$c$ or $d$ is regular in $M$} \end{eq*}
+Again, we can define a similar condition for being quasi-regular on the right, and we say that a monoid is \emph{quasi-regular} when it is both.
+\end{defn}
+
+\begin{prop} If a monoid $M$ is cancellative and quasi-regular on the left, then it can be embedded into a group.
+\end{prop}
+
+For a given action operad, both of these conditions will follow from the way that operadic multiplication interacts with the elements of the abelian group $G(0)$.
+
+\begin{prop} \label{cqr} Every action operad $G$ is both cancellative and quasi-regular as a monoid under tensor product.
+\end{prop}
+\begin{proof}
+Let $g$ and $g'$ be any elements of $G$ which share a left-multiple, so that there exists at least one pair $h, h'$ in $G$ for which
+\begin{eq*} h \otimes g \quad = \quad h' \otimes g' \end{eq*}
+and without loss of generality assume that $|g| \ge |g'|$, so also $|h| \le |h'|$. The operadic product $\mu(h; e_0, ..., e_0)$ is clearly an element of the group $G(0)$, and we know from \cref{G0abel} that this is an abelian group under tensor product, so also let $\mu(h; e_0, ..., e_0)^*$ be its inverse. Then
+\begin{eq*} \begin{array}{rll}
+			g & = & \mu(h; e_0, ..., e_0)^* \otimes \mu(h; e_0, ..., e_0) \otimes \mu(g; e_1, ..., e_1) \\
+			& = & \mu(h; e_0, ..., e_0)^* \otimes \mu\big( \, e_2 \, ; \, \mu(h; e_0, ..., e_0), \mu(g; e_1, ..., e_1) \, \big) \\
+			& = & \mu(h; e_0, ..., e_0)^* \otimes \mu\big( \, \mu(e_2; h, g) \, ; \, e_0, ..., e_0, e_1, ..., e_1 \, \big) \\
+			& = & \mu(h; e_0, ..., e_0)^* \otimes \mu\big( \, h \otimes g \, ; \, e_0, ..., e_0, e_1, ..., e_1 \, \big) \\
+			& = & \mu(h; e_0, ..., e_0)^* \otimes \mu\big( \, h' \otimes g' \, ; \, e_0, ..., e_0, e_1, ..., e_1 \, \big) \\
+			& = & \mu(h; e_0, ..., e_0)^* \otimes \mu\big( \, \mu(e_2; h', g') \, ; \, e_0, ..., e_0, e_1, ..., e_1 \, \big) \\
+			& = & \mu(h; e_0, ..., e_0)^* \otimes \mu\big( \, e_2 \, ; \, \mu(h'; e_0, ..., e_0, e_1, ..., e_1), \mu(g'; e_1, ..., e_1) \, \big) \\
+			& = & \mu(h; e_0, ..., e_0)^* \otimes \mu(h'; e_0, ..., e_0, e_1, ..., e_1) \otimes \mu(g'; e_1, ..., e_1) \\
+			& = & \big( \, \mu(h; e_0, ..., e_0)^* \otimes \mu(h'; e_0, ..., e_0, e_1, ..., e_1) \, \big) \otimes g' \\
+			& =: & k \otimes g'
+		\end{array}
+\end{eq*}
+Put another way,
+\begin{eq*} \exists \, e_0, k \in G \quad : \quad e_0 \otimes g \quad = \quad g \quad = \quad k \otimes g' \end{eq*}
+and $e_0$ obviously regular, since it is the unit $I$ in $G$. Thus $G$ is quasi-regular on the left.  For quasi-regularity on the right, there is an argument  which is completely analogous to what we have done already, but which lets us rewrite $h'$ as $h \otimes k'$ for some $k' \in G$.
+
+Moreover, if we set $h = h'$ then we see that
+\begin{eq*} k \quad = \quad \mu(h; e_0, ..., e_0)^* \otimes \mu(h; e_0, ..., e_0) \quad = \quad I \end{eq*}
+and so
+\begin{eq*} h \otimes g \, = \, h \otimes g' \quad \implies \quad g \, = \, g'  \end{eq*}
+which is left-cancellativity. Right-cancellativity follows from quasi-regularity on the right in the same way.
+\end{proof}
+
+\begin{cor} \label{gpcompin} The canonical map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ associated with the group completion of $G$ is an inclusion.
+\end{cor}
+
+As a result of this, from now on we can just write $g$ for $\mathrm{gp}(g)$ and $g^*$ for $\mathrm{gp}(g)^*$ in order to save on space.
+
+Knowing that the monoid $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ always has a particularly well-behaved group completion is a good first step towards finding a description for said completion. However, it is worth noting that \cref{gpcompin} is true for all action operads $G$, which is more than we really need. After all, the only reason we care about $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}$ is that we know from \cref{Zmor} that it is crucial to understanding the morphisms of \emph{crossed} action operads. Thus it would be nice if we could use some consequence of crossedness to tell us even more about the inclusion map $\mathrm{gp} : G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to {(G \times_{\mathbb{N}} \mathbb{N}^{\ast n})}^{\mathrm{gp}}$.
+
+One such consequence was given back in \cref{noscalarcross}. If $G$ is a crossed action operad, then the action operad $G'$ defined by $G'(m) = G(m)/G(0)$ possesses the same free algebra on invertible algebra that $G$ does. In other words, we don't even need to worry about finding $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}$ for all crossed $G$, merely those which have a trivial $G(0)$. As it turns out, this fact is hugely relevant to our search for group completions, since elements of $G(0)$ are the only ones in $G$ which might already have an inverse under tensor product. This follows from additivity of lengths:
+\begin{eq*} \begin{array}{rclcrcccll}
+			g \otimes h & = & e_0 & \quad \implies \quad & |g| + |h| & = & |e_0| & = & 0 & \\
+			& & & \quad \implies \quad & & & |g| & = & -|h|, & \quad |g|, |h| \in \mathbb{N} \\
+			& & & \quad \implies \quad & |g| & = & |h| & = & 0& 
+		\end{array}
+\end{eq*}
+Cancellativity, quasi-regularity, and lack of invertible objects then combine to give something much stronger than mere injectivity of the group completion map.
+
+\begin{prop} \label{Gfree} If $G$ is an action operad with trivial $G(0)$, then $G$ is a free monoid under tensor product.
+\end{prop}
+\begin{proof}
+Let $\mathcal{G}$ be a subset of the monoid $G$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $G$. Notice that every relation in $\mathcal{R}$ can be written in the form $h \otimes g = h' \otimes g'$, where $g,g' \in \mathcal{G}$ are generators and $h,h' \in G$ some other elements. This is because the only other kind of relations are one like $h \otimes g = e_0$, and as we've seen this is not possible if $G(0)$ is trivial. We'll assume that in this case $|g| \ge |g'|$ and hence $|h| \le |h'|$. Using the reasoning from the proof of \cref{cqr}, we can then find $k, k' \in G$ for which
+\begin{eq*} g \, = \, k \otimes g', \quad \quad \quad h' \, = \, h \otimes k' \end{eq*}
+It follows that
+\begin{eq*} h \otimes k \otimes g' \quad = \quad h \otimes g \quad = \quad h' \otimes g' \quad = \quad h \otimes k \otimes g' \end{eq*}
+and thus by left- and right-cancellativity, $k = k'$.  In other words, the relation $h \otimes g = h' \otimes g'$ implies and is implied by a pair of relations $g = k \otimes g'$, $h' = h \otimes k$. 
+
+There are a few scenarios to consider here. 
+\begin{itemize}
+\item $|k| = |g|$. This is actually not possible, as it would follow from additivity of length that $|g'|=0$, and thus by assumption $g' = e_0$, which is not a generator of $G$.
+\item $|k|=0$. This would mean that $k=e_0$, and so we'd also get $g=g'$ and $h = h'$. Thus we could simplify the presentation of $G$ by replacing the relation $h \otimes g = h' \otimes g'$ in the set $\mathcal{R}$ with $h' = h$.
+\item $0 < |k| < |g|$. In this case $|g| > |g'|$ and thus $g \neq g'$, and so we could change our presentation of $G$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$.
+\end{itemize}
+Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller lengths, and replacing relations with ones whose left- and right-hand side have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $e_0 = e_0$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminated all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
+\end{proof} 
+
+Whenever we can be sure of that $G$ is a free monoid --- whether by using \cref{Gfree} or some other method --- this freeness will carry over directly to the algebras $\mathbb{G}_n$, giving us a new way to represent their morphisms.
+
+\begin{prop} \label{freemor} Let $\mathcal{G}$ be a set that freely generates the action operad $G$ under tensor product, and for each $m \in \mathbb{N}$ define $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, the subset of $\mathcal{G}$ containing all elements of length $m$. Then the monoid $\mathrm{Mor}(\mathbb{G}_n)$ is 
+\begin{eq*} G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathbb{N}^{\ast ( \, |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... \, )} \end{eq*}
+\end{prop}
+\begin{proof}
+Let $(g, w)$ be an arbitrary element of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. The monoid $G$ is free of the generators $\mathcal{G}$, and $\mathbb{N}^{\ast n}$ is free on $\{z_1, ..., z_n\}$, so we can find unique expansions of $g$ and $w$ as tensor products
+\begin{eq*} \begin{array}{rclcrcl}
+			g & = & g_1 \otimes ... \otimes g_k, & \quad & g_1, ..., g_k & \in & \mathcal{G} \\
+			w & = & x_1 \otimes ... \otimes x_m, & \quad & x_1, ..., x_m & \in & \{z_1, ..., z_n\}
+		\end{array}
+\end{eq*}
+But each of the generators $z_1, ..., z_n$ has length 1, so the index $m$ here is really just the length $|w|$, which by the definition of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is also the length $|g| = |g_1| + ... + |g_k|$. Therefore we may write
+\begin{eq*} \begin{array}{rll}
+			(g, w) & = & (g_1 \otimes ... \otimes g_k, x_1 \otimes ... \otimes x_{|w|}) \\
+			& = & (g_1, x_1 \otimes ... \otimes x_{|g_1|}) \otimes (g_2, x_{|g_1|+1} \otimes ... \otimes x_{|g_1|+|g_2|}) \otimes ... \\
+			& & \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|})
+		\end{array}
+\end{eq*}
+That is, every element in $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ may be expressed as a product of elements from the subset $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. Furthermore, the freeness of $G$ and $\mathbb{N}^{\ast n}$ make sure that this expansion is unique, since
+\begin{eq*} \begin{array}{rl}
+			& (g_1, x_1 \otimes ... x_{|g_1|}) \otimes ... \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|}) \\
+			= & (g'_1, x'_1 \otimes ... \otimes x'_{|g'_1|}) \otimes ... \otimes (g'_{k'}, x'_{|g'_1| + ... + |g'_{k'-1}|+1} \otimes ... \otimes x'_{|g'_1| + ... + |g'_{k'}|})
+		\end{array}
+\end{eq*}
+\begin{eq*} \begin{array}{rcclcccl}
+			\implies \quad \quad & g_1 \otimes ... \otimes g_k & = & g'_1 \otimes ... \otimes g'_{k'}, & \quad \quad & x_1 \otimes ... \otimes x_{m} & = & x'_1 \otimes ... \otimes x'_{m'} \\
+			& & & & & & & \\
+			\implies \quad \quad & g_i \, = \, g'_i, & & 1 \le i \le k = k', & \quad \quad & x_j \, = \, x'_j, & & 1 \le j \le m = m' 
+		\end{array}
+\end{eq*}
+Thus $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is the free monoid on the set 
+\begin{eq*} \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathcal{G}_0 \times \{ z_1, ..., z_n \}^0  \, \cup \, \mathcal{G}_1 \times \{ z_1, ..., z_n \}^1 \, \cup \, \mathcal{G}_2 \times \{ z_1, ..., z_n \}^2 \, \cup \, ...\end{eq*}
+which is just the $m$-fold free product of $\mathbb{N}$ with itself, where $m$ is the number of generators,
+\begin{eq*} \begin{array}{rll}
+			|\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}| & = & |\mathcal{G}_0| \cdot |\{ z_1, ..., z_n \}^0|  \, + \, |\mathcal{G}_1| \cdot |\{ z_1, ..., z_n \}^1| \, + \, |\mathcal{G}_2| \cdot |\{ z_1, ..., z_n \}^2| \, + \, ... \\
+			& = & |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... 
+		\end{array}	
+\end{eq*}
+\end{proof}
+
+This makes the group completion and abelianisation we want to do trivial. 
+
+\begin{cor} \label{freemorgpab} If $\mathcal{G}$ is a set that freely generates $G$ under tensor product, and $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, then the abelian group $\mathrm{Mor}(\mathbb{G}_n)^{\mathrm{gp}, \mathrm{ab}}$ is 
+\begin{eq*} (G \times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...} \end{eq*}
+\end{cor}
+
+Now all that remains is to account for what happens when we collapse the morphisms of $\mathbb{G}_n$ --- that is, evaluate the quotient
+\begin{eq*} \mathrm{M}(\mathbb{G}_n)^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}}{\otimes \sim \circ} \end{eq*}
+Unfortunately, because this will depend on the exact multiplicative structure of the operad groups $G(m)$, there is no way to carry out this computation in general. The best we can say is that as composition in $\mathrm{Mor}(\mathbb{G}_n)$ is partly determined by the group multiplication of the $G(m)$, then in place of $\mathcal{G}$ in the quotient in \cref{freemorgpab} it would suffice to have some collection of elements which generate $G$ when using multiplication as well as tensor product.
+
+\begin{lem} Let $\mathcal{G}$ be a subset of the action operad $G$ that freely generates it under tensor product, and let $\mathcal{G'}$ be a subset of $\mathcal{G}$ which generates $G$ under a combination of tensor product and group multiplication. Also let $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$ and $\mathcal{G}'_m := \mathcal{G}' \, \cap \,  G(m)$. Then
+
+\begin{eq*} \bigquotient{\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}}{\otimes \sim \circ} \quad \quad = \quad \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}'_0| + n|\mathcal{G}'_1| + n^2 |\mathcal{G}'_2| + ...}}{\otimes \sim \circ} \end{eq*}
+\end{lem}
+\begin{proof} 
+Compostion in $\mathrm{Mor}(\mathbb{G}_n)$ is given by
+\begin{eq*} \alpha(g'; \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}}) \, \circ \, \alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \quad = \quad \alpha(g'g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})\end{eq*}
+which in $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ terms is
+\begin{eq*} \big( \, g', \pi(g^{-1})(w) \, \big) \, \circ \, (g, w) \quad = \quad (g'g, w) \end{eq*}
+Thus any element $(g, w)$ of $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ can be expressed in terms of elements of $\mathcal{G}' \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ by way of tensor product and compostion. All we need to do is find and expansion for $g$ using $\mathcal{G}'$, and then pull all of the multiplication and tensors outside of the brackets via the equation above and those we employed back in \cref{freemon}. This means that when we take the quotient by the relation $\otimes \sim \circ$, the equivalence class for $(g, w)$ will be a tensor product of equivalence classes of elements from $\mathcal{G}' \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. In other words, every generator of $\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}/\otimes \sim \circ$ is contained within the subgroup coming from $\mathcal{G}'$, and therefore so is the whole of the group. That is, 
+\begin{eq*} \begin{array}{rcl}
+			\bigquotient{\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}}{\otimes \sim \circ} \quad & = & \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}' \, \cap \, \mathcal{G}_0| + n|\mathcal{G}' \, \cap \, \mathcal{G}_1| + n^2 |\mathcal{G}' \, \cap \, \mathcal{G}_2| + ...}}{\otimes \sim \circ} \\
+			& = & \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}'_0| + n|\mathcal{G}'_1| + n^2 |\mathcal{G}'_2| + ...}}{\otimes \sim \circ}
+		\end{array}
+\end{eq*}
+\end{proof}
+
+Beyond this, the value of this quotient will have to be found separately for each individual action operad. 
