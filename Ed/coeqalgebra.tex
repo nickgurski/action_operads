@@ -50,7 +50,7 @@ which is the presentation of $\mathbb{Z}^{\ast n}$.
 But by \cref{Obadj}, $\mathrm{Ob}$ is a left adjoint and hence preserves all colimits. Thus the cokernel of $\mathrm{Ob}(\delta)$ is just the underlying homomorphism of the cokernel of $\delta$. Therefore $\mathrm{Ob}(Q) = \mathbb{Z}^{\ast n}$, and $\mathrm{Ob}(q)$ is the quotient map $\mathbb{N}^{\ast 2n} \to \mathbb{Z}^{\ast n}$ sending $z_i \mapsto z_i$ and $z_{n+i} \mapsto z_i^*$ for $1 \le i \le n$.
 \end{proof}
 
-Thus every object of the cokernel algebra $Q$ is invertible. Thus $q: \mathbb{G}_{2n} \to Q$ can be composed with an inclusion to give a well-defined object of the category $(\mathbb{G}_n \downarrow \mathrm{inv})$, and hence we can use the initiality of $\eta$ to determine the following result:
+Thus every object of the cokernel algebra $Q$ is invertible, and so $q: \mathbb{G}_{2n} \to Q$ can be composed with an inclusion to give a well-defined object of the category $(\mathbb{G}_n \downarrow \mathrm{inv})$. Hence we can use the initiality of $\eta$ to determine the following result:
 
 \begin{prop}\label{coker} Let $i: \mathbb{G}_n \to \mathbb{G}_{2n}$ be the inclusion of $\mathrm{E}G$-algebras defined on generators by $i(z_i) = z_i$. Then $i \circ q$ is an initial object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. In particular, this means that
 \begin{eq*} Q \quad \cong \quad L\mathbb{G}_n \end{eq*}
@@ -58,7 +58,7 @@ Thus every object of the cokernel algebra $Q$ is invertible. Thus $q: \mathbb{G}
 \begin{proof}
 Let $\psi: \mathbb{G}_n \to X$ be an arbitrary object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. Since $\mathbb{G}_n$ is the free $\mathrm{E}G$-algebra on $n$ objects, we can use it and $\psi$ to define a new map, $\psi^*: \mathbb{G}_n \to X$, which takes the values
 \begin{eq*} \psi^*(z_i) \quad := \quad \psi(z_i)^* \end{eq*}
-on generators. Using these two functors we can define a new map, $\psi + \psi^*$, via the universal property of the coproduct:
+on generators. Then using these functors we can define another new map, $\psi + \psi^*$, via the universal property of the coproduct:
 \begin{eq*} \begin{tikzcd}
 & \mathbb{G}_n + \mathbb{G}_n \ar[dd, dashed, "\psi + \psi^*"] & \\
 \mathbb{G}_n \ar[ur, hookrightarrow, "i"] \ar[dr, "\psi"'] & & \mathbb{G}_n \ar[ul, hookrightarrow, "i'"'] \ar[dl, "\psi^*"] \\
@@ -127,13 +127,13 @@ It's worth noting that we have not given a method for actually taking cokernels 
 
 Of course, by \cref{coker} the fact that $q$ is a cokernel is equivalent to it being initial, and so while they may not look it at first glance, these two approaches are secretly the same. Thus from now on whenever we are trying to determine some aspect of $L\mathbb{G}_n$, we will make sure to take a look at both methods, just in case there are some properties of our free algebra which are more readily apparent from one description than another.
 
-\section{$L\mathbb{G}_n$ as a surjective coequaliser} \label{surjcoeq}
+\section{$L\mathbb{G}_n$ as a surjective coequaliser} \label{surjcoeq} 
 
-An immediate consequence our new cokernel perspective of $L\mathbb{G}_n$ is that, since left adjoint functor all preserve colimits, \cref{Obadj,concompadj} now both imply results about the partial surjectivity of this new map $q$. The former says that since $\mathrm{Ob}(q)$ is a cokernel map of monoids, and hence that every object of $L\mathbb{G}_n$ is the image under $q$ of some object of $\mathbb{G}_{2n}$; the latter says a similar thing for connected components. From this one might guess that $q$ will just turn out to be a surjective map of $\mathrm{E}G$-algebras, and indeed this is the case.
+An immediate consequence our new cokernel perspective of $L\mathbb{G}_n$ is that, since left adjoint functors all preserve colimits, \cref{Obadj,concompadj} now both imply results about the partial surjectivity of this new map $q$. The former says that since $\mathrm{Ob}(q)$ is a cokernel map of monoids, and hence that every object of $L\mathbb{G}_n$ is the image under $q$ of some object of $\mathbb{G}_{2n}$; the latter says a similar thing for connected components. From this one might guess that $q$ will just turn out to be a surjective map of $\mathrm{E}G$-algebras, and indeed this is the case.
 
 Unfortunately, we can not go about proving that $q$ is surjective on morphisms by a similar adjunction technique, since the best we have is the one from \cref{Moradj} and it will only tell us about the map $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$. However, there is a general result about the coequalisers of $\mathrm{E}G$-algebras that we can prove to get around this.
 
-\begin{prop}\label{coeqsurj} Let $\phi, \phi' : X \to Y$ be a pair of parallel $\mathrm{E}G$-algebra maps, and $k: Y \to Z$ their coequaliser in $\mathrm{E}G\mathrm{Alg}_S$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
+\begin{prop}\label{coeqsurj} Let $\phi, \phi' : X \to Y$ be a pair of $\mathrm{E}G$-algebra maps, and $k: Y \to Z$ their coequaliser in $\mathrm{E}G\mathrm{Alg}_S$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
 \end{prop}
 \begin{proof}
 We begin by mirroring the proof of \cref{Qobj}. We know that the functor $\mathrm{Ob} : \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint, by \cref{Obadj}, and thus preserves all colimits. It follows that the monoid homomorphism $\mathrm{Ob}(k): \mathrm{Ob}(Y) \to \mathrm{Ob}(Z)$ is the coequaliser of the parallel pair $\mathrm{Ob}(\phi), \mathrm{Ob}(\phi') : \mathrm{Ob}(X) \to \mathrm{Ob}(Y)$ in $\mathrm{Mon}$, or in other words
@@ -402,7 +402,7 @@ But this is supposed to be a morphism $f:I\to I$, so we know that $x_1 \otimes .
 As $f$ was chosen arbitrarily, it follows that $L\mathbb{G}_n(I,I) = \{ \mathrm{id}_I \}$.
 \end{proof}
 
-Ultimately, we will see that there is very little we can say for sure about the unit endomorphisms of $L\mathbb{G}_n$ when $G$ is not crossed, other than \cref{noscalarnoncross}. For this reason, the main theorems of this paper, \cref{freeinvalgG1,freeinvalgc}, will end up describing only those invertible $\mathrm{E}G$-algebras whose action operads are either $G(1)$-generated or crossed, respectively.
+Ultimately, we will see that there is very little we can say for sure about the unit endomorphisms of $L\mathbb{G}_n$ when $G$ is not crossed, other than \cref{noscalarnoncross}. For this reason, the main theorems of this thesis, \cref{freeinvalgG1,freeinvalgc}, will end up describing only those invertible $\mathrm{E}G$-algebras whose action operads are either $G(1)$-generated or crossed, respectively.
 
 \section{$L\mathbb{G}_n$ as a coequaliser in $\mathrm{MonCat}$} \label{colimmoncat}
 
@@ -418,7 +418,7 @@ be defined exactly as those from \cref{Obdef,Edef}, except without the requireme
 The same as the proof of \cref{Obadj}.
 \end{proof}
 
-\begin{prop} \label{coeqsurjmon} Let $\phi, \phi' : X \to Y$ be a pair of parallel monoidal functors, and $k: Y \to Z$ their coequaliser in $\mathrm{MonCat}$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
+\begin{prop} \label{coeqsurjmon} Let $\phi, \phi' : X \to Y$ be a pair of monoidal functors, and $k: Y \to Z$ their coequaliser in $\mathrm{MonCat}$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
 \end{prop}
 \begin{proof}
 The same as the proof of \cref{coeqsurj}, but with \cref{Obadjmon} in place of \cref{Obadj}, and no reference to $k(Y)$ being a sub-$\mathrm{E}G$-algebra.

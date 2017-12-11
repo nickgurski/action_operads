@@ -1,7 +1,7 @@
 \chapter{Free $\mathrm{E}G$-algebras} 
 \label{initialalgebra}
 
-From here on out, everything we do in this paper will be geared towards goal of describing the free $\mathrm{E}G$-algebras on $n$ invertible objects, for each action operad $G$. By \cref{Gmonthm}, this will then tell us how to construct the equivalent free structure for whole host of strict monoidal categories. Specifically, we will proceed by showing that such algebras are the initial objects of a particular comma category, in accordance with some well known properties of adjunctions and their units. Using this initial object perspective will allow us to recover all of the data associated with the objects of a given free invertible algebra --- what those objects are, how they act under tensor product, and which pairs of objects form the source and target of at least one morphism. Unfortunately, a concrete description of the morphisms themselves will ultimately remain elusive. We can get tantalisingly closer though, and an examination of the exact way that this method fails will provide the necessary insight to motivate a more successful approach in later chapters. 
+From here on out, everything we do in this thesis will be geared towards goal of describing the free $\mathrm{E}G$-algebras on $n$ invertible objects, for each action operad $G$. By \cref{Gmonthm}, this will then tell us how to construct the equivalent free structure for whole host of strict monoidal categories. Specifically, we will proceed by showing that such algebras are the initial objects of a particular comma category, in accordance with some well known properties of adjunctions and their units. Using this initial object perspective will allow us to recover all of the data associated with the objects of a given free invertible algebra --- what those objects are, how they act under tensor product, and which pairs of objects form the source and target of at least one morphism. Unfortunately, a concrete description of the morphisms themselves will ultimately remain elusive. We can get tantalisingly closer though, and an examination of the exact way that this method fails will provide the necessary insight to motivate a more successful approach in later chapters. 
 
 \section{The free $\mathrm{E}G$-algebra on $n$ objects}
 
@@ -11,7 +11,7 @@ Before we attempt any of this though, it is crucial that we understand a much si
 \begin{eq*} \mathrm{E}G\mathrm{Alg}_S(Y, X) \quad \cong \quad X^n \end{eq*}
 \end{prop}
 
-The proof of this fact is fairly standard. There is an obvious forgetful 2-functor $U: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Cat}$, sending each $\mathrm{E}G$-algebra to its underlying category and each algebra map to its underlying functor. As most forgetful functors do, this $U$ has a left adjoint, which we call the free $\mathrm{E}G$-algebra 2-functor $F : \mathrm{Cat} \to \mathrm{E}G\mathrm{Alg}_S $. It follows immediately that
+The proof of this fact is fairly standard. There is an obvious 2-functor $U: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Cat}$, sending each $\mathrm{E}G$-algebra to its underlying category and each algebra map to its underlying functor. These sort of structure-discarding functors are informally referred to as `forgetful functors', and it is very common for them to possess a left adjoint. It is not surprising then that $U$ has one too \cite{operadborel}, which we will call the free $\mathrm{E}G$-algebra 2-functor $F : \mathrm{Cat} \to \mathrm{E}G\mathrm{Alg}_S $. It follows immediately that
 \begin{eq*}\begin{array}{rll}
 		U(X)^n & = & \mathrm{Cat}(\{z_1, ..., z_n\}, U(X) ) \\
 		& \cong & \mathrm{E}G\mathrm{Alg}_S( F(\{z_1, ..., z_n\}), X) 
@@ -37,7 +37,7 @@ In other words, for any $\mathrm{E}G$-algebra $X$,
 \begin{eq*} \mathrm{E}G\mathrm{Alg}_S(\mathbb{G}_n, X) \quad \cong \quad \mathrm{Cat}(\{ z_1, ..., z_n \}, X) \quad \cong \quad X^n \end{eq*}
 \end{prop}
  
-Again, this is something already covered by the work of Gurski \cite{ogge}, so we won't go through all of the details here. The basic idea is that since the actions $\alpha_m : \mathrm{E}G(m) \times X^m \to X$ of any $\mathrm{E}G$-algebra coequalise the diagram from \cref{Gopalgdef}, the universal property of $\mathrm{E}G(k) \times_{G(k)} X^k$ will allow us to factor them uniquely though some $\alpha'$,
+Again, this is something already covered by the work of Gurski and Corner \cite{ogge}, so we won't go through all of the details here. The basic idea is that since the actions $\alpha_m : \mathrm{E}G(m) \times X^m \to X$ of any $\mathrm{E}G$-algebra coequalise the diagram from \cref{Gopalgdef}, the universal property of $\mathrm{E}G(k) \times_{G(k)} X^k$ will allow us to factor them uniquely though some $\alpha'$,
 \begin{eq*} \begin{tikzcd}
 \mathrm{E}G(k) \times X^k \ar[dd] \ar[ddrr, "\alpha_k"] & & \\
 & & \\
@@ -87,9 +87,8 @@ That is, the free $\mathrm{E}G$-algebra $\mathbb{G}_n$ does not have any objects
 \begin{eq*} \alpha( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \, : \, x_1 \otimes ... \otimes x_m \, \to \, x_{\pi(g)^{-1}(1)} \otimes ... \otimes x_{\pi(g)^{-1}(m)} \end{eq*}
 for some $g, g' \in G(m)$ and $x_i \in \{z_1, ..., z_n \}$. \end{lem}
 
-As an immediate consequence of this, the source and target of any given morphism in $\mathbb{G}_n$ must be related to one another via some permutation of the form $\pi(g)$. In other words, the connected components of $\mathbb{G}_n$ will depend upon the underlying permutation operad of $G$, in the following way:
-
-\begin{prop}\label{Gnconcomp} Considered as a monoid under tensor product,
+As an immediate consequence of this, the source and target of any given morphism in $\mathbb{G}_n$ must be related to one another via some permutation of the form $\pi(g)$. This gives us an easy way to calculate the \emph{connected components} of $\mathbb{G}_n$, which are just the equivalence classes of objects under the relation $x \sim y$ if there exists a morphism $f: x \to y$ or $f:y \to x$.
+\begin{prop}\label{Gnconcomp} Considered as a monoid under tensor product, the connected components of $\mathbb{G}_n$ are
 \begin{eq*} \pi_0(\mathbb{G}_n) \quad = \quad \begin{cases}
 							\quad \mathbb{N}^n & \text{if $G$ is crossed} \\
 							\quad \mathbb{N}^{\ast n} & \text{otherwise}
@@ -225,7 +224,7 @@ and hence it is a monoid isomorphism, as required.
 
 We saw in \cref{freealg} that the existence of a free $\mathrm{E}G$-algebra on $n$ objects can be proven by taking the left adjoint of a 2-functor which forgets about the algebra structure. Now we want to extend this idea into the realm of algebras on invertible objects. For the analogous approach, we will need to find a new 2-functor that lets us forget about non-invertible objects, and then hopefully we can find its left adjoint too, and use it to freely add inverses to $\mathbb{G}_n$. First though, we need to make this concept of `forgetting non-invertible objects' a little more precise.
 
-\begin{defn} Given an $\mathrm{E}G$-algebra $X$, we'll denote by $X_{\mathrm{inv}}$ the sub-$\mathrm{E}G$-algebra containing all invertible objects in $X$ and the isomorphisms between them. \end{defn}
+\begin{defn} Given an $\mathrm{E}G$-algebra $X$, we'll denote by $X_{\mathrm{inv}}$ the sub-$\mathrm{E}G$-algebra of $X$ containing all objects which are invertible under tensor product, and all of the isomorphisms between them. \end{defn} 
 
 Note that this is indeed a well-defined $\mathrm{E}G$-algebra. If $f_1, ..., f_m$ are isomorphisms from invertible objects $x_1, ..., x_m$ to invertible objects $y_1, ..., y_m$, then $\alpha(g; f_1, ..., f_m)$ is a map from the invertible object $\alpha(g; x_1, ..., x_m)$ to the invertible object $\alpha(g; y_1, ..., y_m)$, and it has an inverse $\alpha(g^{-1}; f_{\pi(g)(1)}^{-1}, ..., f_{\pi(g)(m)}^{-1})$, since
 \begin{eq*} \begin{array}{ll}
@@ -280,12 +279,12 @@ A colimit over a filtered diagram is called a \emph{filtered colimit}.
 \item an object $x$ in $X$ is \emph{finitely presented} if the functor $\mathrm{Hom}_{X}(x, -) : X \to \mathrm{Set}$ preserves filtered colimits
 \item $X$ is \emph{finitely accessible} if it has all finite filtered colimits and every object in $X$ is finitely presented
 \item $F: X \to Y$ is \emph{finitely accessible} if both $X$ and $Y$ are finitely accessible and $F$ preserves filtered colimits between them
-\item $X$ is \emph{locally finitely presentable} if it is accessible and has all finite colimits
+\item $X$ is \emph{locally finitely presentable} if it is finitely accessible and has all finite colimits
 \end{itemize}
 \end{defn}
 
 \begin{namedprop}[(The AFT for LFP categories)] \label{aftlfp}
-Let $X$ and $Y$ be locally finitely presentable categories. Then a functor $F: X \to Y$ has a left adjoint if and only if it is accessible and preserves all finite limits. 
+Let $X$ and $Y$ be locally finitely presentable categories. Then a functor $F: X \to Y$ has a left adjoint if and only if it is finitely accessible and preserves all finite limits. 
 \end{namedprop}
 
 Now, one might ask why we would choose to use this adjoint functor theorem in particular, when we don't even know whether $\mathrm{E}G\mathrm{Alg}_S$ is locally finitely presentable. The answer is that all of the work needed to prove this fact has already been done for us elsewhere. To see this though, we are going to need to use a little bit of the theory of 2-monads. We won't be doing much more than mentioning certain concepts here, but if the reader is interested in exploring this topic more thoroughly they can refer to \cite{monad1} \cite{monad2} for background on monads and \cite{2monad} for 2-monads.
@@ -301,7 +300,7 @@ There is a strong link between these structures and the ones we have been workin
 
 \begin{prop} Let $G$ be an action operad, and let $O$ be a $G$-operad in the category $\mathrm{Set}$. Then there exists a monad $\underline{O}: \mathrm{Set} \to \mathrm{Set}$ whose category of algebras $\underline{O}\mathrm{Alg}$ is isomorphic to the category $O\mathrm{Alg}$.
 
-Likewise, if $O$ is $G$-operad in $\mathrm{Cat}$, then there exists a 2-monad $\underline{O}: \mathrm{Cat} \to \mathrm{Cat}$ whose strict algebras $\underline{O}\mathrm{Alg}_S$ are isomorphic to $O\mathrm{Alg}_S$.
+Likewise, if $O$ is a $G$-operad in $\mathrm{Cat}$, then there exists a 2-monad $\underline{O}: \mathrm{Cat} \to \mathrm{Cat}$ whose strict algebras $\underline{O}\mathrm{Alg}_S$ are isomorphic to $O\mathrm{Alg}_S$.
 \end{prop}
 
 Because of this, if we want to show that $\mathrm{E}G\mathrm{Alg}_S$ is a locally finitely presentable category, it will suffice to show the same thing for $\underline{\mathrm{E}G}\mathrm{Alg}_S$. Luckily, from the very same paper we also learn the following:
@@ -397,7 +396,7 @@ Hence it follows that $\eta_{\mathbb{G}_n}$ is the map that corresponds to $(z_1
 which is exactly the definition given in the statement of the lemma.
 \end{proof}
 
-This incredibly simple description makes the map $\eta_{\mathbb{G}_n}$ very easy to work with. For example, we immediately obtain the following property, one which we will use frequently throughout the rest of the paper:
+This incredibly simple description makes the map $\eta_{\mathbb{G}_n}$ very easy to work with. For example, we immediately obtain the following property, one which we will use frequently throughout the rest of this thesis:
 
 \begin{cor} \label{epi} $\eta_{\mathbb{G}_n}$ is an epimorphism in $\mathrm{E}G\mathrm{Alg}_S$.
 \end{cor}
@@ -418,10 +417,12 @@ So $L\mathbb{G}_n$ is an initial object in the category $(\mathbb{G}_n \downarro
 
 In order to find $\mathrm{Ob}(L\mathbb{G}_n)$, we'll need to make use of an important result about the nature of $\mathrm{Ob}$ --- it is part of an adjunction.
 
-\begin{defn}\label{Edef2} Recall from \cref{Edef} that given a monoid $M$, the monoidal category $\mathrm{E}M$ is the one whose monoid of objects is $M$ and which has a unique isomorphism between any two objects. We can view $\mathrm{E}M$ as not just a category but an $\mathrm{E}G$-algebra, by letting the action on morphisms take the only possible values it can, given the required source and target. Then for any monoid homomorphisms $h: M \to M'$, the definition of $\mathrm{E}h: \mathrm{E}M \to \mathrm{E}M'$ given in \cref{Edef} must be a well-defined map of $\mathrm{E}G$-algebras, by functoriality. Thus we can also view $\mathrm{E}$ as a functor $\mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$.
+Recall from \cref{Edef} that given a set $S$, the category $\mathrm{E}S$ is the one whose set of objects is $S$ and which has a unique isomorphism between any two objects. Hopefully it is not hard to see that if our chosen set happens to be monoid, $M$, then the corresponding $\mathrm{E}M$ will be a monoidal category. But we can view $\mathrm{E}M$ as not just a category but an $\mathrm{E}G$-algebra, by letting the action on morphisms take the only possible values it can, given the required source and target. Then for any monoid homomorphisms $h: M \to M'$, the definition of $\mathrm{E}h: \mathrm{E}M \to \mathrm{E}M'$ given in \cref{Edef} must be a well-defined map of $\mathrm{E}G$-algebras, by functoriality. Thus we get the following:
+
+\begin{defn}\label{Edef2} The functor $\mathrm{E}: \mathrm{Set} \to \mathrm{Cat}$ extends naturally to a functor $\mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$, which we will also call $\mathrm{E}$.
  \end{defn}
 
-\begin{prop}\label{Obadj} $\mathrm{E}$ is a right adjoint to the functor $\mathrm{Ob}$. 
+\begin{prop}\label{Obadj} $\mathrm{E}: \mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$ is a right adjoint to the functor $\mathrm{Ob}: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Mon}$. 
 \end{prop}
 \begin{proof}
 For any $\mathrm{E}G$-algebra $X$, a map $F: X \to \mathrm{E}M$ is determined entirely by its restriction to objects, the monoid homomorphism $\mathrm{Ob}(F) : \mathrm{Ob}(X) \to M$. This is because functoriality of $F$ ensures that any map $x \to x'$ in $X$ must be sent to a map $F(x) \to F(x')$ in $\mathrm{E}M$, and by the definition of $\mathrm{E}$ there is always exactly one of these to choose from. In other words, we have an isomorphism between the homsets
@@ -498,11 +499,14 @@ But since the $x_i$ are just arbitrary objects of $X$, the components $[x_i]$ ar
 
 Now that we have a functor which represents the act of finding the connected component monoid of an algebra, we need another functor heading in the opposite direction, so that we can construct an adjunction between them.
 
-\begin{defn} There exists an inclusion of 2-categories $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ which allows us to view any set $S$ as a \emph{discrete category}, one whose objects are just the elements of $S$ and whose morphisms are all identities. If the given set also happens to be a monoid $M$, then there is an obvious way to see the discrete category $\mathrm{D}M$ as a monoidal category, and so we have a similar inclusion $\mathrm{D}: \mathrm{Mon} \hookrightarrow \mathrm{MonCat}$. Finally, for any action operad $G$ and object $M$ of the category $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, there is a unique way to assign an $\mathrm{E}G$-action to the discrete category $\mathrm{D}M$. This works because for any elements $m_1, ..., m_n \in M$ and $g \in G(n)$, the morphism $\alpha(g; \mathrm{id}_{m_1}, ..., \mathrm{id}_{m_n})$ must have source and target 
+There exists an inclusion of 2-categories $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ which allows us to view any set $S$ as a \emph{discrete category}, one whose objects are just the elements of $S$ and whose morphisms are all identities. If the given set also happens to be a monoid $M$, then there is an obvious way to see the discrete category $\mathrm{D}M$ as a monoidal category, and so we have a similar inclusion $\mathrm{Mon} \hookrightarrow \mathrm{MonCat}$. Moreover, for any action operad $G$ and object $M$ of the category $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, there is a unique way to assign an $\mathrm{E}G$-action to the discrete category $\mathrm{D}M$. This works because for any elements $m_1, ..., m_n \in M$ and $g \in G(n)$, the morphism $\alpha(g; \mathrm{id}_{m_1}, ..., \mathrm{id}_{m_n})$ must have source and target 
 \begin{eq*} m_1 \otimes ... \otimes m_n  \quad = \quad m_{\pi(g^{-1})(1)} \otimes ... \otimes m_{\pi(g^{-1})(m)} \end{eq*}
-and therefore it can only be the morphism $\mathrm{id}_{m_1 \otimes ... \otimes m_n}$. When $G$ is crossed this yields one last inclusion $\mathrm{CMon} \hookrightarrow \mathrm{E}G\mathrm{Alg}_S$, which we shall also call $\mathrm{D}$. \end{defn}
+and therefore it can only be the morphism $\mathrm{id}_{m_1 \otimes ... \otimes m_n}$. As in the previous section, this ability to assign an algebra structure uniquely will gives us exactly the adjoint functor we need.
 
-\begin{prop}\label{concompadj} $\mathrm{D}$ is a right adjoint to the functor $\pi_0$. 
+\begin{defn} The functor $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ extends naturally to a functor $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$, which we will also call $\mathrm{D}$.
+\end{defn}
+
+\begin{prop}\label{concompadj} $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ is a right adjoint to the functor $\pi_0: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. 
 \end{prop}
 \begin{proof}
 Consider a map of $F: X \to \mathrm{D}C$ from some $\mathrm{E}G$-algebra $X$ onto the discrete $\mathrm{E}G$-algebra for a monoid $M$ in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. For any $f: x \to x'$ in $X$, the morphism $F(f)$ must be an identity map in $\mathrm{D}M$, since these are the only morphisms that $\mathrm{D}M$ has. It follows that $x$ and $x'$ being in the same connected component will imply $F(x) = F(x')$, and so $F$ is determined entirely by its restriction to connected components, the monoid homomorphism $\pi_0(F) : \pi_0(X) \to M$. In other words, we have an isomorphism between the homsets
@@ -625,7 +629,7 @@ where $\mathrm{M}(f)$ refers to the equivalence class of the map $f$ under the q
 	& = & \mathrm{M}\big( \, F(f' \otimes f) \, \big) \\
 	& = & \mathrm{M}(F)( \, f' \otimes f \, )
 \end{longtable}
-We will call $\mathrm{M}X$ the \emph{collapsed} morphisms of the $X$.
+We will call $\mathrm{M}X$ the \emph{collapsed} morphisms of $X$.
 \end{defn}
 
 From now on we will generally refer to the single operation in $\mathrm{M}X$ as $\otimes$ rather than $\circ$, unless we are focusing on some aspect best understood using composition. This convention makes it easier to remember that because the tensor product is defined between all pairs of morphisms in $X$,  the equivalence class $\mathrm{M}(f') \otimes \mathrm{M}(f)$ will always contain the morphism $f' \otimes f$, but not necessarily $f' \circ f$, as it might fail to exist.
@@ -645,7 +649,7 @@ The reason that commutativity is required in order for $\mathrm{B}C$ to be a wel
 		\end{array}
 \end{eq*}
 
-\begin{prop}\label{Moradj} $\mathrm{B}$ is a right adjoint to the functor $\mathrm{M}(\, \_ \,)^{\mathrm{ab}} : \mathrm{MonCat} \to \mathrm{CMon}$.
+\begin{prop}\label{Moradj} $\mathrm{B}: \mathrm{CMon} \to \mathrm{MonCat}$ is a right adjoint to the functor $\mathrm{M}(\, \_ \,)^{\mathrm{ab}} : \mathrm{MonCat} \to \mathrm{CMon}$.
 \end{prop}
 \begin{proof}
 Let $X$ be a monoidal category, $C$ a commutative monoid, and $F: X \to \mathrm{B}C$ a monoidal functor. For any $f: x \to x'$ in $X$, the morphism $F(f)$ is just an element of the monoid $C$, and so $F$ can be used to define a function
@@ -714,11 +718,11 @@ commutes. Therefore, $\mathrm{M}(\, \_ \,)^{\mathrm{ab}} \dashv \mathrm{B}$.
 \begin{enumerate}
 \item What we really wanted to have was an adjunction involving $\mathrm{E}G\mathrm{Alg}_S$, not $\mathrm{MonCat}$. This is because our previous methodology involved applying our left adjoint functors to $\eta$ and then using its initial property to factor various maps through $L\mathbb{G}_n$. But $\eta$ is an initial object in $(\mathbb{G}_n \downarrow \mathrm{inv})$, and so we only know how to use it to factor \emph{algebra} maps $\mathbb{G}_n \to X_{\mathrm{inv}}$, and not general monoidal functors. 
 \item Even if we do find a way to use this adjunction to extract information about $L\mathbb{G}_n$, it will not be the monoid $\mathrm{Mor}(L\mathbb{G}_n)$ we were originally after, only a strange abelianised version where tensor product and composition coincide.  
-\end{enumerate}
+\end{enumerate} 
 
-Unfortunately, this adjunction seems to be the best that we can do. The only general method for assigning an $\mathrm{E}G$-action to the monoidal category $\mathrm{B}C$ for arbitrary $C$ is to set all of its action morphisms $\alpha(g; \mathrm{id}_I, ..., \mathrm{id}_I)$ to be $\mathrm{id}_I$. This would then cause the homomorphism $\mathrm{M}X \to C$ corresponding to any algebra map $X \to \mathrm{B}C$ to be the zero map if $X$ has only action morphisms. Given \cref{Gnmapsaction}, this is clearly no use. However, it turns out that this approach is fixable. To that end, we will spend the bulk of the next two chapters directly addressing problems 1 and 2. 
+Unfortunately, this adjunction seems to be the best that we can do. There is a way to assign an $\mathrm{E}G$-action to the monoidal category $\mathrm{B}C$ for an arbitrary commutative monoid $C$, which is to simply set all of the action morphisms $\alpha(g; \mathrm{id}_I, ..., \mathrm{id}_I)$ to be $\mathrm{id}_I$, and doing so would let us turn $\mathrm{B}$ into a functor $\mathrm{CMon} \to \mathrm{E}G\mathrm{Alg}_S$, solving problem 1. However, any new left adjoint $\mathrm{M}' :  \mathrm{E}G\mathrm{Alg}_S \to \mathrm{CMon}$ to this `fixed' $\mathrm{B}$ would then have to send $L\mathbb{G}_n$ to the trivial monoid, $1 = \{ \ast \}$. This is because under the adjunction the homomorphisms $\mathrm{M}'(L\mathbb{G}_n) \to C$ would correspond to algebra maps $L\mathbb{G}_n \to \mathrm{B}C$, which by the free property of $L\mathbb{G}_n$ are just choices of $n$ invertible objects from $\mathrm{B}C$. Deloopings only have one (invertible) object, and so there is only one way to choose such an $n$-tuple, and hence only one homomorphism $\mathrm{M}'(L\mathbb{G}_n) \to C$ for each $C$, which is a property unique to the trivial monoid. Thus by editing our adjunction in an attempt to fix problem 1, we have significantly worsened problem 2. It was already going to be hard to recover the details of $\mathrm{Mor}(L\mathbb{G}_n)$ from the collapsed $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$, but it would be impossible to do so from just $\{ \ast \}$.  
 
-For now though, we will make one last small alteration to our plan going forward. Instead of working directly with the functor $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}: \mathrm{MonCat} \to \mathrm{CMon}$, we will instead focus on its composite with the group completion functor, $( \, \_ \, )^{\mathrm{gp}} : \mathrm{CMon} \to \mathrm{Ab}$. It may not be clear yet why we would choose to do this, but over the next couple of chapters we will frequently find ourselves having to forming quotients of certain algebraic objects. If we were to stick with the functor $\mathrm{M}$ these would all be commutative monoid quotients, whereas by making the switch to $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$ they will be abelian groups instead, which are far easier to work with. Also, notice that since the process of group completion is left adjoint to the forgetful functor $\mathrm{Ab} \to \mathrm{CMon}$, its composite with the left adjoint $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}$ will be a left adjoint functor too. Thus with this new functor we will be able use all of the same important properties that we would have done with $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}$, such as the preservation of colimits. Moreover, while we won't prove this for some time, it turns out that the morphisms of $L\mathbb{G}_n$ actually form a group under tensor product. This means that whatever method we would have used to recover $\mathrm{Mor}(L\mathbb{G}_n)$ from $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$ will still let us recover $\mathrm{Mor}(L\mathbb{G}_n) = \mathrm{Mor}(L\mathbb{G}_n)^{\mathrm{gp}}$ from $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp},\mathrm{ab}}$.
+So it seems that we are stuck with the adjunction $\mathrm{M}(\, \_ \,)^{\mathrm{ab}} \dashv \mathrm{B}$. Luckily, it turns out that or previous approach can be amended to work with this, and to that end we will spend the bulk of the next two chapters directly addressing problems 1 and 2. For now though, we will make one last small alteration to our plan going forward. Instead of working directly with the functor $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}: \mathrm{MonCat} \to \mathrm{CMon}$, we will instead focus on its composite with the group completion functor, $( \, \_ \, )^{\mathrm{gp}} : \mathrm{CMon} \to \mathrm{Ab}$. It may not be clear yet why we would choose to do this, but over the next couple of chapters we will frequently find ourselves having to form quotients of certain algebraic objects. If we were to stick with the functor $\mathrm{M}$ these would all be commutative monoid quotients, whereas by making the switch to $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$ they will be abelian groups instead, which are far easier to work with. Also, notice that since the process of group completion is left adjoint to the forgetful functor $\mathrm{Ab} \to \mathrm{CMon}$, its composite with the left adjoint $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}$ will be a left adjoint functor too. Thus with this new functor we will be able use all of the same important properties that we would have done with $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}$, such as the preservation of colimits. Moreover, while we won't prove this for some time, it turns out that the morphisms of $L\mathbb{G}_n$ actually form a group under tensor product. This means that whatever method we would have used to recover $\mathrm{Mor}(L\mathbb{G}_n)$ from $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$ will still let us recover $\mathrm{Mor}(L\mathbb{G}_n) = \mathrm{Mor}(L\mathbb{G}_n)^{\mathrm{gp}}$ from $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp},\mathrm{ab}}$.
 
 Before we move on, we should spend a little time thinking about this new functor $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$. Specifically, we might ask in what order do we have to carry out its constituent parts: the collapsing of $\circ$ and $\otimes$ into a single operation, group completion, and abelianisation. It is a well known fact that group completion and abelianisation commute:
 \begin{eq*} \begin{tikzcd}

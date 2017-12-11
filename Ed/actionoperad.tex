@@ -1,10 +1,10 @@
 \chapter{Operads and their algebras} \label{actionoperad} 
 
-Before we can talk about the main focus of this paper, the free $\mathrm{E}G$-algebras on $n$ invertible objects, we will need to work our way through several intermediate concepts. This chapter will cover the background material needed to understand each of these other structures in turn --- monoidal categories, operads, action operads, $G$-operads, and operad algebras. Most of this content is due to other authors, and the reader is encouraged to refer to the given sources if they are interested in a more complete analysis of any of the featured topics. 
+Before we can talk about the main focus of this thesis, the free $\mathrm{E}G$-algebras on $n$ invertible objects, we will need to work our way through several intermediate concepts. This chapter will cover the background material needed to understand each of these other structures in turn --- monoidal categories, operads, action operads, $G$-operads, and operad algebras. Most of this content is due to other authors, and the reader is encouraged to refer to the given sources if they are interested in a more complete analysis of any of the featured topics. 
 
 \section{Basic definitions}
 
-In this section we shall briefly review some standard definitions from category theory that will be used throughout the paper. Everything in this section can be found in any good introductory text on category theory, such as the foundational `Categories for the Working Mathematician' \cite{cwm} by Saunders Mac Lane.
+In this section we shall briefly review some standard definitions from category theory that will be used throughout the thesis. Everything in this section can be found in any good introductory text on category theory, such as the foundational `Categories for the Working Mathematician' \cite{cwm} by Saunders Mac Lane.
 
 We will start with the notion of an adjunction.
 
@@ -25,7 +25,7 @@ First described by Daniel Kan in \cite{adjoint}, adjoint functors are an incredi
 
 In particular, \cref{initialalgebra,colimalgebra,morphisms} will all utilise the fact that left adjoints can be commuted past colimits at some point.
 
-Next, this paper will also rely upon the concept of the monoidal category.
+Next, this thesis will also rely upon the concept of the monoidal category.
 
 \begin{defn} \label{moncat} A \emph{monoidal category} is a category $C$ equipped with
 \begin{itemize}\itemsep0.3em
@@ -57,7 +57,23 @@ This is known as the \emph{interchange law} of $C$. We will use this equality fr
 
 \begin{eq*} x \otimes x^* \quad = \quad I \quad = \quad x^* \otimes x \end{eq*}
 
-Monoidal categories are also found everywhere throughout mathematics. Commonly studied examples include the category of sets $\mathrm{Set}$ with the cartesian product $\times$, the category of abelian groups $\mathrm{Ab}$ under direct sum $\oplus$, and the category of $K$-vector spaces $K-\mathrm{Vect}$ with its usual tensor product $\otimes_{K}$. Part of the reason for their ubiquity is that monoidal categories are, in some sense, really degenerate versions of a higher dimensional category, specifically a one-object bicategory. We will not be exploring the concept of higher categories in this paper (see for example \cite{hohc} for a proper treatment), but suffice it to say that there are also other kinds of degenerate $n$-categories which appear to be common kinds of category-with-extra-structure. 
+Monoidal categories are also found everywhere throughout mathematics. Commonly studied examples include the category of sets $\mathrm{Set}$ with the cartesian product $\times$, the category of abelian groups $\mathrm{Ab}$ under direct sum $\oplus$, and the category of $K$-vector spaces $K-\mathrm{Vect}$ with its usual tensor product $\otimes_{K}$. Part of the reason for their ubiquity is that monoidal categories are, in some sense, really degenerate versions of a higher dimensional category, specifically a one-object bicategory. 
+
+\begin{defn} A \emph{bicategory} $B$ consists of
+\begin{itemize}\itemsep0.3em
+\item a collection of objects $\mathrm{Ob}(B)$
+\item for each pair of objects $x, y$, a category $B(x,y)$, whose objects are called \emph{1-morphisms} from $x$ to $y$, and whose morphisms are called $2-morphisms$
+\item for each triple of objects $x, y, z$, a functor $\circ : B(y, z) \times B(x, y) \to B(x, z)$, called the \emph{horizontal composition} of $B$
+\item for each object $x$, an 1-morphism $1_x \in B(x,x)$, called the \emph{identity} on $x$
+\item for each quadruple of objects $w, x, y, z$, a natural isomorphism $a: B(y, z) \times B(x, y) \times B(w, x) \to B(w, z)$, called the \emph{associator}, with components
+\begin{eq*} a_{f,g,h} \, : \, (f \circ g) \circ h \longrightarrow f \circ (g \circ h) \end{eq*}
+\item for each pair of objects $x, y$, two natural isomorphisms $l, r: B(x,y)$, called the \emph{left} and \emph{right unitors}, with components
+\begin{eq*} l_{f} \, : \, 1_y \circ f \longrightarrow f, \quad \quad \quad \quad r_{f} \, : \, f \otimes 1_x \longrightarrow f \end{eq*}
+\end{itemize}
+Like with monoidal categories, the associators in a bicategory satisfy a pentagon identity and the unitors each satisfy triangle identities.
+\end{defn}
+
+ Bicategories are sometimes known as \emph{weak 2-categories}, and moreover if all of the natural isomorphisms $a, l, r$ are identities then $B$ is said to be a \emph{strict 2-category}. We will not be exploring the concept of higher categories too closely in this thesis (see for example \cite{hohc} for a proper treatment), but suffice it to say that there are also other kinds of degenerate $n$-categories which appear to be common kinds of category-with-extra-structure. 
 
 \begin{defn} \label{bdmoncat} A \emph{braided} monoidal category is a monoidal category $C$ equipped with an additional natural isomorphism,
 \begin{eq*} \beta_{x,y} \, : \, x \otimes y \longrightarrow y \otimes x \end{eq*}
@@ -203,8 +219,9 @@ There is an operad in $\mathrm{Set}$ whose sets of operations $\mathrm{S}(n)$ ar
 								\quad \tau(i-m) +m & \quad m+1 \le i \le m+n
 							\end{cases}
 \end{eq*}
-As the name suggests, this direct sum is usually denote by the symbol $\oplus$, but we will stick with $\otimes$ so that our notation here matches all of the other tensor products we will see throughout this paper. Also, notice that the value of these direct sums in general are determined by those specific cases where one of the inputs is an identity permutation:
+As the name suggests, this direct sum is usually denote by the symbol $\oplus$, but we will stick with $\otimes$ so that our notation here matches all of the other tensor products we will see throughout this thesis. Also, notice that the value of these direct sums are determined in general by those specific cases where one of the inputs is an identity permutation:
 \begin{eq*} \sigma \otimes \tau \quad = \quad (\sigma \otimes e_n) \cdot (e_m \otimes \tau) \quad = \quad (e_m \otimes \tau) \cdot (\sigma \otimes e_n) \end{eq*}
+Here $\cdot$ is simply multiplication in the group $\mathrm{S}_{m+n}$.
 \item Next, we'll define functions $( \, \_ \, )_{(k_1, ..., k_n)} : \mathrm{S}_n \to \mathrm{S}_{k_1 + ... + k_n}$ for all $n, k_1, ..., k_n \in \mathbb{N}$. These will act by taking a $\sigma$ which permutes $n$ individual objects and sending it onto a $\sigma_{(k_1, ..., k_n)}$ that permutes $n$ blocks of objects of size $k_1, ..., k_n$ in the same way. More concretely, if $k_1 + ... + k_{i-1} < j \le k_1 + ... + k_i$ then
 \begin{eq*} \sigma_{(k_1, ..., k_n)}(j) \quad = \quad j - k_1 - ... - k_{i-1} + k_{\sigma^{-1}(1)} + ... + k_{\sigma^{-1}( \, \sigma(i) -1 \, )} \end{eq*}
 \item Finally, the multiplication maps $\mu: \mathrm{S}_n \times \mathrm{S}_{k_1} \times ... \times \mathrm{S}_{k_n} \to \mathrm{S}_{k_1 + ... + k_n}$ are given by
@@ -308,7 +325,7 @@ However, since elementary transpositions only really permute two objects, they c
 This means that the elementary block transpositions are
 \begin{eq*} \begin{array}{rll}
 			(i \, \, \,  i+1)_{(k_1, ..., k_n)} & = & \quad (e_{i-1} \otimes (1 \, 2) \otimes e_{n-i-1})_{(k_1, ..., k_n)} \\
-			& = & e_{k_1 + ... k_{i-1}} \otimes (1 \, 2)_{(k_i, k_{i+1})} \otimes e_{k_{i+1} + ... k_n}
+			& = & e_{k_1 + ... + k_{i-1}} \otimes (1 \, 2)_{(k_i, k_{i+1})} \otimes e_{k_{i+1} + ... + k_n}
 		\end{array}
 \end{eq*}
 So all we need to know to fully understand the functions $( \, \_ \, )_{(k_1, ..., k_n)}$ are the values they take on the transposition $(1 \, 2)$. These can be defined recursively, via
@@ -337,14 +354,14 @@ which is \emph{not} the same as
 At first this seems like pretty strange behaviour. After all, the symmetric groups play a central role in the theory of groups, so it would be reasonable to assume that their operad would be similarly crucial for the theory of group operads. But $\mathrm{S}$ is not the only family of groups whose operad is fundamentally set related.
 
 \begin{namedexample}[(The braid operad)]\label{braidop}
-The \emph{braid groups} $B_n$ are the family of groups that result from taking the symmetric groups and removing the requirement that everything needs to be self-inverse. That is, the group $B_n$ has a presentation on some \emph{elementary braids} $b_1, ..., b_{n-1}$, given by the relations
+The \emph{braid groups} $B_n$ are the family of groups that result from taking the symmetric groups and removing the requirement that the generators are self-inverse. That is, the group $B_n$ has a presentation on some \emph{elementary braids} $b_1, ..., b_{n-1}$, given by the relations
 \begin{eq*} b_i b_{i+1} b_i \, = \, b_{i+1} b_i b_{i+1}, \quad \quad \quad \quad \quad b_i b_j \, = \, b_j b_i, \quad i+1 < j \end{eq*}
 As might be expected, the underlying sets of these groups also form an operad in $\mathrm{Set}$ known as the \emph{braid operad} $B$, and they do so in a way directly analogous to the operad $\mathrm{S}$. That is, the identity element of $B$ is $e_1 \in B_1$, and the operadic multiplication is constructed as follows:
 \begin{itemize}
 \item Tensor products $\otimes : B_m \times B_n \to B_{m+n}$ are determined by setting 
 \begin{eq*} x \otimes y \quad = \quad (x \otimes e_n) \cdot (e_m \otimes y) \quad = \quad (e_m \otimes x) \cdot (y \otimes e_n) \end{eq*}
 for all $x \in B_m$, $y \in B_n$, and also
-\begin{eq*} b_i \quad = \quad e_{i-1} \otimes b \otimes e_{n-i-1} \end{eq*}
+\begin{eq*} b_i \quad = \quad e_{i-1} \otimes b \otimes e_{n-i-1} \end{eq*} 
 for any elementary braid $b_i \in B_n$, where $b$ is the only elementary braid in $B_2$.
 \item The functions $( \, \_ \, )_{(k_1, ..., k_n)} : B_n \to B_{k_1 + ... + k_n}$ are first defined recursively on the elementary braid $b \in B_2$ by
 \begin{eq*} \begin{array}{rclcrcl}
@@ -449,7 +466,7 @@ and the `block braids' are multiple strings braided together in parallel,
 
 \section{Action operads}
 
-It is not hard to see that the symmetric and braided operads both share certain features which are not otherwise common among operads of sets. This fact has been noticed by several different authors, each of whom proposed a slightly different definition and terminology for these sorts of structures. While older treatments exist --- see for example \cite{ribbon1} and \cite{groupop} --- in this paper we will be following the conventions laid out in \cite{ogge}, since they are the most general.
+It is not hard to see that the symmetric and braided operads both share certain features which are not otherwise common among operads of sets. This fact has been noticed by several different authors, each of whom proposed a slightly different definition and terminology for these sorts of structures. While older treatments exist --- see for example \cite{ribbon1} and \cite{groupop} --- in this thesis we will be following the conventions laid out in \cite{ogge}, since they are the most general.
 
 \begin{defn} \label{actop} An \emph{action operad} $(G, \pi)$ consists of 
 \begin{itemize}
@@ -698,14 +715,14 @@ commutes for all $n, k_1, ..., k_n \in \mathbb{N}$. Here we are using $\tilde{\m
 
 The easiest way to produce examples of $G$-operads in $\mathrm{Cat}$ is to simply build them out of existing operads in the category of sets. In particular, if we design our categories of operations so that the morphisms are determined entirely by their source and target, then a single operad in $\mathrm{Set}$ will suffice to create one of these new higher dimensional operads.
 
-\begin{defn}\label{Edef} For any monoid $M$, we will define its \emph{translation category} $\mathrm{E}M$ to be the (monoidal) category whose objects are the elements of the monoid $M$, and whose morphisms consist of a unique isomorphism between each pair of objects. Also, for any monoid homomorphisms $h: M \to M'$ we can define a functor
+\begin{defn}\label{Edef} For any set $S$, we will define its \emph{translation category} $\mathrm{E}S$ to be the category whose objects are the elements of $S$, and whose morphisms consist of a unique isomorphism between each pair of objects. Also, for any function $f: S \to S'$ we can define a functor
 \begin{eq*} \begin{array}{rlrll}
-		\mathrm{E}h & : & \mathrm{E}M & \to & \mathrm{E}M' \\
-		& : & m & \mapsto & h(m) \\
-		& : & m \to m' & \mapsto & h(m) \to h(m')
+		\mathrm{E}f & : & \mathrm{E}S & \to & \mathrm{E}S' \\
+		& : & s & \mapsto & f(s) \\
+		& : & s \to s' & \mapsto & f(s) \to f(s')
 		\end{array}
 \end{eq*}
-This definition of $\mathrm{E}h$ obviously respects composition and identities, and so together with $\mathrm{E}M$ it describes a functor $\mathrm{E}: \mathrm{Mon} \to \mathrm{Cat}$.
+This definition of $\mathrm{E}f$ obviously respects composition and identities, and so together with $\mathrm{E}S$ it describes a functor $\mathrm{E}: \mathrm{Set} \to \mathrm{Cat}$.
 
 Likewise, for any operad $O$ in the category of sets we can define its \emph{translation operad} $\mathrm{E}O$ to be the operad in $\mathrm{Cat}$ given by the data
 \begin{eq*} (\mathrm{E}O)(n) \, := \, \mathrm{E}\big( O(n) \big), \quad \quad \quad 1^{\mathrm{E}O} \, = \, \mathrm{E}(1^{O}), \quad \quad \quad \mu^{\mathrm{E}O} \, = \, \mathrm{E}(\mu^O) \end{eq*}
@@ -752,20 +769,24 @@ X \ar[rr, "f"] & & Y
 Together these form the category $O\mathrm{Alg}$ of all $O$-algebras and their maps.
 \end{defn}
 
-When $O$ is an operad in $\mathrm{Set}$, an algebra of $O$ is simply a realisation of the elements of the $O(n)$ as actual $n$-ary operations on some set. A similar statement is true in any concrete category, though with extra structure or restrictions depending on the nature of $(C, \otimes, I)$. Also when $O$ is an operad in $\mathrm{Cat}$ we can upgrade the category $O\mathrm{Alg}$ into a 2-category, by simply adding in monoidal natural transformations as the 2-morphisms between algebra maps. We will use the notation $O\mathrm{Alg}_{S}$ for this 2-dimensional structure to indicate that everything involved is still strict, unlike the weaker pseudoalgebras which have been studied elsewhere \cite{ogge}.
+When $O$ is an operad in $\mathrm{Set}$, an algebra of $O$ is simply a realisation of the elements of the $O(n)$ as actual $n$-ary operations on some set. A similar statement is true in any concrete category, though with extra structure or restrictions depending on the nature of $(C, \otimes, I)$. Also, when $O$ is an operad in $\mathrm{Cat}$ we can upgrade the category $O\mathrm{Alg}$ into a 2-category, by simply adding in monoidal natural transformations as the 2-morphisms between algebra maps. We will use the notation $O\mathrm{Alg}_{S}$ for this 2-dimensional structure to indicate that everything involved is still strict, unlike the weaker pseudoalgebras which have been studied elsewhere \cite{ogge}.
 
 As we've seen many times already, when the operad we are working with is actually an action operad, the presence of the additional group structure will cause something more interesting to happen. Specifically, the operadic multiplication $\mu^G(e_n; \, \_ \, , ..., \, \_ \,)$ can be interpreted as a tensor product, and so the operad algebras of $G$ will end up inheriting a monoidal structure of their own.
 
-\begin{lem} Let $G$ be an action operad, and $X$ an algebra of $G$ in the category of sets. Then $X$ is a monoid with respect to the operation
-\begin{eq*} x_1 \otimes ... \otimes x_n \quad := \quad \alpha(e_n; x_1, ..., x_n) \end{eq*}
-and there exists a forgetful functor $G\mathrm{Alg} \to \mathrm{Mon}$ sending the algebras of $G$ to this underlying monoid structure.
+\begin{lem} Let $G$ be an action operad, and $X$ an algebra of $G$ in the category of sets. Then $X$ is a monoid with respect to the binary operation
+\begin{eq*} x \otimes x'  \quad := \quad \alpha(e_2; x, x') \end{eq*}
+whose $n$-fold repetitions are given by
+\begin{eq*} x_1 \otimes ... \otimes x_n \quad = \quad \alpha(e_n; x_1, ..., x_n) \end{eq*}
+Also, there exists a forgetful functor $G\mathrm{Alg} \to \mathrm{Mon}$ sending the algebras of $G$ to this underlying monoid structure.
 
 Similarly, let $Y$ be an algebra of $\mathrm{E}G$ in $\mathrm{Cat}$. Then $Y$ is a strict monoidal category with respect to the operation
-\begin{eq*} y_1 \otimes ... \otimes y_n \quad := \quad \alpha(e_n; y_1, ..., y_n), \quad \quad \quad f_1 \otimes ... \otimes f_n \quad := \quad \alpha(e_n; f_1, ..., f_n) \end{eq*}
+\begin{eq*} y \otimes y' \quad := \quad \alpha(e_2; y, y'), \quad \quad \quad f \otimes f' \quad := \quad \alpha(e_2; f, f') \end{eq*}
+which satisfies
+\begin{eq*} y_1 \otimes ... \otimes y_n \quad = \quad \alpha(e_n; y_1, ..., y_n), \quad \quad \quad f_1 \otimes ... \otimes f_n \quad := \quad \alpha(e_n; f_1, ..., f_n) \end{eq*}
 and there is a forgetful 2-functor $\mathrm{E}G\mathrm{Alg}_{S} \to \mathrm{MonCat}_{S}$ sending these algebras to their underlying strict monoidal structure.
 \end{lem}
 \begin{proof}
-We'll start by checking that above definition on $X$ makes sense. Firstly, for any element $x \in X$ we want the one-fold tensor product of $x$ with itself to just be $x$ again. This is ensured by the unitality of the action $\alpha^X$, which says that $\alpha(e_1; x) = x$. Next, we need to make sure that the tensor products for each arity are all compatible with each other, which follows from the associativity axiom for $\alpha^X$:
+We'll start by checking that the $n$-fold tensor products on $X$ defined above make sense. Firstly, for any element $x \in X$ we want the one-fold tensor product of $x$ with itself to just be $x$ again. This is ensured by the unitality of the action $\alpha^X$, which says that $\alpha(e_1; x) = x$. Next, we need to make sure that the tensor products for each arity are all compatible with each other, which follows from the associativity axiom for $\alpha^X$:
 \begin{eq*} \begin{array}{rl}
 			& (x_1 \otimes ... \otimes x_{k_1}) \otimes ... \otimes (x_{k_1 + ... + k_{n-1}+1} \otimes ... \otimes x_{k_1 + ... + k_n}) \\
 			= & \alpha\big( \, e_n \, ; \, \alpha(e_{k_1}; x_1, ..., x_{k_1}), \, ..., \, \alpha(e_{k_n}; x_{k_1 + ... + k_{n-1}+1}, ... , x_{k_1 + ... + k_n}) \, \big) \\
@@ -774,7 +795,7 @@ We'll start by checking that above definition on $X$ makes sense. Firstly, for a
 			= & x_1 \otimes ... \otimes x_{k_1 + ... + k_n}
 		\end{array}
 \end{eq*}
-Perhaps unsurprising, this means that the associativity axiom also forces the tensor product to be associative. Finally, a special case of the above --- where $n=2$ and the $k_i$ are $0$ and $1$ --- shows that the empty tensor product $\alpha(e_0; -)$ acts as the unit of $\otimes$. Thus $X$ is indeed a well-defined monoid under the tensor product that comes from its action. Moreover, since all algebra maps $f: X \to X'$ preserve actions they will also preserve this monoid structure.
+Perhaps unsurprising, this means that the associativity axiom also forces the binary operation $\otimes$ to be associative. Finally, a special case of the above --- where $n=2$ and the $k_i$ are $0$ and $1$ --- shows that the empty tensor product $\alpha(e_0; -)$ acts as the unit of $\otimes$. Thus $X$ is indeed a well-defined monoid under the tensor product that comes from its action. Moreover, since all algebra maps $f: X \to X'$ preserve actions they will also preserve this monoid structure.
 \begin{eq*} f(x \otimes x') \quad = \quad f\big( \, \alpha^X(e_2; x, x') \, \big) \quad = \quad \alpha^{X'}\big( \, e_2 \, ; \, f(x), f(x') \, \big) \quad = \quad f(x) \otimes f(x') \end{eq*}
 Therefore if we forget all of the features of our $G$-algebras other than the tensor product, what we are left with are monoids and monoid homomorphisms, and this defines an obvious functor $G\mathrm{Alg} \to \mathrm{Mon}$.
 
@@ -855,7 +876,7 @@ satisfied by the action operad $G$.
 \end{defn}
 
 \begin{thm} \label{Gmonthm} For any action operad $G$, the algebras of $\mathrm{E}G$ are precisely the $G$-monoidal categories. Furthermore, any given notion of $(\mathcal{G}, \mathcal{R})$-monoidal category is equivalent to the $G$-monoidal categories for some action operad $G$, and thus also the $\mathrm{E}G$-algebras.
-\end{thm} 
+\end{thm}  
 \begin{proof}
 See \cite{operadborel}, Theorem 3.11 and Corollary 3.12.
 \end{proof} 
