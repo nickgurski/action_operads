@@ -44,13 +44,13 @@
 %\usepackage{natbib}
 \renewcommand{\SS}{\mathcal{S}}
 \newcommand{\colim}{\textrm{colim }}
-\newcommand{\f}[1]{\ensuremath{\mathcal{#1}}\xspace}
-\newcommand{\g}[1]{\ensuremath{\mathbb{#1}}\xspace}
-\newcommand{\Cat}{\ensuremath{\textnormal{Cat}}\xspace}
+\newcommand{\f}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\g}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand{\Cat}{\ensuremath{\textrm{Cat}}}
 \newcommand{\cd}[2][]{\vcenter{\hbox{\xymatrix#1{#2}}}}
-\newcommand{\Set}{\ensuremath{\textnormal{Set}}\xspace}
-\newcommand{\twocat}{\ensuremath{\textnormal{2-Cat}}\xspace}
-\newcommand{\Icon}{\ensuremath{\textnormal{Icon}}\xspace}
+\newcommand{\Set}{\ensuremath{\textrm{Set}}}
+\newcommand{\twocat}{\ensuremath{\textrm{2-Cat}}}
+\newcommand{\Icon}{\ensuremath{\textrm{Icon}}}
 \newcommand{\ML}{\mathbf{\Lambda}}
 %\newcommand{\to}{\rightarrow}
 \def\srarrow{\relbar\joinrel\mapstochar\joinrel\rightarrow}
@@ -61,6 +61,12 @@
 \newcommand{\pullback}{\mathbin{\text{\rotatebox{45}{$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\llcorner}}}}$}}}}
 \newcommand{\pushout}{\mathbin{\text{\rotatebox{225}{$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\llcorner}}}}$}}}}
 \newcommand{\downsim}{\rotatebox{90}{$\sim$}}
+\newcommand{\EL}{E\Lambda}
+\newcommand{\ob}{\textrm{Ob}}
+\newcommand{\lmc}{\Lambda\mbox{-}\textrm{MonCat}}
+\newcommand{\sets}{\Set}
+\newcommand{\mon}{\ensuremath{\textrm{Mon}}}
+\newcommand{\epz}{\varepsilon}
 
 \newcolumntype{L}{>{$}l<{$}}
 \newcolumntype{C}{>{$}c<{$}}
@@ -1163,6 +1169,46 @@ by the universal property of the colimits involved, so as functors $\underline{P
 \item Furthermore, there is clearly an artifact left from only considering the algebras themselves as objects in a symmetric monoidal category.  It is well-known that a braided structure is all that is required for non-symmetric operads, and so one is left to consider that the natural home for algebras over a $\Lambda$-operad might be a type of monoidal structure other than symmetric in which case the theorem above gives no insight.
 \end{enumerate}
 \end{rem}
+
+We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. 
+
+\begin{Defi}
+Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map} from $S$ to $T$ is a functor $F : C \to D$ together with a natural transformation $\alpha:TF \Rightarrow FS$ such that the following diagrams commute.
+
+QQQ two diagrams here, one for units and one for mult, look like dist law
+ 
+A \emph{transformation} $\Gamma : (F, \alpha) \Rightarrow (G, \beta)$ is a natural transformation $\Gamma: F \Rightarrow G$ such that the following diagram commutes.
+
+QQQ diagram
+\end{Defi}
+
+QQQ Explain how $(F, \alpha)$ induces a functor on categories of algebras
+
+QQQ Define cocomplete symmetric monoidal category
+
+\begin{prop}\label{monoidal_to_monadmap}
+Let $C,D$ be cocomplete symmetric monoidal categories.  Let $\ML$ be an action operad, and $P$ be a $\ML$-operad in $C$. Let $F:C \to D$ be a lax symmetric monoidal functor. Then $FP$ is a $\ML$-operad in $D$, and the pair $(F, \id)$ is a monad map $(C,P) \to (D, FP)$.  
+\end{prop}
+
+
+
+\begin{prop}\label{opmap_to_monadmap}
+Let $C$ be a cocomplete symmetric monoidal category. Let $\ML$ be an action operad, and $P,Q$ be  $\ML$-operads in $C$ with a map $\sigma: P \to Q$ of $\ML$-operads between them. Then $\sigma$ induces a monad map $(\id, \sigma^*):(C,Q) \to (C,P)$ and hence a functor on categories of algebras.
+\end{prop}
+
+We can combine these two propositions.
+
+\begin{cor}\label{monoidaladj_cor}
+If $C, D, P, F$ are as in \cref{monoidal_to_monadmap}, and $F$ is part of a monoidal adjunction (i.e., an adjunction in which both functors are lax symmetric monoidal, and the unit and counit are monoidal transformations) $F \dashv U$, then $(F, \id)$ and $(U, \id)$ are both monad maps. The unit $\eta:1 \Rightarrow UF$ induces an operad map $\eta:P \Rightarrow UFP$, and a transformation between monad maps
+\[
+(\id, \id) \Rightarrow (\id, \eta^*) \circ (U, \id) \circ (F, \id).
+\]
+The counit $\epz:FU \Rightarrow 1$ induces an operad map $\epz:FUFP \Rightarrow FP$, and a transformation between monad maps
+\[
+ (F, \id) \circ (\id, \eta^*) \circ (U,\id) \Rightarrow (\id, \id).
+\]
+These constitute an adjunction $(F,\id) \dashv (\id, \eta^*) \circ (U, \id)$ in the 2-category of monads, and hence induce an adjunction between $P$-algebras in $C$ and $FP$-algebras in $D$.
+\end{cor}
 
 \section{Operads as monoids}
 
@@ -4850,149 +4896,196 @@ QQQ Need to explain that the goal is to understand some group actions
 
 %\section{The objects of $L\mathbb{G}_n$}
 \section{Adjunctions involving monoidal categories}
+
+This section will study three different adjunctions between $\ML$-monoidal categories on the one hand and categories such as that of monoids or commutative monoids on the other hand. Two of these adjunctions are purely formal, and are induced by adjunctions between categories and sets, while the third requires a direct proof. We then investigate some simple consequences of these adjunctions for $\ML$-monoidal categories of the form $L(E\Lambda S)$ for a set $S$.
+
+\begin{prop}\label{Ob-E_adj}
+The functor $\ob$ from categories to sets, taking the set of objects, is left adjoint to the functor $E$ of QQQ. This adjunction is monoidal, hence induces an adjunction $\ob \dashv E$ between $\lmc$ and $\mon$.
+\end{prop}
+\begin{proof}
+This is a straightforward application of \cref{...}; the only thing to note is that $\ob(\EL) = \Lambda$ as a $\ML$-operad.
+
+\end{proof}
+
+\begin{Defi}
+Let $\ML$ be an action operad. Let $T_{\ML}$ denote the terminal $\ML$-operad in sets, which is a singleton set in each dimension with the unique action of $\Lambda_n$.
+\end{Defi}
+
+\begin{lem}
+The category of algebras for $T_{\ML}$ is either the category of monoids, when $\ML$ is not crossed, or the category of commutative monoids, when $\ML$ is crossed.
+\end{lem}
+
+\begin{prop}\label{pi0-D_adj}
+The functor $\pi_0$ from categories to sets, taking the set of path components, is left adjoint to the functor $D$, sending a set to the discrete category with that set of objects. This adjunction is monoidal, hence induces an adjunction between $\lmc$ and $T_{\ML}\mbox{-}\textrm{Alg}$.
+\end{prop}
+\begin{proof}
+This is now a simple application of \cref{monoidaladj_cor}, where we now only note that the unit $1 \Rightarrow \pi_0 \circ D$ is the identity transformation.
+\end{proof}
+
 %So $L\mathbb{G}_n$ is an initial object in the category $(\mathbb{G}_n \downarrow \mathrm{inv})$. But what does this actually tell us? After all, we do not currently have a method for finding initial objects in an arbitrary collection of $\mathrm{E}G$-algebra maps. Because of this, we'll have to approach the problem step-by-step, using the initiality of $\eta$ to extract different pieces of information about the algebra $L\mathbb{G}_n$ as we go. We'll begin by trying to find its objects.
 
-\begin{Defi}\label{Obdef} Denote by $\mathrm{Ob}: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Mon}$ the functor that sends $\mathrm{E}G$-algebras $X$ to their monoid of objects $\mathrm{Ob}(X)$, and algebra maps $F: X \to Y$ to their underlying monoid homomorphism $\mathrm{Ob}(F): \mathrm{Ob}(X) \to \mathrm{Ob}(Y)$. \end{Defi}
+%\begin{Defi}\label{Obdef} Denote by $\mathrm{Ob}: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Mon}$ the functor that sends $\mathrm{E}G$-algebras $X$ to their monoid of objects $\mathrm{Ob}(X)$, and algebra maps $F: X \to Y$ to their underlying monoid homomorphism $\mathrm{Ob}(F): \mathrm{Ob}(X) \to \mathrm{Ob}(Y)$. \end{Defi}
 
 %In order to find $\mathrm{Ob}(L\mathbb{G}_n)$, we'll need to make use of an important result about the nature of $\mathrm{Ob}$ --- it is part of an adjunction.
 %
 %Recall from \cref{Edef} that given a set $S$, the category $\mathrm{E}S$ is the one whose set of objects is $S$ and which has a unique isomorphism between any two objects. Hopefully it is not hard to see that if our chosen set happens to be monoid, $M$, then the corresponding $\mathrm{E}M$ will be a monoidal category. But we can view $\mathrm{E}M$ as not just a category but an $\mathrm{E}G$-algebra, by letting the action on morphisms take the only possible values it can, given the required source and target. Then for any monoid homomorphisms $h: M \to M'$, the definition of $\mathrm{E}h: \mathrm{E}M \to \mathrm{E}M'$ given in \cref{Edef} must be a well-defined map of $\mathrm{E}G$-algebras, by functoriality. Thus we get the following:
 
-QQQ I think most of this section is a formality by some distributive laws, figure that out.
-
-\begin{Defi}\label{Edef2} The functor $\mathrm{E}: \mathrm{Set} \to \mathrm{Cat}$ extends naturally to a functor $\mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$, which we will also call $\mathrm{E}$.
- \end{Defi}
-
-\begin{prop}\label{Obadj} $\mathrm{E}: \mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$ is a right adjoint to the functor $\mathrm{Ob}: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Mon}$. 
-\end{prop}
-\begin{proof}
-For any $\mathrm{E}G$-algebra $X$, a map $F: X \to \mathrm{E}M$ is determined entirely by its restriction to objects, the monoid homomorphism $\mathrm{Ob}(F) : \mathrm{Ob}(X) \to M$. This is because functoriality of $F$ ensures that any map $x \to x'$ in $X$ must be sent to a map $F(x) \to F(x')$ in $\mathrm{E}M$, and by the definition of $\mathrm{E}$ there is always exactly one of these to choose from. In other words, we have an isomorphism between the homsets
-\begin{eq*} \mathrm{E}G\mathrm{Alg}_S( \, X, \, \mathrm{E}M \, ) \quad \cong \quad \mathrm{Mon}( \, \mathrm{Ob}(X), \, M \, ) \end{eq*}
-Additionally, this isomorphism is natural in both coordinates. That is, for any $G: X \to X'$ in $\mathrm{E}G\mathrm{Alg}_S$ and $h : M \to M'$ in $\mathrm{Mon}$, the diagram
-\begin{eq*} \begin{tikzcd}
-\mathrm{E}G\mathrm{Alg}_S(X, \mathrm{E}M) \ar[dd, "\mathrm{E}h \circ \_ \circ G"'] \ar[r, "\sim"] & \mathrm{Mon}(\mathrm{Ob}(X), M) \ar[dd, "h \circ \_ \circ \mathrm{Ob}(G)"] \\
-& \\
-\mathrm{E}G\mathrm{Alg}_S(X', \mathrm{E}M') \ar[r, "\sim"] & \mathrm{Mon}(\mathrm{Ob}(X'), M')
-\end{tikzcd} \end{eq*}
-commutes, because
-\begin{eq*} \mathrm{Ob}( \, \mathrm{E}h \circ F \circ G \, ) \quad = \quad \mathrm{Ob}(Eh) \circ \mathrm{Ob}(F) \circ \mathrm{Ob}(G) \quad = \quad h \circ \mathrm{Ob}(F) \circ \mathrm{Ob}(G) \end{eq*}
-Therefore, $\mathrm{Ob} \dashv \mathrm{E}$.
-\end{proof}
+%QQQ I think most of this section is a formality by some distributive laws, figure that out.
+%
+%\begin{Defi}\label{Edef2} The functor $\mathrm{E}: \mathrm{Set} \to \mathrm{Cat}$ extends naturally to a functor $\mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$, which we will also call $\mathrm{E}$.
+% \end{Defi}
+%
+%\begin{prop}\label{Obadj} $\mathrm{E}: \mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$ is a right adjoint to the functor $\mathrm{Ob}: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Mon}$. 
+%\end{prop}
+%\begin{proof}
+%For any $\mathrm{E}G$-algebra $X$, a map $F: X \to \mathrm{E}M$ is determined entirely by its restriction to objects, the monoid homomorphism $\mathrm{Ob}(F) : \mathrm{Ob}(X) \to M$. This is because functoriality of $F$ ensures that any map $x \to x'$ in $X$ must be sent to a map $F(x) \to F(x')$ in $\mathrm{E}M$, and by the definition of $\mathrm{E}$ there is always exactly one of these to choose from. In other words, we have an isomorphism between the homsets
+%\begin{eq*} \mathrm{E}G\mathrm{Alg}_S( \, X, \, \mathrm{E}M \, ) \quad \cong \quad \mathrm{Mon}( \, \mathrm{Ob}(X), \, M \, ) \end{eq*}
+%Additionally, this isomorphism is natural in both coordinates. That is, for any $G: X \to X'$ in $\mathrm{E}G\mathrm{Alg}_S$ and $h : M \to M'$ in $\mathrm{Mon}$, the diagram
+%\begin{eq*} \begin{tikzcd}
+%\mathrm{E}G\mathrm{Alg}_S(X, \mathrm{E}M) \ar[dd, "\mathrm{E}h \circ \_ \circ G"'] \ar[r, "\sim"] & \mathrm{Mon}(\mathrm{Ob}(X), M) \ar[dd, "h \circ \_ \circ \mathrm{Ob}(G)"] \\
+%& \\
+%\mathrm{E}G\mathrm{Alg}_S(X', \mathrm{E}M') \ar[r, "\sim"] & \mathrm{Mon}(\mathrm{Ob}(X'), M')
+%\end{tikzcd} \end{eq*}
+%commutes, because
+%\begin{eq*} \mathrm{Ob}( \, \mathrm{E}h \circ F \circ G \, ) \quad = \quad \mathrm{Ob}(Eh) \circ \mathrm{Ob}(F) \circ \mathrm{Ob}(G) \quad = \quad h \circ \mathrm{Ob}(F) \circ \mathrm{Ob}(G) \end{eq*}
+%Therefore, $\mathrm{Ob} \dashv \mathrm{E}$.
+%\end{proof}
 
 %What \cref{Obadj} is essentially saying is that the functor $\mathrm{Ob}$ provides a way for us to move back and forth between the categories $\mathrm{E}G\mathrm{Alg}_S$ and $\mathrm{Mon}$. By applying this reasoning to the universal property of the initial object $\eta$, we can then determine the value of $\mathrm{Ob}(L\mathbb{G}_n)$ in terms of a new universal property of $\mathrm{Ob}(\eta)$ in the category $\mathrm{Mon}$. In particular, the algebras in $(\mathbb{G}_n \downarrow \mathrm{inv})$ are those whose objects are all invertible, and so the induced property of $\mathrm{Ob}(\eta)$ will end up saying something about the relationship between $\mathrm{Ob}(\mathbb{G}_n)$ and groups --- those monoids whose elements are all invertible.
 
 \begin{Defi} Let $M$ be a monoid, $M^{\mathrm{gp}}$ a group, and $i: M \to M^{\mathrm{gp}}$ a monoid homomorphism between them. Then we say that $M^{\mathrm{gp}}$ is the \emph{group completion} of $M$ if for any other group $H$ and homomorphism $h: M \to H$, there exists a unique homomorphism $u: M^{\mathrm{gp}} \to H$ such that $u \circ i = h$.
 \end{Defi}
 
-There are several different ways to actually calculate the group completion of a monoid. One is to use that fact that $M^{\mathrm{gp}}$ is the group whose group presentation is the same as the monoid presentation of $M$. That is, if $M$ is the quotient of the free monoid on generators $\mathcal{G}$ by the relations $\mathcal{R}$, then $M^{\mathrm{gp}}$ is the quotient of the free \emph{group} on generators $\mathcal{G}$ by relations $\mathcal{R}$. This makes finding the completion of free monoids particularly simple.
-
-\begin{prop}\label{Zobj} The object monoid of $L\mathbb{G}_n$ is $\mathbb{Z}^{*n}$, the group completion of the object monoid of $\mathbb{G}_n$. The restriction of $\eta$ on objects, $\mathrm{Ob}(\eta)$, is then the obvious inclusion $\mathbb{N}^{*n} \hookrightarrow \mathbb{Z}^{*n}$.
+\begin{prop}\label{oblel_fg}
+The functor $\ob \circ L \circ \EL: \sets \to \mon$ is naturally isomorphic to the composite of the free group functor and the inclusion of groups into monoids.
 \end{prop}
 \begin{proof}
-Let $H$ be a group, and $h: \mathrm{Ob}(\mathbb{G}_n) \to H$ a monoid homomorphism. By \cref{Obadj} we have an isomorphism of homsets
-\begin{eq*} \mathrm{E}G\mathrm{Alg}_S( \, \mathbb{G}_n, \, \mathrm{E}H \, ) \quad \cong \quad \mathrm{Mon}( \, \mathrm{Ob}(\mathbb{G}_n), \, H \, ) \end{eq*}
-Denote by $h': \mathbb{G}_n \to \mathrm{E}H$ the map of $\mathrm{E}G$-algebras corresponding to $h$ under this isomorphism. Since $H$ is a group, every object in $\mathrm{E}H$ is invertible, and so $h'$ is an object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. Thus, by initiality of $\eta$, there must exist a unique map $u: L\mathbb{G}_n \to \mathrm{E}G$ making the left-hand triangle below commute:
-\begin{eq*} \begin{tikzcd}
-\mathbb{G}_n \ar[dd, "\eta"'] \ar[ddrr, "h'"] & & & & \mathrm{Ob}(\mathbb{G}_n) \ar[dd, "\mathrm{Ob}(\eta)"'] \ar[ddrr, "h"] & & \\
-& & & & & & \\
-L\mathbb{G}_n \ar[rr, "u"'] & & \mathrm{E}H & & \mathrm{Ob}(L\mathbb{G}_n) \ar[rr, "\mathrm{Ob}(u)"'] & & H
-\end{tikzcd} \end{eq*}
-It follows that the righthand triangle --- which is the image of the first under $\mathrm{Ob}$ --- also commutes. Hence for any group $H$ and homomorphism $h: \mathrm{Ob}(\mathbb{G}_n) \to H$, there is at least one map which factors $h$ through $\mathrm{Ob}(\eta)$.
-
-But now recall from \cref{epi} that $\eta$ is an epimorphism. Left adjoint functors preserve epimorphisms, which means that $\mathrm{Ob}(\eta)$ is one too, and so for any $v: \mathrm{Ob}(L\mathbb{G}_n) \to H$,
-\begin{eq*} \begin{array}{rllcrll}
-			v \circ \mathrm{Ob}(\eta) & = & h & \implies & v \circ \mathrm{Ob}(\eta) & = & \mathrm{Ob}(u) \circ \mathrm{Ob}(\eta) \\
-			& & & \implies & v & = & \mathrm{Ob}(u)
-		\end{array}
-\end{eq*}
-Thus there is actually only one possible map which factors $h$ through $\mathrm{Ob}(\eta)$, and therefore every homomorphism from $\mathrm{Ob}(\mathbb{G}_n)$ onto a group factors uniquely through the group $\mathrm{Ob}(L\mathbb{G}_n)$. In other words, $\mathrm{Ob}(L\mathbb{G}_n)$ is the group completion $\mathrm{Ob}(\mathbb{G}_n)^{\mathrm{gp}}$. Since by \cref{Gnobj} the object monoid of $\mathbb{G}_n$ is $\mathbb{N}^{\ast n}$, the free monoid on $n$ generators, we can conclude that
-\begin{eq*} \mathrm{Ob}(L\mathbb{G}_n) \quad = \quad \mathrm{Ob}(\mathbb{G}_n)^{\mathrm{gp}} \quad = \quad (\mathbb{N}^{\ast n})^{\mathrm{gp}} \quad = \quad \mathbb{Z}^{\ast n} \end{eq*}
-the free group on $n$ generators. Moreover, the map $\mathrm{Ob}(\eta)$ is then the inclusion of $\mathrm{Ob}(\mathbb{G}_n)$ into its completion, which is just $\mathbb{N}^{*n} \hookrightarrow \mathbb{Z}^{*n}$.
+Using that the objects of $\EL(M)_{inv}$ for a monoid $M$ are the same as the objects of $\EL(M^{\times})$, where $M^{\times}$ is the subgroup of invertible elements of $M$, we see that both of these functors are left adjoints to the functor $M \mapsto M^{\times}$.
 \end{proof}
+There are several different ways to actually calculate the group completion of a monoid. One is to use that fact that $M^{\mathrm{gp}}$ is the group whose group presentation is the same as the monoid presentation of $M$. That is, if $M$ is the quotient of the free monoid on generators $\mathcal{G}$ by the relations $\mathcal{R}$, then $M^{\mathrm{gp}}$ is the quotient of the free \emph{group} on generators $\mathcal{G}$ by relations $\mathcal{R}$. This makes finding the completion of free monoids particularly simple.
+\begin{cor}\label{Zobj}
+The object monoid of $L\mathbb{G}_n$ is $\mathbb{Z}^{*n}$, the group completion of the object monoid of $\mathbb{G}_n$. The restriction of $\eta$ on objects, $\mathrm{Ob}(\eta)$, is then the obvious inclusion $\mathbb{N}^{*n} \hookrightarrow \mathbb{Z}^{*n}$.
+\end{cor}
+
+
+
+%\begin{prop}\label{Zobj} 
+%\end{prop}
+%\begin{proof}
+%Let $H$ be a group, and $h: \mathrm{Ob}(\mathbb{G}_n) \to H$ a monoid homomorphism. By \cref{Obadj} we have an isomorphism of homsets
+%\begin{eq*} \mathrm{E}G\mathrm{Alg}_S( \, \mathbb{G}_n, \, \mathrm{E}H \, ) \quad \cong \quad \mathrm{Mon}( \, \mathrm{Ob}(\mathbb{G}_n), \, H \, ) \end{eq*}
+%Denote by $h': \mathbb{G}_n \to \mathrm{E}H$ the map of $\mathrm{E}G$-algebras corresponding to $h$ under this isomorphism. Since $H$ is a group, every object in $\mathrm{E}H$ is invertible, and so $h'$ is an object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. Thus, by initiality of $\eta$, there must exist a unique map $u: L\mathbb{G}_n \to \mathrm{E}G$ making the left-hand triangle below commute:
+%\begin{eq*} \begin{tikzcd}
+%\mathbb{G}_n \ar[dd, "\eta"'] \ar[ddrr, "h'"] & & & & \mathrm{Ob}(\mathbb{G}_n) \ar[dd, "\mathrm{Ob}(\eta)"'] \ar[ddrr, "h"] & & \\
+%& & & & & & \\
+%L\mathbb{G}_n \ar[rr, "u"'] & & \mathrm{E}H & & \mathrm{Ob}(L\mathbb{G}_n) \ar[rr, "\mathrm{Ob}(u)"'] & & H
+%\end{tikzcd} \end{eq*}
+%It follows that the righthand triangle --- which is the image of the first under $\mathrm{Ob}$ --- also commutes. Hence for any group $H$ and homomorphism $h: \mathrm{Ob}(\mathbb{G}_n) \to H$, there is at least one map which factors $h$ through $\mathrm{Ob}(\eta)$.
+%
+%But now recall from \cref{epi} that $\eta$ is an epimorphism. Left adjoint functors preserve epimorphisms, which means that $\mathrm{Ob}(\eta)$ is one too, and so for any $v: \mathrm{Ob}(L\mathbb{G}_n) \to H$,
+%\begin{eq*} \begin{array}{rllcrll}
+%			v \circ \mathrm{Ob}(\eta) & = & h & \implies & v \circ \mathrm{Ob}(\eta) & = & \mathrm{Ob}(u) \circ \mathrm{Ob}(\eta) \\
+%			& & & \implies & v & = & \mathrm{Ob}(u)
+%		\end{array}
+%\end{eq*}
+%Thus there is actually only one possible map which factors $h$ through $\mathrm{Ob}(\eta)$, and therefore every homomorphism from $\mathrm{Ob}(\mathbb{G}_n)$ onto a group factors uniquely through the group $\mathrm{Ob}(L\mathbb{G}_n)$. In other words, $\mathrm{Ob}(L\mathbb{G}_n)$ is the group completion $\mathrm{Ob}(\mathbb{G}_n)^{\mathrm{gp}}$. Since by \cref{Gnobj} the object monoid of $\mathbb{G}_n$ is $\mathbb{N}^{\ast n}$, the free monoid on $n$ generators, we can conclude that
+%\begin{eq*} \mathrm{Ob}(L\mathbb{G}_n) \quad = \quad \mathrm{Ob}(\mathbb{G}_n)^{\mathrm{gp}} \quad = \quad (\mathbb{N}^{\ast n})^{\mathrm{gp}} \quad = \quad \mathbb{Z}^{\ast n} \end{eq*}
+%the free group on $n$ generators. Moreover, the map $\mathrm{Ob}(\eta)$ is then the inclusion of $\mathrm{Ob}(\mathbb{G}_n)$ into its completion, which is just $\mathbb{N}^{*n} \hookrightarrow \mathbb{Z}^{*n}$.
+%\end{proof}
 
 %\section{The connected components of $L\mathbb{G}_n$}
 
-The core result of \cref{Zobj} --- that $\mathrm{Ob}(L\mathbb{G}_n)$ is the group completion of $\mathrm{Ob}(\mathbb{G}_n)$ --- makes concrete the sense in which the functor $L$ represents `freely adding inverses' to objects. Extending this same logic to connected components as well, it would seem reasonable to expect that $\pi_0(L\mathbb{G}_n)$ is also the group completion of $\pi_0(\mathbb{G}_n)$. This is indeed the case, and the proof proceeds in a way completely analogous to \cref{Zobj}. First, we want to show that the process of taking connected components forms part of an adjunction. To do this we are going to need a category from which we can draw the kind of structures that can act as the components of an $\mathrm{E}G$-algebra. Exactly which category this should be will depend on our choice of action operad $G$, or more precisely its underlying permutations.
+The core result of \cref{Zobj} --- that $\mathrm{Ob}(L\mathbb{G}_n)$ is the group completion of $\mathrm{Ob}(\mathbb{G}_n)$ --- makes concrete the sense in which the functor $L$ represents `freely adding inverses' to objects. Extending this same logic to connected components as well, it would seem reasonable to expect that $\pi_0(L\mathbb{G}_n)$ is also the group completion of $\pi_0(\mathbb{G}_n)$. This is indeed the case, and the proof proceeds in a way completely analogous to \cref{Zobj}. 
+%First, we want to show that the process of taking connected components forms part of an adjunction. To do this we are going to need a category from which we can draw the kind of structures that can act as the components of an $\mathrm{E}G$-algebra. Exactly which category this should be will depend on our choice of action operad $G$, or more precisely its underlying permutations.
 
-\begin{Defi} For a given action operad $G$, denote by $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ the full subcategory of $\mathrm{Mon}$ on those monoids whose multiplication is invariant under the permutations in $\mathrm{im}(\pi)$. That is, a monoid $M$ is in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ if and only if
-\begin{eq*} m_1, ..., m_n \in M, \, g \in G(n) \quad \implies \quad m_1 \cdot ... \cdot m_n \, = \, m_{\pi(g)^{-1}(1)} ... m_{\pi(g)^{-1}(n)} \end{eq*}
-\end{Defi}
-
-Of course, by \cref{surjortriv} there are really only two examples of such an $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. If the underlying permutations of $G$ are trivial, then $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is just the whole of the category $\mathrm{Mon}$; if  instead $G$ is crossed then we are asking for monoids whose multiplication is invariant under arbitrary permutations from $\mathrm{S}$, and so $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is just the category of \emph{commutative} monoids, $\mathrm{CMon}$. Regardless, when we are working with an arbitrary action operad $G$, the category $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is exactly the collection of possible connected components that we were looking for.
-
-\begin{lem}\label{pi0} Let $G$ be an action operad and $\mathrm{im}(\pi)$ its underlying permutation action operad. Then there is a functor
-\begin{eq*} \pi_0: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mathrm{Mon} \end{eq*}
-which sends each algebra $X$ to its monoid of connected components $\pi_0(X)$, and sends each map of algebras $F: X \to Y$ to its restriction to connected components $\pi_0(F): \pi_0(X) \to \pi_0(Y)$.
-\end{lem}
-\begin{proof}
-Let $x_1, ..., x_n$ be an arbitrary collection of objects from the algebra $X$, and $g$ an element of the group $G(n)$. Then the action of $G$ guarantees the existence of a morphism
-\begin{eq*} \alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_n}) \, : \, x_1 \otimes ... \otimes x_n \to x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(n)} \end{eq*}
-By definition the source and target of this morphism belong to the same connected component, and hence
-\begin{eq*} \begin{array}{rll}
-			[ \, x_1 \otimes ... \otimes x_n \, ] & = & [ \, x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(n)} \, ] \\
-			\implies \quad [x_1] \otimes ... \otimes [x_n] & = & [x_{\pi(g^{-1})(1)}] \otimes ... \otimes [x_{\pi(g^{-1})(n)}]
-		\end{array} 
-\end{eq*}
-But since the $x_i$ are just arbitrary objects of $X$, the components $[x_i]$ are an arbitrary collection of elements from $\pi_0(X)$, and likewise for the group element $g$ and the permutation $\pi(g)$. Therefore multiplication in the monoid $\pi_0(X)$ is invariant under all permutations in the images of the homomorphisms $\pi_n: G(n) \to S_n$, and thus $\pi_0(X)$ is an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, as required. Well-definedness of the functor $\pi_0$ on morphisms then follows immediately from the fullness of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$.
-\end{proof}
-
-Now that we have a functor which represents the act of finding the connected component monoid of an algebra, we need another functor heading in the opposite direction, so that we can construct an adjunction between them.
-
-There exists an inclusion of 2-categories $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ which allows us to view any set $S$ as a \emph{discrete category}, one whose objects are just the elements of $S$ and whose morphisms are all identities. If the given set also happens to be a monoid $M$, then there is an obvious way to see the discrete category $\mathrm{D}M$ as a monoidal category, and so we have a similar inclusion $\mathrm{Mon} \hookrightarrow \mathrm{MonCat}$. Moreover, for any action operad $G$ and object $M$ of the category $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, there is a unique way to assign an $\mathrm{E}G$-action to the discrete category $\mathrm{D}M$. This works because for any elements $m_1, ..., m_n \in M$ and $g \in G(n)$, the morphism $\alpha(g; \mathrm{id}_{m_1}, ..., \mathrm{id}_{m_n})$ must have source and target 
-\begin{eq*} m_1 \otimes ... \otimes m_n  \quad = \quad m_{\pi(g^{-1})(1)} \otimes ... \otimes m_{\pi(g^{-1})(m)} \end{eq*}
-and therefore it can only be the morphism $\mathrm{id}_{m_1 \otimes ... \otimes m_n}$. As in the previous section, this ability to assign an algebra structure uniquely will gives us exactly the adjoint functor we need.
-
-\begin{Defi} The functor $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ extends naturally to a functor $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$, which we will also call $\mathrm{D}$.
-\end{Defi}
-
-\begin{prop}\label{concompadj} $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ is a right adjoint to the functor $\pi_0: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. 
+\begin{prop}\label{pilel_gppiel}
+The functor $\pi_0 \circ L \circ \EL: \sets \to T_{\ML}\mbox{-}\textrm{Alg}$ is naturally isomorphic to the functor $\textrm{gp} \circ \pi_0 \circ \EL$, where $\textrm{gp}$ is the group completion functor.
 \end{prop}
 \begin{proof}
-Consider a map of $F: X \to \mathrm{D}C$ from some $\mathrm{E}G$-algebra $X$ onto the discrete $\mathrm{E}G$-algebra for a monoid $M$ in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. For any $f: x \to x'$ in $X$, the morphism $F(f)$ must be an identity map in $\mathrm{D}M$, since these are the only morphisms that $\mathrm{D}M$ has. It follows that $x$ and $x'$ being in the same connected component will imply $F(x) = F(x')$, and so $F$ is determined entirely by its restriction to connected components, the monoid homomorphism $\pi_0(F) : \pi_0(X) \to M$. In other words, we have an isomorphism between the homsets
-\begin{eq*} \mathrm{E}G\mathrm{Alg}_S( \, X, \mathrm{D}M \, ) \quad \cong \quad \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}( \, \pi_0(X), M \, ) \end{eq*}
-This isomorphism is natural in both coordinates, since for any $G: X \to X'$ in $\mathrm{E}G\mathrm{Alg}_S$ and $h : M \to M'$ in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, 
-\begin{eq*} \pi_0( \, \mathrm{D}h \circ F \circ G \, ) \quad = \quad \pi_0(\mathrm{D}h) \circ \pi_0(F) \circ \pi_0(G) \quad = \quad h \circ \pi_0(F) \circ \pi_0(G) \end{eq*}
-and so the diagram
-\begin{eq*} \begin{tikzcd}
-\mathrm{E}G\mathrm{Alg}_S(X, \mathrm{D}M) \ar[dd, "\mathrm{D}h \circ \_ \circ G"'] \ar[rr, "\sim"] & & \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}\big( \, \pi_0(X), M \, \big) \ar[dd, "h \circ \_ \circ \pi_0(G)"] \\
-& & \\
-\mathrm{E}G\mathrm{Alg}_S(X', \mathrm{D}M') \ar[rr, "\sim"] & & \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}\big( \, \pi_0(X'), M' \, \big) 
-\end{tikzcd} \end{eq*}
-commutes. Therefore, $\pi_0 \dashv \mathrm{D}$.
+The proof is the same style as above, with both functors being  left adjoints of the functor giving the objects of $(DM)_{inv} = D(M^{\times})$.
 \end{proof}
+\begin{cor}\label{Zconcomp} The connected components of $L\mathbb{G}_n$ are the group completion of the connected components of $\mathbb{G}_n$. Also, the restriction of $\eta$ onto connected components, $\pi_0(\eta)$, is the canonical map $\pi_0(\mathbb{G}_n) \to \pi_0(\mathbb{G}_n)^{\mathrm{gp}}$ associated with that group completion.
+\end{cor}
 
-Now we can utilise \cref{concompadj} to draw out a universal property of $\pi_0(L\mathbb{G}_n)$, just as we did with $\mathrm{Ob}(L\mathbb{G}_n)$ in \cref{Obadj}.
-
-\begin{prop}\label{Zconcomp} The connected components of $L\mathbb{G}_n$ are the group completion of the connected components of $\mathbb{G}_n$. Also, the restriction of $\eta$ onto connected components, $\pi_0(\eta)$, is the canonical map $\pi_0(\mathbb{G}_n) \to \pi_0(\mathbb{G}_n)^{\mathrm{gp}}$ associated with that group completion.
-\end{prop}
-\begin{proof}
-Let $H$ be a group which is also an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, and let $h: \pi_0(\mathbb{G}_n) \to H$ be a monoid homomorphism. By \cref{concompadj} there is a homset isomorphism
-\begin{eq*} \mathrm{E}G\mathrm{Alg}_S( \, \mathbb{G}_n, \, \mathrm{D}H \, ) \quad \cong \quad \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}( \, \pi_0(\mathbb{G}_n), \, H \, ) \end{eq*}
-and thus some $\mathrm{E}G$-algebra map $h': \mathbb{G}_n \to \mathrm{D}H$ corresponding to $h$. As $H$ is a group, every object of $\mathrm{D}H$ is invertible, and so $h'$ is an object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. It follows that there exists a unique map $u: L\mathbb{G}_n \to \mathrm{D}M$ which factors $h'$ through the initial object $\eta$:
-\begin{eq*} \begin{tikzcd}
-\mathbb{G}_n \ar[dd, "\eta"'] \ar[ddrr, "h'"] & & & & \pi_0(\mathbb{G}_n) \ar[dd, "\pi_0(\eta)"'] \ar[ddrr, "h"] & & \\
-& & & & & & \\
-L\mathbb{G}_n \ar[rr, "u"'] & & \mathrm{D}H & \quad & \pi_0(L\mathbb{G}_n) \ar[rr, "\pi_0(u)"'] & & H
-\end{tikzcd} \end{eq*}
-Applying the functor $\pi_0$ everywhere, we see that $\pi_0(u)$ must also factor $h$ through the homomorphism $\pi_0(\eta)$. Moreover, since $\eta$ is an epimorphism and $\pi_0$ a left adjoint functor, $\pi_0(\eta)$ is an epimorphism too, and so $\pi_0(u)$ is the only map with this property. Therefore, any monoid homomorphism $\pi_0(\mathbb{G}_n) \to H$ will factor uniquely through $\pi_0(L\mathbb{G}_n)$, so long as $H$ is in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$.  
-
-Now consider another monoid homomorphism $k: \pi_0(\mathbb{G}_n) \to K$, where this time $K$ is still a group but not necessarily in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. From \cref{pi0}, we know that $\pi_0(\mathbb{G}_n)$ is still an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, and from this we can conclude that the image $\mathrm{im}(k)$ will be too:
-\begin{eq*} \begin{array}{rrcl}
-			& x_1, ..., x_m & \in & \pi_0(\mathbb{G}_n), \, g \in G(n) \\
-			\implies & x_1 \otimes ... \otimes x_m & = & x_{\pi(g)(1)} \otimes ... \otimes x_{\pi(g)(m)} \\
-			\implies & k( \, x_1 \otimes ... \otimes x_m \, ) & = & k( \, x_{\pi(g)(1)} \otimes ... \otimes x_{\pi(g)(m)} \, ) \\
-			\implies & k(x_1) \otimes ... \otimes k(x_m) & = & k(x_{\pi(g)(1)}) \otimes ... \otimes k(x_{\pi(g)(m)})
-		\end{array}
-\end{eq*}
-Also, since $\mathrm{im}(k)$ is a submonoid of the group $K$, it is a group as well. Thus if we denote by $k_{\mathrm{im}}: \mathrm{Ob}(\mathbb{G}_n) \to \mathrm{im}(k)$ the restriction of $k$ to it image, then $k_{\mathrm{im}}$ is a map in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ out of $\mathrm{Ob}(\mathbb{G}_n)$ and onto a group, and therefore by what we showed earlier there exists a unique homomorphism $v: \mathrm{Ob}(L\mathbb{G}_n) \to \mathrm{im}(k)$ with the property $v \circ \pi_0(\eta) = k_{\mathrm{im}}$. Composing this $v$ with the inclusion $i: \mathrm{im}(k) \hookrightarrow K$, we see that
-\begin{eq*} i \circ v \circ \pi_0(\eta) \, = \, i \circ k_{\mathrm{im}} \, = \, k \end{eq*}
-and $i \circ v$ must be the only map for which this is true, for restricting this equation back onto $\mathrm{im}(k)$ yields the unique property of $v$ again. Thus $\pi_0(\eta)$ will actually take any homomorphism from $\mathrm{Ob}(\mathbb{G}_n)$ onto a group and factor it through $\pi_0(L\mathbb{G}_n)$ in a unique way, not just those homomorphisms in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. In other words, 
-\begin{eq*} \pi_0(L\mathbb{G}_n) \quad = \quad \pi_0(\mathbb{G}_n)^{\mathrm{gp}} \end{eq*}
-and $\pi_0(\eta)$ is the canonical map of this group completion.
-\end{proof}
+%\begin{Defi} For a given action operad $G$, denote by $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ the full subcategory of $\mathrm{Mon}$ on those monoids whose multiplication is invariant under the permutations in $\mathrm{im}(\pi)$. That is, a monoid $M$ is in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ if and only if
+%\begin{eq*} m_1, ..., m_n \in M, \, g \in G(n) \quad \implies \quad m_1 \cdot ... \cdot m_n \, = \, m_{\pi(g)^{-1}(1)} ... m_{\pi(g)^{-1}(n)} \end{eq*}
+%\end{Defi}
+%
+%Of course, by \cref{surjortriv} there are really only two examples of such an $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. If the underlying permutations of $G$ are trivial, then $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is just the whole of the category $\mathrm{Mon}$; if  instead $G$ is crossed then we are asking for monoids whose multiplication is invariant under arbitrary permutations from $\mathrm{S}$, and so $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is just the category of \emph{commutative} monoids, $\mathrm{CMon}$. Regardless, when we are working with an arbitrary action operad $G$, the category $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is exactly the collection of possible connected components that we were looking for.
+%
+%\begin{lem}\label{pi0} Let $G$ be an action operad and $\mathrm{im}(\pi)$ its underlying permutation action operad. Then there is a functor
+%\begin{eq*} \pi_0: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mathrm{Mon} \end{eq*}
+%which sends each algebra $X$ to its monoid of connected components $\pi_0(X)$, and sends each map of algebras $F: X \to Y$ to its restriction to connected components $\pi_0(F): \pi_0(X) \to \pi_0(Y)$.
+%\end{lem}
+%\begin{proof}
+%Let $x_1, ..., x_n$ be an arbitrary collection of objects from the algebra $X$, and $g$ an element of the group $G(n)$. Then the action of $G$ guarantees the existence of a morphism
+%\begin{eq*} \alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_n}) \, : \, x_1 \otimes ... \otimes x_n \to x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(n)} \end{eq*}
+%By definition the source and target of this morphism belong to the same connected component, and hence
+%\begin{eq*} \begin{array}{rll}
+%			[ \, x_1 \otimes ... \otimes x_n \, ] & = & [ \, x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(n)} \, ] \\
+%			\implies \quad [x_1] \otimes ... \otimes [x_n] & = & [x_{\pi(g^{-1})(1)}] \otimes ... \otimes [x_{\pi(g^{-1})(n)}]
+%		\end{array} 
+%\end{eq*}
+%But since the $x_i$ are just arbitrary objects of $X$, the components $[x_i]$ are an arbitrary collection of elements from $\pi_0(X)$, and likewise for the group element $g$ and the permutation $\pi(g)$. Therefore multiplication in the monoid $\pi_0(X)$ is invariant under all permutations in the images of the homomorphisms $\pi_n: G(n) \to S_n$, and thus $\pi_0(X)$ is an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, as required. Well-definedness of the functor $\pi_0$ on morphisms then follows immediately from the fullness of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$.
+%\end{proof}
+%
+%Now that we have a functor which represents the act of finding the connected component monoid of an algebra, we need another functor heading in the opposite direction, so that we can construct an adjunction between them.
+%
+%There exists an inclusion of 2-categories $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ which allows us to view any set $S$ as a \emph{discrete category}, one whose objects are just the elements of $S$ and whose morphisms are all identities. If the given set also happens to be a monoid $M$, then there is an obvious way to see the discrete category $\mathrm{D}M$ as a monoidal category, and so we have a similar inclusion $\mathrm{Mon} \hookrightarrow \mathrm{MonCat}$. Moreover, for any action operad $G$ and object $M$ of the category $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, there is a unique way to assign an $\mathrm{E}G$-action to the discrete category $\mathrm{D}M$. This works because for any elements $m_1, ..., m_n \in M$ and $g \in G(n)$, the morphism $\alpha(g; \mathrm{id}_{m_1}, ..., \mathrm{id}_{m_n})$ must have source and target 
+%\begin{eq*} m_1 \otimes ... \otimes m_n  \quad = \quad m_{\pi(g^{-1})(1)} \otimes ... \otimes m_{\pi(g^{-1})(m)} \end{eq*}
+%and therefore it can only be the morphism $\mathrm{id}_{m_1 \otimes ... \otimes m_n}$. As in the previous section, this ability to assign an algebra structure uniquely will gives us exactly the adjoint functor we need.
+%
+%\begin{Defi} The functor $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ extends naturally to a functor $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon} \to \mathrm{E}G\mathrm{Alg}_S$, which we will also call $\mathrm{D}$.
+%\end{Defi}
+%
+%\begin{prop}\label{concompadj} $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ is a right adjoint to the functor $\pi_0: \mathrm{E}G\mathrm{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. 
+%\end{prop}
+%\begin{proof}
+%Consider a map of $F: X \to \mathrm{D}C$ from some $\mathrm{E}G$-algebra $X$ onto the discrete $\mathrm{E}G$-algebra for a monoid $M$ in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. For any $f: x \to x'$ in $X$, the morphism $F(f)$ must be an identity map in $\mathrm{D}M$, since these are the only morphisms that $\mathrm{D}M$ has. It follows that $x$ and $x'$ being in the same connected component will imply $F(x) = F(x')$, and so $F$ is determined entirely by its restriction to connected components, the monoid homomorphism $\pi_0(F) : \pi_0(X) \to M$. In other words, we have an isomorphism between the homsets
+%\begin{eq*} \mathrm{E}G\mathrm{Alg}_S( \, X, \mathrm{D}M \, ) \quad \cong \quad \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}( \, \pi_0(X), M \, ) \end{eq*}
+%This isomorphism is natural in both coordinates, since for any $G: X \to X'$ in $\mathrm{E}G\mathrm{Alg}_S$ and $h : M \to M'$ in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, 
+%\begin{eq*} \pi_0( \, \mathrm{D}h \circ F \circ G \, ) \quad = \quad \pi_0(\mathrm{D}h) \circ \pi_0(F) \circ \pi_0(G) \quad = \quad h \circ \pi_0(F) \circ \pi_0(G) \end{eq*}
+%and so the diagram
+%\begin{eq*} \begin{tikzcd}
+%\mathrm{E}G\mathrm{Alg}_S(X, \mathrm{D}M) \ar[dd, "\mathrm{D}h \circ \_ \circ G"'] \ar[rr, "\sim"] & & \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}\big( \, \pi_0(X), M \, \big) \ar[dd, "h \circ \_ \circ \pi_0(G)"] \\
+%& & \\
+%\mathrm{E}G\mathrm{Alg}_S(X', \mathrm{D}M') \ar[rr, "\sim"] & & \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}\big( \, \pi_0(X'), M' \, \big) 
+%\end{tikzcd} \end{eq*}
+%commutes. Therefore, $\pi_0 \dashv \mathrm{D}$.
+%\end{proof}
+%
+%Now we can utilise \cref{concompadj} to draw out a universal property of $\pi_0(L\mathbb{G}_n)$, just as we did with $\mathrm{Ob}(L\mathbb{G}_n)$ in \cref{Obadj}.
+%
+%\begin{prop}
+%\end{prop}
+%\begin{proof}
+%Let $H$ be a group which is also an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, and let $h: \pi_0(\mathbb{G}_n) \to H$ be a monoid homomorphism. By \cref{concompadj} there is a homset isomorphism
+%\begin{eq*} \mathrm{E}G\mathrm{Alg}_S( \, \mathbb{G}_n, \, \mathrm{D}H \, ) \quad \cong \quad \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}( \, \pi_0(\mathbb{G}_n), \, H \, ) \end{eq*}
+%and thus some $\mathrm{E}G$-algebra map $h': \mathbb{G}_n \to \mathrm{D}H$ corresponding to $h$. As $H$ is a group, every object of $\mathrm{D}H$ is invertible, and so $h'$ is an object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. It follows that there exists a unique map $u: L\mathbb{G}_n \to \mathrm{D}M$ which factors $h'$ through the initial object $\eta$:
+%\begin{eq*} \begin{tikzcd}
+%\mathbb{G}_n \ar[dd, "\eta"'] \ar[ddrr, "h'"] & & & & \pi_0(\mathbb{G}_n) \ar[dd, "\pi_0(\eta)"'] \ar[ddrr, "h"] & & \\
+%& & & & & & \\
+%L\mathbb{G}_n \ar[rr, "u"'] & & \mathrm{D}H & \quad & \pi_0(L\mathbb{G}_n) \ar[rr, "\pi_0(u)"'] & & H
+%\end{tikzcd} \end{eq*}
+%Applying the functor $\pi_0$ everywhere, we see that $\pi_0(u)$ must also factor $h$ through the homomorphism $\pi_0(\eta)$. Moreover, since $\eta$ is an epimorphism and $\pi_0$ a left adjoint functor, $\pi_0(\eta)$ is an epimorphism too, and so $\pi_0(u)$ is the only map with this property. Therefore, any monoid homomorphism $\pi_0(\mathbb{G}_n) \to H$ will factor uniquely through $\pi_0(L\mathbb{G}_n)$, so long as $H$ is in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$.  
+%
+%Now consider another monoid homomorphism $k: \pi_0(\mathbb{G}_n) \to K$, where this time $K$ is still a group but not necessarily in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. From \cref{pi0}, we know that $\pi_0(\mathbb{G}_n)$ is still an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, and from this we can conclude that the image $\mathrm{im}(k)$ will be too:
+%\begin{eq*} \begin{array}{rrcl}
+%			& x_1, ..., x_m & \in & \pi_0(\mathbb{G}_n), \, g \in G(n) \\
+%			\implies & x_1 \otimes ... \otimes x_m & = & x_{\pi(g)(1)} \otimes ... \otimes x_{\pi(g)(m)} \\
+%			\implies & k( \, x_1 \otimes ... \otimes x_m \, ) & = & k( \, x_{\pi(g)(1)} \otimes ... \otimes x_{\pi(g)(m)} \, ) \\
+%			\implies & k(x_1) \otimes ... \otimes k(x_m) & = & k(x_{\pi(g)(1)}) \otimes ... \otimes k(x_{\pi(g)(m)})
+%		\end{array}
+%\end{eq*}
+%Also, since $\mathrm{im}(k)$ is a submonoid of the group $K$, it is a group as well. Thus if we denote by $k_{\mathrm{im}}: \mathrm{Ob}(\mathbb{G}_n) \to \mathrm{im}(k)$ the restriction of $k$ to it image, then $k_{\mathrm{im}}$ is a map in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ out of $\mathrm{Ob}(\mathbb{G}_n)$ and onto a group, and therefore by what we showed earlier there exists a unique homomorphism $v: \mathrm{Ob}(L\mathbb{G}_n) \to \mathrm{im}(k)$ with the property $v \circ \pi_0(\eta) = k_{\mathrm{im}}$. Composing this $v$ with the inclusion $i: \mathrm{im}(k) \hookrightarrow K$, we see that
+%\begin{eq*} i \circ v \circ \pi_0(\eta) \, = \, i \circ k_{\mathrm{im}} \, = \, k \end{eq*}
+%and $i \circ v$ must be the only map for which this is true, for restricting this equation back onto $\mathrm{im}(k)$ yields the unique property of $v$ again. Thus $\pi_0(\eta)$ will actually take any homomorphism from $\mathrm{Ob}(\mathbb{G}_n)$ onto a group and factor it through $\pi_0(L\mathbb{G}_n)$ in a unique way, not just those homomorphisms in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. In other words, 
+%\begin{eq*} \pi_0(L\mathbb{G}_n) \quad = \quad \pi_0(\mathbb{G}_n)^{\mathrm{gp}} \end{eq*}
+%and $\pi_0(\eta)$ is the canonical map of this group completion.
+%\end{proof}
 
 %As we've said before, this result is a reflection of the fact that the functor $L$ is trying to add inverses the objects of $\mathbb{G}_n$ freely, that is, with as little effect on the rest of the algebra as possible. Indeed, if we happen to know whether or not our action operad $G$ is crossed then we can now calculate exactly what the effect on the components will be.
-
+We summarize thes results below.
 \begin{cor}\label{crossconcomp} If $G$ is a crossed action algebra then
 \begin{itemize} \itemsep0em
 \item the connected components of $L\mathbb{G}_n$ are the monoid $\mathbb{Z}^n$
@@ -5006,31 +5099,33 @@ If instead $G$ is non-crossed, then
 \item the assignment of objects to their component is $\mathrm{id}_{\mathbb{Z}^{\ast n}}$
 \end{itemize}
 \end{cor}
-\begin{proof}
-Combining \cref{Zconcomp,Gnconcomp}, we see that
-\begin{eq*} \pi_0(L\mathbb{G}_n) \quad = \quad \pi_0(\mathbb{G}_n)^{\mathrm{gp}} \quad = \quad \begin{cases}
-													\quad (\mathbb{N}^n)^{\mathrm{gp}} \quad = \quad \mathbb{Z}^n & \text{if $G$ is crossed} \\
-													\quad (\mathbb{N}^{\ast n})^{\mathrm{gp}} \quad = \quad \mathbb{Z}^{\ast n} & \text{otherwise}
-														\end{cases}
-\end{eq*}
-Moreover, \cref{Zconcomp} says that restriction of $\eta$ to connected components, $\pi_0(\eta)$, will be the homomorphism associated with these group completion, which means the inclusion $\mathbb{N}^n \hookrightarrow \mathbb{Z}^n$ when $G$ is crossed and $\mathbb{N}^{\ast n} \hookrightarrow \mathbb{Z}^{\ast n}$ when it is not.
-
-Next, by \cref{Gnconcomp} we know that the map $[ \, \_ \, ] : \mathrm{Ob}(\mathbb{G}_n) \to \pi_0(\mathbb{G}_n)$ sending objects of $\mathbb{G}_n$ to their connected component is either the quotient map of abelianisation $\mathbb{N}^{\ast n} \to \mathbb{N}^n$ or the identity on $\mathbb{N}^{\ast n}$, depending on whether or not it is crossed. If we also use $[ \, \_ \, ]$ to denote the map sending objects of $L\mathbb{G}_n$ to their components, it then follows from functoriality of $\eta$ that the corresponding choice of the following two diagrams will commute:
-\begin{eq*} \begin{tikzcd}
-\mathbb{N}^{\ast n} \ar[dd, hookrightarrow, "\lbrack \, \_ \, \rbrack"'] \ar[rr, hookrightarrow, "\mathrm{Ob}(\eta)"] & & \mathbb{Z}^{\ast n} \ar[dd, "\lbrack \, \_ \, \rbrack"] & \quad & \mathbb{N}^{\ast n} \ar[dd, equals, "\lbrack \, \_ \, \rbrack"'] \ar[rr, hookrightarrow, "\mathrm{Ob}(\eta)"] & & \mathbb{Z}^{\ast n} \ar[dd, "\lbrack \, \_ \, \rbrack"] \\
-& & & & \\
-\mathbb{N}^n \ar[rr, hookrightarrow, "\pi_0(\eta)"'] & & \mathbb{Z}^n & & \mathbb{N}^{\ast n} \ar[rr, hookrightarrow, "\pi_0(\eta)"'] & & \mathbb{Z}^{\ast n}
-\end{tikzcd} \end{eq*}
-Using the values of $[ \, \_ \, ]$ from \cref{Gnconcomp}, $\mathrm{Ob}(\eta)$ from \cref{Zobj}, and $\pi_0(\eta)$ from earlier in this proof, it follows that for any generator $z_i$ of $\mathbb{Z}^{\ast n}$, 
-\begin{eq*} [z_i] \quad = \quad [\mathrm{Ob}(\eta)(z_i)] \quad = \quad \pi_0(\eta)([z_i]) \quad = \quad \pi_0(\eta)(z_i) \quad = \quad z_i \end{eq*}
-But this description of $[ \, \_ \, ]: \mathrm{Ob}(L\mathbb{G}_n) \to \pi_0(L\mathbb{G}_n)$ on generators is either the definition of the quotient map $\mathrm{ab}: \mathbb{Z}^{\ast n} \to (\mathbb{Z}^{\ast n})^{\mathrm{ab}}$ or the identity $\mathrm{id}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^{\ast n}$, depending on the value of target monoid, as required.
-\end{proof}
+%\begin{proof}
+%Combining \cref{Zconcomp,Gnconcomp}, we see that
+%\begin{eq*} \pi_0(L\mathbb{G}_n) \quad = \quad \pi_0(\mathbb{G}_n)^{\mathrm{gp}} \quad = \quad \begin{cases}
+%													\quad (\mathbb{N}^n)^{\mathrm{gp}} \quad = \quad \mathbb{Z}^n & \text{if $G$ is crossed} \\
+%													\quad (\mathbb{N}^{\ast n})^{\mathrm{gp}} \quad = \quad \mathbb{Z}^{\ast n} & \text{otherwise}
+%														\end{cases}
+%\end{eq*}
+%Moreover, \cref{Zconcomp} says that restriction of $\eta$ to connected components, $\pi_0(\eta)$, will be the homomorphism associated with these group completion, which means the inclusion $\mathbb{N}^n \hookrightarrow \mathbb{Z}^n$ when $G$ is crossed and $\mathbb{N}^{\ast n} \hookrightarrow \mathbb{Z}^{\ast n}$ when it is not.
+%
+%Next, by \cref{Gnconcomp} we know that the map $[ \, \_ \, ] : \mathrm{Ob}(\mathbb{G}_n) \to \pi_0(\mathbb{G}_n)$ sending objects of $\mathbb{G}_n$ to their connected component is either the quotient map of abelianisation $\mathbb{N}^{\ast n} \to \mathbb{N}^n$ or the identity on $\mathbb{N}^{\ast n}$, depending on whether or not it is crossed. If we also use $[ \, \_ \, ]$ to denote the map sending objects of $L\mathbb{G}_n$ to their components, it then follows from functoriality of $\eta$ that the corresponding choice of the following two diagrams will commute:
+%\begin{eq*} \begin{tikzcd}
+%\mathbb{N}^{\ast n} \ar[dd, hookrightarrow, "\lbrack \, \_ \, \rbrack"'] \ar[rr, hookrightarrow, "\mathrm{Ob}(\eta)"] & & \mathbb{Z}^{\ast n} \ar[dd, "\lbrack \, \_ \, \rbrack"] & \quad & \mathbb{N}^{\ast n} \ar[dd, equals, "\lbrack \, \_ \, \rbrack"'] \ar[rr, hookrightarrow, "\mathrm{Ob}(\eta)"] & & \mathbb{Z}^{\ast n} \ar[dd, "\lbrack \, \_ \, \rbrack"] \\
+%& & & & \\
+%\mathbb{N}^n \ar[rr, hookrightarrow, "\pi_0(\eta)"'] & & \mathbb{Z}^n & & \mathbb{N}^{\ast n} \ar[rr, hookrightarrow, "\pi_0(\eta)"'] & & \mathbb{Z}^{\ast n}
+%\end{tikzcd} \end{eq*}
+%Using the values of $[ \, \_ \, ]$ from \cref{Gnconcomp}, $\mathrm{Ob}(\eta)$ from \cref{Zobj}, and $\pi_0(\eta)$ from earlier in this proof, it follows that for any generator $z_i$ of $\mathbb{Z}^{\ast n}$, 
+%\begin{eq*} [z_i] \quad = \quad [\mathrm{Ob}(\eta)(z_i)] \quad = \quad \pi_0(\eta)([z_i]) \quad = \quad \pi_0(\eta)(z_i) \quad = \quad z_i \end{eq*}
+%But this description of $[ \, \_ \, ]: \mathrm{Ob}(L\mathbb{G}_n) \to \pi_0(L\mathbb{G}_n)$ on generators is either the definition of the quotient map $\mathrm{ab}: \mathbb{Z}^{\ast n} \to (\mathbb{Z}^{\ast n})^{\mathrm{ab}}$ or the identity $\mathrm{id}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^{\ast n}$, depending on the value of target monoid, as required.
+%\end{proof}
 
 %\section{The collapsed morphisms of $L\mathbb{G}_n$}  
 %
 %Now that we understand the objects and connected components of the algebra $L\mathbb{G}_n$, the next most obvious thing to look for are its morphisms, $\mathrm{Mor}(L\mathbb{G}_n)$. It would be nice to construct this collection in the same way we constructed $\mathrm{Ob}(L\mathbb{G}_n)$ and $\pi_0(L\mathbb{G}_n)$, by applying the left adjoint of some adjunction to the initial map $\eta$. Before we can do this however, we need to ask ourselves a question. What sort of mathematical object is $\mathrm{Mor}(L\mathbb{G}_n)$, exactly?
 %
 %Given a pair of morphisms $f: x \to y, f': y' \to z$ in an $\mathrm{E}G$-algebra $X$, there are two basic binary operations we can perform. First, we can take their tensor product $f \otimes f'$, and this together with the unit map $\mathrm{id}_{I}$ imbues $\mathrm{Mor}(X)$ with the structure of a monoid. Second, if we have $y = y'$ then we can form the composite morphism $f' \circ f$. However, these two operations are not as different as they first appear.
+
+We now turn to our third adjunction, which is of a less formal nature than the first two.
 
 \begin{lem} \label{tenscomp} Let $f: x \to y$ and $f': y \to z$ be morphisms in some strict monoidal category, and $y$ is an invertible object of that category. Then
 \begin{eq*} f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y*} \otimes f \end{eq*}
