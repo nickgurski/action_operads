@@ -66,6 +66,9 @@
 \newcommand{\lmc}{\Lambda\mbox{-}\textrm{MonCat}}
 \newcommand{\sets}{\Set}
 \newcommand{\mon}{\ensuremath{\textrm{Mon}}}
+\newcommand{\cmon}{\ensuremath{\textrm{CommMon}}}
+\newcommand{\moncat}{\ensuremath{\textrm{MonCat}}}
+\newcommand{\cat}{\ensuremath{\textrm{Cat}}}
 \newcommand{\epz}{\varepsilon}
 
 \newcolumntype{L}{>{$}l<{$}}
@@ -4999,10 +5002,10 @@ The core result of \cref{Zobj} --- that $\mathrm{Ob}(L\mathbb{G}_n)$ is the grou
 %First, we want to show that the process of taking connected components forms part of an adjunction. To do this we are going to need a category from which we can draw the kind of structures that can act as the components of an $\mathrm{E}G$-algebra. Exactly which category this should be will depend on our choice of action operad $G$, or more precisely its underlying permutations.
 
 \begin{prop}\label{pilel_gppiel}
-The functor $\pi_0 \circ L \circ \EL: \sets \to T_{\ML}\mbox{-}\textrm{Alg}$ is naturally isomorphic to the functor $\textrm{gp} \circ \pi_0 \circ \EL$, where $\textrm{gp}$ is the group completion functor.
+The functor $\pi_0 \circ L: \lmc \to T_{\ML}\mbox{-}\textrm{Alg}$ is naturally isomorphic to the functor $\textrm{gp} \circ \pi_0$, where $\textrm{gp}$ is the group completion functor.
 \end{prop}
 \begin{proof}
-The proof is the same style as above, with both functors being  left adjoints of the functor giving the objects of $(DM)_{inv} = D(M^{\times})$.
+The proof is the same style as above, with both functors being  left adjoints of the functor $M \mapsto (DM)_{inv} = D(M^{\times})$.
 \end{proof}
 \begin{cor}\label{Zconcomp} The connected components of $L\mathbb{G}_n$ are the group completion of the connected components of $\mathbb{G}_n$. Also, the restriction of $\eta$ onto connected components, $\pi_0(\eta)$, is the canonical map $\pi_0(\mathbb{G}_n) \to \pi_0(\mathbb{G}_n)^{\mathrm{gp}}$ associated with that group completion.
 \end{cor}
@@ -5085,7 +5088,7 @@ The proof is the same style as above, with both functors being  left adjoints of
 %\end{proof}
 
 %As we've said before, this result is a reflection of the fact that the functor $L$ is trying to add inverses the objects of $\mathbb{G}_n$ freely, that is, with as little effect on the rest of the algebra as possible. Indeed, if we happen to know whether or not our action operad $G$ is crossed then we can now calculate exactly what the effect on the components will be.
-We summarize thes results below.
+We summarize these results below.
 \begin{cor}\label{crossconcomp} If $G$ is a crossed action algebra then
 \begin{itemize} \itemsep0em
 \item the connected components of $L\mathbb{G}_n$ are the monoid $\mathbb{Z}^n$
@@ -5125,7 +5128,7 @@ If instead $G$ is non-crossed, then
 %
 %Given a pair of morphisms $f: x \to y, f': y' \to z$ in an $\mathrm{E}G$-algebra $X$, there are two basic binary operations we can perform. First, we can take their tensor product $f \otimes f'$, and this together with the unit map $\mathrm{id}_{I}$ imbues $\mathrm{Mor}(X)$ with the structure of a monoid. Second, if we have $y = y'$ then we can form the composite morphism $f' \circ f$. However, these two operations are not as different as they first appear.
 
-We now turn to our third adjunction, which is of a less formal nature than the first two.
+We now turn to our third adjunction, which is of a less formal nature than the first two. We begin by showing that composition along invertible objects in $X$ can always be restated in terms of the tensor product.
 
 \begin{lem} \label{tenscomp} Let $f: x \to y$ and $f': y \to z$ be morphisms in some strict monoidal category, and $y$ is an invertible object of that category. Then
 \begin{eq*} f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y*} \otimes f \end{eq*}
@@ -5141,132 +5144,163 @@ By the interchange law for monoidal categories,
 \end{eq*}
 \end{proof} 
 
-In other words, composition along invertible objects in $X$ can always be restated in terms of the tensor product. Thus in cases where every object of $X$ is invertible, the monoidal structure together with knowledge of each morphism's source and target will be enough to determine $X$ uniquely. Since all objects in $L\mathbb{G}_n$ are invertible, this means that we could choose to ignore composition of elements of $\mathrm{Mor}(L\mathbb{G}_n)$ for the time being, and focus on its status as a monoid under tensor product.
+Thus in cases where every object of $X$ is invertible, the monoidal structure together with knowledge of each morphism's source and target will be enough to determine $X$ uniquely. Since all objects in $L\mathbb{G}_n$ are invertible, this means that we could choose to ignore composition of elements of $\mathrm{Mor}(L\mathbb{G}_n)$ for the time being, and focus on its status as a monoid under tensor product.
 
-However, we are trying to extract information about the morphisms of $L\mathbb{G}_n$ by building some sort of left adjoint functor. Presumably we will also be able to apply it to other $\mathrm{E}G$-algebras, some of which won't have all of their objects invertible, and so we can't just use $\mathrm{Mor}(-): \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Mon}$. What we need is a way to modify the morphism monoid of a category so that both composition and tensor product are recoverable from a single operation. Of course, there is one very easy method for achieving this --- simply force $\otimes$ and $\circ$ to be equal.
+%However, we are trying to extract information about the morphisms of $L\mathbb{G}_n$ by building some sort of left adjoint functor. Presumably we will also be able to apply it to other $\mathrm{E}G$-algebras, some of which won't have all of their objects invertible, and so we can't just use $\mathrm{Mor}(-): \mathrm{E}G\mathrm{Alg}_S \to \mathrm{Mon}$. What we need is a way to modify the morphism monoid of a category so that both composition and tensor product are recoverable from a single operation. Of course, there is one very easy method for achieving this --- simply force $\otimes$ and $\circ$ to be equal.
 
-\begin{Defi} Let $\mathrm{M} : \mathrm{MonCat} \to \mathrm{Mon}$ be the functor which sends monoidal categories $X$ to the quotient of their monoid of morphisms by the relation that sets $\otimes = \circ$.  
-\begin{eq*} \mathrm{M}X \quad = \quad \bigquotient{\mathrm{Mor}(X)}{f' \circ f \sim f' \otimes f}\end{eq*}
-Each monoidal functors $F: X \to Y$ is then sent to the monoid homomorphism
-\begin{eq*} \begin{array}{rlrll}
-			\mathrm{M}(F) & : & \mathrm{M}X & \to & \mathrm{M}Y \\
-			& : & \mathrm{M}(f) & \mapsto & \mathrm{M}\big( \, F(f) \, \big) \\
-		\end{array}
-\end{eq*}
-where $\mathrm{M}(f)$ refers to the equivalence class of the map $f$ under the quotient $\mathrm{Mor}(X) \to \mathrm{M}(X)$. This homomorphism is well-defined, since it respects the relation $\otimes = \circ$:
-\begin{longtable}{RLL}
-	\mathrm{M}(F)( \, f' \circ f \, ) & = & \mathrm{M}\big( \, F(f' \circ f) \, \big) \\
-	& = & \mathrm{M}\big( \, F(f') \circ F(f) \, \big) \\
-	& = & \mathrm{M}\big( \, F(f') \, \big) \circ \mathrm{M}\big( \, F(f) \, \big) \\
-	& = & \mathrm{M}\big( \, F(f') \, \big) \otimes \mathrm{M}\big( \, F(f) \, \big) \\
-	& = & \mathrm{M}\big( \, F(f') \otimes F(f) \, \big) \\
-	& = & \mathrm{M}\big( \, F(f' \otimes f) \, \big) \\
-	& = & \mathrm{M}(F)( \, f' \otimes f \, )
-\end{longtable}
-We will call $\mathrm{M}X$ the \emph{collapsed} morphisms of $X$.
+\begin{Defi} Let $\mathrm{M} : \mathrm{MonCat} \to \mathrm{Mon}$ be the functor which sends a monoidal category $X$ to the quotient of its monoid of morphisms by the relation that sets $\otimes = \circ$. :
+\begin{eq*} \mathrm{M}X \quad = \quad \bigquotient{\mathrm{Mor}(X)}{f' \circ f \sim f' \otimes f}.\end{eq*}
+If $F:X \to Y$ is a strict monoidal functor, then $MF$ is the monoid homomorphism sending the class of a morphism $g$ to the class of $Fg$; the reader will easily check this is well-defined. We will call $\mathrm{M}X$ the \emph{collapsed} morphisms of $X$.
+
+%Each monoidal functors $F: X \to Y$ is then sent to the monoid homomorphism
+%\begin{eq*} \begin{array}{rlrll}
+			%\mathrm{M}(F) & : & \mathrm{M}X & \to & \mathrm{M}Y \\
+			%& : & \mathrm{M}(f) & \mapsto & \mathrm{M}\big( \, F(f) \, \big) \\
+		%\end{array}
+%\end{eq*}
+%where $\mathrm{M}(f)$ refers to the equivalence class of the map $f$ under the quotient $\mathrm{Mor}(X) \to \mathrm{M}(X)$. This homomorphism is well-defined, since it respects the relation $\otimes = \circ$:
+%\begin{longtable}{RLL}
+	%\mathrm{M}(F)( \, f' \circ f \, ) & = & \mathrm{M}\big( \, F(f' \circ f) \, \big) \\
+	%& = & \mathrm{M}\big( \, F(f') \circ F(f) \, \big) \\
+	%& = & \mathrm{M}\big( \, F(f') \, \big) \circ \mathrm{M}\big( \, F(f) \, \big) \\
+	%& = & \mathrm{M}\big( \, F(f') \, \big) \otimes \mathrm{M}\big( \, F(f) \, \big) \\
+	%& = & \mathrm{M}\big( \, F(f') \otimes F(f) \, \big) \\
+	%& = & \mathrm{M}\big( \, F(f' \otimes f) \, \big) \\
+	%& = & \mathrm{M}(F)( \, f' \otimes f \, )
+%\end{longtable}
+
 \end{Defi}
 
-From now on we will generally refer to the single operation in $\mathrm{M}X$ as $\otimes$ rather than $\circ$, unless we are focusing on some aspect best understood using composition. This convention makes it easier to remember that because the tensor product is defined between all pairs of morphisms in $X$,  the equivalence class $\mathrm{M}(f') \otimes \mathrm{M}(f)$ will always contain the morphism $f' \otimes f$, but not necessarily $f' \circ f$, as it might fail to exist.
+From now on we will generally refer to the single operation in $\mathrm{M}X$ as $\otimes$ rather than $\circ$, unless we are focused on some aspect best understood using composition. This convention makes it easier to remember that because the tensor product is defined between all pairs of morphisms in $X$,  the equivalence class $\mathrm{M}(f') \otimes \mathrm{M}(f)$ will always contain the morphism $f' \otimes f$, but not necessarily $f' \circ f$, as it might fail to exist.
 
 Now we need a candidate for the right adjoint to the functor $\mathrm{M}$.
 
-\begin{Defi} For a given monoid $M$, let $\mathrm{B}M$ represent the one-object category whose morphisms are the elements of $M$, with monoid multiplication as composition. This is known as the \emph{delooping} of $M$, for reasons that come from homotopy theory. Likewise, for any monoid homomorphism $h: M \to M'$, denote by $\mathrm{B}h : \mathrm{B}M \to \mathrm{B}M'$ the obvious monoidal functor which acts like $h$ on morphisms. This defines a delooping functor $\mathrm{B}: \mathrm{Mon} \to \mathrm{Cat}$ from the category of monoids onto the category of small categories.
-
-Moreover, let $C$ be a commutative monoid. Then we can view $\mathrm{B}C$ as a monoidal category, with the tensor product also given by the multiplication in $C$, and the sole object as the unit $I$. Clearly for any homomorphism between commutative monoids $h : C \to C'$ the corresponding functor $\mathrm{B}h : \mathrm{B}C \to \mathrm{B}C'$ will preserve this monoidal structure, as it is already preserving it as composition. Thus the restriction of $\mathrm{B}$ to commutative monoids also gives a functor $\mathrm{CMon} \to \mathrm{MonCat}$, which we will still call $\mathrm{B}$.
+\begin{Defi} 
+Let $B: \mon \to \cat$ denote the functor sending a monoid $M$ to the one-object category whose single hom-set consists of the elements of $M$, with composition and identity being given by multiplication and the unit of $M$, respectively. We also denote by $B$ the functor $\cmon \to \moncat$ the functor sending a commutative monoid $A$ to the same category $BA$, now equipped with the monoidal structure which is trivial on the single object and $a \otimes b = a \circ b = ab$ on morphisms (writing the monoid operation in $A$ as concatenation here).
 \end{Defi}
 
-The reason that commutativity is required in order for $\mathrm{B}C$ to be a well-defined monoidal category is because we need its operations $\circ$ and $\otimes$ to obey the interchange law for monoidal categories:
-\begin{eq*}\begin{array}{rrll}
-			& (\mathrm{id}_I \circ f) \otimes (f' \otimes \mathrm{id}_I) & = & (\mathrm{id}_I \otimes f') \circ (f \otimes \mathrm{id}_I) \\
-			\implies & \mathrm{id}_I \cdot f \cdot f' \cdot \mathrm{id}_I & = & \mathrm{id}_I \cdot f' \cdot f \cdot \mathrm{id}_I \\
-			\implies & f \cdot f' & = & f' \cdot f
-		\end{array}
-\end{eq*}
+%
+%For a given monoid $M$, let $\mathrm{B}M$ represent the one-object category whose morphisms are the elements of $M$, with monoid multiplication as composition. This is known as the \emph{delooping} of $M$. Likewise, for any monoid homomorphism $h: M \to M'$, denote by $\mathrm{B}h : \mathrm{B}M \to \mathrm{B}M'$ the obvious functor which acts like $h$ on morphisms. This defines a delooping functor $\mathrm{B}: \mathrm{Mon} \to \mathrm{Cat}$ from the category of monoids onto the category of small categories.
+%
+%Moreover, let $C$ be a commutative monoid. Then we can view $\mathrm{B}C$ as a monoidal category, with the tensor product also given by the multiplication in $C$, and the sole object as the unit $I$. Clearly for any homomorphism between commutative monoids $h : C \to C'$ the corresponding functor $\mathrm{B}h : \mathrm{B}C \to \mathrm{B}C'$ will preserve this monoidal structure, as it is already preserving it as composition. Thus the restriction of $\mathrm{B}$ to commutative monoids also gives a functor $\mathrm{CMon} \to \mathrm{MonCat}$, which we will still call $\mathrm{B}$.
+%\end{Defi}
 
-\begin{prop}\label{Moradj} $\mathrm{B}: \mathrm{CMon} \to \mathrm{MonCat}$ is a right adjoint to the functor $\mathrm{M}(\, \_ \,)^{\mathrm{ab}} : \mathrm{MonCat} \to \mathrm{CMon}$.
+Note that for any monoidal category $M$, the monoid $M(I,I)$ is always commutative by the Eckmann-Hilton argument \ref{EH, CG, etc}, hence the requirement of commutativity to lift $B$ to a functor into monoidal categories.
+
+%The reason that commutativity is required in order for $\mathrm{B}C$ to be a well-defined monoidal category is because we need its operations $\circ$ and $\otimes$ to obey the interchange law for monoidal categories:
+%\begin{eq*}\begin{array}{rrll}
+			%& (\mathrm{id}_I \circ f) \otimes (f' \otimes \mathrm{id}_I) & = & (\mathrm{id}_I \otimes f') \circ (f \otimes \mathrm{id}_I) \\
+			%\implies & \mathrm{id}_I \cdot f \cdot f' \cdot \mathrm{id}_I & = & \mathrm{id}_I \cdot f' \cdot f \cdot \mathrm{id}_I \\
+			%\implies & f \cdot f' & = & f' \cdot f
+		%\end{array}
+%\end{eq*}
+
+\begin{prop}\label{Moradj} $\mathrm{B}: \cmon \to \moncat$ is a right adjoint to the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}} : \moncat \to \cmon$.
 \end{prop}
 \begin{proof}
-Let $X$ be a monoidal category, $C$ a commutative monoid, and $F: X \to \mathrm{B}C$ a monoidal functor. For any $f: x \to x'$ in $X$, the morphism $F(f)$ is just an element of the monoid $C$, and so $F$ can be used to define a function
-\begin{eq*} \begin{array}{rlrll}
-			F' & : & \mathrm{M}(X)^{\mathrm{ab}} & \to & C \\
-			& : & \mathrm{ab} \circ \mathrm{M}(f) & \mapsto & F(f) \\
-		\end{array}
-\end{eq*}
-where $\mathrm{ab}$ is the quotient map of abelianisation $\mathrm{M}(X) \to \mathrm{M}(X)^{\mathrm{ab}}$. This $F'$ is a well-defined monoid homomorphism; it preserves multiplication and respects the relation $\otimes = \circ$ because the monoid multiplication of $C$ is acts as both tensor product and composition in $\mathrm{B}C$.
-\begin{eq*} \begin{array}{rll}
-			F'\big( \, \mathrm{ab}\mathrm{M}(f' \circ f ) \, \big) & = & F(f' \circ f) \\
-			& = & F(f') \circ F(f)  \\
-			& = & F(f') \cdot F(f) \\
-			& = & F(f') \otimes F(f) \\
-			& = & F(f' \otimes f) \\
-			& = & F' \big( \, \mathrm{ab}\mathrm{M}(f' \otimes f) \, \big)
-		\end{array}
-\end{eq*}
-Conversely, if $h: \mathrm{M}(X)^{\mathrm{ab}} \to C$ is a monoid homomorphism, we can define from it a monoidal functor
-\begin{eq*} \begin{array}{rlrll}
-			h' & : & X & \mapsto & \mathrm{B}C \\
-			& : & x & \mapsto & I \\
-			& : & f: x \to y & \mapsto & h\big( \, \mathrm{ab}\mathrm{M}(f) \, \big) : I \to I
-		\end{array}
-\end{eq*}
-Yet again, the monoidal functor $h'$ is well-defined because the fact that $\otimes = \circ$ in $\mathrm{B}C$ forces $h'$ to respect that relation.
-\begin{eq*} \begin{array}{rll}
-			h'(f' \circ f ) & = & h\big( \, \mathrm{ab}\mathrm{M}(f' \circ f ) \, \big) \\
-			& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \circ \mathrm{M}(f') \, \big) \\
-			& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \circ h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \\
-			& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \cdot h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \\
-			& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \otimes h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \\
-			& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \otimes \mathrm{ab}\mathrm{M}(f') \, \big) \\
-			& = & h\big( \, \mathrm{ab}\mathrm{M}(f' \otimes f') \, \big) \\
-			& = & h'(f' \otimes f)
-		\end{array}
-\end{eq*}
-But these assignments $F \mapsto F'$ and $h \mapsto h'$ are clearly inverse to one another. For any $F: X \to \mathrm{B}C$ applying them twice gives
-\begin{eq*} \begin{array}{rlrllll}
-			F'' & : & X & \to & \mathrm{B}C & &\\
-			& : & x & \mapsto & I & & \\
-			& : & f: x \to y & \mapsto & F'\big( \, \mathrm{ab}\mathrm{M}(f) \, \big) : I \to I & = & F(f)
-		\end{array}
-\end{eq*}
-and similarly for $h: \mathrm{M}X \to C$ we get
-\begin{eq*} \begin{array}{rlrllll}
-			h'' & : & \mathrm{M}(X)^{\mathrm{ab}} & \to & C & & \\
-			& : & \mathrm{ab}\mathrm{M}(f) & \mapsto & h'(f) & = & h\big( \, \mathrm{ab}\mathrm{M}(f) \, \big)
-		\end{array}
-\end{eq*}
-In other words, we have an isomorphism between the homsets
-\begin{eq*} \mathrm{MonCat}( \, X, \mathrm{B}C \, ) \quad \cong \quad \mathrm{CMon}( \, \mathrm{M}(X)^{\mathrm{ab}}, C \, ) \end{eq*}
-This isomorphism is natural in both coordinates, as for any monoidal functor $G: X \to X'$ and homomorphism $h : C \to C'$ between commutative monoids,
-\begin{eq*} \mathrm{ab}\mathrm{M}( \, \mathrm{B}h \circ F \circ G \, ) \quad = \quad \mathrm{ab}\mathrm{M}(\mathrm{B}h) \circ \mathrm{ab}\mathrm{M}(F) \circ \mathrm{ab}\mathrm{M}(G) \quad = \quad h \circ \mathrm{ab}\mathrm{M}(F) \circ \mathrm{ab}\mathrm{M}(G) \end{eq*}
-and so the diagram
-\begin{eq*} \begin{tikzcd}
-\mathrm{MonCat}(X, \mathrm{B}C) \ar[dd, "\mathrm{B}h \circ \_ \circ G"'] \ar[rr, "\sim"] & & \mathrm{CMon}\big( \, \mathrm{M}(X)^{\mathrm{ab}}, C \, \big) \ar[dd, "h \circ \_ \circ \mathrm{ab}\mathrm{M}G"] \\
-& & \\
-\mathrm{MonCat}(X', \mathrm{B}C') \ar[rr, "\sim"] & & \mathrm{CMon}\big( \, \mathrm{M}(X')^{\mathrm{ab}}, M' \, \big) 
-\end{tikzcd} \end{eq*}
-commutes. Therefore, $\mathrm{M}(\, \_ \,)^{\mathrm{ab}} \dashv \mathrm{B}$.
-\end{proof}
+For a commutative monoid $A$, it is clear that $M(BA)^{ab} = A$, so we can define the counit to be the identity. For a monoidal category $X$, define $X \to B(MX^{ab})$ by sending every object of $X$ to the unique object, and by sending the morphism $f$ to the morphism given by the equivalence class of $f$. This is clearly natural in strict monoidal functors $X \to Y$, and the triangle identities make for a straightforward calculation.
 
-\hrulefill
-Too long
+
+
+%Let $X$ be a monoidal category, $C$ a commutative monoid, and $F: X \to \mathrm{B}C$ a monoidal functor. For any $f: x \to x'$ in $X$, the morphism $F(f)$ is just an element of the monoid $C$, and so $F$ can be used to define a function
+%\begin{eq*} \begin{array}{rlrll}
+			%F' & : & \mathrm{M}(X)^{\mathrm{ab}} & \to & C \\
+			%& : & \mathrm{ab} \circ \mathrm{M}(f) & \mapsto & F(f) \\
+		%\end{array}
+%\end{eq*}
+%where $\mathrm{ab}$ is the quotient map of abelianisation $\mathrm{M}(X) \to \mathrm{M}(X)^{\mathrm{ab}}$. This $F'$ is a well-defined monoid homomorphism; it preserves multiplication and respects the relation $\otimes = \circ$ because the monoid multiplication of $C$ is acts as both tensor product and composition in $\mathrm{B}C$.
+%\begin{eq*} \begin{array}{rll}
+			%F'\big( \, \mathrm{ab}\mathrm{M}(f' \circ f ) \, \big) & = & F(f' \circ f) \\
+			%& = & F(f') \circ F(f)  \\
+			%& = & F(f') \cdot F(f) \\
+			%& = & F(f') \otimes F(f) \\
+			%& = & F(f' \otimes f) \\
+			%& = & F' \big( \, \mathrm{ab}\mathrm{M}(f' \otimes f) \, \big)
+		%\end{array}
+%\end{eq*}
+%Conversely, if $h: \mathrm{M}(X)^{\mathrm{ab}} \to C$ is a monoid homomorphism, we can define from it a monoidal functor
+%\begin{eq*} \begin{array}{rlrll}
+			%h' & : & X & \mapsto & \mathrm{B}C \\
+			%& : & x & \mapsto & I \\
+			%& : & f: x \to y & \mapsto & h\big( \, \mathrm{ab}\mathrm{M}(f) \, \big) : I \to I
+		%\end{array}
+%\end{eq*}
+%Yet again, the monoidal functor $h'$ is well-defined because the fact that $\otimes = \circ$ in $\mathrm{B}C$ forces $h'$ to respect that relation.
+%\begin{eq*} \begin{array}{rll}
+			%h'(f' \circ f ) & = & h\big( \, \mathrm{ab}\mathrm{M}(f' \circ f ) \, \big) \\
+			%& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \circ \mathrm{M}(f') \, \big) \\
+			%& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \circ h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \\
+			%& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \cdot h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \\
+			%& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \otimes h\big( \, \mathrm{ab}\mathrm{M}(f') \, \big) \\
+			%& = & h\big( \, \mathrm{ab}\mathrm{M}(f') \otimes \mathrm{ab}\mathrm{M}(f') \, \big) \\
+			%& = & h\big( \, \mathrm{ab}\mathrm{M}(f' \otimes f') \, \big) \\
+			%& = & h'(f' \otimes f)
+		%\end{array}
+%\end{eq*}
+%But these assignments $F \mapsto F'$ and $h \mapsto h'$ are clearly inverse to one another. For any $F: X \to \mathrm{B}C$ applying them twice gives
+%\begin{eq*} \begin{array}{rlrllll}
+			%F'' & : & X & \to & \mathrm{B}C & &\\
+			%& : & x & \mapsto & I & & \\
+			%& : & f: x \to y & \mapsto & F'\big( \, \mathrm{ab}\mathrm{M}(f) \, \big) : I \to I & = & F(f)
+		%\end{array}
+%\end{eq*}
+%and similarly for $h: \mathrm{M}X \to C$ we get
+%\begin{eq*} \begin{array}{rlrllll}
+			%h'' & : & \mathrm{M}(X)^{\mathrm{ab}} & \to & C & & \\
+			%& : & \mathrm{ab}\mathrm{M}(f) & \mapsto & h'(f) & = & h\big( \, \mathrm{ab}\mathrm{M}(f) \, \big)
+		%\end{array}
+%\end{eq*}
+%In other words, we have an isomorphism between the homsets
+%\begin{eq*} \mathrm{MonCat}( \, X, \mathrm{B}C \, ) \quad \cong \quad \mathrm{CMon}( \, \mathrm{M}(X)^{\mathrm{ab}}, C \, ) \end{eq*}
+%This isomorphism is natural in both coordinates, as for any monoidal functor $G: X \to X'$ and homomorphism $h : C \to C'$ between commutative monoids,
+%\begin{eq*} \mathrm{ab}\mathrm{M}( \, \mathrm{B}h \circ F \circ G \, ) \quad = \quad \mathrm{ab}\mathrm{M}(\mathrm{B}h) \circ \mathrm{ab}\mathrm{M}(F) \circ \mathrm{ab}\mathrm{M}(G) \quad = \quad h \circ \mathrm{ab}\mathrm{M}(F) \circ \mathrm{ab}\mathrm{M}(G) \end{eq*}
+%and so the diagram
+%\begin{eq*} \begin{tikzcd}
+%\mathrm{MonCat}(X, \mathrm{B}C) \ar[dd, "\mathrm{B}h \circ \_ \circ G"'] \ar[rr, "\sim"] & & \mathrm{CMon}\big( \, \mathrm{M}(X)^{\mathrm{ab}}, C \, \big) \ar[dd, "h \circ \_ \circ \mathrm{ab}\mathrm{M}G"] \\
+%& & \\
+%\mathrm{MonCat}(X', \mathrm{B}C') \ar[rr, "\sim"] & & \mathrm{CMon}\big( \, \mathrm{M}(X')^{\mathrm{ab}}, M' \, \big) 
+%\end{tikzcd} \end{eq*}
+%commutes. Therefore, $\mathrm{M}(\, \_ \,)^{\mathrm{ab}} \dashv \mathrm{B}$.
+\end{proof}
 
 \cref{Moradj} seems at first glance very similar to \cref{Obadj,concompadj}. However, our goal was to discover the relationship between the morphisms of $\mathbb{G}_n$ and $L\mathbb{G}_n$, paralleling what we did in \cref{Zobj,Zconcomp}, and in that regard $\mathrm{M}$ falls short in two very important ways. 
 
 \begin{enumerate}
-\item What we really wanted to have was an adjunction involving $\mathrm{E}G\mathrm{Alg}_S$, not $\mathrm{MonCat}$. This is because our previous methodology involved applying our left adjoint functors to $\eta$ and then using its initial property to factor various maps through $L\mathbb{G}_n$. But $\eta$ is an initial object in $(\mathbb{G}_n \downarrow \mathrm{inv})$, and so we only know how to use it to factor \emph{algebra} maps $\mathbb{G}_n \to X_{\mathrm{inv}}$, and not general monoidal functors. 
-\item Even if we do find a way to use this adjunction to extract information about $L\mathbb{G}_n$, it will not be the monoid $\mathrm{Mor}(L\mathbb{G}_n)$ we were originally after, only a strange abelianised version where tensor product and composition coincide.  
+\item Our goal was to have an adjunction involving $\lmc$, not $\moncat$, since we want to apply it to strict $\ML$-monoidal functors instead of arbitrary strict monoidal functors. %This is because our previous methodology involved applying our left adjoint functors to $\eta$ and then using its initial property to factor various maps through $L\mathbb{G}_n$. But $\eta$ is an initial object in $(\mathbb{G}_n \downarrow \mathrm{inv})$, and so we only know how to use it to factor \emph{algebra} maps $\mathbb{G}_n \to X_{\mathrm{inv}}$, and not general monoidal functors. 
+\item Even if we do find a way to use this adjunction to extract information about $L\mathbb{G}_n$, it will not be the monoid $\mathrm{Mor}(L\mathbb{G}_n)$ we were originally after, only a strange abelianized version where tensor product and composition coincide.  
 \end{enumerate} 
 
-Unfortunately, this adjunction seems to be the best that we can do. There is a way to assign an $\mathrm{E}G$-action to the monoidal category $\mathrm{B}C$ for an arbitrary commutative monoid $C$, which is to simply set all of the action morphisms $\alpha(g; \mathrm{id}_I, ..., \mathrm{id}_I)$ to be $\mathrm{id}_I$, and doing so would let us turn $\mathrm{B}$ into a functor $\mathrm{CMon} \to \mathrm{E}G\mathrm{Alg}_S$, solving problem 1. However, any new left adjoint $\mathrm{M}' :  \mathrm{E}G\mathrm{Alg}_S \to \mathrm{CMon}$ to this `fixed' $\mathrm{B}$ would then have to send $L\mathbb{G}_n$ to the trivial monoid, $1 = \{ \ast \}$. This is because under the adjunction the homomorphisms $\mathrm{M}'(L\mathbb{G}_n) \to C$ would correspond to algebra maps $L\mathbb{G}_n \to \mathrm{B}C$, which by the free property of $L\mathbb{G}_n$ are just choices of $n$ invertible objects from $\mathrm{B}C$. Deloopings only have one (invertible) object, and so there is only one way to choose such an $n$-tuple, and hence only one homomorphism $\mathrm{M}'(L\mathbb{G}_n) \to C$ for each $C$, which is a property unique to the trivial monoid. Thus by editing our adjunction in an attempt to fix problem 1, we have significantly worsened problem 2. It was already going to be hard to recover the details of $\mathrm{Mor}(L\mathbb{G}_n)$ from the collapsed $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$, but it would be impossible to do so from just $\{ \ast \}$.  
+Unfortunately, this adjunction seems to be the best that we can do. 
+\begin{prop}
+The functor $B:\cmon \to \moncat$ lifts to a functor $B:\cmon \to \lmc$. This functor $B$ has a left adjoint $M':\lmc \to \cmon$, but both functors
+\[
+M' \circ \EL, \, M' \circ L \circ \EL : \sets \to \cmon
+\]
+are isomorphic to the functor sending every set to the trivial commutative monoid.
+\end{prop}
+\begin{proof}
+To lift $B$ to $\lmc$, we need only assign the trivial of each $\Lambda_n$. The existence of $M'$ is guaranteed by the adjoint functor theorem for locally finitely presentable categories since $B$ clearly preserves limits and filtered colimits.  For a set $S$ and commutative monoid $A$, monoid homomorphisms $M' \circ \EL(S) \to A$ are in bijection with strict $\ML$-monoidal functors $\EL(S) \to BA$ which are themselves in bijection with functions $S \to \ob(BA) = *$, so there is a unique such monoid homomorphism, and $M' \circ \EL(S) \cong 0$ as commutative monoids. The same proof works for $M' \circ L \circ \EL$ after we note that $(BA)_{inv} = BA$.
+\end{proof}
 
-So it seems that we are stuck with the adjunction $\mathrm{M}(\, \_ \,)^{\mathrm{ab}} \dashv \mathrm{B}$. Luckily, it turns out that our previous approach can be amended to work with this, and to that end we will spend the bulk of the next two chapters directly addressing problems 1 and 2. For now though, we will make one last small alteration to our plan going forward. Instead of working directly with the functor $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}: \mathrm{MonCat} \to \mathrm{CMon}$, we will instead focus on its composite with the group completion functor, $( \, \_ \, )^{\mathrm{gp}} : \mathrm{CMon} \to \mathrm{Ab}$. It may not be clear yet why we would choose to do this, but over the next couple of chapters we will frequently find ourselves having to form quotients of certain algebraic objects. If we were to stick with the functor $\mathrm{M}$ these would all be commutative monoid quotients, whereas by making the switch to $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$ they will be abelian groups instead, which are far easier to work with. Also, notice that since the process of group completion is left adjoint to the forgetful functor $\mathrm{Ab} \to \mathrm{CMon}$, its composite with the left adjoint $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}$ will be a left adjoint functor too. Thus with this new functor we will be able use all of the same important properties that we would have done with $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}$, such as the preservation of colimits. Moreover, while we won't prove this for some time, it turns out that the morphisms of $L\mathbb{G}_n$ actually form a group under tensor product. This means that whatever method we would have used to recover $\mathrm{Mor}(L\mathbb{G}_n)$ from $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$ will still let us recover $\mathrm{Mor}(L\mathbb{G}_n) = \mathrm{Mor}(L\mathbb{G}_n)^{\mathrm{gp}}$ from $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp},\mathrm{ab}}$.
 
-Before we move on, we should spend a little time thinking about this new functor $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$. Specifically, we might ask in what order do we have to carry out its constituent parts: the collapsing of $\circ$ and $\otimes$ into a single operation, group completion, and abelianisation. It is a well known fact that group completion and abelianisation commute:
-\begin{eq*} \begin{tikzcd}
-\mathrm{Mon} \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] \ar[d, "(\, \_ \,)^{\mathrm{ab}}"'] & & \mathrm{Grp} \ar[d, "(\, \_ \,)^{\mathrm{ab}}"] \\
-\mathrm{CMon} \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] & & \mathrm{Ab}
-\end{tikzcd} \end{eq*}
-Indeed, we already assumed this when talking of `the' canonical map $\mathrm{M}(X)^{\mathrm{gp},\mathrm{ab}}$. But a more interesting question is whether it matters if we choose to group complete or abelianise the tensor product of a monoidal category before or after we collapse its morphisms.
+
+%There is a way to assign an $\mathrm{E}G$-action to the monoidal category $\mathrm{B}C$ for an arbitrary commutative monoid $C$, which is to simply set all of the action morphisms $\alpha(g; \mathrm{id}_I, ..., \mathrm{id}_I)$ to be $\mathrm{id}_I$, and doing so would let us turn $\mathrm{B}$ into a functor $\mathrm{CMon} \to \mathrm{E}G\mathrm{Alg}_S$, solving problem 1. However, any new left adjoint $\mathrm{M}' :  \mathrm{E}G\mathrm{Alg}_S \to \mathrm{CMon}$ to this `fixed' $\mathrm{B}$ would then have to send $L\mathbb{G}_n$ to the trivial monoid, $1 = \{ \ast \}$. This is because under the adjunction the homomorphisms $\mathrm{M}'(L\mathbb{G}_n) \to C$ would correspond to algebra maps $L\mathbb{G}_n \to \mathrm{B}C$, which by the free property of $L\mathbb{G}_n$ are just choices of $n$ invertible objects from $\mathrm{B}C$. Deloopings only have one (invertible) object, and so there is only one way to choose such an $n$-tuple, and hence only one homomorphism $\mathrm{M}'(L\mathbb{G}_n) \to C$ for each $C$, which is a property unique to the trivial monoid. Thus by editing our adjunction in an attempt to fix problem 1, we have significantly worsened problem 2. It was already going to be hard to recover the details of $\mathrm{Mor}(L\mathbb{G}_n)$ from the collapsed $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$, but it would be impossible to do so from just $\{ \ast \}$.  
+
+Thus we are stuck with the adjunction $\mathrm{M}(\, - \,)^{\mathrm{ab}} \dashv \mathrm{B}$, and will spend some considerable energy addressing its deficiencies. 
+%Luckily, it turns out that our previous approach can be amended to work with this, and to that end we will spend the bulk of the next two chapters directly addressing problems 1 and 2. 
+Instead of working directly with the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}}: \mathrm{MonCat} \to \mathrm{CMon}$, we will instead focus on its composite with the group completion functor, $( \, - \, )^{\mathrm{gp}} : \mathrm{CMon} \to \mathrm{Ab}$. 
+%It may not be clear yet why we would choose to do this, but over the next couple of chapters we will frequently find ourselves having to form quotients of certain algebraic objects. If we were to stick with the functor $\mathrm{M}$ these would all be commutative monoid quotients, whereas by making the switch to $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$ they will be abelian groups instead, which are far easier to work with. Also, notice that since the process of group completion is left adjoint to the forgetful functor $\mathrm{Ab} \to \mathrm{CMon}$, its composite with the left adjoint $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}$ will be a left adjoint functor too. Thus with this new functor we will be able use all of the same important properties that we would have done with $\mathrm{M}(\, \_ \,)^{\mathrm{ab}}$, such as the preservation of colimits. 
+We will eventually prove that the morphisms of $L\mathbb{G}_n$ actually form a group under tensor product \cref{??}, so whatever method we would have used to recover $\mathrm{Mor}(L\mathbb{G}_n)$ from $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{ab}}$ will still let us recover $\mathrm{Mor}(L\mathbb{G}_n) = \mathrm{Mor}(L\mathbb{G}_n)^{\mathrm{gp}}$ from $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp},\mathrm{ab}}$.
+
+We end with a brief exploration of the new functor $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$. 
+%Specifically, we might ask in what order do we have to carry out its constituent parts: the collapsing of $\circ$ and $\otimes$ into a single operation, group completion, and abelianisation. 
+It is well known that group completion and abelianization commute since their right adjoints commute.
+%\begin{eq*} \begin{tikzcd}
+%\mathrm{Mon} \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] \ar[d, "(\, \_ \,)^{\mathrm{ab}}"'] & & \mathrm{Grp} \ar[d, "(\, \_ \,)^{\mathrm{ab}}"] \\
+%\mathrm{CMon} \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] & & \mathrm{Ab}
+%\end{tikzcd} \end{eq*}
+%Indeed, we already assumed this when talking of `the' canonical map $\mathrm{M}(X)^{\mathrm{gp},\mathrm{ab}}$. 
+But a more interesting question is whether it matters if we choose to group complete or abelianize the tensor product of a monoidal category before or after we collapse its morphisms.
 
 \begin{lem}\label{Morder} For any monoidal category $X$, define
 \begin{eq*} \begin{array}{rll} 
@@ -5278,43 +5312,45 @@ Then
 \begin{eq*} \mathrm{M}_{\mathrm{gp}}(X) \quad = \quad \mathrm{M}(X)^{\mathrm{gp}}, \quad \quad \quad \mathrm{M}_{\mathrm{ab}}(X) \quad = \quad \mathrm{M}(X)^{\mathrm{ab}} \end{eq*}
 \end{lem}
 \begin{proof}
-Consider the following commutative diagram
-\begin{eq*} \begin{tikzcd}
-& \mathrm{M}(X) \ar[rr, "\mathrm{gp}"] \ar[ddrr, dashed, "v", near start] & & \mathrm{M}(X)^{\mathrm{gp}} \ar[dd, shift left, dashed, "u'"] \\
-\mathrm{Mor}(X) \ar[ru, "\mathrm{M}"] \ar[rd, "\mathrm{gp}"'] & & & \\
-& \mathrm{Mor}(X)^{\mathrm{gp}} \ar[rr, "\mathrm{M}"'] \ar[rruu, dashed, "u"', near start] & & \mathrm{M}_{\mathrm{gp}}(X) \ar[uu, shift left, dashed, "v'"]
-\end{tikzcd} \end{eq*}
-Here all of the solid arrows are the respective canonical homomorphisms.
+This follows immediately from $M$ being a left adjoint, and hence preserving colimits.
 
-Starting from the left, the top edge of the diagram is a map coming out of $\mathrm{Mor}(X)$ and going into a group, and so by the universal property of the group completion there is a unique homomorphism $u$ factoring it through $\mathrm{Mor}(X)^{\mathrm{gp}}$. But now this $u$ is a map out of $\mathrm{Mor}(X)^{\mathrm{gp}}$ and into group where tensor product and composition are equal, and so by the universal property of the quotient this factors once more through the map $u'$. On the other hand, the bottom edge of the diagram will factor through the map $v$ because of the collapsed morphisms property, and then through the map $v'$ due to the group completion property. Then this diagram says that
-\begin{eq*} \begin{array}{rll}
-			v' \circ u' \circ \mathrm{gp} \circ \mathrm{M} & = & v' \circ u' \circ u \circ \mathrm{gp} \\
-			& = & v' \circ \mathrm{M} \circ \mathrm{gp} \\
-			& = & u \circ \mathrm{gp} \\
-			& = & \mathrm{gp} \circ \mathrm{M}
-		\end{array}
-\end{eq*}
-But $\mathrm{M}: \mathrm{Mor}(X) \to \mathrm{M}(X)$ is the map associated with a quotient, and so it is an epimorphism. Thus we can cancel it out on the right, leaving just
-\begin{eq*} v' \circ u' \circ \mathrm{gp} \quad = \quad \mathrm{gp} \end{eq*}
-Then from this we can conclude that for any $\mathrm{M}(f) \in \mathrm{M}(X)$,
-\begin{eq*} \begin{array}{rcccl}
-			v'u'\big( \, \mathrm{gp}\mathrm{M}(f) \, \big) & = & \mathrm{gp}\mathrm{M}(f) \\
-			v'u'\big( \, \mathrm{gp}\mathrm{M}(f)^* \, \big) & = & v'u'\big( \, \mathrm{gp}\mathrm{M}(f) \, \big)^* & = & \mathrm{gp}\mathrm{M}(f)^*
-		\end{array}
-\end{eq*} 
-All elements of $\mathrm{M}(X)^{\mathrm{gp}}$ can be written as $\mathrm{gp}\mathrm{M}(f)$ or $\mathrm{gp}\mathrm{M}(f)^*$ for at least one $f$, so this really says that $v' \circ u'$ is the identity homomorphisms on $\mathrm{M}(X)^{\mathrm{gp}}$. 
-
-A completely analogous argument can also be by made starting from the bottom edge of the diagram instead, and then concluding that $u' \circ v' = \mathrm{id}_{\mathrm{M}_{\mathrm{gp}}(X)}$. Furthermore, we can construct another diagram using the universal property of the abelianisation,
-\begin{eq*} \begin{tikzcd}
-& \mathrm{M}(X) \ar[rr, "\mathrm{ab}"] \ar[ddrr, dashed, "v''", near start] & & \mathrm{M}(X)^{\mathrm{ab}} \ar[dd, shift left, dashed, "u'''"] \\
-\mathrm{Mor}(X) \ar[ru, "\mathrm{M}"] \ar[rd, "\mathrm{ab}"'] & & & \\
-& \mathrm{Mor}(X)^{\mathrm{ab}} \ar[rr, "\mathrm{M}"'] \ar[rruu, dashed, "u''"', near start] & & \mathrm{M}_{\mathrm{ab}}(X) \ar[uu, shift left, dashed, "v'''"]
-\end{tikzcd} \end{eq*}
-and then through another series of analogous arguments conclude that $v''' \circ u''' = \mathrm{id}_{\mathrm{M}(X)^{\mathrm{ab}}}$ and $u''' \circ v''' = \mathrm{id}_{\mathrm{M}_{\mathrm{ab}}(X)}$. All together, these yield the two isomorphisms given in the statement of the proposition.
+%Consider the following commutative diagram
+%\begin{eq*} \begin{tikzcd}
+%& \mathrm{M}(X) \ar[rr, "\mathrm{gp}"] \ar[ddrr, dashed, "v", near start] & & \mathrm{M}(X)^{\mathrm{gp}} \ar[dd, shift left, dashed, "u'"] \\
+%\mathrm{Mor}(X) \ar[ru, "\mathrm{M}"] \ar[rd, "\mathrm{gp}"'] & & & \\
+%& \mathrm{Mor}(X)^{\mathrm{gp}} \ar[rr, "\mathrm{M}"'] \ar[rruu, dashed, "u"', near start] & & \mathrm{M}_{\mathrm{gp}}(X) \ar[uu, shift left, dashed, "v'"]
+%\end{tikzcd} \end{eq*}
+%Here all of the solid arrows are the respective canonical homomorphisms.
+%
+%Starting from the left, the top edge of the diagram is a map coming out of $\mathrm{Mor}(X)$ and going into a group, and so by the universal property of the group completion there is a unique homomorphism $u$ factoring it through $\mathrm{Mor}(X)^{\mathrm{gp}}$. But now this $u$ is a map out of $\mathrm{Mor}(X)^{\mathrm{gp}}$ and into group where tensor product and composition are equal, and so by the universal property of the quotient this factors once more through the map $u'$. On the other hand, the bottom edge of the diagram will factor through the map $v$ because of the collapsed morphisms property, and then through the map $v'$ due to the group completion property. Then this diagram says that
+%\begin{eq*} \begin{array}{rll}
+			%v' \circ u' \circ \mathrm{gp} \circ \mathrm{M} & = & v' \circ u' \circ u \circ \mathrm{gp} \\
+			%& = & v' \circ \mathrm{M} \circ \mathrm{gp} \\
+			%& = & u \circ \mathrm{gp} \\
+			%& = & \mathrm{gp} \circ \mathrm{M}
+		%\end{array}
+%\end{eq*}
+%But $\mathrm{M}: \mathrm{Mor}(X) \to \mathrm{M}(X)$ is the map associated with a quotient, and so it is an epimorphism. Thus we can cancel it out on the right, leaving just
+%\begin{eq*} v' \circ u' \circ \mathrm{gp} \quad = \quad \mathrm{gp} \end{eq*}
+%Then from this we can conclude that for any $\mathrm{M}(f) \in \mathrm{M}(X)$,
+%\begin{eq*} \begin{array}{rcccl}
+			%v'u'\big( \, \mathrm{gp}\mathrm{M}(f) \, \big) & = & \mathrm{gp}\mathrm{M}(f) \\
+			%v'u'\big( \, \mathrm{gp}\mathrm{M}(f)^* \, \big) & = & v'u'\big( \, \mathrm{gp}\mathrm{M}(f) \, \big)^* & = & \mathrm{gp}\mathrm{M}(f)^*
+		%\end{array}
+%\end{eq*} 
+%All elements of $\mathrm{M}(X)^{\mathrm{gp}}$ can be written as $\mathrm{gp}\mathrm{M}(f)$ or $\mathrm{gp}\mathrm{M}(f)^*$ for at least one $f$, so this really says that $v' \circ u'$ is the identity homomorphisms on $\mathrm{M}(X)^{\mathrm{gp}}$. 
+%
+%A completely analogous argument can also be by made starting from the bottom edge of the diagram instead, and then concluding that $u' \circ v' = \mathrm{id}_{\mathrm{M}_{\mathrm{gp}}(X)}$. Furthermore, we can construct another diagram using the universal property of the abelianisation,
+%\begin{eq*} \begin{tikzcd}
+%& \mathrm{M}(X) \ar[rr, "\mathrm{ab}"] \ar[ddrr, dashed, "v''", near start] & & \mathrm{M}(X)^{\mathrm{ab}} \ar[dd, shift left, dashed, "u'''"] \\
+%\mathrm{Mor}(X) \ar[ru, "\mathrm{M}"] \ar[rd, "\mathrm{ab}"'] & & & \\
+%& \mathrm{Mor}(X)^{\mathrm{ab}} \ar[rr, "\mathrm{M}"'] \ar[rruu, dashed, "u''"', near start] & & \mathrm{M}_{\mathrm{ab}}(X) \ar[uu, shift left, dashed, "v'''"]
+%\end{tikzcd} \end{eq*}
+%and then through another series of analogous arguments conclude that $v''' \circ u''' = \mathrm{id}_{\mathrm{M}(X)^{\mathrm{ab}}}$ and $u''' \circ v''' = \mathrm{id}_{\mathrm{M}_{\mathrm{ab}}(X)}$. All together, these yield the two isomorphisms given in the statement of the proposition.
 \end{proof}
 
-In other words, we do not need to worry about order of operations when using the left adjoint functor $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$. This is very convenient, and later on when we actually need to evalute particular $\mathrm{M}(X)^{\mathrm{gp},\mathrm{ab}}$, we will use this fact to carry out the calculation in whichever order proves easiest. 
-\hrulefill
+%In other words, we do not need to worry about order of operations when using the left adjoint functor $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$. This is very convenient, and later on when we actually need to evalute particular $\mathrm{M}(X)^{\mathrm{gp},\mathrm{ab}}$, we will use this fact to carry out the calculation in whichever order proves easiest. 
+%\hrulefill
 
 \section{The free object as a cokernel}
 %\chapter{Free invertible algebras as colimits}
