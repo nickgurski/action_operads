@@ -37,6 +37,7 @@
 \newcommand{\mb}{\mathbf}
 \renewcommand{\dot}{\centerdot}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\m}[1]{\mathcal{#1}}
 \newcommand{\id}{\textrm{id}}
@@ -5356,15 +5357,16 @@ This follows immediately from $M$ being a left adjoint, and hence preserving col
 %\chapter{Free invertible algebras as colimits}
 \label{colimalgebra} 
 
-In the previous chapter, we made progress towards understanding the structure of $L\mathbb{G}_n$ by showing that the algebra was an initial object in a certain comma category. Specifically, we saw that the map $\eta: \mathbb{G}_n \to L\mathbb{G}_n$ is initial among all $\mathrm{E}G$-algebra maps $\mathbb{G}_n \to X_{\mathrm{inv}}$. This fact is the rigorous way of expressing a fairly obvious intuition about $L\mathbb{G}_n$ --- that we should expect the free algebra on $n$ invertible objects to be like the free algebra on $n$ objects, except that its objects are invertible.
+QQQ I think I might suggest $L_n$ for the free thing on $n$ invertible objects.
 
-However, this not the only way of thinking about $L\mathbb{G}_n$. Consider for a moment the free $\mathrm{E}G$-algebra on $2n$ objects, $\mathbb{G}_{2n}$. Intuitively, if we were to take this algebra and then enforce upon it the extra relations $z_{n+1} = z_1^*, ..., z_{2n} = z_n^*$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. That is, there seems to be a natural way to think about $L\mathbb{G}_n$ as a quotient of the larger algebra $\mathbb{G}_{2n}$. In this chapter we will work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp},\mathrm{ab}}$.
+%In the previous chapter, we made progress towards understanding the structure of $L\mathbb{G}_n$ by showing that the algebra was an initial object in a certain comma category. Specifically, we saw that the map $\eta: \mathbb{G}_n \to L\mathbb{G}_n$ is initial among all $\mathrm{E}G$-algebra maps $\mathbb{G}_n \to X_{\mathrm{inv}}$. This fact is the rigorous way of expressing a fairly obvious intuition about $L\mathbb{G}_n$ --- that we should expect the free algebra on $n$ invertible objects to be like the free algebra on $n$ objects, except that its objects are invertible.
+
+This section will present a differnt approach to $L_n$. Consider for a moment the free $\ML$-monoidal category on $2n$ objects. If we were to take this algebra and then enforce upon it the extra relations $z_{n+1} = z_1^*, ..., z_{2n} = z_n^*$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. Thus we would see $L_n$ as a quotient of the larger monoidal category $\EL(2n)$. We will now work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\mathrm{M}(L\mathbb{G}_n)^{\mathrm{gp},\mathrm{ab}}$.
 
 %\section{$L\mathbb{G}_n$ as a cokernel in $\mathrm{E}G\mathrm{Alg}_S$} 
 %
 %We'll begin with some definitions.
 
-HHHH
 
 \begin{Defi}\label{qdef} Let $\delta$ be the map of $\mathrm{E}G$-algebras defined on generators by
 \begin{eq*} \begin{array}{rlrlll}
@@ -5376,9 +5378,11 @@ HHHH
 for $1 \le i \le n$. We will also denote by $q: \mathbb{G}_{2n} \to Q$ the cokernel this map.
 \end{Defi}
 
-Note that the above definition does actually make sense. The given description of $\delta$ is enough to specify it uniquely because $\mathbb{G}_{2n}$ is the free $\mathrm{E}G$-algebra on $2n$ objects, and hence algebra maps $\mathbb{G}_{2n} \to \mathbb{G}_{2n}$ are canonically isomorphic to functions $\{z_1, ..., z_{2n}\} \to \mathrm{Ob}(\mathbb{G}_{2n})$. Also we can be sure that the map $q$ exists, because $\mathrm{E}G\mathrm{Alg}_S$ is a locally finitely presentable category and thus has all finite colimits.
+%Note that the above definition does actually make sense. The given description of $\delta$ is enough to specify it uniquely because $\mathbb{G}_{2n}$ is the free $\mathrm{E}G$-algebra on $2n$ objects, and hence algebra maps $\mathbb{G}_{2n} \to \mathbb{G}_{2n}$ are canonically isomorphic to functions $\{z_1, ..., z_{2n}\} \to \mathrm{Ob}(\mathbb{G}_{2n})$. Also we can be sure that the map $q$ exists, because $\mathrm{E}G\mathrm{Alg}_S$ is a locally finitely presentable category and thus has all finite colimits.
 
-The goal of this approach will be show that $Q$ is in fact that same algebra as $L\mathbb{G}_n$. In order to do this, it would help if we could easily compare $q: \mathbb{G}_{2n} \to Q$ to our initial object $\eta: \mathbb{G}_{n} \to L\mathbb{G}_n$. We really want to show that the composite of $q$ with the inclusion $\mathbb{G}_n \hookrightarrow \mathbb{G}_{2n}$ is an object of $(\mathbb{G}_n \downarrow \mathrm{inv})$ --- in other words, that $Q$ has only invertible objects. This can be done using the adjunction we found in \cref{Obadj}.
+%The goal of this approach will be show that $Q$ is in fact that same algebra as $L\mathbb{G}_n$. In order to do this, it would help if we could easily compare $q: \mathbb{G}_{2n} \to Q$ to our initial object $\eta: \mathbb{G}_{n} \to L\mathbb{G}_n$. We really want to show that the composite of $q$ with the inclusion $\mathbb{G}_n \hookrightarrow \mathbb{G}_{2n}$ is an object of $(\mathbb{G}_n \downarrow \mathrm{inv})$ --- in other words, that $Q$ has only invertible objects. This can be done using the adjunction we found in \cref{Obadj}.
+
+The first goal of this section is to show that $Q \cong L_n$.
 
 \begin{prop}\label{Qobj} The object monoid of $Q$ is $\mathbb{Z}^{*n}$, and the restriction of $q$ to objects $\mathrm{Ob}(q): \mathrm{Ob}(\mathbb{G}_{2n}) \to \mathrm{Ob}(Q)$ is the monoid homomorphism defined on generators as
 \begin{eq*} \begin{array}{rlrlll}
@@ -5389,25 +5393,29 @@ The goal of this approach will be show that $Q$ is in fact that same algebra as 
 \end{eq*}
 \end{prop}
 \begin{proof}
-Consider $\mathrm{Ob}(\delta)$, the restrictions on objects of the algebra maps $\delta: \mathbb{G}_{2n} \to \mathbb{G}_{2n}$. By \cref{Gnobj}, this is a monoid homomorphism $\mathbb{N}^{\ast 2n} \to \mathbb{N}^{\ast 2n}$, and since $\mathrm{Mon}$ is cocomplete it too must have a cokernel. This will be a new homomorphism whose source is $\mathbb{N}^{\ast 2n}$ and whose target is the quotient of $\mathbb{N}^{\ast 2n}$ by the relations $\mathrm{Ob}(\delta)(x) = I$. Remembering \cref{qdef}, and that $\mathbb{N}^{\ast 2n}$ is the free monoid on $2n$ generators, this quotient monoid will have the following presentation:
-\begin{eq*}\begin{array}{ll}
-			\text{Generators:} & z_1, \, ..., \, z_{2n} \\
-			\text{Relations:} & z_i \otimes z_{n+i} = I, \\
-			& z_{n+i} \otimes z_i = I
-		\end{array}
-\end{eq*}
-This is just the same as
-\begin{eq*}\begin{array}{ll}
-			\text{Generators:} & z_1, \, ..., \, z_{2n} \\
-			\text{Relations:} & z_{n+i} = z_i^*, \\
-		\end{array}
-\end{eq*}
-which is the presentation of $\mathbb{Z}^{\ast n}$. 
+Since $\ob$ is a left adjoint, it preserves colimits and thus cokernels. It is clear, from the presentation, that the cokernel on objects is $\ZZ^{*n}$.
 
-But by \cref{Obadj}, $\mathrm{Ob}$ is a left adjoint and hence preserves all colimits. Thus the cokernel of $\mathrm{Ob}(\delta)$ is just the underlying homomorphism of the cokernel of $\delta$. Therefore $\mathrm{Ob}(Q) = \mathbb{Z}^{\ast n}$, and $\mathrm{Ob}(q)$ is the quotient map $\mathbb{N}^{\ast 2n} \to \mathbb{Z}^{\ast n}$ sending $z_i \mapsto z_i$ and $z_{n+i} \mapsto z_i^*$ for $1 \le i \le n$.
+%Consider $\mathrm{Ob}(\delta)$, the restrictions on objects of the algebra maps $\delta: \mathbb{G}_{2n} \to \mathbb{G}_{2n}$. By \cref{Gnobj}, this is a monoid homomorphism $\mathbb{N}^{\ast 2n} \to \mathbb{N}^{\ast 2n}$, and since $\mathrm{Mon}$ is cocomplete it too must have a cokernel. This will be a new homomorphism whose source is $\mathbb{N}^{\ast 2n}$ and whose target is the quotient of $\mathbb{N}^{\ast 2n}$ by the relations $\mathrm{Ob}(\delta)(x) = I$. Remembering \cref{qdef}, and that $\mathbb{N}^{\ast 2n}$ is the free monoid on $2n$ generators, this quotient monoid will have the following presentation:
+%\begin{eq*}\begin{array}{ll}
+			%\text{Generators:} & z_1, \, ..., \, z_{2n} \\
+			%\text{Relations:} & z_i \otimes z_{n+i} = I, \\
+			%& z_{n+i} \otimes z_i = I
+		%\end{array}
+%\end{eq*}
+%This is just the same as
+%\begin{eq*}\begin{array}{ll}
+			%\text{Generators:} & z_1, \, ..., \, z_{2n} \\
+			%\text{Relations:} & z_{n+i} = z_i^*, \\
+		%\end{array}
+%\end{eq*}
+%which is the presentation of $\mathbb{Z}^{\ast n}$. 
+%
+%But by \cref{Obadj}, $\mathrm{Ob}$ is a left adjoint and hence preserves all colimits. Thus the cokernel of $\mathrm{Ob}(\delta)$ is just the underlying homomorphism of the cokernel of $\delta$. Therefore $\mathrm{Ob}(Q) = \mathbb{Z}^{\ast n}$, and $\mathrm{Ob}(q)$ is the quotient map $\mathbb{N}^{\ast 2n} \to \mathbb{Z}^{\ast n}$ sending $z_i \mapsto z_i$ and $z_{n+i} \mapsto z_i^*$ for $1 \le i \le n$.
 \end{proof}
 
-Thus every object of the cokernel algebra $Q$ is invertible, and so $q: \mathbb{G}_{2n} \to Q$ can be composed with an inclusion to give a well-defined object of the category $(\mathbb{G}_n \downarrow \mathrm{inv})$. Hence we can use the initiality of $\eta$ to determine the following result:
+%Thus every object of the cokernel algebra $Q$ is invertible, and so $q: \mathbb{G}_{2n} \to Q$ can be composed with an inclusion to give a well-defined object of the category $(\mathbb{G}_n \downarrow \mathrm{inv})$. Hence we can use the initiality of $\eta$ to determine the following result:
+
+HHHH
 
 \begin{prop}\label{coker} Let $i: \mathbb{G}_n \to \mathbb{G}_{2n}$ be the inclusion of $\mathrm{E}G$-algebras defined on generators by $i(z_i) = z_i$. Then $i \circ q$ is an initial object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. In particular, this means that
 \begin{eq*} Q \quad \cong \quad L\mathbb{G}_n \end{eq*}
