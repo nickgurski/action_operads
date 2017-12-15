@@ -5417,80 +5417,119 @@ Since $\ob$ is a left adjoint, it preserves colimits and thus cokernels. It is c
 
 HHHH
 
-\begin{prop}\label{coker} Let $i: \mathbb{G}_n \to \mathbb{G}_{2n}$ be the inclusion of $\mathrm{E}G$-algebras defined on generators by $i(z_i) = z_i$. Then $i \circ q$ is an initial object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. In particular, this means that
-\begin{eq*} Q \quad \cong \quad L\mathbb{G}_n \end{eq*}
+\begin{prop}\label{coker} Let $i: \mathbb{G}_n \to \mathbb{G}_{2n}$ be the inclusion of $\mathrm{E}G$-algebras defined on generators by $i(z_i) = z_i$. Then $i \circ q$ exhibits $Q$ as the initial $\ML$-monoidal category on $n$ invertible objects, so $Q \cong L_n$.
 \end{prop}
 \begin{proof}
-Let $\psi: \mathbb{G}_n \to X$ be an arbitrary object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. Since $\mathbb{G}_n$ is the free $\mathrm{E}G$-algebra on $n$ objects, we can use it and $\psi$ to define a new map, $\psi^*: \mathbb{G}_n \to X$, which takes the values
-\begin{eq*} \psi^*(z_i) \quad := \quad \psi(z_i)^* \end{eq*}
-on generators. Then using these functors we can define another new map, $\psi + \psi^*$, via the universal property of the coproduct:
-\begin{eq*} \begin{tikzcd}
-& \mathbb{G}_n + \mathbb{G}_n \ar[dd, dashed, "\psi + \psi^*"] & \\
-\mathbb{G}_n \ar[ur, hookrightarrow, "i"] \ar[dr, "\psi"'] & & \mathbb{G}_n \ar[ul, hookrightarrow, "i'"'] \ar[dl, "\psi^*"] \\
-& X & 
-\end{tikzcd} \end{eq*}
-But because $\mathbb{G}_n$ is the free algebra on $n$ objects, and the free functor $F : \mathrm{Cat} \to \mathrm{E}G\mathrm{Alg}_S$ is a left adjoint and thus preserves colimits, we must have
-\begin{eq*} \begin{array}{rll}
-		\mathbb{G}_n + \mathbb{G}_n & = & F(\{ z_1, ..., z_n\}) + F(\{ z'_1, ..., z'_n\}) \\
-		& = & F( \, \{ z_1, ..., z_n\} + \{ z'_1, ..., z'_n\} \, ) \\
-		& = & F(\{ z_1, ..., z_{2n} \}) \\
-		& = & \mathbb{G}_{2n} 
-		\end{array}
-\end{eq*}
-This means that we can compose $\psi + \psi^*: \mathbb{G}_{2n} \to X$ with the map $\delta: \mathbb{G}_{2n} \to  \mathbb{G}_{2n}$, though we need to be careful to specify exactly which inclusions we used in the definition of $\psi + \psi^*$. Suppose that the left-hand inclusion is $i$, the one given in the statement of the proposition, and the other is defined by the assignment $z_i \mapsto z_{i+n}$. Then for $1 \leq i \leq n$,
-\begin{eq*} \begin{array}{rll}
-			(\psi + \psi^*)\delta(z_i) & = & (\psi + \psi^*)(z_i \otimes z_{n+i}) \\
-			& = & \psi(z_i) \otimes \psi(z_i)^* \\
-			& = & I
-		\end{array}
-\end{eq*}
-\begin{eq*} \begin{array}{rll}
-			(\psi + \psi^*)\delta(z_{n+i}) & = & (\psi + \psi^*)(z_{n+i} \otimes z_i) \\
-			& = & \psi(z_i)^* \otimes \psi(z_i) \\
-			& = & I
-		\end{array}
-\end{eq*}
-That is, $(\psi + \psi^*) \circ \delta = I$. But we've already defined $q: \mathbb{G}_{2n} \to Q$ to be the cokernel of $\delta$, the universal map with this property, and so there must exist a unique $\mathrm{E}G$-algebra map $u: Q \to X$ making the right-hand triangle below diagram commute:
-\begin{eq*} \begin{tikzcd}
-\mathbb{G}_n \ar[rr, hookrightarrow, "i"] \ar[ddrr, "\psi"'] & & \mathbb{G}_{2n} \ar[rr, "q"] \ar[dd, "\psi + \psi^*", near start] & & Q \ar[ddll, "u"] \\
-& & & & \\ 
-& & X & &
-\end{tikzcd} \end{eq*}
-The other triangle commutes by the definition of $\psi + \psi^*$, and so together the diagram tells us that for any object $\psi$ of $(\mathbb{G}_n \downarrow \mathrm{inv})$, there exists at least one morphism $u$ in $(\mathbb{G}_n \downarrow \mathrm{inv})$ going from $q \circ i$ to $\psi$. 
+\cref{Qobj} gives a unique map shown by the dashed arrow below.
+    \[
+  \begin{tikzpicture}[x=15mm,y=15mm]
+    \draw[tikzob,mm] %objects
+    (0,0) node (0) {\EL(n)}
+    (3,0) node (1) {\EL(2n)}
+    (6,0) node (2) {Q}
+    (3,-2) node (d) {L_n};
+    \path[tikzar,mm] %arrows
+    (0) edge node {i} (1)
+    (1) edge node {q} (2)
+    (0) edge (d)
+    (d) edge[dashed] (2);
+%    \draw[tikzob,mm]
+%    (0.5,-0.5) node[rotate=270,font=\Large] {\Rightarrow}
+%    ++(3mm,0mm) node {v};
+  \end{tikzpicture}
+  \]
+We also have a unique map $\EL(2n) \to L_n$ which agrees with the canonical map $\EL(n) \to L_n$ on $z_1, \ldots, z_n$ and sends $z_{i+n}$ to the inverse of the image of $z_i$. This gives the diagram below, once again with the dashed arrow induced by the universal property.
+    \[
+  \begin{tikzpicture}[x=15mm,y=15mm]
+    \draw[tikzob,mm] %objects
+    (0,0) node (0) {\EL(n)}
+    (3,0) node (1) {\EL(2n)}
+    (6,0) node (2) {Q}
+    (3,-2) node (d) {L_n};
+    \path[tikzar,mm] %arrows
+    (0) edge node {i} (1)
+    (1) edge node {q} (2)
+    (0) edge (d)
+    (1) edge (d)
+    (2) edge[dashed] (d);
+%    \draw[tikzob,mm]
+%    (0.5,-0.5) node[rotate=270,font=\Large] {\Rightarrow}
+%    ++(3mm,0mm) node {v};
+  \end{tikzpicture}
+  \]
+ The two dashed arrows are then forced to be inverse to each other. 
 
-Next, let $v: Q \to X$ be an arbitrary morphism $q \circ i \to \psi$ in $(\mathbb{G}_n \downarrow \mathrm{inv})$. By definition, this means that
-\begin{eq*}\begin{array}{rll}
-			\psi & = & vqi \\
-			\implies \quad \psi + \psi^* & = & vqi + (vqi)^* 
-		\end{array}
-\end{eq*}
-Also, for $1 \leq i \leq n$ we have
-\begin{eq*}\begin{array}{rcrllcccl}
-			q(z_i) \otimes q(z_{n+i}) & = & q(z_i \otimes z_{n+i}) & = & q\delta(z_i) & = &  I \\
-			q(z_{n+i}) \otimes q(z_i) & = & q(z_{n+i} \otimes z_i) & = & q\delta(z_{n+i}) & = & I \\
-			& \implies & q(z_{n+i}) & = & q(z_i)^* & & & &
-		\end{array}
-\end{eq*}
-Therefore,
-\begin{eq*}\begin{array}{rll}
-			(\psi + \psi^*)(z_i) & = & \big( vqi + (vqi)^* \big)(z_i) \\
-			& = & vqi(z_i) \\
-			& = & vq(z_i) \\
-		\end{array}
-\end{eq*}
-\begin{eq*} \begin{array}{rll}
-			(\psi + \psi^*)(z_{n+i}) & = & \big( vqi + (vqi)^* \big)(z_{n+i}) \\
-			& = & vqi(z_i)^* \\
-			& = & v \big( q(z_i)^* \big) \\
-			& = & vq(z_{n+i})
-		\end{array}
-\end{eq*}
-or in other words $\psi + \psi^* = v \circ q$ for any morphism $v: q \circ i \to \psi$ in $(\mathbb{G}_n \downarrow \mathrm{inv})$. But this is the property that the map $u$ was supposed to satisfy uniquely, and thus it must be the only morphism $q \circ i \to \psi$ in $(\mathbb{G}_n \downarrow \mathrm{inv})$. Therefore $q \circ i$ is an initial object, and hence it is isomorphic in $(\mathbb{G}_n \downarrow \mathrm{inv})$ to any other initial object, such as $\eta$. It follows that the targets of these two maps, $Q$ and $L\mathbb{G}_n$ respectively, are isomorphic as $\mathrm{E}G$-algebras.
+
+%Let $\psi: \mathbb{G}_n \to X$ be an arbitrary object of $(\mathbb{G}_n \downarrow \mathrm{inv})$. Since $\mathbb{G}_n$ is the free $\mathrm{E}G$-algebra on $n$ objects, we can use it and $\psi$ to define a new map, $\psi^*: \mathbb{G}_n \to X$, which takes the values
+%\begin{eq*} \psi^*(z_i) \quad := \quad \psi(z_i)^* \end{eq*}
+%on generators. Then using these functors we can define another new map, $\psi + \psi^*$, via the universal property of the coproduct:
+%\begin{eq*} \begin{tikzcd}
+%& \mathbb{G}_n + \mathbb{G}_n \ar[dd, dashed, "\psi + \psi^*"] & \\
+%\mathbb{G}_n \ar[ur, hookrightarrow, "i"] \ar[dr, "\psi"'] & & \mathbb{G}_n \ar[ul, hookrightarrow, "i'"'] \ar[dl, "\psi^*"] \\
+%& X & 
+%\end{tikzcd} \end{eq*}
+%But because $\mathbb{G}_n$ is the free algebra on $n$ objects, and the free functor $F : \mathrm{Cat} \to \mathrm{E}G\mathrm{Alg}_S$ is a left adjoint and thus preserves colimits, we must have
+%\begin{eq*} \begin{array}{rll}
+%		\mathbb{G}_n + \mathbb{G}_n & = & F(\{ z_1, ..., z_n\}) + F(\{ z'_1, ..., z'_n\}) \\
+%		& = & F( \, \{ z_1, ..., z_n\} + \{ z'_1, ..., z'_n\} \, ) \\
+%		& = & F(\{ z_1, ..., z_{2n} \}) \\
+%		& = & \mathbb{G}_{2n} 
+%		\end{array}
+%\end{eq*}
+%This means that we can compose $\psi + \psi^*: \mathbb{G}_{2n} \to X$ with the map $\delta: \mathbb{G}_{2n} \to  \mathbb{G}_{2n}$, though we need to be careful to specify exactly which inclusions we used in the definition of $\psi + \psi^*$. Suppose that the left-hand inclusion is $i$, the one given in the statement of the proposition, and the other is defined by the assignment $z_i \mapsto z_{i+n}$. Then for $1 \leq i \leq n$,
+%\begin{eq*} \begin{array}{rll}
+%			(\psi + \psi^*)\delta(z_i) & = & (\psi + \psi^*)(z_i \otimes z_{n+i}) \\
+%			& = & \psi(z_i) \otimes \psi(z_i)^* \\
+%			& = & I
+%		\end{array}
+%\end{eq*}
+%\begin{eq*} \begin{array}{rll}
+%			(\psi + \psi^*)\delta(z_{n+i}) & = & (\psi + \psi^*)(z_{n+i} \otimes z_i) \\
+%			& = & \psi(z_i)^* \otimes \psi(z_i) \\
+%			& = & I
+%		\end{array}
+%\end{eq*}
+%That is, $(\psi + \psi^*) \circ \delta = I$. But we've already defined $q: \mathbb{G}_{2n} \to Q$ to be the cokernel of $\delta$, the universal map with this property, and so there must exist a unique $\mathrm{E}G$-algebra map $u: Q \to X$ making the right-hand triangle below diagram commute:
+%\begin{eq*} \begin{tikzcd}
+%\mathbb{G}_n \ar[rr, hookrightarrow, "i"] \ar[ddrr, "\psi"'] & & \mathbb{G}_{2n} \ar[rr, "q"] \ar[dd, "\psi + \psi^*", near start] & & Q \ar[ddll, "u"] \\
+%& & & & \\ 
+%& & X & &
+%\end{tikzcd} \end{eq*}
+%The other triangle commutes by the definition of $\psi + \psi^*$, and so together the diagram tells us that for any object $\psi$ of $(\mathbb{G}_n \downarrow \mathrm{inv})$, there exists at least one morphism $u$ in $(\mathbb{G}_n \downarrow \mathrm{inv})$ going from $q \circ i$ to $\psi$. 
+%
+%Next, let $v: Q \to X$ be an arbitrary morphism $q \circ i \to \psi$ in $(\mathbb{G}_n \downarrow \mathrm{inv})$. By definition, this means that
+%\begin{eq*}\begin{array}{rll}
+%			\psi & = & vqi \\
+%			\implies \quad \psi + \psi^* & = & vqi + (vqi)^* 
+%		\end{array}
+%\end{eq*}
+%Also, for $1 \leq i \leq n$ we have
+%\begin{eq*}\begin{array}{rcrllcccl}
+%			q(z_i) \otimes q(z_{n+i}) & = & q(z_i \otimes z_{n+i}) & = & q\delta(z_i) & = &  I \\
+%			q(z_{n+i}) \otimes q(z_i) & = & q(z_{n+i} \otimes z_i) & = & q\delta(z_{n+i}) & = & I \\
+%			& \implies & q(z_{n+i}) & = & q(z_i)^* & & & &
+%		\end{array}
+%\end{eq*}
+%Therefore,
+%\begin{eq*}\begin{array}{rll}
+%			(\psi + \psi^*)(z_i) & = & \big( vqi + (vqi)^* \big)(z_i) \\
+%			& = & vqi(z_i) \\
+%			& = & vq(z_i) \\
+%		\end{array}
+%\end{eq*}
+%\begin{eq*} \begin{array}{rll}
+%			(\psi + \psi^*)(z_{n+i}) & = & \big( vqi + (vqi)^* \big)(z_{n+i}) \\
+%			& = & vqi(z_i)^* \\
+%			& = & v \big( q(z_i)^* \big) \\
+%			& = & vq(z_{n+i})
+%		\end{array}
+%\end{eq*}
+%or in other words $\psi + \psi^* = v \circ q$ for any morphism $v: q \circ i \to \psi$ in $(\mathbb{G}_n \downarrow \mathrm{inv})$. But this is the property that the map $u$ was supposed to satisfy uniquely, and thus it must be the only morphism $q \circ i \to \psi$ in $(\mathbb{G}_n \downarrow \mathrm{inv})$. Therefore $q \circ i$ is an initial object, and hence it is isomorphic in $(\mathbb{G}_n \downarrow \mathrm{inv})$ to any other initial object, such as $\eta$. It follows that the targets of these two maps, $Q$ and $L\mathbb{G}_n$ respectively, are isomorphic as $\mathrm{E}G$-algebras.
 \end{proof}
 
-It's worth noting that we have not given a method for actually taking cokernels in $\mathrm{E}G\mathrm{Alg}_S$, and so \cref{coker} doesn't immediately provide an explicit description for the whole of $L\mathbb{G}_n$. However, it does offer us another way to extract partial information, like what we were doing in \cref{initialalgebra}. Consider \cref{Qobj}; now that we know that $Q$ is actually $L\mathbb{G}_n$, the statement of this proposition is just the same as that of \cref{Zobj}. But the proof of the former uses the ability of cokernels to preserve left adjoint functors, rather than any of the initial algebra and group completion properties that appear in the latter.
-
-Of course, by \cref{coker} the fact that $q$ is a cokernel is equivalent to it being initial, and so while they may not look it at first glance, these two approaches are secretly the same. Thus from now on whenever we are trying to determine some aspect of $L\mathbb{G}_n$, we will make sure to take a look at both methods, just in case there are some properties of our free algebra which are more readily apparent from one description than another.
+%It's worth noting that we have not given a method for actually taking cokernels in $\mathrm{E}G\mathrm{Alg}_S$, and so \cref{coker} doesn't immediately provide an explicit description for the whole of $L\mathbb{G}_n$. However, it does offer us another way to extract partial information, like what we were doing in \cref{initialalgebra}. Consider \cref{Qobj}; now that we know that $Q$ is actually $L\mathbb{G}_n$, the statement of this proposition is just the same as that of \cref{Zobj}. But the proof of the former uses the ability of cokernels to preserve left adjoint functors, rather than any of the initial algebra and group completion properties that appear in the latter.
+%
+%Of course, by \cref{coker} the fact that $q$ is a cokernel is equivalent to it being initial, and so while they may not look it at first glance, these two approaches are secretly the same. Thus from now on whenever we are trying to determine some aspect of $L\mathbb{G}_n$, we will make sure to take a look at both methods, just in case there are some properties of our free algebra which are more readily apparent from one description than another.
 
 \section{$L\mathbb{G}_n$ as a surjective coequaliser} \label{surjcoeq} 
 
