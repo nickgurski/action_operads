@@ -83,7 +83,7 @@
 \newcommand{\moncat}{\ensuremath{\textrm{MonCat}}}
 \newcommand{\cat}{\ensuremath{\textrm{Cat}}}
 \newcommand{\epz}{\varepsilon}
-
+\newcommand{\Alg}{\mbox{-}\mb{Alg}}
 \newcolumntype{L}{>{$}l<{$}}
 \newcolumntype{C}{>{$}c<{$}}
 \newcolumntype{R}{>{$}r<{$}}
@@ -1191,16 +1191,91 @@ We end this section by presenting some results which allow us to transfer operad
 \begin{Defi}
 Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map} from $S$ to $T$ is a functor $F : C \to D$ together with a natural transformation $\alpha:TF \Rightarrow FS$ such that the following diagrams commute.
 
-QQQ two diagrams here, one for units and one for mult, look like dist law
+ \[
+    \xy
+      (0,0)*+{FX}="a";
+      (20,10)*+{TFX}="b";
+      (20,-10)*+{FSX}="c";
+      %
+      {\ar^{\eta^T_{FX}} "a" ; "b"};
+      {\ar^{\alpha_X} "b" ; "c"};
+      {\ar_{F\eta^S_X} "a" ; "c"};
+      %
+      (40,0)*+{T^2FX}="a";
+      (60,10)*+{TFSX}="b";
+      (85,10)*+{FS^2X}="c";
+      (60,-10)*+{TFX}="d";
+      (85,-10)*+{FSX}="e";
+      %
+      {\ar^{T\alpha_X} "a" ; "b"};
+      {\ar^{\alpha_{SX}} "b" ; "c"};
+      {\ar^{F\mu^S_X} "c" ; "e"};
+      {\ar_{\mu^T_{FX}} "a" ; "d"};
+      {\ar_{\alpha_X} "d" ; "e"};
+    \endxy
+  \]
  
 A \emph{transformation} $\Gamma : (F, \alpha) \Rightarrow (G, \beta)$ is a natural transformation $\Gamma: F \Rightarrow G$ such that the following diagram commutes.
-
-QQQ diagram
+  
+  \[
+    \xy
+      (0,0)*+{TFX}="a";
+      (20,0)*+{TGX}="b";
+      (0,-20)*+{FSX}="c";
+      (20,-20)*+{GSX}="d";
+      %
+      {\ar_{\alpha_X} "a" ; "c"};
+      {\ar_{\Gamma_{SX}} "c" ; "d"};
+      {\ar^{T\Gamma_X} "a" ; "b"};
+      {\ar^{\beta_X} "b" ; "d"};
+    \endxy
+  \]
 \end{Defi}
 
-QQQ Explain how $(F, \alpha)$ induces a functor on categories of algebras
+Every monad map $(F,\alpha)$ induces a functor QQQ (name of functor) $\colon S\Alg \rightarrow T\Alg$ on the categories of algebras. An $S$-algebra $(X,\sigma)$ is sent to the $T$-algebra $(FX,F\sigma \cdot \alpha_X)$, as we now describe. For $(FX,F\sigma \cdot \alpha_X)$ to be a $T$-algebra we require the usual diagrams to commute, shown as the outside of the diagrams below.
 
+  \[
+    \xy
+      (0,0)*+{T^2FX}="a";
+      (20,0)*+{TFSX}="b";
+      (40,0)*+{TFX}="c";
+      (0,-30)*+{TFX}="d";
+      (20,-15)*+{FS^2X}="f";
+      (20,-30)*+{FSX}="e";
+      (40,-15)*+{FSX}="g";
+      (40,-30)*+{FX}="h";
+      %
+      {\ar^{T\alpha_X} "a" ; "b"};
+      {\ar^{TF\sigma} "b" ; "c"};
+      {\ar^{\alpha_X} "c" ; "g"};
+      {\ar^{F\sigma} "g" ; "h"};
+      {\ar_{\mu^T_{FX}} "a" ; "d"};
+      {\ar_{\alpha_X} "d" ; "e"};
+      {\ar_{F\sigma} "e" ; "h"};
+      {\ar_{\alpha_{SX}} "b" ; "f"};
+      {\ar_{F\mu^S_X} "f" ; "e"};
+      {\ar^{FS\sigma} "f" ; "g"};
+      %
+      (60,0)*+{FX}="a1";
+      (85,0)*+{TFX}="b1";
+      (85,-15)*+{FSX}="c1";
+      (85,-30)*+{FX}="d1";
+      %
+      {\ar^{\eta^T_{FX}} "a1" ; "b1"};
+      {\ar^{\alpha_X} "b1" ; "c1"};
+      {\ar^{F\sigma} "c1" ; "d1"};
+      {\ar^{F\eta^S_X} "a1" ; "c1"};
+      {\ar_{id} "a1" ; "d1"};
+    \endxy
+  \]
+
+The first diagram commutes since the left hand side is the second diagram required to commute for $(F,\alpha)$ to be a monad map, the square at the top right is an instance of naturality for $\alpha$, while the bottom right square commutes since $(X,\sigma)$ is an $S$-algebra. The second diagram commutes since the top triangle is again a requirement of $\alpha$ being a transformation, with the lower triangle commuting again as a result of $(X,\sigma)$ being an $S$-algebra.
+
+A morphism $f : (X, \sigma_X) \rightarrow (Y, \sigma_Y)$ of $S$-algebras is sent to the morphism $Ff : (FX, F\sigma_X \cdot \alpha_X) \rightarrow (FY, F\sigma_Y \cdot \alpha_Y$), being a map of $T$-algebras following from the naturality of $\alpha$ and of $f$ being an $S$-algebra map. Functoriality follows from that of $F$.
+
+\begin{Defi}\label{cocom_symm_mon_cat}
 QQQ Define cocomplete symmetric monoidal category
+\end{Defi}
 
 \begin{prop}\label{monoidal_to_monadmap}
 Let $C,D$ be cocomplete symmetric monoidal categories.  Let $\ML$ be an action operad, and $P$ be a $\ML$-operad in $C$. Let $F:C \to D$ be a lax symmetric monoidal functor. Then $FP$ is a $\ML$-operad in $D$, and the pair $(F, \id)$ is a monad map $(C,P) \to (D, FP)$.  
@@ -1722,7 +1797,7 @@ satisfying the following axioms.
                         (0,-15)*+{1 \times X}="01";
                         (20,-15)*+{1 \times Y}="11";
                         (0,-30)*+{P_1 \times X}="02";
-                        (20,-30)*+{P_1 \times Y} = "12";
+                        (20,-30)*+{P_1 \times Y}="12";
                         (20,-45)*+{X}="r02";
                         (40,-45)*+{Y}="r12";
                         %
