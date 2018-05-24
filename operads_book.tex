@@ -76,6 +76,8 @@
 \newcommand{\downsim}{\rotatebox{90}{$\sim$}}
 \newcommand{\EL}{E\Lambda}
 \newcommand{\ELn}{E\Lambda(\underline{n})}
+\newcommand{\ELnn}{E\Lambda(\underline{2n})}
+\newcommand{\ELnnnn}{E\Lambda(\underline{4n})}
 \newcommand{\ob}{\textrm{Ob}}
 \newcommand{\lmc}{\Lambda\mbox{-}\textrm{MonCat}}
 \newcommand{\sets}{\Set}
@@ -5524,30 +5526,30 @@ QQQ I think I might suggest $L_n$ for the free thing on $n$ invertible objects.
 
 %In the previous chapter, we made progress towards understanding the structure of $L_n$ by showing that the algebra was an initial object in a certain comma category. Specifically, we saw that the map $\eta: \ELn \to L_n$ is initial among all $E\Lambda$-algebra maps $\ELn \to X_{\mathrm{inv}}$. This fact is the rigorous way of expressing a fairly obvious intuition about $L_n$ --- that we should expect the free algebra on $n$ invertible objects to be like the free algebra on $n$ objects, except that its objects are invertible.
 
-This section will present a different approach to $L_n$. Consider for a moment the free $\ML$-monoidal category on $2n$ objects. If we were to take this algebra and then enforce upon it the extra relations $z_{n+1} = z_1^*, ..., z_{2n} = z_n^*$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. Thus we would see $L_n$ as a quotient of the larger monoidal category $\EL(2n)$. We will now work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
+This section will present a different approach to $L_n$. Consider for a moment the free $\ML$-monoidal category on $2n$ objects $z_1, z_2, \ldots, z_{2n}$. If we were to take this category and then add the relations $z_{n+1} = z_1^{-1}, ..., z_{2n} = z_n^{-1}$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. Thus we would see $L_n$ as a quotient of the larger monoidal category $\EL(2n)$. We will now work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
 
 %\section{$L_n$ as a cokernel in $E\Lambda\mbox{-}\mathrm{Alg}_S$} 
 %
 %We'll begin with some definitions.
 
 
-\begin{Defi}\label{qdef} Let $\delta$ be the map of $E\Lambda$-algebras defined on generators by
+\begin{Defi}\label{qdef} Let $\delta$ be the map of $\ML$-monoidal categories defined on generators by
 \begin{eq*} \begin{array}{rlrlll}
-			\delta & : & \mathbb{G}_{2n} & \to & \mathbb{G}_{2n} \\
+			\delta & : & \EL(\underline{2n}) & \to & \EL(\underline{2n}) \\
 			& : & z_{i} & \mapsto & z_i \otimes z_{n+i} \\
 			& : & z_{n+i} & \mapsto & z_{n+i} \otimes z_i			
 		\end{array}
 \end{eq*}
-for $1 \le i \le n$. We will also denote by $q: \mathbb{G}_{2n} \to Q$ the cokernel this map.  QQQ Note that the zero map is a $\ML$-monoidal functor by Lemma 3.9ish QQQ
+for $1 \le i \le n$. We will also denote by $q: \EL(\underline{2n}) \to Q$ the cokernel of this map (i.e., the coequalizer of this functor and the functor sending all objects to the unit and all morphisms to the identity).  
 \end{Defi}
 
-%Note that the above definition does actually make sense. The given description of $\delta$ is enough to specify it uniquely because $\mathbb{G}_{2n}$ is the free $E\Lambda$-algebra on $2n$ objects, and hence algebra maps $\mathbb{G}_{2n} \to \mathbb{G}_{2n}$ are canonically isomorphic to functions $\{z_1, ..., z_{2n}\} \to \mathrm{Ob}(\mathbb{G}_{2n})$. Also we can be sure that the map $q$ exists, because $E\Lambda\mbox{-}\mathrm{Alg}_S$ is a locally finitely presentable category and thus has all finite colimits.
+%Note that the above definition does actually make sense. The given description of $\delta$ is enough to specify it uniquely because $\ELnn$ is the free $E\Lambda$-algebra on $2n$ objects, and hence algebra maps $\ELnn \to \ELnn$ are canonically isomorphic to functions $\{z_1, ..., z_{2n}\} \to \mathrm{Ob}(\ELnn)$. Also we can be sure that the map $q$ exists, because $E\Lambda\mbox{-}\mathrm{Alg}_S$ is a locally finitely presentable category and thus has all finite colimits.
 
-%The goal of this approach will be show that $Q$ is in fact that same algebra as $L_n$. In order to do this, it would help if we could easily compare $q: \mathbb{G}_{2n} \to Q$ to our initial object $\eta: \mathbb{G}_{n} \to L_n$. We really want to show that the composite of $q$ with the inclusion $\ELn \hookrightarrow \mathbb{G}_{2n}$ is an object of $(\ELn \downarrow \mathrm{inv})$ --- in other words, that $Q$ has only invertible objects. This can be done using the adjunction we found in \cref{Obadj}.
+%The goal of this approach will be show that $Q$ is in fact that same algebra as $L_n$. In order to do this, it would help if we could easily compare $q: \ELnn \to Q$ to our initial object $\eta: \mathbb{G}_{n} \to L_n$. We really want to show that the composite of $q$ with the inclusion $\ELn \hookrightarrow \ELnn$ is an object of $(\ELn \downarrow \mathrm{inv})$ --- in other words, that $Q$ has only invertible objects. This can be done using the adjunction we found in \cref{Obadj}.
 
 The first goal of this section is to show that $Q \cong L_n$.
 
-\begin{prop}\label{Qobj} The object monoid of $Q$ is $\mathbb{Z}^{*n}$, and the restriction of $q$ to objects $\mathrm{Ob}(q): \mathrm{Ob}(\mathbb{G}_{2n}) \to \mathrm{Ob}(Q)$ is the monoid homomorphism defined on generators as
+\begin{prop}\label{Qobj} The object monoid of $Q$ is $\mathbb{Z}^{*n}$, and the restriction of $q$ to objects $\mathrm{Ob}(q): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(Q)$ is the monoid homomorphism defined on generators as
 \begin{eq*} \begin{array}{rlrlll}
 			\mathrm{Ob}(q) & : & \mathbb{N}^{\ast 2n} & \to & \mathbb{Z}^{\ast n} \\
 			& : & z_i & \mapsto & z_i  \\
@@ -5558,7 +5560,7 @@ The first goal of this section is to show that $Q \cong L_n$.
 \begin{proof}
 Since $\ob$ is a left adjoint, it preserves colimits and thus cokernels. It is clear, from the presentation, that the cokernel on objects is $\ZZ^{*n}$.
 
-%Consider $\mathrm{Ob}(\delta)$, the restrictions on objects of the algebra maps $\delta: \mathbb{G}_{2n} \to \mathbb{G}_{2n}$. By \cref{Gnobj}, this is a monoid homomorphism $\mathbb{N}^{\ast 2n} \to \mathbb{N}^{\ast 2n}$, and since $\mathrm{Mon}$ is cocomplete it too must have a cokernel. This will be a new homomorphism whose source is $\mathbb{N}^{\ast 2n}$ and whose target is the quotient of $\mathbb{N}^{\ast 2n}$ by the relations $\mathrm{Ob}(\delta)(x) = I$. Remembering \cref{qdef}, and that $\mathbb{N}^{\ast 2n}$ is the free monoid on $2n$ generators, this quotient monoid will have the following presentation:
+%Consider $\mathrm{Ob}(\delta)$, the restrictions on objects of the algebra maps $\delta: \ELnn \to \ELnn$. By \cref{Gnobj}, this is a monoid homomorphism $\mathbb{N}^{\ast 2n} \to \mathbb{N}^{\ast 2n}$, and since $\mathrm{Mon}$ is cocomplete it too must have a cokernel. This will be a new homomorphism whose source is $\mathbb{N}^{\ast 2n}$ and whose target is the quotient of $\mathbb{N}^{\ast 2n}$ by the relations $\mathrm{Ob}(\delta)(x) = I$. Remembering \cref{qdef}, and that $\mathbb{N}^{\ast 2n}$ is the free monoid on $2n$ generators, this quotient monoid will have the following presentation:
 %\begin{eq*}\begin{array}{ll}
 			%\text{Generators:} & z_1, \, ..., \, z_{2n} \\
 			%\text{Relations:} & z_i \otimes z_{n+i} = I, \\
@@ -5576,17 +5578,17 @@ Since $\ob$ is a left adjoint, it preserves colimits and thus cokernels. It is c
 %But by \cref{Obadj}, $\mathrm{Ob}$ is a left adjoint and hence preserves all colimits. Thus the cokernel of $\mathrm{Ob}(\delta)$ is just the underlying homomorphism of the cokernel of $\delta$. Therefore $\mathrm{Ob}(Q) = \mathbb{Z}^{\ast n}$, and $\mathrm{Ob}(q)$ is the quotient map $\mathbb{N}^{\ast 2n} \to \mathbb{Z}^{\ast n}$ sending $z_i \mapsto z_i$ and $z_{n+i} \mapsto z_i^*$ for $1 \le i \le n$.
 \end{proof}
 
-%Thus every object of the cokernel algebra $Q$ is invertible, and so $q: \mathbb{G}_{2n} \to Q$ can be composed with an inclusion to give a well-defined object of the category $(\ELn \downarrow \mathrm{inv})$. Hence we can use the initiality of $\eta$ to determine the following result:
+%Thus every object of the cokernel algebra $Q$ is invertible, and so $q: \ELnn \to Q$ can be composed with an inclusion to give a well-defined object of the category $(\ELn \downarrow \mathrm{inv})$. Hence we can use the initiality of $\eta$ to determine the following result:
 
-\begin{prop}\label{coker} Let $i: \ELn \to \mathbb{G}_{2n}$ be the inclusion of $E\Lambda$-algebras defined on generators by $i(z_i) = z_i$. Then $i \circ q$ exhibits $Q$ as the initial $\ML$-monoidal category on $n$ invertible objects, so $Q \cong L_n$.
+\begin{prop}\label{coker} Let $i: \ELn \to \EL(\underline{2n})$ be the inclusion of $\ML$-monoidal categories defined on generators by $i(z_j) = z_j$. Then $i \circ q$ exhibits $Q$ as the initial $\ML$-monoidal category on $n$ invertible objects, so $Q \cong L_n$.
 \end{prop}
 \begin{proof}
 \cref{Qobj} gives a unique map shown by the dashed arrow below.
     \[
   \begin{tikzpicture}[x=7mm,y=5mm]
     \draw[tikzob,mm] %objects
-    (0,0) node (0) {\EL(n)}
-    (3,0) node (1) {\EL(2n)}
+    (0,0) node (0) {\EL(\underline{n})}
+    (3,0) node (1) {\EL(\underline{2n})}
     (6,0) node (2) {Q}
     (3,-2) node (d) {L_n};
     \path[tikzar,mm] %arrows
@@ -5599,12 +5601,12 @@ Since $\ob$ is a left adjoint, it preserves colimits and thus cokernels. It is c
 %    ++(3mm,0mm) node {v};
   \end{tikzpicture}
   \]
-We also have a unique map $\EL(2n) \to L_n$ which agrees with the canonical map $\EL(n) \to L_n$ on $z_1, \ldots, z_n$ and sends $z_{i+n}$ to the inverse of the image of $z_i$. This gives the diagram below, once again with the dashed arrow induced by the universal property.
+We also have a unique map $\EL(\underline{2n}) \to L_n$ which agrees with the canonical map $\EL(\underline{n}) \to L_n$ on $z_1, \ldots, z_n$ and sends $z_{i+n}$ to the inverse of the image of $z_i$. This gives the diagram below, once again with the dashed arrow induced by the definition of $\delta$ and the universal property.
     \[
   \begin{tikzpicture}[x=7mm,y=5mm]
     \draw[tikzob,mm] %objects
-    (0,0) node (0) {\EL(n)}
-    (3,0) node (1) {\EL(2n)}
+    (0,0) node (0) {\EL(\underline{n})}
+    (3,0) node (1) {\EL(\underline{2n})}
     (6,0) node (2) {Q}
     (3,-2) node (d) {L_n};
     \path[tikzar,mm] %arrows
@@ -5634,10 +5636,10 @@ We also have a unique map $\EL(2n) \to L_n$ which agrees with the canonical map 
 %		\ELn + \ELn & = & F(\{ z_1, ..., z_n\}) + F(\{ z'_1, ..., z'_n\}) \\
 %		& = & F( \, \{ z_1, ..., z_n\} + \{ z'_1, ..., z'_n\} \, ) \\
 %		& = & F(\{ z_1, ..., z_{2n} \}) \\
-%		& = & \mathbb{G}_{2n} 
+%		& = & \ELnn 
 %		\end{array}
 %\end{eq*}
-%This means that we can compose $\psi + \psi^*: \mathbb{G}_{2n} \to X$ with the map $\delta: \mathbb{G}_{2n} \to  \mathbb{G}_{2n}$, though we need to be careful to specify exactly which inclusions we used in the definition of $\psi + \psi^*$. Suppose that the left-hand inclusion is $i$, the one given in the statement of the proposition, and the other is defined by the assignment $z_i \mapsto z_{i+n}$. Then for $1 \leq i \leq n$,
+%This means that we can compose $\psi + \psi^*: \ELnn \to X$ with the map $\delta: \ELnn \to  \ELnn$, though we need to be careful to specify exactly which inclusions we used in the definition of $\psi + \psi^*$. Suppose that the left-hand inclusion is $i$, the one given in the statement of the proposition, and the other is defined by the assignment $z_i \mapsto z_{i+n}$. Then for $1 \leq i \leq n$,
 %\begin{eq*} \begin{array}{rll}
 %			(\psi + \psi^*)\delta(z_i) & = & (\psi + \psi^*)(z_i \otimes z_{n+i}) \\
 %			& = & \psi(z_i) \otimes \psi(z_i)^* \\
@@ -5650,9 +5652,9 @@ We also have a unique map $\EL(2n) \to L_n$ which agrees with the canonical map 
 %			& = & I
 %		\end{array}
 %\end{eq*}
-%That is, $(\psi + \psi^*) \circ \delta = I$. But we've already defined $q: \mathbb{G}_{2n} \to Q$ to be the cokernel of $\delta$, the universal map with this property, and so there must exist a unique $E\Lambda$-algebra map $u: Q \to X$ making the right-hand triangle below diagram commute:
+%That is, $(\psi + \psi^*) \circ \delta = I$. But we've already defined $q: \ELnn \to Q$ to be the cokernel of $\delta$, the universal map with this property, and so there must exist a unique $E\Lambda$-algebra map $u: Q \to X$ making the right-hand triangle below diagram commute:
 %\begin{eq*} \begin{tikzcd}
-%\ELn \ar[rr, hookrightarrow, "i"] \ar[ddrr, "\psi"'] & & \mathbb{G}_{2n} \ar[rr, "q"] \ar[dd, "\psi + \psi^*", near start] & & Q \ar[ddll, "u"] \\
+%\ELn \ar[rr, hookrightarrow, "i"] \ar[ddrr, "\psi"'] & & \ELnn \ar[rr, "q"] \ar[dd, "\psi + \psi^*", near start] & & Q \ar[ddll, "u"] \\
 %& & & & \\ 
 %& & X & &
 %\end{tikzcd} \end{eq*}
@@ -5692,19 +5694,23 @@ We also have a unique map $\EL(2n) \to L_n$ which agrees with the canonical map 
 %
 %Of course, by \cref{coker} the fact that $q$ is a cokernel is equivalent to it being initial, and so while they may not look it at first glance, these two approaches are secretly the same. Thus from now on whenever we are trying to determine some aspect of $L_n$, we will make sure to take a look at both methods, just in case there are some properties of our free algebra which are more readily apparent from one description than another.
 
-HHHH
 
 
-%An immediate consequence our new cokernel perspective of $L_n$ is that, since left adjoint functors all preserve colimits, \cref{Obadj,concompadj} now both imply results about the partial surjectivity of this new map $q$. The former says that since $\mathrm{Ob}(q)$ is a cokernel map of monoids, and hence that every object of $L_n$ is the image under $q$ of some object of $\mathbb{G}_{2n}$; the latter says a similar thing for connected components. From this one might guess that $q$ will just turn out to be a surjective map of $E\Lambda$-algebras, and indeed this is the case.
+
+%An immediate consequence our new cokernel perspective of $L_n$ is that, since left adjoint functors all preserve colimits, \cref{Obadj,concompadj} now both imply results about the partial surjectivity of this new map $q$. The former says that since $\mathrm{Ob}(q)$ is a cokernel map of monoids, and hence that every object of $L_n$ is the image under $q$ of some object of $\ELnn$; the latter says a similar thing for connected components. From this one might guess that $q$ will just turn out to be a surjective map of $E\Lambda$-algebras, and indeed this is the case.
 %
-%Unfortunately, we can not go about proving that $q$ is surjective on morphisms by a similar adjunction technique, since the best we have is the one from \cref{Moradj} and it will only tell us about the map $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$. However, there is a general result about the coequalisers of $E\Lambda$-algebras that we can prove to get around this.
+%Unfortunately, we can not go about proving that $q$ is surjective on morphisms by a similar adjunction technique, since the best we have is the one from \cref{Moradj} and it will only tell us about the map $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$. However, there is a general result about the coequalizers of $E\Lambda$-algebras that we can prove to get around this.
 
-QQQ We need to have a discussion about surjectivity somewhere.
 
-\begin{prop}\label{coeqsurj} Let $\phi, \phi' : X \to Y$ be a pair of $E\Lambda$-algebra maps, and $k: Y \to Z$ their coequaliser in $E\Lambda\mbox{-}\mathrm{Alg}_S$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
+
+\begin{Defi}
+We will say that a functor $F: C \to D$ is \emph{surjective} if the underlying map of graphs is surjective. In particular $F$ must be surjective on objects, but it need not be full.
+\end{Defi}
+
+\begin{prop}\label{coeqsurj} Let $\phi, \phi' : X \to Y$ be a pair of $E\Lambda$-algebra maps, and $k: Y \to Z$ their coequalizer in $E\Lambda\mbox{-}\mathrm{Alg}_S$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
 \end{prop}
 \begin{proof}
-Since the functor $\mathrm{Ob} : E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint, it preserves all colimits so the monoid homomorphism $\mathrm{Ob}(k): \mathrm{Ob}(Y) \to \mathrm{Ob}(Z)$ is the coequalizer of the parallel pair $\mathrm{Ob}(\phi), \mathrm{Ob}(\phi')$ in the category of monoids. Every coequalizer of monoids is surjective, so $k$ is surjective on objects.
+Since the functor $\mathrm{Ob} : E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint, it preserves all colimits so the monoid homomorphism $\mathrm{Ob}(k): \mathrm{Ob}(Y) \to \mathrm{Ob}(Z)$ is the coequalizer of the parallel pair $\mathrm{Ob}(\phi), \mathrm{Ob}(\phi')$ in the category of monoids. Every coequalizer is a regular epimorphism, and in the category of monoids regular epimorphisms coincide with  surjective functions, so $k$ is surjective on objects.
 
 
 %Thus we get
@@ -5713,7 +5719,7 @@ Since the functor $\mathrm{Ob} : E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}
 %\begin{eq*}\mathrm{Ob}(\phi)(y) \sim \mathrm{Ob}(\phi')(y), \quad \quad \quad a \sim a', b \sim b' \implies ab \sim a'b' \end{eq*}
 %The map $\mathrm{Ob}(k): \mathrm{Ob}(Y) \to \mathrm{Ob}(Y)/\sim$ is then clearly surjective.
 
-Next, let $f: v \to w$ and $f' : w' \to v'$ be any two morphisms of the algebra $Y$ for which $k(f)$ and $k(f')$ are composable in $Z$. Since these maps are composable we know that $k(w)$ and $k(w')$ must be the same object of $Z$, and since $Z$ is a group we know this object has an inverse $k(w)^* = k(w')^*$. So by the surjectivity of $k$ we can find another object $y$ of $Y$ for which $k(y) = k(w)^*$. Using this, define the morphism $h: x \to x'$ to be the tensor product $f' \otimes \mathrm{id}_y \otimes f$. Thus
+Next, let $f: v \to w$ and $f' : w' \to v'$ be any two morphisms of the category $Y$ for which $k(f)$ and $k(f')$ are composable in $Z$. Since these maps are composable we know that $k(w)$ and $k(w')$ must be the same object of $Z$, and since $\mathrm{Ob}(Z)$ is a group we know this object has an inverse $k(w)^{-1} = k(w')^{-1}$. So by the surjectivity of $k$ we can find another object $y$ of $Y$ for which $k(y) = k(w)^{-1}$. Using this, define the morphism $h: w' \otimes y \otimes v \to v' \otimes y \otimes w$ to be the tensor product $f' \otimes \mathrm{id}_y \otimes f$. Thus
 \begin{eq*} \begin{array}{rll}
 		k(h) & = & k(f' \otimes \mathrm{id}_y \otimes f) \\
 		& = & k(f') \otimes \mathrm{id}_{k(y)} \otimes k(f) \\
@@ -5740,29 +5746,29 @@ Now consider $k(Y)$, the subcategory of $Z$ that contains every object $x'$ for 
 %& & & & \\
 %k(Y) \ar[rr, hookrightarrow, "i"] & & Z \ar[rr, "u"] & & U
 %\end{tikzcd} \end{eq*}
-%Given all of this, let $j: Y \to U$ be any map of $E\Lambda$-algebras with the property that $j \circ \phi = j \circ \phi'$. Since $h$ is the coequaliser of $\phi$ and $\phi'$, it follows that there exists a unique map $u:  Y \to U$ such that $j = u \circ k$. This means that $j = u \circ i \circ k'$, and hence there is obviously at least one map, $u \circ i$, which lets us factors $j$ through $k'$. But for any other map $v: k(Y) \to U$ that factors $j$ like this, we'll have
+%Given all of this, let $j: Y \to U$ be any map of $E\Lambda$-algebras with the property that $j \circ \phi = j \circ \phi'$. Since $h$ is the coequalizer of $\phi$ and $\phi'$, it follows that there exists a unique map $u:  Y \to U$ such that $j = u \circ k$. This means that $j = u \circ i \circ k'$, and hence there is obviously at least one map, $u \circ i$, which lets us factors $j$ through $k'$. But for any other map $v: k(Y) \to U$ that factors $j$ like this, we'll have
 %\begin{eq*} \begin{array}{rrll}
 			%& v \circ k' & = & j \\
 			%& & = & u \circ i \circ k' \\
 			%\implies \quad & v & = & u \circ i
 		%\end{array}
 %\end{eq*}
-%because $k'$ is surjective, and thus $u \circ i$ is the unique map with this property. That is, $k'$ is also a coequaliser of $\phi$ and $\phi'$. But colimits are always unique up to a unique isomorphism, and so there should be a unique invertible map $k(Y) \to Z$ factoring $k$ through $k'$. This is clearly just the inclusion $i$, and as a result $k(Y) = Z$ and $k' = k$. In other words, the coequaliser map $k$ is surjective. 
+%because $k'$ is surjective, and thus $u \circ i$ is the unique map with this property. That is, $k'$ is also a coequalizer of $\phi$ and $\phi'$. But colimits are always unique up to a unique isomorphism, and so there should be a unique invertible map $k(Y) \to Z$ factoring $k$ through $k'$. This is clearly just the inclusion $i$, and as a result $k(Y) = Z$ and $k' = k$. In other words, the coequalizer map $k$ is surjective. 
 \end{proof}
 
-%Because the cokernel of a morphism is just its coequaliser with the zero map, and since we know that the objects of $L_n$ form a group, we can immediately apply this result to the functor $q$.
+%Because the cokernel of a morphism is just its coequalizer with the zero map, and since we know that the objects of $L_n$ form a group, we can immediately apply this result to the functor $q$.
 
-\begin{cor}\label{qsurj} The cokernel map $q: \mathbb{G}_{2n} \to L_n$ is surjective.
+\begin{cor}\label{qsurj} The cokernel map $q: \EL(\underline{2n}) \to L_n$ is surjective.
 \end{cor}
 
 \begin{cor}\label{M_coker}
 We have an isomorphism of groups as below.
-\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \quad = \quad \bigquotient{\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}}{\mathrm{ker}\big( \, \mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}} \, \big)} \end{eq*}
+\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}}{\mathrm{ker}\big( \, \mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}} \, \big)} \end{eq*}
 \end{cor}
 %This is probably the single most important step in our effort to determine the morphisms of $L_n$, in the sense of how many of the results hereafter rely on this relatively simple property. Indeed this result is so strong that after a cursory glance, one might be forgiven for thinking that it will immediately provide for us the main thing we have been working towards this chapter --- the value of $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
 %
 %After all, every surjective functor is an epimorphism in the category $\mathrm{MonCat}$. We know that left adjoint functors preserve epimorphisms, and that $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$ is a left adjoint, so from \cref{qsurj} we can surmise that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is also an epimorphism, this time in $\mathrm{Ab}$. But an epimorphic map of abelian groups is nothing other than a surjective homomorphism, and thus we may apply the First Isomorphism Theorem of groups to get the following:
-%\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \quad = \quad \bigquotient{\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}}{\mathrm{ker}\big( \, \mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}} \, \big)} \end{eq*}
+%\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \quad = \quad \bigquotient{\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}}{\mathrm{ker}\big( \, \mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}} \, \big)} \end{eq*}
 %So if we knew what the kernel of $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ was, we would be done. And it seems like we \emph{should} know this; $q$ was defined to be the cokernel of $\delta$, and by preservation of this colimits means that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is the cokernel of $\mathrm{M}(\delta)^{\mathrm{gp},\mathrm{ab}}$. Then since we are working with abelian groups, kernels and cokernels interact in a nice way:
 %\begin{eq*} \mathrm{ker} \, \mathrm{coker}\big( \, \mathrm{M}(\delta)^{\mathrm{gp},\mathrm{ab}} \, \big) \quad = \quad \mathrm{im}\big( \, \mathrm{M}(\delta)^{\mathrm{gp},\mathrm{ab}} \, \big) \end{eq*}
 %However, this last step doesn't actually work --- $q$ was defined to be $\mathrm{coker}(\delta)$, but only in the category of $E\Lambda$-algebras. In general this will \emph{not} be the same thing as the cokernel of $\delta$ in $\mathrm{MonCat}$, which is what we would really need in order for $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}$ to preserve it.
@@ -5771,58 +5777,58 @@ We have an isomorphism of groups as below.
 %
 %\section{Action morphisms of $L_n$} \label{actmorLGn}
 
-One important consequence of the surjectivity of $q$ is that it will allow us to import certain results about the free algebra $\mathbb{G}_{2n}$ into the free invertible algebra $L_n$. In fact, we have done this once already; looking back at \cref{Qobj} with our current knowledge that $Q = L_n$, we can see that it is a direct analogue of \cref{Gnobj}, using the fact that $q$ is surjective on objects. 
+One important consequence of the surjectivity of $q$ is that it will allow us to use some results about the free algebra $\ELnn$ to deduce information about the free invertible algebra $L_n$. In fact, we have done this once already: looking back at \cref{Qobj} with our current knowledge that $Q = L_n$, we can see that it is a direct analogue of \cref{Gnobj}, using the fact that $q$ is surjective on objects. 
 
-In that same vein, one might ask if we can take \cref{Gnmapsaction}, a statement about the morphisms $\mathbb{G}_{2n}$, and extend it to an analagous result on $L_n$, using surjectivity of $q$ on morphisms instead. That is, since every morphism of $\mathbb{G}_{2n}$ is an action morphism, and since $E\Lambda$-algebra maps always send action morphisms to action morphisms, we should be able to use $q$ to identify every morphism of $L_n$ as an action morphism. This is indeed pretty simple to show.
+In that same vein, one might ask if we can take \cref{Gnmapsaction}, a statement about the morphisms $\ELnn$, and extend it to an analagous result on $L_n$, using surjectivity of $q$ on morphisms instead. That is, since every morphism of $\ELnn$ is an action morphism, and since strict $\ML$-monoidal functors always send action morphisms to action morphisms, we should be able to use $q$ to identify every morphism of $L_n$ as an action morphism. 
 
 QQQ Get some notation for what Ed calls action maps, I don't like all the $\alpha$'s
 
 \begin{lem} \label{allmapsaction} Every morphism in $L_n$ can be expressed as something
 %$\alpha^{L_n}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, 
-for some $g \in G(m)$ and $x_i \in \{z_1, ..., z_n, z_1^*, ..., z_n^* \}$.
+for some $g \in \Lambda(m)$ and $x_i \in \{z_1, ..., z_n, z_1^*, ..., z_n^* \}$.
 \end{lem}
 \begin{proof}
-Let $f$ be an arbitrary morphism in $L_n$. By surjectivity of $q$, there must exist at least one morphism $f'$ in $\mathbb{G}_{2n}$ such that $q(f') = f$, and from \cref{Gnmapsaction} we know that this $f'$ can be expressed uniquely as $\alpha(g; \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_m})$ for some $g \in G(m)$ and $x'_i \in \{z_1, ..., z_{2n} \}$. Thus, because $q$ is a map of $E\Lambda$-algebras, we will have
-\begin{eq*}\begin{array}{rll}
-			f & = & q(f') \\
-			& = & q\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_m} \, ) \, \big) \\
-			& = & \alpha^{L_n}( \, g \, ; \, \mathrm{id}_{q(x'_1)}, ..., \mathrm{id}_{q(x'_m)} \, ) 
-		\end{array}
-\end{eq*}
-Therefore there is at least one collection of $x_i = q(x'_i)$ for which the statement of the proposition holds.
+Let $f$ be an arbitrary morphism in $L_n$. By surjectivity of $q$, there must exist at least one morphism $f'$ in $\ELnn$ such that $q(f') = f$, and from \cref{Gnmapsaction} we know that this $f'$ can be expressed uniquely as $\alpha(g; \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_m})$ for some $g \in \Lambda(m)$ and $x'_i \in \{z_1, ..., z_{2n} \}$. %Thus, because $q$ is a map of $E\Lambda$-algebras, we will have
+%\begin{eq*}\begin{array}{rll}
+%			f & = & q(f') \\
+%			& = & q\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_m} \, ) \, \big) \\
+%			& = & \alpha^{L_n}( \, g \, ; \, \mathrm{id}_{q(x'_1)}, ..., \mathrm{id}_{q(x'_m)} \, ) 
+%		\end{array}
+%\end{eq*}
+%Therefore there is at least one collection of $x_i = q(x'_i)$ for which the statement of the proposition holds.
 \end{proof}
 
 
-Note that while this result shows that every morphism of $L_n$ is induced by the action of some $g \in G(n)$, it does not imply that this $g$ is unique. It will, however, furnish us with all the group actions required to give $L_n$ a $\ML$-monoidal structure once we have given it a mere \emph{monoidal} one using that $q$ is surjective.
+Note that while this result shows that every morphism of $L_n$ is induced by the action of some $g \in \Lambda(m)$, it does not imply that this $g$ is unique. It will, however, furnish us with all the group actions required to give $L_n$ a $\ML$-monoidal structure once we have given it a mere \emph{monoidal} one using that $q$ is surjective.  QQQ Forward ref to where we accomplish this.
 %\cref{allmapsaction} formalises a certain intuition about how the functor $L$ should act on algebras, the idea that a `free' structure really shouldn't have any `superfluous' components, only whatever data is absolutely required for it to be well-defined. In the case of $L_n$, we have proven that the only morphisms contained in the free $E\Lambda$-algebra on invertible objects are $E\Lambda$-action morphisms. However, while this is very similar to what we have in the non-invertible case, it should be stressed that \cref{allmapsaction} does \emph{not} prove that the morphisms of $L_n$ have \emph{unique} representations $\alpha(g; \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m})$, as morphisms of $\ELn$ do.
 
 %Also, notice that when we eventually find a complete description of $L_n$ as a monoidal category, we will be able to use the surjective algebra map $q$ to determine it's $E\Lambda$-action as well. This follows from the same reasoning we used to prove \cref{allmapsaction}, but in reverse:
 %\begin{eq*}\begin{array}{rll}
 			%\alpha^{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha^{L_n}( \, g \, ; \, \mathrm{id}_{q(x'_1)}, ..., \mathrm{id}_{q(x'_m)} \, ) \\
-			%& = & q\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_m} \, ) \, \big)
+			%& = & q\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_m} \, ) \, \big)
 		%\end{array}
 %\end{eq*}
 %In fact, since we do know that $q$ is a cokernel of the map $\delta$, we can even extract some information about this action right away, before we have built an understanding of the morphisms of $L_n$.
 
-\begin{lem} \label{noscalar} For any element $g \in G(m), m \in \mathbb{N}$ of an action operad $G$, the morphism
+\begin{lem} \label{noscalar} For any element $g \in \Lambda(m), m \in \mathbb{N}$ of an action operad $\ML$, the morphism
 \[
 g: I^m \to I^m
 \]
-is the identity.
+in $L_n$ is the identity.
 %\begin{eq*} \alpha^{L_n}( \, g \, ; \, \mathrm{id}_I, ..., \mathrm{id}_I \, ) \quad = \quad \mathrm{id}_I \end{eq*}
-Equivalently, for any element $h \in G(0)$, $h$ induces the identity morphism $I \to I$.
+Equivalently, for any element $h \in \Lambda(0)$, $h$ induces the identity morphism $I \to I$.
 %\begin{eq*} \alpha^{L_n}( \, h \, ; \, - \, ) \quad = \quad \mathrm{id}_I \end{eq*}
 \end{lem}
 \begin{proof}
-First, let $g \in G(m)$. Then $g: I^m \to I^m$ is equal to $q(g):q(I^m) \to q(I^m)$ which is equal to $q\delta(g): q\delta(I^m) \to q\delta(I^m)$. Since $q$ is the coequalizer of $\delta$ and the zero map, $q\delta(g) = \id$ for all $g \in G(m)$. This clearly implies that every $h \in G(0)$ induces the identity map $I \to I$, but note that the morphism $g:I^m \to I^m$ is also the morphism induced by $\mu(g; e_0, \ldots, e_0) \in G(0)$, so these two claims are equivalent.
+First, let $g \in \Lambda(m)$. Then $g: I^m \to I^m$ is equal to $q(g):q(I^m) \to q(I^m)$ which is equal to $q\delta(g): q\delta(I^m) \to q\delta(I^m)$. Since $q$ is the coequalizer of $\delta$ and the zero map, $q\delta(g) = \id$ for all $g \in \Lambda(m)$. This clearly implies that every $h \in \Lambda(0)$ induces the identity map $I \to I$, but note that the morphism $g:I^m \to I^m$ is also the morphism induced by $\mu(g; e_0, \ldots, e_0) \in \Lambda(0)$, so these two claims are equivalent.
 
 
 %Then because $q$ is the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$,
 %\begin{eq*}\begin{array}{rll}
 			%\alpha^{L_n}( \, g \, ; \, \mathrm{id}_I, ..., \mathrm{id}_I \, ) & = & \alpha^{L_n}( \, g \, ; \, \mathrm{id}_{q(I)}, ..., \mathrm{id}_{q(I)} \, ) \\
-			%& = & q\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_I, ..., \mathrm{id}_I \, ) \, \big) \\
-			%& = & q\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{\delta(I)}, ..., \mathrm{id}_{\delta(I)} \, ) \, \big) \\
-			%& = & q \delta \big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_I, ..., \mathrm{id}_I \, ) \, \big) \\
+			%& = & q\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_I, ..., \mathrm{id}_I \, ) \, \big) \\
+			%& = & q\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{\delta(I)}, ..., \mathrm{id}_{\delta(I)} \, ) \, \big) \\
+			%& = & q \delta \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_I, ..., \mathrm{id}_I \, ) \, \big) \\
 			%& = & \mathrm{id}_I
 		%\end{array}
 %\end{eq*}
@@ -5839,15 +5845,15 @@ First, let $g \in G(m)$. Then $g: I^m \to I^m$ is equal to $q(g):q(I^m) \to q(I^
 %and $\mu(g;e_0, ..., e_0) \in G(0)$.
 \end{proof}
 
-This is a curious result. The morphisms $I \to I$ in $n\ML$ QQQ $n\ML$ is my new test notation for Ed's $\ELn$ are exactly the elements of the group $G(0)$, but all of these become the identity in $L_n$. In other words, $L_n$ cannot detect any morphisms in $G(0)$, an idea we make precise now. 
+This is a curious result. The morphisms $I \to I$ in QQQ $n\ML$ vs $\ELn$ QQQ are exactly the elements of the group $\Lambda(0)$, but all of these become the identity in $L_n$. In other words, $L_n$ cannot detect any morphisms in $\Lambda(0)$, an idea we make precise now. 
 
 
 %By \cref{Gnmapsaction}, morphisms of the form $\alpha^{\ELn}(g; \mathrm{id}_I, ..., \mathrm{id}_I)$ make up the entirety of the homset $\ELn(I,I)$. Now we see that their image under the algebra map $\eta: \ELn \to L_n$ is always $\mathrm{id}_I$, and so it follows that the unit endomorphisms of free algebras are wholly unrelated to the unit endomorphisms of the corresponding free \emph{invertible} algebras. In particular, when constructing $L_n$ it seems that it should not matter whether our chosen action operad $G$ has nontrivial $G(0)$, since all morphisms $\alpha^{L_n}(g; - )$ for $g \in G(0)$ are going to end up as the identity regardless. In order to state this idea more concretely though, we need some way of `removing' the group $G(0)$ from $G$.
 
-\begin{prop} \label{G0quot} Let $G$ be a crossed action operad. Then there exists another crossed action operad $G'$ which has $G'(m) = G(m)/G(0)$ for all $m \in \mathrm{N}$.
+\begin{prop} \label{G0quot} Let $\Lambda$ be a crossed action operad. Then there exists another crossed action operad $\Lambda'$ given by $\Lambda'(m) = \Lambda(m)/\Lambda(0)$ for all $m \in \mathrm{N}$.
 \end{prop}
 \begin{proof}
-For any elements $g \in G(m)$ and $h \in G(0)$, their tensor product $h \otimes g := \mu(e_2; h, g)$ is also an element of $G(m)$. This defines a map $G(0) \times G(m) \to G(m)$, which is both a group homomorphism and a group action by \cref{G0abel}. This produces a homomorphism $G(0) \to G(m)$ for all $m$ which lies in the center of $G(m)$ by QQQ spacial, hence is normal for all $m$. Furthermore, the induced map $G(0) \to G(m) \to \Sigma_m$ is the zero map, so we have an induced homomorphism $G(m)/G(0) \to \Sigma_m$. All that remains to be shown is that we the operadic multiplication for $\Lambda$ induces one for the groups $\Lambda(n)/\Lambda(0)$, and that this multiplication satisfies the axioms for an action operad.
+For any elements $g \in \Lambda(m)$ and $h \in \Lambda(0)$, their tensor product $h \otimes g := \mu(e_2; h, g)$ is also an element of $\Lambda(m)$. This defines a map $\Lambda(0) \times \Lambda(m) \to \Lambda(m)$, which is both a group homomorphism and a group action by \cref{G0abel}. This produces a homomorphism $\Lambda(0) \to \Lambda(m)$ for all $m$ which lies in the center of $\Lambda(m)$ by QQQ \cref{spacial}, hence is normal for all $m$. Furthermore, the induced map $\Lambda(0) \to \Lambda(m) \to \Sigma_m$ is the zero map, so we have an induced homomorphism $\Lambda(m)/\Lambda(0) \to \Sigma_m$. All that remains to be shown is that we the operadic multiplication for $\Lambda$ induces one for the groups $\Lambda(n)/\Lambda(0)$, and that this multiplication satisfies the axioms for an action operad.
 
 
 
@@ -5861,7 +5867,8 @@ For any elements $g \in G(m)$ and $h \in G(0)$, their tensor product $h \otimes 
 %\end{eq*}
 %The last step here uses the fact that tensor product and group multiplication coincide on $G(0)$, by \cref{G0abel}. We can thus take the quotient of each $G(m)$ by the action of $G(0)$, which will amount to quotienting out the image in $G(m)$ of the subgroup $G(0) \cong G(0) \times \{ e_m \} \subseteq G(0) \times G(m)$. 
 
-In order for these new groups $G'(m) = G(m)/G(0)$ to form an action operad, we'll need operadic multiplication maps $\mu^{G'}$ and underlying permutation maps $\pi^{G'}$. These will be defined from $\mu^{G}$ and $\pi^{G}$ using the universal property of the quotient. Specifically, let $h, h_1, ..., h_m \in G(0)$ and $k_1, ..., k_m \in \mathbb{N}$. Then we have
+%In order for these new groups $G'(m) = G(m)/G(0)$ to form an action operad, we'll need operadic multiplication maps $\mu^{G'}$ and underlying permutation maps $\pi^{G'}$. These will be defined from $\mu^{G}$ and $\pi^{G}$ using the universal property of the quotient. 
+Specifically, let $h, h_1, ..., h_m \in G(0)$ and $k_1, ..., k_m \in \mathbb{N}$. Then we have
 \begin{eq*} \begin{array}{rll}
 		\mu^{G}( \, h \otimes e_m \, ; \, h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m} \, ) & = & \mu^{G}\big( \, \mu^{G}(e_2; h, e_m) \, ; \, h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m} \, \big) \\
 		& = & \mu^{G}\big( \, e_2 \, ; \, \mu^{G}(h;-), \mu^{G}(e_m; h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m}) \, \big) \\
@@ -6004,9 +6011,9 @@ As $f$ was chosen arbitrarily, it follows that $L_n(I,I) = \{ \mathrm{id}_I \}$.
 
 Ultimately, we will see that there is very little we can say for sure about the unit endomorphisms of $L_n$ when $G$ is not crossed, other than \cref{noscalarnoncross}. For this reason, the main theorems of this thesis, \cref{freeinvalgG1,freeinvalgc}, will end up describing only those invertible $E\Lambda$-algebras whose action operads are either $G(1)$-generated or crossed, respectively.
 
-\section{$L_n$ as a coequaliser in $\mathrm{MonCat}$} \label{colimmoncat}
+\section{$L_n$ as a coequalizer in $\mathrm{MonCat}$} \label{colimmoncat}
 
-Looking back at the proof of \cref{coeqsurj}, notice that we never needed to use the fact that $\phi$, $\phi'$ and $k$ were maps of $E\Lambda$-algebras, only that they were monoidal functors. We did at one point have to show that the category $k(Y)$ was an algebra so that we could then use the universal property of $k$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$, because we had assumed from the beginning that we were working in that category, but if $k$ had just been a coequaliser in $\mathrm{MonCat}$ from the start then this part would not have been necessary. We also had to invoke \cref{Obadj} --- which says that $\mathrm{Ob}: E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint --- so that we could exploit preservation of colimits. But since $\mathrm{Ob}$ clearly doesn't care about the morphisms of an algebra, it doesn't really matter whether we are applying it to an algebra in the first place. The actions of $X$, $Y$ and $Z$ just never came into play.
+Looking back at the proof of \cref{coeqsurj}, notice that we never needed to use the fact that $\phi$, $\phi'$ and $k$ were maps of $E\Lambda$-algebras, only that they were monoidal functors. We did at one point have to show that the category $k(Y)$ was an algebra so that we could then use the universal property of $k$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$, because we had assumed from the beginning that we were working in that category, but if $k$ had just been a coequalizer in $\mathrm{MonCat}$ from the start then this part would not have been necessary. We also had to invoke \cref{Obadj} --- which says that $\mathrm{Ob}: E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint --- so that we could exploit preservation of colimits. But since $\mathrm{Ob}$ clearly doesn't care about the morphisms of an algebra, it doesn't really matter whether we are applying it to an algebra in the first place. The actions of $X$, $Y$ and $Z$ just never came into play.
 
 With that in mind, we can co-opt all of these previous proofs about $E\Lambda$-algebra maps to prove the analogous statements about monoidal functors.
 
@@ -6018,7 +6025,7 @@ be defined exactly as those from \cref{Obdef,Edef}, except without the requireme
 The same as the proof of \cref{Obadj}.
 \end{proof}
 
-\begin{prop} \label{coeqsurjmon} Let $\phi, \phi' : X \to Y$ be a pair of monoidal functors, and $k: Y \to Z$ their coequaliser in $\mathrm{MonCat}$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
+\begin{prop} \label{coeqsurjmon} Let $\phi, \phi' : X \to Y$ be a pair of monoidal functors, and $k: Y \to Z$ their coequalizer in $\mathrm{MonCat}$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
 \end{prop}
 \begin{proof}
 The same as the proof of \cref{coeqsurj}, but with \cref{Obadjmon} in place of \cref{Obadj}, and no reference to $k(Y)$ being a sub-$E\Lambda$-algebra.
@@ -6026,10 +6033,10 @@ The same as the proof of \cref{coeqsurj}, but with \cref{Obadjmon} in place of \
 
 Further, these new propositions prove a surjectivity statement just like \cref{qsurj}. 
 
-\begin{Defi}\label{Cdef} Let the monoidal functor $c: \mathbb{G}_{2n} \to C$ onto some monoidal category $C$ be the cokernel of the underlying monoidal functor of $\delta$ in $\mathrm{MonCat}$. This map definitely exists because $\mathrm{MonCat}$ is cocomplete, and like with $q$ we can show that its target has a group of objects.
+\begin{Defi}\label{Cdef} Let the monoidal functor $c: \ELnn \to C$ onto some monoidal category $C$ be the cokernel of the underlying monoidal functor of $\delta$ in $\mathrm{MonCat}$. This map definitely exists because $\mathrm{MonCat}$ is cocomplete, and like with $q$ we can show that its target has a group of objects.
 \end{Defi}
 
-\begin{prop}\label{Cobj} The object monoid of $C$ is $\mathbb{Z}^{*n}$, and the restriction of $c$ to objects $\mathrm{Ob}(c): \mathrm{Ob}(\mathbb{G}_{2n}) \to \mathrm{Ob}(C)$ is the monoid homomorphism defined on generators as
+\begin{prop}\label{Cobj} The object monoid of $C$ is $\mathbb{Z}^{*n}$, and the restriction of $c$ to objects $\mathrm{Ob}(c): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(C)$ is the monoid homomorphism defined on generators as
 \begin{eq*} \begin{array}{rlrlll}
 			\mathrm{Ob}(c) & : & \mathbb{N}^{\ast 2n} & \to & \mathbb{Z}^{\ast n} \\
 			& : & z_i & \mapsto & z_i  \\
@@ -6038,36 +6045,36 @@ Further, these new propositions prove a surjectivity statement just like \cref{q
 \end{eq*}
 \end{prop}
 \begin{proof}
-The same as the proof of \cref{Qobj}, but with $c: \mathbb{G}_{2n} \to C$ in place of $q: \mathbb{G}_{2n} \to Q$ and \cref{Obadjmon} in place of \cref{Obadj}.
+The same as the proof of \cref{Qobj}, but with $c: \ELnn \to C$ in place of $q: \ELnn \to Q$ and \cref{Obadjmon} in place of \cref{Obadj}.
 \end{proof}
 
 \cref{coeqsurjmon,Cobj} then immediately combine to give:
 
-\begin{cor}\label{csurj} The cokernel map $c: \mathbb{G}_{2n} \to C$ is surjective.
+\begin{cor}\label{csurj} The cokernel map $c: \ELnn \to C$ is surjective.
 \end{cor}
 
-This statement is actually pretty unusual. In \cref{qsurj} it made sense that $q$ would be surjective, but that was because its source and target were special. $\mathbb{G}_{2n}$ is the free $E\Lambda$-algebra on $2n$ objects, and $L_n$ is the free $E\Lambda$-algebra on $n$ objects and their $n$ inverses, and so intuitively the map identifying those sets' generators would tell us everything we need to know about the algebra structure of $L_n$. And since by freeness we expect algebra maps to be all there really is to $L_n$, it was a safe bet that $q$ was going to be surjective.
+This statement is actually pretty unusual. In \cref{qsurj} it made sense that $q$ would be surjective, but that was because its source and target were special. $\ELnn$ is the free $E\Lambda$-algebra on $2n$ objects, and $L_n$ is the free $E\Lambda$-algebra on $n$ objects and their $n$ inverses, and so intuitively the map identifying those sets' generators would tell us everything we need to know about the algebra structure of $L_n$. And since by freeness we expect algebra maps to be all there really is to $L_n$, it was a safe bet that $q$ was going to be surjective.
 
-But none of that is true for $c$. The underlying monoidal category of $\mathbb{G}_{2n}$ is not anything special in $\mathrm{MonCat}$, and neither is $C$. So what is going on here? The answer is that category $C$ is \emph{almost} the algebra $L_n$, and likewise the functor $c$ is \emph{almost} the map $q$. To see this, consider the following naive method for assigning an $E\Lambda$-action $\alpha^C$ to $C$:
-\begin{eq*} \alpha^C( \, g \, ; \, c(f_1), ..., c(f_m) \, ) \quad := \quad c \big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) \end{eq*}
-Any action on $C$ that made $c$ into a map of $E\Lambda$-algebras would have to satify this condition, of course. But because $c$ is surjective, every collection of morphisms in $C$ can be written as $c(f_1), ..., c(f_m)$, and this forces $\alpha^C$ to take a unique value everywhere, assuming it is well-defined. Then, since the the cokernel of $\delta$ in $\mathrm{MonCat}$ would be an $E\Lambda$-algebra map, we could conclude that it was also the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$ too. However, `assuming it is well-defined' is where the problems lie. In particular, since $c$ is not injective on objects we can find $w_1, ..., w_m$ and $w'_1, ..., w'_m$ in $\mathbb{G}_{2n}$ for which $c(w_i) = c(w'_i)$, and so $\alpha^C$ would only be well-defined if
-\begin{eq*} c \big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big) \quad = \quad c \big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w'_1}, ..., \mathrm{id}_{w'_m} \, ) \, \big) \end{eq*}
+But none of that is true for $c$. The underlying monoidal category of $\ELnn$ is not anything special in $\mathrm{MonCat}$, and neither is $C$. So what is going on here? The answer is that category $C$ is \emph{almost} the algebra $L_n$, and likewise the functor $c$ is \emph{almost} the map $q$. To see this, consider the following naive method for assigning an $E\Lambda$-action $\alpha^C$ to $C$:
+\begin{eq*} \alpha^C( \, g \, ; \, c(f_1), ..., c(f_m) \, ) \quad := \quad c \big( \, \alpha^{\ELnn}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) \end{eq*}
+Any action on $C$ that made $c$ into a map of $E\Lambda$-algebras would have to satify this condition, of course. But because $c$ is surjective, every collection of morphisms in $C$ can be written as $c(f_1), ..., c(f_m)$, and this forces $\alpha^C$ to take a unique value everywhere, assuming it is well-defined. Then, since the the cokernel of $\delta$ in $\mathrm{MonCat}$ would be an $E\Lambda$-algebra map, we could conclude that it was also the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$ too. However, `assuming it is well-defined' is where the problems lie. In particular, since $c$ is not injective on objects we can find $w_1, ..., w_m$ and $w'_1, ..., w'_m$ in $\ELnn$ for which $c(w_i) = c(w'_i)$, and so $\alpha^C$ would only be well-defined if
+\begin{eq*} c \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big) \quad = \quad c \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'_1}, ..., \mathrm{id}_{w'_m} \, ) \, \big) \end{eq*}
 which we have no reason to believe is true. 
 
 To fix this issue, what we need is a way of describing the map $q$ as a colimit of a slightly different diagram in $E\Lambda$-algebras, one whose colimit in $\mathrm{MonCat}$ will have all of the same properties that $c$ does but will also satisfy the condition above. To that end, consider the following $E\Lambda$-algebra maps:
  
-\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} := \mathrm{id}_{\mathbb{G}_{2n}}+\delta$ be the map defined from $\delta$ and the identity by using the universal property of the coproduct $\mathbb{G}_{4n} = \mathbb{G}_{2n} + \mathbb{G}_{2n}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$. That is, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
+\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} := \mathrm{id}_{\ELnn}+\delta$ be the map defined from $\delta$ and the identity by using the universal property of the coproduct $\mathbb{G}_{4n} = \ELnn + \ELnn$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$. That is, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
 \begin{eq*} \begin{array}{rlrlll}
-			\tilde{\delta} & : & \mathbb{G}_{4n} & \to & \mathbb{G}_{2n} \\
+			\tilde{\delta} & : & \mathbb{G}_{4n} & \to & \ELnn \\
 			& : & z_i & \mapsto & z_i  \\
 			& : & z_{n+i} & \mapsto & z_{n+i} \\
 			& : & z_{2n+i} & \mapsto & z_i \otimes z_{n+i} \\
 			& : & z_{3n+i} & \mapsto & z_{n+i} \otimes z_i			
 		\end{array}
 \end{eq*}
-for $1 \le i \le n$. Similarly, let $\tilde{I} := \mathrm{id}_{\mathbb{G}_{2n}}+I$ be the $E\Lambda$-algebra map defined in the same way but from the constant map on the unit $I$ instead of $\delta$:
+for $1 \le i \le n$. Similarly, let $\tilde{I} := \mathrm{id}_{\ELnn}+I$ be the $E\Lambda$-algebra map defined in the same way but from the constant map on the unit $I$ instead of $\delta$:
 \begin{eq*} \begin{array}{rlrlll}
-			\tilde{I} & : & \mathbb{G}_{4n} & \to & \mathbb{G}_{2n} \\
+			\tilde{I} & : & \mathbb{G}_{4n} & \to & \ELnn \\
 			& : & z_i & \mapsto & z_i  \\
 			& : & z_{n+i} & \mapsto & z_{n+i} \\
 			& : & z_{2n+i} & \mapsto & I \\
@@ -6076,41 +6083,41 @@ for $1 \le i \le n$. Similarly, let $\tilde{I} := \mathrm{id}_{\mathbb{G}_{2n}}+
 \end{eq*}
 \end{Defi}
 
-\begin{lem} $q$ is the coequaliser of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\begin{lem} $q$ is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{lem}
 \begin{proof}
-Let $\psi: \mathbb{G}_{2n} \to X$ be an map of $E\Lambda$-algebras. Then
+Let $\psi: \ELnn \to X$ be an map of $E\Lambda$-algebras. Then
 \begin{eq*} \begin{array}{rcl}
-			\psi \circ (\mathrm{id}_{\mathbb{G}_{2n}}+\delta)(z_i) & = & \psi \circ (\mathrm{id}_{\mathbb{G}_{2n}}+I) \\
+			\psi \circ (\mathrm{id}_{\ELnn}+\delta)(z_i) & = & \psi \circ (\mathrm{id}_{\ELnn}+I) \\
 			& \iff & \\
-			\psi \circ \mathrm{id}_{\mathbb{G}_{2n}} \quad = \quad \psi \circ \mathrm{id}_{\mathbb{G}_{2n}}, & & \psi \circ \delta \quad = \quad \psi \circ I
+			\psi \circ \mathrm{id}_{\ELnn} \quad = \quad \psi \circ \mathrm{id}_{\ELnn}, & & \psi \circ \delta \quad = \quad \psi \circ I
 		\end{array}
 \end{eq*}
 and hence
-\begin{eq*} \mathrm{coeq}( \, \mathrm{id}_{\mathbb{G}_{2n}}+\delta, \, \mathrm{id}_{\mathbb{G}_{2n}}+I \, ) \quad = \quad \mathrm{coeq}(\delta, I) \quad = \quad \mathrm{coker}(\delta) \quad = \quad q\end{eq*}
+\begin{eq*} \mathrm{coeq}( \, \mathrm{id}_{\ELnn}+\delta, \, \mathrm{id}_{\ELnn}+I \, ) \quad = \quad \mathrm{coeq}(\delta, I) \quad = \quad \mathrm{coker}(\delta) \quad = \quad q\end{eq*}
 \end{proof}
 
-While this proof may seem rather trivial, notice that it does rely on the fact that the $+$ here represents the coproduct in the category of $E\Lambda$-algebras. There is no reason to expect that the coequaliser of the underlying monoidal functors of these maps would also be equal the cokernel of the underlying monoidal functor of $\delta$. Thus these new maps will give rise to a new map which is distinct from the cokernel functor $c$, yet possesses many of the same properties.
+While this proof may seem rather trivial, notice that it does rely on the fact that the $+$ here represents the coproduct in the category of $E\Lambda$-algebras. There is no reason to expect that the coequalizer of the underlying monoidal functors of these maps would also be equal the cokernel of the underlying monoidal functor of $\delta$. Thus these new maps will give rise to a new map which is distinct from the cokernel functor $c$, yet possesses many of the same properties.
 
-\begin{Defi} \label{C'def} Denote by $\tilde{c}: \mathbb{G}_{2n} \to \tilde{C}$ the coequaliser of $\tilde{\delta}$ and $\tilde{I}$ in the category $\mathrm{MonCat}$. \end{Defi}
+\begin{Defi} \label{C'def} Denote by $\tilde{c}: \ELnn \to \tilde{C}$ the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in the category $\mathrm{MonCat}$. \end{Defi}
 
 \begin{lem} \label{C'obj} The object monoid of $\tilde{C}$ is
 \begin{eq*} \mathrm{Ob}(\tilde{C}) \quad = \quad \mathrm{Ob}(C) \quad = \quad \mathbb{Z}^{*n} \end{eq*}
-and the restriction of $\tilde{c}$ to objects $\mathrm{Ob}(\tilde{c}): \mathrm{Ob}(\mathbb{G}_{2n}) \to \mathrm{Ob}(\tilde{C})$ is just the monoid homomorphism $\mathrm{Ob}(c): \mathbb{N}^{*2n} \to \mathbb{Z}^{*n}$ from \cref{Cobj}.
+and the restriction of $\tilde{c}$ to objects $\mathrm{Ob}(\tilde{c}): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(\tilde{C})$ is just the monoid homomorphism $\mathrm{Ob}(c): \mathbb{N}^{*2n} \to \mathbb{Z}^{*n}$ from \cref{Cobj}.
 \end{lem}
 \begin{proof}
 Consider the monoid homomorphisms $\mathrm{Ob}(\tilde{\delta}): \mathbb{N}^{\ast 4n} \to \mathbb{N}^{\ast 2n}$ and $\mathrm{Ob}(\tilde{I}): \mathbb{N}^{\ast 4n} \to \mathbb{N}^{\ast 2n}$. These are fully determined by the descriptions of the corresponding algebra maps in \cref{coprodmapdef}, and as such they are obviously just
 \begin{eq*} \begin{array}{rclcrcl}
-			\mathrm{Ob}(\mathrm{id}_{\mathbb{G}_{2n}}+\delta) & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+\mathrm{Ob}(\delta) & \quad \quad \quad \quad & \mathrm{Ob}(\mathrm{id}_{\mathbb{G}_{2n}}+I) & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+\mathrm{Ob}(I) \\
+			\mathrm{Ob}(\mathrm{id}_{\ELnn}+\delta) & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+\mathrm{Ob}(\delta) & \quad \quad \quad \quad & \mathrm{Ob}(\mathrm{id}_{\ELnn}+I) & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+\mathrm{Ob}(I) \\
 			& & & & & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+I
 		\end{array}
 \end{eq*}
 where the $+$ on the righthand side of the equations means the coproduct in the category of monoids. Therefore
-\begin{eq*} \mathrm{coeq}\big( \, \mathrm{Ob}(\mathrm{id}_{\mathbb{G}_{2n}}+\delta), \, \mathrm{Ob}(\mathrm{id}_{\mathbb{G}_{2n}}+I) \, ) \quad = \quad \mathrm{coeq}\big( \, \mathrm{Ob}(\delta), I \, \big) \quad = \quad \mathrm{Ob}(c) \end{eq*}
+\begin{eq*} \mathrm{coeq}\big( \, \mathrm{Ob}(\mathrm{id}_{\ELnn}+\delta), \, \mathrm{Ob}(\mathrm{id}_{\ELnn}+I) \, ) \quad = \quad \mathrm{coeq}\big( \, \mathrm{Ob}(\delta), I \, \big) \quad = \quad \mathrm{Ob}(c) \end{eq*}
 and thus $\mathrm{Ob}(\tilde{C}) = \mathrm{Ob}(C)$.
 \end{proof}
 
-\begin{cor} \label{c'surj} The coequaliser map $\tilde{c}: \mathbb{G}_{2n} \to \tilde{C}$ is surjective.
+\begin{cor} \label{c'surj} The coequalizer map $\tilde{c}: \ELnn \to \tilde{C}$ is surjective.
 \end{cor}
 \begin{proof}
 \cref{C'obj} says that the monoid $\tilde{C}$ is a group, so we may apply \cref{coeqsurjmon}.
@@ -6118,18 +6125,18 @@ and thus $\mathrm{Ob}(\tilde{C}) = \mathrm{Ob}(C)$.
 
 So why bother with any of this? What features do $\tilde{\delta}$ and $\tilde{I}$ have that will make an action possible on $\tilde{C}$ when it wasn't on $C$? The answer is that unlike $\delta$ and $I$, these new maps form a \emph{reflexive pair} --- a parallel pair of functors which share a right-inverse.
 
-\begin{lem} \label{sect} Let $\iota: \mathbb{G}_{2n} \to \mathbb{G}_{4n}$ be the inclusion of algebras defined on generators by $z_i \mapsto z_i$. Then $\iota$ is a right-inverse of both $\tilde{\delta}$ and $\tilde{I}$. \end{lem} 
+\begin{lem} \label{sect} Let $\iota: \ELnn \to \mathbb{G}_{4n}$ be the inclusion of algebras defined on generators by $z_i \mapsto z_i$. Then $\iota$ is a right-inverse of both $\tilde{\delta}$ and $\tilde{I}$. \end{lem} 
 \begin{proof}
 For $1 \le i \le 2n$,
 \begin{eq*}\begin{array}{rcccccccl}
 			\tilde{\delta} \iota(z_i) & = & \tilde{\delta}(z_i) & = & z_i & = & \tilde{I}(z_i) & = & \tilde{I} \iota(z_i) \\
 			\\
-			\implies & & \tilde{\delta} \circ \iota & = & \mathrm{id}_{\mathbb{G}_{2n}} & = & \tilde{I} \circ \iota & & 
+			\implies & & \tilde{\delta} \circ \iota & = & \mathrm{id}_{\ELnn} & = & \tilde{I} \circ \iota & & 
 		\end{array}
 \end{eq*}
 \end{proof} 
 
-In other words, $\tilde{c}$ is a \emph{reflexive coequaliser} in the category $\mathrm{MonCat}$. This is the key difference which will eventually let us prove that $\tilde{c}$ respects action morphisms in the way that we need it to. First though, we will need a few intermediate results.
+In other words, $\tilde{c}$ is a \emph{reflexive coequalizer} in the category $\mathrm{MonCat}$. This is the key difference which will eventually let us prove that $\tilde{c}$ respects action morphisms in the way that we need it to. First though, we will need a few intermediate results.
 
 \begin{Defi}\label{decompdef} If $w$ is an element of $\mathbb{N}^{\ast m}$, then we can use the definition of the free product of groups to decompose it uniquely as a tensor product of the $m$ generators $z_1, ..., z_m$. We'll denote this by
 \begin{eq*} w \quad =: \quad \bigotimes_{i=1}^{|w|} \, d(w, i), \quad \quad \quad d(w, i) \in \{ z_1, ..., z_m \} \end{eq*}
@@ -6141,7 +6148,7 @@ that sends each generator to 1, and not the perhaps more obvious \emph{group} ho
 \begin{eq*} F\big( \, \{ z_1, ..., z_m \} \, \big) \to \mathbb{Z} \end{eq*}
 \end{Defi}
 
-\begin{prop}\label{c'alg1} Let $w$ be an object of $\mathbb{G}_{2n}$. Then there exist objects $w^{(1)}, ..., w^{(k)}$ in $\mathbb{G}_{2n}$ and $u^{(1)}, ..., u^{(k)}$ in $\mathbb{G}_{4n}$, for some value of $k \in \mathbb{N}$, such that
+\begin{prop}\label{c'alg1} Let $w$ be an object of $\ELnn$. Then there exist objects $w^{(1)}, ..., w^{(k)}$ in $\ELnn$ and $u^{(1)}, ..., u^{(k)}$ in $\mathbb{G}_{4n}$, for some value of $k \in \mathbb{N}$, such that
 \begin{eq*} w^{(1)} \,= \, w, \quad \quad u^{(k)} \, = \, \iota(w^{(k)}), \quad \quad \quad \tilde{I}(u^{(i-1)}) \quad = \quad w^{(i)} \quad = \quad \tilde{\delta}(u^{(i)}) \end{eq*}
 for $1 \le i \le k$, and for any object $u$ of $\mathbb{G}_{4n}$,
 \begin{eq*} \tilde{\delta}(u) \, = \, w^{(k)} \quad \iff \quad u \, = \, u^{(k)} \end{eq*}
@@ -6160,20 +6167,20 @@ From \cref{lengthdef,coprodmapdef}, we know that for any generator $z_i$ of $\ma
 							\end{cases} \quad \right \rbrace & \le 1 
 		\end{array}
 \end{eq*}
-Also these lengths are additive across tensor products, since $| \, \_ \, |$ is a monoid homomorphism $\mathbb{G}_{2n} \to \mathbb{N}$. Thus for any object $u$ in $\mathbb{G}_{4n}$, we can conclude that
+Also these lengths are additive across tensor products, since $| \, \_ \, |$ is a monoid homomorphism $\ELnn \to \mathbb{N}$. Thus for any object $u$ in $\mathbb{G}_{4n}$, we can conclude that
 \begin{eq*}\begin{array}{rllllllll}
 			| \tilde{\delta}(u) | & = & | \, \tilde{\delta}\big( \, \mathlarger{\bigotimes_{i=1}^{|u|} d(u, i)} \, \big) \, | & = & \mathlarger{\sum_{i=1}^{|u|} | \, \tilde{\delta} \big( \, d(u, i) \, \big) \, |} & \ge & \mathlarger{\sum_{i=1}^{|u|} 1} & = & |u| \\[\bigskipamount]
 			| \tilde{I}(u) | & = & | \, \tilde{I}\big( \, \mathlarger{\bigotimes_{i=1}^{|u|} d(u, i)} \, \big) \, | & = & \mathlarger{\sum_{i=1}^{|u|} | \, \tilde{I} \big( \, d(u, i) \, \big) \, |} & \le & \mathlarger{\sum_{i=1}^{|u|} 1} & = & |u|
 		\end{array}
 \end{eq*}
-Also, since the only generators that have $| \tilde{\delta}(z_i) | = | \tilde{I}(z_i) | = 1$ are those from the $\mathbb{G}_{2n}$ subalgebra associated with $\iota$, the inequalities above becomes equalities if and only if $u$ is in the image of $\iota$. That is,
+Also, since the only generators that have $| \tilde{\delta}(z_i) | = | \tilde{I}(z_i) | = 1$ are those from the $\ELnn$ subalgebra associated with $\iota$, the inequalities above becomes equalities if and only if $u$ is in the image of $\iota$. That is,
 \begin{eq*} | \tilde{I}(u) | \, = \, |u| \, = \, |\tilde{\delta}(u)|  \quad \iff \quad \exists \, v \in \mathbb{N}^{\ast 2n} \, : \, u \, = \, \iota(v) \end{eq*}
 
 Next, consider the set
 \begin{eq*} \tilde{\delta}^{-1}(w) \quad := \quad \{ \, u \in \mathbb{N}^{\ast 4n} : \tilde{\delta}(u) = w \, \} \end{eq*}
 of all objects in $\mathbb{G}_{4n}$ which $\tilde{\delta}$ sends to $w$. This set is always nonempty, since by \cref{sect} $\iota$ is a right-inverse of $\delta$:
 \begin{eq*} \tilde{\delta} \iota(w) \, = \, w \quad \implies \quad \iota(w) \in \tilde{\delta}^{-1}(w) \end{eq*}
-Moreover, $\iota(w)$ is the only element of $\tilde{\delta}^{-1}(w)$ which can be expessed as $\iota(v)$ for some object $v$ in $\mathbb{G}_{2n}$, because
+Moreover, $\iota(w)$ is the only element of $\tilde{\delta}^{-1}(w)$ which can be expessed as $\iota(v)$ for some object $v$ in $\ELnn$, because
 \begin{eq*} \tilde{\delta} \big( \, \iota(v) \, \big) \, = \, w \quad \implies \quad v \, = \, w \end{eq*}
 
 With all of this now in place, we can begin constructing the sequences $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$. Start by setting $w^{(1)} = w$ and $i=1$, then apply the following algorithm:
@@ -6183,7 +6190,7 @@ With all of this now in place, we can begin constructing the sequences $w^{(1)},
 \item Set $w^{(i+1)} = \tilde{I}(u^{(i)})$.
 \item Increase the value of $i$ by 1, then return to step 1.
 \end{enumerate}
-By design, none of the $u^{(i)}$ produced by this process can be expressed as $u^{(i)} = \iota(v)$ for some $v$ in $\mathbb{G}_{2n}$, with the possible exception of $u_k$ if the algorithm terminates. This is because $\iota(w^{(i)})$ is the only element of $\delta^{-1}(w^{(i)})$ that can be expressed that way, and the above process will terminate the first time it has to pick $u^{(i)} = \iota(w^{(i)})$, at which point $i$ is set equal to $k$. Thus given what we found earlier in the proof, for any $i \neq k$ we must have the following \emph{strict} inequalities:
+By design, none of the $u^{(i)}$ produced by this process can be expressed as $u^{(i)} = \iota(v)$ for some $v$ in $\ELnn$, with the possible exception of $u_k$ if the algorithm terminates. This is because $\iota(w^{(i)})$ is the only element of $\delta^{-1}(w^{(i)})$ that can be expressed that way, and the above process will terminate the first time it has to pick $u^{(i)} = \iota(w^{(i)})$, at which point $i$ is set equal to $k$. Thus given what we found earlier in the proof, for any $i \neq k$ we must have the following \emph{strict} inequalities:
 \begin{eq*} |w^{(i+1)}| \quad = \quad | \tilde{I}(u^{(i)}) | \quad < \quad |u^{(i)}| \quad < \quad |\tilde{\delta}(u^{(i)})| \quad = \quad |w^{(i)}| \end{eq*}
 That is, the $w^{(i)}$ produced by this algorithm form a sequence with strictly decreasing length. However, it is impossible to have a infinite sequence of strictly decreasing natural numbers, and hence we can be sure that this process will terminate at some finite $k$. 
 
@@ -6194,9 +6201,9 @@ and hence
 Thus the sequences $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$ satisfy all of the conditions in the statement of the lemma.
 \end{proof}
 
-The intuition behind \cref{c'alg1} is that we are successively removing parts of the object $w$, without changing its image under $\tilde{c}$. The map $\tilde{\delta}$ sends $z_{2n+i} \mapsto z_i \otimes z_{n+i}$ and $z_{3n+i} \mapsto z_{n+1} \otimes z_i$ while $\tilde{I}$ sends these all to $I$, and so for any $u$ in $\mathbb{G}_{4n}$ the object $\tilde{I}(u)$ will look like $\tilde{\delta}(u)$ except missing some number of $z_i \otimes z_{n+i}$ or $z_{n+1} \otimes z_i$ substrings. But since $\tilde{c}$ sends $z_{n+i} \mapsto z_i^*$, these are exactly the sort of omissions which the coequaliser doesn't care about. If we repeat this process then it will eventually terminate at $u^{(k)} = \iota(w^{(k)})$, so we really have a method for removing \emph{all} of the relevant substrings from objects of $\mathbb{G}_{2n}$. In other words, $w^{(k)}$ has the smallest possible length while still having $\tilde{c}(w^{(k)}) = \tilde{c}(w)$. In fact, we will show that it is the unique shortest object of $\mathbb{G}_{2n}$ with this property.
+The intuition behind \cref{c'alg1} is that we are successively removing parts of the object $w$, without changing its image under $\tilde{c}$. The map $\tilde{\delta}$ sends $z_{2n+i} \mapsto z_i \otimes z_{n+i}$ and $z_{3n+i} \mapsto z_{n+1} \otimes z_i$ while $\tilde{I}$ sends these all to $I$, and so for any $u$ in $\mathbb{G}_{4n}$ the object $\tilde{I}(u)$ will look like $\tilde{\delta}(u)$ except missing some number of $z_i \otimes z_{n+i}$ or $z_{n+1} \otimes z_i$ substrings. But since $\tilde{c}$ sends $z_{n+i} \mapsto z_i^*$, these are exactly the sort of omissions which the coequalizer doesn't care about. If we repeat this process then it will eventually terminate at $u^{(k)} = \iota(w^{(k)})$, so we really have a method for removing \emph{all} of the relevant substrings from objects of $\ELnn$. In other words, $w^{(k)}$ has the smallest possible length while still having $\tilde{c}(w^{(k)}) = \tilde{c}(w)$. In fact, we will show that it is the unique shortest object of $\ELnn$ with this property.
 
-\begin{prop}\label{c'alg2} Let $w$, $w'$ be objects of $\mathbb{G}_{2n}$ such that $\tilde{c}(w) = \tilde{c}(w')$. If $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$ are the sequences generated from $w$ via \cref{c'alg1}, and likewise $w'^{\, (1)}, ..., w'^{\, (k')}$ and $u'^{\, (1)}, ..., u'^{\, (k')}$ from $w'$, then $w^{(k)} = w'^{\, (k')}$ and $u^{(k)} = u'^{\, (k')}$.
+\begin{prop}\label{c'alg2} Let $w$, $w'$ be objects of $\ELnn$ such that $\tilde{c}(w) = \tilde{c}(w')$. If $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$ are the sequences generated from $w$ via \cref{c'alg1}, and likewise $w'^{\, (1)}, ..., w'^{\, (k')}$ and $u'^{\, (1)}, ..., u'^{\, (k')}$ from $w'$, then $w^{(k)} = w'^{\, (k')}$ and $u^{(k)} = u'^{\, (k')}$.
 \end{prop}
 \begin{proof}
 Consider the decomposition of the object $w^{(k)} \in \mathbb{N}^{\ast 2n}$ as in \cref{decompdef}. Assume, for the sake of contradiction, that there exist $1 \le j < |w^{(k)}|$ and $1 \le m \le n$ such that
@@ -6259,49 +6266,49 @@ Therefore, putting everything together tells us that
 as required.
 \end{proof}
 
-It is this special property --- shared by all $w$, $w'$ for which $\tilde{c}(w) = \tilde{c}(w')$ --- that will now let us prove that the coequaliser $\tilde{c}$ satisfies the condition which we couldn't prove about the cokernel $c$. In other words, with \cref{c'alg1,c'alg2} we can now construct a valid $E\Lambda$-action on the monoidal category $\tilde{C}$.
+It is this special property --- shared by all $w$, $w'$ for which $\tilde{c}(w) = \tilde{c}(w')$ --- that will now let us prove that the coequalizer $\tilde{c}$ satisfies the condition which we couldn't prove about the cokernel $c$. In other words, with \cref{c'alg1,c'alg2} we can now construct a valid $E\Lambda$-action on the monoidal category $\tilde{C}$.
 
-\begin{prop}\label{c'alg} There is a unique action $\alpha^{\tilde{C}}$ making the category $\tilde{C}$ into $E\Lambda$-algebra and the functor $\tilde{c}: \mathbb{G}_{2n} \to \tilde{C}$ into a map of $E\Lambda$-algebras.  
+\begin{prop}\label{c'alg} There is a unique action $\alpha^{\tilde{C}}$ making the category $\tilde{C}$ into $E\Lambda$-algebra and the functor $\tilde{c}: \ELnn \to \tilde{C}$ into a map of $E\Lambda$-algebras.  
 \end{prop}
 \begin{proof}
-We will try to affix an action to $\tilde{C}$ in the same way we thought about doing with the category $C$. In order for the functor $\tilde{c} : \mathbb{G}_{2n} \to \tilde{C}$ to be an $E\Lambda$-algebra map with respect to some $\alpha^{\tilde{C}}$, it must satisfy
-\begin{eq*} \tilde{c} \big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) \quad = \quad \alpha^{\tilde{C}}( \, g \, ; \, \tilde{c}(f_1), ..., \tilde{c}(f_m) \, ) \end{eq*}
-for all morphisms $f_1, ..., f_m$ in $\mathbb{G}_{2n}$, though given \cref{Gnmapsaction} it will be enough to have
+We will try to affix an action to $\tilde{C}$ in the same way we thought about doing with the category $C$. In order for the functor $\tilde{c} : \ELnn \to \tilde{C}$ to be an $E\Lambda$-algebra map with respect to some $\alpha^{\tilde{C}}$, it must satisfy
+\begin{eq*} \tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) \quad = \quad \alpha^{\tilde{C}}( \, g \, ; \, \tilde{c}(f_1), ..., \tilde{c}(f_m) \, ) \end{eq*}
+for all morphisms $f_1, ..., f_m$ in $\ELnn$, though given \cref{Gnmapsaction} it will be enough to have
 \begin{eq*} \begin{array}{rll}
-			\tilde{c} \big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big) & = & \alpha^{\tilde{C}}( \, g \, ; \, \tilde{c}(\mathrm{id}_{w_1}), ..., \tilde{c}(\mathrm{id}_{w_m}) \, ) \\
+			\tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big) & = & \alpha^{\tilde{C}}( \, g \, ; \, \tilde{c}(\mathrm{id}_{w_1}), ..., \tilde{c}(\mathrm{id}_{w_m}) \, ) \\
 			& = & \alpha^{\tilde{C}}( \, g \, ; \, \mathrm{id}_{\tilde{c}(w_1)}, ..., \mathrm{id}_{\tilde{c}(w_m)} \, )
 		\end{array}
 \end{eq*}
 But since we know from \cref{c'surj} that $\tilde{c}$ is surjective, this condition will actually suffice as a definition for $\alpha^{\tilde{C}}$, provided that we can prove it to be well-defined. 
 
-To that end, let $w_1, ..., w_m$ and $w'_1, ..., w'_m$ be any two sequences of objects in $\mathbb{G}_{2n}$ that have $\tilde{c}(w_i) = \tilde{c}(w'_i)$ for all $1 \le i \le m$. Then using \cref{c'alg1}, let $w^{(1)}_i, ..., w^{(k)}_i$ and $u^{(1)}_i, ..., u^{(k)}_i$ be the sequences we get from each $w_i$ and $w'^{\, (1)}_i, ..., w'^{\, (k')}_i$, $u'^{\, (1)}_i, ..., u'^{\, (k')}_i$ those we get from $w'_i$. It follows that
+To that end, let $w_1, ..., w_m$ and $w'_1, ..., w'_m$ be any two sequences of objects in $\ELnn$ that have $\tilde{c}(w_i) = \tilde{c}(w'_i)$ for all $1 \le i \le m$. Then using \cref{c'alg1}, let $w^{(1)}_i, ..., w^{(k)}_i$ and $u^{(1)}_i, ..., u^{(k)}_i$ be the sequences we get from each $w_i$ and $w'^{\, (1)}_i, ..., w'^{\, (k')}_i$, $u'^{\, (1)}_i, ..., u'^{\, (k')}_i$ those we get from $w'_i$. It follows that
 \begin{eq*} \begin{array}{rll}
-			\tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w^{(i)}_1}, ..., \mathrm{id}_{w^{(i)}_m} \, ) \, \big) & = & \tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{\tilde{\delta}(u^{(i)}_1)}, ..., \mathrm{id}_{\tilde{\delta}(u^{(i)}_m)} \, ) \, \big)\\
-			& = & \tilde{c}\tilde{\delta}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{u^{(i)}_1}, ..., \mathrm{id}_{u^{(i)}_m} \, ) \, \big)\\
-			& = & \tilde{c}\tilde{I}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{u^{(i)}_1}, ..., \mathrm{id}_{u^{(i)}_m} \, ) \, \big)\\
-			& = & \tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{\tilde{I}(u^{(i)}_1)}, ..., \mathrm{id}_{\tilde{I}(u^{(i)}_m)} \, ) \, \big)\\
-			& = & \tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w^{(i+1)}_1}, ..., \mathrm{id}_{w^{(i+1)}_m} \, ) \, \big)
+			\tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(i)}_1}, ..., \mathrm{id}_{w^{(i)}_m} \, ) \, \big) & = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{\tilde{\delta}(u^{(i)}_1)}, ..., \mathrm{id}_{\tilde{\delta}(u^{(i)}_m)} \, ) \, \big)\\
+			& = & \tilde{c}\tilde{\delta}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{u^{(i)}_1}, ..., \mathrm{id}_{u^{(i)}_m} \, ) \, \big)\\
+			& = & \tilde{c}\tilde{I}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{u^{(i)}_1}, ..., \mathrm{id}_{u^{(i)}_m} \, ) \, \big)\\
+			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{\tilde{I}(u^{(i)}_1)}, ..., \mathrm{id}_{\tilde{I}(u^{(i)}_m)} \, ) \, \big)\\
+			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(i+1)}_1}, ..., \mathrm{id}_{w^{(i+1)}_m} \, ) \, \big)
 		\end{array} 
 \end{eq*}
 and likewise for the $w'$. Thus from \cref{c'alg2} we can conclude that
 \begin{eq*} \begin{array}{rll}
-			\tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big)& = & \tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w^{(1)}_1}, ..., \mathrm{id}_{w^{(1)}_m} \, ) \, \big)\\
-			& = & \tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w^{(2)}_1}, ..., \mathrm{id}_{w^{(2)}_m} \, )\, \big) \\
+			\tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big)& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(1)}_1}, ..., \mathrm{id}_{w^{(1)}_m} \, ) \, \big)\\
+			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(2)}_1}, ..., \mathrm{id}_{w^{(2)}_m} \, )\, \big) \\
 			& \vdots & \\
-			& = & \tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w^{(k)}_1}, ..., \mathrm{id}_{w^{(k)}_m} \, ) \, \big)\\
-			& = & \tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w'^{\, (k')}_1}, ..., \mathrm{id}_{w'^{(\, k')}_m} \, ) \, \big)\\
+			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(k)}_1}, ..., \mathrm{id}_{w^{(k)}_m} \, ) \, \big)\\
+			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'^{\, (k')}_1}, ..., \mathrm{id}_{w'^{(\, k')}_m} \, ) \, \big)\\
 			& \vdots & \\
-			& = & \tilde{c}\big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{w'_1}, ..., \mathrm{id}_{w'_m} \, ) \, \big)
+			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'_1}, ..., \mathrm{id}_{w'_m} \, ) \, \big)
 		\end{array} 
 \end{eq*}
-Thus the value of $\alpha^{\tilde{C}}(g; \mathrm{id}_{\tilde{c}(w_1)}, ..., \mathrm{id}_{\tilde{c}(w_m)})$ we gave earlier does not depend on our particular choice of $w_i$. Therefore $\alpha^{\tilde{C}}$ is indeed a well-defined $E\Lambda$-action on $\tilde{C}$, and the coequaliser $\tilde{c}$ from $\mathrm{MonCat}$ is a map of $E\Lambda$-algebras with respect to $\alpha^{\tilde{C}}$.
+Thus the value of $\alpha^{\tilde{C}}(g; \mathrm{id}_{\tilde{c}(w_1)}, ..., \mathrm{id}_{\tilde{c}(w_m)})$ we gave earlier does not depend on our particular choice of $w_i$. Therefore $\alpha^{\tilde{C}}$ is indeed a well-defined $E\Lambda$-action on $\tilde{C}$, and the coequalizer $\tilde{c}$ from $\mathrm{MonCat}$ is a map of $E\Lambda$-algebras with respect to $\alpha^{\tilde{C}}$.
 \end{proof}
 
-\section{Extracting $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$ from $\mathbb{G}_{2n}$}
+\section{Extracting $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$ from $\ELnn$}
 
 We are now finally ready to address problem 1 from the end of the previous chapter: how can we deal with the fact that our adjunction $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}} \dashv C$ involves monoidal categories rather than full $E\Lambda$-algebras? It turns out that this is all we really needed, as despite us originally conceiving of $L_n$ as a colimit in $E\Lambda\mbox{-}\mathrm{Alg}_S$ it can equally be viewed as a slightly more complicated colimit in $\mathrm{MonCat}$.
 
-\begin{prop} \label{c'=q} The coequaliser functor $\tilde{c}: \mathbb{G}_{2n} \to \tilde{C}$ defined in \cref{C'def} is isomorphic as a map of $E\Lambda$-algebras to $q: \mathbb{G}_{2n} \to L_n$, the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\begin{prop} \label{c'=q} The coequalizer functor $\tilde{c}: \ELnn \to \tilde{C}$ defined in \cref{C'def} is isomorphic as a map of $E\Lambda$-algebras to $q: \ELnn \to L_n$, the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{prop}
 \begin{proof}
 First, consider what we know of the functor $\tilde{c}$. By definition it has the property for any $1 \le i \le 2n$
@@ -6314,11 +6321,11 @@ Putting these facts together with the surjectivity of $q$ and $\tilde{c}$ (from 
 			v \circ u \circ q & = & v \circ \tilde{c} & = & q & \quad \implies \quad & v \circ u & = & \mathrm{id}_{L_n}
 		\end{array}
 \end{eq*}
-Furthermore, not only is $u$ an algebra map, but $v$ is one too. To see this, use the surjectivity of $\tilde{c}$ to find for any morphism $f_i$ in $\tilde{C}$ a corresponding $f'_i$ in $\mathbb{G}_{2n}$ with $\tilde{c}(f'_i) = f_i$. Then
+Furthermore, not only is $u$ an algebra map, but $v$ is one too. To see this, use the surjectivity of $\tilde{c}$ to find for any morphism $f_i$ in $\tilde{C}$ a corresponding $f'_i$ in $\ELnn$ with $\tilde{c}(f'_i) = f_i$. Then
 \begin{eq*} \begin{array}{rll}
 			v \big( \, \alpha^{\tilde{C}}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) & = & v \big( \, \alpha^{\tilde{C}}( \, g \, ; \,\tilde{c}(f'_1), ..., \tilde{c}(f'_m) \, ) \, \big) \\
-			& = & v \tilde{c} \big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \\
-			& = & q \big( \, \alpha^{\mathbb{G}_{2n}}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \\
+			& = & v \tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \\
+			& = & q \big( \, \alpha^{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \\
 			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, q(f'_1), ..., q(f'_m) \, \big) \\
 			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, v\tilde{c}(f'_1), ..., v\tilde{c}(f'_m) \, \big) \\
 			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, v(f_1), ..., v(f_m) \, \big)
@@ -6327,36 +6334,36 @@ Furthermore, not only is $u$ an algebra map, but $v$ is one too. To see this, us
 Therefore $(u,v)$ is also an isomorphism of $E\Lambda$-algebras $\tilde{C} \cong L_n$, and up to this isomorphism the algebra maps $q$ and $\tilde{c}$ are the same.
 \end{proof}
 
-With our newfound ability to express the map $q: \mathbb{G}_{2n} \to L_n$ as a colimit of monoidal categories, we can now set about using the adjunction from \cref{Moradj} to calculate $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$. The most obvious way to do this is to mimic what we did in \cref{Qobj} --- apply the left adjoint functor to $q$ and then commute it with the colimit to get a formula in terms of the known monoid $\mathrm{Mor}(\mathbb{G}_{2n})$.
+With our newfound ability to express the map $q: \ELnn \to L_n$ as a colimit of monoidal categories, we can now set about using the adjunction from \cref{Moradj} to calculate $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$. The most obvious way to do this is to mimic what we did in \cref{Qobj} --- apply the left adjoint functor to $q$ and then commute it with the colimit to get a formula in terms of the known monoid $\mathrm{Mor}(\ELnn)$.
 
-\begin{prop}\label{Zmor2} Let $\Delta$ be the subgroup of $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp, ab}}$ generated by elements of the form
+\begin{prop}\label{Zmor2} Let $\Delta$ be the subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ generated by elements of the form
 \begin{eq*} \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) \, \otimes \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f)^*, \quad \quad \quad f \in \mathrm{M}(\mathbb{G}_{4n})^{\mathrm{gp, ab}} \end{eq*}
 Then the abelianisation of the group completion of the collapsed morphisms of $L_n$ is 
-\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp, ab}}}{\Delta} \end{eq*}
+\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta} \end{eq*}
 with $\mathrm{M}(q)^{\mathrm{gp, ab}}$ acting as the appropriate quotient map. 
 \end{prop}
 \begin{proof}
-From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}: \mathrm{MonCat} \to \mathrm{Ab}$ is a left adjoint functor. This means that it preserves all colimits in $\mathrm{MonCat}$, including the coequaliser use to define $\tilde{c}$, which from \cref{c'=q} we now know is really $q$.  Thus
+From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}: \mathrm{MonCat} \to \mathrm{Ab}$ is a left adjoint functor. This means that it preserves all colimits in $\mathrm{MonCat}$, including the coequalizer use to define $\tilde{c}$, which from \cref{c'=q} we now know is really $q$.  Thus
 \begin{eq*} \mathrm{coeq}\big( \, \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}, \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}} \, \big) \quad = \quad \mathrm{M}\big( \, \mathrm{coeq}(\tilde{\delta}, \tilde{I}) \, \big)^{\mathrm{gp, ab}} \quad = \quad \mathrm{M}(q)^{\mathrm{gp, ab}} \end{eq*}
-or in other words, the following is a coequaliser diagram in the category of abelian groups:
+or in other words, the following is a coequalizer diagram in the category of abelian groups:
 \begin{eq*} \begin{tikzcd}
-\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp, ab}} \ar[rrr, shift left, "\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}"] \ar[rrr, shift right, "\mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}"'] & & &
-\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp, ab}} \ar[rrr, "\mathrm{M}(c)^{\mathrm{gp, ab}}"] & & &
+\mathrm{M}(\ELnn)^{\mathrm{gp, ab}} \ar[rrr, shift left, "\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}"] \ar[rrr, shift right, "\mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}"'] & & &
+\mathrm{M}(\ELnn)^{\mathrm{gp, ab}} \ar[rrr, "\mathrm{M}(c)^{\mathrm{gp, ab}}"] & & &
 \mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp, ab}}
 \end{tikzcd} \end{eq*} 
-But the coequaliser of two abelian group homomorphisms is just the quotient of their common target by the image of their difference. Hence in this case we have
-\begin{eq*} \mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp, ab}}}{\mathrm{im}\big( \, {\mathrm{M}(\tilde{\delta})}^{\mathrm{gp, ab}} - {\mathrm{M}(\tilde{I})}^{\mathrm{gp, ab}} \, \big)} \quad = \quad \bigquotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp, ab}}}{\Delta}  \end{eq*}
+But the coequalizer of two abelian group homomorphisms is just the quotient of their common target by the image of their difference. Hence in this case we have
+\begin{eq*} \mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\mathrm{im}\big( \, {\mathrm{M}(\tilde{\delta})}^{\mathrm{gp, ab}} - {\mathrm{M}(\tilde{I})}^{\mathrm{gp, ab}} \, \big)} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta}  \end{eq*}
 \end{proof} 
 
-Notice that the subgroup $\Delta$ contains all elements of the group $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$, but in general these two are not the same subgroup of $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp, ab}}$. This means that the naive approach we could have taken at the end of \cref{surjcoeq} was indeed a mistake, and thus all of the effort we have put into circumventing it has been worthwhile.  
+Notice that the subgroup $\Delta$ contains all elements of the group $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$, but in general these two are not the same subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$. This means that the naive approach we could have taken at the end of \cref{surjcoeq} was indeed a mistake, and thus all of the effort we have put into circumventing it has been worthwhile.  
 
 Now, at some point later on we will actually want to evaluate the quotient in \cref{Zmor2} for particular values of action operad $G$. This would be fairly tricky without an explicit description of the elements of $\Delta$, so we need to take a moment to think about what we really mean when we say $\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) \otimes \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f)^*$.
 
-\begin{lem} $\Delta$ is the subgroup of $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp, ab}}$ whose elements are tensor products of equivalence classes
+\begin{lem} $\Delta$ is the subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ whose elements are tensor products of equivalence classes
 \begin{eq*} \begin{array}{c}
-			\big[ \, \alpha^{\mathbb{G}_{2n}}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, ..., e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \mathrm{id}_{x'_1}, ...,  \mathrm{id}_{x'_{m'}} \, \big) \, \big] \\
+			\big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, ..., e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \mathrm{id}_{x'_1}, ...,  \mathrm{id}_{x'_{m'}} \, \big) \, \big] \\
 			\, \otimes \, \\
-			\big[ \, \alpha^{\mathbb{G}_{2n}}\big( \, \mu( \, g \, ; \, e_{|\tilde{I}(x_1)|}, ..., e_{|\tilde{I}(x_m)|} \, ) \, ; \, \mathrm{id}_{x''_1}, ...,  \mathrm{id}_{x''_{m''}} \, \big) \, \big]^*
+			\big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{I}(x_1)|}, ..., e_{|\tilde{I}(x_m)|} \, ) \, ; \, \mathrm{id}_{x''_1}, ...,  \mathrm{id}_{x''_{m''}} \, \big) \, \big]^*
 		\end{array}
 \end{eq*} 
 where $g \in G(m)$, the $x_i$ are generators of $\mathbb{N}^{\ast 4n}$, the $x'_i, x''_i$ are generators of $\mathbb{N}^{\ast 2n}$, and
@@ -6373,17 +6380,17 @@ Thus
 \begin{eq*} \begin{array}{rll}
 			\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) & = & \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}} \big( \, [ \, \alpha^{\mathbb{G}_{4n}}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, ] \, \big) \\
 			& = & \big[ \, \tilde{\delta}\big( \, \alpha^{\mathbb{G}_{4n}}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, \big) \, \big]  \\
-			& = & [ \, \alpha^{\mathbb{G}_{2n}}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)}) \, ]
+			& = & [ \, \alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)}) \, ]
 		\end{array}
 \end{eq*}
-But again using \cref{Gnmapsaction}, we know it must be possible to express the action morphism $\alpha^{\mathbb{G}_{2n}}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)})$ as an action morphism on the identities of generators. Since the source of this map is
+But again using \cref{Gnmapsaction}, we know it must be possible to express the action morphism $\alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)})$ as an action morphism on the identities of generators. Since the source of this map is
 \begin{eq*} \tilde{\delta}(x_1) \otimes ... \otimes \tilde{\delta}(x_m) \quad = \quad \tilde{\delta}(x_1 \otimes ... \otimes x_m) \quad =: \quad x'_1 \otimes ... \otimes x'_{m'}  \end{eq*}
 clearly the $x'_i$ are the generators we want, and so by expanding the $\tilde{\delta}(x_i)$ as tensor products of these we find that
-\begin{eq*} [ \, \alpha^{\mathbb{G}_{2n}}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)})  \, ] \quad = \quad \big[ \, \alpha^{\mathbb{G}_{2n}}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, ..., e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_{m'}} \, \big) \, \big] \end{eq*}
+\begin{eq*} [ \, \alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)})  \, ] \quad = \quad \big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, ..., e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_{m'}} \, \big) \, \big] \end{eq*}
 For analogous reasons we also get
 \begin{eq*} \begin{array}{rll}
-			\mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f) & = & [ \, \alpha^{\mathbb{G}_{2n}}(g; \mathrm{id}_{\tilde{I}(x_1)}, ..., \mathrm{id}_{\tilde{I}(x_m)}) \, ]  \\
-			& = &  \big[ \, \alpha^{\mathbb{G}_{2n}}\big( \, \mu( \, g \, ; \, e_{|\tilde{I}(x_1)|}, ..., e_{|\tilde{I}(x_m)|} \, ) \, ; \, \mathrm{id}_{x''_1}, ...,  \mathrm{id}_{x''_{m''}} \, \big) \, \big]
+			\mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f) & = & [ \, \alpha^{\ELnn}(g; \mathrm{id}_{\tilde{I}(x_1)}, ..., \mathrm{id}_{\tilde{I}(x_m)}) \, ]  \\
+			& = &  \big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{I}(x_1)|}, ..., e_{|\tilde{I}(x_m)|} \, ) \, ; \, \mathrm{id}_{x''_1}, ...,  \mathrm{id}_{x''_{m''}} \, \big) \, \big]
 		\end{array}
 \end{eq*}
 and using these equations the lemma follows immediately from the definition of $\Delta$.
@@ -6396,7 +6403,7 @@ The goal of this chapter will be to show that we can reconstruct all of the morp
 
 The first step towards this goal will involve splitting $\mathrm{Mor}(L_n)$ up as the product of two other monoids. The first of these will encode all of the possible combinations of source and target data for morphisms in $L_n$, while the second will just be the endomorphisms of the unit object, $L_n(I, I)$. In other words, we will see that the monoid $\mathrm{Mor}(L_n)$ can be broken down into a context where source and target are the only thing that matter, and another where they are irrelevant. 
 
-Once we have done this, we can then use the fact that $L_n(I, I)$ is always an abelian group to rewrite $\mathrm{Mor}(L_n)$ in terms of its abelian group completion, $\mathrm{Mor}(L_n)^{\mathrm{gp, ab}}$. This is not quite the same thing as $\mathrm{M}(L_n)^{\mathrm{gp, ab}}$, but they are close enough that we can find a simple equation linking the two, which will in turn allow us to frame the former in terms of the quotient of $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp, ab}}$ we described last chapter. All together, this will constitute an expression for $\mathrm{Mor}(L_n)$ that is built up of pieces which we know how to calculate.
+Once we have done this, we can then use the fact that $L_n(I, I)$ is always an abelian group to rewrite $\mathrm{Mor}(L_n)$ in terms of its abelian group completion, $\mathrm{Mor}(L_n)^{\mathrm{gp, ab}}$. This is not quite the same thing as $\mathrm{M}(L_n)^{\mathrm{gp, ab}}$, but they are close enough that we can find a simple equation linking the two, which will in turn allow us to frame the former in terms of the quotient of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ we described last chapter. All together, this will constitute an expression for $\mathrm{Mor}(L_n)$ that is built up of pieces which we know how to calculate.
 
 \section{Sources and targets in $L_n$}   
 
@@ -6539,17 +6546,17 @@ otherwise, for $\sigma \in S_m$, $x_1, ..., x_m \in \{z_1, ..., z_n\}$. Now, in 
 \begin{eq*} \pi(\rho(w, w'))(w) \quad = \quad w' \end{eq*}
  but later on we will be able to make things easier on ourselves by making a more systematic choice.
 
-So now we have shown that $(s \times t)(\ELn)$ is a submonoid of $\mathrm{Mor}(\ELn)$, but what we were really interested in is whether or not $(s \times t)(L_n)$ is a submonoid of $\mathrm{Mor}(L_n)$. To recover the latter result from the former, we will use our cokernel map $q: \mathbb{G}_{2n} \to L_n$. In particular, the surjectivity of $q$ combined with the case $(s \times t)(\mathbb{G}_{2n}) \subseteq \mathrm{Mor}(\mathbb{G}_{2n})$ from \cref{stGnsub} immediately gives us what we need.
+So now we have shown that $(s \times t)(\ELn)$ is a submonoid of $\mathrm{Mor}(\ELn)$, but what we were really interested in is whether or not $(s \times t)(L_n)$ is a submonoid of $\mathrm{Mor}(L_n)$. To recover the latter result from the former, we will use our cokernel map $q: \ELnn \to L_n$. In particular, the surjectivity of $q$ combined with the case $(s \times t)(\ELnn) \subseteq \mathrm{Mor}(\ELnn)$ from \cref{stGnsub} immediately gives us what we need.
 
 \begin{cor} \label{stZsub} $(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(L_n)$
 \end{cor}
 \begin{proof}
-Let $i: (s \times t)(\mathbb{G}_{2n}) \hookrightarrow \mathrm{Mor}(\mathbb{G}_{2n})$ be an inclusion which allows us to view $(s \times t)(\mathbb{G}_{2n})$ as a submonoid of $\mathrm{Mor}(\mathbb{G}_{2n})$, as in \cref{stGnsub}. Also, let $\mathrm{Mor}(q): \mathrm{Mor}(\mathbb{G}_{2n}) \to \mathrm{Mor}(L_n)$ the restriction of the cokernel map $q: \mathbb{G}_{2n} \to L_n$ onto morphisms. Then the image of the composite of these two homomorphisms,
-\begin{eq*} \mathrm{im}\big( \, \mathrm{Mor}(q) \circ i \, \big) \quad = \quad q\big( \, \mathrm{im}(i) \, \big) \quad \cong \quad q\big( \, (s \times t)(\mathbb{G}_{2n}) \, \big)\end{eq*}
+Let $i: (s \times t)(\ELnn) \hookrightarrow \mathrm{Mor}(\ELnn)$ be an inclusion which allows us to view $(s \times t)(\ELnn)$ as a submonoid of $\mathrm{Mor}(\ELnn)$, as in \cref{stGnsub}. Also, let $\mathrm{Mor}(q): \mathrm{Mor}(\ELnn) \to \mathrm{Mor}(L_n)$ the restriction of the cokernel map $q: \ELnn \to L_n$ onto morphisms. Then the image of the composite of these two homomorphisms,
+\begin{eq*} \mathrm{im}\big( \, \mathrm{Mor}(q) \circ i \, \big) \quad = \quad q\big( \, \mathrm{im}(i) \, \big) \quad \cong \quad q\big( \, (s \times t)(\ELnn) \, \big)\end{eq*}
 is clearly a submonoid of $\mathrm{Mor}(L_n)$. 
 
-But by \cref{qsurj} $q$ is a surjective functor. This means that there can exist a morphism $w \to v$ in $L_n$ if and only if there exists at least one morphism $w' \to v'$ in $\mathbb{G}_{2n}$, for some $w', v'$ which have $q(w') = w$ and $q(v') = v$. In other words,
-\begin{eq*} q\big( \, (s \times t)(\mathbb{G}_{2n}) \, \big) \, = \, (s \times t)(L_n) \end{eq*}
+But by \cref{qsurj} $q$ is a surjective functor. This means that there can exist a morphism $w \to v$ in $L_n$ if and only if there exists at least one morphism $w' \to v'$ in $\ELnn$, for some $w', v'$ which have $q(w') = w$ and $q(v') = v$. In other words,
+\begin{eq*} q\big( \, (s \times t)(\ELnn) \, \big) \, = \, (s \times t)(L_n) \end{eq*}
 and therefore the monoid $\mathrm{im}\big( \, \mathrm{Mor}(q) \circ i \, \big)$ that we saw above is really a submonoid of $\mathrm{Mor}(L_n)$ isomorphic to $(s \times t)(L_n)$, as required.
 \end{proof} 
 
@@ -6842,7 +6849,7 @@ By \cref{Morder} this is the defining relation for the group $\mathrm{M}(X)^{\ma
 Now at last we are finished. All that remains for us to do is simply chain together all of our previous results from this chapter into a single description of the group $\mathrm{Mor}(L_n)$.
 
 \begin{prop} \label{Zmor} For crossed action operads $G$, the morphism monoid of $L_n$ is equal to
-\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \frac{\left(\quotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \end{eq*}
+\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \end{eq*}
 \end{prop}
 \begin{proof}
 Consider the quotient group
@@ -6854,7 +6861,7 @@ Given this choice, clearly the group
 will be a subgroup of $(s \times t)(L_n)$, and thus $\mathrm{Ob}(L_n)^{\mathrm{ab}}$ a normal subgroup of $(s \times t)(L_n)^{\mathrm{ab}}$. It follows that
 \begin{eq*} \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)} \end{eq*}
 Using \cref{colquot} to change the numerator and \cref{Zobj,stpullback} to simplify the denominator, this quotient becomes
-\begin{eq*} \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \end{eq*}
+\begin{eq*} \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \end{eq*}
 But from \cref{Zmor1} we know that
 \begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \, \times \, \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
 and together these give the required description of the morphisms of $L_n$.
@@ -7062,24 +7069,24 @@ The $\mathbb{Z}^n$ term in the product of \cref{abst} represents the free abelia
 But this is exactly the same $\mathbb{Z}^n$ group that appears in the denominator of our quotient, $\mathrm{Ob}(L_n)^{\mathrm{ab}}$, so they cancel straightforwardly.
 \end{proof}
 
-Before moving on, we should be clear about exactly which $\mathbb{Z}^{{n}\choose{2}}$ subgroup of $\mathrm{M}(L_n)^{\mathrm{ab}}$ we have just identified --- after all, we will eventually need to perform a quotient involving it. In \cref{pushpres} we defined the generators $\langle z_i z_j \rangle$ to be the elements $(z_i \otimes z_j, z_j \otimes z_i)$ of the monoid $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, which are the source/target combinations of morphisms of $L_n$. Using \cref{stZsub} we can identify this with a particular submonoid of the morphisms of $L_n$, specifically the image under $q$ of the submonoid $\mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n} = (s \times t)(\mathbb{G}_{2n}) \subseteq \mathrm{Mor}(\mathbb{G}_{2n})$ we chose in \cref{stGnsub}. In particular, since on objects we have $q(z_i) = z_i$ for all $1 \le i \le n$, the generators $(z_i \otimes z_j, z_j \otimes z_i)$ of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ are clearly the image of the generators $(z_i \otimes z_j, z_j \otimes z_i)$ of $\mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n}$. 
+Before moving on, we should be clear about exactly which $\mathbb{Z}^{{n}\choose{2}}$ subgroup of $\mathrm{M}(L_n)^{\mathrm{ab}}$ we have just identified --- after all, we will eventually need to perform a quotient involving it. In \cref{pushpres} we defined the generators $\langle z_i z_j \rangle$ to be the elements $(z_i \otimes z_j, z_j \otimes z_i)$ of the monoid $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, which are the source/target combinations of morphisms of $L_n$. Using \cref{stZsub} we can identify this with a particular submonoid of the morphisms of $L_n$, specifically the image under $q$ of the submonoid $\mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n} = (s \times t)(\ELnn) \subseteq \mathrm{Mor}(\ELnn)$ we chose in \cref{stGnsub}. In particular, since on objects we have $q(z_i) = z_i$ for all $1 \le i \le n$, the generators $(z_i \otimes z_j, z_j \otimes z_i)$ of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ are clearly the image of the generators $(z_i \otimes z_j, z_j \otimes z_i)$ of $\mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n}$. 
 
 Thus, consider the following commutative diagram, whose top-left region comes from \cref{stZsub}, bottom-left from the naturality of the adjoint functor $\mathrm{M}( \, \_ \, )^{\mathrm{gp},\mathrm{ab}}$, and right-hand square from \cref{colquot}.
 \begin{eq*} \begin{tikzcd}[column sep=tiny] 
-& (s \times t)(\mathbb{G}_{2n}) \ar[dl, hookrightarrow] \ar[rr, "q"] & & (s \times t)(L\mathbb{G}_{n}) \ar[dl, hookrightarrow] \ar[dr] & \\
-\mathrm{Mor}(\mathbb{G}_{2n}) \ar[rr, "q"] \ar[dr] & & \mathrm{Mor}(L_n) \ar[dr] & & \frac{\displaystyle (s \times t)(L\mathbb{G}_{n})^{\mathrm{ab}}}{\displaystyle \mathrm{Ob}(L_n)^{\mathrm{ab}}} \ar[dl, hookrightarrow] \\
-& \mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}
+& (s \times t)(\ELnn) \ar[dl, hookrightarrow] \ar[rr, "q"] & & (s \times t)(L\mathbb{G}_{n}) \ar[dl, hookrightarrow] \ar[dr] & \\
+\mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dr] & & \mathrm{Mor}(L_n) \ar[dr] & & \frac{\displaystyle (s \times t)(L\mathbb{G}_{n})^{\mathrm{ab}}}{\displaystyle \mathrm{Ob}(L_n)^{\mathrm{ab}}} \ar[dl, hookrightarrow] \\
+& \mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}
 \end{tikzcd} \end{eq*}
-What we've just said that if we start with the element $(z_i \otimes z_j, z_j \otimes z_i)$ of $(s \times t)(\mathbb{G}_{2n})$, moving clockwise around the diagram will send it to the generator $\langle z_i z_j \rangle$ in ${(s \times t)}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L_n)^{\mathrm{ab}} = \mathbb{Z}^{{n}\choose{2}}$. If we instead move anticlockwise, then we will first pass to our chosen representative $\alpha_{\mathbb{G}_{2n}}(\rho(z_i \otimes z_j, z_j \otimes z_i); \mathrm{id}_{z_i}, \mathrm{id}_{z_j})$ in $\mathrm{Mor}(\mathbb{G}_{2n})$, then its equivalence class in $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}$, then its equivalence class in $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$, using the fact that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is the canonical map associated with the quotient
-\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\mathbb{G}_{2n})}^{\mathrm{gp, ab}}}{\Delta} \end{eq*}
+What we've just said that if we start with the element $(z_i \otimes z_j, z_j \otimes z_i)$ of $(s \times t)(\ELnn)$, moving clockwise around the diagram will send it to the generator $\langle z_i z_j \rangle$ in ${(s \times t)}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L_n)^{\mathrm{ab}} = \mathbb{Z}^{{n}\choose{2}}$. If we instead move anticlockwise, then we will first pass to our chosen representative $\alpha_{\ELnn}(\rho(z_i \otimes z_j, z_j \otimes z_i); \mathrm{id}_{z_i}, \mathrm{id}_{z_j})$ in $\mathrm{Mor}(\ELnn)$, then its equivalence class in $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$, then its equivalence class in $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$, using the fact that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is the canonical map associated with the quotient
+\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta} \end{eq*}
 which we proved back in \cref{Zmor2}. Since the bottom-right inclusion completes this circuit, we see that the specific subgroup we are talking about in \cref{nchoose2} is
-\begin{eq*} \mathbb{Z}^{{n}\choose{2}} \, = \, \big\{ \, \big[ \, \alpha_{\mathbb{G}_{2n}}\big( \, \rho(z_i \otimes z_j, z_j \otimes z_i) \, ; \,  \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) \, \big] \, : \, 1 \le i < j \le n \, \big\} \, \subseteq \, \mathrm{M}(L_n)^{\mathrm{ab}}\end{eq*}
+\begin{eq*} \mathbb{Z}^{{n}\choose{2}} \, = \, \big\{ \, \big[ \, \alpha_{\ELnn}\big( \, \rho(z_i \otimes z_j, z_j \otimes z_i) \, ; \,  \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) \, \big] \, : \, 1 \le i < j \le n \, \big\} \, \subseteq \, \mathrm{M}(L_n)^{\mathrm{ab}}\end{eq*}
 
 Of course, $\rho$ was an arbitrary permutation-preserving map $\mathbb{N}^{\ast n} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to G$, chosen using the freeness of its source monoid. Thus if we wanted to we could just pick the same element $\rho(2) \in \pi^{-1}((1 \, 2))$ to act as $\rho(z_i \otimes z_j, z_j \otimes z_i)$ for all $i, j$. For simplicity's sake, we will indeed be assuming this from now on.
 
 \section{Freely generated action operads}
 
-The next group we are interested in understanding a little better is $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}$. Per \cref{Morder}, the operations needed to produce this group out of $\mathrm{Mor}(\mathbb{G}_{2n}) = G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}$ can be done in any order we choose, and so we will save the identification of $\otimes$ and $\circ$ until last. This will let us keep the tensor product as simple as possible whilst we are in the process of group completing and abelianising it.
+The next group we are interested in understanding a little better is $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$. Per \cref{Morder}, the operations needed to produce this group out of $\mathrm{Mor}(\ELnn) = G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}$ can be done in any order we choose, and so we will save the identification of $\otimes$ and $\circ$ until last. This will let us keep the tensor product as simple as possible whilst we are in the process of group completing and abelianising it.
 
 So the obvious place to start is to ask how to simplify the expression $(G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n})^{\mathrm{gp}}$. In principle we might not be able to, since for generic $G$ we lack any sort of a presentation by generators and relations. It would help if we at least knew that the group completion map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ was injective --- or equivalently, that there exists any group $H$ and injective homomorphism $G \to H$ --- but proving this kind of statement is notoriously tricky. In 1935, a paper by Anton Sushkevich `proved' that a semigroup, and thus a monoid, could be embedded into a group if and only if it was cancellative.
 
@@ -7141,9 +7148,9 @@ which is left-cancellativity. Right-cancellativity follows from quasi-regularity
 
 As a result of this, from now on we can just write $g$ for $\mathrm{gp}(g)$ and $g^*$ for $\mathrm{gp}(g)^*$ in order to save on space.
 
-Knowing that the monoid $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ always has a particularly well-behaved group completion is a good first step towards finding a description for said completion. However, it is worth noting that \cref{gpcompin} is true for all action operads $G$, which is more than we really need. After all, the only reason we care about $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}$ is that we know from \cref{Zmor} that it is crucial to understanding the morphisms of \emph{crossed} action operads. Thus it would be nice if we could use some consequence of crossedness to tell us even more about the inclusion map $\mathrm{gp} : G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to {(G \times_{\mathbb{N}} \mathbb{N}^{\ast n})}^{\mathrm{gp}}$.
+Knowing that the monoid $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ always has a particularly well-behaved group completion is a good first step towards finding a description for said completion. However, it is worth noting that \cref{gpcompin} is true for all action operads $G$, which is more than we really need. After all, the only reason we care about $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ is that we know from \cref{Zmor} that it is crucial to understanding the morphisms of \emph{crossed} action operads. Thus it would be nice if we could use some consequence of crossedness to tell us even more about the inclusion map $\mathrm{gp} : G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to {(G \times_{\mathbb{N}} \mathbb{N}^{\ast n})}^{\mathrm{gp}}$.
 
-One such consequence was given back in \cref{noscalarcross}. If $G$ is a crossed action operad, then the action operad $G'$ defined by $G'(m) = G(m)/G(0)$ possesses the same free algebra on invertible algebra that $G$ does. In other words, we don't even need to worry about finding $\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}}$ for all crossed $G$, merely those which have a trivial $G(0)$. As it turns out, this fact is hugely relevant to our search for group completions, since elements of $G(0)$ are the only ones in $G$ which might already have an inverse under tensor product. This follows from additivity of lengths:
+One such consequence was given back in \cref{noscalarcross}. If $G$ is a crossed action operad, then the action operad $G'$ defined by $G'(m) = G(m)/G(0)$ possesses the same free algebra on invertible algebra that $G$ does. In other words, we don't even need to worry about finding $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ for all crossed $G$, merely those which have a trivial $G(0)$. As it turns out, this fact is hugely relevant to our search for group completions, since elements of $G(0)$ are the only ones in $G$ which might already have an inverse under tensor product. This follows from additivity of lengths:
 \begin{eq*} \begin{array}{rclcrcccll}
 			g \otimes h & = & e_0 & \quad \implies \quad & |g| + |h| & = & |e_0| & = & 0 & \\
 			& & & \quad \implies \quad & & & |g| & = & -|h|, & \quad |g|, |h| \in \mathbb{N} \\
@@ -7256,16 +7263,16 @@ At this stage, there is only one part of this $E\Lambda$-algebra that we have ye
 In order for $\alpha_{L_n}$ to be a well-defined $E\Lambda$-action, the map $\alpha_{L_n}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ needs to have source $x_1 \otimes ... \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}$, where by non-crossedness of $G$ the latter is also $x_1 \otimes ... \otimes x_m$. But we know from \cref{trivendo} that all morphisms in this $L_n$ are identities, and hence we get the result.
 \end{proof}
 
-For crossed $G$, things are more complicated. What we need to do is employ the trick that was previously mentioned in \cref{actmorLGn}, where we exploit the surjectivity of the algebra map $q: \mathbb{G}_{2n} \to L_n$. This will allow us to express $\alpha_{L_n}$ in terms of the action $\alpha_{\mathbb{G}_{2n}}$. 
+For crossed $G$, things are more complicated. What we need to do is employ the trick that was previously mentioned in \cref{actmorLGn}, where we exploit the surjectivity of the algebra map $q: \ELnn \to L_n$. This will allow us to express $\alpha_{L_n}$ in terms of the action $\alpha_{\ELnn}$. 
 
 \begin{prop} \label{crossact} Let $G$ be a crossed action operad, and for some $m \in \mathbb{N}$ choose an element $g \in G(m)$ and morphisms $(x_1, y_1, h_1), ..., (x_m, y_m, h_m)$ in $L_n$. That is, the $(x_i, y_i)$ are pairs of objects from $(s \times t)(L_n)$, and the $h_i$ are morphisms in $L_n(I,I)$. Then the action of $L_n$ is given by
 \begin{eq*} \begin{array}{c}
 			\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
 			= \\
-			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
+			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
 		\end{array}
 \end{eq*}
-Here $q^{-1}: \mathrm{Ob}(L_n) \to \mathrm{Ob}(\mathbb{G}_{2n})$ is the function 
+Here $q^{-1}: \mathrm{Ob}(L_n) \to \mathrm{Ob}(\ELnn)$ is the function 
 \begin{eq*} \begin{array}{rcrcl}
 			q^{-1} & : & \mathbb{Z}^{\ast n} & \to & \mathbb{N}^{\ast 2n} \\
 			& : & z_i & \mapsto & z_i \\
@@ -7273,9 +7280,9 @@ Here $q^{-1}: \mathrm{Ob}(L_n) \to \mathrm{Ob}(\mathbb{G}_{2n})$ is the function
 			& : & w & \mapsto & \bigotimes_{i=1}^{|w|} \, q^{-1}\big( \, d(w, i) \, \big)
 		\end{array}
 \end{eq*}
-with $\bigotimes_{i=1}^{|w|} d(w, i)$ the decomposition of $w$ given in \cref{decompdef}, and $\Psi: \mathrm{Mor}(\mathbb{G}_{2n}) \to L_n(I,I)$ is the canonical map associated with the repeated quotient
+with $\bigotimes_{i=1}^{|w|} d(w, i)$ the decomposition of $w$ given in \cref{decompdef}, and $\Psi: \mathrm{Mor}(\ELnn) \to L_n(I,I)$ is the canonical map associated with the repeated quotient
 \begin{eq*} \begin{tikzcd}
-\mathrm{Mor}(\mathbb{G}_{2n}) \ar[r] & \mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp}, \mathrm{ab}} \ar[r] & \bigquotient{\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp}, \mathrm{ab}}}{\Delta} \ar[d, equals] & \\
+\mathrm{Mor}(\ELnn) \ar[r] & \mathrm{M}(\ELnn)^{\mathrm{gp}, \mathrm{ab}} \ar[r] & \bigquotient{\mathrm{M}(\ELnn)^{\mathrm{gp}, \mathrm{ab}}}{\Delta} \ar[d, equals] & \\
 & & \mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}} \ar[r] & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}} \ar[d, equals] \\
 & & & L_n(I,I)
 \end{tikzcd} \end{eq*}
@@ -7293,15 +7300,15 @@ Since we already understand tensor products of objects and unit endomorphisms, w
 \begin{eq*} \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \end{eq*}
 all that is left to understand is its projection onto the unit endomorphisms.
 
-Now, recall that $q: \mathbb{G}_{2n} \to L_n$ is a surjective map of $E\Lambda$-algebras, so that for any $f_i \in \mathrm{Mor}(L\mathbb{G}_{n})$ there exist $f'_i \in \mathrm{Mor}(\mathbb{G}_{2n})$ with $q(f'_i) = f_i$, and hence
-\begin{eq*} q\big( \, \alpha_{\mathbb{G}_{2n}}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \quad = \quad \alpha_{L_n}( \, g \, ; \, f_1, ..., f_m \, ) \end{eq*}
-In particular, for the identities $\mathrm{id}_{y_i} \in \mathrm{Mor}(L\mathbb{G}_{n})$ we can choose $\mathrm{id}_{q^{-1}(y_i)} \in \mathrm{Mor}(\mathbb{G}_{2n})$, as by design $q(\mathrm{id}_{q^{-1}(y_i)}) = \mathrm{id}_{qq^{-1}(y_i)} = \mathrm{id}_{y_i}$. This means that if we denote by $p_I :  \mathrm{Mor}(L\mathbb{G}_{n}) \to L\mathbb{G}_{n}(I,I)$ the projection onto unit endomorphisms, we will have
-\begin{eq*} p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) \quad = \quad  p_I q\big( \, \alpha_{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \end{eq*}
+Now, recall that $q: \ELnn \to L_n$ is a surjective map of $E\Lambda$-algebras, so that for any $f_i \in \mathrm{Mor}(L\mathbb{G}_{n})$ there exist $f'_i \in \mathrm{Mor}(\ELnn)$ with $q(f'_i) = f_i$, and hence
+\begin{eq*} q\big( \, \alpha_{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \quad = \quad \alpha_{L_n}( \, g \, ; \, f_1, ..., f_m \, ) \end{eq*}
+In particular, for the identities $\mathrm{id}_{y_i} \in \mathrm{Mor}(L\mathbb{G}_{n})$ we can choose $\mathrm{id}_{q^{-1}(y_i)} \in \mathrm{Mor}(\ELnn)$, as by design $q(\mathrm{id}_{q^{-1}(y_i)}) = \mathrm{id}_{qq^{-1}(y_i)} = \mathrm{id}_{y_i}$. This means that if we denote by $p_I :  \mathrm{Mor}(L\mathbb{G}_{n}) \to L\mathbb{G}_{n}(I,I)$ the projection onto unit endomorphisms, we will have
+\begin{eq*} p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) \quad = \quad  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \end{eq*}
 But $p_I \circ q$ is a map that can be described in a different way. Consider the commutative diagram
 \begin{eq*} \begin{tikzcd}
-\mathrm{Mor}(\mathbb{G}_{2n}) \ar[rr, "q"] \ar[dd] & & \mathrm{Mor}(L_n) \ar[d, "\mathrm{ab}"] \ar[rr, "p_I"] & &  L\mathbb{G}_{n}(I,I) \ar[d, equals] \\
+\mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dd] & & \mathrm{Mor}(L_n) \ar[d, "\mathrm{ab}"] \ar[rr, "p_I"] & &  L\mathbb{G}_{n}(I,I) \ar[d, equals] \\
 & & \mathrm{Mor}(L_n)^{\mathrm{ab}} \ar[d] \ar[rr] & & \bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} \ar[d, equals] \\
-\mathrm{M}(\mathbb{G}_{2n})^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \ar[rr] & & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
+\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \ar[rr] & & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
 \end{tikzcd} \end{eq*}
 where all unlabelled arrows are the appropriate quotient maps. The region on the left commutes by naturality of the adjoint functor $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$, and the bottom-right square uses the fact that
 \begin{eq*} \begin{array}{rllll}
@@ -7330,8 +7337,8 @@ Here we've used that fact that the equivalence class of a unit endomorphism unde
 
 Thus all of the regions within the diagram commute, and hence so will the outside. That is, $p_I \circ q$ is equal to the composite along the left and bottom edges, which is $\Psi$. This means that the projection onto $L_n(I,I)$ of our action on identities is
 \begin{eq*} \begin{array}{rll}
-			p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) & = &  p_I q\big( \, \alpha_{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \\
-			& = & \Psi \big( \, \alpha_{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big)
+			p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) & = &  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \\
+			& = & \Psi \big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big)
 		\end{array}
 \end{eq*}
 and therefore the action of $L_n$ is given by
@@ -7340,9 +7347,9 @@ and therefore the action of $L_n$ is given by
 			= \\
 			\alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \circ \, \bigotimes_i (x_i, y_i, h_i) \\
 			= \\
-			\big( \, \bigotimes_i y_i, \, \bigotimes_i y_{\pi(g^{-1})(i)}, \, \Psi \alpha_{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \otimes \, \mathrm{id}_{\otimes_i y_i}^* \otimes ( \, \bigotimes_i x_i, \, \bigotimes_i y_i, \, \bigotimes_i h_i \, ) \\
+			\big( \, \bigotimes_i y_i, \, \bigotimes_i y_{\pi(g^{-1})(i)}, \, \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \otimes \, \mathrm{id}_{\otimes_i y_i}^* \otimes ( \, \bigotimes_i x_i, \, \bigotimes_i y_i, \, \bigotimes_i h_i \, ) \\
 			= \\
-			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
+			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
 		\end{array}
 \end{eq*}
 as required.
@@ -7400,7 +7407,7 @@ and the $E\Lambda$-action given in \cref{crossact}:
 \begin{eq*} \begin{array}{c}
 			\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
 			= \\
-			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\mathbb{G}_{2n}}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
+			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
 		\end{array}
 \end{eq*}
 \end{thm}
