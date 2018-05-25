@@ -5855,6 +5855,36 @@ This is a curious result. The morphisms $I \to I$ in QQQ $n\ML$ vs $\ELn$ QQQ ar
 \begin{proof}
 For any elements $g \in \Lambda(m)$ and $h \in \Lambda(0)$, their tensor product $h \otimes g := \mu(e_2; h, g)$ is also an element of $\Lambda(m)$. This defines a map $\Lambda(0) \times \Lambda(m) \to \Lambda(m)$, which is both a group homomorphism and a group action by \cref{G0abel}. This produces a homomorphism $\Lambda(0) \to \Lambda(m)$ for all $m$ which lies in the center of $\Lambda(m)$ by QQQ \cref{spacial}, hence is normal for all $m$. Furthermore, the induced map $\Lambda(0) \to \Lambda(m) \to \Sigma_m$ is the zero map, so we have an induced homomorphism $\Lambda(m)/\Lambda(0) \to \Sigma_m$. All that remains to be shown is that we the operadic multiplication for $\Lambda$ induces one for the groups $\Lambda(n)/\Lambda(0)$, and that this multiplication satisfies the axioms for an action operad.
 
+Let $h, h_1, ..., h_m \in \Lambda(0)$ and $k_1, ..., k_m \in \mathbb{N}$. We have the following calculation using the action operad axioms for $\Lambda$ and the fact that $\EL(\underline{1})$ is spacial (see \cref{spacial}) so the $e_k$ commute with all elements of $\Lambda(0)$.
+\begin{eq*} \begin{array}{rll}
+		\mu^{\Lambda}( \, h \otimes e_m \, ; \, h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m} \, ) & = & \mu^{\Lambda}\big( \, \mu^{\Lambda}(e_2; h, e_m) \, ; \, h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m} \, \big) \\
+		& = & \mu^{\Lambda}\big( \, e_2 \, ; \, \mu^{\Lambda}(h;-), \mu^{\Lambda}(e_m; h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m}) \, \big) \\
+		& = & \mu^{\Lambda}(h;-) \otimes \mu^{\Lambda}(e_m; h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m})  \\
+		& = & h \otimes h_1 \otimes e_{k_1} \otimes ... \otimes h_m \otimes e_{k_m} \\
+		& = & e_{k_1} \otimes ... \otimes e_{k_m} \otimes h \otimes h_1 ... \otimes h_m \\
+		& = & e_{k_1+...+k_m} \otimes h \otimes h_1 ... \otimes h_m
+		\end{array}
+\end{eq*}
+This shows that the square below commutes.
+\begin{eq*} \begin{tikzcd}
+ \Lambda(0) \times  \Lambda(0) \times ... \times ...  \Lambda(0) \ar[rr, "\otimes"] \ar[dd, hookrightarrow] & &  \Lambda(0) \ar[dd, hookrightarrow] \\
+& & \\
+ \Lambda(m) \times  \Lambda(k_1) \times ... \times  \Lambda(k_m) \ar[rr, "\quad \quad \mu^{ \Lambda}_m"] \ar[dd, "\lbrack \, \_ \, \rbrack \times ... \times \lbrack \, \_ \, \rbrack"'] & &  \Lambda(k_1 + ... + k_m) \ar[dd, "\lbrack \, \_ \, \rbrack"]
+\end{tikzcd} \end{eq*}
+We write the image of $g \in \Lambda(m)$ under the quotient $\Lambda(m) \to \Lambda'(m)$ as $[g]$. We will show that the multiplication
+\[
+\mu^{\Lambda'}:\Lambda'(m) \times \Lambda'(k_1) \times \cdots \times \Lambda'(k_m) \to \Lambda'(k_1 + \cdots + k_m)
+\]
+given by 
+\[
+\mu^{\Lambda'}\Big( [g]; [g_1], \ldots , [g_m] \Big) = [\mu^{\Lambda}\Big(g; g_1, \ldots, g_m \Big)]
+\]
+is well-defined. With $h, h_1, ..., h_m \in \Lambda(0)$ as above, we have
+\[
+\mu^{\Lambda}\Big(g \cdot h \otimes e_m; g_1\cdot h_1 \otimes e_{k_1}, \ldots, g_m\cdot h_m \otimes e_{k_m} \Big) \mu^{\Lambda}(g; g_1, \ldots, g_m) \cdot \mu^{\Lambda}(h \otimes e_m; \cdot h_1 \otimes e_{k_1}, \ldots, \cdot h_m \otimes e_{k_m})
+\]
+using the fact that $\pi(h \otimes e_m)$ is the identity permutation. By the commutative square above, $\mu^{\Lambda}(h \otimes e_m; \cdot h_1 \otimes e_{k_1}, \ldots, \cdot h_m \otimes e_{k_m})$ is in the image of $\Lambda(0) \to \Lambda(k_1 + \cdots + k_m)$, so $\mu^{\Lambda'}$ is well-defined. It is now straightforward to check the rest of the action operad axioms for $\Lambda'$ using those of $\Lambda$.
+
 
 
 
@@ -5868,71 +5898,71 @@ For any elements $g \in \Lambda(m)$ and $h \in \Lambda(0)$, their tensor product
 %The last step here uses the fact that tensor product and group multiplication coincide on $G(0)$, by \cref{G0abel}. We can thus take the quotient of each $G(m)$ by the action of $G(0)$, which will amount to quotienting out the image in $G(m)$ of the subgroup $G(0) \cong G(0) \times \{ e_m \} \subseteq G(0) \times G(m)$. 
 
 %In order for these new groups $G'(m) = G(m)/G(0)$ to form an action operad, we'll need operadic multiplication maps $\mu^{G'}$ and underlying permutation maps $\pi^{G'}$. These will be defined from $\mu^{G}$ and $\pi^{G}$ using the universal property of the quotient. 
-Specifically, let $h, h_1, ..., h_m \in G(0)$ and $k_1, ..., k_m \in \mathbb{N}$. Then we have
-\begin{eq*} \begin{array}{rll}
-		\mu^{G}( \, h \otimes e_m \, ; \, h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m} \, ) & = & \mu^{G}\big( \, \mu^{G}(e_2; h, e_m) \, ; \, h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m} \, \big) \\
-		& = & \mu^{G}\big( \, e_2 \, ; \, \mu^{G}(h;-), \mu^{G}(e_m; h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m}) \, \big) \\
-		& = & \mu^{G}(h;-) \otimes \mu^{G}(e_m; h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m})  \\
-		& = & h \otimes h_1 \otimes e_{k_1} \otimes ... \otimes h_m \otimes e_{k_m} \\
-		& = & e_{k_1} \otimes ... \otimes e_{k_m} \otimes h \otimes h_1 ... \otimes h_m \\
-		& = & e_{k_1+...+k_m} \otimes h \otimes h_1 ... \otimes h_m
-		\end{array}
-\end{eq*}
-Here we've used that $\mathbb{G}_1$ is spacial by \cref{spacial}, and so since its morphisms are just elements of $G$, the $e_k$ commute with elements of $G(0)$. 
-\begin{eq*} \begin{tikzcd}
-G(0) \times G(0) \times ... \times ... G(0) \ar[rr, "\otimes"] \ar[dd, hookrightarrow] & & G(0) \ar[dd, hookrightarrow] \\
-& & \\
-G(m) \times G(k_1) \times ... \times G(k_m) \ar[rr, "\quad \quad \mu^{G}_m"] \ar[dd, "\lbrack \, \_ \, \rbrack \times ... \times \lbrack \, \_ \, \rbrack"'] & & G(k_1 + ... + k_m) \ar[dd, "\lbrack \, \_ \, \rbrack"] \\
-& & \\
-\quotient{G(m)}{G(0)} \times \quotient{G(k_1)}{G(0)} \times ... \times \quotient{G(k_m)}{G(0)} \ar[rr, "\mu^{G'}_m"] & & \quotient{G(k_1 + ... + k_m)}{G(0)}
-\end{tikzcd} \end{eq*}
-In other words, we know that the upper square in the diagram above commutes. Now, the composite on the right-hand side of the diagram is by definition the zero map, and so too is its composite with the $(m+1)$-fold tensor product $G(0)^{m+1} \to G(0)$. Using commutativity of the upper square, it follows that the composite of the inclusion on the left and the upper-right path in the bottom square is also zero, and so this upper-right path will factor uniquely through the quotient of that inclusion. The resulting homomorphism $\mu^{G'}_m$ is then exactly the operadic multiplication map we are looking for; the and associativity condition is immediate consequence of the corresponding conditions for $\mu^{G}$,
-\begin{eq*} \begin{array}{rl}
-			& \mu^{G'}\Big( \, [g] \, ; \, \mu^{G'}\big( \, [g_1] \, ; \, [h_{1,1}], ..., [h_{1,k_1}] \, \big), ..., \mu^{G'}\big( \, [g_m] \, ; \, [h_{m,1}], ..., [h_{m,k_m}] \, \big) \, \Big) \\[\medskipamount]
-			= & \mu^{G'}\Big( \, [g] \, ; \, \big[  \, \mu^{G}(g_1; h_{1,1}, ..., h_{1,k_1}) \, \big], ...,\big[ \, \mu^{G}(g_m; h_{m,1}, ..., h_{m,k_m}) \, \big] \, \Big) \\[\medskipamount]
-			= & \Big[ \, \mu^{G}\big( \, g \, ; \, \mu^{G}(g_1; h_{1,1}, ..., h_{1,k_1}), ..., \mu^{G}(g_m; h_{m,1}, ..., h_{m,k_m}) \, \big) \, \Big] \\[\medskipamount]
-			= & \Big[ \, \mu^{G}\big( \, \mu^{G}(g; g_1, ..., g_m) \, ; \, h_{1,1}, ..., h_{1,k_1}, ..., h_{m,1}, ..., h_{m,k_m})\, \big) \, \Big] \\[\medskipamount]
-			= & \mu^{G'}\Big( \, \big[ \, \mu^{G}(g; g_1, ..., g_m) \, \big] \, ; \, [h_{1,1}], ..., [h_{1,k_1}], ..., [h_{m,1}], ..., [h_{m,k_m}] \, \Big) \\[\medskipamount]
-			= & \mu^{G'}\Big( \, \mu^{G'}\big( \, [g] \, ; \, [g_1], ..., [g_m] \, \big) \, ; \, [h_{1,1}], ..., [h_{1,k_1}], ..., [h_{m,1}], ..., [h_{m,k_m}] \, \Big)
-		\end{array}
-\end{eq*}
-and likewise for unitality,
-\begin{eq*} \begin{array}{rrcccl}
-			& \mu^{G}( \, g \, ; \, e_1, ..., e_1 \, ) & = & g & = & \mu^{G}( \, e_1 \, ; \, g \, ) \\
-			\implies & \big[ \, \mu^{G}( \, g \, ; \, e_1, ..., e_1 \, ) \, \big] & = & [g] & = & \big[ \, \mu^{G}( \, e_1 \, ; \, g \, ) \, \big] \\
-			\implies & \mu^{G'}\big( \, [g] \, ; \, [e_1], ..., [e_1] \, \big) & = & [g] & = & \mu^{G'}\big( \, [e_1] \, ; \, [g] \, \big)
-		\end{array}
-\end{eq*}
-Similarly, for any $h \in G(0)$ and $m \in \mathbb{N}$ we know that 
-\begin{eq*} \pi^{G}(h \otimes e_m) \quad = \quad \pi^{G}(h) \otimes \pi^{G}(e_m) \quad = \quad e_0 \otimes e_m \quad = \quad e_m \end{eq*}
-and so the top square in the diagram below will commute:
-\begin{eq*} \begin{tikzcd}
-G(0) \ar[rr] \ar[d, hookrightarrow] & & S_0 \ar[d, hookrightarrow] \\
-G(m) \ar[rr, "\pi^{G}_m"] \ar[d, "\lbrack \, \_ \, \rbrack"'] & & S_m \ar[d, equals] \\
-\quotient{G(m)}{G(0)} \ar[rr, "\pi^{G'}_m"] & & S_m
-\end{tikzcd} \end{eq*}
-Using the same reasoning as before this will define the homomorphisms $\pi^{G'}_m$ uniquely, and the conditions for them to be underlying permutation maps of an action operad follow from those of $\pi^{G}$.
-\begin{eq*} \pi^{G'}\big( \, [e_1] \, \big) \quad = \quad \pi^{G}(e_1) \quad = \quad e_1 \end{eq*}
-\begin{eq*} \begin{array}{rcl}
-			\pi^{G'}\Big( \, \mu^{G'}\big( \, [g] \, ; \, [h_1], ..., [h_m] \, \big) \, \Big) & = & \pi^{G'}\Big( \, \big[ \, \mu^{G}(g;h_1, ...,h_m) \, \big] \, \Big) \\[\medskipamount]
-			& = & \pi^{G}\big( \, \mu^{G}(g; h_1, ..., h_m) \, \big) \\[\medskipamount]
-			& = & \mu^{S}\big( \, \pi^{G}(g) \, ; \, \pi^{G}(h_1), ..., \pi^{G}(h_m) \, \big) \\[\medskipamount]
-			& = & \mu^{S}\Big( \, \pi^{G'}\big( \, [g] \, \big) \, ; \, \pi^{G'}\big( \, [h_1] \, \big), ..., \pi^{G'}\big( \, [h_m] \, \big) \, \Big) \\[\medskipamount]
-			& &
-		\end{array}
-\end{eq*}
-\begin{eq*} \begin{array}{rcl}
-			& \mu^{G'}\big( \, [g] \, ; [h_1], ..., [h_m] \, \big) \cdot \mu^{G'}\big( \, [g'] \, ; [h'_1], ..., [h'_m] \, \big) \\[\medskipamount]
-			= & \big[ \, \mu^{G}(g; h_1, ..., h_m) \, \big] \cdot \big[ \, \mu^{G}(g'; h'_1, ..., h'_m) \, \big] \\[\medskipamount]
-			= & \big[ \, \mu^{G}(g; h_1, ..., h_m) \cdot \mu^{G}(g'; h'_1, ..., h'_m) \, \big] \\[\medskipamount]
-			= & \Big[ \, \mu^{G}\big( \, gg' \, ; h_{\pi^{G}(g')(1)} h'_1, ..., h_{\pi^{G}(g')(m)} h'_m \, \big) \, \Big] \\[\medskipamount]
-			= & \mu^{G'}\big( \, [gg'] \, ; [h_{\pi^{G}(g')(1)} h'_1], ..., [h_{\pi^{G}(g')(m)} h'_m] \, \big) \\[\medskipamount]
-			= & \mu^{G'}\big( \, [g] \cdot [g'] \, ; [h_{\pi^{G}(g')(1)}] \cdot [h'_1], ..., [h_{\pi^{G}(g')(m)}] \cdot [h'_m] \, \big) \\[\medskipamount]
-			= & \mu^{G'}\big( \, [g] \cdot [g'] \, ; [h_{\pi^{G'}( \, [g'] \, )(1)}] \cdot [h'_1], ..., [h_{\pi^{G}(g')(m)}] \cdot [h'_m] \, \big) \\
-		\end{array}
-\end{eq*}
-
-Thus $G'$  really is a well-defined action operad.
+%Specifically, let $h, h_1, ..., h_m \in G(0)$ and $k_1, ..., k_m \in \mathbb{N}$. Then we have
+%\begin{eq*} \begin{array}{rll}
+%		\mu^{G}( \, h \otimes e_m \, ; \, h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m} \, ) & = & \mu^{G}\big( \, \mu^{G}(e_2; h, e_m) \, ; \, h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m} \, \big) \\
+%		& = & \mu^{G}\big( \, e_2 \, ; \, \mu^{G}(h;-), \mu^{G}(e_m; h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m}) \, \big) \\
+%		& = & \mu^{G}(h;-) \otimes \mu^{G}(e_m; h_1 \otimes e_{k_1}, ..., h_m \otimes e_{k_m})  \\
+%		& = & h \otimes h_1 \otimes e_{k_1} \otimes ... \otimes h_m \otimes e_{k_m} \\
+%		& = & e_{k_1} \otimes ... \otimes e_{k_m} \otimes h \otimes h_1 ... \otimes h_m \\
+%		& = & e_{k_1+...+k_m} \otimes h \otimes h_1 ... \otimes h_m
+%		\end{array}
+%\end{eq*}
+%Here we've used that $\mathbb{G}_1$ is spacial by \cref{spacial}, and so since its morphisms are just elements of $G$, the $e_k$ commute with elements of $G(0)$. 
+%\begin{eq*} \begin{tikzcd}
+%G(0) \times G(0) \times ... \times ... G(0) \ar[rr, "\otimes"] \ar[dd, hookrightarrow] & & G(0) \ar[dd, hookrightarrow] \\
+%& & \\
+%G(m) \times G(k_1) \times ... \times G(k_m) \ar[rr, "\quad \quad \mu^{G}_m"] \ar[dd, "\lbrack \, \_ \, \rbrack \times ... \times \lbrack \, \_ \, \rbrack"'] & & G(k_1 + ... + k_m) \ar[dd, "\lbrack \, \_ \, \rbrack"] \\
+%& & \\
+%\quotient{G(m)}{G(0)} \times \quotient{G(k_1)}{G(0)} \times ... \times \quotient{G(k_m)}{G(0)} \ar[rr, "\mu^{G'}_m"] & & \quotient{G(k_1 + ... + k_m)}{G(0)}
+%\end{tikzcd} \end{eq*}
+%In other words, we know that the upper square in the diagram above commutes. Now, the composite on the right-hand side of the diagram is by definition the zero map, and so too is its composite with the $(m+1)$-fold tensor product $G(0)^{m+1} \to G(0)$. Using commutativity of the upper square, it follows that the composite of the inclusion on the left and the upper-right path in the bottom square is also zero, and so this upper-right path will factor uniquely through the quotient of that inclusion. The resulting homomorphism $\mu^{G'}_m$ is then exactly the operadic multiplication map we are looking for; the and associativity condition is immediate consequence of the corresponding conditions for $\mu^{G}$,
+%\begin{eq*} \begin{array}{rl}
+%			& \mu^{G'}\Big( \, [g] \, ; \, \mu^{G'}\big( \, [g_1] \, ; \, [h_{1,1}], ..., [h_{1,k_1}] \, \big), ..., \mu^{G'}\big( \, [g_m] \, ; \, [h_{m,1}], ..., [h_{m,k_m}] \, \big) \, \Big) \\[\medskipamount]
+%			= & \mu^{G'}\Big( \, [g] \, ; \, \big[  \, \mu^{G}(g_1; h_{1,1}, ..., h_{1,k_1}) \, \big], ...,\big[ \, \mu^{G}(g_m; h_{m,1}, ..., h_{m,k_m}) \, \big] \, \Big) \\[\medskipamount]
+%			= & \Big[ \, \mu^{G}\big( \, g \, ; \, \mu^{G}(g_1; h_{1,1}, ..., h_{1,k_1}), ..., \mu^{G}(g_m; h_{m,1}, ..., h_{m,k_m}) \, \big) \, \Big] \\[\medskipamount]
+%			= & \Big[ \, \mu^{G}\big( \, \mu^{G}(g; g_1, ..., g_m) \, ; \, h_{1,1}, ..., h_{1,k_1}, ..., h_{m,1}, ..., h_{m,k_m})\, \big) \, \Big] \\[\medskipamount]
+%			= & \mu^{G'}\Big( \, \big[ \, \mu^{G}(g; g_1, ..., g_m) \, \big] \, ; \, [h_{1,1}], ..., [h_{1,k_1}], ..., [h_{m,1}], ..., [h_{m,k_m}] \, \Big) \\[\medskipamount]
+%			= & \mu^{G'}\Big( \, \mu^{G'}\big( \, [g] \, ; \, [g_1], ..., [g_m] \, \big) \, ; \, [h_{1,1}], ..., [h_{1,k_1}], ..., [h_{m,1}], ..., [h_{m,k_m}] \, \Big)
+%		\end{array}
+%\end{eq*}
+%and likewise for unitality,
+%\begin{eq*} \begin{array}{rrcccl}
+%			& \mu^{G}( \, g \, ; \, e_1, ..., e_1 \, ) & = & g & = & \mu^{G}( \, e_1 \, ; \, g \, ) \\
+%			\implies & \big[ \, \mu^{G}( \, g \, ; \, e_1, ..., e_1 \, ) \, \big] & = & [g] & = & \big[ \, \mu^{G}( \, e_1 \, ; \, g \, ) \, \big] \\
+%			\implies & \mu^{G'}\big( \, [g] \, ; \, [e_1], ..., [e_1] \, \big) & = & [g] & = & \mu^{G'}\big( \, [e_1] \, ; \, [g] \, \big)
+%		\end{array}
+%\end{eq*}
+%Similarly, for any $h \in G(0)$ and $m \in \mathbb{N}$ we know that 
+%\begin{eq*} \pi^{G}(h \otimes e_m) \quad = \quad \pi^{G}(h) \otimes \pi^{G}(e_m) \quad = \quad e_0 \otimes e_m \quad = \quad e_m \end{eq*}
+%and so the top square in the diagram below will commute:
+%\begin{eq*} \begin{tikzcd}
+%G(0) \ar[rr] \ar[d, hookrightarrow] & & S_0 \ar[d, hookrightarrow] \\
+%G(m) \ar[rr, "\pi^{G}_m"] \ar[d, "\lbrack \, \_ \, \rbrack"'] & & S_m \ar[d, equals] \\
+%\quotient{G(m)}{G(0)} \ar[rr, "\pi^{G'}_m"] & & S_m
+%\end{tikzcd} \end{eq*}
+%Using the same reasoning as before this will define the homomorphisms $\pi^{G'}_m$ uniquely, and the conditions for them to be underlying permutation maps of an action operad follow from those of $\pi^{G}$.
+%\begin{eq*} \pi^{G'}\big( \, [e_1] \, \big) \quad = \quad \pi^{G}(e_1) \quad = \quad e_1 \end{eq*}
+%\begin{eq*} \begin{array}{rcl}
+%			\pi^{G'}\Big( \, \mu^{G'}\big( \, [g] \, ; \, [h_1], ..., [h_m] \, \big) \, \Big) & = & \pi^{G'}\Big( \, \big[ \, \mu^{G}(g;h_1, ...,h_m) \, \big] \, \Big) \\[\medskipamount]
+%			& = & \pi^{G}\big( \, \mu^{G}(g; h_1, ..., h_m) \, \big) \\[\medskipamount]
+%			& = & \mu^{S}\big( \, \pi^{G}(g) \, ; \, \pi^{G}(h_1), ..., \pi^{G}(h_m) \, \big) \\[\medskipamount]
+%			& = & \mu^{S}\Big( \, \pi^{G'}\big( \, [g] \, \big) \, ; \, \pi^{G'}\big( \, [h_1] \, \big), ..., \pi^{G'}\big( \, [h_m] \, \big) \, \Big) \\[\medskipamount]
+%			& &
+%		\end{array}
+%\end{eq*}
+%\begin{eq*} \begin{array}{rcl}
+%			& \mu^{G'}\big( \, [g] \, ; [h_1], ..., [h_m] \, \big) \cdot \mu^{G'}\big( \, [g'] \, ; [h'_1], ..., [h'_m] \, \big) \\[\medskipamount]
+%			= & \big[ \, \mu^{G}(g; h_1, ..., h_m) \, \big] \cdot \big[ \, \mu^{G}(g'; h'_1, ..., h'_m) \, \big] \\[\medskipamount]
+%			= & \big[ \, \mu^{G}(g; h_1, ..., h_m) \cdot \mu^{G}(g'; h'_1, ..., h'_m) \, \big] \\[\medskipamount]
+%			= & \Big[ \, \mu^{G}\big( \, gg' \, ; h_{\pi^{G}(g')(1)} h'_1, ..., h_{\pi^{G}(g')(m)} h'_m \, \big) \, \Big] \\[\medskipamount]
+%			= & \mu^{G'}\big( \, [gg'] \, ; [h_{\pi^{G}(g')(1)} h'_1], ..., [h_{\pi^{G}(g')(m)} h'_m] \, \big) \\[\medskipamount]
+%			= & \mu^{G'}\big( \, [g] \cdot [g'] \, ; [h_{\pi^{G}(g')(1)}] \cdot [h'_1], ..., [h_{\pi^{G}(g')(m)}] \cdot [h'_m] \, \big) \\[\medskipamount]
+%			= & \mu^{G'}\big( \, [g] \cdot [g'] \, ; [h_{\pi^{G'}( \, [g'] \, )(1)}] \cdot [h'_1], ..., [h_{\pi^{G}(g')(m)}] \cdot [h'_m] \, \big) \\
+%		\end{array}
+%\end{eq*}
+%
+%Thus $G'$  really is a well-defined action operad.
 \end{proof}
 
 For crossed $G$, this notion of quotient by $G(0)$ does exactly what we wanted it to do --- remove certain information which is unnecessary for forming the algebra $L_n$.
