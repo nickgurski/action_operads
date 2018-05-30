@@ -5866,11 +5866,23 @@ Let $h, h_1, ..., h_m \in \Lambda(0)$ and $k_1, ..., k_m \in \mathbb{N}$. We hav
 		\end{array}
 \end{eq*}
 This shows that the square below commutes.
-\begin{eq*} \begin{tikzcd}
- \Lambda(0) \times  \Lambda(0) \times ... \times ...  \Lambda(0) \ar[rr, "\otimes"] \ar[dd, hookrightarrow] & &  \Lambda(0) \ar[dd, hookrightarrow] \\
-& & \\
- \Lambda(m) \times  \Lambda(k_1) \times ... \times  \Lambda(k_m) \ar[rr, "\quad \quad \mu^{ \Lambda}_m"] \ar[dd, "\lbrack \, \_ \, \rbrack \times ... \times \lbrack \, \_ \, \rbrack"'] & &  \Lambda(k_1 + ... + k_m) \ar[dd, "\lbrack \, \_ \, \rbrack"]
-\end{tikzcd} \end{eq*}
+\begin{center}
+    \begin{tikzpicture}[x=20mm,y=15mm]
+		\node (a) at (0,0) {$ \Lambda(0) \times  \Lambda(0) \times ... \times ...  \Lambda(0)$};
+		\node (b) at (1,0) {$\Lambda(0)$};
+		\node (c) at (0,-1) {$ \Lambda(m) \times  \Lambda(k_1) \times ... \times  \Lambda(k_m) $};
+		\node (d) at (1,-1) {$\Lambda(k_1 + ... + k_m)$};
+			\draw [->] (a) to node [above] {$\otimes$} (b);
+			\draw [->] (b) to node [right] {$$} (d);
+			\draw [->] (a) to node [left] {$$} (c);
+			\draw [->] (c) to node [below] {$\mu$} (d);
+    \end{tikzpicture}
+\end{center}	
+%\begin{eq*} \begin{tikzcd}
+% \Lambda(0) \times  \Lambda(0) \times ... \times ...  \Lambda(0) \ar[rr, "\otimes"] \ar[dd, hookrightarrow] & &  \Lambda(0) \ar[dd, hookrightarrow] \\
+%& & \\
+% \Lambda(m) \times  \Lambda(k_1) \times ... \times  \Lambda(k_m) \ar[rr, "\quad \quad \mu^{ \Lambda}_m"] \ar[dd, "\lbrack \, \_ \, \rbrack \times ... \times \lbrack \, \_ \, \rbrack"'] & &  \Lambda(k_1 + ... + k_m) \ar[dd, "\lbrack \, \_ \, \rbrack"]
+%\end{tikzcd} \end{eq*}
 We write the image of $g \in \Lambda(m)$ under the quotient $\Lambda(m) \to \Lambda'(m)$ as $[g]$. We will show that the multiplication
 \[
 \mu^{\Lambda'}:\Lambda'(m) \times \Lambda'(k_1) \times \cdots \times \Lambda'(k_m) \to \Lambda'(k_1 + \cdots + k_m)
@@ -5965,14 +5977,18 @@ using the fact that $\pi(h \otimes e_m)$ is the identity permutation. By the com
 %Thus $G'$  really is a well-defined action operad.
 \end{proof}
 
-For crossed $G$, this notion of quotient by $G(0)$ does exactly what we wanted it to do --- remove certain information which is unnecessary for forming the algebra $L_n$.
+For crossed $\Lambda$, this notion of quotient by $\Lambda(0)$ does exactly what we wanted it to do --- remove certain information which is unnecessary for forming the algebra $L_n$.
 
-\begin{prop} \label{noscalarcross} Let $G$ be a crossed action operad, and let $G'$ be the action operad with $G'(m) = G(m)/G(0)$ for all $m \in \mathrm{N}$. Then for any $n \in \mathrm{N}$,
-\begin{eq*} L\mathbb{G}'_n \quad \cong \quad L_n \end{eq*}
-both as $E\Lambda$-algebras and as $E\Lambda'$-algebras. That is, every free invertible algebra over a crossed action operad is the same as one over an action operad with trivial $G(0)$. 
+\begin{prop} \label{noscalarcross} Let $\Lambda$ be a crossed action operad, and let $\Lambda'$ be the action operad with $\Lambda'(m) = \Lambda(m)/\Lambda(0)$. Then for any $n \in \mathrm{N}$,
+\begin{eq*} L\ML'_n \quad \cong \quad L\ML_n \end{eq*}
+both as $E\Lambda$-algebras and as $E\Lambda'$-algebras. %That is, every free invertible algebra over a crossed action operad is the same as one over an action operad with trivial $G(0)$. 
 \end{prop}
 \begin{proof}
-It is fairly easy to see that the maps $[\, \_ \, ]: G(m) \to G(m)/G(0)$ sending elements to their equivalence class under the quotient must be surjective. Because of this, we will be able to use the action $\alpha^{L\mathbb{G}'_n}$ of $L\mathbb{G}'_n$ not just as an $E\Lambda'$-action, but also as an $E\Lambda$-action, which we'll call $\tilde{\alpha}^{L\mathbb{G}'_n}$ for the same of keeping the two concepts distinct. That is,
+
+Start here
+
+
+It is fairly easy to see that the maps $[\, \_ \, ]: \Lambda(m) \to \Lambda(m)/\Lambda(0)$ sending elements to their equivalence class under the quotient must be surjective. Because of this, we will be able to use the action $\alpha^{L\ML'_n}$ of $L\mathbb{G}'_n$ not just as an $E\Lambda'$-action, but also as an $E\Lambda$-action, which we'll call $\tilde{\alpha}^{L\mathbb{G}'_n}$ for the same of keeping the two concepts distinct. That is,
 \begin{eq*} \tilde{\alpha}^{L\mathbb{G}'_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad := \quad \alpha^{L\mathbb{G}'_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \end{eq*}
 Likewise, the $E\Lambda$-action of $L_n$ is also an $E\Lambda'$-action, via
 \begin{eq*} \tilde{\alpha}^{L_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \quad := \quad \alpha^{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \end{eq*}
