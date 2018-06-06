@@ -4965,7 +4965,7 @@ Let $L_n = L\Big(E\Lambda(\underline{n}) \Big)$, where $\underline{n} = \{x_1, \
 \begin{proof}
 We have the following 2-natural isomorphisms from the adjunctions for $L$ and the free $\ML$-monoidal category monad.
 \begin{eq*}\begin{array}{rll}
-		 E\Lambda\mbox{-}\mathrm{Alg}_S( L\Big(E\Lambda(\underline{n}) \Big), X) & \cong  & E\Lambda\mbox{-}\mathrm{Alg}_S( \Big(E\Lambda(\underline{n}) \Big), X_{inv}) \\
+		 E\Lambda\mbox{-}\mathrm{Alg}_S( L\Big(E\Lambda(\underline{n}) \Big), X) & \cong  & E\Lambda\mbox{-}\mathrm{Alg}_S( E\Lambda(\underline{n}), X_{inv}) \\
 		& \cong & \mathrm{Cat}( \underline{n}, X_{inv}) \\
 		& \cong & X_{inv}^n
 \end{array}
@@ -4986,7 +4986,7 @@ We have the following 2-natural isomorphisms from the adjunctions for $L$ and th
 \begin{proof}
 Let $j: X_{inv} \to X$ denote the obvious inclusion functor. By construction, we have an equality of functors $(\_)_{\mathrm{inv}} \circ (\_)_{\mathrm{inv}} = (\_)_{\mathrm{inv}}$ and moreover $j_{inv}: (X_{inv})_{inv} \to X_{inv}$ is the identity for every $X$. Since $E\Lambda\mbox{-}\mathrm{Alg}_S(LX , Y)\cong E\Lambda\mbox{-}\mathrm{Alg}_S(X, Y_{\mathrm{inv}})$ is natural in $Y$, we have a commutative square
 \begin{center}
-    \begin{tikzpicture}[x=20mm,y=15mm]
+    \begin{tikzpicture}[x=50mm,y=15mm]
 		\node (a) at (0,0) {$E\Lambda\mbox{-}\mathrm{Alg}_S(LX , LX_{\mathrm{inv}})$};
 		\node (b) at (1,0) {$E\Lambda\mbox{-}\mathrm{Alg}_S(X, (LX_{\mathrm{inv}})_{\mathrm{inv}})$};
 		\node (c) at (0,-1) {$ E\Lambda\mbox{-}\mathrm{Alg}_S(LX , LX)$};
@@ -5879,7 +5879,7 @@ Let $h, h_1, ..., h_m \in \Lambda(0)$ and $k_1, ..., k_m \in \mathbb{N}$. We hav
 \end{eq*}
 This shows that the square below commutes.
 \begin{center}
-    \begin{tikzpicture}[x=20mm,y=15mm]
+    \begin{tikzpicture}[x=50mm,y=15mm]
 		\node (a) at (0,0) {$ \Lambda(0) \times  \Lambda(0) \times ... \times ...  \Lambda(0)$};
 		\node (b) at (1,0) {$\Lambda(0)$};
 		\node (c) at (0,-1) {$ \Lambda(m) \times  \Lambda(k_1) \times ... \times  \Lambda(k_m) $};
