@@ -5763,6 +5763,10 @@ Now consider $k(Y)$, the subcategory of $Z$ that contains every object $x'$ for 
 %because $k'$ is surjective, and thus $u \circ i$ is the unique map with this property. That is, $k'$ is also a coequalizer of $\phi$ and $\phi'$. But colimits are always unique up to a unique isomorphism, and so there should be a unique invertible map $k(Y) \to Z$ factoring $k$ through $k'$. This is clearly just the inclusion $i$, and as a result $k(Y) = Z$ and $k' = k$. In other words, the coequalizer map $k$ is surjective. 
 \end{proof}
 
+\begin{rem}\label{alsowithoutgroups}
+We note that, since we haven't used any feature of $\ML$ in the above proofs, they all apply equally in the case of no group actions at all, i.e., strict monoidal categories or when $\ML = \mb{T}$ is the terminal action operad consisting only of trivial groups.
+\end{rem}
+
 %Because the cokernel of a morphism is just its coequalizer with the zero map, and since we know that the objects of $L_n$ form a group, we can immediately apply this result to the functor $q$.
 
 \begin{cor}\label{qsurj} The cokernel map $q: \EL(\underline{2n}) \to L_n$ is surjective.
@@ -5795,12 +5799,20 @@ In that same vein, one might ask if we can take \cref{Gnmapsaction}, a statement
 
 QQQ Get some notation for what Ed calls action maps, I don't like all the $\alpha$'s
 
-\begin{lem} \label{allmapsaction} Every morphism in $L_n$ can be expressed as something
+\begin{nota}\label{newaction}
+Let's think about $g^{\otimes}$ for the iso induced by $g$.
+\end{nota}
+
+\begin{lem}\label{otimesotimes}
+Later I use: $(h \otimes g)^{\otimes} = h^{\otimes} \otimes g^{\otimes}$.
+\end{lem}
+
+\begin{lem} \label{allmapsaction} Every morphism in $L_n$ can be expressed as $g^{\otimes}$
 %$\alpha^{L_n}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, 
 for some $g \in \Lambda(m)$ and $x_i \in \{z_1, ..., z_n, z_1^*, ..., z_n^* \}$.
 \end{lem}
 \begin{proof}
-Let $f$ be an arbitrary morphism in $L_n$. By surjectivity of $q$, there must exist at least one morphism $f'$ in $\ELnn$ such that $q(f') = f$, and from \cref{Gnmapsaction} we know that this $f'$ can be expressed uniquely as $\alpha(g; \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_m})$ for some $g \in \Lambda(m)$ and $x'_i \in \{z_1, ..., z_{2n} \}$. %Thus, because $q$ is a map of $E\Lambda$-algebras, we will have
+Let $f$ be an arbitrary morphism in $L_n$. By surjectivity of $q$, there must exist at least one morphism $f'$ in $\ELnn$ such that $q(f') = f$, and from \cref{Gnmapsaction} we know that this $f'$ can be expressed uniquely as $g^{\otimes}$ for some $g \in \Lambda(m)$. %Thus, because $q$ is a map of $E\Lambda$-algebras, we will have
 %\begin{eq*}\begin{array}{rll}
 %			f & = & q(f') \\
 %			& = & q\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_m} \, ) \, \big) \\
@@ -5991,103 +6003,147 @@ using the fact that $\pi(h \otimes e_m)$ is the identity permutation. By the com
 
 For crossed $\Lambda$, this notion of quotient by $\Lambda(0)$ does exactly what we wanted it to do --- remove certain information which is unnecessary for forming the algebra $L_n$.
 
-\begin{prop} \label{noscalarcross} Let $\Lambda$ be a crossed action operad, and let $\Lambda'$ be the action operad with $\Lambda'(m) = \Lambda(m)/\Lambda(0)$. Then for any $n \in \mathrm{N}$,
+\begin{prop} \label{noscalarcross} Let $\Lambda$ be a crossed action operad, and let $\Lambda'$ be the action operad with $\Lambda'(m) = \Lambda(m)/\Lambda(0)$ constructed in \cref{G0quot}. Then for any $n \in \mathrm{N}$,
 \begin{eq*} L\ML'_n \quad \cong \quad L\ML_n \end{eq*}
 both as $E\Lambda$-algebras and as $E\Lambda'$-algebras. %That is, every free invertible algebra over a crossed action operad is the same as one over an action operad with trivial $G(0)$. 
 \end{prop}
 \begin{proof}
 
-Start here
+The quotient map $[-]:\ML \to \ML'$ induces a $\ML$-algebra structure on $L\ML'_n$, and hence produces a unique strict $\ML$-monoidal functor $L\ML_n \to L\ML'_n$ by the universal property of $L\ML_n$. $L\ML_n$ is also a $\ML'$-monoidal category by defining $[g]^{\otimes} : x_1 \otimes \cdots \otimes x_n \to x_{[g]^{-1}1} \otimes \cdots \otimes x_{[g]^{-1}n}$ to be $g^{\otimes}$. This is well-defined, as whenever we have $[g] = [h]$ it is because there is some $x \in \ML(0)$ for which $h = x \otimes g = \mu_2(e_2; x, g)$. Then
+\[
+h^{\otimes} = (x \otimes g)^{\otimes} = x^{\otimes} \otimes g^{\otimes} = \id_I \otimes g^{\otimes} = g^{\otimes}
+\]
+using \cref{otimesotimes}. Thus we also have an induced map $L\ML'_n \to L\ML_n$ using the universal property of $L\ML'_n$. By inspection, both of these functors preserve the $\ML$- and $\ML'$-actions, hence must be inverse to each other.
 
 
-It is fairly easy to see that the maps $[\, \_ \, ]: \Lambda(m) \to \Lambda(m)/\Lambda(0)$ sending elements to their equivalence class under the quotient must be surjective. Because of this, we will be able to use the action $\alpha^{L\ML'_n}$ of $L\mathbb{G}'_n$ not just as an $E\Lambda'$-action, but also as an $E\Lambda$-action, which we'll call $\tilde{\alpha}^{L\mathbb{G}'_n}$ for the same of keeping the two concepts distinct. That is,
-\begin{eq*} \tilde{\alpha}^{L\mathbb{G}'_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad := \quad \alpha^{L\mathbb{G}'_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \end{eq*}
-Likewise, the $E\Lambda$-action of $L_n$ is also an $E\Lambda'$-action, via
-\begin{eq*} \tilde{\alpha}^{L_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \quad := \quad \alpha^{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \end{eq*}
-\cref{noscalar} ensures that this statement makes sense; whenever we have $[g] = [g']$ it is because there is some $h \in G(0)$ for which $g' = h \otimes g$, and so
-\begin{eq*} \begin{array}{rll} 
-			\alpha^{L_n}( \, g' \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha^{L_n}( \, h \otimes g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
-			& = & \alpha^{L_n}\big( \, \mu(e_2; h, g) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \\
-			& = & \alpha^{L_n}\big( \, e_2 \, ; \, \alpha^{L_n}(h;-), \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, \big) \\
-			& = & \alpha^{L_n}(h;-) \otimes \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \\
-			& = & \mathrm{id}_I \otimes \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \\
-			& = & \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \\
-		\end{array}
-\end{eq*}
-By \cref{Zobj} we already know that $L_n$ and $L\mathbb{G}'_n$ have isomorphic object sets, and so by using the universal properties of $\ELn$ and $\mathbb{G}'_n$ we can produce maps
-\begin{eq*} \ELn \longrightarrow L\mathbb{G}'_n \quad \quad \quad \text{and} \quad \quad \quad \mathbb{G}'_n \longrightarrow L_n \end{eq*}
-which correspond to the same choices of $n$ invertible objects that the maps $\eta^G$ and $\eta^{G'}$ do. The universal properties of $L_n$ and $L\mathbb{G}'_n$ will then make these new maps factor through the respective $\eta$'s, and so there must exist an $E\Lambda$-algebra map
-\begin{eq*} \begin{array}{rll}
-			L_n & \to & L\mathbb{G}'_n \\
-			x & \mapsto & x \\
-			\alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) & \mapsto & \tilde{\alpha}^{L\mathbb{G}'_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \\
-			& & = \alpha^{L\mathbb{G}'_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big)
-		\end{array}
-\end{eq*}
-and an $E\Lambda'$-algebra map
-\begin{eq*} \begin{array}{rll}
-			L\mathbb{G}'_n & \to & L_n \\
-			x & \mapsto & x \\
-			\alpha^{L\mathbb{G}'_n}\big( \, [g] \, ;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) & \mapsto & \tilde{\alpha}^{L_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \\
-			& & = \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})
-		\end{array}
-\end{eq*}
-These functors are clearly inverses, and also algebra maps for both $G$ and $G'$. Therefore
-\begin{eq*} L\mathbb{G}'_n \quad \cong \quad L_n \end{eq*}
-in both senses, as required.   
+%It is fairly easy to see that the maps $[\, \_ \, ]: \Lambda(m) \to \Lambda(m)/\Lambda(0)$ sending elements to their equivalence class under the quotient must be surjective. Because of this, we will be able to use the action $\alpha^{L\ML'_n}$ of $L\mathbb{G}'_n$ not just as an $E\Lambda'$-action, but also as an $E\Lambda$-action, which we'll call $\tilde{\alpha}^{L\mathbb{G}'_n}$ for the same of keeping the two concepts distinct. That is,
+%\begin{eq*} \tilde{\alpha}^{L\mathbb{G}'_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad := \quad \alpha^{L\mathbb{G}'_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \end{eq*}
+%Likewise, the $E\Lambda$-action of $L_n$ is also an $E\Lambda'$-action, via
+%\begin{eq*} \tilde{\alpha}^{L_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \quad := \quad \alpha^{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \end{eq*}
+%\cref{noscalar} ensures that this statement makes sense; whenever we have $[g] = [g']$ it is because there is some $h \in G(0)$ for which $g' = h \otimes g$, and so
+%\begin{eq*} \begin{array}{rll} 
+%			\alpha^{L_n}( \, g' \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha^{L_n}( \, h \otimes g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+%			& = & \alpha^{L_n}\big( \, \mu(e_2; h, g) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \\
+%			& = & \alpha^{L_n}\big( \, e_2 \, ; \, \alpha^{L_n}(h;-), \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, \big) \\
+%			& = & \alpha^{L_n}(h;-) \otimes \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \\
+%			& = & \mathrm{id}_I \otimes \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \\
+%			& = & \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \\
+%		\end{array}
+%\end{eq*}
+%By \cref{Zobj} we already know that $L_n$ and $L\mathbb{G}'_n$ have isomorphic object sets, and so by using the universal properties of $\ELn$ and $\mathbb{G}'_n$ we can produce maps
+%\begin{eq*} \ELn \longrightarrow L\mathbb{G}'_n \quad \quad \quad \text{and} \quad \quad \quad \mathbb{G}'_n \longrightarrow L_n \end{eq*}
+%which correspond to the same choices of $n$ invertible objects that the maps $\eta^G$ and $\eta^{G'}$ do. The universal properties of $L_n$ and $L\mathbb{G}'_n$ will then make these new maps factor through the respective $\eta$'s, and so there must exist an $E\Lambda$-algebra map
+%\begin{eq*} \begin{array}{rll}
+%			L_n & \to & L\mathbb{G}'_n \\
+%			x & \mapsto & x \\
+%			\alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) & \mapsto & \tilde{\alpha}^{L\mathbb{G}'_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \\
+%			& & = \alpha^{L\mathbb{G}'_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big)
+%		\end{array}
+%\end{eq*}
+%and an $E\Lambda'$-algebra map
+%\begin{eq*} \begin{array}{rll}
+%			L\mathbb{G}'_n & \to & L_n \\
+%			x & \mapsto & x \\
+%			\alpha^{L\mathbb{G}'_n}\big( \, [g] \, ;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) & \mapsto & \tilde{\alpha}^{L_n}\big( \, [g] \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \\
+%			& & = \alpha^{L_n}(g;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})
+%		\end{array}
+%\end{eq*}
+%These functors are clearly inverses, and also algebra maps for both $G$ and $G'$. Therefore
+%\begin{eq*} L\mathbb{G}'_n \quad \cong \quad L_n \end{eq*}
+%in both senses, as required.   
 \end{proof}
 
-For non-crossed $G$ we cannot so easily remove the group $G(0)$ like this, as without being spacial we have no way to draw its elements out from in between elements of the higher $G(m)$. Still, there is one more thing about the morphisms of $L_n$ that we can deduce from \cref{noscalar}.
+I am taking out the $G(1)$-generated stuff for now.
 
-\begin{Defi} Let $G$ be a non-crossed action operad in which every element of each $G(m)$ can be written as $\mu(g;e_m)$ for some $G \in G(1)$. Then we say that $G$ is a \emph{$G(1)$-generated} action operad. \end{Defi}
-
-\begin{lem} \label{noscalarnoncross} If $G$ is a $G(1)$-generated action operad, then $L_n(I,I)$ is the trivial group.
-\end{lem}
-\begin{proof}
-First we need to check that this claim makes sense, that elements of the required form are indeed closed under operadic multiplication so that they may make up a valid $G$. This is the case, as we have
-\begin{longtable}{RLL}
-			\mu\big( \, \mu(g;e_m) \, ; \, \mu(h_1;e_{k_1}), ..., \mu(h_1;e_{k_m}) \, \big) & = & \mu\Big( \, g \, ; \, \mu\big( \, e_m \, ; \,  \mu(h_1;e_{k_1}), ..., \mu(h_m;e_{k_m}) \, \big) \, \Big) \\
-			& = & \mu\Big( \, g \, ; \, \mu\big( \, \mu(e_m;h_1, ..., h_m) \, ; \, e_{k_1}, ..., e_{k_m} \, \big) \, \Big) \\
-			& = & \mu\Big( \, g \, ; \, \mu\big( \, \mu(h;e_m) \, ; \, e_{k_1}, ..., e_{k_m} \, \big) \, \Big) \\
-			& = & \mu\Big( \, g \, ; \, \mu\big( \, h \, ; \, \mu(e_m;e_{k_1}, ..., e_{k_m}) \, \big) \, \Big) \\
-			& = & \mu\big( \, g \, ; \, \mu( \, h \, ; \, e_{k_1+...+k_m} \, ) \, \big) \\
-			& = & \mu\big( \, \mu(g;h) \, ; \, e_{k_1+...+k_m} \, \big) \\
-\end{longtable}
-where $\mu(h;e_m)$ is any way of writing $\mu(e_m;h_1, ..., h_m) = h_1 \otimes ... \otimes h_m$ in the required form.
-
-Now let $f$ be an arbitrary element of $L_n(I,I)$. By \cref{allmapsaction} there must be some objects $x_1, ..., x_m$ such that $f = \alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$. Then by assumption there must also exist some $h \in G(1)$ for which $g = \mu(h;e_m)$. With this in mind, we see that
-\begin{eq*} \begin{array}{rll}
-			\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) & = & \alpha\big( \, \mu(h;e_m) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \\
-			& = & \alpha\big( \, h \, ; \, \mu(e_m;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, \big) \\
-			& = & \alpha( \, h \, ; \, \mathrm{id}_{x_1 \otimes ... \otimes x_m}) \\
-		\end{array}
-\end{eq*}
-But this is supposed to be a morphism $f:I\to I$, so we know that $x_1 \otimes ... \otimes x_m = I$, and therefore by \cref{noscalar}
-\begin{eq*} f \quad = \quad \alpha( \, h \, ; \, \mathrm{id}_I) \quad = \quad \mathrm{id}_I \end{eq*}
-As $f$ was chosen arbitrarily, it follows that $L_n(I,I) = \{ \mathrm{id}_I \}$.
-\end{proof}
-
-Ultimately, we will see that there is very little we can say for sure about the unit endomorphisms of $L_n$ when $G$ is not crossed, other than \cref{noscalarnoncross}. For this reason, the main theorems of this thesis, \cref{freeinvalgG1,freeinvalgc}, will end up describing only those invertible $E\Lambda$-algebras whose action operads are either $G(1)$-generated or crossed, respectively.
-
+%For non-crossed $G$ we cannot so easily remove the group $G(0)$ like this, as without being spacial we have no way to draw its elements out from in between elements of the higher $G(m)$. Still, there is one more thing about the morphisms of $L_n$ that we can deduce from \cref{noscalar}.
+%
+%\begin{Defi} Let $G$ be a non-crossed action operad in which every element of each $G(m)$ can be written as $\mu(g;e_m)$ for some $G \in G(1)$. Then we say that $G$ is a \emph{$G(1)$-generated} action operad. \end{Defi}
+%
+%\begin{lem} \label{noscalarnoncross} If $G$ is a $G(1)$-generated action operad, then $L_n(I,I)$ is the trivial group.
+%\end{lem}
+%\begin{proof}
+%First we need to check that this claim makes sense, that elements of the required form are indeed closed under operadic multiplication so that they may make up a valid $G$. This is the case, as we have
+%\begin{longtable}{RLL}
+%			\mu\big( \, \mu(g;e_m) \, ; \, \mu(h_1;e_{k_1}), ..., \mu(h_1;e_{k_m}) \, \big) & = & \mu\Big( \, g \, ; \, \mu\big( \, e_m \, ; \,  \mu(h_1;e_{k_1}), ..., \mu(h_m;e_{k_m}) \, \big) \, \Big) \\
+%			& = & \mu\Big( \, g \, ; \, \mu\big( \, \mu(e_m;h_1, ..., h_m) \, ; \, e_{k_1}, ..., e_{k_m} \, \big) \, \Big) \\
+%			& = & \mu\Big( \, g \, ; \, \mu\big( \, \mu(h;e_m) \, ; \, e_{k_1}, ..., e_{k_m} \, \big) \, \Big) \\
+%			& = & \mu\Big( \, g \, ; \, \mu\big( \, h \, ; \, \mu(e_m;e_{k_1}, ..., e_{k_m}) \, \big) \, \Big) \\
+%			& = & \mu\big( \, g \, ; \, \mu( \, h \, ; \, e_{k_1+...+k_m} \, ) \, \big) \\
+%			& = & \mu\big( \, \mu(g;h) \, ; \, e_{k_1+...+k_m} \, \big) \\
+%\end{longtable}
+%where $\mu(h;e_m)$ is any way of writing $\mu(e_m;h_1, ..., h_m) = h_1 \otimes ... \otimes h_m$ in the required form.
+%
+%Now let $f$ be an arbitrary element of $L_n(I,I)$. By \cref{allmapsaction} there must be some objects $x_1, ..., x_m$ such that $f = \alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$. Then by assumption there must also exist some $h \in G(1)$ for which $g = \mu(h;e_m)$. With this in mind, we see that
+%\begin{eq*} \begin{array}{rll}
+%			\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) & = & \alpha\big( \, \mu(h;e_m) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \\
+%			& = & \alpha\big( \, h \, ; \, \mu(e_m;\mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, \big) \\
+%			& = & \alpha( \, h \, ; \, \mathrm{id}_{x_1 \otimes ... \otimes x_m}) \\
+%		\end{array}
+%\end{eq*}
+%But this is supposed to be a morphism $f:I\to I$, so we know that $x_1 \otimes ... \otimes x_m = I$, and therefore by \cref{noscalar}
+%\begin{eq*} f \quad = \quad \alpha( \, h \, ; \, \mathrm{id}_I) \quad = \quad \mathrm{id}_I \end{eq*}
+%As $f$ was chosen arbitrarily, it follows that $L_n(I,I) = \{ \mathrm{id}_I \}$.
+%\end{proof}
+%
+%Ultimately, we will see that there is very little we can say for sure about the unit endomorphisms of $L_n$ when $G$ is not crossed, other than \cref{noscalarnoncross}. For this reason, the main theorems of this thesis, \cref{freeinvalgG1,freeinvalgc}, will end up describing only those invertible $E\Lambda$-algebras whose action operads are either $G(1)$-generated or crossed, respectively.
+%
 \section{\texorpdfstring{$L_n$}{L_n} as a coequalizer in \texorpdfstring{$\mathrm{MonCat}$}{MonCat}} \label{colimmoncat}
 
-Looking back at the proof of \cref{coeqsurj}, notice that we never needed to use the fact that $\phi$, $\phi'$ and $k$ were maps of $E\Lambda$-algebras, only that they were monoidal functors. We did at one point have to show that the category $k(Y)$ was an algebra so that we could then use the universal property of $k$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$, because we had assumed from the beginning that we were working in that category, but if $k$ had just been a coequalizer in $\mathrm{MonCat}$ from the start then this part would not have been necessary. We also had to invoke \cref{Obadj} --- which says that $\mathrm{Ob}: E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint --- so that we could exploit preservation of colimits. But since $\mathrm{Ob}$ clearly doesn't care about the morphisms of an algebra, it doesn't really matter whether we are applying it to an algebra in the first place. The actions of $X$, $Y$ and $Z$ just never came into play.
+Just note everything is true for monoidal categories, \cref{alsowithoutgroups}.
 
-With that in mind, we can co-opt all of these previous proofs about $E\Lambda$-algebra maps to prove the analogous statements about monoidal functors.
+\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} := \mathrm{id}_{\ELnn}+\delta$ be the map defined from $\delta$ and the identity by using the universal property of the coproduct $\mathbb{G}_{4n} = \ELnn + \ELnn$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$. That is, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
+\begin{eq*} \begin{array}{rlrlll}
+			\tilde{\delta} & : & \mathbb{G}_{4n} & \to & \ELnn \\
+			& : & z_i & \mapsto & z_i  \\
+			& : & z_{n+i} & \mapsto & z_{n+i} \\
+			& : & z_{2n+i} & \mapsto & z_i \otimes z_{n+i} \\
+			& : & z_{3n+i} & \mapsto & z_{n+i} \otimes z_i			
+		\end{array}
+\end{eq*}
+for $1 \le i \le n$. Similarly, let $\tilde{I} := \mathrm{id}_{\ELnn}+I$ be the $E\Lambda$-algebra map defined in the same way but from the constant map on the unit $I$ instead of $\delta$:
+\begin{eq*} \begin{array}{rlrlll}
+			\tilde{I} & : & \mathbb{G}_{4n} & \to & \ELnn \\
+			& : & z_i & \mapsto & z_i  \\
+			& : & z_{n+i} & \mapsto & z_{n+i} \\
+			& : & z_{2n+i} & \mapsto & I \\
+			& : & z_{3n+i} & \mapsto & I
+		\end{array} 
+\end{eq*}
+\end{Defi}
 
-\begin{prop}\label{Obadjmon} Let the functors 
-\begin{eq*} \mathrm{Ob} \, : \, \mathrm{MonCat} \to \mathrm{Mon}, \quad \quad \quad \mathrm{E} \, : \, \mathrm{Mon} \to \mathrm{MonCat} \end{eq*}
-be defined exactly as those from \cref{Obdef,Edef}, except without the requirement that the monoidal categories be $E\Lambda$-algebras. Then $\mathrm{E}$ is a right adjoint to the functor $\mathrm{Ob}$. 
-\end{prop}
+I think the next lemma is false as written, and am worried fixing it by changing $\tilde{I}$ will mess up the reflexive coequalizer later.
+
+\begin{lem}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\end{lem}
 \begin{proof}
-The same as the proof of \cref{Obadj}.
+Let $\psi: \ELnn \to X$ be an map of $E\Lambda$-algebras. Then
+\begin{eq*} \begin{array}{rcl}
+			\psi \circ (\mathrm{id}_{\ELnn}+\delta)(z_i) & = & \psi \circ (\mathrm{id}_{\ELnn}+I) \\
+			& \iff & \\
+			\psi \circ \mathrm{id}_{\ELnn} \quad = \quad \psi \circ \mathrm{id}_{\ELnn}, & & \psi \circ \delta \quad = \quad \psi \circ I
+		\end{array}
+\end{eq*}
+and hence
+\begin{eq*} \mathrm{coeq}( \, \mathrm{id}_{\ELnn}+\delta, \, \mathrm{id}_{\ELnn}+I \, ) \quad = \quad \mathrm{coeq}(\delta, I) \quad = \quad \mathrm{coker}(\delta) \quad = \quad q\end{eq*}
 \end{proof}
 
-\begin{prop} \label{coeqsurjmon} Let $\phi, \phi' : X \to Y$ be a pair of monoidal functors, and $k: Y \to Z$ their coequalizer in $\mathrm{MonCat}$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
-\end{prop}
-\begin{proof}
-The same as the proof of \cref{coeqsurj}, but with \cref{Obadjmon} in place of \cref{Obadj}, and no reference to $k(Y)$ being a sub-$E\Lambda$-algebra.
-\end{proof}
+%Looking back at the proof of \cref{coeqsurj}, notice that we never needed to use the fact that $\phi$, $\phi'$ and $k$ were maps of $E\Lambda$-algebras, only that they were monoidal functors. We did at one point have to show that the category $k(Y)$ was an algebra so that we could then use the universal property of $k$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$, because we had assumed from the beginning that we were working in that category, but if $k$ had just been a coequalizer in $\mathrm{MonCat}$ from the start then this part would not have been necessary. We also had to invoke \cref{Obadj} --- which says that $\mathrm{Ob}: E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint --- so that we could exploit preservation of colimits. But since $\mathrm{Ob}$ clearly doesn't care about the morphisms of an algebra, it doesn't really matter whether we are applying it to an algebra in the first place. The actions of $X$, $Y$ and $Z$ just never came into play.
+%
+%With that in mind, we can co-opt all of these previous proofs about $E\Lambda$-algebra maps to prove the analogous statements about monoidal functors.
+%
+%\begin{prop}\label{Obadjmon} Let the functors 
+%\begin{eq*} \mathrm{Ob} \, : \, \mathrm{MonCat} \to \mathrm{Mon}, \quad \quad \quad \mathrm{E} \, : \, \mathrm{Mon} \to \mathrm{MonCat} \end{eq*}
+%be defined exactly as those from \cref{Obdef,Edef}, except without the requirement that the monoidal categories be $E\Lambda$-algebras. Then $\mathrm{E}$ is a right adjoint to the functor $\mathrm{Ob}$. 
+%\end{prop}
+%\begin{proof}
+%The same as the proof of \cref{Obadj}.
+%\end{proof}
+%
+%\begin{prop} \label{coeqsurjmon} Let $\phi, \phi' : X \to Y$ be a pair of monoidal functors, and $k: Y \to Z$ their coequalizer in $\mathrm{MonCat}$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
+%\end{prop}
+%\begin{proof}
+%The same as the proof of \cref{coeqsurj}, but with \cref{Obadjmon} in place of \cref{Obadj}, and no reference to $k(Y)$ being a sub-$E\Lambda$-algebra.
+%\end{proof}
 
 Further, these new propositions prove a surjectivity statement just like \cref{qsurj}. 
 
@@ -6121,39 +6177,7 @@ which we have no reason to believe is true.
 
 To fix this issue, what we need is a way of describing the map $q$ as a colimit of a slightly different diagram in $E\Lambda$-algebras, one whose colimit in $\mathrm{MonCat}$ will have all of the same properties that $c$ does but will also satisfy the condition above. To that end, consider the following $E\Lambda$-algebra maps:
  
-\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} := \mathrm{id}_{\ELnn}+\delta$ be the map defined from $\delta$ and the identity by using the universal property of the coproduct $\mathbb{G}_{4n} = \ELnn + \ELnn$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$. That is, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
-\begin{eq*} \begin{array}{rlrlll}
-			\tilde{\delta} & : & \mathbb{G}_{4n} & \to & \ELnn \\
-			& : & z_i & \mapsto & z_i  \\
-			& : & z_{n+i} & \mapsto & z_{n+i} \\
-			& : & z_{2n+i} & \mapsto & z_i \otimes z_{n+i} \\
-			& : & z_{3n+i} & \mapsto & z_{n+i} \otimes z_i			
-		\end{array}
-\end{eq*}
-for $1 \le i \le n$. Similarly, let $\tilde{I} := \mathrm{id}_{\ELnn}+I$ be the $E\Lambda$-algebra map defined in the same way but from the constant map on the unit $I$ instead of $\delta$:
-\begin{eq*} \begin{array}{rlrlll}
-			\tilde{I} & : & \mathbb{G}_{4n} & \to & \ELnn \\
-			& : & z_i & \mapsto & z_i  \\
-			& : & z_{n+i} & \mapsto & z_{n+i} \\
-			& : & z_{2n+i} & \mapsto & I \\
-			& : & z_{3n+i} & \mapsto & I
-		\end{array} 
-\end{eq*}
-\end{Defi}
 
-\begin{lem} $q$ is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
-\end{lem}
-\begin{proof}
-Let $\psi: \ELnn \to X$ be an map of $E\Lambda$-algebras. Then
-\begin{eq*} \begin{array}{rcl}
-			\psi \circ (\mathrm{id}_{\ELnn}+\delta)(z_i) & = & \psi \circ (\mathrm{id}_{\ELnn}+I) \\
-			& \iff & \\
-			\psi \circ \mathrm{id}_{\ELnn} \quad = \quad \psi \circ \mathrm{id}_{\ELnn}, & & \psi \circ \delta \quad = \quad \psi \circ I
-		\end{array}
-\end{eq*}
-and hence
-\begin{eq*} \mathrm{coeq}( \, \mathrm{id}_{\ELnn}+\delta, \, \mathrm{id}_{\ELnn}+I \, ) \quad = \quad \mathrm{coeq}(\delta, I) \quad = \quad \mathrm{coker}(\delta) \quad = \quad q\end{eq*}
-\end{proof}
 
 While this proof may seem rather trivial, notice that it does rely on the fact that the $+$ here represents the coproduct in the category of $E\Lambda$-algebras. There is no reason to expect that the coequalizer of the underlying monoidal functors of these maps would also be equal the cokernel of the underlying monoidal functor of $\delta$. Thus these new maps will give rise to a new map which is distinct from the cokernel functor $c$, yet possesses many of the same properties.
 
