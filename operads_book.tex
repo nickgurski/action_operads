@@ -1534,7 +1534,7 @@ The above result can be interpreted for $\Lambda$-operads in an arbitrary cocomp
  \section{Introduction to monoidal structures}
  
 
-\section{Operads in $\mb{Cat}$}\label{section:operads_in_Cat}
+\section{Operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{section:operads_in_Cat}
 
 This section will study those $\Lambda$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ is in $\mb{Cat}$. The extra structure that this 2-categorical setting provides allows us to consider notions of pseudoalgebras for an operad, as well as pseudomorphisms of operads. The induced monad associated to an operad of this sort can be shown to be a $2$-monad (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated 2-monad correspond precisely, i.e., there is an isomorphism of $2$-categories between the 2-category with either strict or pseudo-level cells defined operadically and the 2-category with either strict or pseudo-level cells defined 2-monadically.
 
@@ -2379,7 +2379,7 @@ These isomorphisms are then required to satisfy their own axioms, and these ensu
 %\end{Defi}
 
 
-\section{2-categorical properties of operads in \textbf{Cat}}\label{sec:propofopsincat}
+\section{2-categorical properties of operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{sec:propofopsincat}
 
 This section will be concerned with characterizing various properties of those $2$-monads induced by $\Lambda$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary.  Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\Lambda$-operad $P$).  Both of these results are simple extensions of well-known results about operads.  Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
 
@@ -6081,7 +6081,7 @@ As $f$ was chosen arbitrarily, it follows that $L_n(I,I) = \{ \mathrm{id}_I \}$.
 
 Ultimately, we will see that there is very little we can say for sure about the unit endomorphisms of $L_n$ when $G$ is not crossed, other than \cref{noscalarnoncross}. For this reason, the main theorems of this thesis, \cref{freeinvalgG1,freeinvalgc}, will end up describing only those invertible $E\Lambda$-algebras whose action operads are either $G(1)$-generated or crossed, respectively.
 
-\section{$L_n$ as a coequalizer in $\mathrm{MonCat}$} \label{colimmoncat}
+\section{\texorpdfstring{$L_n$}{L_n} as a coequalizer in \texorpdfstring{$\mathrm{MonCat}$}{MonCat}} \label{colimmoncat}
 
 Looking back at the proof of \cref{coeqsurj}, notice that we never needed to use the fact that $\phi$, $\phi'$ and $k$ were maps of $E\Lambda$-algebras, only that they were monoidal functors. We did at one point have to show that the category $k(Y)$ was an algebra so that we could then use the universal property of $k$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$, because we had assumed from the beginning that we were working in that category, but if $k$ had just been a coequalizer in $\mathrm{MonCat}$ from the start then this part would not have been necessary. We also had to invoke \cref{Obadj} --- which says that $\mathrm{Ob}: E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint --- so that we could exploit preservation of colimits. But since $\mathrm{Ob}$ clearly doesn't care about the morphisms of an algebra, it doesn't really matter whether we are applying it to an algebra in the first place. The actions of $X$, $Y$ and $Z$ just never came into play.
 
@@ -6374,7 +6374,8 @@ and likewise for the $w'$. Thus from \cref{c'alg2} we can conclude that
 Thus the value of $\alpha^{\tilde{C}}(g; \mathrm{id}_{\tilde{c}(w_1)}, ..., \mathrm{id}_{\tilde{c}(w_m)})$ we gave earlier does not depend on our particular choice of $w_i$. Therefore $\alpha^{\tilde{C}}$ is indeed a well-defined $E\Lambda$-action on $\tilde{C}$, and the coequalizer $\tilde{c}$ from $\mathrm{MonCat}$ is a map of $E\Lambda$-algebras with respect to $\alpha^{\tilde{C}}$.
 \end{proof}
 
-\section{Extracting $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$ from $\ELnn$}
+\section{Extracting %$\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$ from $\ELnn$
+}
 
 We are now finally ready to address problem 1 from the end of the previous chapter: how can we deal with the fact that our adjunction $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}} \dashv C$ involves monoidal categories rather than full $E\Lambda$-algebras? It turns out that this is all we really needed, as despite us originally conceiving of $L_n$ as a colimit in $E\Lambda\mbox{-}\mathrm{Alg}_S$ it can equally be viewed as a slightly more complicated colimit in $\mathrm{MonCat}$.
 
@@ -6475,7 +6476,7 @@ The first step towards this goal will involve splitting $\mathrm{Mor}(L_n)$ up a
 
 Once we have done this, we can then use the fact that $L_n(I, I)$ is always an abelian group to rewrite $\mathrm{Mor}(L_n)$ in terms of its abelian group completion, $\mathrm{Mor}(L_n)^{\mathrm{gp, ab}}$. This is not quite the same thing as $\mathrm{M}(L_n)^{\mathrm{gp, ab}}$, but they are close enough that we can find a simple equation linking the two, which will in turn allow us to frame the former in terms of the quotient of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ we described last chapter. All together, this will constitute an expression for $\mathrm{Mor}(L_n)$ that is built up of pieces which we know how to calculate.
 
-\section{Sources and targets in $L_n$}   
+\section{Sources and targets in \texorpdfstring{$L_n$}{L_n}}   
 
 To get things started, we will spend this section considering the source and target information of morphisms in $L_n$. 
 
@@ -6630,7 +6631,7 @@ But by \cref{qsurj} $q$ is a surjective functor. This means that there can exist
 and therefore the monoid $\mathrm{im}\big( \, \mathrm{Mor}(q) \circ i \, \big)$ that we saw above is really a submonoid of $\mathrm{Mor}(L_n)$ isomorphic to $(s \times t)(L_n)$, as required.
 \end{proof} 
 
-\section{Unit endomorphisms of $L_n$}
+\section{Unit endomorphisms of \texorpdfstring{$L_n$}{L_n}}
 
 To help us understand $\mathrm{Mor}(L_n)$, we decided to break it down into two smaller pieces. The first of these was the source/target data $(s \times t)(L_n)$, which we explored in the previous section. The other piece that we now have to consider is the monoid of unit endomorphisms, $L_n(I,I)$. 
 
@@ -6727,7 +6728,7 @@ That is, $L_n(I,I)$ is a subgroup of the centre of $\mathrm{Mor}(L_n)$. Then bec
 it follows that $L_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L_n)$.
 \end{proof}
 
-\section{The morphisms of $L_n$} 
+\section{The morphisms of \texorpdfstring{$L_n$}{L_n}} 
 
 We have finally described all of the important properties of $(s \times t)(L_n)$ and $L_n(I,I)$ that we will need. Putting these results together will let us characterize the morphisms of $L_n$ as a product of groups, as promised at the beginning of the chapter. Before we do though, it will be worth going over a few well-known pieces of group theory (from for example \cite{rob-grouptheory} QQQ needed?) that we will be using in the proof of \cref{morprod}.
 
@@ -7322,7 +7323,7 @@ Beyond this, the value of this quotient will have to be found separately for eac
 
 At last, we finally have an expression for the morphisms of $L_n$, one built out of smaller parts which we know how to calculate. This means that it is almost time to draw together everything we have done over the past three chapters into a single, complete description of free invertible $E\Lambda$-algebras --- at least, in cases where $G$ is crossed or $G(1)$-generated. 
 
-\section{The action of $L_n$}
+\section{The action of \texorpdfstring{$L_n$}{L_n}}
 
 At this stage, there is only one part of this $E\Lambda$-algebra that we have yet to find --- its action, $\alpha_{L_n}$. When our action operad $G$ is $G(1)$-generated, everything is so simple that there is really only one thing the action could be.
 
@@ -7425,7 +7426,7 @@ and therefore the action of $L_n$ is given by
 as required.
 \end{proof}
 
-\section{A full description of $L_n$}
+\section{A full description of \texorpdfstring{$L_n$}{L_n}}
 
 With this last proposition proven, the results in this thesis now collectively describe how to construct the free $E\Lambda$-algebras on $n$ invertible objects for most values of $G$. However, since this characterization was discovered by us in such a piecemeal fashion, we will now restate everything in one place, for ease of reading. We'll begin with the non-crossed case, or as much of it as we were able to draw a complete conclusion about.
 
