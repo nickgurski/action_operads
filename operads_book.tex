@@ -3870,11 +3870,9 @@ when $G$ is crossed, and the identity map $\mathrm{id}_{\mathbb{N}^{*n}}$ otherw
 \begin{proof}
 By \cref{Gnmapsaction}, all morphisms in $\ELn$ can be written uniquely as $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, for some $g \in G(m)$ and $x_i \in \{z_1, ..., z_n \}$. Since maps of this form have source $x_1 \otimes ... \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}$, we see that the only pairs of object which might have a morphism between them are those that can be expanded as tensor products that differ by some permutation. 
 
-<<<<<<< HEAD
-If our action operad $G$ is crossed, then for any two objects like this --- say source $x_1 \otimes ... \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes ... \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \mathrm{S}_m$ --- we can always find a map $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ between them, because by \cref{zero/surj} the underlying permutations maps $\pi_m: G(m) \to S_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\mathbb{G}_n$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
-=======
+
 If our action operad $G$ is crossed, then for any two objects like this --- say source $x_1 \otimes ... \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes ... \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \mathrm{S}_m$ --- we can always find a map $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ between them, because by \cref{surjortriv} the underlying permutations maps $\pi_m: G(m) \to S_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
->>>>>>> 2a4d1f6297548c0f002331783ed5749d35e2a696
+
 \begin{eq*} [z_i] \otimes [z_j] \quad = \quad [z_i \otimes z_j] \quad = \quad [z_j \otimes z_i] \quad = \quad [z_j] \otimes [z_i] \end{eq*}
 Thus the canonical map $[ \, \_ \, ] : \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ is the one that makes the free product of $\mathbb{N}^{*n}$ commutative; that is, the quotient map for the abelianisation $\mathrm{ab} : \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}}$. Hence $\pi_0(\ELn) = \mathbb{N}^n$.
 
@@ -5023,12 +5021,7 @@ in which the identity on the right is really $j_{inv} \circ -$. Thus composition
 \begin{cor} \label{epi} The component of the unit of the adjunction $L \dashv (-)_{inv}$ at $E\Lambda(\underline{n})$,  $\eta_{E\Lambda(\underline{n})}: E\Lambda(\underline{n}) \to (L_n)_{inv}$, is an epimorphism in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{cor}
 \begin{proof}
-<<<<<<< HEAD
-Let $\phi, \psi: L_n \to X$ be a pair of algebra maps for which $\phi \circ \eta_{\mathbb{G}_n} = \psi \circ \eta_{\mathbb{G}_n}$. Then on the generators of $L_n$ we have
-\begin{eq*} \phi(z_i) \quad = \quad \phi\eta_{\mathbb{G}_n}(z_i) \quad = \quad \psi\eta_{\mathbb{G}_n}(z_i) \quad = \quad \psi(z_i) \end{eq*}
-and thus also in the restricted case $\phi_{\mathrm{inv}}(z_i) = \psi_{\mathrm{inv}}(z_i)$. But $L_n$ is the free $\mathrm{E}G$-algebra on $n$ invertible objects, so maps $L_n \to X_{\mathrm{inv}}$ are determined uniquely by where they those QQQ generating objects. It follows that $\phi_{\mathrm{inv}} = \psi_{\mathrm{inv}}$, and if $i: X_{\mathrm{inv}} \to X$ is the obvious inclusion,
-\begin{eq*} \phi \quad = \quad i \phi_{\mathrm{inv}} \quad = \quad i \psi_{\mathrm{inv}} \quad = \quad \psi \end{eq*}
-=======
+
 By \cref{linveql}, we first have that $(L_n)_{inv} = L_n$. Let $F,G: L_n \to X$ be a pair of algebra maps for which $F \eta = G \eta$. Thus the algebra maps $E\Lambda(\underline{n}) \to X_{inv}$ corresponding to $F, G$ are equal, so $F,G$ are equal.
 
 
@@ -5036,7 +5029,7 @@ By \cref{linveql}, we first have that $(L_n)_{inv} = L_n$. Let $F,G: L_n \to X$ 
 %\begin{eq*} \phi(z_i) \quad = \quad \phi\eta_{\ELn}(z_i) \quad = \quad \psi\eta_{\ELn}(z_i) \quad = \quad \psi(z_i) \end{eq*}
 %and thus also in the restricted case $\phi_{\mathrm{inv}}(z_i) = \psi_{\mathrm{inv}}(z_i)$. But $L_n$ is the free $E\Lambda$-algebra on $n$ invertible objects, so maps $L_n \to X_{\mathrm{inv}}$ are determined uniquely by where they those generating objects. It follows that $\phi_{\mathrm{inv}} = \psi_{\mathrm{inv}}$, and if $i: X_{\mathrm{inv}} \to X$ is the obvious inclusion,
 %\begin{eq*} \phi \quad = \quad i \phi_{\mathrm{inv}} \quad = \quad i \psi_{\mathrm{inv}} \quad = \quad \psi \end{eq*}
->>>>>>> 2a4d1f6297548c0f002331783ed5749d35e2a696
+
 \end{proof}
 
 
@@ -5351,11 +5344,9 @@ Let $B: \mon \to \cat$ denote the functor sending a monoid $M$ to the one-object
 %Moreover, let $C$ be a commutative monoid. Then we can view $\mathrm{B}C$ as a monoidal category, with the tensor product also given by the multiplication in $C$, and the sole object as the unit $I$. Clearly for any homomorphism between commutative monoids $h : C \to C'$ the corresponding functor $\mathrm{B}h : \mathrm{B}C \to \mathrm{B}C'$ will preserve this monoidal structure, as it is already preserving it as composition. Thus the restriction of $\mathrm{B}$ to commutative monoids also gives a functor $\mathrm{CMon} \to \mathrm{MonCat}$, which we will still call $\mathrm{B}$.
 %\end{Defi}
 
-<<<<<<< HEAD
+
 Note that for any monoidal category $M$, the monoid $M(I,I)$ is always commutative by the Eckmann-Hilton argument \cite{eh, cg-periodic2}, hence the requirement of commutativity to lift $B$ to a functor into monoidal categories.
-=======
-Note that for any monoidal category $M$, the monoid $M(I,I)$ is always commutative by the Eckmann-Hilton argument, hence the requirement of commutativity to lift $B$ to a functor into monoidal categories.
->>>>>>> 2a4d1f6297548c0f002331783ed5749d35e2a696
+
 
 %The reason that commutativity is required in order for $\mathrm{B}C$ to be a well-defined monoidal category is because we need its operations $\circ$ and $\otimes$ to obey the interchange law for monoidal categories:
 %\begin{eq*}\begin{array}{rrll}
@@ -5540,11 +5531,9 @@ QQQ I think I might suggest $L_n$ for the free thing on $n$ invertible objects.
 
 %In the previous chapter, we made progress towards understanding the structure of $L_n$ by showing that the algebra was an initial object in a certain comma category. Specifically, we saw that the map $\eta: \ELn \to L_n$ is initial among all $E\Lambda$-algebra maps $\ELn \to X_{\mathrm{inv}}$. This fact is the rigorous way of expressing a fairly obvious intuition about $L_n$ --- that we should expect the free algebra on $n$ invertible objects to be like the free algebra on $n$ objects, except that its objects are invertible.
 
-<<<<<<< HEAD
-This section will present a different approach to $L_n$. Consider for a moment the free $\ML$-monoidal category on $2n$ objects. If we were to take this algebra and then enforce upon it the extra relations $z_{n+1} = z_1^*, ..., z_{2n} = z_n^*$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. Thus we would see $L_n$ as a quotient of the larger monoidal category $\EL(2n)$. We will now work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
-=======
+
 This section will present a different approach to $L_n$. Consider for a moment the free $\ML$-monoidal category on $2n$ objects $z_1, z_2, \ldots, z_{2n}$. If we were to take this category and then add the relations $z_{n+1} = z_1^{-1}, ..., z_{2n} = z_n^{-1}$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. Thus we would see $L_n$ as a quotient of the larger monoidal category $\EL(2n)$. We will now work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
->>>>>>> 2a4d1f6297548c0f002331783ed5749d35e2a696
+
 
 %\section{$L_n$ as a cokernel in $E\Lambda\mbox{-}\mathrm{Alg}_S$} 
 %
@@ -5797,13 +5786,12 @@ We have an isomorphism of groups as below.
 
 One important consequence of the surjectivity of $q$ is that it will allow us to use some results about the free algebra $\ELnn$ to deduce information about the free invertible algebra $L_n$. In fact, we have done this once already: looking back at \cref{Qobj} with our current knowledge that $Q = L_n$, we can see that it is a direct analogue of \cref{Gnobj}, using the fact that $q$ is surjective on objects. 
 
-<<<<<<< HEAD
+
 QQQ Reference ``Gnmapsaction'' is missing.
 
-In that same vein, one might ask if we can take \cref{Gnmapsaction}, a statement about the morphisms $\mathbb{G}_{2n}$, and extend it to an analagous result on $L_n$, using surjectivity of $q$ on morphisms instead. That is, since every morphism of $\mathbb{G}_{2n}$ is an action morphism, and since $\mathrm{E}G$-algebra maps always send action morphisms to action morphisms, we should be able to use $q$ to identify every morphism of $L_n$ as an action morphism. This is indeed pretty simple to show.
-=======
+
 In that same vein, one might ask if we can take \cref{Gnmapsaction}, a statement about the morphisms $\ELnn$, and extend it to an analagous result on $L_n$, using surjectivity of $q$ on morphisms instead. That is, since every morphism of $\ELnn$ is an action morphism, and since strict $\ML$-monoidal functors always send action morphisms to action morphisms, we should be able to use $q$ to identify every morphism of $L_n$ as an action morphism. 
->>>>>>> 2a4d1f6297548c0f002331783ed5749d35e2a696
+
 
 QQQ Get some notation for what Ed calls action maps, I don't like all the $\alpha$'s
 
