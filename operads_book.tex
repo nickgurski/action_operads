@@ -6001,7 +6001,7 @@ using the fact that $\pi(h \otimes e_m)$ is the identity permutation. By the com
 %Thus $G'$  really is a well-defined action operad.
 \end{proof}
 
-For crossed $\Lambda$, this notion of quotient by $\Lambda(0)$ does exactly what we wanted it to do --- remove certain information which is unnecessary for forming the algebra $L_n$.
+For crossed $\Lambda$, this notion of quotient by $\Lambda(0)$ does exactly what we wanted it to do --- remove certain information which is unnecessary for forming the algebra $L_n$. We will use this later in QQQ for something.
 
 \begin{prop} \label{noscalarcross} Let $\Lambda$ be a crossed action operad, and let $\Lambda'$ be the action operad with $\Lambda'(m) = \Lambda(m)/\Lambda(0)$ constructed in \cref{G0quot}. Then for any $n \in \mathrm{N}$,
 \begin{eq*} L\ML'_n \quad \cong \quad L\ML_n \end{eq*}
@@ -6087,13 +6087,17 @@ I am taking out the $G(1)$-generated stuff for now.
 %
 %Ultimately, we will see that there is very little we can say for sure about the unit endomorphisms of $L_n$ when $G$ is not crossed, other than \cref{noscalarnoncross}. For this reason, the main theorems of this thesis, \cref{freeinvalgG1,freeinvalgc}, will end up describing only those invertible $E\Lambda$-algebras whose action operads are either $G(1)$-generated or crossed, respectively.
 %
-\section{\texorpdfstring{$L_n$}{L_n} as a coequalizer in \texorpdfstring{$\mathrm{MonCat}$}{MonCat}} \label{colimmoncat}
+%\section{\texorpdfstring{$L_n$}{L_n} as a coequalizer in \texorpdfstring{$\mathrm{MonCat}$}{MonCat}} \label{colimmoncat}
 
 Just note everything is true for monoidal categories, \cref{alsowithoutgroups}.
 
-\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} := \mathrm{id}_{\ELnn}+\delta$ be the map defined from $\delta$ and the identity by using the universal property of the coproduct $\mathbb{G}_{4n} = \ELnn + \ELnn$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$. That is, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
+\begin{nota}\label{plus_notation}
+Let $f: A \to C, g: B \to C$ be maps in a category with coproducts. We will write $f+g: A \coprod B \to C$ for the unique map induced by the universal property of the coproduct.
+\end{nota}
+
+\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} := \mathrm{id}_{\ELnn}+\delta$ be the map defined from $\delta$ and the identity by using the universal property of the coproduct $\ELnnnn = \ELnn \coprod \ELnn$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$. That is, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
 \begin{eq*} \begin{array}{rlrlll}
-			\tilde{\delta} & : & \mathbb{G}_{4n} & \to & \ELnn \\
+			\tilde{\delta} & : & \ELnnnn & \to & \ELnn \\
 			& : & z_i & \mapsto & z_i  \\
 			& : & z_{n+i} & \mapsto & z_{n+i} \\
 			& : & z_{2n+i} & \mapsto & z_i \otimes z_{n+i} \\
@@ -6102,7 +6106,7 @@ Just note everything is true for monoidal categories, \cref{alsowithoutgroups}.
 \end{eq*}
 for $1 \le i \le n$. Similarly, let $\tilde{I} := \mathrm{id}_{\ELnn}+I$ be the $E\Lambda$-algebra map defined in the same way but from the constant map on the unit $I$ instead of $\delta$:
 \begin{eq*} \begin{array}{rlrlll}
-			\tilde{I} & : & \mathbb{G}_{4n} & \to & \ELnn \\
+			\tilde{I} & : & \ELnnnn & \to & \ELnn \\
 			& : & z_i & \mapsto & z_i  \\
 			& : & z_{n+i} & \mapsto & z_{n+i} \\
 			& : & z_{2n+i} & \mapsto & I \\
@@ -6111,7 +6115,7 @@ for $1 \le i \le n$. Similarly, let $\tilde{I} := \mathrm{id}_{\ELnn}+I$ be the 
 \end{eq*}
 \end{Defi}
 
-I think the next lemma is false as written, and am worried fixing it by changing $\tilde{I}$ will mess up the reflexive coequalizer later.
+Start checking here, Ed explained my mistake.
 
 \begin{lem}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{lem}
