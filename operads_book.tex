@@ -5556,7 +5556,7 @@ for $1 \le i \le n$. We will also denote by $q: \EL(\underline{2n}) \to Q$ the c
 
 The first goal of this section is to show that $Q \cong L_n$.
 
-\begin{prop}\label{Qobj} The object monoid of $Q$ is $\mathbb{Z}^{*n}$, and the restriction of $q$ to objects $\mathrm{Ob}(q): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(Q)$ is the monoid homomorphism defined on generators as
+\begin{prop}\label{Qobj} The object monoid of $Q$ is $\mathbb{Z}^{*n}$, and the restriction of $q$ to objects $\mathrm{Ob}(q): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(Q)$ is the monoid homomorphism defined on generators as below.
 \begin{eq*} \begin{array}{rlrlll}
 			\mathrm{Ob}(q) & : & \mathbb{N}^{\ast 2n} & \to & \mathbb{Z}^{\ast n} \\
 			& : & z_i & \mapsto & z_i  \\
@@ -6092,44 +6092,57 @@ I am taking out the $G(1)$-generated stuff for now.
 Just note everything is true for monoidal categories, \cref{alsowithoutgroups}.
 
 \begin{nota}\label{plus_notation}
-Let $f: A \to C, g: B \to C$ be maps in a category with coproducts. We will write $f+g: A \coprod B \to C$ for the unique map induced by the universal property of the coproduct.
+Let $f: A \to C, g: B \to C$ be maps in a category with coproducts. We will write $f;g: A \coprod B \to C$ for the unique map induced by the universal property of the coproduct.
 \end{nota}
 
-\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} := \mathrm{id}_{\ELnn}+\delta$ be the map defined from $\delta$ and the identity by using the universal property of the coproduct $\ELnnnn = \ELnn \coprod \ELnn$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$. That is, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
-\begin{eq*} \begin{array}{rlrlll}
-			\tilde{\delta} & : & \ELnnnn & \to & \ELnn \\
-			& : & z_i & \mapsto & z_i  \\
-			& : & z_{n+i} & \mapsto & z_{n+i} \\
-			& : & z_{2n+i} & \mapsto & z_i \otimes z_{n+i} \\
-			& : & z_{3n+i} & \mapsto & z_{n+i} \otimes z_i			
-		\end{array}
-\end{eq*}
-for $1 \le i \le n$. Similarly, let $\tilde{I} := \mathrm{id}_{\ELnn}+I$ be the $E\Lambda$-algebra map defined in the same way but from the constant map on the unit $I$ instead of $\delta$:
-\begin{eq*} \begin{array}{rlrlll}
-			\tilde{I} & : & \ELnnnn & \to & \ELnn \\
-			& : & z_i & \mapsto & z_i  \\
-			& : & z_{n+i} & \mapsto & z_{n+i} \\
-			& : & z_{2n+i} & \mapsto & I \\
-			& : & z_{3n+i} & \mapsto & I
-		\end{array} 
-\end{eq*}
-\end{Defi}
-
-Start checking here, Ed explained my mistake.
-
-\begin{lem}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\begin{lem}\label{sum_coeq}
+Let $f, g: A \to B$ be maps in a cocomplete category with coequalizer $c: B \to C$. Then $c$ is also the coequalizer of $f;\id_B$ and $g; \id_B$.
 \end{lem}
 \begin{proof}
-Let $\psi: \ELnn \to X$ be an map of $E\Lambda$-algebras. Then
-\begin{eq*} \begin{array}{rcl}
-			\psi \circ (\mathrm{id}_{\ELnn}+\delta)(z_i) & = & \psi \circ (\mathrm{id}_{\ELnn}+I) \\
-			& \iff & \\
-			\psi \circ \mathrm{id}_{\ELnn} \quad = \quad \psi \circ \mathrm{id}_{\ELnn}, & & \psi \circ \delta \quad = \quad \psi \circ I
+A map $h: B \to X$ coequalizes $f;\id_B$ and $g; \id_B$ if and only if $hf = hg$ and $h \id_B = h \id_B$ by the universal property of the coproduct, so $c$ is still the universal map which coequalizes.
+
+\end{proof}
+
+\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} = \mathrm{id}_{\ELnn};\delta$.
+% be the map defined from $\delta$ and the identity by using the universal property of the coproduct $\ELnnnn = \ELnn \coprod \ELnn$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$. 
+Explicitly, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
+\begin{eq*} \begin{array}{rlrlll}
+			\tilde{\delta} & : & \ELnnnn & \to & \ELnn \\
+			&  & z_i & \mapsto & z_i  \\
+			&  & z_{n+i} & \mapsto & z_{n+i} \\
+			&  & z_{2n+i} & \mapsto & z_i \otimes z_{n+i} \\
+			&  & z_{3n+i} & \mapsto & z_{n+i} \otimes z_i			
 		\end{array}
 \end{eq*}
-and hence
-\begin{eq*} \mathrm{coeq}( \, \mathrm{id}_{\ELnn}+\delta, \, \mathrm{id}_{\ELnn}+I \, ) \quad = \quad \mathrm{coeq}(\delta, I) \quad = \quad \mathrm{coker}(\delta) \quad = \quad q\end{eq*}
-\end{proof}
+for $1 \le i \le n$. Similarly, let $\tilde{I} = \mathrm{id}_{\ELnn};I$.
+% be the $E\Lambda$-algebra map defined in the same way but from the constant map on the unit $I$ instead of $\delta$. We give it explicitly on generators below.
+Explicitly, $\tilde{I}$ is the map of $E\Lambda$-algebras which acts on generators by
+\begin{eq*} \begin{array}{rlrlll}
+			\tilde{I} & : & \ELnnnn & \to & \ELnn \\
+			&  & z_i & \mapsto & z_i  \\
+			& & z_{n+i} & \mapsto & z_{n+i} \\
+			& & z_{2n+i} & \mapsto & I \\
+			&  & z_{3n+i} & \mapsto & I
+		\end{array} 
+\end{eq*}
+for $1 \le i \le n$. 
+\end{Defi}
+
+
+
+\begin{cor}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\end{cor}
+%\begin{proof}
+%Let $\psi: \ELnn \to X$ be an map of $E\Lambda$-algebras. Then
+%\begin{eq*} \begin{array}{rcl}
+%			\psi \circ (\mathrm{id}_{\ELnn}+\delta)(z_i) & = & \psi \circ (\mathrm{id}_{\ELnn}+I) \\
+%			& \iff & \\
+%			\psi \circ \mathrm{id}_{\ELnn} \quad = \quad \psi \circ \mathrm{id}_{\ELnn}, & & \psi \circ \delta \quad = \quad \psi \circ I
+%		\end{array}
+%\end{eq*}
+%and hence
+%\begin{eq*} \mathrm{coeq}( \, \mathrm{id}_{\ELnn}+\delta, \, \mathrm{id}_{\ELnn}+I \, ) \quad = \quad \mathrm{coeq}(\delta, I) \quad = \quad \mathrm{coker}(\delta) \quad = \quad q\end{eq*}
+%\end{proof}
 
 %Looking back at the proof of \cref{coeqsurj}, notice that we never needed to use the fact that $\phi$, $\phi'$ and $k$ were maps of $E\Lambda$-algebras, only that they were monoidal functors. We did at one point have to show that the category $k(Y)$ was an algebra so that we could then use the universal property of $k$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$, because we had assumed from the beginning that we were working in that category, but if $k$ had just been a coequalizer in $\mathrm{MonCat}$ from the start then this part would not have been necessary. We also had to invoke \cref{Obadj} --- which says that $\mathrm{Ob}: E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint --- so that we could exploit preservation of colimits. But since $\mathrm{Ob}$ clearly doesn't care about the morphisms of an algebra, it doesn't really matter whether we are applying it to an algebra in the first place. The actions of $X$, $Y$ and $Z$ just never came into play.
 %
@@ -6151,7 +6164,7 @@ and hence
 
 Further, these new propositions prove a surjectivity statement just like \cref{qsurj}. 
 
-\begin{Defi}\label{Cdef} Let the monoidal functor $c: \ELnn \to C$ onto some monoidal category $C$ be the cokernel of the underlying monoidal functor of $\delta$ in $\mathrm{MonCat}$. This map definitely exists because $\mathrm{MonCat}$ is cocomplete, and like with $q$ we can show that its target has a group of objects.
+\begin{Defi}\label{Cdef} Let the strict monoidal functor $c: \ELnn \to C$  be the cokernel of the underlying monoidal functor of $\delta$ in $\mathrm{MonCat}_S$. %This map definitely exists because $\mathrm{MonCat}$ is cocomplete, and like with $q$ we can show that its target has a group of objects.
 \end{Defi}
 
 \begin{prop}\label{Cobj} The object monoid of $C$ is $\mathbb{Z}^{*n}$, and the restriction of $c$ to objects $\mathrm{Ob}(c): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(C)$ is the monoid homomorphism defined on generators as
@@ -6163,27 +6176,29 @@ Further, these new propositions prove a surjectivity statement just like \cref{q
 \end{eq*}
 \end{prop}
 \begin{proof}
-The same as the proof of \cref{Qobj}, but with $c: \ELnn \to C$ in place of $q: \ELnn \to Q$ and \cref{Obadjmon} in place of \cref{Obadj}.
+The same as the proof of \cref{Qobj}, but with $c: \ELnn \to C$ in place of $q: \ELnn \to Q$.% and \cref{coeqsurj} in place of \cref{Obadj}.
 \end{proof}
 
-\cref{coeqsurjmon,Cobj} then immediately combine to give:
+\cref{coeqsurj,Cobj} then immediately combine to give:
 
 \begin{cor}\label{csurj} The cokernel map $c: \ELnn \to C$ is surjective.
 \end{cor}
 
-This statement is actually pretty unusual. In \cref{qsurj} it made sense that $q$ would be surjective, but that was because its source and target were special. $\ELnn$ is the free $E\Lambda$-algebra on $2n$ objects, and $L_n$ is the free $E\Lambda$-algebra on $n$ objects and their $n$ inverses, and so intuitively the map identifying those sets' generators would tell us everything we need to know about the algebra structure of $L_n$. And since by freeness we expect algebra maps to be all there really is to $L_n$, it was a safe bet that $q$ was going to be surjective.
+The monoidal category we have constructed here is nearly the underlying monoidal category $L_n \cong Q$, but fails to have well-defined group actions. We remedy this now.
 
-But none of that is true for $c$. The underlying monoidal category of $\ELnn$ is not anything special in $\mathrm{MonCat}$, and neither is $C$. So what is going on here? The answer is that category $C$ is \emph{almost} the algebra $L_n$, and likewise the functor $c$ is \emph{almost} the map $q$. To see this, consider the following naive method for assigning an $E\Lambda$-action $\alpha^C$ to $C$:
-\begin{eq*} \alpha^C( \, g \, ; \, c(f_1), ..., c(f_m) \, ) \quad := \quad c \big( \, \alpha^{\ELnn}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) \end{eq*}
-Any action on $C$ that made $c$ into a map of $E\Lambda$-algebras would have to satify this condition, of course. But because $c$ is surjective, every collection of morphisms in $C$ can be written as $c(f_1), ..., c(f_m)$, and this forces $\alpha^C$ to take a unique value everywhere, assuming it is well-defined. Then, since the the cokernel of $\delta$ in $\mathrm{MonCat}$ would be an $E\Lambda$-algebra map, we could conclude that it was also the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$ too. However, `assuming it is well-defined' is where the problems lie. In particular, since $c$ is not injective on objects we can find $w_1, ..., w_m$ and $w'_1, ..., w'_m$ in $\ELnn$ for which $c(w_i) = c(w'_i)$, and so $\alpha^C$ would only be well-defined if
-\begin{eq*} c \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big) \quad = \quad c \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'_1}, ..., \mathrm{id}_{w'_m} \, ) \, \big) \end{eq*}
-which we have no reason to believe is true. 
-
-To fix this issue, what we need is a way of describing the map $q$ as a colimit of a slightly different diagram in $E\Lambda$-algebras, one whose colimit in $\mathrm{MonCat}$ will have all of the same properties that $c$ does but will also satisfy the condition above. To that end, consider the following $E\Lambda$-algebra maps:
- 
-
-
-While this proof may seem rather trivial, notice that it does rely on the fact that the $+$ here represents the coproduct in the category of $E\Lambda$-algebras. There is no reason to expect that the coequalizer of the underlying monoidal functors of these maps would also be equal the cokernel of the underlying monoidal functor of $\delta$. Thus these new maps will give rise to a new map which is distinct from the cokernel functor $c$, yet possesses many of the same properties.
+%This statement is actually pretty unusual. In \cref{qsurj} it made sense that $q$ would be surjective, but that was because its source and target were special. $\ELnn$ is the free $E\Lambda$-algebra on $2n$ objects, and $L_n$ is the free $E\Lambda$-algebra on $n$ objects and their $n$ inverses, and so intuitively the map identifying those sets' generators would tell us everything we need to know about the algebra structure of $L_n$. And since by freeness we expect algebra maps to be all there really is to $L_n$, it was a safe bet that $q$ was going to be surjective.
+%
+%But none of that is true for $c$. The underlying monoidal category of $\ELnn$ is not anything special in $\mathrm{MonCat}$, and neither is $C$. So what is going on here? The answer is that category $C$ is \emph{almost} the algebra $L_n$, and likewise the functor $c$ is \emph{almost} the map $q$. To see this, consider the following naive method for assigning an $E\Lambda$-action $\alpha^C$ to $C$:
+%\begin{eq*} \alpha^C( \, g \, ; \, c(f_1), ..., c(f_m) \, ) \quad := \quad c \big( \, \alpha^{\ELnn}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) \end{eq*}
+%Any action on $C$ that made $c$ into a map of $E\Lambda$-algebras would have to satify this condition, of course. But because $c$ is surjective, every collection of morphisms in $C$ can be written as $c(f_1), ..., c(f_m)$, and this forces $\alpha^C$ to take a unique value everywhere, assuming it is well-defined. Then, since the the cokernel of $\delta$ in $\mathrm{MonCat}$ would be an $E\Lambda$-algebra map, we could conclude that it was also the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$ too. However, `assuming it is well-defined' is where the problems lie. In particular, since $c$ is not injective on objects we can find $w_1, ..., w_m$ and $w'_1, ..., w'_m$ in $\ELnn$ for which $c(w_i) = c(w'_i)$, and so $\alpha^C$ would only be well-defined if
+%\begin{eq*} c \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big) \quad = \quad c \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'_1}, ..., \mathrm{id}_{w'_m} \, ) \, \big) \end{eq*}
+%which we have no reason to believe is true. 
+%
+%To fix this issue, what we need is a way of describing the map $q$ as a colimit of a slightly different diagram in $E\Lambda$-algebras, one whose colimit in $\mathrm{MonCat}$ will have all of the same properties that $c$ does but will also satisfy the condition above. To that end, consider the following $E\Lambda$-algebra maps:
+% 
+%
+%
+%While this proof may seem rather trivial, notice that it does rely on the fact that the $+$ here represents the coproduct in the category of $E\Lambda$-algebras. There is no reason to expect that the coequalizer of the underlying monoidal functors of these maps would also be equal the cokernel of the underlying monoidal functor of $\delta$. Thus these new maps will give rise to a new map which is distinct from the cokernel functor $c$, yet possesses many of the same properties.
 
 \begin{Defi} \label{C'def} Denote by $\tilde{c}: \ELnn \to \tilde{C}$ the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in the category $\mathrm{MonCat}$. \end{Defi}
 
