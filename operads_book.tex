@@ -6200,6 +6200,18 @@ The monoidal category we have constructed here is nearly the underlying monoidal
 %
 %While this proof may seem rather trivial, notice that it does rely on the fact that the $+$ here represents the coproduct in the category of $E\Lambda$-algebras. There is no reason to expect that the coequalizer of the underlying monoidal functors of these maps would also be equal the cokernel of the underlying monoidal functor of $\delta$. Thus these new maps will give rise to a new map which is distinct from the cokernel functor $c$, yet possesses many of the same properties.
 
+\begin{rem}
+I think the following is true, although don't have time to go through it right now.
+\begin{enumerate}
+\item Look at Lack's \emph{Codescent and coherence} paper, section 4.1. This outlines how the free algebra functor for any braided operad preserves whatever colimits are preserved by $A \mapsto A^n$ for finite $n$. I think any $\ML$ will work here.
+\item These functors all preserve reflexive coequalizers. I want to actually find this explicitly written down though.
+\item Any monadic functor creates colimits that it preserves, so both $\ML\moncat \to \cat$ and $\moncat \to \cat$ create reflexive coequalizers, so $\ML\moncat \to \moncat$ does too.
+\item I think this does everything through 4.4.1 (p102).
+
+\end{enumerate}
+
+\end{rem}
+
 \begin{Defi} \label{C'def} Denote by $\tilde{c}: \ELnn \to \tilde{C}$ the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in the category $\mathrm{MonCat}$. \end{Defi}
 
 \begin{lem} \label{C'obj} The object monoid of $\tilde{C}$ is
