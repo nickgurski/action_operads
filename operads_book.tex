@@ -57,6 +57,7 @@
 %\usepackage{natbib}
 \renewcommand{\SS}{\mathcal{S}}
 \newcommand{\colim}{\textrm{colim }}
+\newcommand{\und}[1]{\ensuremath{\underline{#1}}}
 \newcommand{\f}[1]{\ensuremath{\mathcal{#1}}}
 \newcommand{\g}[1]{\ensuremath{\mathbb{#1}}}
 \newcommand{\Cat}{\ensuremath{\textrm{Cat}}}
@@ -3883,7 +3884,7 @@ Therefore the map $[ \, \_ \,]$ just sends each object to its identity morphism,
 by \cref{Gnobj}.
 \end{proof}
 
-\cref{Gnconcomp} is not the only way that the behaviour of $\ELn$ is contingent on whether $G$ is crossed. Consider the following common property of monoidal categories:
+\cref{Gnconcomp} is not the only way that the behaviour of $\ELn$ is contingent on whether $\Lambda$ is crossed. Consider the following common property of monoidal categories:
 
 \begin{Defi} A monoidal category $X$ is said to be \emph{spacial} if all of its identity morphisms commute with the endomorphisms of the unit object: 
 \begin{eq*} f \otimes \mathrm{id}_x \, = \, \mathrm{id}_x \otimes f, \quad \quad \quad x \in \mathrm{Ob}(X), f \in X(I,I) \end{eq*}
@@ -3989,6 +3990,36 @@ But by \cref{Gnmapsaction}, each element of $\mathrm{Mor}(\ELn)$ can be expresse
 and hence it is a monoid isomorphism, as required.
 \end{proof}
 
+
+\section{Coequalizers of \texorpdfstring{$\ML$}{\Lambda}-monoidal categories}
+In this section, we will compare the coequalizer of a diagram of $\ML$-monoidal categories as it is computed in $\ML\moncat$, in $\moncat$, and in $\cat$. Our goal will be to show that the forgetful functors 
+\[
+\ML\moncat \to \moncat \to \cat
+\]
+all create reflexive coequalizers. This has the effect of allowing us to compute coequalizers in $\ML\moncat$ by converting them into reflexive coequalizers and then computing them in either $\moncat$ or $\cat$. This technique will be necessary in our construction of the free $\ML$-monoidal category on $n$ invertible objects. The strategy here follows that in Section 4.1 of \cite{lack-cod}.
+
+\begin{lem}\label{P_pres_refl}
+Let $P$ be a $\ML$-operad in $\cat$, with $\und{P}$ its associated 2-monad. Then $\und{P}$ preserves reflexive coequalizers.
+
+\end{lem}
+\begin{proof}
+We have a functor $P:B\ML^{op} \to \cat$ which sends $n$ to $P(n)$ and uses the right action $P(n) \times \ML(n) \to P(n)$ to define the functor on morphisms. Given a category $X \in \cat$, there is also a functor $R_X:B\ML \to \cat$ sending $n$ to $X^n$ and $g \in \Lambda(n)$ to the permutation given by $\pi(n)$. The weighted colimit $P \cdot R_X$ is then easily seen to be the free algebra $\und{P}(X)$. The functor $P \cdot -$ is cocontinuous, so the free $\und{P}$-algebra functor $\cat \to \cat$ will preserve whatever colimits the functor $X \mapsto R_X$ preserves. Colimits in the functor category $[B\ML, \cat]$ are computed pointwise, and the functors $X \mapsto X^n$ for $n \in \mathbb{N}$ preserve reflexive coequalizers, so $X \mapsto R_X$ does also and therefore the free $\und{P}$-algebra functor preserves reflexive coequalizers.
+\end{proof}
+
+\begin{lem}\label{creation_triangle}
+Let $A,B,C$ be cocomplete categories, and let $A \stackrel{F}{\to} B \stackrel{G}{\to} C$ be functors such that $G$ is conservative, and both $G$ preserves and $GF$ creates colimits of shape $\mathbb{D}$. Then $F$ creates colimits of shape $\mathbb{D}$.
+\end{lem}
+\begin{proof}
+Let $d:\mathbb{D} \to A$ be a diagram with colimit $\colim d$. Since $GF$ preserves colimits of shape $\mathbb{D}$, the natural map $\colim GFd \to GF \colim d$ is an isomorphism; since $G$ preserves colimits of shape $\mathbb{D}$, the natural map $\colim GFd \to G\colim Fd$ is also an isomorphism. By the assumption that $G$ is conservative, the natural map $\colim Fd \to F\colim d$ is an isomorphism so $F$ preserves colimits of shape $\mathbb{D}$.
+
+Now assume $a \in A$ is the vertex of a cocone over $d$ such that $Fa$ is the colimit of $Fd$. Since $G$ preserves colimits of shape $\mathbb{D}$, $GFa$ is the colimit of $GFd$. But $GF$ creates colimits of shape $\mathbb{D}$, so $a$ was the colimit of $d$ in $A$. Thus $F$ creates colimits of shape $\mathbb{D}$.
+\end{proof}
+
+For an monad $T$ on a category $C$, the forgetful functor $T\Alg \to C$ creates any colimit that $T$ preserves. This fact and the previous lemmas prove the following proposition using the operad $P = E\ML$.
+\begin{prop}\label{refcoeq_calcs}
+For any action operad $\ML$, the forgetful functor $\ML\moncat \to \cat$ is conservative and creates reflexive coequalizers. Consequently, $\ML\moncat \to \moncat$ is also conservative and creates reflexive coequalizers.
+
+\end{prop}
 
 
 
@@ -6200,17 +6231,6 @@ The monoidal category we have constructed here is nearly the underlying monoidal
 %
 %While this proof may seem rather trivial, notice that it does rely on the fact that the $+$ here represents the coproduct in the category of $E\Lambda$-algebras. There is no reason to expect that the coequalizer of the underlying monoidal functors of these maps would also be equal the cokernel of the underlying monoidal functor of $\delta$. Thus these new maps will give rise to a new map which is distinct from the cokernel functor $c$, yet possesses many of the same properties.
 
-\begin{rem}
-I think the following is true, although don't have time to go through it right now.
-\begin{enumerate}
-\item Look at Lack's \emph{Codescent and coherence} paper, section 4.1. This outlines how the free algebra functor for any braided operad preserves whatever colimits are preserved by $A \mapsto A^n$ for finite $n$. I think any $\ML$ will work here.
-\item These functors all preserve reflexive coequalizers. I want to actually find this explicitly written down though.
-\item Any monadic functor creates colimits that it preserves, so both $\ML\moncat \to \cat$ and $\moncat \to \cat$ create reflexive coequalizers, so $\ML\moncat \to \moncat$ does too.
-\item I think this does everything through 4.4.1 (p102).
-
-\end{enumerate}
-
-\end{rem}
 
 \begin{Defi} \label{C'def} Denote by $\tilde{c}: \ELnn \to \tilde{C}$ the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in the category $\mathrm{MonCat}$. \end{Defi}
 
