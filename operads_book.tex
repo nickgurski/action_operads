@@ -6200,6 +6200,11 @@ for $1 \le i \le n$.
 
 \begin{cor}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{cor}
+
+By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\Lambda\mbox{-}\mathrm{Alg}_S$, so QQQ REF coequalizer stuff I added in Ch3 QQQ we have the further corollary below.
+
+\begin{cor}\label{q_other_coeq2} The functor $q$  is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $\moncat$ or in $\cat$.
+\end{cor}
 %\begin{proof}
 %Let $\psi: \ELnn \to X$ be an map of $E\Lambda$-algebras. Then
 %\begin{eq*} \begin{array}{rcl}
@@ -6230,29 +6235,29 @@ for $1 \le i \le n$.
 %The same as the proof of \cref{coeqsurj}, but with \cref{Obadjmon} in place of \cref{Obadj}, and no reference to $k(Y)$ being a sub-$E\Lambda$-algebra.
 %\end{proof}
 
-Further, these new propositions prove a surjectivity statement just like \cref{qsurj}. 
-
-\begin{Defi}\label{Cdef} Let the strict monoidal functor $c: \ELnn \to C$  be the cokernel of the underlying monoidal functor of $\delta$ in $\mathrm{MonCat}_S$. %This map definitely exists because $\mathrm{MonCat}$ is cocomplete, and like with $q$ we can show that its target has a group of objects.
-\end{Defi}
-
-\begin{prop}\label{Cobj} The object monoid of $C$ is $\mathbb{Z}^{*n}$, and the restriction of $c$ to objects $\mathrm{Ob}(c): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(C)$ is the monoid homomorphism defined on generators as
-\begin{eq*} \begin{array}{rlrlll}
-			\mathrm{Ob}(c) & : & \mathbb{N}^{\ast 2n} & \to & \mathbb{Z}^{\ast n} \\
-			& : & z_i & \mapsto & z_i  \\
-			& : & z_{n+i} & \mapsto & z_i^*		
-		\end{array}
-\end{eq*}
-\end{prop}
-\begin{proof}
-The same as the proof of \cref{Qobj}, but with $c: \ELnn \to C$ in place of $q: \ELnn \to Q$.% and \cref{coeqsurj} in place of \cref{Obadj}.
-\end{proof}
-
-\cref{coeqsurj,Cobj} then immediately combine to give:
-
-\begin{cor}\label{csurj} The cokernel map $c: \ELnn \to C$ is surjective.
-\end{cor}
-
-The monoidal category we have constructed here is nearly the underlying monoidal category $L_n \cong Q$, but fails to have well-defined group actions. We remedy this now.
+%Further, these new propositions prove a surjectivity statement just like \cref{qsurj}. 
+%
+%\begin{Defi}\label{Cdef} Let the strict monoidal functor $c: \ELnn \to C$  be the cokernel of the underlying monoidal functor of $\delta$ in $\mathrm{MonCat}_S$. %This map definitely exists because $\mathrm{MonCat}$ is cocomplete, and like with $q$ we can show that its target has a group of objects.
+%\end{Defi}
+%
+%\begin{prop}\label{Cobj} The object monoid of $C$ is $\mathbb{Z}^{*n}$, and the restriction of $c$ to objects $\mathrm{Ob}(c): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(C)$ is the monoid homomorphism defined on generators as
+%\begin{eq*} \begin{array}{rlrlll}
+%			\mathrm{Ob}(c) & : & \mathbb{N}^{\ast 2n} & \to & \mathbb{Z}^{\ast n} \\
+%			& : & z_i & \mapsto & z_i  \\
+%			& : & z_{n+i} & \mapsto & z_i^*		
+%		\end{array}
+%\end{eq*}
+%\end{prop}
+%\begin{proof}
+%The same as the proof of \cref{Qobj}, but with $c: \ELnn \to C$ in place of $q: \ELnn \to Q$.% and \cref{coeqsurj} in place of \cref{Obadj}.
+%\end{proof}
+%
+%\cref{coeqsurj,Cobj} then immediately combine to give:
+%
+%\begin{cor}\label{csurj} The cokernel map $c: \ELnn \to C$ is surjective.
+%\end{cor}
+%
+%The monoidal category we have constructed here is nearly the underlying monoidal category $L_n \cong Q$, but fails to have well-defined group actions. We remedy this now.
 
 %This statement is actually pretty unusual. In \cref{qsurj} it made sense that $q$ would be surjective, but that was because its source and target were special. $\ELnn$ is the free $E\Lambda$-algebra on $2n$ objects, and $L_n$ is the free $E\Lambda$-algebra on $n$ objects and their $n$ inverses, and so intuitively the map identifying those sets' generators would tell us everything we need to know about the algebra structure of $L_n$. And since by freeness we expect algebra maps to be all there really is to $L_n$, it was a safe bet that $q$ was going to be surjective.
 %
@@ -6269,44 +6274,44 @@ The monoidal category we have constructed here is nearly the underlying monoidal
 %While this proof may seem rather trivial, notice that it does rely on the fact that the $+$ here represents the coproduct in the category of $E\Lambda$-algebras. There is no reason to expect that the coequalizer of the underlying monoidal functors of these maps would also be equal the cokernel of the underlying monoidal functor of $\delta$. Thus these new maps will give rise to a new map which is distinct from the cokernel functor $c$, yet possesses many of the same properties.
 
 
-\begin{Defi} \label{C'def} Denote by $\tilde{c}: \ELnn \to \tilde{C}$ the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in the category $\mathrm{MonCat}$. \end{Defi}
+%\begin{Defi} \label{C'def} Denote by $\tilde{c}: \ELnn \to \tilde{C}$ the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in the category $\mathrm{MonCat}$. \end{Defi}
 
-\begin{lem} \label{C'obj} The object monoid of $\tilde{C}$ is
-\begin{eq*} \mathrm{Ob}(\tilde{C}) \quad = \quad \mathrm{Ob}(C) \quad = \quad \mathbb{Z}^{*n} \end{eq*}
-and the restriction of $\tilde{c}$ to objects $\mathrm{Ob}(\tilde{c}): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(\tilde{C})$ is just the monoid homomorphism $\mathrm{Ob}(c): \mathbb{N}^{*2n} \to \mathbb{Z}^{*n}$ from \cref{Cobj}.
-\end{lem}
-\begin{proof}
-Consider the monoid homomorphisms $\mathrm{Ob}(\tilde{\delta}): \mathbb{N}^{\ast 4n} \to \mathbb{N}^{\ast 2n}$ and $\mathrm{Ob}(\tilde{I}): \mathbb{N}^{\ast 4n} \to \mathbb{N}^{\ast 2n}$. These are fully determined by the descriptions of the corresponding algebra maps in \cref{coprodmapdef}, and as such they are obviously just
-\begin{eq*} \begin{array}{rclcrcl}
-			\mathrm{Ob}(\mathrm{id}_{\ELnn}+\delta) & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+\mathrm{Ob}(\delta) & \quad \quad \quad \quad & \mathrm{Ob}(\mathrm{id}_{\ELnn}+I) & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+\mathrm{Ob}(I) \\
-			& & & & & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+I
-		\end{array}
-\end{eq*}
-where the $+$ on the righthand side of the equations means the coproduct in the category of monoids. Therefore
-\begin{eq*} \mathrm{coeq}\big( \, \mathrm{Ob}(\mathrm{id}_{\ELnn}+\delta), \, \mathrm{Ob}(\mathrm{id}_{\ELnn}+I) \, ) \quad = \quad \mathrm{coeq}\big( \, \mathrm{Ob}(\delta), I \, \big) \quad = \quad \mathrm{Ob}(c) \end{eq*}
-and thus $\mathrm{Ob}(\tilde{C}) = \mathrm{Ob}(C)$.
-\end{proof}
+%\begin{lem} \label{C'obj} The object monoid of $\tilde{C}$ is
+%\begin{eq*} \mathrm{Ob}(\tilde{C}) \quad = \quad \mathrm{Ob}(C) \quad = \quad \mathbb{Z}^{*n} \end{eq*}
+%and the restriction of $\tilde{c}$ to objects $\mathrm{Ob}(\tilde{c}): \mathrm{Ob}(\ELnn) \to \mathrm{Ob}(\tilde{C})$ is just the monoid homomorphism $\mathrm{Ob}(c): \mathbb{N}^{*2n} \to \mathbb{Z}^{*n}$ from \cref{Cobj}.
+%\end{lem}
+%\begin{proof}
+%Consider the monoid homomorphisms $\mathrm{Ob}(\tilde{\delta}): \mathbb{N}^{\ast 4n} \to \mathbb{N}^{\ast 2n}$ and $\mathrm{Ob}(\tilde{I}): \mathbb{N}^{\ast 4n} \to \mathbb{N}^{\ast 2n}$. These are fully determined by the descriptions of the corresponding algebra maps in \cref{coprodmapdef}, and as such they are obviously just
+%\begin{eq*} \begin{array}{rclcrcl}
+%			\mathrm{Ob}(\mathrm{id}_{\ELnn}+\delta) & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+\mathrm{Ob}(\delta) & \quad \quad \quad \quad & \mathrm{Ob}(\mathrm{id}_{\ELnn}+I) & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+\mathrm{Ob}(I) \\
+%			& & & & & = & \mathrm{id}_{\mathbb{N}^{\ast 2n}}+I
+%		\end{array}
+%\end{eq*}
+%where the $+$ on the righthand side of the equations means the coproduct in the category of monoids. Therefore
+%\begin{eq*} \mathrm{coeq}\big( \, \mathrm{Ob}(\mathrm{id}_{\ELnn}+\delta), \, \mathrm{Ob}(\mathrm{id}_{\ELnn}+I) \, ) \quad = \quad \mathrm{coeq}\big( \, \mathrm{Ob}(\delta), I \, \big) \quad = \quad \mathrm{Ob}(c) \end{eq*}
+%and thus $\mathrm{Ob}(\tilde{C}) = \mathrm{Ob}(C)$.
+%\end{proof}
+%
+%\begin{cor} \label{c'surj} The coequalizer map $\tilde{c}: \ELnn \to \tilde{C}$ is surjective.
+%\end{cor}
+%\begin{proof}
+%\cref{C'obj} says that the monoid $\tilde{C}$ is a group, so we may apply \cref{coeqsurjmon}.
+%\end{proof}
+%
+%So why bother with any of this? What features do $\tilde{\delta}$ and $\tilde{I}$ have that will make an action possible on $\tilde{C}$ when it wasn't on $C$? The answer is that unlike $\delta$ and $I$, these new maps form a \emph{reflexive pair} --- a parallel pair of functors which share a right-inverse.
 
-\begin{cor} \label{c'surj} The coequalizer map $\tilde{c}: \ELnn \to \tilde{C}$ is surjective.
-\end{cor}
-\begin{proof}
-\cref{C'obj} says that the monoid $\tilde{C}$ is a group, so we may apply \cref{coeqsurjmon}.
-\end{proof}
-
-So why bother with any of this? What features do $\tilde{\delta}$ and $\tilde{I}$ have that will make an action possible on $\tilde{C}$ when it wasn't on $C$? The answer is that unlike $\delta$ and $I$, these new maps form a \emph{reflexive pair} --- a parallel pair of functors which share a right-inverse.
-
-\begin{lem} \label{sect} Let $\iota: \ELnn \to \mathbb{G}_{4n}$ be the inclusion of algebras defined on generators by $z_i \mapsto z_i$. Then $\iota$ is a right-inverse of both $\tilde{\delta}$ and $\tilde{I}$. \end{lem} 
-\begin{proof}
-For $1 \le i \le 2n$,
-\begin{eq*}\begin{array}{rcccccccl}
-			\tilde{\delta} \iota(z_i) & = & \tilde{\delta}(z_i) & = & z_i & = & \tilde{I}(z_i) & = & \tilde{I} \iota(z_i) \\
-			\\
-			\implies & & \tilde{\delta} \circ \iota & = & \mathrm{id}_{\ELnn} & = & \tilde{I} \circ \iota & & 
-		\end{array}
-\end{eq*}
-\end{proof} 
-
-In other words, $\tilde{c}$ is a \emph{reflexive coequalizer} in the category $\mathrm{MonCat}$. This is the key difference which will eventually let us prove that $\tilde{c}$ respects action morphisms in the way that we need it to. First though, we will need a few intermediate results.
+%\begin{lem} \label{sect} Let $\iota: \ELnn \to \mathbb{G}_{4n}$ be the inclusion of algebras defined on generators by $z_i \mapsto z_i$. Then $\iota$ is a right-inverse of both $\tilde{\delta}$ and $\tilde{I}$. \end{lem} 
+%\begin{proof}
+%For $1 \le i \le 2n$,
+%\begin{eq*}\begin{array}{rcccccccl}
+%			\tilde{\delta} \iota(z_i) & = & \tilde{\delta}(z_i) & = & z_i & = & \tilde{I}(z_i) & = & \tilde{I} \iota(z_i) \\
+%			\\
+%			\implies & & \tilde{\delta} \circ \iota & = & \mathrm{id}_{\ELnn} & = & \tilde{I} \circ \iota & & 
+%		\end{array}
+%\end{eq*}
+%\end{proof} 
+%
+%In other words, $\tilde{c}$ is a \emph{reflexive coequalizer} in the category $\mathrm{MonCat}$. This is the key difference which will eventually let us prove that $\tilde{c}$ respects action morphisms in the way that we need it to. First though, we will need a few intermediate results.
 
 \begin{Defi}\label{decompdef} If $w$ is an element of $\mathbb{N}^{\ast m}$, then we can use the definition of the free product of groups to decompose it uniquely as a tensor product of the $m$ generators $z_1, ..., z_m$. We'll denote this by
 \begin{eq*} w \quad =: \quad \bigotimes_{i=1}^{|w|} \, d(w, i), \quad \quad \quad d(w, i) \in \{ z_1, ..., z_m \} \end{eq*}
