@@ -6201,7 +6201,7 @@ for $1 \le i \le n$.
 \begin{cor}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{cor}
 
-By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\Lambda\mbox{-}\mathrm{Alg}_S$, so QQQ REF coequalizer stuff I added in Ch3 QQQ we have the further corollary below.
+By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\Lambda\mbox{-}\mathrm{Alg}_S$, so by \cref{refcoeq_calcs} we have the further corollary below.
 
 \begin{cor}\label{q_other_coeq2} The functor $q$  is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $\moncat$ or in $\cat$.
 \end{cor}
@@ -6313,203 +6313,203 @@ By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\La
 %
 %In other words, $\tilde{c}$ is a \emph{reflexive coequalizer} in the category $\mathrm{MonCat}$. This is the key difference which will eventually let us prove that $\tilde{c}$ respects action morphisms in the way that we need it to. First though, we will need a few intermediate results.
 
-\begin{Defi}\label{decompdef} If $w$ is an element of $\mathbb{N}^{\ast m}$, then we can use the definition of the free product of groups to decompose it uniquely as a tensor product of the $m$ generators $z_1, ..., z_m$. We'll denote this by
-\begin{eq*} w \quad =: \quad \bigotimes_{i=1}^{|w|} \, d(w, i), \quad \quad \quad d(w, i) \in \{ z_1, ..., z_m \} \end{eq*}
-If instead $w$ is an element of $\mathbb{Z}^{\ast m}$, then we can use the definition of the free product of groups to decompose $x$ uniquely as a tensor product, but this time one made up of the $m$ generators $z_1, ..., z_m$ and their inverses $z_1^*, ..., z_m^*$. As before we'll denote this by
-\begin{eq*} w \quad = \quad \bigotimes_{i=1}^{|w|} \, d(w, i) \end{eq*}
-where $d(w, i) \in \{ z_1, ..., z_m, z_1^*, ..., z_m^* \}$, and also for any $1 \le i < |w|$ we will always have $d(w, i+1) \neq d(w, i)^*$. By analogy with \cref{lengthdef}, we will call the upper bound of this tensor product the \emph{length} of the element $w$, and denote it by $|w|$, but be aware that this number is the one that comes from the \emph{monoid} homomorphism
-\begin{eq*} F\big( \, \{ z_1, ..., z_m, z_1^*, ..., z_m^* \} \, \big) \to \mathbb{N} \end{eq*}
-that sends each generator to 1, and not the perhaps more obvious \emph{group} homomorphism
-\begin{eq*} F\big( \, \{ z_1, ..., z_m \} \, \big) \to \mathbb{Z} \end{eq*}
-\end{Defi}
-
-\begin{prop}\label{c'alg1} Let $w$ be an object of $\ELnn$. Then there exist objects $w^{(1)}, ..., w^{(k)}$ in $\ELnn$ and $u^{(1)}, ..., u^{(k)}$ in $\mathbb{G}_{4n}$, for some value of $k \in \mathbb{N}$, such that
-\begin{eq*} w^{(1)} \,= \, w, \quad \quad u^{(k)} \, = \, \iota(w^{(k)}), \quad \quad \quad \tilde{I}(u^{(i-1)}) \quad = \quad w^{(i)} \quad = \quad \tilde{\delta}(u^{(i)}) \end{eq*}
-for $1 \le i \le k$, and for any object $u$ of $\mathbb{G}_{4n}$,
-\begin{eq*} \tilde{\delta}(u) \, = \, w^{(k)} \quad \iff \quad u \, = \, u^{(k)} \end{eq*}
-\end{prop}
-\begin{proof}
-From \cref{lengthdef,coprodmapdef}, we know that for any generator $z_i$ of $\mathbb{G}_{4n}$,
-\begin{eq*}\begin{array}{rllll}
-				 | \tilde{\delta}(z_i) |  & = & \left. \begin{cases}
-								\quad 1 & \text{if} \quad 1 \le i \le 2n \\
-								\quad 2 & \text{if} \quad 2n+1 \le i \le 4n
-							\end{cases} \quad \right \rbrace & \ge 1 \\
-				& & \\
-				| \tilde{I}(z_i) |  & = & \left. \begin{cases}
-								\quad 1 & \text{if} \quad 1 \le i \le 2n \\
-								\quad 0 & \text{if} \quad 2n+1 \le i \le 4n
-							\end{cases} \quad \right \rbrace & \le 1 
-		\end{array}
-\end{eq*}
-Also these lengths are additive across tensor products, since $| \, \_ \, |$ is a monoid homomorphism $\ELnn \to \mathbb{N}$. Thus for any object $u$ in $\mathbb{G}_{4n}$, we can conclude that
-\begin{eq*}\begin{array}{rllllllll}
-			| \tilde{\delta}(u) | & = & | \, \tilde{\delta}\big( \, \mathlarger{\bigotimes_{i=1}^{|u|} d(u, i)} \, \big) \, | & = & \mathlarger{\sum_{i=1}^{|u|} | \, \tilde{\delta} \big( \, d(u, i) \, \big) \, |} & \ge & \mathlarger{\sum_{i=1}^{|u|} 1} & = & |u| \\[\bigskipamount]
-			| \tilde{I}(u) | & = & | \, \tilde{I}\big( \, \mathlarger{\bigotimes_{i=1}^{|u|} d(u, i)} \, \big) \, | & = & \mathlarger{\sum_{i=1}^{|u|} | \, \tilde{I} \big( \, d(u, i) \, \big) \, |} & \le & \mathlarger{\sum_{i=1}^{|u|} 1} & = & |u|
-		\end{array}
-\end{eq*}
-Also, since the only generators that have $| \tilde{\delta}(z_i) | = | \tilde{I}(z_i) | = 1$ are those from the $\ELnn$ subalgebra associated with $\iota$, the inequalities above becomes equalities if and only if $u$ is in the image of $\iota$. That is,
-\begin{eq*} | \tilde{I}(u) | \, = \, |u| \, = \, |\tilde{\delta}(u)|  \quad \iff \quad \exists \, v \in \mathbb{N}^{\ast 2n} \, : \, u \, = \, \iota(v) \end{eq*}
-
-Next, consider the set
-\begin{eq*} \tilde{\delta}^{-1}(w) \quad := \quad \{ \, u \in \mathbb{N}^{\ast 4n} : \tilde{\delta}(u) = w \, \} \end{eq*}
-of all objects in $\mathbb{G}_{4n}$ which $\tilde{\delta}$ sends to $w$. This set is always nonempty, since by \cref{sect} $\iota$ is a right-inverse of $\delta$:
-\begin{eq*} \tilde{\delta} \iota(w) \, = \, w \quad \implies \quad \iota(w) \in \tilde{\delta}^{-1}(w) \end{eq*}
-Moreover, $\iota(w)$ is the only element of $\tilde{\delta}^{-1}(w)$ which can be expessed as $\iota(v)$ for some object $v$ in $\ELnn$, because
-\begin{eq*} \tilde{\delta} \big( \, \iota(v) \, \big) \, = \, w \quad \implies \quad v \, = \, w \end{eq*}
-
-With all of this now in place, we can begin constructing the sequences $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$. Start by setting $w^{(1)} = w$ and $i=1$, then apply the following algorithm:
-\begin{enumerate}
-\item If $\tilde{\delta}^{-1}(w^{(i)})$ is just the set $\{ \iota(w^{(i)}) \}$, choose $u^{(i)} = \iota(w^{(i)})$, set $k$ to be the current value of $i$, and terminate.
-\item Otherwise, choose $u^{(i)}$ to be any element of $\tilde{\delta}^{-1}(w^{(i)})$ other than $\iota(w^{(i)})$.
-\item Set $w^{(i+1)} = \tilde{I}(u^{(i)})$.
-\item Increase the value of $i$ by 1, then return to step 1.
-\end{enumerate}
-By design, none of the $u^{(i)}$ produced by this process can be expressed as $u^{(i)} = \iota(v)$ for some $v$ in $\ELnn$, with the possible exception of $u_k$ if the algorithm terminates. This is because $\iota(w^{(i)})$ is the only element of $\delta^{-1}(w^{(i)})$ that can be expressed that way, and the above process will terminate the first time it has to pick $u^{(i)} = \iota(w^{(i)})$, at which point $i$ is set equal to $k$. Thus given what we found earlier in the proof, for any $i \neq k$ we must have the following \emph{strict} inequalities:
-\begin{eq*} |w^{(i+1)}| \quad = \quad | \tilde{I}(u^{(i)}) | \quad < \quad |u^{(i)}| \quad < \quad |\tilde{\delta}(u^{(i)})| \quad = \quad |w^{(i)}| \end{eq*}
-That is, the $w^{(i)}$ produced by this algorithm form a sequence with strictly decreasing length. However, it is impossible to have a infinite sequence of strictly decreasing natural numbers, and hence we can be sure that this process will terminate at some finite $k$. 
-
-But in order for the algorithm to terminate, it must be the case that 
-\begin{eq*} \tilde{\delta}^{-1}(w^{(k)}) \quad = \quad \{ \iota(w^{(k)}) \} \end{eq*}
-and hence
-\begin{eq*} \tilde{\delta}(u) \, = \, w^{(k)} \quad \iff \quad u \, = \, \iota(w^{(k)}) \, = \, u^{(k)} \end{eq*}
-Thus the sequences $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$ satisfy all of the conditions in the statement of the lemma.
-\end{proof}
-
-The intuition behind \cref{c'alg1} is that we are successively removing parts of the object $w$, without changing its image under $\tilde{c}$. The map $\tilde{\delta}$ sends $z_{2n+i} \mapsto z_i \otimes z_{n+i}$ and $z_{3n+i} \mapsto z_{n+1} \otimes z_i$ while $\tilde{I}$ sends these all to $I$, and so for any $u$ in $\mathbb{G}_{4n}$ the object $\tilde{I}(u)$ will look like $\tilde{\delta}(u)$ except missing some number of $z_i \otimes z_{n+i}$ or $z_{n+1} \otimes z_i$ substrings. But since $\tilde{c}$ sends $z_{n+i} \mapsto z_i^*$, these are exactly the sort of omissions which the coequalizer doesn't care about. If we repeat this process then it will eventually terminate at $u^{(k)} = \iota(w^{(k)})$, so we really have a method for removing \emph{all} of the relevant substrings from objects of $\ELnn$. In other words, $w^{(k)}$ has the smallest possible length while still having $\tilde{c}(w^{(k)}) = \tilde{c}(w)$. In fact, we will show that it is the unique shortest object of $\ELnn$ with this property.
-
-\begin{prop}\label{c'alg2} Let $w$, $w'$ be objects of $\ELnn$ such that $\tilde{c}(w) = \tilde{c}(w')$. If $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$ are the sequences generated from $w$ via \cref{c'alg1}, and likewise $w'^{\, (1)}, ..., w'^{\, (k')}$ and $u'^{\, (1)}, ..., u'^{\, (k')}$ from $w'$, then $w^{(k)} = w'^{\, (k')}$ and $u^{(k)} = u'^{\, (k')}$.
-\end{prop}
-\begin{proof}
-Consider the decomposition of the object $w^{(k)} \in \mathbb{N}^{\ast 2n}$ as in \cref{decompdef}. Assume, for the sake of contradiction, that there exist $1 \le j < |w^{(k)}|$ and $1 \le m \le n$ such that
-\begin{eq*} d(w^{(k)}, j) \, = \, z_m, \quad \quad d(w^{(k)}, j+1) \, = \, z_{n+m} \end{eq*}
-Then we can use $j$ and $m$ to contruct a new element $u \in \mathbb{N}^{\ast 4n}$, defined by
-\begin{eq*} |u| \, = \, |w| - 1, \quad \quad d(u, i) \, = \, \begin{cases}
-									\quad \iota \big( \, d(w^{(k)}, i) \, ) & \text{if} \quad 1 \le i < j \\
-									\quad z_{2n + m} & \text{if} \quad i = j \\
-									\quad \iota \big( \, d(w^{(k)}, i+1) \, ) & \text{if} \quad j < i \le |u|
-								\end{cases}
-\end{eq*}
-This $u$ will then have the property that
-\begin{eq*} \begin{array}{rll}
-			\tilde{\delta}(u) & = & \tilde{\delta} \big( \, \mathlarger{\bigotimes_{i=1}^{|u|} \, d(u, i)} \, \big) \\[\bigskipamount]
-			& = & \mathlarger{\bigotimes_{i=1}^{|u|} \, \tilde{\delta} \big( \, d(u, i) \, \big)} \\[\bigskipamount]
-			& = & \mathlarger{\bigotimes_{i=1}^{j-1} \, \tilde{\delta} \iota \big( \, d(w^{(k)}, i) \, )} \, \otimes \tilde{\delta}(z_{2n + m}) \otimes \, \mathlarger{\bigotimes_{i=j+1}^{|u|} \, \tilde{\delta} \iota \big( \, d(w^{(k)}, i+1) \, \big)} \\[\bigskipamount]
-			& = & \mathlarger{\bigotimes_{i=1}^{j-1} \, d(w^{(k)}, i)} \, \otimes z_m \otimes z_{n + m} \otimes \, \mathlarger{\bigotimes_{i=j+2}^{|u|+1} \, d(w_k, i)} \\[\bigskipamount]
-			& = & \mathlarger{\bigotimes_{i=1}^{j-1} \, d(w^{(k)}, i)} \, \otimes d(w^{(k)}, j) \, \otimes d(w^{(k)}, j+1) \otimes \mathlarger{\bigotimes_{i=j+2}^{|u|+1} \, d(w_k, i)} \\[\bigskipamount]
-			& = & w^{(k)}
-		\end{array}
-\end{eq*}
-But this is impossible, since by \cref{c'alg1} $u^{(k)}$ is the only object of $\mathbb{G}_{4n}$ whose image under $\tilde{\delta}$ is $w^{(k)}$, and this $u$ we have constructed is manifestly not $w^{(k)}$. Thus we can conclude that there are no values of $j$ and $m$ for which
-\begin{eq*} d(w^{(k)}, j) \, = \, z_m, \quad \quad d(w^{(k)}, j+1) \, = \, z_{n+m} \end{eq*}
-An analogous line of reasoning --- using $z_{3n + m}$ rather than $z_{2n + m}$ in the definition of $u$ --- demonstrates that there are also no $j, m$ with
-\begin{eq*} d(w^{(k)}, j) \, = \, z_{n+m}, \quad \quad d(w^{(k)}, j+1) \, = \, z_m \end{eq*}
-As a result, for all $1 \le i < |w^{(k)}|$
-\begin{eq*} \tilde{c} \big( \, d(w^{(k)}, i+1) \, \big) \quad \neq \quad \tilde{c} \big( \, d(w^{(k)}, i) \, \big)^* \end{eq*}
-and this combined with the fact that
-\begin{eq*} \bigotimes_{i=1}^{|w^{(k)}|} \, \tilde{c} \big( \, d(w^{(k)}, i) \, \big) \quad = \quad \tilde{c} \big( \, \bigotimes_{i=1}^{|w^{(k)}|} \, d(w^{(k)}, i) \, \big) \quad = \quad \tilde{c}(w^{(k)}) \end{eq*}
-shows that the unique decomposition of $\tilde{c}(w^{(k)}) \in \mathbb{Z}^{\ast n}$ as in \cref{decompdef} is given by
-\begin{eq*} |\tilde{c}(w^{(k)})| \, = \, |w^{(k)}|, \quad \quad d\big( \, \tilde{c}(w^{(k)}), i \, \big) \quad = \quad \tilde{c} \big( \, d(w^{(k)}, i) \, \big) \end{eq*}
-Next, let $r$ be a function --- not a homomorphism --- defined by
-\begin{eq*} \begin{array}{rllll}
-			r & : & \mathbb{Z}^{\ast n} & \to & \mathbb{N}^{\ast 2n} \\
-			& : & z_i & \mapsto & z_i \\
-			& : & z_i^* & \mapsto & z_{n+i} \\
-			& : & x & \mapsto & \bigotimes_{i=1}^{|x|} \, r \big( \, d(x, i) \, \big)
-		\end{array}
-\end{eq*}
-Then for $1 \le i \le n$,
-\begin{eq*} r\tilde{c}(z_i) \, = \, r(z_i) \, = \, z_i, \quad \quad r\tilde{c}(z_{n+i}) \, = \, r(z_i^*) \, = \, z_{n+i} \end{eq*}
-and so it follows that
-\begin{eq*}	r\tilde{c}(w^{(k)}) \quad = \quad \bigotimes_{i=1}^{|w^{(k)}|} \, r\tilde{c} \big( \, d(w^{(k)}, i) \, \big) \quad = \quad \bigotimes_{i=1}^{|w^{(k)}|} \, d(w^{(k)}, i) \quad = \quad w^{(k)} \end{eq*}
-Finally, notice that the exact same logic as we've used above will work for $w'^{\, (k')}$ as well, so that $r\tilde{c}(w'^{\, (k')}) = w'^{\, (k')}$. 
-
-Therefore, putting everything together tells us that
-\begin{longtable}{RCCCCCC}
-	w_k & = & r\tilde{c}(w^{(k)}) & = & r\tilde{c}\tilde{I}(u^{(k-1)}) & = & r\tilde{c}\tilde{\delta}(u^{(k-1)}) \\
-	& = & r\tilde{c}(w^{(k-1)}) & = & \vdots & = & \vdots  \\
-	& \vdots & & & & & \\
-	& = & r\tilde{c}(w^{(1)}) & & & & \\
-	& = & r\tilde{c}(w) & & & &  \\
-	& = & r\tilde{c}(w') & & & & \\
-	& = & r\tilde{c}(w'^{\, (1)}) & = & r\tilde{c}\tilde{\delta}(u'^{\, (1)}) & = &  r\tilde{c}\tilde{I}(u'^{\, (1)}) \\
-	& = & r\tilde{c}(w'^{\, (2)}) & = & \vdots & = & \vdots  \\
-	& \vdots & \\
-	& = & r\tilde{c}(w'^{\, (k')}) \\
-	& = & w'^{\, (k')}			
-\end{longtable}
-as required.
-\end{proof}
-
-It is this special property --- shared by all $w$, $w'$ for which $\tilde{c}(w) = \tilde{c}(w')$ --- that will now let us prove that the coequalizer $\tilde{c}$ satisfies the condition which we couldn't prove about the cokernel $c$. In other words, with \cref{c'alg1,c'alg2} we can now construct a valid $E\Lambda$-action on the monoidal category $\tilde{C}$.
-
-\begin{prop}\label{c'alg} There is a unique action $\alpha^{\tilde{C}}$ making the category $\tilde{C}$ into $E\Lambda$-algebra and the functor $\tilde{c}: \ELnn \to \tilde{C}$ into a map of $E\Lambda$-algebras.  
-\end{prop}
-\begin{proof}
-We will try to affix an action to $\tilde{C}$ in the same way we thought about doing with the category $C$. In order for the functor $\tilde{c} : \ELnn \to \tilde{C}$ to be an $E\Lambda$-algebra map with respect to some $\alpha^{\tilde{C}}$, it must satisfy
-\begin{eq*} \tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) \quad = \quad \alpha^{\tilde{C}}( \, g \, ; \, \tilde{c}(f_1), ..., \tilde{c}(f_m) \, ) \end{eq*}
-for all morphisms $f_1, ..., f_m$ in $\ELnn$, though given \cref{Gnmapsaction} it will be enough to have
-\begin{eq*} \begin{array}{rll}
-			\tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big) & = & \alpha^{\tilde{C}}( \, g \, ; \, \tilde{c}(\mathrm{id}_{w_1}), ..., \tilde{c}(\mathrm{id}_{w_m}) \, ) \\
-			& = & \alpha^{\tilde{C}}( \, g \, ; \, \mathrm{id}_{\tilde{c}(w_1)}, ..., \mathrm{id}_{\tilde{c}(w_m)} \, )
-		\end{array}
-\end{eq*}
-But since we know from \cref{c'surj} that $\tilde{c}$ is surjective, this condition will actually suffice as a definition for $\alpha^{\tilde{C}}$, provided that we can prove it to be well-defined. 
-
-To that end, let $w_1, ..., w_m$ and $w'_1, ..., w'_m$ be any two sequences of objects in $\ELnn$ that have $\tilde{c}(w_i) = \tilde{c}(w'_i)$ for all $1 \le i \le m$. Then using \cref{c'alg1}, let $w^{(1)}_i, ..., w^{(k)}_i$ and $u^{(1)}_i, ..., u^{(k)}_i$ be the sequences we get from each $w_i$ and $w'^{\, (1)}_i, ..., w'^{\, (k')}_i$, $u'^{\, (1)}_i, ..., u'^{\, (k')}_i$ those we get from $w'_i$. It follows that
-\begin{eq*} \begin{array}{rll}
-			\tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(i)}_1}, ..., \mathrm{id}_{w^{(i)}_m} \, ) \, \big) & = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{\tilde{\delta}(u^{(i)}_1)}, ..., \mathrm{id}_{\tilde{\delta}(u^{(i)}_m)} \, ) \, \big)\\
-			& = & \tilde{c}\tilde{\delta}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{u^{(i)}_1}, ..., \mathrm{id}_{u^{(i)}_m} \, ) \, \big)\\
-			& = & \tilde{c}\tilde{I}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{u^{(i)}_1}, ..., \mathrm{id}_{u^{(i)}_m} \, ) \, \big)\\
-			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{\tilde{I}(u^{(i)}_1)}, ..., \mathrm{id}_{\tilde{I}(u^{(i)}_m)} \, ) \, \big)\\
-			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(i+1)}_1}, ..., \mathrm{id}_{w^{(i+1)}_m} \, ) \, \big)
-		\end{array} 
-\end{eq*}
-and likewise for the $w'$. Thus from \cref{c'alg2} we can conclude that
-\begin{eq*} \begin{array}{rll}
-			\tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big)& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(1)}_1}, ..., \mathrm{id}_{w^{(1)}_m} \, ) \, \big)\\
-			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(2)}_1}, ..., \mathrm{id}_{w^{(2)}_m} \, )\, \big) \\
-			& \vdots & \\
-			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(k)}_1}, ..., \mathrm{id}_{w^{(k)}_m} \, ) \, \big)\\
-			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'^{\, (k')}_1}, ..., \mathrm{id}_{w'^{(\, k')}_m} \, ) \, \big)\\
-			& \vdots & \\
-			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'_1}, ..., \mathrm{id}_{w'_m} \, ) \, \big)
-		\end{array} 
-\end{eq*}
-Thus the value of $\alpha^{\tilde{C}}(g; \mathrm{id}_{\tilde{c}(w_1)}, ..., \mathrm{id}_{\tilde{c}(w_m)})$ we gave earlier does not depend on our particular choice of $w_i$. Therefore $\alpha^{\tilde{C}}$ is indeed a well-defined $E\Lambda$-action on $\tilde{C}$, and the coequalizer $\tilde{c}$ from $\mathrm{MonCat}$ is a map of $E\Lambda$-algebras with respect to $\alpha^{\tilde{C}}$.
-\end{proof}
-
-\section{Extracting %$\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$ from $\ELnn$
-}
-
-We are now finally ready to address problem 1 from the end of the previous chapter: how can we deal with the fact that our adjunction $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}} \dashv C$ involves monoidal categories rather than full $E\Lambda$-algebras? It turns out that this is all we really needed, as despite us originally conceiving of $L_n$ as a colimit in $E\Lambda\mbox{-}\mathrm{Alg}_S$ it can equally be viewed as a slightly more complicated colimit in $\mathrm{MonCat}$.
-
-\begin{prop} \label{c'=q} The coequalizer functor $\tilde{c}: \ELnn \to \tilde{C}$ defined in \cref{C'def} is isomorphic as a map of $E\Lambda$-algebras to $q: \ELnn \to L_n$, the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
-\end{prop}
-\begin{proof}
-First, consider what we know of the functor $\tilde{c}$. By definition it has the property for any $1 \le i \le 2n$
-\begin{eq*} \tilde{c}\delta(z_i) \quad = \quad \tilde{c} \tilde{\delta}(z_{2n+i}) \quad = \quad \tilde{c} \tilde{I}(z_{2n+i}) \quad = \quad \tilde{c}(I) \quad = \quad I \end{eq*}
-so that $\tilde{c} \circ \delta$ is the constant functor on the unit object $I$. Moreover, given what we saw in \cref{c'alg} we know that $\tilde{c}$ is map of $E\Lambda$-algebras which has this property. But the cokernel map $q$ is universal among maps like these, and so it follows that there must exist a unique map of $E\Lambda$-algebras $u: L_n \to \tilde{C}$ factoring $\tilde{c}$ through $q$. Conversely, the algebra map $q$ is a monoidal functor for which $q \circ \delta = I$, while $\tilde{c}$ is the universal map in $\mathrm{MonCat}$ with this property. Thus there also exists a unique monoidal functor $v : \tilde{C} \to L_n$ which factors $q$ through $\tilde{c}$.
-
-Putting these facts together with the surjectivity of $q$ and $\tilde{c}$ (from \cref{qsurj,c'surj} respectively), we can conclude that the maps $u$ and $u'$ form a isomorphism of monoidal categories:
-\begin{eq*} \begin{array}{rccclcrcl}
-			u \circ v \circ \tilde{c} & = & u \circ q & = & \tilde{c} & \quad \implies \quad  & u \circ v & = & \mathrm{id}_{\tilde{C}} \\
-			v \circ u \circ q & = & v \circ \tilde{c} & = & q & \quad \implies \quad & v \circ u & = & \mathrm{id}_{L_n}
-		\end{array}
-\end{eq*}
-Furthermore, not only is $u$ an algebra map, but $v$ is one too. To see this, use the surjectivity of $\tilde{c}$ to find for any morphism $f_i$ in $\tilde{C}$ a corresponding $f'_i$ in $\ELnn$ with $\tilde{c}(f'_i) = f_i$. Then
-\begin{eq*} \begin{array}{rll}
-			v \big( \, \alpha^{\tilde{C}}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) & = & v \big( \, \alpha^{\tilde{C}}( \, g \, ; \,\tilde{c}(f'_1), ..., \tilde{c}(f'_m) \, ) \, \big) \\
-			& = & v \tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \\
-			& = & q \big( \, \alpha^{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \\
-			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, q(f'_1), ..., q(f'_m) \, \big) \\
-			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, v\tilde{c}(f'_1), ..., v\tilde{c}(f'_m) \, \big) \\
-			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, v(f_1), ..., v(f_m) \, \big)
-		\end{array}
-\end{eq*}
-Therefore $(u,v)$ is also an isomorphism of $E\Lambda$-algebras $\tilde{C} \cong L_n$, and up to this isomorphism the algebra maps $q$ and $\tilde{c}$ are the same.
-\end{proof}
-
+%\begin{Defi}\label{decompdef} If $w$ is an element of $\mathbb{N}^{\ast m}$, then we can use the definition of the free product of groups to decompose it uniquely as a tensor product of the $m$ generators $z_1, ..., z_m$. We'll denote this by
+%\begin{eq*} w \quad =: \quad \bigotimes_{i=1}^{|w|} \, d(w, i), \quad \quad \quad d(w, i) \in \{ z_1, ..., z_m \} \end{eq*}
+%If instead $w$ is an element of $\mathbb{Z}^{\ast m}$, then we can use the definition of the free product of groups to decompose $x$ uniquely as a tensor product, but this time one made up of the $m$ generators $z_1, ..., z_m$ and their inverses $z_1^*, ..., z_m^*$. As before we'll denote this by
+%\begin{eq*} w \quad = \quad \bigotimes_{i=1}^{|w|} \, d(w, i) \end{eq*}
+%where $d(w, i) \in \{ z_1, ..., z_m, z_1^*, ..., z_m^* \}$, and also for any $1 \le i < |w|$ we will always have $d(w, i+1) \neq d(w, i)^*$. By analogy with \cref{lengthdef}, we will call the upper bound of this tensor product the \emph{length} of the element $w$, and denote it by $|w|$, but be aware that this number is the one that comes from the \emph{monoid} homomorphism
+%\begin{eq*} F\big( \, \{ z_1, ..., z_m, z_1^*, ..., z_m^* \} \, \big) \to \mathbb{N} \end{eq*}
+%that sends each generator to 1, and not the perhaps more obvious \emph{group} homomorphism
+%\begin{eq*} F\big( \, \{ z_1, ..., z_m \} \, \big) \to \mathbb{Z} \end{eq*}
+%\end{Defi}
+%
+%\begin{prop}\label{c'alg1} Let $w$ be an object of $\ELnn$. Then there exist objects $w^{(1)}, ..., w^{(k)}$ in $\ELnn$ and $u^{(1)}, ..., u^{(k)}$ in $\mathbb{G}_{4n}$, for some value of $k \in \mathbb{N}$, such that
+%\begin{eq*} w^{(1)} \,= \, w, \quad \quad u^{(k)} \, = \, \iota(w^{(k)}), \quad \quad \quad \tilde{I}(u^{(i-1)}) \quad = \quad w^{(i)} \quad = \quad \tilde{\delta}(u^{(i)}) \end{eq*}
+%for $1 \le i \le k$, and for any object $u$ of $\mathbb{G}_{4n}$,
+%\begin{eq*} \tilde{\delta}(u) \, = \, w^{(k)} \quad \iff \quad u \, = \, u^{(k)} \end{eq*}
+%\end{prop}
+%\begin{proof}
+%From \cref{lengthdef,coprodmapdef}, we know that for any generator $z_i$ of $\mathbb{G}_{4n}$,
+%\begin{eq*}\begin{array}{rllll}
+%				 | \tilde{\delta}(z_i) |  & = & \left. \begin{cases}
+%								\quad 1 & \text{if} \quad 1 \le i \le 2n \\
+%								\quad 2 & \text{if} \quad 2n+1 \le i \le 4n
+%							\end{cases} \quad \right \rbrace & \ge 1 \\
+%				& & \\
+%				| \tilde{I}(z_i) |  & = & \left. \begin{cases}
+%								\quad 1 & \text{if} \quad 1 \le i \le 2n \\
+%								\quad 0 & \text{if} \quad 2n+1 \le i \le 4n
+%							\end{cases} \quad \right \rbrace & \le 1 
+%		\end{array}
+%\end{eq*}
+%Also these lengths are additive across tensor products, since $| \, \_ \, |$ is a monoid homomorphism $\ELnn \to \mathbb{N}$. Thus for any object $u$ in $\mathbb{G}_{4n}$, we can conclude that
+%\begin{eq*}\begin{array}{rllllllll}
+%			| \tilde{\delta}(u) | & = & | \, \tilde{\delta}\big( \, \mathlarger{\bigotimes_{i=1}^{|u|} d(u, i)} \, \big) \, | & = & \mathlarger{\sum_{i=1}^{|u|} | \, \tilde{\delta} \big( \, d(u, i) \, \big) \, |} & \ge & \mathlarger{\sum_{i=1}^{|u|} 1} & = & |u| \\[\bigskipamount]
+%			| \tilde{I}(u) | & = & | \, \tilde{I}\big( \, \mathlarger{\bigotimes_{i=1}^{|u|} d(u, i)} \, \big) \, | & = & \mathlarger{\sum_{i=1}^{|u|} | \, \tilde{I} \big( \, d(u, i) \, \big) \, |} & \le & \mathlarger{\sum_{i=1}^{|u|} 1} & = & |u|
+%		\end{array}
+%\end{eq*}
+%Also, since the only generators that have $| \tilde{\delta}(z_i) | = | \tilde{I}(z_i) | = 1$ are those from the $\ELnn$ subalgebra associated with $\iota$, the inequalities above becomes equalities if and only if $u$ is in the image of $\iota$. That is,
+%\begin{eq*} | \tilde{I}(u) | \, = \, |u| \, = \, |\tilde{\delta}(u)|  \quad \iff \quad \exists \, v \in \mathbb{N}^{\ast 2n} \, : \, u \, = \, \iota(v) \end{eq*}
+%
+%Next, consider the set
+%\begin{eq*} \tilde{\delta}^{-1}(w) \quad := \quad \{ \, u \in \mathbb{N}^{\ast 4n} : \tilde{\delta}(u) = w \, \} \end{eq*}
+%of all objects in $\mathbb{G}_{4n}$ which $\tilde{\delta}$ sends to $w$. This set is always nonempty, since by \cref{sect} $\iota$ is a right-inverse of $\delta$:
+%\begin{eq*} \tilde{\delta} \iota(w) \, = \, w \quad \implies \quad \iota(w) \in \tilde{\delta}^{-1}(w) \end{eq*}
+%Moreover, $\iota(w)$ is the only element of $\tilde{\delta}^{-1}(w)$ which can be expessed as $\iota(v)$ for some object $v$ in $\ELnn$, because
+%\begin{eq*} \tilde{\delta} \big( \, \iota(v) \, \big) \, = \, w \quad \implies \quad v \, = \, w \end{eq*}
+%
+%With all of this now in place, we can begin constructing the sequences $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$. Start by setting $w^{(1)} = w$ and $i=1$, then apply the following algorithm:
+%\begin{enumerate}
+%\item If $\tilde{\delta}^{-1}(w^{(i)})$ is just the set $\{ \iota(w^{(i)}) \}$, choose $u^{(i)} = \iota(w^{(i)})$, set $k$ to be the current value of $i$, and terminate.
+%\item Otherwise, choose $u^{(i)}$ to be any element of $\tilde{\delta}^{-1}(w^{(i)})$ other than $\iota(w^{(i)})$.
+%\item Set $w^{(i+1)} = \tilde{I}(u^{(i)})$.
+%\item Increase the value of $i$ by 1, then return to step 1.
+%\end{enumerate}
+%By design, none of the $u^{(i)}$ produced by this process can be expressed as $u^{(i)} = \iota(v)$ for some $v$ in $\ELnn$, with the possible exception of $u_k$ if the algorithm terminates. This is because $\iota(w^{(i)})$ is the only element of $\delta^{-1}(w^{(i)})$ that can be expressed that way, and the above process will terminate the first time it has to pick $u^{(i)} = \iota(w^{(i)})$, at which point $i$ is set equal to $k$. Thus given what we found earlier in the proof, for any $i \neq k$ we must have the following \emph{strict} inequalities:
+%\begin{eq*} |w^{(i+1)}| \quad = \quad | \tilde{I}(u^{(i)}) | \quad < \quad |u^{(i)}| \quad < \quad |\tilde{\delta}(u^{(i)})| \quad = \quad |w^{(i)}| \end{eq*}
+%That is, the $w^{(i)}$ produced by this algorithm form a sequence with strictly decreasing length. However, it is impossible to have a infinite sequence of strictly decreasing natural numbers, and hence we can be sure that this process will terminate at some finite $k$. 
+%
+%But in order for the algorithm to terminate, it must be the case that 
+%\begin{eq*} \tilde{\delta}^{-1}(w^{(k)}) \quad = \quad \{ \iota(w^{(k)}) \} \end{eq*}
+%and hence
+%\begin{eq*} \tilde{\delta}(u) \, = \, w^{(k)} \quad \iff \quad u \, = \, \iota(w^{(k)}) \, = \, u^{(k)} \end{eq*}
+%Thus the sequences $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$ satisfy all of the conditions in the statement of the lemma.
+%\end{proof}
+%
+%The intuition behind \cref{c'alg1} is that we are successively removing parts of the object $w$, without changing its image under $\tilde{c}$. The map $\tilde{\delta}$ sends $z_{2n+i} \mapsto z_i \otimes z_{n+i}$ and $z_{3n+i} \mapsto z_{n+1} \otimes z_i$ while $\tilde{I}$ sends these all to $I$, and so for any $u$ in $\mathbb{G}_{4n}$ the object $\tilde{I}(u)$ will look like $\tilde{\delta}(u)$ except missing some number of $z_i \otimes z_{n+i}$ or $z_{n+1} \otimes z_i$ substrings. But since $\tilde{c}$ sends $z_{n+i} \mapsto z_i^*$, these are exactly the sort of omissions which the coequalizer doesn't care about. If we repeat this process then it will eventually terminate at $u^{(k)} = \iota(w^{(k)})$, so we really have a method for removing \emph{all} of the relevant substrings from objects of $\ELnn$. In other words, $w^{(k)}$ has the smallest possible length while still having $\tilde{c}(w^{(k)}) = \tilde{c}(w)$. In fact, we will show that it is the unique shortest object of $\ELnn$ with this property.
+%
+%\begin{prop}\label{c'alg2} Let $w$, $w'$ be objects of $\ELnn$ such that $\tilde{c}(w) = \tilde{c}(w')$. If $w^{(1)}, ..., w^{(k)}$ and $u^{(1)}, ..., u^{(k)}$ are the sequences generated from $w$ via \cref{c'alg1}, and likewise $w'^{\, (1)}, ..., w'^{\, (k')}$ and $u'^{\, (1)}, ..., u'^{\, (k')}$ from $w'$, then $w^{(k)} = w'^{\, (k')}$ and $u^{(k)} = u'^{\, (k')}$.
+%\end{prop}
+%\begin{proof}
+%Consider the decomposition of the object $w^{(k)} \in \mathbb{N}^{\ast 2n}$ as in \cref{decompdef}. Assume, for the sake of contradiction, that there exist $1 \le j < |w^{(k)}|$ and $1 \le m \le n$ such that
+%\begin{eq*} d(w^{(k)}, j) \, = \, z_m, \quad \quad d(w^{(k)}, j+1) \, = \, z_{n+m} \end{eq*}
+%Then we can use $j$ and $m$ to contruct a new element $u \in \mathbb{N}^{\ast 4n}$, defined by
+%\begin{eq*} |u| \, = \, |w| - 1, \quad \quad d(u, i) \, = \, \begin{cases}
+%									\quad \iota \big( \, d(w^{(k)}, i) \, ) & \text{if} \quad 1 \le i < j \\
+%									\quad z_{2n + m} & \text{if} \quad i = j \\
+%									\quad \iota \big( \, d(w^{(k)}, i+1) \, ) & \text{if} \quad j < i \le |u|
+%								\end{cases}
+%\end{eq*}
+%This $u$ will then have the property that
+%\begin{eq*} \begin{array}{rll}
+%			\tilde{\delta}(u) & = & \tilde{\delta} \big( \, \mathlarger{\bigotimes_{i=1}^{|u|} \, d(u, i)} \, \big) \\[\bigskipamount]
+%			& = & \mathlarger{\bigotimes_{i=1}^{|u|} \, \tilde{\delta} \big( \, d(u, i) \, \big)} \\[\bigskipamount]
+%			& = & \mathlarger{\bigotimes_{i=1}^{j-1} \, \tilde{\delta} \iota \big( \, d(w^{(k)}, i) \, )} \, \otimes \tilde{\delta}(z_{2n + m}) \otimes \, \mathlarger{\bigotimes_{i=j+1}^{|u|} \, \tilde{\delta} \iota \big( \, d(w^{(k)}, i+1) \, \big)} \\[\bigskipamount]
+%			& = & \mathlarger{\bigotimes_{i=1}^{j-1} \, d(w^{(k)}, i)} \, \otimes z_m \otimes z_{n + m} \otimes \, \mathlarger{\bigotimes_{i=j+2}^{|u|+1} \, d(w_k, i)} \\[\bigskipamount]
+%			& = & \mathlarger{\bigotimes_{i=1}^{j-1} \, d(w^{(k)}, i)} \, \otimes d(w^{(k)}, j) \, \otimes d(w^{(k)}, j+1) \otimes \mathlarger{\bigotimes_{i=j+2}^{|u|+1} \, d(w_k, i)} \\[\bigskipamount]
+%			& = & w^{(k)}
+%		\end{array}
+%\end{eq*}
+%But this is impossible, since by \cref{c'alg1} $u^{(k)}$ is the only object of $\mathbb{G}_{4n}$ whose image under $\tilde{\delta}$ is $w^{(k)}$, and this $u$ we have constructed is manifestly not $w^{(k)}$. Thus we can conclude that there are no values of $j$ and $m$ for which
+%\begin{eq*} d(w^{(k)}, j) \, = \, z_m, \quad \quad d(w^{(k)}, j+1) \, = \, z_{n+m} \end{eq*}
+%An analogous line of reasoning --- using $z_{3n + m}$ rather than $z_{2n + m}$ in the definition of $u$ --- demonstrates that there are also no $j, m$ with
+%\begin{eq*} d(w^{(k)}, j) \, = \, z_{n+m}, \quad \quad d(w^{(k)}, j+1) \, = \, z_m \end{eq*}
+%As a result, for all $1 \le i < |w^{(k)}|$
+%\begin{eq*} \tilde{c} \big( \, d(w^{(k)}, i+1) \, \big) \quad \neq \quad \tilde{c} \big( \, d(w^{(k)}, i) \, \big)^* \end{eq*}
+%and this combined with the fact that
+%\begin{eq*} \bigotimes_{i=1}^{|w^{(k)}|} \, \tilde{c} \big( \, d(w^{(k)}, i) \, \big) \quad = \quad \tilde{c} \big( \, \bigotimes_{i=1}^{|w^{(k)}|} \, d(w^{(k)}, i) \, \big) \quad = \quad \tilde{c}(w^{(k)}) \end{eq*}
+%shows that the unique decomposition of $\tilde{c}(w^{(k)}) \in \mathbb{Z}^{\ast n}$ as in \cref{decompdef} is given by
+%\begin{eq*} |\tilde{c}(w^{(k)})| \, = \, |w^{(k)}|, \quad \quad d\big( \, \tilde{c}(w^{(k)}), i \, \big) \quad = \quad \tilde{c} \big( \, d(w^{(k)}, i) \, \big) \end{eq*}
+%Next, let $r$ be a function --- not a homomorphism --- defined by
+%\begin{eq*} \begin{array}{rllll}
+%			r & : & \mathbb{Z}^{\ast n} & \to & \mathbb{N}^{\ast 2n} \\
+%			& : & z_i & \mapsto & z_i \\
+%			& : & z_i^* & \mapsto & z_{n+i} \\
+%			& : & x & \mapsto & \bigotimes_{i=1}^{|x|} \, r \big( \, d(x, i) \, \big)
+%		\end{array}
+%\end{eq*}
+%Then for $1 \le i \le n$,
+%\begin{eq*} r\tilde{c}(z_i) \, = \, r(z_i) \, = \, z_i, \quad \quad r\tilde{c}(z_{n+i}) \, = \, r(z_i^*) \, = \, z_{n+i} \end{eq*}
+%and so it follows that
+%\begin{eq*}	r\tilde{c}(w^{(k)}) \quad = \quad \bigotimes_{i=1}^{|w^{(k)}|} \, r\tilde{c} \big( \, d(w^{(k)}, i) \, \big) \quad = \quad \bigotimes_{i=1}^{|w^{(k)}|} \, d(w^{(k)}, i) \quad = \quad w^{(k)} \end{eq*}
+%Finally, notice that the exact same logic as we've used above will work for $w'^{\, (k')}$ as well, so that $r\tilde{c}(w'^{\, (k')}) = w'^{\, (k')}$. 
+%
+%Therefore, putting everything together tells us that
+%\begin{longtable}{RCCCCCC}
+%	w_k & = & r\tilde{c}(w^{(k)}) & = & r\tilde{c}\tilde{I}(u^{(k-1)}) & = & r\tilde{c}\tilde{\delta}(u^{(k-1)}) \\
+%	& = & r\tilde{c}(w^{(k-1)}) & = & \vdots & = & \vdots  \\
+%	& \vdots & & & & & \\
+%	& = & r\tilde{c}(w^{(1)}) & & & & \\
+%	& = & r\tilde{c}(w) & & & &  \\
+%	& = & r\tilde{c}(w') & & & & \\
+%	& = & r\tilde{c}(w'^{\, (1)}) & = & r\tilde{c}\tilde{\delta}(u'^{\, (1)}) & = &  r\tilde{c}\tilde{I}(u'^{\, (1)}) \\
+%	& = & r\tilde{c}(w'^{\, (2)}) & = & \vdots & = & \vdots  \\
+%	& \vdots & \\
+%	& = & r\tilde{c}(w'^{\, (k')}) \\
+%	& = & w'^{\, (k')}			
+%\end{longtable}
+%as required.
+%\end{proof}
+%
+%It is this special property --- shared by all $w$, $w'$ for which $\tilde{c}(w) = \tilde{c}(w')$ --- that will now let us prove that the coequalizer $\tilde{c}$ satisfies the condition which we couldn't prove about the cokernel $c$. In other words, with \cref{c'alg1,c'alg2} we can now construct a valid $E\Lambda$-action on the monoidal category $\tilde{C}$.
+%
+%\begin{prop}\label{c'alg} There is a unique action $\alpha^{\tilde{C}}$ making the category $\tilde{C}$ into $E\Lambda$-algebra and the functor $\tilde{c}: \ELnn \to \tilde{C}$ into a map of $E\Lambda$-algebras.  
+%\end{prop}
+%\begin{proof}
+%We will try to affix an action to $\tilde{C}$ in the same way we thought about doing with the category $C$. In order for the functor $\tilde{c} : \ELnn \to \tilde{C}$ to be an $E\Lambda$-algebra map with respect to some $\alpha^{\tilde{C}}$, it must satisfy
+%\begin{eq*} \tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) \quad = \quad \alpha^{\tilde{C}}( \, g \, ; \, \tilde{c}(f_1), ..., \tilde{c}(f_m) \, ) \end{eq*}
+%for all morphisms $f_1, ..., f_m$ in $\ELnn$, though given \cref{Gnmapsaction} it will be enough to have
+%\begin{eq*} \begin{array}{rll}
+%			\tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big) & = & \alpha^{\tilde{C}}( \, g \, ; \, \tilde{c}(\mathrm{id}_{w_1}), ..., \tilde{c}(\mathrm{id}_{w_m}) \, ) \\
+%			& = & \alpha^{\tilde{C}}( \, g \, ; \, \mathrm{id}_{\tilde{c}(w_1)}, ..., \mathrm{id}_{\tilde{c}(w_m)} \, )
+%		\end{array}
+%\end{eq*}
+%But since we know from \cref{c'surj} that $\tilde{c}$ is surjective, this condition will actually suffice as a definition for $\alpha^{\tilde{C}}$, provided that we can prove it to be well-defined. 
+%
+%To that end, let $w_1, ..., w_m$ and $w'_1, ..., w'_m$ be any two sequences of objects in $\ELnn$ that have $\tilde{c}(w_i) = \tilde{c}(w'_i)$ for all $1 \le i \le m$. Then using \cref{c'alg1}, let $w^{(1)}_i, ..., w^{(k)}_i$ and $u^{(1)}_i, ..., u^{(k)}_i$ be the sequences we get from each $w_i$ and $w'^{\, (1)}_i, ..., w'^{\, (k')}_i$, $u'^{\, (1)}_i, ..., u'^{\, (k')}_i$ those we get from $w'_i$. It follows that
+%\begin{eq*} \begin{array}{rll}
+%			\tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(i)}_1}, ..., \mathrm{id}_{w^{(i)}_m} \, ) \, \big) & = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{\tilde{\delta}(u^{(i)}_1)}, ..., \mathrm{id}_{\tilde{\delta}(u^{(i)}_m)} \, ) \, \big)\\
+%			& = & \tilde{c}\tilde{\delta}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{u^{(i)}_1}, ..., \mathrm{id}_{u^{(i)}_m} \, ) \, \big)\\
+%			& = & \tilde{c}\tilde{I}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{u^{(i)}_1}, ..., \mathrm{id}_{u^{(i)}_m} \, ) \, \big)\\
+%			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{\tilde{I}(u^{(i)}_1)}, ..., \mathrm{id}_{\tilde{I}(u^{(i)}_m)} \, ) \, \big)\\
+%			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(i+1)}_1}, ..., \mathrm{id}_{w^{(i+1)}_m} \, ) \, \big)
+%		\end{array} 
+%\end{eq*}
+%and likewise for the $w'$. Thus from \cref{c'alg2} we can conclude that
+%\begin{eq*} \begin{array}{rll}
+%			\tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w_1}, ..., \mathrm{id}_{w_m} \, ) \, \big)& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(1)}_1}, ..., \mathrm{id}_{w^{(1)}_m} \, ) \, \big)\\
+%			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(2)}_1}, ..., \mathrm{id}_{w^{(2)}_m} \, )\, \big) \\
+%			& \vdots & \\
+%			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w^{(k)}_1}, ..., \mathrm{id}_{w^{(k)}_m} \, ) \, \big)\\
+%			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'^{\, (k')}_1}, ..., \mathrm{id}_{w'^{(\, k')}_m} \, ) \, \big)\\
+%			& \vdots & \\
+%			& = & \tilde{c}\big( \, \alpha^{\ELnn}( \, g \, ; \, \mathrm{id}_{w'_1}, ..., \mathrm{id}_{w'_m} \, ) \, \big)
+%		\end{array} 
+%\end{eq*}
+%Thus the value of $\alpha^{\tilde{C}}(g; \mathrm{id}_{\tilde{c}(w_1)}, ..., \mathrm{id}_{\tilde{c}(w_m)})$ we gave earlier does not depend on our particular choice of $w_i$. Therefore $\alpha^{\tilde{C}}$ is indeed a well-defined $E\Lambda$-action on $\tilde{C}$, and the coequalizer $\tilde{c}$ from $\mathrm{MonCat}$ is a map of $E\Lambda$-algebras with respect to $\alpha^{\tilde{C}}$.
+%\end{proof}
+%
+%\section{Extracting %$\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$ from $\ELnn$
+%}
+%
+%We are now finally ready to address problem 1 from the end of the previous chapter: how can we deal with the fact that our adjunction $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}} \dashv C$ involves monoidal categories rather than full $E\Lambda$-algebras? It turns out that this is all we really needed, as despite us originally conceiving of $L_n$ as a colimit in $E\Lambda\mbox{-}\mathrm{Alg}_S$ it can equally be viewed as a slightly more complicated colimit in $\mathrm{MonCat}$.
+%
+%\begin{prop} \label{c'=q} The coequalizer functor $\tilde{c}: \ELnn \to \tilde{C}$ defined in \cref{C'def} is isomorphic as a map of $E\Lambda$-algebras to $q: \ELnn \to L_n$, the cokernel of $\delta$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
+%\end{prop}
+%\begin{proof}
+%First, consider what we know of the functor $\tilde{c}$. By definition it has the property for any $1 \le i \le 2n$
+%\begin{eq*} \tilde{c}\delta(z_i) \quad = \quad \tilde{c} \tilde{\delta}(z_{2n+i}) \quad = \quad \tilde{c} \tilde{I}(z_{2n+i}) \quad = \quad \tilde{c}(I) \quad = \quad I \end{eq*}
+%so that $\tilde{c} \circ \delta$ is the constant functor on the unit object $I$. Moreover, given what we saw in \cref{c'alg} we know that $\tilde{c}$ is map of $E\Lambda$-algebras which has this property. But the cokernel map $q$ is universal among maps like these, and so it follows that there must exist a unique map of $E\Lambda$-algebras $u: L_n \to \tilde{C}$ factoring $\tilde{c}$ through $q$. Conversely, the algebra map $q$ is a monoidal functor for which $q \circ \delta = I$, while $\tilde{c}$ is the universal map in $\mathrm{MonCat}$ with this property. Thus there also exists a unique monoidal functor $v : \tilde{C} \to L_n$ which factors $q$ through $\tilde{c}$.
+%
+%Putting these facts together with the surjectivity of $q$ and $\tilde{c}$ (from \cref{qsurj,c'surj} respectively), we can conclude that the maps $u$ and $u'$ form a isomorphism of monoidal categories:
+%\begin{eq*} \begin{array}{rccclcrcl}
+%			u \circ v \circ \tilde{c} & = & u \circ q & = & \tilde{c} & \quad \implies \quad  & u \circ v & = & \mathrm{id}_{\tilde{C}} \\
+%			v \circ u \circ q & = & v \circ \tilde{c} & = & q & \quad \implies \quad & v \circ u & = & \mathrm{id}_{L_n}
+%		\end{array}
+%\end{eq*}
+%Furthermore, not only is $u$ an algebra map, but $v$ is one too. To see this, use the surjectivity of $\tilde{c}$ to find for any morphism $f_i$ in $\tilde{C}$ a corresponding $f'_i$ in $\ELnn$ with $\tilde{c}(f'_i) = f_i$. Then
+%\begin{eq*} \begin{array}{rll}
+%			v \big( \, \alpha^{\tilde{C}}( \, g \, ; \, f_1, ..., f_m \, ) \, \big) & = & v \big( \, \alpha^{\tilde{C}}( \, g \, ; \,\tilde{c}(f'_1), ..., \tilde{c}(f'_m) \, ) \, \big) \\
+%			& = & v \tilde{c} \big( \, \alpha^{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \\
+%			& = & q \big( \, \alpha^{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \\
+%			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, q(f'_1), ..., q(f'_m) \, \big) \\
+%			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, v\tilde{c}(f'_1), ..., v\tilde{c}(f'_m) \, \big) \\
+%			& = & \alpha^{L\mathbb{G}_{n}}\big( \, g \, ; \, v(f_1), ..., v(f_m) \, \big)
+%		\end{array}
+%\end{eq*}
+%Therefore $(u,v)$ is also an isomorphism of $E\Lambda$-algebras $\tilde{C} \cong L_n$, and up to this isomorphism the algebra maps $q$ and $\tilde{c}$ are the same.
+%\end{proof}
+%
 With our newfound ability to express the map $q: \ELnn \to L_n$ as a colimit of monoidal categories, we can now set about using the adjunction from \cref{Moradj} to calculate $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$. The most obvious way to do this is to mimic what we did in \cref{Qobj} --- apply the left adjoint functor to $q$ and then commute it with the colimit to get a formula in terms of the known monoid $\mathrm{Mor}(\ELnn)$.
 
 \begin{prop}\label{Zmor2} Let $\Delta$ be the subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ generated by elements of the form
