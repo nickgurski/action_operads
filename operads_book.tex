@@ -596,8 +596,13 @@ A \textit{map of action operads} $f: \Lambda \rightarrow \Lambda'$ consists of a
 \end{enumerate}
 \end{Defi}
 
+\begin{Defi}\label{Defi:cat_aop}
+The category $\mb{AOp}$ of action operads has objects which are action operads $\mb{\Lambda}$ and
+ morphisms $\mb{\Lambda} \rightarrow \mb{\Lambda'}$ as defined in \cref{mapaop}.
+\end{itemize}
+\end{Defi}
 
-
+QQQ Move this example below somewhere else, near limits stuff?
 \begin{example}
 One can easily form new action operads from old ones by taking limits.  To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there.  Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$\nomenclature[C]{$A/a$}{the slice category of $A$ over an object $a$ in $A$} (see QQQ) 
 which themselves are (possibly wide) pullbacks in the category of operads.  This pullback will then be computed levelwise, showing that at each dimension we have a group structure with a group homomorphism to the appropriate $\Sigma_{n}$ and that the final action operad axiom holds since it does in each component.  The equalizer of a pair of maps will then just be the levelwise equalizer.  This shows that the pointwise product of an action operad $P$ with an action operad of the form $Z(Q)$ is again an action operad, but the pointwise product of two arbitrary action operads might not be.
@@ -2353,7 +2358,6 @@ These isomorphisms are then required to satisfy their own axioms, and these ensu
 
 
 
-
 %\begin{Defi}
 %Let $P$ be a $\Lambda$-operad.
 %\begin{itemize}
@@ -2872,227 +2876,221 @@ The functor $E:\mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the set of ob
 
 % We now recall the definitions of an action operad $\mb{\Lambda}$ from \cite{cg}.
 
-Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations.  The first is the block sum of permutations which we denote by
-\[
-\beta: \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{\underline{k}},
-\]
-where $\underline{k} = \sum k_{i}$.  The second is a kind of diagonal map which is defined for any natural number $n$ together with natural numbers $k_{1}, \ldots, k_{n}$.  Then
-\[
-\delta = \delta_{n; k_{1}, \ldots, k_{n}}:\Sigma_{n} \rightarrow \Sigma_{\underline{k}},
-\]
-is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on.  The first of these, $\beta$, is a group homomorphism, while $\delta$ is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.  We now use these ideas to give the following algebraic characterization of action operads via the following definition.
+%Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations.  The first is the block sum of permutations which we denote by
+%\[
+%\beta: \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{\underline{k}},
+%\]
+%where $\underline{k} = \sum k_{i}$.  The second is a kind of diagonal map which is defined for any natural number $n$ together with natural numbers $k_{1}, \ldots, k_{n}$.  Then
+%\[
+%\delta = \delta_{n; k_{1}, \ldots, k_{n}}:\Sigma_{n} \rightarrow \Sigma_{\underline{k}},
+%\]
+%is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on.  The first of these, $\beta$, is a group homomorphism, while $\delta$ is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.  We now use these ideas to give the following algebraic characterization of action operads via the following definition.
+%
+%\begin{Defi}\label{Defi:aop_bl}
+%For an action operad $\mb{\Lambda}$,  define
+%\[
+%\begin{array}{rcl}
+%\beta(h_{1}, \ldots, h_{n}) &=& \mu(e; h_{1}, \ldots, h_{n}) \\
+%\delta(g) &=& \mu(g; e_{1}, \ldots, e_{n}).
+%\end{array}
+%\]
+%\end{Defi}
+%
+%\begin{nota}
+%We will denote our identity elements in groups generically as $e$. If $\{ G_{i} \}_{i \in I}$ are groups indexed by a set $I$, then $e_{i}$ is the identity element in $G_{i}$.
+%\end{nota}
+%
+%\begin{thm}\label{thm:charAOp}
+%An action operad $\mb{\Lambda}$ determines, and is determined by, the following:
+%\begin{itemize}
+%\item groups $\Lambda(n)$ together with group homomorphisms $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$,
+%\item a group homomorphism
+%\[
+%\begin{array}{rcl}
+%\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) & \stackrel{\beta}{\longrightarrow} & \Lambda(k_{1} + \cdots + k_{n}),
+%\end{array}
+%\]
+%for each $k_{1}, \ldots, k_{n}$ together with the degenerate case of $n=0$ which then is a group homomorphism $1 \to \Lambda(0)$, and
+%\item a function of sets
+%\[
+%\begin{array}{rcl}
+%\Lambda(n) & \stackrel{\delta_{n; k_{1}, \ldots, k_{n}}}{\longrightarrow} & \Lambda(k_{1} + \cdots + k_{n})
+%\end{array}
+%\]
+%for each $n, k_{1}, \ldots, k_{n}$,
+%\end{itemize}
+%subject to the axioms below.  In what we write below, we use the following notational conventions.
+%\begin{itemize}
+%\item The symbols $f,g,h$, with or without subscripts, always refer to an element of some group $\Lambda(n)$.
+%\item The symbols $j,k,m,n,p$ are all natural numbers, and $i$ is a natural number between 1 and $n$.
+%\end{itemize}
+%Axioms:
+%\begin{enumerate}
+%\item\label{eq1} The homomorphisms $\beta$ are natural with respect to the maps $\pi_{n}$, where $\underline{k} = k_{1} + \cdots + k_{n}$.
+%\[
+%\xy
+%% var defs
+%% 00    20
+%% 01    21
+%%    12(end)
+%(0,0)*+{\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) } ="00";
+%(0,-15)*+{\Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}}  } ="01";
+%(40,0)*+{\Lambda(\underline{k}) } ="20";
+%(40,-15)*+{\Sigma_{\underline{k}} } ="21";
+%% diagram
+%{\ar^{\beta} "00" ; "20"};
+%{\ar^{\pi} "20" ; "21"};
+%{\ar_{\pi_1 \times \cdots \times \pi_n} "00" ; "01"};
+%{\ar_{\beta} "01" ; "21"};
+%\endxy
+%\]
+%\item\label{eq2} The homomorphism $\beta:\Lambda(k) \to \Lambda(k)$ is the identity.
+%\item\label{eq3} The homomorphisms $\beta$ are associative in the sense that
+%\[
+%\beta(h_{11}, \ldots, h_{1j_{1}}, h_{21}, \ldots, h_{2j_{2}}, \ldots, h_{nj_{n}}) = \beta\big( \beta(h_{11}, \ldots, h_{1j_{1}}), \ldots, \beta(h_{n1}, \ldots, h_{nj_{n}}) \big)
+%\]
+%holds.
+%\item\label{eq4} The functions $\delta_{n; k_{1}, \ldots, k_{n}}$ are natural with respect to the maps $\pi_{n}$.
+%\[
+%\xy
+%% var defs
+%% 00    20
+%% 01    21
+%%    12(end)
+%(0,0)*+{\Lambda(n)} ="00";
+%(40,0)*+{\Lambda(k_{1} + \cdots + k_{n}) } ="20";
+%(0,-15)*+{\Sigma_{n}  } ="01";
+%(40,-15)*+{\Sigma_{k_{1} + \cdots + k_{n}} } ="21";
+%{\ar^{\delta} "00" ; "20"};
+%{\ar^{\pi} "20" ; "21"};
+%{\ar_{\pi} "00" ; "01"};
+%{\ar_{\delta} "01" ; "21"};
+%\endxy
+%\]
+%\item\label{eq5} The functions $\delta_{n; 1, \ldots, 1}, \, \delta_{1;n} : \Lambda(n) \to \Lambda(n)$ are the identity.
+%\item\label{eq6} The equation $\delta_{n; k_{i}}(g) \delta_{n; j_{i}}(h) = \delta_{n; j_{i}}(gh)$ holds when
+%\[
+%k_{i} = j_{\pi(h)^{-1}(i)}.
+%\]
+%\item\label{eq7} The functions $\delta$ are associative in the sense that
+%\[
+%\delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{n}}}\big( \delta_{n; m_{1}, \ldots, m_{n}}(f) \big) = \delta_{n; P_{1}, \ldots, P_{n}}(f)
+%\]
+%where $P_{i} = p_{i1} + \cdots + p_{im_{i}}$.
+%\item\label{eq8} $\delta(g) \beta(h_{1}, \ldots, h_{n}) = \beta(h_{\pi(g)^{-1}(1)}, \ldots,  h_{\pi(g)^{-1}(n)}) \delta(g)$, where $h_{i} \in \Lambda(k_{i})$ and $\delta:\Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$.
+%\item\label{eq9} The equation
+%\[
+%\beta(\delta_{1}(g_{1}), \ldots, \delta_{n}(g_{n})) = \delta_{c}(\beta(g_{1}, \ldots, g_{n}))
+%\]
+%holds, where $\delta_{i}(g_{i})$ is shorthand for $\delta_{k_{i}; m_{i1}, \ldots, m_{ik_{i}}}(g_{i})$ and $\delta_{c}$ is shorthand for
+%\[
+%\delta_{k_{1}+\cdots + k_{n}; m_{11}, m_{12}, \ldots, m_{1k_{1}}, m_{21}, \ldots, m_{nk_{n}}}.
+%\]
+%\end{enumerate}
+%\end{thm}
+%
+%\begin{proof}
+%Let $\mb{\Lambda}$ be an action operad, and define $\beta, \delta$ as in \cref{Defi:aop_bl}.  Since $\pi:\Lambda \rightarrow \Sigma$ is an operad map, axioms \eqref{eq1} and \eqref{eq4} hold.  Since $\Lambda$ is an operad of sets, axioms \eqref{eq2} and \eqref{eq5} follow from the operad unit axioms, and axioms \eqref{eq3}, \eqref{eq7}, and \eqref{eq9} follow from the operad associativity axiom.  Axioms \eqref{eq6} and \eqref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
+%
+%Given the data above, we need only define the operad multiplication, verify the operad unit and multiplication axioms,  and finally check the action operad axiom.  Multiplication is given by
+%\[
+%\mu(g; h_{1}, \ldots, h_{n}) = \delta_{n; k_{1}, \ldots, k_{n}}(g) \beta(h_{1}, \ldots, h_{n})
+%\]
+%where $h_{i} \in \Lambda(k_{i})$.  The unit is $e \in \Lambda(1)$.
+%
+%We now verify the operad unit axioms.
+%\[
+%\begin{array}{rcl}
+%\mu(e; g) & = & \delta(e)\beta(g) \\
+%& = & e \cdot g \\
+%& = & g
+%\end{array}
+%\]
+%\[
+%\begin{array}{rcl}
+%\mu(h; e, \ldots, e) & = & \delta(h)\beta(e, \ldots, e) \\
+%& = & h \cdot e \\
+%& = & h
+%\end{array}
+%\]
+%These follow from axioms \eqref{eq2} and \eqref{eq5}, together with the fact that $\beta$ is a group homomorphism.
+%
+%For the operad associativity axiom, let
+%\begin{itemize}
+%\item $f \in \Lambda(m),$
+%\item $g_{i} \in \Lambda(n_{i})$ for $i=1, \ldots, m$, and
+%\item $h_{ij} \in \Lambda(p_{i,j})$ for $i=1, \ldots, m$ and $j=1, \ldots, n_{i}$.
+%\end{itemize}
+%Further, let $P_{i} = p_{i1} + \cdots + p_{in_{i}}$ and $\underline{h_{i\bullet}}$ denote the list $h_{i1}, h_{i2}, \ldots, h_{in_{i}}$.  We must then show that
+%\[
+%\mu\big( f; \mu(g_{1}; \underline{h_{1\bullet}}), \ldots, \mu(g_{m}; \underline{h_{m\bullet}}) \big) = \mu\big( \mu (f; g_{1}, \ldots, g_{m}); h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} \big).
+%\]
+%By definition, the left side of this equation is
+%\[
+%\delta_{m; P_{1}, \ldots, P_{m}}(f) \beta\big( \mu(g_{1}; \underline{h_{1\bullet}}), \ldots, \mu(g_{m}; \underline{h_{m\bullet}}) \big),
+%\]
+%and
+%\[
+%\mu(g_{i}; \underline{h_{i\bullet}}) = \delta_{n_{i}; p_{i1}, \ldots, p_{in_{i}}}(g_{i})\beta(h_{i1}, \ldots, h_{in_{i}}).
+%\]
+%Since $\beta$ is a group homomorphism, we can then rewrite the left side as
+%\[
+%\delta(f)\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big)\beta\big(\beta(h_{1\bullet}), \ldots, \beta(h_{m\bullet})\big)
+%\]
+%where we have suppressed the subscripts on the $\delta$'s.  By axiom \eqref{eq3} , we have
+%\[
+%\beta\big(\beta(h_{1\bullet}), \ldots, \beta(h_{m\bullet})\big) = \beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}}).
+%\]
+%Further, axiom \eqref{eq9} above shows that
+%\[
+%\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big) = \delta\big(\beta(g_{1}, \ldots, g_{m})\big).
+%\]
+%Thus we have shown that the left side of the operad associativity axiom is equal to
+%\[
+%\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big)\beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}}).
+%\]
+%Now the right side is
+%\[
+%\mu\big( \mu (f; g_{1}, \ldots, g_{m}); h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} \big)
+%\]
+%which is by definition
+%\[
+%\delta\big(\mu (f; g_{1}, \ldots, g_{m})\big)\beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} ).
+%\]
+%Thus verifying the operad associativity axiom reduces to showing
+%\begin{eqn}\label{eqn:opass}
+%\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big) = \delta\big(\mu (f; g_{1}, \ldots, g_{m})\big).
+%\end{eqn}By the definition of $\mu$, we have
+%\[
+%\delta(\mu (f; g_{1}, \ldots, g_{m})) = \delta\big(\delta(f)\beta(g_{1}, \ldots, g_{m}) \big)
+%\]
+%which is itself equal to
+%\begin{eqn}\label{eqn:opass2}
+%\delta\big(\delta(f)\big) \delta\big(\beta(g_{1}, \ldots, g_{m})\big)
+%\end{eqn}by axiom \eqref{eq6} above.  Now the $\delta(f)$ on the left side of \cref{eqn:opass} uses $\delta_{n; P_{1}, \ldots, P_{n}}$, while the $\delta(\delta(f))$ in \cref{eqn:opass2} is actually
+%\[
+%\delta_{m_1 + \cdots + m_{n}; q_{ij}}(\delta_{n; m_{1}, \ldots, m_{n}} (f))
+%\]
+%where the $q_{ij}$ are defined, by axiom \eqref{eq6}, to be given by
+%\[
+%q_{ij} = p_{i,\pi(g_{i})^{-1}(j)}
+%\]
+%using the compatibility of $\beta$ and $\pi$ in axiom \eqref{eq1}.  By axiom \eqref{eq7}, this composite of $\delta$'s  is then $\delta_{n; Q_{1}, \ldots, Q_{n}}$ where $Q_{i} = q_{i1} + \cdots + q_{im_{i}}$.  But by the definition of the $q_{ij}$, we immediately see that $Q_{i} = P_{i}$, so the $\delta(f)$ in \cref{eqn:opass} is equal to the $\delta(\delta(f))$ appearing in \cref{eqn:opass2}, concluding the proof of the operad associativity axiom.
+%
+%The action operad axiom is now the calculation below, and uses axioms \eqref{eq4} and \eqref{eq8}.
+%\begin{small}
+%\[
+%\begin{array}{rcl}
+%\mu(g; h_{1}, \ldots, h_{n})\mu(g'; h_{1}', \ldots, h_{n}') & = & \delta(g) \beta(h_{1}, \ldots, h_{n}) \delta(g') \beta(h_{1}', \ldots, h_{n}') \\
+%& = & \delta(g) \delta(g') \beta(h_{\pi(g')(1)}, \ldots, h_{\pi(g')(n)})  \beta(h_{1}', \ldots, h_{n}') \\
+%& = & \delta(gg') \beta(h_{\pi(g')(1)}h_{1}', \ldots, h_{\pi(g')(n)}h_{n}') \\
+%& = & \mu(gg'; h_{\pi(g')(1)}h_{1}', \ldots, h_{\pi(g')(n)}h_{n}')
+%\end{array}
+%\]
+%\end{small}
+%\end{proof}
 
-\begin{Defi}\label{Defi:aop_bl}
-For an action operad $\mb{\Lambda}$,  define
-\[
-\begin{array}{rcl}
-\beta(h_{1}, \ldots, h_{n}) &=& \mu(e; h_{1}, \ldots, h_{n}) \\
-\delta(g) &=& \mu(g; e_{1}, \ldots, e_{n}).
-\end{array}
-\]
-\end{Defi}
 
-\begin{nota}
-We will denote our identity elements in groups generically as $e$. If $\{ G_{i} \}_{i \in I}$ are groups indexed by a set $I$, then $e_{i}$ is the identity element in $G_{i}$.
-\end{nota}
-
-\begin{thm}\label{thm:charAOp}
-An action operad $\mb{\Lambda}$ determines, and is determined by, the following:
-\begin{itemize}
-\item groups $\Lambda(n)$ together with group homomorphisms $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$,
-\item a group homomorphism
-\[
-\begin{array}{rcl}
-\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) & \stackrel{\beta}{\longrightarrow} & \Lambda(k_{1} + \cdots + k_{n}),
-\end{array}
-\]
-for each $k_{1}, \ldots, k_{n}$ together with the degenerate case of $n=0$ which then is a group homomorphism $1 \to \Lambda(0)$, and
-\item a function of sets
-\[
-\begin{array}{rcl}
-\Lambda(n) & \stackrel{\delta_{n; k_{1}, \ldots, k_{n}}}{\longrightarrow} & \Lambda(k_{1} + \cdots + k_{n})
-\end{array}
-\]
-for each $n, k_{1}, \ldots, k_{n}$,
-\end{itemize}
-subject to the axioms below.  In what we write below, we use the following notational conventions.
-\begin{itemize}
-\item The symbols $f,g,h$, with or without subscripts, always refer to an element of some group $\Lambda(n)$.
-\item The symbols $j,k,m,n,p$ are all natural numbers, and $i$ is a natural number between 1 and $n$.
-\end{itemize}
-Axioms:
-\begin{enumerate}
-\item\label{eq1} The homomorphisms $\beta$ are natural with respect to the maps $\pi_{n}$, where $\underline{k} = k_{1} + \cdots + k_{n}$.
-\[
-\xy
-% var defs
-% 00    20
-% 01    21
-%    12(end)
-(0,0)*+{\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) } ="00";
-(0,-15)*+{\Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}}  } ="01";
-(40,0)*+{\Lambda(\underline{k}) } ="20";
-(40,-15)*+{\Sigma_{\underline{k}} } ="21";
-% diagram
-{\ar^{\beta} "00" ; "20"};
-{\ar^{\pi} "20" ; "21"};
-{\ar_{\pi_1 \times \cdots \times \pi_n} "00" ; "01"};
-{\ar_{\beta} "01" ; "21"};
-\endxy
-\]
-\item\label{eq2} The homomorphism $\beta:\Lambda(k) \to \Lambda(k)$ is the identity.
-\item\label{eq3} The homomorphisms $\beta$ are associative in the sense that
-\[
-\beta(h_{11}, \ldots, h_{1j_{1}}, h_{21}, \ldots, h_{2j_{2}}, \ldots, h_{nj_{n}}) = \beta\big( \beta(h_{11}, \ldots, h_{1j_{1}}), \ldots, \beta(h_{n1}, \ldots, h_{nj_{n}}) \big)
-\]
-holds.
-\item\label{eq4} The functions $\delta_{n; k_{1}, \ldots, k_{n}}$ are natural with respect to the maps $\pi_{n}$.
-\[
-\xy
-% var defs
-% 00    20
-% 01    21
-%    12(end)
-(0,0)*+{\Lambda(n)} ="00";
-(40,0)*+{\Lambda(k_{1} + \cdots + k_{n}) } ="20";
-(0,-15)*+{\Sigma_{n}  } ="01";
-(40,-15)*+{\Sigma_{k_{1} + \cdots + k_{n}} } ="21";
-{\ar^{\delta} "00" ; "20"};
-{\ar^{\pi} "20" ; "21"};
-{\ar_{\pi} "00" ; "01"};
-{\ar_{\delta} "01" ; "21"};
-\endxy
-\]
-\item\label{eq5} The functions $\delta_{n; 1, \ldots, 1}, \, \delta_{1;n} : \Lambda(n) \to \Lambda(n)$ are the identity.
-\item\label{eq6} The equation $\delta_{n; k_{i}}(g) \delta_{n; j_{i}}(h) = \delta_{n; j_{i}}(gh)$ holds when
-\[
-k_{i} = j_{\pi(h)^{-1}(i)}.
-\]
-\item\label{eq7} The functions $\delta$ are associative in the sense that
-\[
-\delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{n}}}\big( \delta_{n; m_{1}, \ldots, m_{n}}(f) \big) = \delta_{n; P_{1}, \ldots, P_{n}}(f)
-\]
-where $P_{i} = p_{i1} + \cdots + p_{im_{i}}$.
-\item\label{eq8} $\delta(g) \beta(h_{1}, \ldots, h_{n}) = \beta(h_{\pi(g)^{-1}(1)}, \ldots,  h_{\pi(g)^{-1}(n)}) \delta(g)$, where $h_{i} \in \Lambda(k_{i})$ and $\delta:\Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$.
-\item\label{eq9} The equation
-\[
-\beta(\delta_{1}(g_{1}), \ldots, \delta_{n}(g_{n})) = \delta_{c}(\beta(g_{1}, \ldots, g_{n}))
-\]
-holds, where $\delta_{i}(g_{i})$ is shorthand for $\delta_{k_{i}; m_{i1}, \ldots, m_{ik_{i}}}(g_{i})$ and $\delta_{c}$ is shorthand for
-\[
-\delta_{k_{1}+\cdots + k_{n}; m_{11}, m_{12}, \ldots, m_{1k_{1}}, m_{21}, \ldots, m_{nk_{n}}}.
-\]
-\end{enumerate}
-\end{thm}
-
-\begin{proof}
-Let $\mb{\Lambda}$ be an action operad, and define $\beta, \delta$ as in \cref{Defi:aop_bl}.  Since $\pi:\Lambda \rightarrow \Sigma$ is an operad map, axioms \eqref{eq1} and \eqref{eq4} hold.  Since $\Lambda$ is an operad of sets, axioms \eqref{eq2} and \eqref{eq5} follow from the operad unit axioms, and axioms \eqref{eq3}, \eqref{eq7}, and \eqref{eq9} follow from the operad associativity axiom.  Axioms \eqref{eq6} and \eqref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
-
-Given the data above, we need only define the operad multiplication, verify the operad unit and multiplication axioms,  and finally check the action operad axiom.  Multiplication is given by
-\[
-\mu(g; h_{1}, \ldots, h_{n}) = \delta_{n; k_{1}, \ldots, k_{n}}(g) \beta(h_{1}, \ldots, h_{n})
-\]
-where $h_{i} \in \Lambda(k_{i})$.  The unit is $e \in \Lambda(1)$.
-
-We now verify the operad unit axioms.
-\[
-\begin{array}{rcl}
-\mu(e; g) & = & \delta(e)\beta(g) \\
-& = & e \cdot g \\
-& = & g
-\end{array}
-\]
-\[
-\begin{array}{rcl}
-\mu(h; e, \ldots, e) & = & \delta(h)\beta(e, \ldots, e) \\
-& = & h \cdot e \\
-& = & h
-\end{array}
-\]
-These follow from axioms \eqref{eq2} and \eqref{eq5}, together with the fact that $\beta$ is a group homomorphism.
-
-For the operad associativity axiom, let
-\begin{itemize}
-\item $f \in \Lambda(m),$
-\item $g_{i} \in \Lambda(n_{i})$ for $i=1, \ldots, m$, and
-\item $h_{ij} \in \Lambda(p_{i,j})$ for $i=1, \ldots, m$ and $j=1, \ldots, n_{i}$.
-\end{itemize}
-Further, let $P_{i} = p_{i1} + \cdots + p_{in_{i}}$ and $\underline{h_{i\bullet}}$ denote the list $h_{i1}, h_{i2}, \ldots, h_{in_{i}}$.  We must then show that
-\[
-\mu\big( f; \mu(g_{1}; \underline{h_{1\bullet}}), \ldots, \mu(g_{m}; \underline{h_{m\bullet}}) \big) = \mu\big( \mu (f; g_{1}, \ldots, g_{m}); h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} \big).
-\]
-By definition, the left side of this equation is
-\[
-\delta_{m; P_{1}, \ldots, P_{m}}(f) \beta\big( \mu(g_{1}; \underline{h_{1\bullet}}), \ldots, \mu(g_{m}; \underline{h_{m\bullet}}) \big),
-\]
-and
-\[
-\mu(g_{i}; \underline{h_{i\bullet}}) = \delta_{n_{i}; p_{i1}, \ldots, p_{in_{i}}}(g_{i})\beta(h_{i1}, \ldots, h_{in_{i}}).
-\]
-Since $\beta$ is a group homomorphism, we can then rewrite the left side as
-\[
-\delta(f)\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big)\beta\big(\beta(h_{1\bullet}), \ldots, \beta(h_{m\bullet})\big)
-\]
-where we have suppressed the subscripts on the $\delta$'s.  By axiom \eqref{eq3} , we have
-\[
-\beta\big(\beta(h_{1\bullet}), \ldots, \beta(h_{m\bullet})\big) = \beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}}).
-\]
-Further, axiom \eqref{eq9} above shows that
-\[
-\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big) = \delta\big(\beta(g_{1}, \ldots, g_{m})\big).
-\]
-Thus we have shown that the left side of the operad associativity axiom is equal to
-\[
-\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big)\beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}}).
-\]
-Now the right side is
-\[
-\mu\big( \mu (f; g_{1}, \ldots, g_{m}); h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} \big)
-\]
-which is by definition
-\[
-\delta\big(\mu (f; g_{1}, \ldots, g_{m})\big)\beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} ).
-\]
-Thus verifying the operad associativity axiom reduces to showing
-\begin{eqn}\label{eqn:opass}
-\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big) = \delta\big(\mu (f; g_{1}, \ldots, g_{m})\big).
-\end{eqn}By the definition of $\mu$, we have
-\[
-\delta(\mu (f; g_{1}, \ldots, g_{m})) = \delta\big(\delta(f)\beta(g_{1}, \ldots, g_{m}) \big)
-\]
-which is itself equal to
-\begin{eqn}\label{eqn:opass2}
-\delta\big(\delta(f)\big) \delta\big(\beta(g_{1}, \ldots, g_{m})\big)
-\end{eqn}by axiom \eqref{eq6} above.  Now the $\delta(f)$ on the left side of \cref{eqn:opass} uses $\delta_{n; P_{1}, \ldots, P_{n}}$, while the $\delta(\delta(f))$ in \cref{eqn:opass2} is actually
-\[
-\delta_{m_1 + \cdots + m_{n}; q_{ij}}(\delta_{n; m_{1}, \ldots, m_{n}} (f))
-\]
-where the $q_{ij}$ are defined, by axiom \eqref{eq6}, to be given by
-\[
-q_{ij} = p_{i,\pi(g_{i})^{-1}(j)}
-\]
-using the compatibility of $\beta$ and $\pi$ in axiom \eqref{eq1}.  By axiom \eqref{eq7}, this composite of $\delta$'s  is then $\delta_{n; Q_{1}, \ldots, Q_{n}}$ where $Q_{i} = q_{i1} + \cdots + q_{im_{i}}$.  But by the definition of the $q_{ij}$, we immediately see that $Q_{i} = P_{i}$, so the $\delta(f)$ in \cref{eqn:opass} is equal to the $\delta(\delta(f))$ appearing in \cref{eqn:opass2}, concluding the proof of the operad associativity axiom.
-
-The action operad axiom is now the calculation below, and uses axioms \eqref{eq4} and \eqref{eq8}.
-\begin{small}
-\[
-\begin{array}{rcl}
-\mu(g; h_{1}, \ldots, h_{n})\mu(g'; h_{1}', \ldots, h_{n}') & = & \delta(g) \beta(h_{1}, \ldots, h_{n}) \delta(g') \beta(h_{1}', \ldots, h_{n}') \\
-& = & \delta(g) \delta(g') \beta(h_{\pi(g')(1)}, \ldots, h_{\pi(g')(n)})  \beta(h_{1}', \ldots, h_{n}') \\
-& = & \delta(gg') \beta(h_{\pi(g')(1)}h_{1}', \ldots, h_{\pi(g')(n)}h_{n}') \\
-& = & \mu(gg'; h_{\pi(g')(1)}h_{1}', \ldots, h_{\pi(g')(n)}h_{n}')
-\end{array}
-\]
-\end{small}
-\end{proof}
-
-\begin{Defi}\label{Defi:cat_aop}
-The category $\mb{AOp}$ of action operads has
-\begin{itemize}
-\item objects which are action operads $\mb{\Lambda}$, and
-\item morphisms $\mb{\Lambda} \rightarrow \mb{\Lambda'}$ which are those operad maps $f:\Lambda \rightarrow \Lambda'$ such that each $f_{n}:\Lambda(n) \rightarrow \Lambda'(n)$ is a group homomorphism and $\pi_{n}^{\Lambda} = \pi_{n}^{\Lambda'} \circ f_{n}$.
-\end{itemize}
-\end{Defi}
 
 \begin{Defi}\label{Defi:lamop}
 Let $\mb{\Lambda}$ be an action operad.  A \textit{$\mb{\Lambda}$-operad} $P$ (in $\mb{Sets}$) consists of
@@ -3300,7 +3298,32 @@ Once again, this proof holds in a wide context.  We required that the product of
 %\begin{cor}\label{egisinf}
 %$E\Lambda$ is $\mb{\Lambda}_{\infty}$, hence unique in the sense above.
 %\end{cor}
+QQQ Insert explicit descriptions of cells
+\begin{prop}\label{el_via_moncats}
+A strict $\EL$-algebra structure on $X$ determines and is determined by
+\begin{itemize}
+\item a strict monoidal structure,
+\item some iso's from the $\Lambda(n)$'s
+\item plus axioms.
+\end{itemize}
+\end{prop}
+\begin{proof}
 
+\end{proof}
+
+\begin{prop}\label{el_strictmap}
+Let $X,Y$ be strict $\EL$-algebras, and $F:X \to Y$ be a functor. $F$ is a strict $\EL$-algebra map if and only if something.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+\begin{prop}\label{el_weakmap}
+Let $X,Y$ be strict $\EL$-algebras, and $F:X \to Y$ be a functor. The structure of a pseudomorphism of $\EL$-algebras determines and is determined by some stuff.
+\end{prop}
+\begin{proof}
+
+\end{proof}
 \section{Abstract properties of the Borel construction}
 
 Kelly's theory of clubs \cite{kelly_club1, kelly_club0, kelly_club2} was designed to simplify and explain certain aspects of coherence results, namely the fact that many coherence results rely on extrapolating information about general free objects for a 2-monad $T$ from information about the specific free object $T1$ where $1$ denotes the terminal category.  This occurs, for example, in the study of the many different flavors of monoidal category:  plain monoidal category, braided monoidal category, symmetric monoidal category, and so on.  This section will explain how every action operad gives rise to a club, as well as compute the clubs which arise as the image of this procedure.
