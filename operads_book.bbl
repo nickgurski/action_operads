@@ -23,16 +23,32 @@ R.~Blackwell, G.~M. Kelly, and A.~J. Power.
 \newblock Two-dimensional monad theory.
 \newblock {\em J. Pure Appl. Algebra}, 59(1):1--41, 1989.
 
+\bibitem{cg-periodic2}
+Eugenia Cheng and Nick Gurski.
+\newblock The periodic table of n-categories {II}: degenerate tricategories.
+\newblock {\em Cahiers de Topologie et G{\'e}om{\'e}trie Diff{\'e}rentielle
+  Cat{\'e}goriques}, 52(2):82--125, 2011.
+
 \bibitem{day-thesis}
 Brian Day.
 \newblock {\em Construction of biclosed categories}.
 \newblock 1970.
 \newblock Thesis (Ph.D.)--University of New South Wales.
 
+\bibitem{doss-imm}
+Raouf Doss.
+\newblock Sur l’immersion d’un semi-groupe dans un groupe.
+\newblock {\em Bull. Sci. Math}, 72(2):139--150, 1948.
+
 \bibitem{drin-quasihopf}
 V.~G. Drinfeld.
 \newblock Quasi-{H}opf algebras.
 \newblock {\em Algebra i Analiz}, 1(6):114--148, 1989.
+
+\bibitem{eh}
+Beno Eckmann and Peter~J Hilton.
+\newblock Group-like structures in general categories.
+\newblock {\em Mathematische Annalen}, 145(3):227--255, 1962.
 
 \bibitem{EM2}
 Elsayed~A. El-Rifai and H.~R. Morton.
@@ -43,6 +59,12 @@ Elsayed~A. El-Rifai and H.~R. Morton.
 Zbigniew Fiedorowicz.
 \newblock The symmetric bar construction.
 \newblock preprint.
+
+\bibitem{FL91}
+Zbigniew Fiedorowicz and Jean-Louis Loday.
+\newblock Crossed simplicial groups and their associated homology.
+\newblock {\em Transactions of the American Mathematical Society},
+  326(1):57--87, 1991.
 
 \bibitem{garner_poly}
 R.~Garner.
@@ -105,6 +127,11 @@ G.~M. Kelly and Ross Street.
 \newblock In {\em Category {S}eminar ({P}roc. {S}em., {S}ydney, 1972/1973)},
   pages 75--103. Lecture Notes in Math., Vol. 420. Springer, Berlin, 1974.
 
+\bibitem{KL97}
+G~Max Kelly and Stephen Lack.
+\newblock On property-like structures.
+\newblock {\em Theory Appl. Categ}, 3(9):213--250, 1997.
+
 \bibitem{kock-monads}
 Anders Kock.
 \newblock Monads on symmetric monoidal closed categories.
@@ -119,6 +146,12 @@ Anders Kock.
 Anders Kock.
 \newblock Strong functors and monoidal monads.
 \newblock {\em Arch. Math. (Basel)}, 23:113--120, 1972.
+
+\bibitem{Kra96}
+R~Krasauskas.
+\newblock Crossed simplicial groups of framed braids and mapping class groups
+  of surfaces.
+\newblock {\em Lithuanian Mathematical Journal}, 36(3):263--281, 1996.
 
 \bibitem{lack-cod}
 Stephen Lack.
@@ -143,6 +176,16 @@ Saunders MacLane.
 \newblock Springer-Verlag, New York, 1971.
 \newblock Graduate Texts in Mathematics, Vol. 5.
 
+\bibitem{malcev-immer1}
+A~Malcev.
+\newblock On the immersion of an algebraic ring into a field.
+\newblock {\em Mathematische Annalen}, 113(1):686--691, 1937.
+
+\bibitem{malcev-immer2}
+AI~Malcev.
+\newblock On the immersion of associative systems in groups.
+\newblock {\em Mat. Sbornik}, 6(48):331--336, 1939.
+
 \bibitem{markl_prop}
 M.~Markl.
 \newblock Operads and {PROP}s.
@@ -166,10 +209,20 @@ A.~J. Power.
 \newblock A general coherence result.
 \newblock {\em J. Pure Appl. Algebra}, 57(2):165--173, 1989.
 
+\bibitem{rob-grouptheory}
+Derek~JS Robinson.
+\newblock {\em A Course in the Theory of Groups}, volume~80.
+\newblock Springer Science \& Business Media, 2012.
+
 \bibitem{sal-wahl}
 Paolo Salvatore and Nathalie Wahl.
 \newblock Framed discs operads and {B}atalin-{V}ilkovisky algebras.
 \newblock {\em Q. J. Math.}, 54(2):213--231, 2003.
+
+\bibitem{sel-graphmon}
+Peter Selinger.
+\newblock A survey of graphical languages for monoidal categories.
+\newblock In {\em New structures for physics}, pages 289--355. Springer, 2010.
 
 \bibitem{wahl-thesis}
 Nathalie Wahl.
