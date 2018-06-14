@@ -1,4 +1,3 @@
-% \immediate{makeindex -s operads_book.ist -o operads_book.gls operads_book.glo}
 \documentclass{amsbook} % default font size is 10pt
 \usepackage{latexsym}
 \usepackage{amsfonts}
@@ -11,16 +10,16 @@
 \usepackage{graphicx}
 \usepackage{eucal}
 \usepackage{multicol}
-\usepackage[refpage, intoc]{nomencl}
-\renewcommand{\nomname}{}
-\renewcommand*{\pagedeclaration}[1]{\dotfill\hyperpage{#1}}
+\usepackage[refpage, notintoc]{nomencl}
+% \renewcommand{\nomname}{}
+\renewcommand*{\pagedeclaration}[1]{\,\,\,\hyperpage{#1}}
 \makenomenclature
 \makeindex
 \usepackage{etoolbox}
 \renewcommand\nomgroup[1]{%
   \item[\bfseries
-  \ifstrequal{#1}{C}{Catalogue of Categories}{%
-  \ifstrequal{#1}{N}{Glossary of Notation}{}}%
+  \ifstrequal{#1}{C}{\addcontentsline{toc}{section}{Catalogue of Categories}  \rule[2pt]{0.45\linewidth}{1pt} Catalogue of Categories  \rule[2pt]{0.45\linewidth}{1pt}}{%
+  \ifstrequal{#1}{N}{\addcontentsline{toc}{section}{Glossary of Notation} \rule[2pt]{0.45\linewidth}{1pt} Glossary of Notation  \rule[2pt]{0.45\linewidth}{1pt}}{}}%
 ]}
 \usepackage[all]{xy}
 \usepackage{tikz}
@@ -103,7 +102,6 @@
 \newcolumntype{L}{>{$}l<{$}}
 \newcolumntype{C}{>{$}c<{$}}
 \newcolumntype{R}{>{$}r<{$}}
-% \newcommand{\nom}[2]{\nomenclature{#1}{#2}}
 
 \crefname{lem}{Lemma}{Lemmas}
 \crefname{thm}{Theorem}{Theorems}
@@ -599,7 +597,7 @@ A \textit{map of action operads} $f: \Lambda \rightarrow \Lambda'$ consists of a
 
 
 \begin{example}
-One can easily form new action operads from old ones by taking limits.  To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there.  Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$\nomenclature[C]{$A/a$}{the slice category of $A$ over an object $a$ in $A$} (see QQQ) 
+One can easily form new action operads from old ones by taking limits.  To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there.  Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$\nomenclature[C]{$C/c$}{the slice category of $C$ over an object $c$ in $C$} (see QQQ) 
 which themselves are (possibly wide) pullbacks in the category of operads.  This pullback will then be computed levelwise, showing that at each dimension we have a group structure with a group homomorphism to the appropriate $\Sigma_{n}$ and that the final action operad axiom holds since it does in each component.  The equalizer of a pair of maps will then just be the levelwise equalizer.  This shows that the pointwise product of an action operad $P$ with an action operad of the form $Z(Q)$ is again an action operad, but the pointwise product of two arbitrary action operads might not be.
 \end{example}
 
@@ -1081,7 +1079,7 @@ It is worth noting that the equivariance required for a $P$-algebra is built int
 \end{rem}
 
 \begin{Defi}
-The category of algebras for $P$, $P\mbox{-}\mb{Alg}$, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
+The category of algebras for $P$, $P\mbox{-}\mb{Alg}$\nomenclature[C]{$P\mbox{-}\mb{Alg}$}{of $P$-algebras and morphisms for an operad (or ($2$-)monad) $P$}, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
 \[
 \xy
 {\ar^{1 \times f^{n}} (0,0)*+{P(n) \times X^{n}}; (50,0)*+{P(n) \times Y^{n}} };
@@ -1092,7 +1090,7 @@ The category of algebras for $P$, $P\mbox{-}\mb{Alg}$, has objects the $P$-algeb
 \]
 \end{Defi}
 
-Let $X$ be a set.  Then the endomorphism operad of $X$, denoted $\mathcal{E}_{X}$, is given by the sets $\mathcal{E}_{X}(n) = \mb{Sets}(X^{n}, X)$ with the identity function in $\mathcal{E}_{X}(1)$ giving the unit element and composition of functions giving the composition operation.  Concretely, composition is given by the formula
+Let $X$ be a set.  Then the endomorphism operad of $X$, denoted $\mathcal{E}_{X}$\nomenclature[N]{$\mathcal{E}_{X}$}{the endomorphism operad of a set $X$}, is given by the sets $\mathcal{E}_{X}(n) = \mb{Sets}(X^{n}, X)$ with the identity function in $\mathcal{E}_{X}(1)$ giving the unit element and composition of functions giving the composition operation.  Concretely, composition is given by the formula
 \[
 \mu(f; g_{1}, \ldots, g_{n}) = f \circ (g_{1} \times \cdots \times g_{n}).
 \]
@@ -1127,7 +1125,7 @@ The proposition above holds for $P$-algebras in any closed symmetric monoidal ca
 \end{rem}
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad.  Then $P$ induces an endofunctor of $\mb{Sets}$, denoted $\underline{P}$, by the following formula.
+Let $P$ be a $\Lambda$-operad.  Then $P$ induces an endofunctor of $\mb{Sets}$, denoted $\underline{P}$\nomenclature[N]{$\underline{P}$}{the monad induced by an operad $P$}, by the following formula.
  \[
 	\underline{P}(X)	 =  \coprod_n P(n) \times_{\Lambda(n)} X^n
 \]
@@ -1319,15 +1317,15 @@ These constitute an adjunction $(F,\id) \dashv (\id, \eta^*) \circ (U, \id)$ in 
 In this section, we will show that $\Lambda$-operads are the monoids in the category of $\Lambda$-collections equipped with an appropriate substitution product.  Such a result is fairly standard \cite{mss-op}, and in both the symmetric and non-symmetric cases can easily be proven directly.  Since we work with an arbitrary action operad, however, it will be more economical to take the abstract approach using coends and Day convolution.
 
 \begin{rem}
-It is possible to consider $\Lambda$-operads in categories other than the category of sets.  In this case we still use the notion of an action operad given above, but then take the operad $P$ to have objects $P(n)$ which are the objects of some closed symmetric monoidal category $\mathcal{V}$.  We will rarely use anything that might require the closed structure as such, only the fact that the tensor product distributes over colimits in each variable.  This is a consequence of the fact that both $X \otimes -$ and $- \otimes X$ are left adjoints in the case of a closed symmetric monoidal category.  Thus while we set up the foundations using only operads in $\mb{Sets}$, the diligent reader can easily modify this theory for their closed symmetric monoidal category of choice.  In fact, we will use the same theory in $\mb{Cat}$ with its cartesian structure, noting only that the same arguments work in $\mb{Cat}$ with essentially no modification.
+It is possible to consider $\Lambda$-operads in categories other than the category of sets.  In this case we still use the notion of an action operad given above, but then take the operad $P$ to have objects $P(n)$ which are the objects of some closed symmetric monoidal category $\mathcal{V}$.  We will rarely use anything that might require the closed structure as such, only the fact that the tensor product distributes over colimits in each variable.  This is a consequence of the fact that both $X \otimes -$ and $- \otimes X$ are left adjoints in the case of a closed symmetric monoidal category.  Thus while we set up the foundations using only operads in $\mb{Sets}$, the diligent reader can easily modify this theory for their closed symmetric monoidal category of choice.  In fact, we will use the same theory in $\mb{Cat}$\nomenclature[C]{$\mb{Cat}$}{of categories and functors} with its cartesian structure, noting only that the same arguments work in $\mb{Cat}$ with essentially no modification.
 \end{rem}
 
 \begin{Defi}
-Let $\Lambda$ be an action operad.  The category $\Lambda\mb{\mbox{-}Coll}$ of $\Lambda$-collections has objects $X = \{ X(n) \}_{n \in \N}$ which consist of a set $X(n)$ for each natural number $n$ together with an action $X(n) \times \Lambda(n) \rightarrow X(n)$ of $\Lambda(n)$ on $X(n)$.  A morphism $f:X \rightarrow Y$ in $\Lambda\mb{\mbox{-}Coll}$ consists of a $\Lambda(n)$-equivariant map $f_{n}:X(n) \rightarrow Y(n)$ for each natural number $n$.
+Let $\Lambda$ be an action operad.  The category $\Lambda\mb{\mbox{-}Coll}$\nomenclature[C]{$\Lambda\mb{\mbox{-}Coll}$}{of $\Lambda$-collections and $\Lambda(n)$-equivariant maps} of $\Lambda$-collections has objects $X = \{ X(n) \}_{n \in \N}$ which consist of a set $X(n)$ for each natural number $n$ together with an action $X(n) \times \Lambda(n) \rightarrow X(n)$ of $\Lambda(n)$ on $X(n)$.  A morphism $f:X \rightarrow Y$ in $\Lambda\mb{\mbox{-}Coll}$ consists of a $\Lambda(n)$-equivariant map $f_{n}:X(n) \rightarrow Y(n)$ for each natural number $n$.
 \end{Defi}
 
 \begin{rem}
-The definition of $\Lambda\mb{\mbox{-}Coll}$ does not require that $\Lambda$ be an action operad, only that one has a natural number-indexed set of groups.  Given any such collection of groups $\{ \Lambda(n) \}_{n \in \N}$, we can form the category $\mathbb{\Lambda}$ whose objects are natural numbers and whose hom-sets are given by $\mathbb{\Lambda}(m,n) = \emptyset$ if $m \neq n$ and $\mathbb{\Lambda}(n,n) = \Lambda(n)$ (where composition and units are given by group multiplication and identity elements, respectively).  Then $\Lambda\mb{\mbox{-}Coll}$ is the presheaf category
+The definition of $\Lambda\mb{\mbox{-}Coll}$ does not require that $\Lambda$ be an action operad, only that one has a natural number-indexed set of groups.  Given any such collection of groups $\{ \Lambda(n) \}_{n \in \N}$, we can form the category $\mathbb{\Lambda}$\nomenclature[C]{$\mathbb{\Lambda}$}{of natural numbers and hom-sets $\Lambda(n)$} whose objects are natural numbers and whose hom-sets are given by $\mathbb{\Lambda}(m,n) = \emptyset$ if $m \neq n$ and $\mathbb{\Lambda}(n,n) = \Lambda(n)$ (where composition and units are given by group multiplication and identity elements, respectively).  Then $\Lambda\mb{\mbox{-}Coll}$ is the presheaf category
 \[
 \hat{\mathbb{\Lambda}} = [\mathbb{\Lambda}^{\textrm{op}}, \mb{Sets}],
  \]
@@ -1363,7 +1361,7 @@ We will now develop the tools to prove that the category $\Lambda\mb{\mbox{-}Col
 Let $\Lambda$ be an action operad.
 \begin{enumerate}
 \item The category $\Lambda\mb{\mbox{-}Coll}$ has a monoidal structure with tensor product given by $\circ$ and unit given by the collection $I$ with $I(n) = \emptyset$ when $n \neq 1$, and $I(1) = \Lambda(1)$ with the $\Lambda$-action given by multiplication on the right.
-\item The category $\mb{Mon}(\Lambda\mb{\mbox{-}Coll})$ of monoids in $\Lambda\mb{\mbox{-}Coll}$ is equivalent to the category of $\Lambda$-operads.
+\item The category $\mb{Mon}(\Lambda\mb{\mbox{-}Coll})$\nomenclature[C]{$\mb{Mon}(C)$}{of monoids in $C$ and morphisms preserving the monoid structure} of monoids in $\Lambda\mb{\mbox{-}Coll}$ is equivalent to the category of $\Lambda$-operads.
 \end{enumerate}
 \end{thm}
 
@@ -1409,7 +1407,7 @@ Now that $\mathbb{\Lambda}$ has a monoidal structure, we get a monoidal structur
 \[
 [\mathbb{\Lambda}^{\textrm{op}}, \mb{Sets}] = \hat{\mathbb{\Lambda}}
 \]
-using Day convolution, denoted $\star$.  Given collections $X, Y$, their convolution product $X \star Y$ is given by the coend formula
+using Day convolution, denoted $\star$.  Given collections $X, Y$, their convolution product $X \star Y$\nomenclature[N]{$X \star Y$}{convolution product of collections $X$ and $Y$} is given by the coend formula
 \[
 X \star Y (k) = \int^{m,n \in \mathbb{\Lambda}} X(m) \times Y(n) \times \mathbb{\Lambda}(k, m+n)
 \]
@@ -1537,7 +1535,7 @@ Compatibility with the actions of the  $\Lambda(n), \Lambda(k_{1}), \ldots, \Lam
 \end{proof}
 
 \begin{rem}
-The above result can be interpreted for $\Lambda$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which tensor distributes over colimits in each variable.  In order to do so, the following changes must be made.  First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects.  Second, any product with a hom-set from $\mathbb{\Lambda}$ must be replaced by a copower with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$).  The same changes also allow one to interpret the results below about algebras in such a category, unless noted otherwise.
+The above result can be interpreted for $\Lambda$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which tensor distributes over colimits in each variable.  In order to do so, the following changes must be made.  First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects.  Second, any product with a hom-set from $\mathbb{\Lambda}$ must be replaced by a copower with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$\nomenclature[N]{$S \odot X$}{copower of set $S$ with an object $X$}).  The same changes also allow one to interpret the results below about algebras in such a category, unless noted otherwise.
 \end{rem}
 
 
@@ -1900,8 +1898,8 @@ We can form various 2-categories using these cells.
 \begin{Defi}
 Let $P$ be a $\Lambda$-operad.
 \begin{itemize}
-\item The $2$-category $P\mbox{-}\mb{Alg}_{s}$ consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
-\item The $2$-category $\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$ consists of $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations.
+\item The $2$-category $P\mbox{-}\mb{Alg}_{s}$\nomenclature[C]{$P\mbox{-}\mb{Alg}_{s}$}{the $2$-category of strict $P$-algebras, strict morphisms, and $P$-transformations for an operad (or ($2$-)monad) $P$} consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
+\item The $2$-category $\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$\nomenclature[C]{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}{the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or ($2$-)monad) $P$} consists of $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations.
 \end{itemize}
 \end{Defi}
 
@@ -2498,7 +2496,7 @@ A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit
     \end{itemize}
 \end{Defi}
 
-It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. Since we will be computing with coequalizers of the form $A \times_{\Lambda} B$ repeatedly, we give the following useful lemma.
+It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. Since we will be computing with coequalizers of the form $A \times_{\Lambda} B$\nomenclature[N]{$A \times_{G} B$}{coequalizer of right $G$-action on $A$ and left $G$-action on $B$} repeatedly, we give the following useful lemma.
 
 \begin{lem}\label{coeq-lem}
 Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. There is then an action of $G$ on the product $A \times B$ given by
@@ -2838,8 +2836,8 @@ The classical Borel construction is a functor from $G$-spaces to spaces, sending
 
 \begin{Defi}\label{Defi:e_b}
 \begin{enumerate}
-\item Let $X$ be a set.  We define the \textit{translation category} $EX$ to have objects the elements of $X$ and morphisms consisting of a unique isomorphism between any two objects.
-\item Let $G$ be a group.  The category $BG$ has a single object $*$, and hom-set $BG(*,*) = G$ with composition and identity given by multiplication and the unit element in the group, respectively.
+\item Let $X$ be a set.  We define the \textit{translation category} $EX$\nomenclature[C]{$EX$}{translation category of a set $X$} to have objects the elements of $X$ and morphisms consisting of a unique isomorphism between any two objects.
+\item Let $G$ be a group.  The category $BG$\nomenclature[C]{$BG$}{delooping of a group $G$ as a category} has a single object $*$, and hom-set $BG(*,*) = G$ with composition and identity given by multiplication and the unit element in the group, respectively.
 \end{enumerate}
 \end{Defi}
 
@@ -3181,11 +3179,11 @@ A cocomplete symmetric monoidal category is a symmetric monoidal category which 
 QQQ Define cocomplete symmetric monoidal category, definition used in Theorem \ref{preserveGop}
 \end{Defi}
 
-\begin{thm}\label{preserveGop}
+\begin{thm}\label{preserveGop}Hi John,
 Let $M,N$ be cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable, and let $F:M \rightarrow N$ be a symmetric lax monoidal functor with unit constraint $\varphi_{0}$ and tensor constraint $\varphi_{2}$.  Let $\mb{\Lambda}$ be an action operad, and $P$ a $\mb{\Lambda}$-operad in $M$.  Then $FP = \{ F(P(n)) \}$ has a canonical $\mb{\Lambda}$-operad structure, giving a functor
 \[
 F_{*}:\mb{\Lambda}\mbox{-}Op(M) \rightarrow \mb{\Lambda}\mbox{-}Op(N)
-\]
+\]\nomenclature[C]{$\mb{\Lambda}\mbox{-}Op(M)$}{of $\mb{\Lambda}$-operads in the cocomplete symmetric monoidal category $M$ with $\mb{Lambda}$-operad maps}
 from the category of $\mb{\Lambda}$-operads in $M$ to the category of $\mb{\Lambda}$-operads in $N$.
 \end{thm}
 \begin{proof}
@@ -7888,18 +7886,13 @@ where the $1$ corresponds to the $(t ; z_i)$ generator of $\mathbb{Z}^{n} \times
 as required.
 \end{proof}  
 
-% \nomenclature[C]{$E(X^2)$}{expected value of $X^2$} \nomenclature[N]{$Br_{n}$}{braid group on $n$ strands}
-% \index{group}
-% \index{group!symmetric}
-% \index{group!cactus}
-% \index{group!action}
 
 
 %\begin{prop} Cactus group case
 %\end{prop}
 
 % \begin{multicols}{2}
-\printnomenclature
+\printnomenclature[2cm]
 % \end{multicols}
 
 \printindex
