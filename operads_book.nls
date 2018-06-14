@@ -4,6 +4,8 @@
 
   \item [{$[A,B]$}]\begingroup of functors between categories $A$ and $B$ and natural transformations\nomeqref {3}
 		\nompageref{19}
+  \item [{$\cmon$}]\begingroup of commutative monoids and monoid homomorphisms\nomeqref {3}
+		\nompageref{87}
   \item [{$\Lambda\mbox{-}\mb{Op}$}]\begingroup of $\Lambda$-operads and maps of operads which are levelwise equivariant with respect to the $\Lambda(n)$-actions\nomeqref {3}
 		\nompageref{20}
   \item [{$\Lambda\mb{\mbox{-}Coll}$}]\begingroup of $\Lambda$-collections and $\Lambda(n)$-equivariant maps\nomeqref {3}
@@ -12,22 +14,38 @@
 		\nompageref{25}
   \item [{$\mathbf{CSGrp}$}]\begingroup of crossed simplicial groups and morphisms of crossed simplicial groups\nomeqref {1}
 		\nompageref{14}
-  \item [{$\mb{\Lambda}\mbox{-}Op(M)$}]\begingroup of $\mb{\Lambda}$-operads in the cocomplete symmetric monoidal category $M$ with $\mb{Lambda}$-operad maps\nomeqref {5}
-		\nompageref{52}
+  \item [{$\mb{\Lambda}\mbox{-}\mb{Multicat}$}]\begingroup of $\Lambda$-multicategories and $\Lambda$-multifunctors\nomeqref {3}
+		\nompageref{80}
+  \item [{$\mb{\Lambda}\mbox{-}Op(M)$}]\begingroup of $\mb{\Lambda}$-operads in the cocomplete symmetric monoidal category $M$ with $\mb{Lambda}$-operad maps\nomeqref {3}
+		\nompageref{49}
   \item [{$\mb{AOp}$}]\begingroup of action operads and maps of action operads\nomeqref {1}
 		\nompageref{12}
   \item [{$\mb{Cat}$}]\begingroup of categories and functors\nomeqref {3}
 		\nompageref{25}
+  \item [{$\mb{Club}$}]\begingroup of clubs and morphisms between clubs\nomeqref {3}
+		\nompageref{55}
+  \item [{$\mb{CobCat}$}]\begingroup the $2$-category of coboundary categories, coboundary functors, and monoidal transformations\nomeqref {3}
+		\nompageref{59}
+  \item [{$\mb{Kl}_{T}$}]\begingroup the Kleisli bicategory of a pseudomonad $T$\nomeqref {3}
+		\nompageref{79}
   \item [{$\mb{Mon}(C)$}]\begingroup of monoids in $C$ and morphisms preserving the monoid structure\nomeqref {3}
 		\nompageref{26}
   \item [{$\mb{Op}(\mb{Grp})$}]\begingroup of operads in groups and maps of operads in groups\nomeqref {1}
 		\nompageref{13}
   \item [{$\mb{Op}^{g}$}]\begingroup of operads $P$ for which each $P(n)$ has a group structure and operad maps\nomeqref {3}
 		\nompageref{18}
-  \item [{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}]\begingroup the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or ($2$-)monad) $P$\nomeqref {3}
+  \item [{$\mb{Prof}$}]\begingroup the bicategory of categories, profunctors, and transformations\nomeqref {3}
+		\nompageref{78}
+  \item [{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}]\begingroup the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or $2$-)monad) $P$\nomeqref {3}
 		\nompageref{35}
   \item [{$\mb{Sets}$}]\begingroup of sets and functions\nomeqref {0}
 		\nompageref{8}
+  \item [{$\ML\mbox{-}\moncat$}]\begingroup of $\ML$-monoidal categories and $\ML$-monoidal functors\nomeqref {3}
+		\nompageref{66}
+  \item [{$\mon$}]\begingroup of monoids and monoid homomorphisms\nomeqref {3}
+		\nompageref{85}
+  \item [{$\moncat$}]\begingroup of monoidal categories and monoidal functors\nomeqref {3}
+		\nompageref{66}
   \item [{$BG$}]\begingroup delooping of a group $G$ as a category\nomeqref {3}
 		\nompageref{47}
   \item [{$C/c$}]\begingroup the slice category of $C$ over an object $c$ in $C$\nomeqref {1}
@@ -36,13 +54,21 @@
 		\nompageref{18}
   \item [{$EX$}]\begingroup translation category of a set $X$\nomeqref {3}
 		\nompageref{47}
-  \item [{$P\mbox{-}\mb{Alg}$}]\begingroup of $P$-algebras and morphisms for an operad (or ($2$-)monad) $P$\nomeqref {3}
+  \item [{$L_n$}]\begingroup the free $\ML$-monoidal category on $n$ invertible objects\nomeqref {3}
+		\nompageref{84}
+  \item [{$P\mbox{-}\mb{Alg}$}]\begingroup of $P$-algebras and morphisms for an operad (or monad) $P$\nomeqref {3}
 		\nompageref{21}
-  \item [{$P\mbox{-}\mb{Alg}_{s}$}]\begingroup the $2$-category of strict $P$-algebras, strict morphisms, and $P$-transformations for an operad (or ($2$-)monad) $P$\nomeqref {3}
+  \item [{$P\mbox{-}\mb{Alg}_{s}$}]\begingroup the $2$-category of strict $P$-algebras, strict morphisms, and $P$-transformations for an operad (or ($2$-monad) $P$\nomeqref {3}
 		\nompageref{35}
 
  \nomgroup{N}
 
+  \item [{$\mathbb{N}$}]\begingroup the set of natural numbers\nomeqref {1}
+		\nompageref{12}
+  \item [{$\mathbb{N}_+$}]\begingroup the set of positive natural numbers\nomeqref {3}
+		\nompageref{70}
+  \item [{$\mathbb{Z}$}]\begingroup the set of integers\nomeqref {3}
+		\nompageref{86}
   \item [{$\mathbf{T}$}]\begingroup terminal operad as an action operad\nomeqref {1}
 		\nompageref{11}
   \item [{$\mathcal{E}_{X}$}]\begingroup the endomorphism operad of a set $X$\nomeqref {3}
@@ -51,9 +77,11 @@
 		\nompageref{8}
   \item [{$\mb{\Lambda}$}]\begingroup action operad\nomeqref {0}
 		\nompageref{11}
-  \item [{$\mb{Br}$}]\begingroup action operad of braid groups\nomeqref {1}
+  \item [{$\mb{B}$}]\begingroup action operad of braid groups\nomeqref {1}
 		\nompageref{11}
-  \item [{$\mb{RBr}$}]\begingroup action operad of ribbon braid groups\nomeqref {1}
+  \item [{$\mb{J}$}]\begingroup action operad of cactus groups\nomeqref {3}
+		\nompageref{63}
+  \item [{$\mb{RB}$}]\begingroup action operad of ribbon braid groups\nomeqref {1}
 		\nompageref{11}
   \item [{$\Sigma$}]\begingroup the symmetric operad\nomeqref {0}
 		\nompageref{9}
@@ -67,15 +95,25 @@
 		\nompageref{42}
   \item [{$A^{\bullet}$}]\begingroup action operad of an abelian group $A$\nomeqref {1}
 		\nompageref{12}
-  \item [{$Br_{n}$}]\begingroup braid group on $n$ strands\nomeqref {0}
+  \item [{$B_{n}$}]\begingroup braid group on $n$ strands\nomeqref {0}
 		\nompageref{7}
+  \item [{$J_n$}]\begingroup the $n$-fruit cactus group\nomeqref {3}
+		\nompageref{60}
+  \item [{$M^{*n}$}]\begingroup the coproduct of $n$ copies of the monoid $M$\nomeqref {3}
+		\nompageref{86}
   \item [{$O$}]\begingroup operad\nomeqref {0}\nompageref{7}
+  \item [{$PM_n$}]\begingroup subset of $B_{n}$ consists of positive minimal braids\nomeqref {3}
+		\nompageref{76}
   \item [{$RB_{n}$}]\begingroup ribbon braid group on $n$ ribbons\nomeqref {1}
 		\nompageref{12}
   \item [{$S \odot X$}]\begingroup copower of set $S$ with an object $X$\nomeqref {3}
 		\nompageref{30}
   \item [{$T$}]\begingroup terminal operad\nomeqref {1}\nompageref{11}
+  \item [{$T_{\ML}$}]\begingroup the terminal $\ML$-operad\nomeqref {3}
+		\nompageref{85}
   \item [{$X \star Y$}]\begingroup convolution product of collections $X$ and $Y$\nomeqref {3}
 		\nompageref{27}
+  \item [{$X_{\mathrm{inv}}$}]\begingroup the sub-$E\Lambda$-algebra of $X$ of objects invertible under tensor product\nomeqref {3}
+		\nompageref{83}
 
 \end{thenomenclature}

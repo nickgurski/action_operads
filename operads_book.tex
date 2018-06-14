@@ -91,12 +91,12 @@
 \newcommand{\ELnn}{E\Lambda(\underline{2n})}
 \newcommand{\ELnnnn}{E\Lambda(\underline{4n})}
 \newcommand{\ob}{\textrm{Ob}}
-\newcommand{\lmc}{\Lambda\mbox{-}\textrm{MonCat}}
+\newcommand{\lmc}{\Lambda\mbox{-}\mb{MonCat}}
 \newcommand{\sets}{\Set}
-\newcommand{\mon}{\ensuremath{\textrm{Mon}}}
-\newcommand{\cmon}{\ensuremath{\textrm{CommMon}}}
-\newcommand{\moncat}{\ensuremath{\textrm{MonCat}}}
-\newcommand{\cat}{\ensuremath{\textrm{Cat}}}
+\newcommand{\mon}{\ensuremath{\mb{Mon}}}
+\newcommand{\cmon}{\ensuremath{\mb{CommMon}}}
+\newcommand{\moncat}{\ensuremath{\mb{MonCat}}}
+\newcommand{\cat}{\ensuremath{\mb{Cat}}}
 \newcommand{\epz}{\varepsilon}
 \newcommand{\Alg}{\mbox{-}\mb{Alg}}
 \newcolumntype{L}{>{$}l<{$}}
@@ -185,7 +185,7 @@
 \begin{conv}
 We adopt the following conventions throughout.
 \begin{itemize}
-\item $\Sigma_{n}$\nomenclature[N]{$\Sigma_{n}$}{symmetric group on $n$ letters} is the symmetric group on $n$ letters, and $Br_{n}$\nomenclature[N]{$Br_{n}$}{braid group on $n$ strands} is the braid group on $n$ strands.
+\item $\Sigma_{n}$\nomenclature[N]{$\Sigma_{n}$}{symmetric group on $n$ letters} is the symmetric group on $n$ letters, and $B_{n}$\nomenclature[N]{$B_{n}$}{braid group on $n$ strands} is the braid group on $n$ strands.
 \item For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$.  We will use both $\cdot$ and concatenation to represent multiplication in a group.
 \item The symbol $e$ will generically represent an identity element in a group.  If we have a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$.
 \item We will often be interested in elements of a product of the form
@@ -361,7 +361,7 @@ In the original topological applications \cite{maygeom}, symmetric operads were 
 A \textit{braided operad} consists of
 \begin{itemize}
 \item a non-symmetric operad $O$ and
-\item for each $n$, a right action of the $n$th braid group $Br_{n}$ on $O(n)$,
+\item for each $n$, a right action of the $n$th braid group $B_{n}$ on $O(n)$,
 \end{itemize}
 satisfying the following axioms.
 \[
@@ -374,12 +374,12 @@ For the above equations to make sense, we must have
 \begin{itemize}
 \item $x \in O(n)$,
 \item $y_{i} \in O(k_{i})$ for $i=1, \ldots, n$,
-\item $\tau_{i} \in Br_{k_{i}}$, and
-\item $\sigma \in Br_{n}$.
+\item $\tau_{i} \in B_{k_{i}}$, and
+\item $\sigma \in B_{n}$.
 \end{itemize}
 \end{Defi}
 
-In order to make sense of this definition, we must define $\tau_{1} \oplus \cdots \oplus \tau_{n}$\nomenclature[N]{$\tau_{1} \oplus \cdots \oplus \tau_{n}$}{block sum of braids} and $\sigma^{+}$ in the context of braids.  The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$.  The braid $\sigma^{+}$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$.  Finally, the notation $\sigma^{-1}(i)$ should be read as $\pi(\sigma)^{-1}(i)$, where $\pi:Br_{n} \rightarrow \Sigma_{n}$ is the underlying permutation map.
+In order to make sense of this definition, we must define $\tau_{1} \oplus \cdots \oplus \tau_{n}$\nomenclature[N]{$\tau_{1} \oplus \cdots \oplus \tau_{n}$}{block sum of braids} and $\sigma^{+}$ in the context of braids.  The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$.  The braid $\sigma^{+}$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$.  Finally, the notation $\sigma^{-1}(i)$ should be read as $\pi(\sigma)^{-1}(i)$, where $\pi:B_{n} \rightarrow \Sigma_{n}$ is the underlying permutation map.
 
 We require one final preparatory definition.
 
@@ -399,7 +399,7 @@ In the above definition and below, we adopt the convention that if an equation r
 \end{conv}
 
 \begin{example}
-One can form an operad $Br$ where $Br(n)$ is the underlying set of the $n$th braid group, $Br_{n}$.  This is done in much the same way as we did for the symmetric operad, and the collection of maps $\pi_{n}:Br_{n} \rightarrow \Sigma_{n}$ giving the underlying permutations constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
+One can form an operad $Br$ where $Br(n)$ is the underlying set of the $n$th braid group, $B_{n}$.  This is done in much the same way as we did for the symmetric operad, and the collection of maps $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutations constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
 \end{example}
 
 One should note that the axioms for symmetric and braided operads each use the fact that the groups of equivariance themselves form an operad.  This is what we call an action operad.
@@ -514,12 +514,12 @@ for the multiplication in the operad $\Lambda$.  Let $(g; f_1, \ldots, f_n)$ be 
 \item The terminal operad $T$\nomenclature[N]{$T$}{terminal operad} in the category of sets has a unique action operad structure, $\mathbf{T}$\nomenclature[N]{$\mathbf{T}$}{terminal operad as an action operad}.  Since $T(n)$ is a singleton for each $n$, the group structure is unique as is the map $\pi$.  The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity.  This is the initial object in the category of action operads (see \cref{Defi:cat_aop} the definition of morphisms in the category of action operads).
 \item The symmetric operad $\Sigma$ has a canonical action operad structure.  It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$.  This is the terminal object in the category of action operads.
 % \item There are two trivial examples of action operads.  The first is the symmetric operad  $\Lambda = \mb{\Sigma}$ with the identity map; this is the terminal object in the category of action operads (see Definition \ref{mapaop}).  The second is $\Lambda = \mb{T}$ consisting of the terminal groups $T(n) = *$.  Here the $\pi_{n}$'s are given by the inclusion of identity elements; this is the initial object in the category of action operads.
-\item Two less trivial examples are given by the braid groups, $\Lambda = \mb{Br}$\nomenclature[N]{$\mb{Br}$}{action operad of braid groups}, and the ribbon braid groups, $\Lambda = \mb{RBr}$\nomenclature[N]{$\mb{RBr}$}{action operad of ribbon braid groups}.  (A ribbon braid is given, geometrically, as a braid with strands replaced by ribbons in which we allow full twists.  The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.)  In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after Definition \ref{broperad}.  We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
+\item Two less trivial examples are given by the braid groups, $\Lambda = \mb{B}$\nomenclature[N]{$\mb{B}$}{action operad of braid groups}, and the ribbon braid groups, $\Lambda = \mb{RB}$\nomenclature[N]{$\mb{RB}$}{action operad of ribbon braid groups}.  (A ribbon braid is given, geometrically, as a braid with strands replaced by ribbons in which we allow full twists.  The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.)  In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after Definition \ref{broperad}.  We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
 \item The operad of $n$-fruit cactus groups defined by Henriques and Kamnitzer in \cite{hk-cobound} has an action operad structure that we will discuss in \cref{sec:examples}.
 \end{enumerate}
 \end{example}
 
-\begin{Defi} For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_n$\nomenclature[N]{$RB_{n}$}{ribbon braid group on $n$ ribbons} is the group whose presentation is the same as that of the braid group $B_n$, except with the addition of $n$ new generators $t_1, ..., t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
+\begin{Defi} For each $n \in \mathbb{N}$\nomenclature[N]{$\mathbb{N}$}{the set of natural numbers}, the \emph{ribbon braid group} $RB_n$\nomenclature[N]{$RB_{n}$}{ribbon braid group on $n$ ribbons} is the group whose presentation is the same as that of the braid group $B_n$, except with the addition of $n$ new generators $t_1, ..., t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
 \begin{eq*} b_i \cdot t_i \quad = \quad t_{i+1} \cdot b_i, \quad \quad \quad \quad \quad b_i \cdot t_{i+1} \quad = \quad t_i \cdot b_i \end{eq*}
 The \emph{ribbon braid operad} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{broperad}, but with some additional rules for dealing with twists. With regards to the tensor product, we have that for any twist $t_i \in RB_n$,
 \begin{eq*} t_i \quad = \quad e_{i-1} \otimes t \otimes e_{n-i} \end{eq*}
@@ -1026,7 +1026,7 @@ The category $\Lambda\mbox{-}\mb{Op}$\nomenclature[C]{$\Lambda\mbox{-}\mb{Op}$}{
 \begin{enumerate}
 \item Let $\mb{T}$ denote the terminal operad in $\mb{Sets}$ equipped with its unique action operad structure.  Then a $\mb{T}$-operad is just a non-symmetric operad in $\mb{Sets}$.
 \item Let $\mb{\Sigma}$ denote the operad of symmetric groups with $\pi:\Sigma \rightarrow \Sigma$ the identity map.  Then a $\mb{\Sigma}$-operad is a symmetric operad in the category of sets.
-\item Let $\mb{Br}$ denote the operad of braid groups with $\pi_{n}:Br_{n} \rightarrow \Sigma_{n}$ the canonical projection of a braid onto its underlying permutation.  Then a $\mb{Br}$-operad is a braided operad in the sense of Fiedorowicz \cite{fie-br}.
+\item Let $\mb{Br}$ denote the operad of braid groups with $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ the canonical projection of a braid onto its underlying permutation.  Then a $\mb{Br}$-operad is a braided operad in the sense of Fiedorowicz \cite{fie-br}.
 \end{enumerate}
 \end{example}
 
@@ -1083,7 +1083,7 @@ It is worth noting that the equivariance required for a $P$-algebra is built int
 \end{rem}
 
 \begin{Defi}
-The category of algebras for $P$, $P\mbox{-}\mb{Alg}$\nomenclature[C]{$P\mbox{-}\mb{Alg}$}{of $P$-algebras and morphisms for an operad (or ($2$-)monad) $P$}, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
+The category of algebras for $P$, $P\mbox{-}\mb{Alg}$\nomenclature[C]{$P\mbox{-}\mb{Alg}$}{of $P$-algebras and morphisms for an operad (or monad) $P$}, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
 \[
 \xy
 {\ar^{1 \times f^{n}} (0,0)*+{P(n) \times X^{n}}; (50,0)*+{P(n) \times Y^{n}} };
@@ -1902,8 +1902,8 @@ We can form various 2-categories using these cells.
 \begin{Defi}
 Let $P$ be a $\Lambda$-operad.
 \begin{itemize}
-\item The $2$-category $P\mbox{-}\mb{Alg}_{s}$\nomenclature[C]{$P\mbox{-}\mb{Alg}_{s}$}{the $2$-category of strict $P$-algebras, strict morphisms, and $P$-transformations for an operad (or ($2$-)monad) $P$} consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
-\item The $2$-category $\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$\nomenclature[C]{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}{the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or ($2$-)monad) $P$} consists of $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations.
+\item The $2$-category $P\mbox{-}\mb{Alg}_{s}$\nomenclature[C]{$P\mbox{-}\mb{Alg}_{s}$}{the $2$-category of strict $P$-algebras, strict morphisms, and $P$-transformations for an operad (or ($2$-monad) $P$} consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
+\item The $2$-category $\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$\nomenclature[C]{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}{the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or $2$-)monad) $P$} consists of $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations.
 \end{itemize}
 \end{Defi}
 
@@ -3286,7 +3286,7 @@ The above definition makes sense in a wide context, but needs interpretation.  W
 For any two $\mb{\Lambda}_{\infty}$ operads $P,Q$ in $\mb{Cat}$, there is a span $P \leftarrow R \rightarrow Q$  of pointwise equivalences of $\mb{\Lambda}$-operads.
 \end{prop}
 \begin{proof}
-Given $P,Q$ $\mb{\Lambda}_{\infty}$ operads in $\mb{Cat}$, the product $P \times Q$ with the diagonal action is also $\mb{\Lambda}_{\infty}$.  Each of the projection maps is a pointwise equivalence of $\mb{\Lambda}$-operads.
+Given $\mb{\Lambda}_{\infty}$ operads $P$, $Q$ in $\mb{Cat}$, the product $P \times Q$ with the diagonal action is also $\mb{\Lambda}_{\infty}$.  Each of the projection maps is a pointwise equivalence of $\mb{\Lambda}$-operads.
 \end{proof}
 \begin{rem}
 Once again, this proof holds in a wide context.  We required that the product of free actions is again free, true in any complete category.  We also required that the product of contractible objects is contractible; this condition will hold, for example, in any Quillen model category in which all objects are fibrant or in which the product of weak equivalences is again a weak equivalence.
@@ -3533,7 +3533,7 @@ There are now nine axioms to verify in \cref{thm:charAOp}.  The club multiplicat
 %\]
 %which is immediately seen to be the formula for the operad composition for $\mb{\Lambda}$, hence also the multiplication for the club $K_{\mb{\Lambda}}$.  Therefore $K \cong K_{\mb{\Lambda}}$ as clubs.
 
-Finally, we would like to show that this gives a full and faithful embedding $K_{-}:\mb{AOp} \rightarrow \mb{Club}$ of the category of action operads into the category of clubs.  Let $f, f':\mb{\Lambda} \rightarrow \mb{\Lambda'}$ be maps between action operads.  Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$.  But these functors are nothing more than the coproducts of the functors
+Finally, we would like to show that this gives a full and faithful embedding $K_{-}:\mb{AOp} \rightarrow \mb{Club}$\nomenclature[C]{$\mb{Club}$}{of clubs and morphisms between clubs} of the category of action operads into the category of clubs.  Let $f, f':\mb{\Lambda} \rightarrow \mb{\Lambda'}$ be maps between action operads.  Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$.  But these functors are nothing more than the coproducts of the functors
 \[
 B(f_{n}), B(f_{n}'):B\Lambda(n) \rightarrow B\Lambda'(n),
 \]
@@ -3675,7 +3675,7 @@ commutes (in which the unlabeled morphisms are an associator and an inverse asso
 \end{enumerate}
 \end{example}
 
-Our interest is in strict coboundary categories by which we mean coboundary categories with strict underlying monoidal category.  Under the assumption of strictness, the second axiom above does not include associations for the tensor product and reduces to a square.  To show that every coboundary category is equivalent to a strict coboundary category, we must introduce the 2-category $\mb{CobCat}$ of coboundary categories.
+Our interest is in strict coboundary categories by which we mean coboundary categories with strict underlying monoidal category.  Under the assumption of strictness, the second axiom above does not include associations for the tensor product and reduces to a square.  To show that every coboundary category is equivalent to a strict coboundary category, we must introduce the 2-category $\mb{CobCat}$\nomenclature[C]{$\mb{CobCat}$}{the $2$-category of coboundary categories, coboundary functors, and monoidal transformations} of coboundary categories.
 
 \begin{Defi}
 Let $(C,\sigma), (C', \sigma')$ be coboundary categories.  A \emph{coboundary functor} $F:C \rightarrow C'$ is a strong monoidal functor (with invertible constraints $\varphi_{0}$ for the unit and $\varphi_{x,y}$ for the tensor product) such that
@@ -3729,9 +3729,10 @@ i & 1 & 2 & \cdots & p-1 & p & p+1 & p+2 & \cdots & q-1 & q & q+1 & \cdots & n \
 \]
 \end{Defi}
 
+The $n$-fruit cactus group is then defined as follows.
 
 \begin{Defi}\label{Defi:defcactus}
-Let $J_{n}$ be the group generated by symbols $s_{p,q}$ for $1 \leq p < q \leq n$ subject to the following relations.
+Let $J_{n}$\nomenclature[N]{$J_n$}{the $n$-fruit cactus group} be the group generated by symbols $s_{p,q}$ for $1 \leq p < q \leq n$ subject to the following relations.
 \begin{enumerate}
 \item For all $p < q$, $s_{p,q}^{2}=e$.
 \item If $p<q$ is disjoint from $k<l$, then $s_{p,q}s_{k,l} = s_{k,l}s_{p,q}$.
@@ -3882,7 +3883,7 @@ Every strict coboundary functor $F:B\mb{J} \to X$ determines an object of $X$ by
 \end{proof}
 
 \begin{cor}
-The 2-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=operad}, to the action operad $\mb{J}$.
+The 2-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=operad}, to the action operad $\mb{J}$\nomenclature[N]{$\mb{J}$}{action operad of cactus groups}.
 \end{cor}
 
 \section{Basic properties of monoidal categories via action operads}
@@ -4026,11 +4027,12 @@ and hence it is a monoid isomorphism, as required.
 
 
 \section{Coequalizers of \texorpdfstring{$\ML$}{\Lambda}-monoidal categories}
-In this section, we will compare the coequalizer of a diagram of $\ML$-monoidal categories as it is computed in $\ML\moncat$, in $\moncat$, and in $\cat$. Our goal will be to show that the forgetful functors 
+QQQ For notation, is $\moncat$ the $2$-category or category?
+In this section, we will compare the coequalizer of a diagram of $\ML$-monoidal categories as it is computed in $\ML\mbox{-}\moncat$\nomenclature[C]{$\ML\mbox{-}\moncat$}{of $\ML$-monoidal categories and $\ML$-monoidal functors}, in $\moncat$\nomenclature[C]{$\moncat$}{of monoidal categories and monoidal functors}, and in $\cat$. Our goal will be to show that the forgetful functors 
 \[
-\ML\moncat \to \moncat \to \cat
+\ML\mbox{-}\moncat \to \moncat \to \cat
 \]
-all create reflexive coequalizers. This has the effect of allowing us to compute coequalizers in $\ML\moncat$ by converting them into reflexive coequalizers and then computing them in either $\moncat$ or $\cat$. This technique will be necessary in our construction of the free $\ML$-monoidal category on $n$ invertible objects. The strategy here follows that in Section 4.1 of \cite{lack-cod}.
+all create reflexive coequalizers. This has the effect of allowing us to compute coequalizers in $\ML\mbox{-}\moncat$ by converting them into reflexive coequalizers and then computing them in either $\moncat$ or $\cat$. This technique will be necessary in our construction of the free $\ML$-monoidal category on $n$ invertible objects. The strategy here follows that in Section 4.1 of \cite{lack-cod}.
 
 \begin{lem}\label{P_pres_refl}
 Let $P$ be a $\ML$-operad in $\cat$, with $\und{P}$ its associated 2-monad. Then $\und{P}$ preserves reflexive coequalizers.
@@ -4051,7 +4053,7 @@ Now assume $a \in A$ is the vertex of a cocone over $d$ such that $Fa$ is the co
 
 For an monad $T$ on a category $C$, the forgetful functor $T\Alg \to C$ creates any colimit that $T$ preserves. This fact and the previous lemmas prove the following proposition using the operad $P = E\ML$.
 \begin{prop}\label{refcoeq_calcs}
-For any action operad $\ML$, the forgetful functor $\ML\moncat \to \cat$ is conservative and creates reflexive coequalizers. Consequently, $\ML\moncat \to \moncat$ is also conservative and creates reflexive coequalizers.
+For any action operad $\ML$, the forgetful functor $\ML\mbox{-}\moncat \to \cat$ is conservative and creates reflexive coequalizers. Consequently, $\ML\mbox{-}\moncat \to \moncat$ is also conservative and creates reflexive coequalizers.
 
 \end{prop}
 
@@ -4063,7 +4065,7 @@ For any action operad $\ML$, the forgetful functor $\ML\moncat \to \cat$ is cons
 
 \section{Pseudo-commutativity}
 
-This section gives conditions sufficient to equip the 2-monad $\underline{P}$ induced by a $\Lambda$-operad $P$ in $\mb{Cat}$ with a pseudo-commutative structure.  Such a pseudo-commutativity will then give the 2-category $\mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$ some additional structure that we briefly explain here.  For a field $k$, the category $\mb{Vect}$ of vector spaces over $k$ has many nice features.  Of particular interest to us are the following three structures.  First, the category $\mb{Vect}$ is monoidal using the tensor product $\otimes_{k}$.  Second, the set of linear maps $V \rightarrow W$ is itself a vector space which we denote $[V,W]$.  Third, there is a notion of multilinear map $V_{1} \times \cdots \times V_{n} \rightarrow W$, with linear maps being the 1-ary version.  While these three structures are each useful in isolation, they are tied together by natural isomorphisms
+This section gives conditions sufficient to equip the 2-monad $\underline{P}$ induced by a $\Lambda$-operad $P$ in $\mb{Cat}$ with a pseudo-commutative structure.  Such a pseudo-commutativity will then give the 2-category $\mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$ some additional structure that we briefly explain here.  For a field $k$, the category $\mb{Vect}$\nomenclature[C]{$\mb{Vect}$}{of vector spaces over a given field $k$ and $k$-linear maps} of vector spaces over $k$ has many nice features.  Of particular interest to us are the following three structures.  First, the category $\mb{Vect}$ is monoidal using the tensor product $\otimes_{k}$.  Second, the set of linear maps $V \rightarrow W$ is itself a vector space which we denote $[V,W]$.  Third, there is a notion of multilinear map $V_{1} \times \cdots \times V_{n} \rightarrow W$, with linear maps being the 1-ary version.  While these three structures are each useful in isolation, they are tied together by natural isomorphisms
 \[
 \mb{Vect}(V_{1} \otimes V_{2}, W) \cong \mb{Vect}(V_{1}, [V_{2}, W]) \cong \mb{Bilin}(V_{1} \times V_{2}, W)
 \]
@@ -4305,7 +4307,7 @@ Let $P$ be a $\Lambda$-operad. Then the following equip $\underline{P}$ with a p
     \end{itemize}
 These must satisfy the following:
     \begin{enumerate}
-        \item For all $n \in \mathbb{N}_+$,
+        \item For all $n \in \mathbb{N}_+$\nomenclature[N]{$\mathbb{N}_+$}{the set of positive natural numbers},
             \[
                 t_{1,n} = e_n = t_{n,1}
             \]
@@ -4595,43 +4597,43 @@ The 2-monad $\underline{B}$ for braided strict monoidal categories on $\mb{Cat}$
 In order to apply our theory, the 2-monad $\underline{B}$ must arise from a $\Lambda$-operad.  The following proposition describes it as such, and can largely be found as Example 3.2 in the work of Fiedorowicz \cite{fie-br}.
 
 \begin{prop}
-The 2-monad $\underline{B}$ is the 2-monad associated to the $\mb{Br}$-operad $B$ with the category $B(n)$ having objects the elements of the $n$th braid group $Br_{n}$ and a unique isomorphism between any pair of objects; the action of $Br_{n}$ on $B(n)$ is given by right multiplication on objects and is then uniquely determined on morphisms.
+The 2-monad $\underline{B}$ is the 2-monad associated to the $\mb{Br}$-operad $B$ with the category $B(n)$ having objects the elements of the $n$th braid group $B_{n}$ and a unique isomorphism between any pair of objects; the action of $B_{n}$ on $B(n)$ is given by right multiplication on objects and is then uniquely determined on morphisms.
 \end{prop}
 
 The interested reader can easily verify that algebras for the $\mb{Br}$-operad $B$ are braided strict monoidal categories.  The objects of $\underline{B}(X)$ can be identified with finite lists of objects of $X$, and morphisms are generated by the morphisms of $X$ together with new isomorphisms
 \[
 x_{1}, \ldots, x_{n} \stackrel{\gamma}{\longrightarrow} x_{\gamma^{-1}(1)}, \ldots, x_{\gamma^{-1}(n)}
 \]
-where $\gamma \in Br_{n}$ and the notation $\gamma^{-1}(i)$ means, as before, that we take the preimage of $i$ under the permutation $\pi(\gamma)$ associated to $\gamma$.  This shows that $\underline{B}(X)$ is the free braided strict monoidal category generated by $X$ according to \cite{js}, and it is easy to verify that the 2-monad structure on $\underline{B}$ arising from the $\mb{Br}$-operad structure on $B$ is the correct one to produce braided strict monoidal categories as algebras.
+where $\gamma \in B_{n}$ and the notation $\gamma^{-1}(i)$ means, as before, that we take the preimage of $i$ under the permutation $\pi(\gamma)$ associated to $\gamma$.  This shows that $\underline{B}(X)$ is the free braided strict monoidal category generated by $X$ according to \cite{js}, and it is easy to verify that the 2-monad structure on $\underline{B}$ arising from the $\mb{Br}$-operad structure on $B$ is the correct one to produce braided strict monoidal categories as algebras.
 
 
 
 \begin{Defi}
-A braid $\gamma \in Br_{n}$ is \textit{positive} if it is an element of the submonoid of $Br_{n}$ generated by the elements $\sigma_{1}, \sigma_{2}, \ldots, \sigma_{n-1}$.
+A braid $\gamma \in B_{n}$ is \textit{positive} if it is an element of the submonoid of $B_{n}$ generated by the elements $\sigma_{1}, \sigma_{2}, \ldots, \sigma_{n-1}$.
 \end{Defi}
 
 \begin{Defi}
- A braid $\gamma \in Br_{n}$ is \textit{minimal} if no pair of strands in $\gamma$ cross twice.
+ A braid $\gamma \in B_{n}$ is \textit{minimal} if no pair of strands in $\gamma$ cross twice.
 \end{Defi}
 
 For our purposes, we are interested in braids which are both positive and minimal.  A proof of the following lemma can be found in \cite{EM2}.
 
 \begin{lem}\label{pmlem}
-Let $PM_{n}$ be the subset of $Br_{n}$ consisting of positive, minimal braids.  Then the function sending a braid to its underlying permutation is a bijection of sets $PM_{n} \rightarrow \Sigma_{n}$.
+Let $PM_{n}$\nomenclature[N]{$PM_n$}{subset of $B_{n}$ consists of positive minimal braids} be the subset of $B_{n}$ consisting of positive, minimal braids.  Then the function sending a braid to its underlying permutation is a bijection of sets $PM_{n} \rightarrow \Sigma_{n}$.
 \end{lem}
 
 \begin{rem}\label{pmrem}
-It is worth noting that this bijection is not an isomorphism of groups, since $PM_{n}$ is not a group or even a monoid.  The element $\sigma_{1} \in Br_{n}$ is certainly in $PM_{n}$, but $\sigma_{1}^{2}$ is not as the first two strands cross twice.  Thus we see that the product of two minimal braids is generally not minimal, but by definition the product of positive braids is positive.
+It is worth noting that this bijection is not an isomorphism of groups, since $PM_{n}$ is not a group or even a monoid.  The element $\sigma_{1} \in B_{n}$ is certainly in $PM_{n}$, but $\sigma_{1}^{2}$ is not as the first two strands cross twice.  Thus we see that the product of two minimal braids is generally not minimal, but by definition the product of positive braids is positive.
 \end{rem}
 
 \begin{proof}[Proof of Theorem \ref{braidpscomm}]
-In order to use Theorem \ref{pscomm} with the action operad being the braid operad $\mb{Br}$, we must first construct elements $t_{m,n} \in Br_{mn}$ satisfying certain properties.  Using Lemma \ref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$.  Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in Br_{n}$ is positive and minimal, we have that $t_{1,n} = e_{n} = t_{n,1}$ in $Br_{n}$.  Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
+In order to use Theorem \ref{pscomm} with the action operad being the braid operad $\mb{Br}$, we must first construct elements $t_{m,n} \in B_{mn}$ satisfying certain properties.  Using Lemma \ref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$.  Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in B_{n}$ is positive and minimal, we have that $t_{1,n} = e_{n} = t_{n,1}$ in $B_{n}$.  Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
 
 Let $l, m_{1}, \ldots, m_{l}, n$ be natural numbers, and let $M = \sum m_{i}$.  We must check that
 \[
 \mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}}) \mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}}) = t_{N, l}
 \]
-in $Br_{lN}$.  These braids have the same underlying permutations by construction, and both are positive since each operadic composition on the left is positive.  The braid on the right is minimal by definition, so if we prove that the braid on the left is also minimal, they are necessarily equal.  Now $\mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}})$ is given by the braid for $t_{n,l}$ but with the first strand replaced by $m_{1}$ strands, the second strand replaced by $m_{2}$ strands, and so on for the first $l$ strands of $t_{n,l}$, and then repeating for each group of $l$ strands.  In particular, since strands $i, i+l, i+2l, \ldots, i + (n-1)l$ never cross in $t_{n,l}$, none of the $m_{i}$ strands that each of these is replaced with cross.  The braid $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ consists of the disjoint union of the braids for each $t_{n,m_{i}}$, so if two strands cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ then they must both cross in some $t_{n,m_{i}}$.  The strands in $t_{n,m_{i}}$ are those numbered from $n(m_{1} + \cdots + m_{i-1}) + 1$ to $n(m_{1} + \cdots + m_{i-1} + m_{i})$.  This is a consecutive collection of $nm_{i}$ strands, and it is simple to check that these strands are precisely those connected (via the group operation in $Br_{Nl}$, concatenation) to the duplicated copies of strands $i, i+l, i+2l, \ldots, i + (n-1)l$ in $t_{n,l}$.  Thus if a pair of strands were to cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$, that pair cannot also have crossed in $\mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}})$, showing that the resulting product braid
+in $B_{lN}$.  These braids have the same underlying permutations by construction, and both are positive since each operadic composition on the left is positive.  The braid on the right is minimal by definition, so if we prove that the braid on the left is also minimal, they are necessarily equal.  Now $\mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}})$ is given by the braid for $t_{n,l}$ but with the first strand replaced by $m_{1}$ strands, the second strand replaced by $m_{2}$ strands, and so on for the first $l$ strands of $t_{n,l}$, and then repeating for each group of $l$ strands.  In particular, since strands $i, i+l, i+2l, \ldots, i + (n-1)l$ never cross in $t_{n,l}$, none of the $m_{i}$ strands that each of these is replaced with cross.  The braid $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ consists of the disjoint union of the braids for each $t_{n,m_{i}}$, so if two strands cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ then they must both cross in some $t_{n,m_{i}}$.  The strands in $t_{n,m_{i}}$ are those numbered from $n(m_{1} + \cdots + m_{i-1}) + 1$ to $n(m_{1} + \cdots + m_{i-1} + m_{i})$.  This is a consecutive collection of $nm_{i}$ strands, and it is simple to check that these strands are precisely those connected (via the group operation in $B_{Nl}$, concatenation) to the duplicated copies of strands $i, i+l, i+2l, \ldots, i + (n-1)l$ in $t_{n,l}$.  Thus if a pair of strands were to cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$, that pair cannot also have crossed in $\mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}})$, showing that the resulting product braid
 \[
 \mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}}) \mu(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}})
 \]
@@ -4647,14 +4649,14 @@ We will now show that neither of these pseudo-commutative structures is symmetri
 \[
 f:\mu(p; \underline{q}) \cdot t_{n,m}t_{m,n} \rightarrow \mu(q; \underline{p}) \cdot t_{m,n} \rightarrow \mu(p; \underline{q})
 \]
-is the identity.  Now it is clear that $t_{n,m}$ is not equal to $t_{m,n}^{-1}$ in general: taking $m=n=2$, we note that $t_{2,2} = \sigma_{2}$, and this element is certainly not of order two in $Br_{4}$.  $B(4)$ is the category whose objects are the elements of $Br_{4}$ with a unique isomorphism between any two pair of objects, and $Br_{4}$ acts by multiplication on the right; this action is clearly free and transitive.  We recall (see Lemma \ref{coeq-lem}) that in a coequalizer of the form $A \times_{G} B$, we have that a morphism $[f_{1}, f_{2}]$ equals $[g_{1}, g_{2}]$ if and only if there exists an $x \in G$ such that
+is the identity.  Now it is clear that $t_{n,m}$ is not equal to $t_{m,n}^{-1}$ in general: taking $m=n=2$, we note that $t_{2,2} = \sigma_{2}$, and this element is certainly not of order two in $B_{4}$.  $B(4)$ is the category whose objects are the elements of $B_{4}$ with a unique isomorphism between any two pair of objects, and $B_{4}$ acts by multiplication on the right; this action is clearly free and transitive.  We recall (see Lemma \ref{coeq-lem}) that in a coequalizer of the form $A \times_{G} B$, we have that a morphism $[f_{1}, f_{2}]$ equals $[g_{1}, g_{2}]$ if and only if there exists an $x \in G$ such that
 \[
 \begin{array}{rcl}
 f_{1} \cdot x & = & g_{1}, \\
 x^{-1} \cdot f_{2} & = & g_{2}.
 \end{array}
 \]
-For the coequalizer in question, for $f$ to be the first component of an identity morphism would imply that $f \cdot x$ would be a genuine identity in $B(4)$ for some $x$.  But $f \cdot x$ would have source $\mu(p; \underline{q}) t_{n,m}t_{m,n}x$ and target $\mu(p; \underline{q})x$, which requires $t_{n,m}t_{m,n}$ to be the identity group element for all $n,m$.  In particular, this would force $t_{2,2}$ to have order two, which we have noted above does not hold in $Br_{4}$, thus giving a contradiction.
+For the coequalizer in question, for $f$ to be the first component of an identity morphism would imply that $f \cdot x$ would be a genuine identity in $B(4)$ for some $x$.  But $f \cdot x$ would have source $\mu(p; \underline{q}) t_{n,m}t_{m,n}x$ and target $\mu(p; \underline{q})x$, which requires $t_{n,m}t_{m,n}$ to be the identity group element for all $n,m$.  In particular, this would force $t_{2,2}$ to have order two, which we have noted above does not hold in $B_{4}$, thus giving a contradiction.
 \end{proof}
 
 \begin{rem}
@@ -4667,7 +4669,7 @@ The pseudo-commutativities given above are not necessarily the only ones that ex
 \hrule
 
 \section{Profunctors and multicategories}
-In this section we generalize from operads to multicategories (or colored operads).  The notions of plain and symmetric multicategories are standard \cite{bd_hda3}, but in fact there is a corresponding notion of $\mb{\Lambda}$-multicategory for any action operad $\mb{\Lambda}$.  We will give the basic definition and then show that it arises abstractly from a lifting of $E\Lambda$ as a 2-monad  on $\mb{Cat}$ to a pseudomonad on $\mb{Prof}$, the bicategory of categories, profunctors, and transformations.  A quick treatment of similar material but restricted to the symmetric case can be found in \cite{garner_poly}.
+In this section we generalize from operads to multicategories (or colored operads).  The notions of plain and symmetric multicategories are standard \cite{bd_hda3}, but in fact there is a corresponding notion of $\mb{\Lambda}$-multicategory for any action operad $\mb{\Lambda}$.  We will give the basic definition and then show that it arises abstractly from a lifting of $E\Lambda$ as a 2-monad  on $\mb{Cat}$ to a pseudomonad on $\mb{Prof}$\nomenclature[C]{$\mb{Prof}$}{the bicategory of categories, profunctors, and transformations}, the bicategory of categories, profunctors, and transformations.  A quick treatment of similar material but restricted to the symmetric case can be found in \cite{garner_poly}.
 
 \begin{Defi}\label{lambda_multicat}
 Let $\mb{\Lambda}$ be an action operad.  A \emph{$\mb{\Lambda}$-multicategory} $M$ consists of the following data:
@@ -4769,7 +4771,7 @@ using \ref{hom-set-lemma}.  The same formulas define the action of  $\widetilde{
 Since $\mb{Prof}$ is essentially the Kleisli bicategory for the free cocompletion pseudomonad, this lift corresponds to a pseudo-distributive law between $E\Lambda$ and the free cocompletion pseudomonad, but we do not pursue this perspective here.
 \end{rem}
 
-Given a bicategory $B$ and a pseudomonad $T$ on $B$, we can form the Kleisli bicategory of $T$, $\mb{Kl}_{T}$.  It has the same objects as $B$, but a 1-cell from $a$ to $b$ in  $\mb{Kl}_{T}$ is a 1-cell $f:a \rightarrow Tb$ in $B$.  In the case $B = \mb{Prof}, T = \widetilde{E\Lambda}$, the objects of $\mb{Kl}_{T}$ are categories, the 1-cells $X \srarrow Y$ are profunctors from $X$ to $E\Lambda Y$, or alternatively a functor $(E\Lambda Y)^{op} \times X \to \mb{Sets}$, and the 2-cells are natural transformation between such.
+Given a bicategory $B$ and a pseudomonad $T$ on $B$, we can form the Kleisli bicategory of $T$, $\mb{Kl}_{T}$\nomenclature[C]{$\mb{Kl}_{T}$}{the Kleisli bicategory of a pseudomonad $T$}.  It has the same objects as $B$, but a 1-cell from $a$ to $b$ in  $\mb{Kl}_{T}$ is a 1-cell $f:a \rightarrow Tb$ in $B$.  In the case $B = \mb{Prof}, T = \widetilde{E\Lambda}$, the objects of $\mb{Kl}_{T}$ are categories, the 1-cells $X \srarrow Y$ are profunctors from $X$ to $E\Lambda Y$, or alternatively a functor $(E\Lambda Y)^{op} \times X \to \mb{Sets}$, and the 2-cells are natural transformation between such.
 
 We now recall some standard definitions \cite{ben-bicats}.
 
@@ -4860,7 +4862,7 @@ It is simple to check that monads, oplax monad maps, and transformations of mona
 
 
 \begin{thm}
-There is a biequivalence between the category $\mb{\Lambda}\mbox{-}\mb{Multicat}$ of
+There is a biequivalence between the category $\mb{\Lambda}\mbox{-}\mb{Multicat}$\nomenclature[C]{$\mb{\Lambda}\mbox{-}\mb{Multicat}$}{of $\Lambda$-multicategories and $\Lambda$-multifunctors} of
 \begin{itemize}
 \item $\mb{\Lambda}$-multicategories and
 \item $\mb{\Lambda}$-multifunctors, and
@@ -4908,7 +4910,7 @@ Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{inver
 
 Most authors give the following as the definition of an invertible object, what we call weakly invertible.
 \begin{Defi}
-Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{weakly invertible} if there exists another object $m^{-1}$ such that $m \otimes m^{*} \cong I$ and $m^{*} \otimes m \cong I$.
+Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{weakly invertible} if there exists another object $m^{*}$ such that $m \otimes m^{*} \cong I$ and $m^{*} \otimes m \cong I$.
 
 \end{Defi}
 
@@ -4916,7 +4918,7 @@ We will later derive results about weakly invertible objects from those about in
 
 
 
-\begin{Defi} Given an $E\Lambda$-algebra $X$, we'll denote by $X_{\mathrm{inv}}$ the sub-$E\Lambda$-algebra of $X$ containing all objects which are invertible under tensor product, and all of the isomorphisms between them. \end{Defi} 
+\begin{Defi} Given an $E\Lambda$-algebra $X$, we'll denote by $X_{\mathrm{inv}}$\nomenclature[N]{$X_{\mathrm{inv}}$}{the sub-$E\Lambda$-algebra of $X$ of objects invertible under tensor product} the sub-$E\Lambda$-algebra of $X$ containing all objects which are invertible under tensor product, and all of the isomorphisms between them. \end{Defi} 
 
 First note that this is indeed a well-defined $E\Lambda$-algebra since the tensor product of invertible objects is again invertible, the tensor product of isomorphisms is again an isomorphism, and all of the morphisms giving the group actions are isomorphisms. The following proposition is then obvious.
 %If $f_1, ..., f_m$ are isomorphisms from invertible objects $x_1, ..., x_m$ to invertible objects $y_1, ..., y_m$, then $\alpha(g; f_1, ..., f_m)$ is a map from the invertible object $\alpha(g; x_1, ..., x_m)$ to the invertible object $\alpha(g; y_1, ..., y_m)$, and it has an inverse $\alpha(g^{-1}; f_{\pi(g)(1)}^{-1}, ..., f_{\pi(g)(m)}^{-1})$, since
@@ -4932,7 +4934,7 @@ First note that this is indeed a well-defined $E\Lambda$-algebra since the tenso
 %\end{eq*}
 %Clearly then, $X_{\mathrm{inv}}$ is the correct algebra for our new forgetful 2-functor to send $X$ to. Knowing this, we can construct the rest of the functor fairly easily.
 
-\begin{prop} \label{invprop} The assignment $X \mapsto X_{\mathrm{inv}}$ can be extended to a 2-functor $(\_)_{\mathrm{inv}}: E\Lambda\mbox{-}\mathrm{Alg}_S \to E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\begin{prop} \label{invprop} The assignment $X \mapsto X_{\mathrm{inv}}$ can be extended to a 2-functor $(\_)_{\mathrm{inv}}: E\Lambda\mbox{-}\mb{Alg}_S \to E\Lambda\mbox{-}\mb{Alg}_S$.
 \end{prop}
 %\begin{proof}
 %Let $F: X \to Y$ be a (strict) map of $E\Lambda$-algebras. If $x$ is an invertible object in $X$ with inverse $x^*$, then $F(x)$ is an invertible object in $Y$ with inverse $F(x^*)$, by
@@ -5006,9 +5008,9 @@ First note that this is indeed a well-defined $E\Lambda$-algebra since the tenso
 %
 %When everything is kept strict this carries through to the 2-monad case as well, so at last we see that $E\Lambda\mbox{-}\mathrm{Alg}_S$ really is a locally finitely presentable category. Obtaining our left adjoint functor is now a simple matter of applying the adjoint functor theorem.
 
-\begin{prop} \label{invadj} The 2-functor $(\_)_{\mathrm{inv}}: E\Lambda\mbox{-}\mathrm{Alg}_S \to E\Lambda\mbox{-}\mathrm{Alg}_S$ has a left adjoint, $L: E\Lambda\mbox{-}\mathrm{Alg}_S \to E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\begin{prop} \label{invadj} The 2-functor $(\_)_{\mathrm{inv}}: E\Lambda\mbox{-}\mb{Alg}_S \to E\Lambda\mbox{-}\mb{Alg}_S$ has a left adjoint, $L: E\Lambda\mbox{-}\mb{Alg}_S \to E\Lambda\mbox{-}\mb{Alg}_S$.
 \end{prop}
-\begin{proof} Since we already know that $E\Lambda\mbox{-}\mathrm{Alg}_S$ is locally finitely presentable, the conditions for \cref{aftlfp} amount to showing that $(\_)_{\mathrm{inv}}$ preserves both limits and filtered colimits.
+\begin{proof} Since we already know that $E\Lambda\mbox{-}\mb{Alg}_S$ is locally finitely presentable, the conditions for \cref{aftlfp} amount to showing that $(\_)_{\mathrm{inv}}$ preserves both limits and filtered colimits.
 \begin{itemize}
 \item Given an indexed collection of $E\Lambda$-algebras $X_i$, the $E\Lambda$-action of their product $\prod X_i$ is defined componentwise. In particular, this means that the tensor product of two objects in $\prod X_i$ is just the collection of the tensor products of their components in each of the $X_i$. An invertible object in $\prod X_i$ is thus simply a family of invertible objects from the $X_i$, so $(\prod X_i)_{\mathrm{inv}} = \prod (X_i)_{\mathrm{inv}}$.
 \item Given maps of $E\Lambda$-algebras $F: X \to Z$, $G : Y \to Z$, the $E\Lambda$-action of their pullback $X \times_Z Y$ is also defined component-wise. It follows that an invertible object in $X \times_Z Y$ is just a pair of invertible objects $(x, y)$ from $X$ and $Y$, such that $F(x) = G(y)$. But this is the same as asking for a pair of objects $(x, y)$ from $X_{\mathrm{inv}}$ and $Y_{\mathrm{inv}}$ such that $F_{\mathrm{inv}}(x) = G_{\mathrm{inv}}(y)$, and hence $(X \times_Z Y)_{\mathrm{inv}} = X_{\mathrm{inv}} \times_{Z_{\mathrm{inv}}} Y_{\mathrm{inv}}$.
@@ -5020,18 +5022,18 @@ Preservation of products and pullbacks give preservation of limits, and preserva
 %With this new 2-functor $L: E\Lambda\mbox{-}\mathrm{Alg}_S \to E\Lambda\mbox{-}\mathrm{Alg}_S$, we now have the ability to `freely add inverses to objects' in any $E\Lambda$-algebra we want. The algebra $L_n$ is then a clear candidate for our free algebra on $n$ invertible objects, and indeed the proof of this is very simple.
 
 \begin{Defi}
-Let $L_n = L\Big(E\Lambda(\underline{n}) \Big)$, where $\underline{n} = \{x_1, \ldots, x_n \}$ is a set with $n$ elements.
+Let $L_n = L\Big(E\Lambda(\underline{n}) \Big)$\nomenclature[C]{$L_n$}{the free $\ML$-monoidal category on $n$ invertible objects}, where $\underline{n} = \{x_1, \ldots, x_n \}$ is a set with $n$ elements.
 \end{Defi}
 
 \begin{thm} The algebra $L_n$ is the free $\ML$-monoidal category on $n$ invertible objects:  for any other $E\Lambda$-algebra $X$, we have an isomorphism of categories
-\begin{eq*} E\Lambda\mbox{-}\mathrm{Alg}_S(L_n, X) \quad \cong \quad (X_{\mathrm{inv}})^n, \end{eq*}
+\begin{eq*} E\Lambda\mbox{-}\mb{Alg}_S(L_n, X) \quad \cong \quad (X_{\mathrm{inv}})^n, \end{eq*}
 2-natural in $X$.
 \end{thm}
 \begin{proof}
 We have the following 2-natural isomorphisms from the adjunctions for $L$ and the free $\ML$-monoidal category monad.
 \begin{eq*}\begin{array}{rll}
-		 E\Lambda\mbox{-}\mathrm{Alg}_S( L\Big(E\Lambda(\underline{n}) \Big), X) & \cong  & E\Lambda\mbox{-}\mathrm{Alg}_S( E\Lambda(\underline{n}), X_{inv}) \\
-		& \cong & \mathrm{Cat}( \underline{n}, X_{inv}) \\
+		 E\Lambda\mbox{-}\mb{Alg}_S( L\Big(E\Lambda(\underline{n}) \Big), X) & \cong  & E\Lambda\mbox{-}\mb{Alg}_S( E\Lambda(\underline{n}), X_{inv}) \\
+		& \cong & \mb{Cat}( \underline{n}, X_{inv}) \\
 		& \cong & X_{inv}^n
 \end{array}
  \end{eq*}
@@ -5049,7 +5051,7 @@ We have the following 2-natural isomorphisms from the adjunctions for $L$ and th
 \begin{prop} \label{linveql} For any $E\Lambda$-algebra $X$, we have $L(X)_{\mathrm{inv}} = L(X)$.
 \end{prop}
 \begin{proof}
-Let $j: X_{inv} \to X$ denote the obvious inclusion functor. By construction, we have an equality of functors $(\_)_{\mathrm{inv}} \circ (\_)_{\mathrm{inv}} = (\_)_{\mathrm{inv}}$ and moreover $j_{inv}: (X_{inv})_{inv} \to X_{inv}$ is the identity for every $X$. Since $E\Lambda\mbox{-}\mathrm{Alg}_S(LX , Y)\cong E\Lambda\mbox{-}\mathrm{Alg}_S(X, Y_{\mathrm{inv}})$ is natural in $Y$, we have a commutative square
+Let $j: X_{inv} \to X$ denote the obvious inclusion functor. By construction, we have an equality of functors $(\_)_{\mathrm{inv}} \circ (\_)_{\mathrm{inv}} = (\_)_{\mathrm{inv}}$ and moreover $j_{inv}: (X_{inv})_{inv} \to X_{inv}$ is the identity for every $X$. Since $E\Lambda\mbox{-}\mb{Alg}_S(LX , Y)\cong E\Lambda\mbox{-}\mb{Alg}_S(X, Y_{\mathrm{inv}})$ is natural in $Y$, we have a commutative square
 \begin{center}
     \begin{tikzpicture}[x=50mm,y=15mm]
 		\node (a) at (0,0) {$E\Lambda\mbox{-}\mathrm{Alg}_S(LX , LX_{\mathrm{inv}})$};
@@ -5083,7 +5085,7 @@ in which the identity on the right is really $j_{inv} \circ -$. Thus composition
 \end{proof}
 
 
-\begin{cor} \label{epi} The component of the unit of the adjunction $L \dashv (-)_{inv}$ at $E\Lambda(\underline{n})$,  $\eta_{E\Lambda(\underline{n})}: E\Lambda(\underline{n}) \to (L_n)_{inv}$, is an epimorphism in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\begin{cor} \label{epi} The component of the unit of the adjunction $L \dashv (-)_{inv}$ at $E\Lambda(\underline{n})$,  $\eta_{E\Lambda(\underline{n})}: E\Lambda(\underline{n}) \to (L_n)_{inv}$, is an epimorphism in $E\Lambda\mbox{-}\mb{Alg}_S$.
 \end{cor}
 \begin{proof}
 
@@ -5106,7 +5108,7 @@ QQQ Need to explain that the goal is to understand some group actions
 This section will study three different adjunctions between $\ML$-monoidal categories on the one hand and categories such as that of monoids or commutative monoids on the other hand. Two of these adjunctions are purely formal, and are induced by adjunctions between categories and sets, while the third requires a direct proof. We then investigate some simple consequences of these adjunctions for $\ML$-monoidal categories of the form $L(E\Lambda S)$ for a set $S$.
 
 \begin{prop}\label{Ob-E_adj}
-The functor $\ob$ from categories to sets, taking the set of objects, is left adjoint to the functor $E$ of \cref{Defi:e_b} QQQ. This adjunction is monoidal, hence induces an adjunction $\ob \dashv E$ between $\lmc$ and $\mon$.
+The functor $\ob$ from categories to sets, taking the set of objects, is left adjoint to the functor $E$ of \cref{Defi:e_b} QQQ. This adjunction is monoidal, hence induces an adjunction $\ob \dashv E$ between $\lmc$ and $\mon$\nomenclature[C]{$\mon$}{of monoids and monoid homomorphisms}.
 \end{prop}
 \begin{proof}
 This is a straightforward application of \cref{...}; the only thing to note is that $\ob(\EL) = \Lambda$ as a $\ML$-operad.
@@ -5114,7 +5116,7 @@ This is a straightforward application of \cref{...}; the only thing to note is t
 \end{proof}
 
 \begin{Defi}
-Let $\ML$ be an action operad. Let $T_{\ML}$ denote the terminal $\ML$-operad in sets, which is a singleton set in each dimension with the unique action of $\Lambda_n$.
+Let $\ML$ be an action operad. Let $T_{\ML}$\nomenclature[N]{$T_{\ML}$}{the terminal $\ML$-operad} denote the terminal $\ML$-operad in sets, which is a singleton set in each dimension with the unique action of $\Lambda_n$.
 \end{Defi}
 
 \begin{lem}
@@ -5182,11 +5184,11 @@ Using that the objects of $\EL(M)_{inv}$ for a monoid $M$ are the same as the ob
 There are several different ways to actually calculate the group completion of a monoid. One is to use that fact that $M^{\mathrm{gp}}$ is the group whose group presentation is the same as the monoid presentation of $M$. That is, if $M$ is the quotient of the free monoid on generators $\mathcal{G}$ by the relations $\mathcal{R}$, then $M^{\mathrm{gp}}$ is the quotient of the free \emph{group} on generators $\mathcal{G}$ by relations $\mathcal{R}$. This makes finding the completion of free monoids particularly simple.
 
 \begin{nota}
-We write $M^{*n}$ for the coproduct of $n$ copies of the monoid $M$. We use the same notation for groups, although the $n$-fold coproduct of a group is different when considered as a monoid than as a group; it should be clear from context which we intend.
+We write $M^{*n}$\nomenclature[N]{$M^{*n}$}{the coproduct of $n$ copies of the monoid $M$} for the coproduct of $n$ copies of the monoid $M$. We use the same notation for groups, although the $n$-fold coproduct of a group is different when considered as a monoid than as a group; it should be clear from context which we intend.
 \end{nota}
 
 \begin{cor}\label{Zobj}
-The object monoid of $L_n$ is $\mathbb{Z}^{*n}$, the group completion of the object monoid of $\ELn$. The restriction of $\eta$ on objects, $\mathrm{Ob}(\eta)$, is then the obvious inclusion $\mathbb{N}^{*n} \hookrightarrow \mathbb{Z}^{*n}$.
+The object monoid of $L_n$ is $\mathbb{Z}^{*n}$\nomenclature[N]{$\mathbb{Z}$}{the set of integers}, the group completion of the object monoid of $\ELn$. The restriction of $\eta$ on objects, $\mathrm{Ob}(\eta)$, is then the obvious inclusion $\mathbb{N}^{*n} \hookrightarrow \mathbb{Z}^{*n}$.
 \end{cor}
 
 
@@ -5195,7 +5197,7 @@ The object monoid of $L_n$ is $\mathbb{Z}^{*n}$, the group completion of the obj
 %\end{prop}
 %\begin{proof}
 %Let $H$ be a group, and $h: \mathrm{Ob}(\ELn) \to H$ a monoid homomorphism. By \cref{Obadj} we have an isomorphism of homsets
-%\begin{eq*} E\Lambda\mbox{-}\mathrm{Alg}_S( \, \ELn, \, \mathrm{E}H \, ) \quad \cong \quad \mathrm{Mon}( \, \mathrm{Ob}(\ELn), \, H \, ) \end{eq*}
+%\begin{eq*} E\Lambda\mbox{-}\mb{Alg}_S( \, \ELn, \, \mathrm{E}H \, ) \quad \cong \quad \mb{Mon}( \, \mathrm{Ob}(\ELn), \, H \, ) \end{eq*}
 %Denote by $h': \ELn \to \mathrm{E}H$ the map of $E\Lambda$-algebras corresponding to $h$ under this isomorphism. Since $H$ is a group, every object in $\mathrm{E}H$ is invertible, and so $h'$ is an object of $(\ELn \downarrow \mathrm{inv})$. Thus, by initiality of $\eta$, there must exist a unique map $u: L_n \to E\Lambda$ making the left-hand triangle below commute:
 %\begin{eq*} \begin{tikzcd}
 %\ELn \ar[dd, "\eta"'] \ar[ddrr, "h'"] & & & & \mathrm{Ob}(\ELn) \ar[dd, "\mathrm{Ob}(\eta)"'] \ar[ddrr, "h"] & & \\
@@ -5223,7 +5225,7 @@ The core of \cref{Zobj} --- that $\mathrm{Ob}(L_n)$ is the group completion of $
 
 
 \begin{prop}\label{pilel_gppiel}
-The functor $\pi_0 \circ L: \lmc \to T_{\ML}\mbox{-}\textrm{Alg}$ is naturally isomorphic to the functor $\textrm{gp} \circ \pi_0$.
+The functor $\pi_0 \circ L: \lmc \to T_{\ML}\mbox{-}\mb{Alg}$ is naturally isomorphic to the functor $\textrm{gp} \circ \pi_0$.
 \end{prop}
 \begin{proof}
 The proof is the same style as above, with both functors being  left adjoints of the functor $M \mapsto (DM)_{inv} = D(M^{\times})$.
@@ -5231,14 +5233,14 @@ The proof is the same style as above, with both functors being  left adjoints of
 \begin{cor}\label{Zconcomp} The connected components of $L_n$ are the group completion of the connected components of $\ELn$. Also, the restriction of $\eta$ onto connected components, $\pi_0(\eta)$, is the canonical map $\pi_0(\ELn) \to \pi_0(\ELn)^{\mathrm{gp}}$ associated with that group completion.
 \end{cor}
 
-%\begin{Defi} For a given action operad $G$, denote by $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ the full subcategory of $\mathrm{Mon}$ on those monoids whose multiplication is invariant under the permutations in $\mathrm{im}(\pi)$. That is, a monoid $M$ is in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ if and only if
+%\begin{Defi} For a given action operad $G$, denote by $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$ the full subcategory of $\mb{Mon}$ on those monoids whose multiplication is invariant under the permutations in $\mathrm{im}(\pi)$. That is, a monoid $M$ is in $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$ if and only if
 %\begin{eq*} m_1, ..., m_n \in M, \, g \in G(n) \quad \implies \quad m_1 \cdot ... \cdot m_n \, = \, m_{\pi(g)^{-1}(1)} ... m_{\pi(g)^{-1}(n)} \end{eq*}
 %\end{Defi}
 %
-%Of course, by \cref{surjortriv} there are really only two examples of such an $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. If the underlying permutations of $G$ are trivial, then $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is just the whole of the category $\mathrm{Mon}$; if  instead $G$ is crossed then we are asking for monoids whose multiplication is invariant under arbitrary permutations from $\mathrm{S}$, and so $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is just the category of \emph{commutative} monoids, $\mathrm{CMon}$. Regardless, when we are working with an arbitrary action operad $G$, the category $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ is exactly the collection of possible connected components that we were looking for.
+%Of course, by \cref{surjortriv} there are really only two examples of such an $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$. If the underlying permutations of $G$ are trivial, then $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$ is just the whole of the category $\mb{Mon}$; if  instead $G$ is crossed then we are asking for monoids whose multiplication is invariant under arbitrary permutations from $\mathrm{S}$, and so $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$ is just the category of \emph{commutative} monoids, $\cmon$. Regardless, when we are working with an arbitrary action operad $G$, the category $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$ is exactly the collection of possible connected components that we were looking for.
 %
 %\begin{lem}\label{pi0} Let $G$ be an action operad and $\mathrm{im}(\pi)$ its underlying permutation action operad. Then there is a functor
-%\begin{eq*} \pi_0: E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mathrm{Mon} \end{eq*}
+%\begin{eq*} \pi_0: E\Lambda\mbox{-}\mb{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mb{Mon} \end{eq*}
 %which sends each algebra $X$ to its monoid of connected components $\pi_0(X)$, and sends each map of algebras $F: X \to Y$ to its restriction to connected components $\pi_0(F): \pi_0(X) \to \pi_0(Y)$.
 %\end{lem}
 %\begin{proof}
@@ -5250,30 +5252,30 @@ The proof is the same style as above, with both functors being  left adjoints of
 %			\implies \quad [x_1] \otimes ... \otimes [x_n] & = & [x_{\pi(g^{-1})(1)}] \otimes ... \otimes [x_{\pi(g^{-1})(n)}]
 %		\end{array} 
 %\end{eq*}
-%But since the $x_i$ are just arbitrary objects of $X$, the components $[x_i]$ are an arbitrary collection of elements from $\pi_0(X)$, and likewise for the group element $g$ and the permutation $\pi(g)$. Therefore multiplication in the monoid $\pi_0(X)$ is invariant under all permutations in the images of the homomorphisms $\pi_n: G(n) \to S_n$, and thus $\pi_0(X)$ is an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, as required. Well-definedness of the functor $\pi_0$ on morphisms then follows immediately from the fullness of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$.
+%But since the $x_i$ are just arbitrary objects of $X$, the components $[x_i]$ are an arbitrary collection of elements from $\pi_0(X)$, and likewise for the group element $g$ and the permutation $\pi(g)$. Therefore multiplication in the monoid $\pi_0(X)$ is invariant under all permutations in the images of the homomorphisms $\pi_n: G(n) \to S_n$, and thus $\pi_0(X)$ is an object of $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$, as required. Well-definedness of the functor $\pi_0$ on morphisms then follows immediately from the fullness of $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$.
 %\end{proof}
 %
 %Now that we have a functor which represents the act of finding the connected component monoid of an algebra, we need another functor heading in the opposite direction, so that we can construct an adjunction between them.
 %
-%There exists an inclusion of 2-categories $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ which allows us to view any set $S$ as a \emph{discrete category}, one whose objects are just the elements of $S$ and whose morphisms are all identities. If the given set also happens to be a monoid $M$, then there is an obvious way to see the discrete category $\mathrm{D}M$ as a monoidal category, and so we have a similar inclusion $\mathrm{Mon} \hookrightarrow \mathrm{MonCat}$. Moreover, for any action operad $G$ and object $M$ of the category $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, there is a unique way to assign an $E\Lambda$-action to the discrete category $\mathrm{D}M$. This works because for any elements $m_1, ..., m_n \in M$ and $g \in G(n)$, the morphism $\alpha(g; \mathrm{id}_{m_1}, ..., \mathrm{id}_{m_n})$ must have source and target 
+%There exists an inclusion of 2-categories $\mathrm{D}: \mb{Sets} \hookrightarrow \mb{Cat}$ which allows us to view any set $S$ as a \emph{discrete category}, one whose objects are just the elements of $S$ and whose morphisms are all identities. If the given set also happens to be a monoid $M$, then there is an obvious way to see the discrete category $\mathrm{D}M$ as a monoidal category, and so we have a similar inclusion $\mb{Mon} \hookrightarrow \mathrm{MonCat}$. Moreover, for any action operad $G$ and object $M$ of the category $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$, there is a unique way to assign an $E\Lambda$-action to the discrete category $\mathrm{D}M$. This works because for any elements $m_1, ..., m_n \in M$ and $g \in G(n)$, the morphism $\alpha(g; \mathrm{id}_{m_1}, ..., \mathrm{id}_{m_n})$ must have source and target 
 %\begin{eq*} m_1 \otimes ... \otimes m_n  \quad = \quad m_{\pi(g^{-1})(1)} \otimes ... \otimes m_{\pi(g^{-1})(m)} \end{eq*}
 %and therefore it can only be the morphism $\mathrm{id}_{m_1 \otimes ... \otimes m_n}$. As in the previous section, this ability to assign an algebra structure uniquely will gives us exactly the adjoint functor we need.
 %
-%\begin{Defi} The functor $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ extends naturally to a functor $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon} \to E\Lambda\mbox{-}\mathrm{Alg}_S$, which we will also call $\mathrm{D}$.
+%\begin{Defi} The functor $\mathrm{D}: \mb{Sets} \hookrightarrow \mb{Cat}$ extends naturally to a functor $\mathrm{im}(\pi)\mbox{-}\mb{Mon} \to E\Lambda\mbox{-}\mb{Alg}_S$, which we will also call $\mathrm{D}$.
 %\end{Defi}
 %
-%\begin{prop}\label{concompadj} $\mathrm{D}: \mathrm{Set} \hookrightarrow \mathrm{Cat}$ is a right adjoint to the functor $\pi_0: E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. 
+%\begin{prop}\label{concompadj} $\mathrm{D}: \mb{Sets} \hookrightarrow \mb{Cat}$ is a right adjoint to the functor $\pi_0: E\Lambda\mbox{-}\mb{Alg}_S \to \mathrm{im}(\pi)\mbox{-}\mb{Mon}$. 
 %\end{prop}
 %\begin{proof}
 %Consider a map of $F: X \to \mathrm{D}C$ from some $E\Lambda$-algebra $X$ onto the discrete $E\Lambda$-algebra for a monoid $M$ in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. For any $f: x \to x'$ in $X$, the morphism $F(f)$ must be an identity map in $\mathrm{D}M$, since these are the only morphisms that $\mathrm{D}M$ has. It follows that $x$ and $x'$ being in the same connected component will imply $F(x) = F(x')$, and so $F$ is determined entirely by its restriction to connected components, the monoid homomorphism $\pi_0(F) : \pi_0(X) \to M$. In other words, we have an isomorphism between the homsets
-%\begin{eq*} E\Lambda\mbox{-}\mathrm{Alg}_S( \, X, \mathrm{D}M \, ) \quad \cong \quad \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}( \, \pi_0(X), M \, ) \end{eq*}
-%This isomorphism is natural in both coordinates, since for any $G: X \to X'$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$ and $h : M \to M'$ in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, 
+%\begin{eq*} E\Lambda\mbox{-}\mb{Alg}_S( \, X, \mathrm{D}M \, ) \quad \cong \quad \mathrm{im}(\pi)\mbox{-}\mb{Mon}( \, \pi_0(X), M \, ) \end{eq*}
+%This isomorphism is natural in both coordinates, since for any $G: X \to X'$ in $E\Lambda\mbox{-}\mb{Alg}_S$ and $h : M \to M'$ in $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$, 
 %\begin{eq*} \pi_0( \, \mathrm{D}h \circ F \circ G \, ) \quad = \quad \pi_0(\mathrm{D}h) \circ \pi_0(F) \circ \pi_0(G) \quad = \quad h \circ \pi_0(F) \circ \pi_0(G) \end{eq*}
 %and so the diagram
 %\begin{eq*} \begin{tikzcd}
-%E\Lambda\mbox{-}\mathrm{Alg}_S(X, \mathrm{D}M) \ar[dd, "\mathrm{D}h \circ \_ \circ G"'] \ar[rr, "\sim"] & & \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}\big( \, \pi_0(X), M \, \big) \ar[dd, "h \circ \_ \circ \pi_0(G)"] \\
+%E\Lambda\mbox{-}\mb{Alg}_S(X, \mathrm{D}M) \ar[dd, "\mathrm{D}h \circ \_ \circ G"'] \ar[rr, "\sim"] & & \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}\big( \, \pi_0(X), M \, \big) \ar[dd, "h \circ \_ \circ \pi_0(G)"] \\
 %& & \\
-%E\Lambda\mbox{-}\mathrm{Alg}_S(X', \mathrm{D}M') \ar[rr, "\sim"] & & \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}\big( \, \pi_0(X'), M' \, \big) 
+%E\Lambda\mbox{-}\mathrm{Alg}_S(X', \mathrm{D}M') \ar[rr, "\sim"] & & \mathrm{im}(\pi)\mbox{-}\mb{Mon}\big( \, \pi_0(X'), M' \, \big) 
 %\end{tikzcd} \end{eq*}
 %commutes. Therefore, $\pi_0 \dashv \mathrm{D}$.
 %\end{proof}
@@ -5283,17 +5285,17 @@ The proof is the same style as above, with both functors being  left adjoints of
 %\begin{prop}
 %\end{prop}
 %\begin{proof}
-%Let $H$ be a group which is also an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, and let $h: \pi_0(\ELn) \to H$ be a monoid homomorphism. By \cref{concompadj} there is a homset isomorphism
-%\begin{eq*} E\Lambda\mbox{-}\mathrm{Alg}_S( \, \ELn, \, \mathrm{D}H \, ) \quad \cong \quad \mathrm{im}(\pi)\mbox{-}\mathrm{Mon}( \, \pi_0(\ELn), \, H \, ) \end{eq*}
+%Let $H$ be a group which is also an object of $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$, and let $h: \pi_0(\ELn) \to H$ be a monoid homomorphism. By \cref{concompadj} there is a homset isomorphism
+%\begin{eq*} E\Lambda\mbox{-}\mb{Alg}_S( \, \ELn, \, \mathrm{D}H \, ) \quad \cong \quad \mathrm{im}(\pi)\mbox{-}\mb{Mon}( \, \pi_0(\ELn), \, H \, ) \end{eq*}
 %and thus some $E\Lambda$-algebra map $h': \ELn \to \mathrm{D}H$ corresponding to $h$. As $H$ is a group, every object of $\mathrm{D}H$ is invertible, and so $h'$ is an object of $(\ELn \downarrow \mathrm{inv})$. It follows that there exists a unique map $u: L_n \to \mathrm{D}M$ which factors $h'$ through the initial object $\eta$:
 %\begin{eq*} \begin{tikzcd}
 %\ELn \ar[dd, "\eta"'] \ar[ddrr, "h'"] & & & & \pi_0(\ELn) \ar[dd, "\pi_0(\eta)"'] \ar[ddrr, "h"] & & \\
 %& & & & & & \\
 %L_n \ar[rr, "u"'] & & \mathrm{D}H & \quad & \pi_0(L_n) \ar[rr, "\pi_0(u)"'] & & H
 %\end{tikzcd} \end{eq*}
-%Applying the functor $\pi_0$ everywhere, we see that $\pi_0(u)$ must also factor $h$ through the homomorphism $\pi_0(\eta)$. Moreover, since $\eta$ is an epimorphism and $\pi_0$ a left adjoint functor, $\pi_0(\eta)$ is an epimorphism too, and so $\pi_0(u)$ is the only map with this property. Therefore, any monoid homomorphism $\pi_0(\ELn) \to H$ will factor uniquely through $\pi_0(L_n)$, so long as $H$ is in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$.  
+%Applying the functor $\pi_0$ everywhere, we see that $\pi_0(u)$ must also factor $h$ through the homomorphism $\pi_0(\eta)$. Moreover, since $\eta$ is an epimorphism and $\pi_0$ a left adjoint functor, $\pi_0(\eta)$ is an epimorphism too, and so $\pi_0(u)$ is the only map with this property. Therefore, any monoid homomorphism $\pi_0(\ELn) \to H$ will factor uniquely through $\pi_0(L_n)$, so long as $H$ is in $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$.  
 %
-%Now consider another monoid homomorphism $k: \pi_0(\ELn) \to K$, where this time $K$ is still a group but not necessarily in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. From \cref{pi0}, we know that $\pi_0(\ELn)$ is still an object of $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$, and from this we can conclude that the image $\mathrm{im}(k)$ will be too:
+%Now consider another monoid homomorphism $k: \pi_0(\ELn) \to K$, where this time $K$ is still a group but not necessarily in $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$. From \cref{pi0}, we know that $\pi_0(\ELn)$ is still an object of $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$, and from this we can conclude that the image $\mathrm{im}(k)$ will be too:
 %\begin{eq*} \begin{array}{rrcl}
 %			& x_1, ..., x_m & \in & \pi_0(\ELn), \, g \in G(n) \\
 %			\implies & x_1 \otimes ... \otimes x_m & = & x_{\pi(g)(1)} \otimes ... \otimes x_{\pi(g)(m)} \\
@@ -5301,9 +5303,9 @@ The proof is the same style as above, with both functors being  left adjoints of
 %			\implies & k(x_1) \otimes ... \otimes k(x_m) & = & k(x_{\pi(g)(1)}) \otimes ... \otimes k(x_{\pi(g)(m)})
 %		\end{array}
 %\end{eq*}
-%Also, since $\mathrm{im}(k)$ is a submonoid of the group $K$, it is a group as well. Thus if we denote by $k_{\mathrm{im}}: \mathrm{Ob}(\ELn) \to \mathrm{im}(k)$ the restriction of $k$ to it image, then $k_{\mathrm{im}}$ is a map in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$ out of $\mathrm{Ob}(\ELn)$ and onto a group, and therefore by what we showed earlier there exists a unique homomorphism $v: \mathrm{Ob}(L_n) \to \mathrm{im}(k)$ with the property $v \circ \pi_0(\eta) = k_{\mathrm{im}}$. Composing this $v$ with the inclusion $i: \mathrm{im}(k) \hookrightarrow K$, we see that
+%Also, since $\mathrm{im}(k)$ is a submonoid of the group $K$, it is a group as well. Thus if we denote by $k_{\mathrm{im}}: \mathrm{Ob}(\ELn) \to \mathrm{im}(k)$ the restriction of $k$ to it image, then $k_{\mathrm{im}}$ is a map in $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$ out of $\mathrm{Ob}(\ELn)$ and onto a group, and therefore by what we showed earlier there exists a unique homomorphism $v: \mathrm{Ob}(L_n) \to \mathrm{im}(k)$ with the property $v \circ \pi_0(\eta) = k_{\mathrm{im}}$. Composing this $v$ with the inclusion $i: \mathrm{im}(k) \hookrightarrow K$, we see that
 %\begin{eq*} i \circ v \circ \pi_0(\eta) \, = \, i \circ k_{\mathrm{im}} \, = \, k \end{eq*}
-%and $i \circ v$ must be the only map for which this is true, for restricting this equation back onto $\mathrm{im}(k)$ yields the unique property of $v$ again. Thus $\pi_0(\eta)$ will actually take any homomorphism from $\mathrm{Ob}(\ELn)$ onto a group and factor it through $\pi_0(L_n)$ in a unique way, not just those homomorphisms in $\mathrm{im}(\pi)\mbox{-}\mathrm{Mon}$. In other words, 
+%and $i \circ v$ must be the only map for which this is true, for restricting this equation back onto $\mathrm{im}(k)$ yields the unique property of $v$ again. Thus $\pi_0(\eta)$ will actually take any homomorphism from $\mathrm{Ob}(\ELn)$ onto a group and factor it through $\pi_0(L_n)$ in a unique way, not just those homomorphisms in $\mathrm{im}(\pi)\mbox{-}\mb{Mon}$. In other words, 
 %\begin{eq*} \pi_0(L_n) \quad = \quad \pi_0(\ELn)^{\mathrm{gp}} \end{eq*}
 %and $\pi_0(\eta)$ is the canonical map of this group completion.
 %\end{proof}
@@ -5367,9 +5369,9 @@ By the interchange law for monoidal categories,
 
 Thus in cases where every object of $X$ is invertible, the monoidal structure together with knowledge of each morphism's source and target will be enough to determine $X$ uniquely. Since all objects in $L_n$ are invertible, this means that we could choose to ignore composition of elements of $\mathrm{Mor}(L_n)$ QQQ this should have had a notation environment a long time ago QQQ for the time being, and focus on its status as a monoid under tensor product.
 
-%However, we are trying to extract information about the morphisms of $L_n$ by building some sort of left adjoint functor. Presumably we will also be able to apply it to other $E\Lambda$-algebras, some of which won't have all of their objects invertible, and so we can't just use $\mathrm{Mor}(-): E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$. What we need is a way to modify the morphism monoid of a category so that both composition and tensor product are recoverable from a single operation. Of course, there is one very easy method for achieving this --- simply force $\otimes$ and $\circ$ to be equal.
+%However, we are trying to extract information about the morphisms of $L_n$ by building some sort of left adjoint functor. Presumably we will also be able to apply it to other $E\Lambda$-algebras, some of which won't have all of their objects invertible, and so we can't just use $\mathrm{Mor}(-): E\Lambda\mbox{-}\mb{Alg}_S \to \mb{Mon}$. What we need is a way to modify the morphism monoid of a category so that both composition and tensor product are recoverable from a single operation. Of course, there is one very easy method for achieving this --- simply force $\otimes$ and $\circ$ to be equal.
 
-\begin{Defi} Let $\mathrm{M} : \mathrm{MonCat} \to \mathrm{Mon}$ be the functor which sends a monoidal category $X$ to the quotient of its monoid of morphisms by the relation that sets $\otimes = \circ$. :
+\begin{Defi} Let $\mathrm{M} : \moncat \to \mb{Mon}$ be the functor which sends a monoidal category $X$ to the quotient of its monoid of morphisms by the relation that sets $\otimes = \circ$. :
 \begin{eq*} \mathrm{M}X \quad = \quad \bigquotient{\mathrm{Mor}(X)}{f' \circ f \sim f' \otimes f}.\end{eq*}
 If $F:X \to Y$ is a strict monoidal functor, then $MF$ is the monoid homomorphism sending the class of a morphism $g$ to the class of $Fg$; the reader will easily check this is well-defined. We will call $\mathrm{M}X$ the \emph{collapsed} morphisms of $X$.
 
@@ -5400,13 +5402,13 @@ If $f$ is a morphism in $X$, we write its class in $\mathrm{M}X$ as $\mathrm{M}f
 Now we need a candidate for the right adjoint to the functor $\mathrm{M}$.
 
 \begin{Defi} 
-Let $B: \mon \to \cat$ denote the functor sending a monoid $M$ to the one-object category whose single hom-set consists of the elements of $M$, with composition and identity being given by multiplication and the unit of $M$, respectively. We also denote by $B$ the functor $\cmon \to \moncat$ the functor sending a commutative monoid $A$ to the same category $BA$, now equipped with the monoidal structure which is trivial on the single object and $a \otimes b = a \circ b = ab$ on morphisms (writing the monoid operation in $A$ as concatenation here).
+Let $B: \mon \to \cat$ denote the functor sending a monoid $M$ to the one-object category whose single hom-set consists of the elements of $M$, with composition and identity being given by multiplication and the unit of $M$, respectively. We also denote by $B$ the functor $\cmon \to \moncat$\nomenclature[C]{$\cmon$}{of commutative monoids and monoid homomorphisms} the functor sending a commutative monoid $A$ to the same category $BA$, now equipped with the monoidal structure which is trivial on the single object and $a \otimes b = a \circ b = ab$ on morphisms (writing the monoid operation in $A$ as concatenation here).
 \end{Defi}
 
 %
-%For a given monoid $M$, let $\mathrm{B}M$ represent the one-object category whose morphisms are the elements of $M$, with monoid multiplication as composition. This is known as the \emph{delooping} of $M$. Likewise, for any monoid homomorphism $h: M \to M'$, denote by $\mathrm{B}h : \mathrm{B}M \to \mathrm{B}M'$ the obvious functor which acts like $h$ on morphisms. This defines a delooping functor $\mathrm{B}: \mathrm{Mon} \to \mathrm{Cat}$ from the category of monoids onto the category of small categories.
+%For a given monoid $M$, let $\mathrm{B}M$ represent the one-object category whose morphisms are the elements of $M$, with monoid multiplication as composition. This is known as the \emph{delooping} of $M$. Likewise, for any monoid homomorphism $h: M \to M'$, denote by $\mathrm{B}h : \mathrm{B}M \to \mathrm{B}M'$ the obvious functor which acts like $h$ on morphisms. This defines a delooping functor $\mathrm{B}: \mb{Mon} \to \mb{Cat}$ from the category of monoids onto the category of small categories.
 %
-%Moreover, let $C$ be a commutative monoid. Then we can view $\mathrm{B}C$ as a monoidal category, with the tensor product also given by the multiplication in $C$, and the sole object as the unit $I$. Clearly for any homomorphism between commutative monoids $h : C \to C'$ the corresponding functor $\mathrm{B}h : \mathrm{B}C \to \mathrm{B}C'$ will preserve this monoidal structure, as it is already preserving it as composition. Thus the restriction of $\mathrm{B}$ to commutative monoids also gives a functor $\mathrm{CMon} \to \mathrm{MonCat}$, which we will still call $\mathrm{B}$.
+%Moreover, let $C$ be a commutative monoid. Then we can view $\mathrm{B}C$ as a monoidal category, with the tensor product also given by the multiplication in $C$, and the sole object as the unit $I$. Clearly for any homomorphism between commutative monoids $h : C \to C'$ the corresponding functor $\mathrm{B}h : \mathrm{B}C \to \mathrm{B}C'$ will preserve this monoidal structure, as it is already preserving it as composition. Thus the restriction of $\mathrm{B}$ to commutative monoids also gives a functor $\mb{CMon} \to \mb{MonCat}$, which we will still call $\mathrm{B}$.
 %\end{Defi}
 
 
@@ -5518,7 +5520,7 @@ To lift $B$ to $\lmc$, we need only assign the trivial action of each $\Lambda_n
 
 
 
-%There is a way to assign an $E\Lambda$-action to the monoidal category $\mathrm{B}C$ for an arbitrary commutative monoid $C$, which is to simply set all of the action morphisms $\alpha(g; \mathrm{id}_I, ..., \mathrm{id}_I)$ to be $\mathrm{id}_I$, and doing so would let us turn $\mathrm{B}$ into a functor $\mathrm{CMon} \to E\Lambda\mbox{-}\mathrm{Alg}_S$, solving problem 1. However, any new left adjoint $\mathrm{M}' :  E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{CMon}$ to this `fixed' $\mathrm{B}$ would then have to send $L_n$ to the trivial monoid, $1 = \{ \ast \}$. This is because under the adjunction the homomorphisms $\mathrm{M}'(L_n) \to C$ would correspond to algebra maps $L_n \to \mathrm{B}C$, which by the free property of $L_n$ are just choices of $n$ invertible objects from $\mathrm{B}C$. Deloopings only have one (invertible) object, and so there is only one way to choose such an $n$-tuple, and hence only one homomorphism $\mathrm{M}'(L_n) \to C$ for each $C$, which is a property unique to the trivial monoid. Thus by editing our adjunction in an attempt to fix problem 1, we have significantly worsened problem 2. It was already going to be hard to recover the details of $\mathrm{Mor}(L_n)$ from the collapsed $\mathrm{M}(L_n)^{\mathrm{ab}}$, but it would be impossible to do so from just $\{ \ast \}$.  
+%There is a way to assign an $E\Lambda$-action to the monoidal category $\mathrm{B}C$ for an arbitrary commutative monoid $C$, which is to simply set all of the action morphisms $\alpha(g; \mathrm{id}_I, ..., \mathrm{id}_I)$ to be $\mathrm{id}_I$, and doing so would let us turn $\mathrm{B}$ into a functor $\mathrm{CMon} \to E\Lambda\mbox{-}\mb{Alg}_S$, solving problem 1. However, any new left adjoint $\mathrm{M}' :  E\Lambda\mbox{-}\mb{Alg}_S \to \cmon$ to this `fixed' $\mathrm{B}$ would then have to send $L_n$ to the trivial monoid, $1 = \{ \ast \}$. This is because under the adjunction the homomorphisms $\mathrm{M}'(L_n) \to C$ would correspond to algebra maps $L_n \to \mathrm{B}C$, which by the free property of $L_n$ are just choices of $n$ invertible objects from $\mathrm{B}C$. Deloopings only have one (invertible) object, and so there is only one way to choose such an $n$-tuple, and hence only one homomorphism $\mathrm{M}'(L_n) \to C$ for each $C$, which is a property unique to the trivial monoid. Thus by editing our adjunction in an attempt to fix problem 1, we have significantly worsened problem 2. It was already going to be hard to recover the details of $\mathrm{Mor}(L_n)$ from the collapsed $\mathrm{M}(L_n)^{\mathrm{ab}}$, but it would be impossible to do so from just $\{ \ast \}$.  
 
 %Thus we are stuck with the adjunction $\mathrm{M}(\, - \,)^{\mathrm{ab}} \dashv \mathrm{B}$, and will spend some considerable energy addressing its deficiencies. 
 %Luckily, it turns out that our previous approach can be amended to work with this, and to that end we will spend the bulk of the next two chapters directly addressing problems 1 and 2. 
@@ -5528,12 +5530,12 @@ To lift $B$ to $\lmc$, we need only assign the trivial action of each $\Lambda_n
 
 % whatever method we would have used to recover $\mathrm{Mor}(L_n)$ from $\mathrm{M}(L_n)^{\mathrm{ab}}$ will still let us recover $\mathrm{Mor}(L_n) = \mathrm{Mor}(L_n)^{\mathrm{gp}}$ from $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
 
- We will eventually prove that the morphisms of $L_n$ actually form a group under tensor product \cref{??}, so instead of working directly with the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}}: \mathrm{MonCat} \to \mathrm{CMon}$, we will focus on its composite with the group completion functor, $gp : \mathrm{CMon} \to \mathrm{Ab}$. We end with a brief exploration of this new functor $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$. 
+ We will eventually prove that the morphisms of $L_n$ actually form a group under tensor product \cref{??}, so instead of working directly with the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}}: \moncat \to \cmon$, we will focus on its composite with the group completion functor, $gp : \cmon \to \mb{Ab}$. We end with a brief exploration of this new functor $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$. 
 %Specifically, we might ask in what order do we have to carry out its constituent parts: the collapsing of $\circ$ and $\otimes$ into a single operation, group completion, and abelianisation. 
 It is well known that group completion and abelianization commute since their right adjoints commute, but we further note that group completion commutes with collapsing morphisms.
 %\begin{eq*} \begin{tikzcd}
-%\mathrm{Mon} \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] \ar[d, "(\, \_ \,)^{\mathrm{ab}}"'] & & \mathrm{Grp} \ar[d, "(\, \_ \,)^{\mathrm{ab}}"] \\
-%\mathrm{CMon} \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] & & \mathrm{Ab}
+%\mb{Mon} \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] \ar[d, "(\, \_ \,)^{\mathrm{ab}}"'] & & \mb{Grp} \ar[d, "(\, \_ \,)^{\mathrm{ab}}"] \\
+%\cmon \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] & & \mathrm{Ab}
 %\end{tikzcd} \end{eq*}
 %Indeed, we already assumed this when talking of `the' canonical map $\mathrm{M}(X)^{\mathrm{gp},\mathrm{ab}}$. 
 %But a more interesting question is whether it matters if we choose to group complete or abelianize the tensor product of a monoidal category before or after we collapse its morphisms.
@@ -5600,7 +5602,7 @@ QQQ I think I might suggest $L_n$ for the free thing on $n$ invertible objects.
 This section will present a different approach to $L_n$. Consider for a moment the free $\ML$-monoidal category on $2n$ objects $z_1, z_2, \ldots, z_{2n}$. If we were to take this category and then add the relations $z_{n+1} = z_1^{-1}, ..., z_{2n} = z_n^{-1}$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. Thus we would see $L_n$ as a quotient of the larger monoidal category $\EL(2n)$. We will now work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
 
 
-%\section{$L_n$ as a cokernel in $E\Lambda\mbox{-}\mathrm{Alg}_S$} 
+%\section{$L_n$ as a cokernel in $E\Lambda\mbox{-}\mb{Alg}_S$} 
 %
 %We'll begin with some definitions.
 
@@ -5615,7 +5617,7 @@ This section will present a different approach to $L_n$. Consider for a moment t
 for $1 \le i \le n$. We will also denote by $q: \EL(\underline{2n}) \to Q$ the cokernel of this map (i.e., the coequalizer of this functor and the functor sending all objects to the unit and all morphisms to the identity).  
 \end{Defi}
 
-%Note that the above definition does actually make sense. The given description of $\delta$ is enough to specify it uniquely because $\ELnn$ is the free $E\Lambda$-algebra on $2n$ objects, and hence algebra maps $\ELnn \to \ELnn$ are canonically isomorphic to functions $\{z_1, ..., z_{2n}\} \to \mathrm{Ob}(\ELnn)$. Also we can be sure that the map $q$ exists, because $E\Lambda\mbox{-}\mathrm{Alg}_S$ is a locally finitely presentable category and thus has all finite colimits.
+%Note that the above definition does actually make sense. The given description of $\delta$ is enough to specify it uniquely because $\ELnn$ is the free $E\Lambda$-algebra on $2n$ objects, and hence algebra maps $\ELnn \to \ELnn$ are canonically isomorphic to functions $\{z_1, ..., z_{2n}\} \to \mathrm{Ob}(\ELnn)$. Also we can be sure that the map $q$ exists, because $E\Lambda\mbox{-}\mb{Alg}_S$ is a locally finitely presentable category and thus has all finite colimits.
 
 %The goal of this approach will be show that $Q$ is in fact that same algebra as $L_n$. In order to do this, it would help if we could easily compare $q: \ELnn \to Q$ to our initial object $\eta: \mathbb{G}_{n} \to L_n$. We really want to show that the composite of $q$ with the inclusion $\ELn \hookrightarrow \ELnn$ is an object of $(\ELn \downarrow \mathrm{inv})$ --- in other words, that $Q$ has only invertible objects. This can be done using the adjunction we found in \cref{Obadj}.
 
@@ -5762,7 +5764,7 @@ We also have a unique map $\EL(\underline{2n}) \to L_n$ which agrees with the ca
 %or in other words $\psi + \psi^* = v \circ q$ for any morphism $v: q \circ i \to \psi$ in $(\ELn \downarrow \mathrm{inv})$. But this is the property that the map $u$ was supposed to satisfy uniquely, and thus it must be the only morphism $q \circ i \to \psi$ in $(\ELn \downarrow \mathrm{inv})$. Therefore $q \circ i$ is an initial object, and hence it is isomorphic in $(\ELn \downarrow \mathrm{inv})$ to any other initial object, such as $\eta$. It follows that the targets of these two maps, $Q$ and $L_n$ respectively, are isomorphic as $E\Lambda$-algebras.
 \end{proof}
 
-%It's worth noting that we have not given a method for actually taking cokernels in $E\Lambda\mbox{-}\mathrm{Alg}_S$, and so \cref{coker} doesn't immediately provide an explicit description for the whole of $L_n$. However, it does offer us another way to extract partial information, like what we were doing in \cref{initialalgebra}. Consider \cref{Qobj}; now that we know that $Q$ is actually $L_n$, the statement of this proposition is just the same as that of \cref{Zobj}. But the proof of the former uses the ability of cokernels to preserve left adjoint functors, rather than any of the initial algebra and group completion properties that appear in the latter.
+%It's worth noting that we have not given a method for actually taking cokernels in $E\Lambda\mbox{-}\mb{Alg}_S$, and so \cref{coker} doesn't immediately provide an explicit description for the whole of $L_n$. However, it does offer us another way to extract partial information, like what we were doing in \cref{initialalgebra}. Consider \cref{Qobj}; now that we know that $Q$ is actually $L_n$, the statement of this proposition is just the same as that of \cref{Zobj}. But the proof of the former uses the ability of cokernels to preserve left adjoint functors, rather than any of the initial algebra and group completion properties that appear in the latter.
 %
 %Of course, by \cref{coker} the fact that $q$ is a cokernel is equivalent to it being initial, and so while they may not look it at first glance, these two approaches are secretly the same. Thus from now on whenever we are trying to determine some aspect of $L_n$, we will make sure to take a look at both methods, just in case there are some properties of our free algebra which are more readily apparent from one description than another.
 
@@ -5779,10 +5781,10 @@ We also have a unique map $\EL(\underline{2n}) \to L_n$ which agrees with the ca
 We will say that a functor $F: C \to D$ is \emph{surjective} if the underlying map of graphs is surjective. In particular $F$ must be surjective on objects, but it need not be full.
 \end{Defi}
 
-\begin{prop}\label{coeqsurj} Let $\phi, \phi' : X \to Y$ be a pair of $E\Lambda$-algebra maps, and $k: Y \to Z$ their coequalizer in $E\Lambda\mbox{-}\mathrm{Alg}_S$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
+\begin{prop}\label{coeqsurj} Let $\phi, \phi' : X \to Y$ be a pair of $E\Lambda$-algebra maps, and $k: Y \to Z$ their coequalizer in $E\Lambda\mbox{-}\mb{Alg}_S$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
 \end{prop}
 \begin{proof}
-Since the functor $\mathrm{Ob} : E\Lambda\mbox{-}\mathrm{Alg}_S \to \mathrm{Mon}$ is a left adjoint, it preserves all colimits so the monoid homomorphism $\mathrm{Ob}(k): \mathrm{Ob}(Y) \to \mathrm{Ob}(Z)$ is the coequalizer of the parallel pair $\mathrm{Ob}(\phi), \mathrm{Ob}(\phi')$ in the category of monoids. Every coequalizer is a regular epimorphism, and in the category of monoids regular epimorphisms coincide with  surjective functions, so $k$ is surjective on objects.
+Since the functor $\mathrm{Ob} : E\Lambda\mbox{-}\mb{Alg}_S \to \mb{Mon}$ is a left adjoint, it preserves all colimits so the monoid homomorphism $\mathrm{Ob}(k): \mathrm{Ob}(Y) \to \mathrm{Ob}(Z)$ is the coequalizer of the parallel pair $\mathrm{Ob}(\phi), \mathrm{Ob}(\phi')$ in the category of monoids. Every coequalizer is a regular epimorphism, and in the category of monoids regular epimorphisms coincide with  surjective functions, so $k$ is surjective on objects.
 
 
 %Thus we get
@@ -5843,11 +5845,11 @@ We have an isomorphism of groups as below.
 \end{cor}
 %This is probably the single most important step in our effort to determine the morphisms of $L_n$, in the sense of how many of the results hereafter rely on this relatively simple property. Indeed this result is so strong that after a cursory glance, one might be forgiven for thinking that it will immediately provide for us the main thing we have been working towards this chapter --- the value of $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
 %
-%After all, every surjective functor is an epimorphism in the category $\mathrm{MonCat}$. We know that left adjoint functors preserve epimorphisms, and that $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$ is a left adjoint, so from \cref{qsurj} we can surmise that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is also an epimorphism, this time in $\mathrm{Ab}$. But an epimorphic map of abelian groups is nothing other than a surjective homomorphism, and thus we may apply the First Isomorphism Theorem of groups to get the following:
+%After all, every surjective functor is an epimorphism in the category $\moncat$. We know that left adjoint functors preserve epimorphisms, and that $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$ is a left adjoint, so from \cref{qsurj} we can surmise that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is also an epimorphism, this time in $\mb{Ab}$. But an epimorphic map of abelian groups is nothing other than a surjective homomorphism, and thus we may apply the First Isomorphism Theorem of groups to get the following:
 %\begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \quad = \quad \bigquotient{\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}}{\mathrm{ker}\big( \, \mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}} \, \big)} \end{eq*}
 %So if we knew what the kernel of $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ was, we would be done. And it seems like we \emph{should} know this; $q$ was defined to be the cokernel of $\delta$, and by preservation of this colimits means that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is the cokernel of $\mathrm{M}(\delta)^{\mathrm{gp},\mathrm{ab}}$. Then since we are working with abelian groups, kernels and cokernels interact in a nice way:
 %\begin{eq*} \mathrm{ker} \, \mathrm{coker}\big( \, \mathrm{M}(\delta)^{\mathrm{gp},\mathrm{ab}} \, \big) \quad = \quad \mathrm{im}\big( \, \mathrm{M}(\delta)^{\mathrm{gp},\mathrm{ab}} \, \big) \end{eq*}
-%However, this last step doesn't actually work --- $q$ was defined to be $\mathrm{coker}(\delta)$, but only in the category of $E\Lambda$-algebras. In general this will \emph{not} be the same thing as the cokernel of $\delta$ in $\mathrm{MonCat}$, which is what we would really need in order for $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}$ to preserve it.
+%However, this last step doesn't actually work --- $q$ was defined to be $\mathrm{coker}(\delta)$, but only in the category of $E\Lambda$-algebras. In general this will \emph{not} be the same thing as the cokernel of $\delta$ in $\moncat$, which is what we would really need in order for $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}$ to preserve it.
 %
 %Still, this is a pretty reasonable guess for what $\mathrm{M}(L_n)^{\mathrm{gp, ab}}$ is, and provides an indication of how we should proceed in order to find its true value. We will pick up on this idea again in \cref{colimmoncat}.
 %
@@ -6195,10 +6197,10 @@ for $1 \le i \le n$.
 
 
 
-\begin{cor}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
+\begin{cor}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mb{Alg}_S$.
 \end{cor}
 
-By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\Lambda\mbox{-}\mathrm{Alg}_S$, so by \cref{refcoeq_calcs} we have the further corollary below.
+By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\Lambda\mbox{-}\mb{Alg}_S$, so by \cref{refcoeq_calcs} we have the further corollary below.
 
 \begin{cor}\label{q_other_coeq2} The functor $q$  is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $\moncat$ or in $\cat$.
 \end{cor}
@@ -6516,7 +6518,7 @@ Then the abelianisation of the group completion of the collapsed morphisms of $L
 with $\mathrm{M}(q)^{\mathrm{gp, ab}}$ acting as the appropriate quotient map. 
 \end{prop}
 \begin{proof}
-From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}: \mathrm{MonCat} \to \mathrm{Ab}$ is a left adjoint functor. This means that it preserves all colimits in $\mathrm{MonCat}$, including the coequalizer use to define $\tilde{c}$, which from \cref{c'=q} we now know is really $q$.  Thus
+From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}: \moncat \to \mb{Ab}$ is a left adjoint functor. This means that it preserves all colimits in $\moncat$, including the coequalizer use to define $\tilde{c}$, which from \cref{c'=q} we now know is really $q$.  Thus
 \begin{eq*} \mathrm{coeq}\big( \, \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}, \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}} \, \big) \quad = \quad \mathrm{M}\big( \, \mathrm{coeq}(\tilde{\delta}, \tilde{I}) \, \big)^{\mathrm{gp, ab}} \quad = \quad \mathrm{M}(q)^{\mathrm{gp, ab}} \end{eq*}
 or in other words, the following is a coequalizer diagram in the category of abelian groups:
 \begin{eq*} \begin{tikzcd}
