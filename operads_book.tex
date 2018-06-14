@@ -3899,7 +3899,7 @@ As an immediate consequence of this, the source and target of any given morphism
  \end{eq*} 
 Also, the canonical homomorphism sending objects in $\ELn$ to their connected component,
 \begin{eq*} [ \, \_ \, ] \, : \, \mathrm{Ob}(\ELn) \to \pi_0(\ELn) \end{eq*}
-is the quotient map of abelianisation
+is the quotient map of abelianization
 \begin{eq*} \mathrm{ab} \, : \, \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}} \, = \, \mathbb{N}^n \end{eq*}
 when $G$ is crossed, and the identity map $\mathrm{id}_{\mathbb{N}^{*n}}$ otherwise.
 \end{prop}
@@ -3910,7 +3910,7 @@ By \cref{Gnmapsaction}, all morphisms in $\ELn$ can be written uniquely as $\alp
 If our action operad $G$ is crossed, then for any two objects like this --- say source $x_1 \otimes ... \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes ... \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \mathrm{S}_m$ --- we can always find a map $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ between them, because by \cref{surjortriv} the underlying permutations maps $\pi_m: G(m) \to S_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
 
 \begin{eq*} [z_i] \otimes [z_j] \quad = \quad [z_i \otimes z_j] \quad = \quad [z_j \otimes z_i] \quad = \quad [z_j] \otimes [z_i] \end{eq*}
-Thus the canonical map $[ \, \_ \, ] : \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ is the one that makes the free product of $\mathbb{N}^{*n}$ commutative; that is, the quotient map for the abelianisation $\mathrm{ab} : \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}}$. Hence $\pi_0(\ELn) = \mathbb{N}^n$.
+Thus the canonical map $[ \, \_ \, ] : \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ is the one that makes the free product of $\mathbb{N}^{*n}$ commutative; that is, the quotient map for the abelianization $\mathrm{ab} : \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}}$. Hence $\pi_0(\ELn) = \mathbb{N}^n$.
 
 Conversely, if $G$ is non-crossed then its underlying permutation operad $\mathrm{im}(\pi)$ is trivial, and so the only morphisms we have in $\ELn$ will be those of the form
 \begin{eq*} \alpha( \, e_m \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1} \otimes ... \otimes \mathrm{id}_{x_m} \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \end{eq*}
@@ -5316,7 +5316,7 @@ We summarize these results below.
 \begin{itemize} 
 \item the connected components of $L_n$ are the monoid $\mathbb{Z}^n$,
 \item the restriction of $\eta$ to components is the obvious inclusion $\mathbb{N}^n \hookrightarrow \mathbb{Z}^n$, and
-\item the assignment of objects to their component is given by the quotient map of abelianisation $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$.
+\item the assignment of objects to their component is given by the quotient map of abelianization $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$.
 \end{itemize}
 If instead $G$ is non-crossed, then
 \begin{itemize} \itemsep0em
@@ -5334,7 +5334,7 @@ If instead $G$ is non-crossed, then
 %\end{eq*}
 %Moreover, \cref{Zconcomp} says that restriction of $\eta$ to connected components, $\pi_0(\eta)$, will be the homomorphism associated with these group completion, which means the inclusion $\mathbb{N}^n \hookrightarrow \mathbb{Z}^n$ when $G$ is crossed and $\mathbb{N}^{\ast n} \hookrightarrow \mathbb{Z}^{\ast n}$ when it is not.
 %
-%Next, by \cref{Gnconcomp} we know that the map $[ \, \_ \, ] : \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ sending objects of $\ELn$ to their connected component is either the quotient map of abelianisation $\mathbb{N}^{\ast n} \to \mathbb{N}^n$ or the identity on $\mathbb{N}^{\ast n}$, depending on whether or not it is crossed. If we also use $[ \, \_ \, ]$ to denote the map sending objects of $L_n$ to their components, it then follows from functoriality of $\eta$ that the corresponding choice of the following two diagrams will commute:
+%Next, by \cref{Gnconcomp} we know that the map $[ \, \_ \, ] : \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ sending objects of $\ELn$ to their connected component is either the quotient map of abelianization $\mathbb{N}^{\ast n} \to \mathbb{N}^n$ or the identity on $\mathbb{N}^{\ast n}$, depending on whether or not it is crossed. If we also use $[ \, \_ \, ]$ to denote the map sending objects of $L_n$ to their components, it then follows from functoriality of $\eta$ that the corresponding choice of the following two diagrams will commute:
 %\begin{eq*} \begin{tikzcd}
 %\mathbb{N}^{\ast n} \ar[dd, hookrightarrow, "\lbrack \, \_ \, \rbrack"'] \ar[rr, hookrightarrow, "\mathrm{Ob}(\eta)"] & & \mathbb{Z}^{\ast n} \ar[dd, "\lbrack \, \_ \, \rbrack"] & \quad & \mathbb{N}^{\ast n} \ar[dd, equals, "\lbrack \, \_ \, \rbrack"'] \ar[rr, hookrightarrow, "\mathrm{Ob}(\eta)"] & & \mathbb{Z}^{\ast n} \ar[dd, "\lbrack \, \_ \, \rbrack"] \\
 %& & & & \\
@@ -5444,7 +5444,7 @@ For a commutative monoid $A$, it is clear that $M(BA)^{ab} = A$, so we can defin
 			%& : & \mathrm{ab} \circ \mathrm{M}(f) & \mapsto & F(f) \\
 		%\end{array}
 %\end{eq*}
-%where $\mathrm{ab}$ is the quotient map of abelianisation $\mathrm{M}(X) \to \mathrm{M}(X)^{\mathrm{ab}}$. This $F'$ is a well-defined monoid homomorphism; it preserves multiplication and respects the relation $\otimes = \circ$ because the monoid multiplication of $C$ is acts as both tensor product and composition in $\mathrm{B}C$.
+%where $\mathrm{ab}$ is the quotient map of abelianization $\mathrm{M}(X) \to \mathrm{M}(X)^{\mathrm{ab}}$. This $F'$ is a well-defined monoid homomorphism; it preserves multiplication and respects the relation $\otimes = \circ$ because the monoid multiplication of $C$ is acts as both tensor product and composition in $\mathrm{B}C$.
 %\begin{eq*} \begin{array}{rll}
 			%F'\big( \, \mathrm{ab}\mathrm{M}(f' \circ f ) \, \big) & = & F(f' \circ f) \\
 			%& = & F(f') \circ F(f)  \\
@@ -5530,8 +5530,10 @@ To lift $B$ to $\lmc$, we need only assign the trivial action of each $\Lambda_n
 
 % whatever method we would have used to recover $\mathrm{Mor}(L_n)$ from $\mathrm{M}(L_n)^{\mathrm{ab}}$ will still let us recover $\mathrm{Mor}(L_n) = \mathrm{Mor}(L_n)^{\mathrm{gp}}$ from $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
 
+
  We will eventually prove that the morphisms of $L_n$ actually form a group under tensor product \cref{??}, so instead of working directly with the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}}: \moncat \to \cmon$, we will focus on its composite with the group completion functor, $gp : \cmon \to \mb{Ab}$. We end with a brief exploration of this new functor $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$. 
 %Specifically, we might ask in what order do we have to carry out its constituent parts: the collapsing of $\circ$ and $\otimes$ into a single operation, group completion, and abelianisation. 
+
 It is well known that group completion and abelianization commute since their right adjoints commute, but we further note that group completion commutes with collapsing morphisms.
 %\begin{eq*} \begin{tikzcd}
 %\mb{Mon} \ar[rr, "(\, \_ \,)^{\mathrm{gp}}"] \ar[d, "(\, \_ \,)^{\mathrm{ab}}"'] & & \mb{Grp} \ar[d, "(\, \_ \,)^{\mathrm{ab}}"] \\
@@ -5578,7 +5580,7 @@ This follows immediately from $M$ being given explicitly as a quotient, and both
 %\end{eq*} 
 %All elements of $\mathrm{M}(X)^{\mathrm{gp}}$ can be written as $\mathrm{gp}\mathrm{M}(f)$ or $\mathrm{gp}\mathrm{M}(f)^*$ for at least one $f$, so this really says that $v' \circ u'$ is the identity homomorphisms on $\mathrm{M}(X)^{\mathrm{gp}}$. 
 %
-%A completely analogous argument can also be by made starting from the bottom edge of the diagram instead, and then concluding that $u' \circ v' = \mathrm{id}_{\mathrm{M}_{\mathrm{gp}}(X)}$. Furthermore, we can construct another diagram using the universal property of the abelianisation,
+%A completely analogous argument can also be by made starting from the bottom edge of the diagram instead, and then concluding that $u' \circ v' = \mathrm{id}_{\mathrm{M}_{\mathrm{gp}}(X)}$. Furthermore, we can construct another diagram using the universal property of the abelianization,
 %\begin{eq*} \begin{tikzcd}
 %& \mathrm{M}(X) \ar[rr, "\mathrm{ab}"] \ar[ddrr, dashed, "v''", near start] & & \mathrm{M}(X)^{\mathrm{ab}} \ar[dd, shift left, dashed, "u'''"] \\
 %\mathrm{Mor}(X) \ar[ru, "\mathrm{M}"] \ar[rd, "\mathrm{ab}"'] & & & \\
@@ -6509,30 +6511,48 @@ By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\La
 %Therefore $(u,v)$ is also an isomorphism of $E\Lambda$-algebras $\tilde{C} \cong L_n$, and up to this isomorphism the algebra maps $q$ and $\tilde{c}$ are the same.
 %\end{proof}
 %
-With our newfound ability to express the map $q: \ELnn \to L_n$ as a colimit of monoidal categories, we can now set about using the adjunction from \cref{Moradj} to calculate $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$. The most obvious way to do this is to mimic what we did in \cref{Qobj} --- apply the left adjoint functor to $q$ and then commute it with the colimit to get a formula in terms of the known monoid $\mathrm{Mor}(\ELnn)$.
+Now that we can  express the map $q: \ELnn \to L_n$ as a colimit of mere monoidal categories, we can use the adjunction from \cref{Moradj} to calculate $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$. %The most obvious way to do this is to mimic what we did in \cref{Qobj} --- apply the left adjoint functor to $q$ and then commute it with the colimit to get a formula in terms of the known monoid $\mathrm{Mor}(\ELnn)$.
+
+QQQ Need to think about the $f^*$ below
 
 \begin{prop}\label{Zmor2} Let $\Delta$ be the subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ generated by elements of the form
-\begin{eq*} \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) \, \otimes \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f)^*, \quad \quad \quad f \in \mathrm{M}(\mathbb{G}_{4n})^{\mathrm{gp, ab}} \end{eq*}
-Then the abelianisation of the group completion of the collapsed morphisms of $L_n$ is 
+\begin{eq*} \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) \, \otimes \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f)^*, \quad \quad \quad f \in \mathrm{M}(\ELnnnn)^{\mathrm{gp, ab}} \end{eq*}
+Then the abelianization of the group completion of the collapsed morphisms of $L_n$ is 
 \begin{eq*} \mathrm{M}(L_n)^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta} \end{eq*}
 with $\mathrm{M}(q)^{\mathrm{gp, ab}}$ acting as the appropriate quotient map. 
 \end{prop}
 \begin{proof}
-From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}: \moncat \to \mb{Ab}$ is a left adjoint functor. This means that it preserves all colimits in $\moncat$, including the coequalizer use to define $\tilde{c}$, which from \cref{c'=q} we now know is really $q$.  Thus
-\begin{eq*} \mathrm{coeq}\big( \, \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}, \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}} \, \big) \quad = \quad \mathrm{M}\big( \, \mathrm{coeq}(\tilde{\delta}, \tilde{I}) \, \big)^{\mathrm{gp, ab}} \quad = \quad \mathrm{M}(q)^{\mathrm{gp, ab}} \end{eq*}
-or in other words, the following is a coequalizer diagram in the category of abelian groups:
-\begin{eq*} \begin{tikzcd}
-\mathrm{M}(\ELnn)^{\mathrm{gp, ab}} \ar[rrr, shift left, "\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}"] \ar[rrr, shift right, "\mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}"'] & & &
-\mathrm{M}(\ELnn)^{\mathrm{gp, ab}} \ar[rrr, "\mathrm{M}(c)^{\mathrm{gp, ab}}"] & & &
-\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp, ab}}
-\end{tikzcd} \end{eq*} 
-But the coequalizer of two abelian group homomorphisms is just the quotient of their common target by the image of their difference. Hence in this case we have
-\begin{eq*} \mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\mathrm{im}\big( \, {\mathrm{M}(\tilde{\delta})}^{\mathrm{gp, ab}} - {\mathrm{M}(\tilde{I})}^{\mathrm{gp, ab}} \, \big)} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta}  \end{eq*}
+
+From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}: \moncat \to \mb{Ab}$ is a left adjoint functor. This means that it preserves all colimits in $\moncat$, so
+\begin{eq*} \mathrm{coeq}\big( \, \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}, \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}} \, \big) \quad \cong \quad \mathrm{M}\big( \, \mathrm{coeq}(\tilde{\delta}, \tilde{I}) \, \big)^{\mathrm{gp, ab}} \quad \cong \quad \mathrm{M}(q)^{\mathrm{gp, ab}}. \end{eq*}
+%or in other words, the following is a coequalizer diagram in the category of abelian groups:
+%\begin{eq*} \begin{tikzcd}
+%\mathrm{M}(\ELnnnn)^{\mathrm{gp, ab}} \ar[rrr, shift left, "\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}"] \ar[rrr, shift right, "\mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}"'] & & &
+%\mathrm{M}(\ELnnnn)^{\mathrm{gp, ab}} \ar[rrr, "\mathrm{M}(c)^{\mathrm{gp, ab}}"] & & &
+%\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp, ab}}
+%\end{tikzcd} \end{eq*} 
+The coequalizer of two abelian group homomorphisms is just the quotient of their common target by the image of their difference. Hence in this case we have
+\begin{eq*} 
+\begin{array}{rcl}
+\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp, ab}}  & \cong &  \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\mathrm{im}\big( \, {\mathrm{M}(\tilde{\delta})}^{\mathrm{gp, ab}} - {\mathrm{M}(\tilde{I})}^{\mathrm{gp, ab}} \, \big)} \\
+& \cong & \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta}.
+\end{array}
+\end{eq*}
+
 \end{proof} 
 
-Notice that the subgroup $\Delta$ contains all elements of the group $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$, but in general these two are not the same subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$. This means that the naive approach we could have taken at the end of \cref{surjcoeq} was indeed a mistake, and thus all of the effort we have put into circumventing it has been worthwhile.  
+\begin{rem}\label{delta_neq_image}
+Note that $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$ is a subgroup of $\Delta$: QQQ. In general it is proper subgroup though: QQQ.
+\end{rem}
 
-Now, at some point later on we will actually want to evaluate the quotient in \cref{Zmor2} for particular values of action operad $G$. This would be fairly tricky without an explicit description of the elements of $\Delta$, so we need to take a moment to think about what we really mean when we say $\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) \otimes \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f)^*$.
+%Notice that the subgroup $\Delta$ contains all elements of the group $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$, but in general these two are not the same subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$. This means that the naive approach we could have taken at the end of \cref{surjcoeq} was indeed a mistake, and thus all of the effort we have put into circumventing it has been worthwhile.  
+
+Our goal is to explicitly compute the group acting on a set of $n$ invertible objects in a $\ML$-monoidal category, so we will need an explicit description of the elements of the subgroup $\Delta$.
+
+%Now, at some point later on we will actually want to evaluate the quotient in \cref{Zmor2} for particular values of action operad $G$. This would be fairly tricky without an explicit description of the elements of $\Delta$, so we need to take a moment to think about what we really mean when we say $\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) \otimes \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f)^*$.
+
+Start here
+
 
 \begin{lem} $\Delta$ is the subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ whose elements are tensor products of equivalence classes
 \begin{eq*} \begin{array}{c}
@@ -6625,7 +6645,7 @@ Recalling \cref{Gnobj,Gnconcomp,Zobj,crossconcomp}, we can immediately conclude 
 							\end{cases} \\
 		\end{array}
 \end{eq*}
-where the pullbacks are taken over the quotients of abelianisation for $(\mathbb{N}^{\ast n})^{\mathrm{ab}} = \mathbb{N}^n$ and $(\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^n$ respectively.
+where the pullbacks are taken over the quotients of abelianization for $(\mathbb{N}^{\ast n})^{\mathrm{ab}} = \mathbb{N}^n$ and $(\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^n$ respectively.
 \end{cor}
 
 Next, we want to show that this $(s \times t)(L_n)$ we have described is in fact a submonoid of $\mathrm{Mor}(L_n)$. This is a little tricky though, since we don't currently know what the morphisms of $L_n$ even are. We will sidestep this problem by first proving the analogous statement for all $\ELn$, and then recovering the $L_n$ version from it later.
@@ -6945,7 +6965,7 @@ Instead if $G$ is a $G(1)$-generated action operad, then
 
 In the latter case, what this is saying is that every morphism in $L_n$ is just the identity element of some object.
 
-But what about for more general $L_n$ with nontrivial unit endomorphisms? For crossed $G$, the key insight is that one half of the product in \cref{morprod}, $L_n(I, I)$, is always an abelian group. This means that it will remain untouched if we were to abelianise the entire product, thus providing a link between $\mathrm{Mor}(L_n)$ before and after abelianisation.
+But what about for more general $L_n$ with nontrivial unit endomorphisms? For crossed $G$, the key insight is that one half of the product in \cref{morprod}, $L_n(I, I)$, is always an abelian group. This means that it will remain untouched if we were to abelianise the entire product, thus providing a link between $\mathrm{Mor}(L_n)$ before and after abelianization.
 
 \begin{prop}\label{Zmor1} Let $G$ be a crossed action operad. Then the endomorphisms of the unit object of $L_n$ are
 \begin{eq*} L_n(I, I) \quad = \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
@@ -6971,16 +6991,16 @@ as required.
 
 Unfortunately, there is no general version of \cref{Zmor1} for when $G$ is not crossed. This is because if we try to abelianise the semidirect product from \cref{morprod}, we will arrive at a product of the relevant abelian group, but a new term will also appear indicating the degree to which $L_n(I, I)$ and $ (s \times t)(L_n)$ fail to commute.
 
-\begin{lem} If $H$ is semidirect product $K \ltimes N$, then its abelianisation is
+\begin{lem} If $H$ is semidirect product $K \ltimes N$, then its abelianization is
 \begin{eq*} H^{\mathrm{ab}} \quad = \quad K^{\mathrm{ab}} \, \times \, \bigquotient{N^{\mathrm{ab}}}{[N,K]} \end{eq*}
 where $[N,K]$ is the commutator of $N$ with $K$.
 \end{lem}
 
-We do not know what the unit endomorphism of $L_n$ are yet -- indeed, that's the one thing we are trying to figure out using this abelianisation tactic --- and so this new term $[L_n(I, I), (s \times t)(L_n)]$ is not something we can understand. The obvious exception to this is when our non-crossed $G$ is $G(1)$-generated, where we do know that $L_n(I, I)$ is trivial and so of course $[L_n(I, I), (s \times t)(L_n)] = (s \times t)(L_n)$.
+We do not know what the unit endomorphism of $L_n$ are yet -- indeed, that's the one thing we are trying to figure out using this abelianization tactic --- and so this new term $[L_n(I, I), (s \times t)(L_n)]$ is not something we can understand. The obvious exception to this is when our non-crossed $G$ is $G(1)$-generated, where we do know that $L_n(I, I)$ is trivial and so of course $[L_n(I, I), (s \times t)(L_n)] = (s \times t)(L_n)$.
 
 If we stick to working with crossed action operads however, we are now only one step away from a complete expression for $\mathrm{Mor}(L_n)$. The last term whose value we do not know is $\mathrm{Mor}(L_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{Mor}(L_n)^{\mathrm{ab}}$, and as one might expect this is related to the value that the algebra takes under the collapsed morphism left adjoint, $\mathrm{M}(L_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{M}(L_n)^{\mathrm{ab}}$
 
-\begin{prop} \label{colquot} Let $X$ be any monoidal category whose objects are morphisms are all invertible under tensor product. Then the group completion of the abelianisation of the collapsed morphisms of $X$ are
+\begin{prop} \label{colquot} Let $X$ be any monoidal category whose objects are morphisms are all invertible under tensor product. Then the group completion of the abelianization of the collapsed morphisms of $X$ are
 \begin{eq*} \mathrm{M}(X)^{\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{Mor}(X)^{\mathrm{ab}}}{\mathrm{Ob}(X)^{\mathrm{ab}}} \end{eq*}
 where we are viewing $\mathrm{Ob}(X)$ as a subgroup of $\mathrm{Mor}(X)$ under tensor product by using the inclusion
 \begin{eq*} \begin{array}{rcl}
@@ -7044,7 +7064,7 @@ and together these give the required description of the morphisms of $L_n$.
 
 \section{Abelianising sources and targets}
  
-To say that the expression for $\mathrm{Mor}(L_n)$ we just found is `complicated' would probably be an understatement. If we are to have any hope of eventually being able to use \cref{Zmor}, we need to work out a more explicit presentation for its quotient part. We'll start by trying to find the value of $(s \times t)(L_n)^{\mathrm{ab}}$ for crossed $G$, the abelian group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. This will require some careful consideration, since in general limits such as the pullback do not interact with abelianisation in a simple way. What would help is a suitable presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in terms of some generators and relations. 
+To say that the expression for $\mathrm{Mor}(L_n)$ we just found is `complicated' would probably be an understatement. If we are to have any hope of eventually being able to use \cref{Zmor}, we need to work out a more explicit presentation for its quotient part. We'll start by trying to find the value of $(s \times t)(L_n)^{\mathrm{ab}}$ for crossed $G$, the abelian group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. This will require some careful consideration, since in general limits such as the pullback do not interact with abelianization in a simple way. What would help is a suitable presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in terms of some generators and relations. 
 
 \begin{prop} \label{pushpres} The pullback group $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is generated by two families of elements,
 \begin{eq*} \langle x \rangle \quad := \quad (x, x) \quad \quad \text{and} \quad \quad \langle xy \rangle \quad := \quad (xy, yx) \end{eq*}
@@ -7066,7 +7086,7 @@ where $x,y \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ are generators of the free 
 We'll begin by constructing a certain monoidal category, which we'll call $Z$. 
 \begin{itemize}
 \item The objects of $Z$ are the elements of the group $\mathbb{Z}^{\ast n}$, with the usual multiplication as the tensor product.
-\item There is a unique morphisms between any two objects $x$ and $y$ for which $\mathrm{ab}(x) = \mathrm{ab}(y)$, where $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$ is the quotient map of abelianisation. In other words, the morphisms of $Z$ are the elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, with multiplication as the tensor product and composition given by
+\item There is a unique morphisms between any two objects $x$ and $y$ for which $\mathrm{ab}(x) = \mathrm{ab}(y)$, where $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$ is the quotient map of abelianization. In other words, the morphisms of $Z$ are the elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, with multiplication as the tensor product and composition given by
 \begin{eq*} (x,y) \circ (y,z) \quad = \quad (x, z) \end{eq*}
 \item The identity map on an object $x$ is then the unique map $(x,x) : x \to x$.
 \end{itemize}
@@ -7169,7 +7189,7 @@ But we can also insert an element and its inverse into different points of the s
 The relations $(xy, yx) = (zz^*xy, yzz^*x)$ and so forth are all composed of successive instance of the above, so these are all of the relations on our generators $\langle x \rangle$ and $\langle xy \rangle$.
 \end{proof}
 
-Of course, the collection of relations we just gave in \cref{pushpres} are nowhere near minimal. Many of them clearly interact with each other in ways that would let us simplify or cancel some relations, or even generators. However, we will not expend any effort trying to do this, because we do not need to. With this inefficient presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in hand, we have in a sense already found its abelianisation. After all, for any presentation of some group $H$, the group $H^{\mathrm{ab}}$ possesses a presentation consisting of the exact same generators, subject to the same relations, plus a commutativity condition. This too will not normally be the most efficient description of the new group, but that remains true even if the presentation of $H$ we started with was minimal, and so any time spent finding one will just be wasted. Instead, we'll suppress the urge to simplify \cref{pushpres} and move straight on to tackling $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$.
+Of course, the collection of relations we just gave in \cref{pushpres} are nowhere near minimal. Many of them clearly interact with each other in ways that would let us simplify or cancel some relations, or even generators. However, we will not expend any effort trying to do this, because we do not need to. With this inefficient presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in hand, we have in a sense already found its abelianization. After all, for any presentation of some group $H$, the group $H^{\mathrm{ab}}$ possesses a presentation consisting of the exact same generators, subject to the same relations, plus a commutativity condition. This too will not normally be the most efficient description of the new group, but that remains true even if the presentation of $H$ we started with was minimal, and so any time spent finding one will just be wasted. Instead, we'll suppress the urge to simplify \cref{pushpres} and move straight on to tackling $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$.
 
 \begin{prop} \label{abst}
 \begin{eq*} (\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}} \quad = \quad \mathbb{Z}^n \times {\mathbb{Z}}^{{n}\choose{2}} \end{eq*}
@@ -7393,7 +7413,7 @@ which is just the $m$-fold free product of $\mathbb{N}$ with itself, where $m$ i
 \end{eq*}
 \end{proof}
 
-This makes the group completion and abelianisation we want to do trivial. 
+This makes the group completion and abelianization we want to do trivial. 
 
 \begin{cor} \label{freemorgpab} If $\mathcal{G}$ is a set that freely generates $G$ under tensor product, and $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, then the abelian group $\mathrm{Mor}(\ELn)^{\mathrm{gp}, \mathrm{ab}}$ is 
 \begin{eq*} (G \times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...} \end{eq*}
