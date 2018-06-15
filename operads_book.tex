@@ -6630,12 +6630,12 @@ Recalling \cref{Gnobj,Gnconcomp,Zobj,crossconcomp}, we can immediately conclude 
 
 \begin{cor} \label{stpullback}
 \[\begin{array}{rll} 
-		(s \times t)(\ELn) & = & \begin{cases}
+		(s \times t)(\ELn) & \cong & \begin{cases}
 								\quad \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & \text{if $G$ is crossed}\\
 								\quad \mathbb{N}^{\ast n} & \text{otherwise}
 							\end{cases} \\
 		& & \\
-		(s \times t)(L_n) & = & \begin{cases}
+		(s \times t)(L_n) & \cong & \begin{cases}
 								\quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  & \text{if $G$ is crossed}\\
 								\quad \mathbb{Z}^{\ast n} & \text{otherwise}
 							\end{cases} \\
@@ -6713,11 +6713,8 @@ then the length (QQQ we defined this kind of thing somewhere) of $c_1$ must be e
 %In other words, we have shown that the pair $\big( \, (u_1, u'_1) (a, a') \, \big)$ is an element of $D(v_1, v'_1)$. But by assumption $(v_1, v'_1), ..., (v_m', v'_{m'})$ was a decomposition of $(w, w')$, and hence the $D(v_i, v'_i)$ were supposed to be empty for each $i$, since that is when the decomposition finding process terminates. This is a contradiction, and hence our assumption that $(u_1, u'_1), ..., (u_m, u'_m)$ and $(v_1, v'_1), ..., (v_m', v'_{m'})$ were distinct decompositions of $(w, w')$ is false. Therefore, each $(w, w')$ in $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ has a unique decomposition in terms of elements $(v_i, v'_i)$ for which $D(v_i, v'_i)$ is empty, and so $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is the free monoid whose generators are all such elements.
 \end{proof}
 
-Start here
-
-It now follows easily that our earlier construction of an injective function $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \to G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ can always be extended to be an inclusion of monoids.
-
-\begin{prop} \label{stGnsub} $(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$
+We can now construct the desired injection using the function $\rho$ from \cref{rho_ww'}.
+\begin{prop} \label{stGnsub} $(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$, and $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ is a split epi of monoids.
 \end{prop}
 \begin{proof}
 First, assume that the action operad $G$ is non-crossed. Then there exists an obvious injective monoid homomorphism
@@ -6729,37 +6726,42 @@ First, assume that the action operad $G$ is non-crossed. Then there exists an ob
 \end{eq*}
 The homomorphism property follows from the fact that the length $|w|$ defined in \cref{lengthdef} is itself a homomorphism, so $|w \otimes w'| = |w|+|w'|$. Thus $(s \times t)(\ELn) \subseteq \mathrm{Mor}(\ELn)$ for non-crossed $G$.
 
-Now assume that $G$ is crossed. For each generator $(z, z')$ of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, the words $z, z' \in \mathbb{N}^{\ast n}$ are permutations of each other, and the map $\pi : G(|z|) \to \mathrm{S}_{|z|}$ is surjective, and so there must be some $g \in G(|z|)$ with the property that $\pi(g)(z) = z'$. Choose from among these a representative element, which we'll call $\rho(z, z')$. Then because $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid  by \cref{freemon}, these choices will extend to a well-defined, monoid homomorphism
+Now assume that $G$ is crossed. Fix a function $\rho$ as in \cref{rho_ww'}. Because $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid  by \cref{freemon}, there is a unique monoid homomorphism
 \begin{eq*} \rho \, : \, \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \longrightarrow G \end{eq*}
-which preserves underlying permutation. This map will now possess the property that
+which agrees on the generators in the source. By construction, we have
 \begin{eq*} \pi(\rho(w, w'))(w) \quad = \quad w' \end{eq*}
-for any $(w, w') \in\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, not just the generators. Then from $\rho$ we'll define the homomorphism $i$ to be
+for any $(w, w') \in\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, not just the generators. Using $\rho$ we define the homomorphism $i$ to be
 \begin{eq*} \begin{array}{rlrll}
 			i & : & (s \times t)(\ELn) & \to & \mathrm{Mor}(\ELn) \\
-			& : & \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & \to & G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
-			& : & (w, w') & \mapsto & ( \, \rho(w, w'), w \, )
+			&  & \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & \to & G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
+			&  & (w, w') & \mapsto & ( \, \rho(w, w'), w \, ).
 		\end{array}
 \end{eq*}
-Moreover, for any two elements $(v, v')$, $(w, w')$ of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ we'll have
-\begin{eq*} \begin{array}{rclcl}
-		( \, \rho(v, v'), v \, ) & = & ( \, \rho(w, w'), w \, ) & \implies & \rho(v, v') \, = \, \rho(w, w'), \quad \quad v \, = \, w \\
-		& & & \implies & v' \, = \, \pi(\rho(v, v'))(v) \, = \, \pi(\rho(w, w'))(w) \, = \, w'
+Moreover, for any two elements $(v, v')$, $(w, w')$ of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ we have
+\begin{eq*} \begin{array}{lcl}
+		( \, \rho(v, v'), v \, )  =  ( \, \rho(w, w'), w \, ) & \implies & \rho(v, v') \, = \, \rho(w, w'), \quad \quad v \, = \, w \\
+		 & \implies & v' \, = \, \pi(\rho(v, v'))(v) \, = \, \pi(\rho(w, w'))(w) \, = \, w'
 		\end{array}
 \end{eq*}
-and thus $i$ is injective. Therefore the image of this $i$ is a submonoid of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ which is isomorphic to $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, so again $(s \times t)(\ELn) \subseteq \mathrm{Mor}(\ELn)$ as required.
+and thus $i$ is injective. This injection splits $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ by construction.
 \end{proof}
 
-In other words, this result says that the source and target data of $\ELn$ is isomorphic to the monoid made up of action morphisms
-\begin{eq*} \alpha\big( \, \rho(x_1 \otimes ... \otimes x_m, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(1)}) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \end{eq*}
-when $G$ is crossed, and
-\begin{eq*} \alpha(e_m; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \end{eq*}
-otherwise, for $\sigma \in S_m$, $x_1, ..., x_m \in \{z_1, ..., z_n\}$. Now, in theory the map $\rho : {\mathbb{N}^{\ast n} \times_{\mathbb{N}^n}} \mathbb{N}^{\ast n} \to G$ that we use to choose representatives can be any valid homomorphism between those monoids for which
-\begin{eq*} \pi(\rho(w, w'))(w) \quad = \quad w' \end{eq*}
- but later on we will be able to make things easier on ourselves by making a more systematic choice.
+\begin{rem}\label{choose_rho_later}
+Note that, at this point, $\rho$ can be any function satisfying the criteria in \cref{rho_ww'}. Later we will make a specific choice.
+\end{rem}
+%In other words, this result says that the source and target data of $\ELn$ is isomorphic to the monoid made up of action morphisms
+%\begin{eq*} \alpha\big( \, \rho(x_1 \otimes ... \otimes x_m, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(1)}) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \end{eq*}
+%when $G$ is crossed, and
+%\begin{eq*} \alpha(e_m; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \end{eq*}
+%otherwise, for $\sigma \in S_m$, $x_1, ..., x_m \in \{z_1, ..., z_n\}$. Now, in theory the map $\rho : {\mathbb{N}^{\ast n} \times_{\mathbb{N}^n}} \mathbb{N}^{\ast n} \to G$ that we use to choose representatives can be any valid homomorphism between those monoids for which
+%\begin{eq*} \pi(\rho(w, w'))(w) \quad = \quad w' \end{eq*}
+% but later on we will be able to make things easier on ourselves by making a more systematic choice.
 
-So now we have shown that $(s \times t)(\ELn)$ is a submonoid of $\mathrm{Mor}(\ELn)$, but what we were really interested in is whether or not $(s \times t)(L_n)$ is a submonoid of $\mathrm{Mor}(L_n)$. To recover the latter result from the former, we will use our cokernel map $q: \ELnn \to L_n$. In particular, the surjectivity of $q$ combined with the case $(s \times t)(\ELnn) \subseteq \mathrm{Mor}(\ELnn)$ from \cref{stGnsub} immediately gives us what we need.
+%So now we have shown that $(s \times t)(\ELn)$ is a submonoid of $\mathrm{Mor}(\ELn)$, but what we were really interested in is whether or not $(s \times t)(L_n)$ is a submonoid of $\mathrm{Mor}(L_n)$. To recover the latter result from the former, we will use our cokernel map $q: \ELnn \to L_n$. In particular, the surjectivity of $q$ combined with the case $(s \times t)(\ELnn) \subseteq \mathrm{Mor}(\ELnn)$ from \cref{stGnsub} immediately gives us what we need.
 
-\begin{cor} \label{stZsub} $(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(L_n)$
+Start here
+
+\begin{cor} \label{stZsub} $(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(L_n)$.
 \end{cor}
 \begin{proof}
 Let $i: (s \times t)(\ELnn) \hookrightarrow \mathrm{Mor}(\ELnn)$ be an inclusion which allows us to view $(s \times t)(\ELnn)$ as a submonoid of $\mathrm{Mor}(\ELnn)$, as in \cref{stGnsub}. Also, let $\mathrm{Mor}(q): \mathrm{Mor}(\ELnn) \to \mathrm{Mor}(L_n)$ the restriction of the cokernel map $q: \ELnn \to L_n$ onto morphisms. Then the image of the composite of these two homomorphisms,
