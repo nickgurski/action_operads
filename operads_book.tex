@@ -185,24 +185,24 @@
 \begin{conv}
 We adopt the following conventions throughout.
 \begin{itemize}
-\item $\Sigma_{n}$\nomenclature[N]{$\Sigma_{n}$}{symmetric group on $n$ letters} is the symmetric group on $n$ letters, and $B_{n}$\nomenclature[N]{$B_{n}$}{braid group on $n$ strands} is the braid group on $n$ strands.
-\item For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$.  We will use both $\cdot$ and concatenation to represent multiplication in a group.
-\item The symbol $e$ will generically represent an identity element in a group.  If we have a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$.
+\item $\Sigma_{n}$\nomenclature[N]{$\Sigma_{n}$}{symmetric group on $n$ letters}\index{group!symmetric} is the symmetric group on $n$ letters, and $B_{n}$\nomenclature[N]{$B_{n}$}{braid group on $n$ strands}\index{group!braid} is the braid group on $n$ strands.
+\item For a group $G$, a right $G$-action\index{group action} on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$.  We will use both $\cdot$ and concatenation to represent multiplication in a group.
+\item The symbol $e$ will generically represent an identity element in a group\index{group!identity}.  If we have a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$.
 \item We will often be interested in elements of a product of the form
 \[
 A \times B_{1} \times \cdots \times B_{n} \times C
 \]
-(or similar, for example without $C$).  We will write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, and in the case that we need equivalence classes of such elements they will be written as $[a; b_{1}, \ldots, b_{n}; c]$.
+(or similar, for example without $C$).  We will write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, and in the case that we need equivalence classes\index{equivalence class} of such elements they will be written as $[a; b_{1}, \ldots, b_{n}; c]$.
 \end{itemize}
 \end{conv}
 
 We begin with the basic definitions.
 
 \begin{Defi}
-A \textit{symmetric operad} $O$\nomenclature[N]{$O$}{operad} (in the category of sets) consists of
+A \textit{symmetric operad}\index{operad!symmetric} $O$\nomenclature[N]{$O$}{operad} (in the category of sets) consists of
 \begin{itemize}
 \item sets $O(n)$ for each natural number $n$,
-\item for each $n$, a right $\Sigma_{n}$-action on $O(n)$,
+\item for each $n$, a right $\Sigma_{n}$-action on $O(n)$\index{group action!symmetric},
 \item an element $\textrm{id} \in O(1)$, and
 \item functions
 \[
@@ -257,13 +257,13 @@ For the above equations to make sense, we must have
 \end{Defi}
 
 \begin{Defi}
-A \emph{non-symmetric operad} $O$ consists of the same data as above but without any symmetric group actions, and only satisfying the first and second axioms.
+A \emph{non-symmetric operad}\index{operad!non-symmetric} $O$ consists of the same data as above but without any symmetric group actions, and only satisfying the first and second axioms.
 \end{Defi}
 
 \begin{rem}
 \begin{enumerate}
 \item One can change from operads in $\mb{Sets}$\nomenclature[C]{$\mb{Sets}$}{of sets and functions} to operads in another symmetric monoidal category $\mathcal{V}$\nomenclature[N]{$\mathcal{V}$}{symmetric monoidal category} by requiring each $O(n)$ to be an object of $\mathcal{V}$ and replacing all instances of cartesian product with the appropriate tensor product in $\mathcal{V}$.  This includes replacing the element $\textrm{id} \in O(1)$ with a map $I \rightarrow O(1)$ from the unit object of $\mathcal{V}$ to $O(1)$.
-\item Every symmetric operad has an underlying \textit{symmetric collection} which consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps.  The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in Theorem \ref{operad=monoid}.  A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
+\item Every symmetric operad has an underlying \textit{symmetric collection}\index{collection!symmetric} which consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps.  The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in Theorem \ref{operad=monoid}.  A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection\index{collection!non-symmetric} which is now merely a $\N$-indexed collection of sets.
 \end{enumerate}
 \end{rem}
 
@@ -312,7 +312,7 @@ The canonical example of an operad is the symmetric operad which we write as $\S
 \[
 \Sigma(n) \times \Sigma(k_{1}) \times \cdots \times \Sigma(k_{n}) \rightarrow \Sigma(k_{1} + \cdots + k_{n})
 \]
-which takes permutations $\sigma \in \Sigma_{n}, \tau_{i} \in \Sigma_{k_{i}}$ and produces the following permutation in $\Sigma_{k_{1} + \cdots + k_{n}}$.  First we form the block sum permutation $\tau_{1} \oplus \cdots \oplus \tau_{n}$ which permutes the first $k_{1}$ elements according to $\tau_{1}$, the next $k_{2}$ elements according to $\tau_{2}$ and so on; this is an element of $\Sigma_{k_{1} + \cdots + k_{n}}$.  Then we take the permutation $\sigma^+ \in \Sigma_{k_{1} + \cdots + k_{n}}$ which permutes the $n$ different blocks $1$ through $k_{1}$, $k_{1}+1$ through $k_{1} + k_{2}$, and so on, according to the permutation $\sigma \in \Sigma_{n}$.  Operadic composition in $\Sigma$ is then given by the formula
+which takes permutations $\sigma \in \Sigma_{n}, \tau_{i} \in \Sigma_{k_{i}}$ and produces the following permutation in $\Sigma_{k_{1} + \cdots + k_{n}}$.  First we form the block sum permutation $\tau_{1} \oplus \cdots \oplus \tau_{n}$\index{permutation!block sum} which permutes the first $k_{1}$ elements according to $\tau_{1}$, the next $k_{2}$ elements according to $\tau_{2}$ and so on; this is an element of $\Sigma_{k_{1} + \cdots + k_{n}}$.  Then we take the permutation $\sigma^+ \in \Sigma_{k_{1} + \cdots + k_{n}}$ which permutes the $n$ different blocks $1$ through $k_{1}$, $k_{1}+1$ through $k_{1} + k_{2}$, and so on, according to the permutation $\sigma \in \Sigma_{n}$.  Operadic composition in $\Sigma$ is then given by the formula
 \[
 \mu(\sigma; \tau_{1}, \ldots, \tau_{n}) = \sigma^+ \cdot (\tau_{1} \oplus \cdots \oplus \tau_{n}).
 \]
@@ -358,10 +358,10 @@ This equality is obvious using the picture above, but verifiable directly using 
 In the original topological applications \cite{maygeom}, symmetric operads were the central figures.  A further kind of operad was studied by Fiedorowicz in \cite{fie-br}; we give the definition below in analogy with that for symmetric operads, with interpretation to follow afterwards to make it entirely rigorous.  We do this to emphasize the key features that we will generalize in Definition \ref{Defi:aop}.
 
 \begin{Defi}\label{broperad}
-A \textit{braided operad} consists of
+A \textit{braided operad}\index{operad!braided} consists of
 \begin{itemize}
 \item a non-symmetric operad $O$ and
-\item for each $n$, a right action of the $n$th braid group $B_{n}$ on $O(n)$,
+\item for each $n$, a right action of the $n$th braid group $B_{n}$ on $O(n)$\index{group action!braid},
 \end{itemize}
 satisfying the following axioms.
 \[
@@ -379,12 +379,12 @@ For the above equations to make sense, we must have
 \end{itemize}
 \end{Defi}
 
-In order to make sense of this definition, we must define $\tau_{1} \oplus \cdots \oplus \tau_{n}$\nomenclature[N]{$\tau_{1} \oplus \cdots \oplus \tau_{n}$}{block sum of braids} and $\sigma^{+}$ in the context of braids.  The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$.  The braid $\sigma^{+}$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$.  Finally, the notation $\sigma^{-1}(i)$ should be read as $\pi(\sigma)^{-1}(i)$, where $\pi:B_{n} \rightarrow \Sigma_{n}$ is the underlying permutation map.
+In order to make sense of this definition, we must define $\tau_{1} \oplus \cdots \oplus \tau_{n}$\nomenclature[N]{$\tau_{1} \oplus \cdots \oplus \tau_{n}$}{block sum of braids}\index{braid!block sum} and $\sigma^{+}$ in the context of braids.  The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$.  The braid $\sigma^{+}$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$.  Finally, the notation $\sigma^{-1}(i)$ should be read as $\pi(\sigma)^{-1}(i)$, where $\pi:B_{n} \rightarrow \Sigma_{n}$ is the underlying permutation map.
 
 We require one final preparatory definition.
 
 \begin{Defi}
-Let $O,O'$ be operads.  Then an \textit{operad map} $f:O \rightarrow O'$ consists of functions $f_{n}:O(n) \rightarrow O'(n)$ for each natural number such that the following axioms hold.
+Let $O,O'$ be operads.  Then an \textit{operad map}\index{operad!maps} $f:O \rightarrow O'$ consists of functions $f_{n}:O(n) \rightarrow O'(n)$ for each natural number such that the following axioms hold.
 \[
 \begin{array}{rcl}
 f(\textrm{id}_{O}) & = & \textrm{id}_{O'} \\
@@ -432,7 +432,7 @@ One should note that the axioms for symmetric and braided operads each use the f
 % \end{Defi}
 
 \begin{Defi}\label{Defi:aop}
-An \textit{action operad} $\mb{\Lambda}$\nomenclature[N]{$\mb{\Lambda}$}{action operad} consists of
+An \textit{action operad}\index{action operad} $\mb{\Lambda}$\nomenclature[N]{$\mb{\Lambda}$}{action operad} consists of
 \begin{itemize}
 \item an operad $\Lambda = \{ \Lambda(n) \}$ in the category of sets such that each $\Lambda(n)$ is equipped with the structure of a group and
 \item a map $\pi:\Lambda \rightarrow \Sigma$ which is simultaneously a map of operads and a group homomorphism $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$ for each $n$
@@ -511,17 +511,17 @@ for the multiplication in the operad $\Lambda$.  Let $(g; f_1, \ldots, f_n)$ be 
 
 \begin{example}
 \begin{enumerate}
-\item The terminal operad $T$\nomenclature[N]{$T$}{terminal operad} in the category of sets has a unique action operad structure, $\mathbf{T}$\nomenclature[N]{$\mathbf{T}$}{terminal operad as an action operad}.  Since $T(n)$ is a singleton for each $n$, the group structure is unique as is the map $\pi$.  The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity.  This is the initial object in the category of action operads (see \cref{Defi:cat_aop} the definition of morphisms in the category of action operads).
-\item The symmetric operad $\Sigma$ has a canonical action operad structure.  It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$.  This is the terminal object in the category of action operads.
+\item The terminal operad $T$\nomenclature[N]{$T$}{terminal operad}\index{operad!terminal} in the category of sets has a unique action operad structure, $\mathbf{T}$\nomenclature[N]{$\mathbf{T}$}{terminal operad as an action operad}.  Since $T(n)$ is a singleton for each $n$, the group structure is unique as is the map $\pi$.  The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity.  This is the initial object\index{action operad!initial} in the category of action operads (see \cref{Defi:cat_aop} the definition of morphisms in the category of action operads).
+\item The symmetric operad $\Sigma$\index{action operad!of symmetry groups} has a canonical action operad structure.  It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$.  This is the terminal object\index{action operad!terminal} in the category of action operads.
 % \item There are two trivial examples of action operads.  The first is the symmetric operad  $\Lambda = \mb{\Sigma}$ with the identity map; this is the terminal object in the category of action operads (see Definition \ref{mapaop}).  The second is $\Lambda = \mb{T}$ consisting of the terminal groups $T(n) = *$.  Here the $\pi_{n}$'s are given by the inclusion of identity elements; this is the initial object in the category of action operads.
-\item Two less trivial examples are given by the braid groups, $\Lambda = \mb{B}$\nomenclature[N]{$\mb{B}$}{action operad of braid groups}, and the ribbon braid groups, $\Lambda = \mb{RB}$\nomenclature[N]{$\mb{RB}$}{action operad of ribbon braid groups}.  (A ribbon braid is given, geometrically, as a braid with strands replaced by ribbons in which we allow full twists.  The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.)  In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after Definition \ref{broperad}.  We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
-\item The operad of $n$-fruit cactus groups defined by Henriques and Kamnitzer in \cite{hk-cobound} has an action operad structure that we will discuss in \cref{sec:examples}.
+\item Two less trivial examples are given by the braid groups, $\Lambda = \mb{B}$\nomenclature[N]{$\mb{B}$}{action operad of braid groups}\index{action operad!of braid groups}, and the ribbon braid groups, $\Lambda = \mb{RB}$\nomenclature[N]{$\mb{RB}$}{action operad of ribbon braid groups}\index{action operad!of ribbon braid groups}.  (A ribbon braid is given, geometrically, as a braid with strands replaced by ribbons in which we allow full twists.  The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.)  In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after Definition \ref{broperad}.  We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
+\item The operad of $n$-fruit cactus groups\index{action operad!of cactus groups} defined by Henriques and Kamnitzer in \cite{hk-cobound} has an action operad structure that we will discuss in \cref{sec:examples}.
 \end{enumerate}
 \end{example}
 
-\begin{Defi} For each $n \in \mathbb{N}$\nomenclature[N]{$\mathbb{N}$}{the set of natural numbers}, the \emph{ribbon braid group} $RB_n$\nomenclature[N]{$RB_{n}$}{ribbon braid group on $n$ ribbons} is the group whose presentation is the same as that of the braid group $B_n$, except with the addition of $n$ new generators $t_1, ..., t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
+\begin{Defi} For each $n \in \mathbb{N}$\nomenclature[N]{$\mathbb{N}$}{the set of natural numbers}, the \emph{ribbon braid group}\index{group!ribbon braid} $RB_n$\nomenclature[N]{$RB_{n}$}{ribbon braid group on $n$ ribbons} is the group whose presentation is the same as that of the braid group $B_n$, except with the addition of $n$ new generators $t_1, ..., t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
 \begin{eq*} b_i \cdot t_i \quad = \quad t_{i+1} \cdot b_i, \quad \quad \quad \quad \quad b_i \cdot t_{i+1} \quad = \quad t_i \cdot b_i \end{eq*}
-The \emph{ribbon braid operad} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{broperad}, but with some additional rules for dealing with twists. With regards to the tensor product, we have that for any twist $t_i \in RB_n$,
+The \emph{ribbon braid operad}\index{action operad!of ribbon braid groups}\index{operad!ribbon braid} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{broperad}, but with some additional rules for dealing with twists. With regards to the tensor product, we have that for any twist $t_i \in RB_n$,
 \begin{eq*} t_i \quad = \quad e_{i-1} \otimes t \otimes e_{n-i} \end{eq*}
 where $t$ is the sole twist in $RB_1$, and for the `block twists' $t_{(m)}$ we again work recursively:
 \begin{eq*} t_{(0)} \, = \, e_n, \quad \quad \quad t_{(m+m')} \quad = \quad (t_{(m)} \otimes t_{(m')}) \cdot b_{(m', m)} \cdot b_{(m, m')} \end{eq*}
@@ -574,7 +574,7 @@ This operad $RB$ is also clearly an action operad, since we can just define $\pi
 % \end{example}
 
 \begin{example}
-Every abelian group $A$ gives rise to action operad $A^{\bullet}$\nomenclature[N]{$A^{\bullet}$}{action operad of an abelian group $A$} as follows.  The group $A^{\bullet}(n)$ is the direct sum of $n$ copies of $A$, $A^{n}$.  The identity element is required to be $e \in A^{1}$, and the multiplication is defined by
+Every abelian group $A$ gives rise to action operad $A^{\bullet}$\nomenclature[N]{$A^{\bullet}$}{action operad of an abelian group $A$}\index{action operad!of an abelian group} as follows.  The group $A^{\bullet}(n)$ is the direct sum of $n$ copies of $A$, $A^{n}$.  The identity element is required to be $e \in A^{1}$, and the multiplication is defined by
 \[
 \mu((a_{1}, \ldots, a_{n}); \mb{b_{1}}, \ldots, \mb{b_{n}}) = (a_{1}+\mb{b_{1}}, a_{2} + \mb{b_{2}}, \ldots, a_{n} + \mb{b_{n}})
 \]
@@ -587,7 +587,7 @@ a_{i} + b_{i1}, a_{i} + b_{i2}, \ldots, a_{i} + b_{in_{i}}.
 
 Action operads are themselves the objects of a category, $\mb{AOp}$\nomenclature[C]{$\mb{AOp}$}{of action operads and maps of action operads}.  The morphisms of this category are defined below.
 \begin{Defi}\label{mapaop}
-A \textit{map of action operads} $f: \Lambda \rightarrow \Lambda'$ consists of a map $f:\Lambda \rightarrow \Lambda'$ of the underlying operads such that
+A \textit{map of action operads}\index{action operad!maps} $f: \Lambda \rightarrow \Lambda'$ consists of a map $f:\Lambda \rightarrow \Lambda'$ of the underlying operads such that
 \begin{enumerate}
 \item $\pi^{\Lambda'} \circ f = \pi^{\Lambda}$ (i.e., $f$ is a map of operads over $\Sigma$) and
 \item each $f_{n}:\Lambda(n) \rightarrow \Lambda'(n)$ is a group homomorphism.
@@ -595,13 +595,13 @@ A \textit{map of action operads} $f: \Lambda \rightarrow \Lambda'$ consists of a
 \end{Defi}
 
 \begin{Defi}\label{Defi:cat_aop}
-The category $\mb{AOp}$ of action operads has objects which are action operads $\mb{\Lambda}$ and
+The category $\mb{AOp}$\index{action operad!category of} of action operads has objects which are action operads $\mb{\Lambda}$ and
  morphisms $\mb{\Lambda} \rightarrow \mb{\Lambda'}$ as defined in \cref{mapaop}.
 \end{Defi}
 
 QQQ Move this example below somewhere else, near limits stuff?
 \begin{example}
-One can easily form new action operads from old ones by taking limits.  To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there.  Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$\nomenclature[C]{$C/c$}{the slice category of $C$ over an object $c$ in $C$} (see QQQ) 
+One can easily form new action operads from old ones by taking limits\index{action operad!limits of}.  To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there.  Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$\nomenclature[C]{$C/c$}{the slice category of $C$ over an object $c$ in $C$} (see QQQ) 
 which themselves are (possibly wide) pullbacks in the category of operads.  This pullback will then be computed levelwise, showing that at each dimension we have a group structure with a group homomorphism to the appropriate $\Sigma_{n}$ and that the final action operad axiom holds since it does in each component.  The equalizer of a pair of maps will then just be the levelwise equalizer.  This shows that the pointwise product of an action operad $P$ with an action operad of the form $Z(Q)$ is again an action operad, but the pointwise product of two arbitrary action operads might not be.
 \end{example}
 
@@ -624,7 +624,7 @@ Given an operad in groups $P$, $Z(P)$ is the action operad with the same underly
 
 We have the following corollary.
 \begin{cor}\label{corZ}
-For an action operad $\Lambda$, the sets
+For an action operad $\Lambda$, the sets\index{action operad!kernel}
 \[
 \textrm{Ker}\,\pi(n) = \{g \in \Lambda(n) : \pi_{n}(g) = e_{n} \}
 \]
@@ -644,7 +644,7 @@ The homomorphisms $\pi_n : \Lambda_n \to \Sigma_n$ are either all surjective or 
 \end{prop}
 
 \begin{Defi} 
-We say that $\ML$ is \emph{crossed} if $\pi$ is surjective.
+We say that $\ML$ is \emph{crossed}\index{action operad!crossed} if $\pi$ is surjective.
 \end{Defi}
 QQQ Definition oddly placed?
 \begin{cor}\label{extension}
@@ -660,7 +660,7 @@ Thus we see that an action operad is either an operad in groups, or is an extens
 \end{rem}
 
 \begin{rem}
-The crossed simplicial groups of Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. There is a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$\nomenclature[C]{$\mathbf{CSGrp}$}{of crossed simplicial groups and morphisms of crossed simplicial groups} from the category of action operads just described into the category of crossed simplicial groups. This functor takes an action operad $\Lambda$ and defines $C(\Lambda)(n) = \Lambda_{n+1}$. The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition inherent of $\Lambda$ - the description of the maps via the operad structure can be viewed in a similar way to Construction 1.1 of \cite{Kra96}. This functor is, however, not faithful, nor is it conservative.
+The crossed simplicial groups\index{crossed simplicial group} of Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. There is a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$\nomenclature[C]{$\mathbf{CSGrp}$}{of crossed simplicial groups and morphisms of crossed simplicial groups} from the category of action operads just described into the category of crossed simplicial groups. This functor takes an action operad $\Lambda$ and defines $C(\Lambda)(n) = \Lambda_{n+1}$. The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition inherent of $\Lambda$ - the description of the maps via the operad structure can be viewed in a similar way to Construction 1.1 of \cite{Kra96}. This functor is, however, not faithful, nor is it conservative.
 \end{rem}
 %Salvatore-Wahl:  Framed disks operads...
 
@@ -922,7 +922,7 @@ The action operad axiom is now the calculation below, and uses axioms \eqref{eq4
 One of the most useful methods for constructing new examples of some given algebraic structure is through the use of presentations.  A presentation consists of generating data together with relations between generators using the operations of the algebra involved.  In categorical terms, the generators  and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer.  This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and 2-monad.  The most direct route to the desired results uses the theory of locally finitely presentable categories.  We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
 
 \begin{Defi}
-A \textit{filtered category} is a nonempty category $C$ such that
+A \textit{filtered category}\index{category!filtered} is a nonempty category $C$ such that
 \begin{itemize}
 \item if $a,b$ are objects of $C$, then there is another object $c \in C$ and morphisms $a \to c, b \to c$; and
 \item if $f,g \cn a \to b$ are parallel morphisms in $C$, then there exists a morphism $h \cn b \to c$ such that $hf = hg$.
@@ -930,15 +930,15 @@ A \textit{filtered category} is a nonempty category $C$ such that
 \end{Defi}
 
 \begin{Defi}
-A \emph{filtered colimit} is a colimit over a filtered category.
+A \emph{filtered colimit}\index{colimit!filtered} is a colimit over a filtered category.
 \end{Defi}
 
 \begin{Defi}
-Let $C$ be a category with all filtered colimits.  An object $x \in C$ is \textit{finitely presentable} if the representable functor $C(x, -):C \rightarrow \mb{Sets}$ preserves filtered colimits.
+Let $C$ be a category with all filtered colimits.  An object $x \in C$ is \textit{finitely presentable}\index{object!finitely presentable} if the representable functor $C(x, -):C \rightarrow \mb{Sets}$ preserves filtered colimits.
 \end{Defi}
 
 \begin{Defi}
-A \textit{locally finitely presentable category} is a category $C$ such that
+A \textit{locally finitely presentable category}\index{category!locally finitely presentable} is a category $C$ such that
 \begin{itemize}
 \item $C$ is cocomplete and
 \item there exists a small subcategory $C_{fp}\nomenclature[C]{$C_{fp}$}{the subcategory of finitely presentable objects in $C$} \subseteq C$ of finitely presentable objects such that any object $x \in C$ is the filtered colimit of some diagram in $C_{fp}$.
@@ -980,7 +980,7 @@ The category $\mb{Sets}/\SS$ is locally finitely presentable as it is equivalent
 \end{proof}
 
 \begin{Defi}
-A \textit{presentation} for an action operad $\mb{\Lambda}$ consists of
+A \textit{presentation}\index{action operad!presentation} for an action operad $\mb{\Lambda}$ consists of
 \begin{itemize}
 \item a pair of collections over $\SS$ denoted $\mathbf{g}, \mathbf{r}$,
 \item a pair of maps $s_{1}, s_{2}:F\mathbf{r} \rightarrow F\mathbf{g}$ between the associated free action operads, and
@@ -1004,7 +1004,7 @@ A \textit{presentation} for an action operad $\mb{\Lambda}$ consists of
 Just as we had the definitions of operad, symmetric operad, and braided operad, we now come to the general definition of a $\Lambda$-operad, where $\Lambda$ is an action operad.
 
 \begin{Defi}
-Let $\Lambda$ be an action operad.  A \textit{$\Lambda$-operad} $P$ (in $\mb{Sets}$) consists of
+Let $\Lambda$ be an action operad.  A \textit{$\Lambda$-operad}\index{operad!$\Lambda$-operad} $P$ (in $\mb{Sets}$) consists of
 \begin{itemize}
 \item a non-symmetric operad $P$ in $\mb{Sets}$ and
 \item for each $n$, an action $P(n) \times \Lambda(n) \rightarrow P(n)$ of $\Lambda(n)$ on $P(n)$
@@ -1034,7 +1034,7 @@ The category $\Lambda\mbox{-}\mb{Op}$\nomenclature[C]{$\Lambda\mbox{-}\mb{Op}$}{
 An operad is intended to be an abstract description of a certain type of algebraic structure, and the particular instances of that structure are the algebras for that operad.  We begin with the definition of an algebra over a non-symmetric operad and add in the group actions later.
 
 \begin{Defi}\label{opalgax}
-Let $O$ be a non-symmetric operad.  An \textit{algebra} for $O$ consists of a set $X$ together with maps $\alpha_{n}:O(n) \times X^{n} \rightarrow X$ such that the following axioms hold.
+Let $O$ be a non-symmetric operad.  An \textit{algebra}\index{algebra!operad}\index{operad!algebra} for $O$ consists of a set $X$ together with maps $\alpha_{n}:O(n) \times X^{n} \rightarrow X$ such that the following axioms hold.
 \begin{enumerate}
 \item The element $\textrm{id} \in O(1)$ is a unit in the sense that
 \[
@@ -1075,7 +1075,7 @@ using $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$ together with the canonical ac
 \]
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad.  An \textit{algebra} for $P$ consists of a set $X$ together with maps $\alpha_{n}:P(n) \times_{\Lambda(n)} X^{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the operad algebra axioms given in Definition \ref{opalgax}.
+Let $P$ be a $\Lambda$-operad.  An \textit{algebra}\index{algebra!$\Lambda$-operad} for $P$ consists of a set $X$ together with maps $\alpha_{n}:P(n) \times_{\Lambda(n)} X^{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the operad algebra axioms given in Definition \ref{opalgax}.
 \end{Defi}
 
 \begin{rem}
@@ -1083,7 +1083,7 @@ It is worth noting that the equivariance required for a $P$-algebra is built int
 \end{rem}
 
 \begin{Defi}
-The category of algebras for $P$, $P\mbox{-}\mb{Alg}$\nomenclature[C]{$P\mbox{-}\mb{Alg}$}{of $P$-algebras and morphisms for an operad (or monad) $P$}, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
+The category of algebras\index{algebra!category of} for $P$, $P\mbox{-}\mb{Alg}$\nomenclature[C]{$P\mbox{-}\mb{Alg}$}{of $P$-algebras and morphisms for an operad (or monad) $P$}, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
 \[
 \xy
 {\ar^{1 \times f^{n}} (0,0)*+{P(n) \times X^{n}}; (50,0)*+{P(n) \times Y^{n}} };
@@ -1206,7 +1206,7 @@ by the universal property of the colimits involved, so as functors $\underline{P
 We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. 
 
 \begin{Defi}
-Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map} from $S$ to $T$ is a functor $F : C \to D$ together with a natural transformation $\alpha:TF \Rightarrow FS$ such that the following diagrams commute.
+Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map}\index{monad!maps} of from $S$ to $T$ is a functor $F : C \to D$ together with a natural transformation $\alpha:TF \Rightarrow FS$ such that the following diagrams commute.
 
  \[
     \xy
@@ -1325,7 +1325,7 @@ It is possible to consider $\Lambda$-operads in categories other than the catego
 \end{rem}
 
 \begin{Defi}
-Let $\Lambda$ be an action operad.  The category $\Lambda\mb{\mbox{-}Coll}$\nomenclature[C]{$\Lambda\mb{\mbox{-}Coll}$}{of $\Lambda$-collections and $\Lambda(n)$-equivariant maps} of $\Lambda$-collections has objects $X = \{ X(n) \}_{n \in \N}$ which consist of a set $X(n)$ for each natural number $n$ together with an action $X(n) \times \Lambda(n) \rightarrow X(n)$ of $\Lambda(n)$ on $X(n)$.  A morphism $f:X \rightarrow Y$ in $\Lambda\mb{\mbox{-}Coll}$ consists of a $\Lambda(n)$-equivariant map $f_{n}:X(n) \rightarrow Y(n)$ for each natural number $n$.
+Let $\Lambda$ be an action operad.  The category $\Lambda\mb{\mbox{-}Coll}$\nomenclature[C]{$\Lambda\mb{\mbox{-}Coll}$}{of $\Lambda$-collections and $\Lambda(n)$-equivariant maps}\index{collection!$\Lambda$-collection} of $\Lambda$-collections has objects $X = \{ X(n) \}_{n \in \N}$ which consist of a set $X(n)$ for each natural number $n$ together with an action $X(n) \times \Lambda(n) \rightarrow X(n)$ of $\Lambda(n)$ on $X(n)$.  A morphism $f:X \rightarrow Y$ in $\Lambda\mb{\mbox{-}Coll}$ consists of a $\Lambda(n)$-equivariant map $f_{n}:X(n) \rightarrow Y(n)$ for each natural number $n$.
 \end{Defi}
 
 \begin{rem}
@@ -1337,7 +1337,7 @@ with the opposite category arising from our choice of right actions.  A key step
 \end{rem}
 
 \begin{Defi}
-Let $\Lambda$ be an action operad, and let $X, Y$ be $\Lambda$-collections.  We define the $\Lambda$-collection $X \circ Y$ to be
+Let $\Lambda$ be an action operad, and let $X, Y$ be $\Lambda$-collections.  We define the $\Lambda$-collection $X \circ Y$\index{collection!convolution} to be
 \[
 X \circ Y (n) = \Big( \coprod_{k_{1} + \cdots + k_{r} = n} X(r) \times Y(k_{1}) \times \cdots \times Y(k_{r}) \Big) \times \Lambda(n) / \sim
 \]
@@ -1604,7 +1604,7 @@ simply abbreviated as $\mu^P \times 1$.  Furthermore, instead of using an elemen
 We begin with the definitions of the pseudo-level cells in the operadic context, and after each specialize to the strict version.
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad. A \textit{pseudoalgebra} for $P$ consists of:
+Let $P$ be a $\Lambda$-operad. A \textit{pseudoalgebra}\index{algebra!pseudoalgebra} for $P$ consists of:
     \begin{itemize}
         \item a category $X$,
         \item a family of functors
@@ -1730,11 +1730,11 @@ satisfying the following axioms.
 \end{Defi}
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad. A \textit{ strict algebra} for $P$ consists of a pseudoalgebra in which all of the isomorphisms $\phi$ are identities.
+Let $P$ be a $\Lambda$-operad. A \textit{strict algebra}\index{algebra!strict} for $P$ consists of a pseudoalgebra in which all of the isomorphisms $\phi$ are identities.
 \end{Defi}
 
 \begin{Defi}
-Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\Lambda$-operad $P$. A \textit{pseudomorphism} of $P$-pseudoalgebras consists of:
+Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\Lambda$-operad $P$. A \textit{pseudomorphism}\index{algebra!pseudomorphism} of $P$-pseudoalgebras consists of:
     \begin{itemize}
         \item a functor $f \colon X \rightarrow Y$
         \item and a family of natural isomorphisms (once again using \ref{conv_coeq})
@@ -1854,7 +1854,7 @@ satisfying the following axioms.
 \end{Defi}
 
 \begin{Defi}
-Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\Lambda$-operad $P$. A \textit{strict morphism} of $P$-pseudoalgebras consists of a pseudomorphism in which all of the isomorphisms $\overline{f}_{n}$ are identities.
+Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\Lambda$-operad $P$. A \textit{strict morphism}\index{algebra!strict morphism} of $P$-pseudoalgebras consists of a pseudomorphism in which all of the isomorphisms $\overline{f}_{n}$ are identities.
 \end{Defi}
 
 \begin{rem}
@@ -1862,7 +1862,7 @@ A strict algebra for a $\Lambda$-operad $P$ in $\mb{Cat}$ is precisely the same 
 \end{rem}
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) \rightarrow (Y, \beta, \psi, \psi_\eta)$ be pseudomorphisms of $P$-pseudoalgebras. A \textit{$P$-transformation} is then a natural transformation $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds, for all $n$.
+Let $P$ be a $\Lambda$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) \rightarrow (Y, \beta, \psi, \psi_\eta)$ be pseudomorphisms of $P$-pseudoalgebras. A \textit{$P$-transformation}\index{algebra!pseudomorphism!transformation} is then a natural transformation $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds, for all $n$.
     \[
         \xy
             (0,0)*+{P_n \times X^n}="00";
@@ -1902,8 +1902,8 @@ We can form various 2-categories using these cells.
 \begin{Defi}
 Let $P$ be a $\Lambda$-operad.
 \begin{itemize}
-\item The $2$-category $P\mbox{-}\mb{Alg}_{s}$\nomenclature[C]{$P\mbox{-}\mb{Alg}_{s}$}{the $2$-category of strict $P$-algebras, strict morphisms, and $P$-transformations for an operad (or ($2$-monad) $P$} consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
-\item The $2$-category $\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$\nomenclature[C]{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}{the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or $2$-)monad) $P$} consists of $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations.
+\item The $2$-category $P\mbox{-}\mb{Alg}_{s}$\nomenclature[C]{$P\mbox{-}\mb{Alg}_{s}$}{the $2$-category of strict $P$-algebras, strict morphisms, and $P$-transformations for an operad (or ($2$-monad) $P$} consists of strict $P$-algebras, strict morphisms, and $P$-transformations.\index{algebra!strict algebra!category of}
+\item The $2$-category $\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$\nomenclature[C]{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}{the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or $2$-)monad) $P$} consists of $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations.\index{algebra!pseudoalgebra!category of}
 \end{itemize}
 \end{Defi}
 
