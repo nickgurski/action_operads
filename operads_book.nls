@@ -33,19 +33,17 @@
   \item [{$\mb{Op}(\mb{Grp})$}]\begingroup of operads in groups and maps of operads in groups\nomeqref {1}
 		\nompageref{13}
   \item [{$\mb{Op}^{g}$}]\begingroup of operads $P$ for which each $P(n)$ has a group structure and operad maps\nomeqref {3}
-		\nompageref{18}
+		\nompageref{19}
   \item [{$\mb{Prof}$}]\begingroup the bicategory of categories, profunctors, and transformations\nomeqref {3}
 		\nompageref{78}
   \item [{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}]\begingroup the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or $2$-)monad) $P$\nomeqref {3}
 		\nompageref{35}
   \item [{$\mb{Sets}$}]\begingroup of sets and functions\nomeqref {0}
 		\nompageref{8}
-  \item [{$\ML\mbox{-}\moncat$}]\begingroup of $\ML$-monoidal categories and $\ML$-monoidal functors\nomeqref {3}
-		\nompageref{66}
+  \item [{$\mb{Vect}$}]\begingroup of vector spaces over a given field $k$ and $k$-linear maps\nomeqref {3}
+		\nompageref{67}
   \item [{$\mon$}]\begingroup of monoids and monoid homomorphisms\nomeqref {3}
 		\nompageref{85}
-  \item [{$\moncat$}]\begingroup of monoidal categories and monoidal functors\nomeqref {3}
-		\nompageref{66}
   \item [{$BG$}]\begingroup delooping of a group $G$ as a category\nomeqref {3}
 		\nompageref{47}
   \item [{$C/c$}]\begingroup the slice category of $C$ over an object $c$ in $C$\nomeqref {1}
