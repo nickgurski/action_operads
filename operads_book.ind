@@ -9,13 +9,13 @@
       \subsubitem symmetric, \hyperpage{74}
     \subitem pseudoalgebra, \hyperpage{36}
     \subitem strength, \hyperpage{68}
-  \item $G$-space, \hyperpage{47}
 
   \indexspace
 
+  \item abelianization, \hyperpage{87}
   \item action operad, \hyperpage{11}
     \subitem category of, \hyperpage{13}
-    \subitem crossed, \hyperpage{13}
+    \subitem crossed, \hyperpage{13}, \hyperpage{86}
     \subitem initial, \hyperpage{11}, \hyperpage{20}
     \subitem kernel, \hyperpage{13}
     \subitem limits of, \hyperpage{13}
@@ -31,6 +31,7 @@
     \subitem underlying monoid, \hyperpage{65}
   \item algebra
     \subitem $\Lambda$-operad, \hyperpage{21}
+    \subitem of weakly invertible objects, \hyperpage{83}
     \subitem operad, \hyperpage{20}
     \subitem pseudoalgebra, \hyperpage{32}, \hyperpage{36}
       \subsubitem category of, \hyperpage{35}
@@ -90,6 +91,8 @@
   \item factorization system
     \subitem enhanced, \hyperpage{42}
     \subitem orthogonal, \hyperpage{41}
+  \item functor
+    \subitem surjective, \hyperpage{90}
 
   \indexspace
 
@@ -104,6 +107,7 @@
     \subitem braid, \hyperpage{10}
     \subitem free, \hyperpage{43}
     \subitem symmetric, \hyperpage{7}
+  \item group completion, \hyperpage{85}
 
   \indexspace
 
@@ -123,10 +127,13 @@
   \item monoid
     \subitem category of, \hyperpage{26}
   \item monoidal category
+    \subitem $\ML$-monoidal, \hyperpage{85}
+      \subsubitem free, \hyperpage{84}
     \subitem braided strict, \hyperpage{57}, \hyperpage{75}
     \subitem coboundary category, \hyperpage{58}
       \subsubitem coboundary functor, \hyperpage{59}
     \subitem cocomplete symmetric, \hyperpage{49}
+    \subitem monoid of morphisms, \hyperpage{87}
     \subitem ribbon braided, \hyperpage{58}
     \subitem spacial, \hyperpage{64}
     \subitem symmetric strict, \hyperpage{57}
@@ -139,6 +146,8 @@
 
   \item object
     \subitem finitely presentable, \hyperpage{18}
+    \subitem invertible, \hyperpage{83}
+    \subitem weakly invertible, \hyperpage{83}
   \item operad
     \subitem $T$-operad, \hyperpage{53}
     \subitem $\Lambda$-operad, \hyperpage{20}

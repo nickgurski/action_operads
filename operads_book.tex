@@ -2832,7 +2832,7 @@ Since the monad $\underline{P}$ is isomorphic to $\underline{S(P)}$, we need onl
 \section{The Borel construction for action operads}
 
 
-The classical Borel construction\index{Borel} is a functor from $G$-spaces to spaces, sending a $G$-space\index{$G$-space} $X$ to $EG \times_{G} X$.  Our goal in this section is to use the formal description of the Borel construction to construct some special operads in $\mb{Cat}$.   We start by reviewing the analogues of the functors $E, B:\mb{Grp} \rightarrow \mb{Top}$ now taking values in $\mb{Cat}$.
+The classical Borel construction\index{Borel} is a functor from $G$-spaces to spaces, sending a $G$-space$X$ to $EG \times_{G} X$.  Our goal in this section is to use the formal description of the Borel construction to construct some special operads in $\mb{Cat}$.   We start by reviewing the analogues of the functors $E, B:\mb{Grp} \rightarrow \mb{Top}$ now taking values in $\mb{Cat}$.
 
 \begin{Defi}\label{Defi:e_b}
 \begin{enumerate}
@@ -4900,13 +4900,13 @@ The final claim is then an immediate consequence of the definitions of $\mb{\Lam
 
 Our main focus will be on invertible objects, although not in the usual sense.
 \begin{Defi}
-Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{invertible} if there exists another object $m^{-1}$ such that $m \otimes m^{-1} = I$ and $m^{-1} \otimes m = I$.
+Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{invertible}\index{object!invertible} if there exists another object $m^{-1}$ such that $m \otimes m^{-1} = I$ and $m^{-1} \otimes m = I$.
 
 \end{Defi}
 
 Most authors give the following as the definition of an invertible object, what we call weakly invertible.
 \begin{Defi}
-Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{weakly invertible} if there exists another object $m^{*}$ such that $m \otimes m^{*} \cong I$ and $m^{*} \otimes m \cong I$.
+Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{weakly invertible}\index{object!weakly invertible} if there exists another object $m^{*}$ such that $m \otimes m^{*} \cong I$ and $m^{*} \otimes m \cong I$.
 
 \end{Defi}
 
@@ -4914,7 +4914,7 @@ We will later derive results about weakly invertible objects from those about in
 
 
 
-\begin{Defi} Given an $E\Lambda$-algebra $X$, we'll denote by $X_{\mathrm{inv}}$\nomenclature[N]{$X_{\mathrm{inv}}$}{the sub-$E\Lambda$-algebra of $X$ of objects invertible under tensor product} the sub-$E\Lambda$-algebra of $X$ containing all objects which are invertible under tensor product, and all of the isomorphisms between them. \end{Defi} 
+\begin{Defi} Given an $E\Lambda$-algebra $X$, we'll denote by $X_{\mathrm{inv}}$\nomenclature[N]{$X_{\mathrm{inv}}$}{the sub-$E\Lambda$-algebra of $X$ of objects invertible under tensor product}\index{algebra!of weakly invertible objects} the sub-$E\Lambda$-algebra of $X$ containing all objects which are invertible under tensor product, and all of the isomorphisms between them. \end{Defi} 
 
 First note that this is indeed a well-defined $E\Lambda$-algebra since the tensor product of invertible objects is again invertible, the tensor product of isomorphisms is again an isomorphism, and all of the morphisms giving the group actions are isomorphisms. The following proposition is then obvious.
 %If $f_1, ..., f_m$ are isomorphisms from invertible objects $x_1, ..., x_m$ to invertible objects $y_1, ..., y_m$, then $\alpha(g; f_1, ..., f_m)$ is a map from the invertible object $\alpha(g; x_1, ..., x_m)$ to the invertible object $\alpha(g; y_1, ..., y_m)$, and it has an inverse $\alpha(g^{-1}; f_{\pi(g)(1)}^{-1}, ..., f_{\pi(g)(m)}^{-1})$, since
@@ -5018,7 +5018,7 @@ Preservation of products and pullbacks give preservation of limits, and preserva
 %With this new 2-functor $L: E\Lambda\mbox{-}\mathrm{Alg}_S \to E\Lambda\mbox{-}\mathrm{Alg}_S$, we now have the ability to `freely add inverses to objects' in any $E\Lambda$-algebra we want. The algebra $L_n$ is then a clear candidate for our free algebra on $n$ invertible objects, and indeed the proof of this is very simple.
 
 \begin{Defi}
-Let $L_n = L\Big(E\Lambda(\underline{n}) \Big)$\nomenclature[C]{$L_n$}{the free $\ML$-monoidal category on $n$ invertible objects}, where $\underline{n} = \{x_1, \ldots, x_n \}$ is a set with $n$ elements.
+Let $L_n = L\Big(E\Lambda(\underline{n}) \Big)$\nomenclature[C]{$L_n$}{the free $\ML$-monoidal category on $n$ invertible objects}\index{monoidal category!$\ML$-monoidal!free}, where $\underline{n} = \{x_1, \ldots, x_n \}$ is a set with $n$ elements.
 \end{Defi}
 
 \begin{thm} The algebra $L_n$ is the free $\ML$-monoidal category on $n$ invertible objects:  for any other $E\Lambda$-algebra $X$, we have an isomorphism of categories
@@ -5101,7 +5101,7 @@ QQQ Need to explain that the goal is to understand some group actions
 %\section{The objects of $L_n$}
 \section{Adjunctions involving monoidal categories}
 
-This section will study three different adjunctions between $\ML$-monoidal categories on the one hand and categories such as that of monoids or commutative monoids on the other hand. Two of these adjunctions are purely formal, and are induced by adjunctions between categories and sets, while the third requires a direct proof. We then investigate some simple consequences of these adjunctions for $\ML$-monoidal categories of the form $L(E\Lambda S)$ for a set $S$.
+This section will study three different adjunctions between $\ML$-monoidal categories\index{monoidal category!$\ML$-monoidal} on the one hand and categories such as that of monoids or commutative monoids on the other hand. Two of these adjunctions are purely formal, and are induced by adjunctions between categories and sets, while the third requires a direct proof. We then investigate some simple consequences of these adjunctions for $\ML$-monoidal categories of the form $L(E\Lambda S)$ for a set $S$.
 
 \begin{prop}\label{Ob-E_adj}
 The functor $\ob$ from categories to sets, taking the set of objects, is left adjoint to the functor $E$ of \cref{Defi:e_b} QQQ. This adjunction is monoidal, hence induces an adjunction $\ob \dashv E$ between $\lmc$ and $\mon$\nomenclature[C]{$\mon$}{of monoids and monoid homomorphisms}.
@@ -5164,7 +5164,7 @@ This is now a simple application of \cref{monoidaladj_cor}, where we now only no
 
 %What \cref{Obadj} is essentially saying is that the functor $\mathrm{Ob}$ provides a way for us to move back and forth between the categories $E\Lambda\mbox{-}\mathrm{Alg}_S$ and $\mon$. By applying this reasoning to the universal property of the initial object $\eta$, we can then determine the value of $\mathrm{Ob}(L_n)$ in terms of a new universal property of $\mathrm{Ob}(\eta)$ in the category $\mon$. In particular, the algebras in $(\ELn \downarrow \mathrm{inv})$ are those whose objects are all invertible, and so the induced property of $\mathrm{Ob}(\eta)$ will end up saying something about the relationship between $\mathrm{Ob}(\ELn)$ and groups --- those monoids whose elements are all invertible.
 
-\begin{Defi} For a monoid $M$, we write $M^{\mathrm{gp}}$ for its \emph{group completion}, the universal group with a homomorphism $M \to M^{gp}$.  We write the functor $M \mapsto M^{gp}$ as $gp$.
+\begin{Defi} For a monoid $M$, we write $M^{\mathrm{gp}}$ for its \emph{group completion}\index{group completion}, the universal group with a homomorphism $M \to M^{gp}$.  We write the functor $M \mapsto M^{gp}$ as $gp$.
 \end{Defi}
 
 \begin{rem}
@@ -5308,7 +5308,7 @@ The proof is the same style as above, with both functors being  left adjoints of
 
 %As we've said before, this result is a reflection of the fact that the functor $L$ is trying to add inverses the objects of $\ELn$ freely, that is, with as little effect on the rest of the algebra as possible. Indeed, if we happen to know whether or not our action operad $G$ is crossed then we can now calculate exactly what the effect on the components will be.
 We summarize these results below.
-\begin{cor}\label{crossconcomp} If $G$ is a crossed action operad then
+\begin{cor}\label{crossconcomp} If $G$ is a crossed action operad\index{action operad!crossed} then
 \begin{itemize} 
 \item the connected components of $L_n$ are the monoid $\mathbb{Z}^n$,
 \item the restriction of $\eta$ to components is the obvious inclusion $\mathbb{N}^n \hookrightarrow \mathbb{Z}^n$, and
@@ -5367,7 +5367,7 @@ Thus in cases where every object of $X$ is invertible, the monoidal structure to
 
 %However, we are trying to extract information about the morphisms of $L_n$ by building some sort of left adjoint functor. Presumably we will also be able to apply it to other $E\Lambda$-algebras, some of which won't have all of their objects invertible, and so we can't just use $\mathrm{Mor}(-): E\Lambda\mbox{-}\mathrm{Alg}_S \to \mon$. What we need is a way to modify the morphism monoid of a category so that both composition and tensor product are recoverable from a single operation. Of course, there is one very easy method for achieving this --- simply force $\otimes$ and $\circ$ to be equal.
 
-\begin{Defi} Let $\mathrm{M} : \moncat \to \mon$ be the functor which sends a monoidal category $X$ to the quotient of its monoid of morphisms by the relation that sets $\otimes = \circ$. :
+\begin{Defi} Let $\mathrm{M} : \moncat \to \mon$ be the functor which sends a monoidal category $X$ to the quotient of its monoid of morphisms\index{monoidal category!monoid of morphisms} by the relation that sets $\otimes = \circ$. :
 \begin{eq*} \mathrm{M}X \quad = \quad \bigquotient{\mathrm{Mor}(X)}{f' \circ f \sim f' \otimes f}.\end{eq*}
 If $F:X \to Y$ is a strict monoidal functor, then $MF$ is the monoid homomorphism sending the class of a morphism $g$ to the class of $Fg$; the reader will easily check this is well-defined. We will call $\mathrm{M}X$ the \emph{collapsed} morphisms of $X$.
 
@@ -5419,7 +5419,7 @@ Note that for any monoidal category $M$, the monoid $M(I,I)$ is always commutati
 		%\end{array}
 %\end{eq*}
 
-\begin{Defi} For a monoid $M$, we write $M^{\mathrm{ab}}$ for its \emph{abelianization}, the universal commutative monoid with a homomorphism $M \to M^{ab}$.  We write the functor $M \mapsto M^{ab}$ as $ab$. We use the same notation for groups as well.
+\begin{Defi} For a monoid $M$, we write $M^{\mathrm{ab}}$ for its \emph{abelianization}\index{abelianization}, the universal commutative monoid with a homomorphism $M \to M^{ab}$.  We write the functor $M \mapsto M^{ab}$ as $ab$. We use the same notation for groups as well.
 \end{Defi}
 
 \begin{rem}
@@ -5774,7 +5774,7 @@ We also have a unique map $\EL(\underline{2n}) \to L_n$ which agrees with the ca
 
 
 \begin{Defi}
-We will say that a functor $F: C \to D$ is \emph{surjective} if the underlying map of graphs is surjective. In particular $F$ must be surjective on objects, but it need not be full.
+We will say that a functor $F: C \to D$ is \emph{surjective}\index{functor!surjective} if the underlying map of graphs is surjective. In particular $F$ must be surjective on objects, but it need not be full.
 \end{Defi}
 
 \begin{prop}\label{coeqsurj} Let $\phi, \phi' : X \to Y$ be a pair of $E\Lambda$-algebra maps, and $k: Y \to Z$ their coequalizer in $E\Lambda\mbox{-}\mathrm{Alg}_S$. If the monoid $\mathrm{Ob}(Z)$ is also a group, then the functor $k$ is surjective.
@@ -7949,19 +7949,10 @@ where the $1$ corresponds to the $(t ; z_i)$ generator of $\mathbb{Z}^{n} \times
 as required.
 \end{proof}  
 
-% \nomenclature[C]{$E(X^2)$}{expected value of $X^2$} \nomenclature[N]{$B_{n}$}{braid group on $n$ strands}
-% \index{group}
-% \index{group!symmetric}
-% \index{group!cactus}
-% \index{group!action}
-
-
 %\begin{prop} Cactus group case
 %\end{prop}
 
-% \begin{multicols}{2}
 \printnomenclature[2cm]
-% \end{multicols}
 
 \printindex
 
