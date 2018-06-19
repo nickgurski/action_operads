@@ -521,7 +521,7 @@ for the multiplication in the operad $\Lambda$.  Let $(g; f_1, \ldots, f_n)$ be 
 \end{enumerate}
 \end{example}
 
-\begin{Defi} For each $n \in \mathbb{N}$\nomenclature[N]{$\mathbb{N}$}{the set of natural numbers}, the \emph{ribbon braid group}\index{group!ribbon braid} $RB_n$\nomenclature[N]{$RB_{n}$}{ribbon braid group on $n$ ribbons} is the group whose presentation is the same as that of the braid group $B_n$, except with the addition of $n$ new generators $t_1, ..., t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
+\begin{Defi} For each $n \in \mathbb{N}$\nomenclature[N]{$\mathbb{N}$}{the set of natural numbers}, the \emph{ribbon braid group}\index{group!ribbon braid} $RB_{n}$\nomenclature[N]{$RB_{n}$}{ribbon braid group on $n$ ribbons} is the group whose presentation is the same as that of the braid group $B_{n}$, except with the addition of $n$ new generators $t_1, ..., t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
 \begin{eq*} b_i \cdot t_i \quad = \quad t_{i+1} \cdot b_i, \quad \quad \quad \quad \quad b_i \cdot t_{i+1} \quad = \quad t_i \cdot b_i \end{eq*}
 The \emph{ribbon braid operad}\index{action operad!of ribbon braid groups}\index{operad!ribbon braid} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{broperad}, but with some additional rules for dealing with twists. With regards to the tensor product, we have that for any twist $t_i \in RB_{n}$,
 \begin{eq*} t_i \quad = \quad e_{i-1} \otimes t \otimes e_{n-i} \end{eq*}
@@ -4995,14 +4995,14 @@ First note that this is indeed a well-defined $E\Lambda$-algebra since the tenso
 %
 %\begin{prop} Let $G$ be an action operad, and let $O$ be a $G$-operad in the category $\mathrm{Set}$. Then there exists a monad $\underline{O}: \mathrm{Set} \to \mathrm{Set}$ whose category of algebras $\underline{O}\mathrm{Alg}$ is isomorphic to the category $O\mathrm{Alg}$.
 %
-%Likewise, if $O$ is a $G$-operad in $\mathrm{Cat}$, then there exists a 2-monad $\underline{O}: \mathrm{Cat} \to \mathrm{Cat}$ whose strict algebras $\underline{O}\mathrm{Alg}_S$ are isomorphic to $O\mathrm{Alg}_S$.
+%Likewise, if $O$ is a $G$-operad in $\cat$, then there exists a 2-monad $\underline{O}: \cat \to \cat$ whose strict algebras $\underline{O}\mathrm{Alg}_S$ are isomorphic to $O\mathrm{Alg}_S$.
 %\end{prop}
 %
 %Because of this, if we want to show that $E\Lambda\mbox{-}\mathrm{Alg}_S$ is a locally finitely presentable category, it will suffice to show the same thing for $\underline{E\Lambda}\mathrm{Alg}_S$. Luckily, from the very same paper we also learn the following:
 %
 %\begin{prop} For any $G$-operad $O$, the associated $\underline{O}$ preserves filtered colimits. \end{prop}
 %
-%Since $\mathrm{Cat}$ is finitely accessible, this means that the 2-monad $\underline{E\Lambda}: \mathrm{Cat} \to \mathrm{Cat}$ is as well. Finally, to see what impact this has on its category of algebras, we can use a result from \cite{lpac}:
+%Since $\cat$ is finitely accessible, this means that the 2-monad $\underline{E\Lambda}: \cat \to \cat$ is as well. Finally, to see what impact this has on its category of algebras, we can use a result from \cite{lpac}:
 %
 %\begin{prop} If $T: X \to X$ is a finitely accessible monad, then $T\mathrm{Alg}$ is locally finitely presentable. \end{prop}
 %
@@ -5033,7 +5033,7 @@ Let $L_n = L\Big(E\Lambda(\underline{n}) \Big)$\nomenclature[C]{$L_n$}{the free 
 We have the following 2-natural isomorphisms from the adjunctions for $L$ and the free $\ML$-monoidal category monad.
 \begin{eq*}\begin{array}{rll}
 		 E\Lambda\mbox{-}\mb{Alg}_S( L\Big(E\Lambda(\underline{n}) \Big), X) & \cong  & E\Lambda\mbox{-}\mb{Alg}_S( E\Lambda(\underline{n}), X_{inv}) \\
-		& \cong & \mb{Cat}( \underline{n}, X_{inv}) \\
+		& \cong & \cat( \underline{n}, X_{inv}) \\
 		& \cong & X_{inv}^n
 \end{array}
  \end{eq*}
@@ -5085,7 +5085,7 @@ in which the identity on the right is really $j_{inv} \circ -$. Thus composition
 \end{proof}
 
 
-\begin{cor} \label{epi} The component of the unit of the adjunction $L \dashv (-)_{inv}$ at $E\Lambda(\underline{n})$,  $\eta_{E\Lambda(\underline{n})}: E\Lambda(\underline{n}) \to (L_n)_{inv}$, is an epimorphism in $E\Lambda\mbox{-}\mb{Alg}_S$.
+\begin{cor} \label{epi} The component of the unit of the adjunction $L \dashv (-)_{inv}$ at $E\Lambda(\underline{n})$,  $\eta_{E\Lambda(\underline{n})}: E\Lambda(\underline{n}) \to (L_n)_{inv}$, is an epimorphism in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{cor}
 \begin{proof}
 
