@@ -6710,7 +6710,7 @@ then the length (QQQ we defined this kind of thing somewhere) of $c_1$ must be e
 \end{proof}
 
 We can now construct the desired injection using the function $\rho$ from \cref{rho_ww'}.
-\begin{prop} \label{stGnsub} $(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$, and $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ is a split epi of monoids.
+\begin{prop} \label{stGnsub} $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ is a split epi of monoids, so$(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$.
 \end{prop}
 \begin{proof}
 First, assume that the action operad $G$ is non-crossed. Then there exists an obvious injective monoid homomorphism
@@ -6724,7 +6724,7 @@ The homomorphism property follows from the fact that the length $|w|$ defined in
 
 Now assume that $G$ is crossed. Fix a function $\rho$ as in \cref{rho_ww'}. Because $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid  by \cref{freemon}, there is a unique monoid homomorphism
 \begin{eq*} \rho \, : \, \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \longrightarrow G \end{eq*}
-which agrees on the generators in the source. By construction, we have
+which agrees with the original function $\rho$ on the generators in the source. By construction, we have
 \begin{eq*} \pi(\rho(w, w'))(w) \quad = \quad w' \end{eq*}
 for any $(w, w') \in\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, not just the generators. Using $\rho$ we define the homomorphism $i$ to be
 \begin{eq*} \begin{array}{rlrll}
@@ -6742,9 +6742,20 @@ Moreover, for any two elements $(v, v')$, $(w, w')$ of $\mathbb{N}^{\ast n} \tim
 and thus $i$ is injective. This injection splits $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ by construction.
 \end{proof}
 
-\begin{rem}\label{choose_rho_later}
-Note that, at this point, $\rho$ can be any function satisfying the criteria in \cref{rho_ww'}. Later we will make a specific choice.
-\end{rem}
+
+For the proof of \cref{stGnsub}, $\rho$ can be any function satisfying the criteria in \cref{rho_ww'}. The analogous proof for $L_n$, though, requires more properties of $\rho$ which we establish now. Recall the functor $\delta$ from \cref{qdef}.
+
+\begin{lem}\label{rho_lemmas}
+If $(w,w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is indecomposable, then so is $\delta(w,w')$. For any indecomposable $(w,w')$, there exists a unique natural number $k$ and indecomposable $(v,v')$ such that
+\[
+(w,w') = \delta^k(v,v')
+\]
+but $(v,v')$ is not $\delta(u,u')$ for any indecomposable $(u,u')$.
+\end{lem}
+\begin{proof}
+The first statement follows immediately from the injectivity of $\delta$ on objects, and the second from the fact that $\delta$ doubles the length of any element.
+\end{proof}
+
 %In other words, this result says that the source and target data of $\ELn$ is isomorphic to the monoid made up of action morphisms
 %\begin{eq*} \alpha\big( \, \rho(x_1 \otimes ... \otimes x_m, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(1)}) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, \big) \end{eq*}
 %when $G$ is crossed, and
@@ -6755,18 +6766,40 @@ Note that, at this point, $\rho$ can be any function satisfying the criteria in 
 
 %So now we have shown that $(s \times t)(\ELn)$ is a submonoid of $\mathrm{Mor}(\ELn)$, but what we were really interested in is whether or not $(s \times t)(L_n)$ is a submonoid of $\mathrm{Mor}(L_n)$. To recover the latter result from the former, we will use our cokernel map $q: \ELnn \to L_n$. In particular, the surjectivity of $q$ combined with the case $(s \times t)(\ELnn) \subseteq \mathrm{Mor}(\ELnn)$ from \cref{stGnsub} immediately gives us what we need.
 
-Start here
 
-\begin{cor} \label{stZsub} $(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(L_n)$.
-\end{cor}
+\begin{prop} \label{stZsub} $\mathrm{Mor}(L_n) \to (s \times t)(L_n)$ is a split epi of monoids, so$(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(L_n)$.
+\end{prop}
 \begin{proof}
-Let $i: (s \times t)(\ELnn) \hookrightarrow \mathrm{Mor}(\ELnn)$ be an inclusion which allows us to view $(s \times t)(\ELnn)$ as a submonoid of $\mathrm{Mor}(\ELnn)$, as in \cref{stGnsub}. Also, let $\mathrm{Mor}(q): \mathrm{Mor}(\ELnn) \to \mathrm{Mor}(L_n)$ the restriction of the cokernel map $q: \ELnn \to L_n$ onto morphisms. Then the image of the composite of these two homomorphisms,
-\begin{eq*} \mathrm{im}\big( \, \mathrm{Mor}(q) \circ i \, \big) \quad = \quad q\big( \, \mathrm{im}(i) \, \big) \quad \cong \quad q\big( \, (s \times t)(\ELnn) \, \big)\end{eq*}
-is clearly a submonoid of $\mathrm{Mor}(L_n)$. 
+Let $i:(s \times t)(\ELn) \to \mathrm{Mor}(\ELn)$ be a splitting as in \cref{stGnsub}. We will first show that the function $\rho$ can be chosen to make the square
+\begin{center}
+    \begin{tikzpicture}[x=20mm,y=15mm]
+		\node (a) at (0,0) {$(s \times t)(\ELn)$};
+		\node (b) at (1,0) {$\mathrm{Mor}(\ELn)$};
+		\node (c) at (0,-1) {$(s \times t)(\ELn) $};
+		\node (d) at (1,-1) {$\mathrm{Mor}(\ELn)$};
+			\draw [->] (a) to node [above] {$i$} (b);
+			\draw [->] (b) to node [right] {$\delta$} (d);
+			\draw [->] (a) to node [left] {$\delta$} (c);
+			\draw [->] (c) to node [below] {$i$} (d);
+    \end{tikzpicture}
+\end{center}
+commute. Recall that $i$ is defined by first factoring an element into decomposables, and then applying $\rho$ to each of those. Thus on an indecomposable $(w,w')$, the commutativity of this square is the claim that $\delta(\rho(w,w')) = \rho(\delta w, \delta w')$ using that $\delta(w,w') = (\delta w, \delta w')$ is also indecomposable by the first part of \cref{rho_lemmas}. By the second part of \cref{rho_lemmas}, write $(w,w') = \delta^k(v,v')$, so we need
+\[
+\delta(\rho(\delta^k(v,v'))) = \delta^{k+1}\rho(v,v').
+\]
+Furthermore, $(v,v')$ cannot be written as $\delta(u,u')$ for any indecomposable $(u,u')$, so we may choose $\rho(v,v')$ arbitrarily and this will uniquely determine $i$ in such a way that the square commutes. 
 
-But by \cref{qsurj} $q$ is a surjective functor. This means that there can exist a morphism $w \to v$ in $L_n$ if and only if there exists at least one morphism $w' \to v'$ in $\ELnn$, for some $w', v'$ which have $q(w') = w$ and $q(v') = v$. In other words,
-\begin{eq*} q\big( \, (s \times t)(\ELnn) \, \big) \, = \, (s \times t)(L_n) \end{eq*}
-and therefore the monoid $\mathrm{im}\big( \, \mathrm{Mor}(q) \circ i \, \big)$ that we saw above is really a submonoid of $\mathrm{Mor}(L_n)$ isomorphic to $(s \times t)(L_n)$, as required.
+Now the functor $\mathrm{Mor}$ is a left adjoint, so 
+\[
+\mathrm{Mor}(\ELn) \stackrel{\mathrm{Mor}q}{\longrightarrow} \mathrm{Mor}(\ELn) \longrightarrow \mathrm{Mor}(L_n)
+\]
+is a cokernel diagram in monoids.
+
+Claim: $s \times t$ version also cokernel, get unique induced map.
+
+
+
+
 \end{proof} 
 
 \section{Unit endomorphisms of \texorpdfstring{$L_n$}{L_n}}
