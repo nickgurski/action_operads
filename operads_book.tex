@@ -6770,13 +6770,13 @@ The first statement follows immediately from the injectivity of $\delta$ on obje
 \begin{prop} \label{stZsub} $\mathrm{Mor}(L_n) \to (s \times t)(L_n)$ is a split epi of monoids, so$(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(L_n)$.
 \end{prop}
 \begin{proof}
-Let $i:(s \times t)(\ELn) \to \mathrm{Mor}(\ELn)$ be a splitting as in \cref{stGnsub}. We will first show that the function $\rho$ can be chosen to make the square
+Let $i:(s \times t)(\ELnn) \to \mathrm{Mor}(\ELnn)$ be a splitting as in \cref{stGnsub}. We will first show that the function $\rho$ can be chosen to make the square
 \begin{center}
     \begin{tikzpicture}[x=20mm,y=15mm]
-		\node (a) at (0,0) {$(s \times t)(\ELn)$};
-		\node (b) at (1,0) {$\mathrm{Mor}(\ELn)$};
-		\node (c) at (0,-1) {$(s \times t)(\ELn) $};
-		\node (d) at (1,-1) {$\mathrm{Mor}(\ELn)$};
+		\node (a) at (0,0) {$(s \times t)(\ELnn)$};
+		\node (b) at (1,0) {$\mathrm{Mor}(\ELnn)$};
+		\node (c) at (0,-1) {$(s \times t)(\ELnn) $};
+		\node (d) at (1,-1) {$\mathrm{Mor}(\ELnn)$};
 			\draw [->] (a) to node [above] {$i$} (b);
 			\draw [->] (b) to node [right] {$\delta$} (d);
 			\draw [->] (a) to node [left] {$\delta$} (c);
@@ -6789,62 +6789,72 @@ commute. Recall that $i$ is defined by first factoring an element into decomposa
 \]
 Furthermore, $(v,v')$ cannot be written as $\delta(u,u')$ for any indecomposable $(u,u')$, so we may choose $\rho(v,v')$ arbitrarily and this will uniquely determine $i$ in such a way that the square commutes. 
 
-Now the functor $\mathrm{Mor}$ is a left adjoint, so 
+The functor $q:\ELnn \to L_n$ is the cokernel of $\delta$, so the composite
 \[
-\mathrm{Mor}(\ELn) \stackrel{\mathrm{Mor}q}{\longrightarrow} \mathrm{Mor}(\ELn) \longrightarrow \mathrm{Mor}(L_n)
+\mathrm{Mor}(\ELnn) \stackrel{\mathrm{Mor}\delta}{\longrightarrow} \mathrm{Mor}(\ELnn) \stackrel{\mathrm{Mor}q}{\longrightarrow} \mathrm{Mor}(L_n)
 \]
-is a cokernel diagram in monoids.
-
-Claim: $s \times t$ version also cokernel, get unique induced map.
-
-
-
+is the zero map. From the definition of $\delta$ in \cref{qdef} and the description of the monoids $(s \times t)(\ELn), (s \times t)(L_n)$ in \cref{stpullback}, the composite
+\[
+(s \times t)(\ELnn) \stackrel{(s \times t)(\delta)}{\longrightarrow}  (s \times t)(\ELnn) \stackrel{(s \times t)(q)}{\longrightarrow} (s \times t)(L_n)
+\]
+exhibits $(s \times t)(L_n)$ as the cokernel of $(s \times t)(\delta)$ which induces a unique monoid homomorphism $i: (s \times t)(L_n) \to \mathrm{Mor}(L_n)$ making the square below commute.
+\begin{center}
+    \begin{tikzpicture}[x=20mm,y=15mm]
+		\node (a) at (0,0) {$(s \times t)(\ELnn)$};
+		\node (b) at (1,0) {$\mathrm{Mor}(\ELnn)$};
+		\node (c) at (0,-1) {$(s \times t)(L_n) $};
+		\node (d) at (1,-1) {$\mathrm{Mor}(L_n)$};
+			\draw [->] (a) to node [above] {$i$} (b);
+			\draw [->] (b) to node [right] {$q$} (d);
+			\draw [->] (a) to node [left] {$q$} (c);
+			\draw [->] (c) to node [below] {$i$} (d);
+    \end{tikzpicture}
+\end{center}
+This homomorphism $i$ splits $\mathrm{Mor}(L_n) \to (s \times t)(L_n)$ as desired.
 
 \end{proof} 
 
 \section{Unit endomorphisms of \texorpdfstring{$L_n$}{L_n}}
 
-To help us understand $\mathrm{Mor}(L_n)$, we decided to break it down into two smaller pieces. The first of these was the source/target data $(s \times t)(L_n)$, which we explored in the previous section. The other piece that we now have to consider is the monoid of unit endomorphisms, $L_n(I,I)$. 
+We now consider the monoid of unit endomorphisms, $L_n(I,I)$. This is a particularly important submonoid of the morphisms $\mathrm{Mor}(L_n)$, since it is the only submonoid which is also a homset of the category $L_n$. Moreover, because the maps in $L_n(I,I)$ all share the same source and target, what we have is not just a monoid under tensor product but also under composition as well. This fact leads to a series of special properties for $L_n(I,I)$, the first of which is just another instance of the classic Eckmann-Hilton argument. QQQ Reference here?
 
-This is a particularly important submonoid of the morphisms $\mathrm{Mor}(L_n)$, since it is the only submonoid which is also a homset of the category $L_n$. Moreover, because the maps in $L_n(I,I)$ all share the same source and target, what we have is not just a monoid under tensor product but also under composition as well. This fact leads to a series of special properties for $L_n(I,I)$, the first of which is just another instance of the classic Eckmann-Hilton argument.
-
-\begin{lem} \label{endcom} $L_n(I,I)$ is a commutative monoid under both tensor product and composition, with $f \otimes f' = f \circ f'$.
-\end{lem}
-\begin{proof}
-Let $f, f'$ be arbitrary elements of the monoid $L_n(I,I)$. Since both of these are morphisms in the monoidal category $L_n$, we can use the law of interchange to show that
-\begin{eq*} \begin{array}{rll}
-			f \otimes f' & = & (f \circ \mathrm{id}_I) \otimes (\mathrm{id}_I \circ f') \\
-			& = & (f \otimes \mathrm{id}_I) \circ (\mathrm{id}_I \otimes f') \\
-			& = & f \circ f' \\
-			& = & (\mathrm{id}_I \otimes f) \circ (f' \otimes \mathrm{id}_I) \\
-			& = & (f' \circ \mathrm{id}_I) \otimes (\mathrm{id}_I \circ f) \\
-			& = & f' \otimes f
-		\end{array}
-\end{eq*}
-\end{proof}
-
-In fact, since we already proved that the morphisms of $L_n$ are all actions morphisms, we can take this one step further.
-
-\begin{prop} \label{endab} $L_n(I,I)$ is an abelian group.
+\begin{prop} \label{endcom} $L_n(I,I)$ is a commutative monoid under both tensor product and composition, with $f \otimes f' = f \circ f'$. Since $L_n$ is a groupoid, this commutative monoid is actually an abelian group.
 \end{prop}
-\begin{proof}
-From \cref{allmapsaction} we know that every morphism $f$ in $L_n$ is of the form $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, for some $g \in G(m)$ and $x_i \in \mathbb{Z}^{\ast n}$. It follows immediately that
-\begin{eq*} \begin{array}{rl}
-			& \alpha( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \circ \alpha( \, g^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
-			= & \alpha( \, gg^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
-			= & \alpha( \, e_m \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
-			= & \mathrm{id}_{x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}} \\
-			& \\
-			& \alpha( \, g^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \circ \alpha( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
-			= & \alpha( \, g^{-1}g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
-			= & \alpha( \, e_m \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
-			= & \mathrm{id}_{x_1 \otimes ... \otimes x_m}
-		\end{array}
-\end{eq*}
-In other words, every morphism $f: w \to v$ in $L_n$ has an inverse under composition, 
-\begin{eq*} f^{-1} \quad := \quad \alpha(g^{-1}; \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}}) \end{eq*}
-But we know from \cref{endcom} that tensor product and composition are the same for endomorphisms of the unit object of $L_n$. In particular this means that if some morphism $f: I \to I$ has a compositional inverse $f^{-1}$, then it will also be its monoidal inverse $f^*$. Thus every element of the commutative monoid $L_n(I,I)$ is invertible, or in other words $L_n(I,I)$ is an abelian group.
-\end{proof}
+%\begin{proof}
+%Let $f, f'$ be arbitrary elements of the monoid $L_n(I,I)$. Since both of these are morphisms in the monoidal category $L_n$, we can use the law of interchange to show that
+%\begin{eq*} \begin{array}{rll}
+%			f \otimes f' & = & (f \circ \mathrm{id}_I) \otimes (\mathrm{id}_I \circ f') \\
+%			& = & (f \otimes \mathrm{id}_I) \circ (\mathrm{id}_I \otimes f') \\
+%			& = & f \circ f' \\
+%			& = & (\mathrm{id}_I \otimes f) \circ (f' \otimes \mathrm{id}_I) \\
+%			& = & (f' \circ \mathrm{id}_I) \otimes (\mathrm{id}_I \circ f) \\
+%			& = & f' \otimes f
+%		\end{array}
+%\end{eq*}
+%\end{proof}
+
+%In fact, since we already proved that the morphisms of $L_n$ are all actions morphisms, we can take this one step further.
+%
+%\begin{prop} \label{endab} $L_n(I,I)$ is an abelian group.
+%\end{prop}
+%\begin{proof}
+%From \cref{allmapsaction} we know that every morphism $f$ in $L_n$ is of the form $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, for some $g \in G(m)$ and $x_i \in \mathbb{Z}^{\ast n}$. It follows immediately that
+%\begin{eq*} \begin{array}{rl}
+%			& \alpha( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \circ \alpha( \, g^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
+%			= & \alpha( \, gg^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
+%			= & \alpha( \, e_m \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \\
+%			= & \mathrm{id}_{x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}} \\
+%			& \\
+%			& \alpha( \, g^{-1} \, ; \, \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}} \, ) \circ \alpha( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+%			= & \alpha( \, g^{-1}g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+%			= & \alpha( \, e_m \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+%			= & \mathrm{id}_{x_1 \otimes ... \otimes x_m}
+%		\end{array}
+%\end{eq*}
+%In other words, every morphism $f: w \to v$ in $L_n$ has an inverse under composition, 
+%\begin{eq*} f^{-1} \quad := \quad \alpha(g^{-1}; \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}}) \end{eq*}
+%But we know from \cref{endcom} that tensor product and composition are the same for endomorphisms of the unit object of $L_n$. In particular this means that if some morphism $f: I \to I$ has a compositional inverse $f^{-1}$, then it will also be its monoidal inverse $f^*$. Thus every element of the commutative monoid $L_n(I,I)$ is invertible, or in other words $L_n(I,I)$ is an abelian group.
+%\end{proof}
 
 Indeed, by using a slightly broader argument we can extend this result to every morphism of $L_n$.
 
@@ -6856,34 +6866,26 @@ For any $f: w \to v$ in $L_n$, consider the map $\mathrm{id}_{w^*} \otimes f^{-1
 			f \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) & = & \big( \, f \circ \mathrm{id}_w \, \big) \otimes \big( \, \mathrm{id}_{v^*} \circ  (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
 			& = & \big( \, f \otimes \mathrm{id}_{v^*} \, \big) \circ \big( \, \mathrm{id}_w \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
 			& = & ( f \otimes \mathrm{id}_{v^*} ) \circ ( f^{-1} \otimes \mathrm{id}_{v^*}) \\
-			& = & (f \circ f^{-1}) \otimes (\mathrm{id}_{v^*} \circ \mathrm{id}_{v^*}) \\
-			& = & \mathrm{id}_v \otimes \mathrm{id}_{v^*} \\
 			& = & \mathrm{id}_I
 \end{longtable}
-and likewise
+and 
 \begin{longtable}{RLL}
 			(\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes f & = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \circ \mathrm{id}_{w^*} \, \big) \otimes \big( \, \mathrm{id}_v \circ f \, \big) \\
 			& = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes \mathrm{id}_v \, \big) \circ \big( \, \mathrm{id}_{w^*} \otimes f \, \big) \\
 			& = & (\mathrm{id}_{w^*} \otimes f^{-1}) \circ (\mathrm{id}_{w^*} \otimes f) \\
-			& = & (\mathrm{id}_{w^*} \circ \mathrm{id}_{w^*}) \otimes (f^{-1} \circ f)\\
-			& = & \mathrm{id}_{w^*} \otimes \mathrm{id}_w \\
-			& = & \mathrm{id}_I
+			& = & \mathrm{id}_I,
 \end{longtable}
-In other words, $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the inverse of $f$ in the monoid $\mathrm{Mor}(L_n)$, as required.
+so $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the inverse of $f$ in the monoid $\mathrm{Mor}(L_n)$.
 \end{proof}
 
-So $\mathrm{Mor}(L_n)$ and $L_n(I,I)$ both turn out to be groups under tensor product. Obviously it follows from this that $L_n(I,I)$ is a not just a submonoid of $\mathrm{Mor}(L_n)$ but a subgroup --- in particular an abelian subgroup, going by \cref{endab}. But $L_n(I,I)$ is actually an even more special subgroup than this.
+%So $\mathrm{Mor}(L_n)$ and $L_n(I,I)$ both turn out to be groups under tensor product. Obviously it follows from this that $L_n(I,I)$ is a not just a submonoid of $\mathrm{Mor}(L_n)$ but a subgroup --- in particular an abelian subgroup, going by \cref{endab}. But $L_n(I,I)$ is actually an even more special subgroup than this.
 
 \begin{prop} \label{endnorm} $L_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L_n)$. Moreover, if $G$ is a crossed action operad, then $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$.
 \end{prop}
 \begin{proof}
 From \cref{endab,tensinv}, we know that $L_n(I,I)$ is a subgroup of $\mathrm{Mor}(L_n)$. For normality, we need to again consider both crossed and non-crossed action operads separately. 
 
-If $G$ is non-crossed, then by \cref{crossconcomp} we know that the map assigning objects of $L_n$ to their connected component is just the identity $\mathrm{id}_{\mathbb{Z}^{\ast n}}$. In other words, every object belongs to its own unique component, so that every morphism of $L_n$ is actually an endomorphism. It follows that the group $L_n(I,I)$ is the kernel of the source homomorphism $s$ from \cref{st} --- or equally the target homomorphism $t$.
-\begin{eq*} \begin{tikzcd}
-L_n(I,I) \ar[r] & \mathrm{Mor}(L_n) \ar[r, "s"] & \mathrm{Ob}(L_n)
-\end{tikzcd} \end{eq*}
-The kernel of a group homomorphism is always a normal subgroup of that homomorphism's source, and so in our case we have $L_n(I,I) \le \mathrm{Mor}(L_n)$. 
+If $G$ is non-crossed, then by \cref{crossconcomp} we know that the map assigning objects of $L_n$ to their connected component is just the identity $\mathrm{id}_{\mathbb{Z}^{\ast n}}$. In other words, every object belongs to its own unique component, so that every morphism of $L_n$ is actually an endomorphism. It follows that the group $L_n(I,I)$ is the kernel of the source homomorphism $s$ from \cref{st} and thus normal.
 
 For crossed $G$, recall from \cref{spacial} that all crossed $E\Lambda$-algebras are spacial, and so in particular $L_n$ is. This means that for any $h \in L_n(I,I)$ and $w \in \mathrm{Ob}(L_n)$ we will always have $h \otimes \mathrm{id}_w = \mathrm{id}_w \otimes h$. Thus for any $f:w \to v$ in $\mathrm{Mor}(L_n)$, we get
 \begin{eq*} \begin{array}{rll}
@@ -6894,76 +6896,76 @@ For crossed $G$, recall from \cref{spacial} that all crossed $E\Lambda$-algebras
 		& = & f \otimes h
 		\end{array}
 \end{eq*}
-That is, $L_n(I,I)$ is a subgroup of the centre of $\mathrm{Mor}(L_n)$. Then because
-\begin{eq*} f \otimes h \otimes f^* \, = \, h \otimes f \otimes f^* \, = \, h \, \in L_n(I,I) \end{eq*}
-it follows that $L_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L_n)$.
+and so $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$, thus normal. 
 \end{proof}
 
 \section{The morphisms of \texorpdfstring{$L_n$}{L_n}} 
 
-We have finally described all of the important properties of $(s \times t)(L_n)$ and $L_n(I,I)$ that we will need. Putting these results together will let us characterize the morphisms of $L_n$ as a product of groups, as promised at the beginning of the chapter. Before we do though, it will be worth going over a few well-known pieces of group theory (from for example \cite{rob-grouptheory} QQQ needed?) that we will be using in the proof of \cref{morprod}.
+We are now ready to characterize the group of morphisms of $L_n$ as a product or semi-direct product.
 
-\begin{Defi} Let $H$, $K$ and $N$ be groups. Then we say that $H$ is a \emph{group extension} of $K$ by $N$ if there exists a short exact sequence
-\begin{eq*} \begin{tikzcd}
-0 \ar[r] & N \ar[r, hookrightarrow, "i"] & H \ar[r, "p"] & K \ar[r] & 0
-\end{tikzcd} \end{eq*}
-In other words, $H$ is an extension of $K$ by $N$ whenever we have $K = H/N$. Moreover, if $N$ is a subgroup of the centre of $H$, we say that this is a \emph{central} extension, and if the map $p$ has a right-inverse, $r: K \to H$, $p \circ r = \mathrm{id}_K$, then we say that it is a \emph{split} extension.
-\end{Defi}
-
-\begin{Defi} Let $H$ be a group with subgroup $K$ and normal subgroup $N$. Then we say that $H$ is a \emph{semidirect product} $K \ltimes N$ if the underlying set of $H$ is the same as underlying set of $K \times N$, but multiplication is given by
-\begin{eq*} (k,n) \cdot (k',n') \quad = \quad ( \, kk', \, nkn'k^{-1} \, ) \end{eq*}
-\end{Defi}
-
-\begin{lem} \label{splitex} If $H$ is a split extension of $K$ by $N$ then $H = K \ltimes N$, with $r: K \to H$ acting as the subgroup inclusion. Further, if $H$ is split and central, then $H \cong K \times N$.
-\end{lem}
-\begin{proof}
-Define a group homomorphism $f: H \to K \ltimes N$  by
-\begin{eq*} f(h) \quad := \quad \big( \, p(h), h \cdot rp(h)^{-1} \, \big) \end{eq*}
-This is a well-defined homomorphism, since
-\begin{eq*} \begin{array}{rll}
-			f(hh') & = & \big( \, p(hh'), hh' \cdot rp(hh')^{-1} \, \big) \\
-			& = & \big( \, p(h) \cdot p(h'), h \cdot h' \cdot rp(h')^{-1} \cdot rp(h)^{-1} \, \big) \\
-			& = & \big( \, p(h) \cdot p(h'), h \cdot rp(h)^{-1} \cdot rp(h) \cdot h' \cdot rp(h')^{-1} \cdot rp(h)^{-1} \, \big) \\
-			& = & \big( \, p(h'), h \cdot rp(h)^{-1}, p(h) \, \big) \cdot \big( \, h' \cdot rp(h')^{-1} \, \big) \\
-			& = & f(h) \cdot f(h')
-		\end{array}
-\end{eq*}
-Next, define another map $f^{-1}: K \times N \to H$ by
-\begin{eq*} f^{-1}(k, n) \quad := \quad n \cdot r(k) \end{eq*}
-$f^{-1}$ is also well-defined, because
-\begin{eq*} \begin{array}{rll}
-			f^{-1}\big( \, (k, n) \cdot (k',n') \, \big) & = & f^{-1}\big( \,  \, kk', \, n \cdot r(k) \cdot n' \cdot r(k)^{-1} \, \big) \\
-			& = & \big( \, n \cdot r(k) \cdot n' \cdot r(k)^{-1} \, \big) \cdot r(kk') \\
-			& = & n \cdot r(k) \cdot n' \cdot r(k)^{-1} \cdot r(k) \cdot r(k') \\
-			& = & n \cdot r(k) \cdot n' \cdot r(k') \\
-			& = & f^{-1}(k,n) \cdot f^{-1}(k',n')
-		\end{array} 
-\end{eq*}
-and due to the fact that $p: N \hookrightarrow H \to K$ is the zero map, $f$ and $f^{-1}$ are inverses:
-\begin{longtable}{RLL}
-	f^{-1}f(h) & = & f^{-1}\big( \, p(h), \, h \cdot rp(h)^{-1} \, \big) \\
-	& = & \big( \, h \cdot rp(h)^{-1} \, \big) \cdot r\big( \, p(h) \, \big) \\
-	& = & h \cdot rp(h)^{-1} \cdot rp(h) \\
-	& = & h \\
-	& & \\
-	ff^{-1}(k,n) & = & f\big( \, n \cdot r(k) \, \big) \\
-	& = & \Big( \, p\big( \, n \cdot r(k) \, \big), \, n \cdot r(k) \cdot rp\big( \, n \cdot r(k) \, \big)^{-1} \, \Big) \\
-	& = & \big( \, p(n) \cdot pr(k), \, n \cdot r(k) \cdot rpr(k)^{-1} \cdot rp(n)^{-1} \, \big) \\
-	& = & \big( \, e \cdot k, \, n \cdot r(k) \cdot r(k)^{-1} \cdot e \, \big) \\
-	& = & (k, n)
-\end{longtable}
-Thus $f$ is an isomorphism of groups $H \cong K \ltimes N$. Also, if $N$ is in the center of $H$ then the multiplication in $K \ltimes N$ becomes
-\begin{eq*} \begin{array}{rll}
-			(k,n) \cdot (k',n') & = & ( \, kk', nkn'k^{-1} \, ) \\
-			& = & ( \, kk', nn'kk^{-1} \, ) \\
-			& = & (kk', nn')
-		\end{array}
-\end{eq*}
-and so $H$ really is the direct product of groups $K \times N$.
-\end{proof}
-
-With that out of the way, we can now produce an expression for the morphisms of the algebra $L_n$.
- 
+%We have finally described all of the important properties of $(s \times t)(L_n)$ and $L_n(I,I)$ that we will need. Putting these results together will let us characterize the morphisms of $L_n$ as a product of groups, as promised at the beginning of the chapter. Before we do though, it will be worth going over a few well-known pieces of group theory (from for example \cite{rob-grouptheory} QQQ needed?) that we will be using in the proof of \cref{morprod}.
+%
+%\begin{Defi} Let $H$, $K$ and $N$ be groups. Then we say that $H$ is a \emph{group extension} of $K$ by $N$ if there exists a short exact sequence
+%\begin{eq*} \begin{tikzcd}
+%0 \ar[r] & N \ar[r, hookrightarrow, "i"] & H \ar[r, "p"] & K \ar[r] & 0
+%\end{tikzcd} \end{eq*}
+%In other words, $H$ is an extension of $K$ by $N$ whenever we have $K = H/N$. Moreover, if $N$ is a subgroup of the centre of $H$, we say that this is a \emph{central} extension, and if the map $p$ has a right-inverse, $r: K \to H$, $p \circ r = \mathrm{id}_K$, then we say that it is a \emph{split} extension.
+%\end{Defi}
+%
+%\begin{Defi} Let $H$ be a group with subgroup $K$ and normal subgroup $N$. Then we say that $H$ is a \emph{semidirect product} $K \ltimes N$ if the underlying set of $H$ is the same as underlying set of $K \times N$, but multiplication is given by
+%\begin{eq*} (k,n) \cdot (k',n') \quad = \quad ( \, kk', \, nkn'k^{-1} \, ) \end{eq*}
+%\end{Defi}
+%
+%\begin{lem} \label{splitex} If $H$ is a split extension of $K$ by $N$ then $H = K \ltimes N$, with $r: K \to H$ acting as the subgroup inclusion. Further, if $H$ is split and central, then $H \cong K \times N$.
+%\end{lem}
+%\begin{proof}
+%Define a group homomorphism $f: H \to K \ltimes N$  by
+%\begin{eq*} f(h) \quad := \quad \big( \, p(h), h \cdot rp(h)^{-1} \, \big) \end{eq*}
+%This is a well-defined homomorphism, since
+%\begin{eq*} \begin{array}{rll}
+%			f(hh') & = & \big( \, p(hh'), hh' \cdot rp(hh')^{-1} \, \big) \\
+%			& = & \big( \, p(h) \cdot p(h'), h \cdot h' \cdot rp(h')^{-1} \cdot rp(h)^{-1} \, \big) \\
+%			& = & \big( \, p(h) \cdot p(h'), h \cdot rp(h)^{-1} \cdot rp(h) \cdot h' \cdot rp(h')^{-1} \cdot rp(h)^{-1} \, \big) \\
+%			& = & \big( \, p(h'), h \cdot rp(h)^{-1}, p(h) \, \big) \cdot \big( \, h' \cdot rp(h')^{-1} \, \big) \\
+%			& = & f(h) \cdot f(h')
+%		\end{array}
+%\end{eq*}
+%Next, define another map $f^{-1}: K \times N \to H$ by
+%\begin{eq*} f^{-1}(k, n) \quad := \quad n \cdot r(k) \end{eq*}
+%$f^{-1}$ is also well-defined, because
+%\begin{eq*} \begin{array}{rll}
+%			f^{-1}\big( \, (k, n) \cdot (k',n') \, \big) & = & f^{-1}\big( \,  \, kk', \, n \cdot r(k) \cdot n' \cdot r(k)^{-1} \, \big) \\
+%			& = & \big( \, n \cdot r(k) \cdot n' \cdot r(k)^{-1} \, \big) \cdot r(kk') \\
+%			& = & n \cdot r(k) \cdot n' \cdot r(k)^{-1} \cdot r(k) \cdot r(k') \\
+%			& = & n \cdot r(k) \cdot n' \cdot r(k') \\
+%			& = & f^{-1}(k,n) \cdot f^{-1}(k',n')
+%		\end{array} 
+%\end{eq*}
+%and due to the fact that $p: N \hookrightarrow H \to K$ is the zero map, $f$ and $f^{-1}$ are inverses:
+%\begin{longtable}{RLL}
+%	f^{-1}f(h) & = & f^{-1}\big( \, p(h), \, h \cdot rp(h)^{-1} \, \big) \\
+%	& = & \big( \, h \cdot rp(h)^{-1} \, \big) \cdot r\big( \, p(h) \, \big) \\
+%	& = & h \cdot rp(h)^{-1} \cdot rp(h) \\
+%	& = & h \\
+%	& & \\
+%	ff^{-1}(k,n) & = & f\big( \, n \cdot r(k) \, \big) \\
+%	& = & \Big( \, p\big( \, n \cdot r(k) \, \big), \, n \cdot r(k) \cdot rp\big( \, n \cdot r(k) \, \big)^{-1} \, \Big) \\
+%	& = & \big( \, p(n) \cdot pr(k), \, n \cdot r(k) \cdot rpr(k)^{-1} \cdot rp(n)^{-1} \, \big) \\
+%	& = & \big( \, e \cdot k, \, n \cdot r(k) \cdot r(k)^{-1} \cdot e \, \big) \\
+%	& = & (k, n)
+%\end{longtable}
+%Thus $f$ is an isomorphism of groups $H \cong K \ltimes N$. Also, if $N$ is in the center of $H$ then the multiplication in $K \ltimes N$ becomes
+%\begin{eq*} \begin{array}{rll}
+%			(k,n) \cdot (k',n') & = & ( \, kk', nkn'k^{-1} \, ) \\
+%			& = & ( \, kk', nn'kk^{-1} \, ) \\
+%			& = & (kk', nn')
+%		\end{array}
+%\end{eq*}
+%and so $H$ really is the direct product of groups $K \times N$.
+%\end{proof}
+%
+%With that out of the way, we can now produce an expression for the morphisms of the algebra $L_n$.
+% 
 \begin{prop} \label{morprod} For any action operad $G$,
 \begin{eq*} \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \ltimes L_n(I,I) \end{eq*}
 Moreover, if $G$ is a crossed action operad, then
@@ -6980,72 +6982,77 @@ By the universal property of quotients, the map $\mathrm{Mor}(L_n) \to \mathrm{M
 & & \\
 \bigquotient{\mathrm{Mor}(L_n)}{L_n(I,I)} \ar[rr, "u"] & & (s \times t)(L_n)
 \end{tikzcd} \end{eq*}
-This map $u$ will be surjective --- because $s \times t$ is --- but in fact it will also be injective. This is because if two morphisms $f, f'$ of $L_n$ have the same source and target, then the map $h = f^* \otimes f'$ is an element of $L_n(I,I)$ for which $f \otimes h = f'$, and so clearly $f$ and $f'$ are part of the same equivalence class in $\mathrm{Mor}(L_n)/L_n(I,I)$. More precisely, 
-\begin{eq*} \begin{array}{rclcrcl}
-		[f] & \neq & [f'] & \implies & [f]^* \otimes [f'] & \neq & [I] \\
-		& & & \implies & [f^* \otimes f'] & \neq & [I] \\
-		& & & \implies & f^* \otimes f' & \notin & L_n(I,I)
-		\end{array}
-\end{eq*}
-\begin{eq*} \begin{array}{rrcl}
-		\implies & (s \times t)(f^* \otimes f') & \neq & (I, I) \\
-		\implies & (s \times t)(f)^* \otimes (s \times t)(f') & \neq & (I, I) \\
-		\implies & (s \times t)(f) & \neq & (s \times t)(f')
-		\end{array}
-\end{eq*}
+This map $u$ will be surjective --- because $s \times t$ is --- but in fact it will also be injective. This is because if two morphisms $f, f'$ of $L_n$ have the same source and target, then the map $h = f^* \otimes f'$ is an element of $L_n(I,I)$ for which $f \otimes h = f'$, and so clearly $f$ and $f'$ are part of the same equivalence class in $\mathrm{Mor}(L_n)/L_n(I,I)$. 
+%More precisely, 
+%\begin{eq*} \begin{array}{rclcrcl}
+%		[f] & \neq & [f'] & \implies & [f]^* \otimes [f'] & \neq & [I] \\
+%		& & & \implies & [f^* \otimes f'] & \neq & [I] \\
+%		& & & \implies & f^* \otimes f' & \notin & L_n(I,I)
+%		\end{array}
+%\end{eq*}
+%\begin{eq*} \begin{array}{rrcl}
+%		\implies & (s \times t)(f^* \otimes f') & \neq & (I, I) \\
+%		\implies & (s \times t)(f)^* \otimes (s \times t)(f') & \neq & (I, I) \\
+%		\implies & (s \times t)(f) & \neq & (s \times t)(f')
+%		\end{array}
+%\end{eq*}
 Thus $u$ is bijective, so that
 \begin{eq*} \bigquotient{\mathrm{Mor}(L_n)}{L_n(I,I)} \quad \cong \quad (s \times t)(L_n) \end{eq*}
 In other words, what have here is a group extension
 \begin{eq*} \begin{tikzcd}
 0 \ar[r] & L_n(I,I) \ar[r, hookrightarrow] & \mathrm{Mor}(L_n) \ar[r, "s \times t"] & (s \times t)(L_n) \ar[r] & 0
 \end{tikzcd} \end{eq*}
-But recall from \cref{stZsub} that $(s \times t)(L_n)$ is also a submonoid (and hence subgroup) of $\mathrm{Mor}(L_n)$, so that we have another map $i: (s \times t)(L_n) \to \mathrm{Mor}(L_n)$ for which $(s \times t) \circ i = \mathrm{id}_{(s \times t)(L_n)}$. That is, the above is a split extension of groups, or equivalently $\mathrm{Mor}(L_n)$ is a semi direct product $(s \times t)(L_n) \ltimes L_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$, and so it will follow that $\mathrm{Mor}(L_n)$ is also a central extension of $(s \times t)(L_n)$. In that case $\mathrm{Mor}(L_n)$ is really just the direct product $(s \times t)(L_n) \times L_n(I,I)$, as required.
+But recall from \cref{stZsub} that this extension is split, or equivalently $\mathrm{Mor}(L_n)$ is a semi direct product $(s \times t)(L_n) \ltimes L_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$, and so it will follow that $\mathrm{Mor}(L_n)$ is also a central extension of $(s \times t)(L_n)$. In that case $\mathrm{Mor}(L_n)$ is really just the direct product $(s \times t)(L_n) \times L_n(I,I)$, as required.
 \end{proof}
 
 In certain select cases, \cref{morprod} will actually be sufficient to fully determine $\mathrm{Mor}(L_n)$ --- specifically, whenever we know that the unit endomorphisms of $L_n$ are trivial. We already know of two examples like this, due to \cref{noscalarcross,noscalarnoncross}.
 
 \begin{cor} \label{trivendo} If $G$ is a crossed action operad with $G(m) = G(0)$ for all $m \in \mathbb{N}$, then
 \begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n} \end{eq*}
-Instead if $G$ is a $G(1)$-generated action operad, then
-\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \quad = \quad \mathrm{Ob}(L_n) \quad = \quad \mathbb{Z}^{\ast n} \end{eq*}
+%Instead if $G$ is a $G(1)$-generated action operad, then
+%\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \quad = \quad \mathrm{Ob}(L_n) \quad = \quad \mathbb{Z}^{\ast n} \end{eq*}
 \end{cor} 
 
-In the latter case, what this is saying is that every morphism in $L_n$ is just the identity element of some object.
+%In the latter case, what this is saying is that every morphism in $L_n$ is just the identity element of some object.
 
-But what about for more general $L_n$ with nontrivial unit endomorphisms? For crossed $G$, the key insight is that one half of the product in \cref{morprod}, $L_n(I, I)$, is always an abelian group. This means that it will remain untouched if we were to abelianise the entire product, thus providing a link between $\mathrm{Mor}(L_n)$ before and after abelianization.
+For crossed $G$, note that $L_n(I, I)$ is always an abelian group. This by abelianization, thus providing a link between $\mathrm{Mor}(L_n)$ before and after abelianization.
 
 \begin{prop}\label{Zmor1} Let $G$ be a crossed action operad. Then the endomorphisms of the unit object of $L_n$ are
-\begin{eq*} L_n(I, I) \quad = \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
+\begin{eq*} L_n(I, I) \quad \cong \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
 and therefore
-\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \, \times \, \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
+\begin{eq*} \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \, \times \, \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}}. \end{eq*}
 \end{prop}
 \begin{proof}
-From \cref{morprod}, we know that
-\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \times L_n(I, I) \end{eq*}
-Abelianising both sides of this equation, we get
-\begin{eq*} \begin{array}{rll}
-			{\mathrm{Mor}(L_n)}^{\mathrm{ab}} & = & \big( \, (s \times t)(L_n) \times L_n(I, I) \, \big)^{\mathrm{ab}} \\
-			& = & {(s \times t)(L_n)}^{\mathrm{ab}} \times {L_n(I, I)}^{\mathrm{ab}} \\
-			& = & {(s \times t)(L_n)}^{\mathrm{ab}} \times L_n(I, I) \\
-		\end{array}
-\end{eq*} 
-since $L_n(I, I)$ is already abelian. Now, there is an obvious inclusion ${(s \times t)(L_n)}^{\mathrm{ab}} \hookrightarrow (s \times t)(L_n)^{\mathrm{ab}} \times L_n(I, I)$, and since everything here is abelian, all subgroups are normal subgroups. Thus we can take the quotient of the above equation by this map, to obtain 
-\begin{eq*} L_n(I, I) \quad = \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
-Finally, we can now substitute this expression back into our original equation, giving
-\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \, \times \, \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
-as required.
+Both statements follow from the simple fact that abelianization preserves products.
+%From \cref{morprod}, we know that
+%\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \times L_n(I, I) \end{eq*}
+%Abelianising both sides of this equation, we get
+%\begin{eq*} \begin{array}{rll}
+%			{\mathrm{Mor}(L_n)}^{\mathrm{ab}} & = & \big( \, (s \times t)(L_n) \times L_n(I, I) \, \big)^{\mathrm{ab}} \\
+%			& = & {(s \times t)(L_n)}^{\mathrm{ab}} \times {L_n(I, I)}^{\mathrm{ab}} \\
+%			& = & {(s \times t)(L_n)}^{\mathrm{ab}} \times L_n(I, I) \\
+%		\end{array}
+%\end{eq*} 
+%since $L_n(I, I)$ is already abelian. Now, there is an obvious inclusion ${(s \times t)(L_n)}^{\mathrm{ab}} \hookrightarrow (s \times t)(L_n)^{\mathrm{ab}} \times L_n(I, I)$, and since everything here is abelian, all subgroups are normal subgroups. Thus we can take the quotient of the above equation by this map, to obtain 
+%\begin{eq*} L_n(I, I) \quad = \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
+%Finally, we can now substitute this expression back into our original equation, giving
+%\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \, \times \, \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
+%as required.
 \end{proof}
 
-Unfortunately, there is no general version of \cref{Zmor1} for when $G$ is not crossed. This is because if we try to abelianise the semidirect product from \cref{morprod}, we will arrive at a product of the relevant abelian group, but a new term will also appear indicating the degree to which $L_n(I, I)$ and $ (s \times t)(L_n)$ fail to commute.
+%Unfortunately, there is no general version of \cref{Zmor1} for when $G$ is not crossed. This is because if we try to abelianise the semidirect product from \cref{morprod}, we will arrive at a product of the relevant abelian group, but a new term will also appear indicating the degree to which $L_n(I, I)$ and $ (s \times t)(L_n)$ fail to commute.
+%
+%\begin{lem} If $H$ is semidirect product $K \ltimes N$, then its abelianization is
+%\begin{eq*} H^{\mathrm{ab}} \quad = \quad K^{\mathrm{ab}} \, \times \, \bigquotient{N^{\mathrm{ab}}}{[N,K]} \end{eq*}
+%where $[N,K]$ is the commutator of $N$ with $K$.
+%\end{lem}
+%
+%We do not know what the unit endomorphism of $L_n$ are yet -- indeed, that's the one thing we are trying to figure out using this abelianization tactic --- and so this new term $[L_n(I, I), (s \times t)(L_n)]$ is not something we can understand. The obvious exception to this is when our non-crossed $G$ is $G(1)$-generated, where we do know that $L_n(I, I)$ is trivial and so of course $[L_n(I, I), (s \times t)(L_n)] = (s \times t)(L_n)$.
+%
+%If we stick to working with crossed action operads however, we are now only one step away from a complete expression for $\mathrm{Mor}(L_n)$. The last term whose value we do not know is $\mathrm{Mor}(L_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{Mor}(L_n)^{\mathrm{ab}}$, and as one might expect this is related to the value that the algebra takes under the collapsed morphism left adjoint, $\mathrm{M}(L_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{M}(L_n)^{\mathrm{ab}}$
+%
 
-\begin{lem} If $H$ is semidirect product $K \ltimes N$, then its abelianization is
-\begin{eq*} H^{\mathrm{ab}} \quad = \quad K^{\mathrm{ab}} \, \times \, \bigquotient{N^{\mathrm{ab}}}{[N,K]} \end{eq*}
-where $[N,K]$ is the commutator of $N$ with $K$.
-\end{lem}
-
-We do not know what the unit endomorphism of $L_n$ are yet -- indeed, that's the one thing we are trying to figure out using this abelianization tactic --- and so this new term $[L_n(I, I), (s \times t)(L_n)]$ is not something we can understand. The obvious exception to this is when our non-crossed $G$ is $G(1)$-generated, where we do know that $L_n(I, I)$ is trivial and so of course $[L_n(I, I), (s \times t)(L_n)] = (s \times t)(L_n)$.
-
-If we stick to working with crossed action operads however, we are now only one step away from a complete expression for $\mathrm{Mor}(L_n)$. The last term whose value we do not know is $\mathrm{Mor}(L_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{Mor}(L_n)^{\mathrm{ab}}$, and as one might expect this is related to the value that the algebra takes under the collapsed morphism left adjoint, $\mathrm{M}(L_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{M}(L_n)^{\mathrm{ab}}$
+Start here
 
 \begin{prop} \label{colquot} Let $X$ be any monoidal category whose objects are morphisms are all invertible under tensor product. Then the group completion of the abelianization of the collapsed morphisms of $X$ are
 \begin{eq*} \mathrm{M}(X)^{\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{Mor}(X)^{\mathrm{ab}}}{\mathrm{Ob}(X)^{\mathrm{ab}}} \end{eq*}
