@@ -7052,36 +7052,31 @@ Both statements follow from the simple fact that abelianization preserves produc
 %If we stick to working with crossed action operads however, we are now only one step away from a complete expression for $\mathrm{Mor}(L_n)$. The last term whose value we do not know is $\mathrm{Mor}(L_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{Mor}(L_n)^{\mathrm{ab}}$, and as one might expect this is related to the value that the algebra takes under the collapsed morphism left adjoint, $\mathrm{M}(L_n)^{\mathrm{gp}, \mathrm{ab}} = \mathrm{M}(L_n)^{\mathrm{ab}}$
 %
 
-Start here
-
-\begin{prop} \label{colquot} Let $X$ be any monoidal category whose objects are morphisms are all invertible under tensor product. Then the group completion of the abelianization of the collapsed morphisms of $X$ are
-\begin{eq*} \mathrm{M}(X)^{\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{Mor}(X)^{\mathrm{ab}}}{\mathrm{Ob}(X)^{\mathrm{ab}}} \end{eq*}
-where we are viewing $\mathrm{Ob}(X)$ as a subgroup of $\mathrm{Mor}(X)$ under tensor product by using the inclusion
-\begin{eq*} \begin{array}{rcl}
-			\mathrm{Ob}(X) & \to & \mathrm{Mor}(X) \\
-			x & \mapsto & \mathrm{id}_x
-		\end{array}
-\end{eq*}
+\begin{prop} \label{colquot} Let $X$ be any monoidal category whose objects and morphisms are all invertible under tensor product. Then the monoid of collapsed morphisms $\mathrm{M}(X)$ is already a group, and its abelianization is isomorphic to $\mathrm{Mor}(X)^{\mathrm{ab}}/ \mathrm{Ob}(X)^{\mathrm{ab}}$.
+%
+%Then the group completion of the abelianization of the collapsed morphisms of $X$ are
+%\begin{eq*} \mathrm{M}(X)^{\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{Mor}(X)^{\mathrm{ab}}}{\mathrm{Ob}(X)^{\mathrm{ab}}} \end{eq*}
+%where we are viewing $\mathrm{Ob}(X)$ as a subgroup of $\mathrm{Mor}(X)$ under tensor product by using the inclusion
+%\begin{eq*} \begin{array}{rcl}
+%			\mathrm{Ob}(X) & \to & \mathrm{Mor}(X) \\
+%			x & \mapsto & \mathrm{id}_x
+%		\end{array}
+%\end{eq*}
 \end{prop}
 \begin{proof}
-Recall \cref{tenscomp}, which says that in any monoidal category with invertible objects,
-\begin{eq*} f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y*} \otimes f \end{eq*}
-We will proceed by checking what effect this relation in $\mathrm{Mor}(X)$ will have on the two quotients that we are comparing. 
-
-First, consider the canonical homomorphism $\psi: \mathrm{Mor}(X) \to \mathrm{M}(X) \to \mathrm{M}(X)^{\mathrm{ab}}$, where $\mathrm{Mor}(X)$ is being considered as a group under $\otimes$. Also $\mathrm{M}(X)$ is a group rather than just a monoid, since if $f^*$ is the inverse of $f$ under tensor product in $\mathrm{Mor}(X)$, then the equivalence class $\mathrm{M}(f^*)$ is an inverse of $\mathrm{M}(f)$ under the collapsed product of $\mathrm{M}(X)$. Clearly this map obeys the relation $\psi(f' \circ f) = \psi(f' \otimes f)$ for any $f: x \to y$, $f': y \to z$ in $X$, because it passes through $\mathrm{M}(X)$, and so we also have
+Recall  that in any monoidal category with invertible objects,
+\[ f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y*} \otimes f \]
+by \cref{tenscomp}, so both $\mathrm{Mor}(X)$ and $\mathrm{M}(X)$ are groups. Consider the canonical homomorphism $\psi: \mathrm{Mor}(X) \to \mathrm{M}(X) \to \mathrm{M}(X)^{\mathrm{ab}}$. For any composable pair $f: x \to y$, $f': y \to z$ in $X$, we have
+%, where $\mathrm{Mor}(X)$ is being considered as a group under $\otimes$. Also $\mathrm{M}(X)$ is a group rather than just a monoid, since if $f^*$ is the inverse of $f$ under tensor product in $\mathrm{Mor}(X)$, then the equivalence class $\mathrm{M}(f^*)$ is an inverse of $\mathrm{M}(f)$ under the collapsed product of $\mathrm{M}(X)$. Clearly this map obeys the relation $\psi(f' \circ f) = \psi(f' \otimes f)$ for any $f: x \to y$, $f': y \to z$ in $X$, because it passes through $\mathrm{M}(X)$, and so we also have
 \begin{eq*} \begin{array}{rll}
 			\psi(f' \otimes f) & = & \psi(f' \circ f) \\
 			& = & \psi(f' \otimes \mathrm{id}_{y*} \otimes f) \\
 			& = & \psi(f') \otimes \psi(\mathrm{id}_{y*}) \otimes \psi(f) \\
 			& = & \psi(f') \otimes \psi(f) \otimes \psi(\mathrm{id}_{y*}) \\
 			& = & \psi(f' \otimes f) \otimes \psi(\mathrm{id}_{y*}) \\
-			& & \\
-			\implies \quad \psi(\mathrm{id}_{y*}) & = & e
 		\end{array}
 \end{eq*}
-But since $\psi$ is also a map from $\mathrm{Mor}(X)$ onto an abelian group, we know that it must factor uniquely though some other homomorphism $\mathrm{Mor}(X)^{\mathrm{ab}} \to \mathrm{M}(X)^{\mathrm{ab}}$, which we will call $\psi'$. This map will inherit from $\psi$ the property that
-\begin{eq*} \psi'\big( \, \mathrm{ab}(\mathrm{id}_{x}) \, \big) \quad = \quad \psi(\mathrm{id}_{x}) \quad = \quad e \end{eq*}
-for all  $x \in \mathrm{Ob}(X)$.
+so $\psi(\mathrm{id}_{y*}) = e$ for any object $y$, so $\mathrm{Ob}(X)$ is contained in the kernel of $\psi$.
 
 Now let $A$ be an abelian group and $\phi: \mathrm{Mor}(X)^{\mathrm{ab}} \to A$ any homomorphism of groups which satisfies the condition $\phi(\mathrm{ab}(\mathrm{id}_x)) = e$ for all objects $x$. Then
 \begin{eq*} \begin{array}{rll}
@@ -7091,15 +7086,26 @@ Now let $A$ be an abelian group and $\phi: \mathrm{Mor}(X)^{\mathrm{ab}} \to A$ 
 			& = & \phi\big( \, \mathrm{ab}(f' \otimes f) \, \big)
 		\end{array}
 \end{eq*}
-By \cref{Morder} this is the defining relation for the group $\mathrm{M}(X)^{\mathrm{ab}}$. It follows that for any $\phi$ with $\phi(\mathrm{ab}(\mathrm{id}_x)) = e$, there must exist a unique homomorphism $\mathrm{M}(X)^{\mathrm{ab}} \to A$ which factors $\phi$ through $\psi'$. But this in turn is just the universal property of the quotient $\mathrm{Mor}(X)^{\mathrm{ab}}/\mathrm{Ob}(X)^{\mathrm{ab}}$ in $\mathrm{Ab}$. Since colimits like quotient groups are unique up to isomorphism, we can therefore conclude that
-\begin{eq*} \mathrm{M}(X)^{\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{Mor}(X)^{\mathrm{ab}}}{\mathrm{Ob}(X)^{\mathrm{ab}}} \end{eq*}
+By \cref{Morder} this is the defining relation for the group $\mathrm{M}(X)^{\mathrm{ab}}$, so $\mathrm{M}(X)^{\mathrm{ab}}$ and $\mathrm{Mor}(X)^{\mathrm{ab}}/\mathrm{Ob}(X)^{\mathrm{ab}}$ have the same universal property, hence are uniquely isomorphic under $\mathrm{Mor}(X)^{\mathrm{ab}}$.
+
+
+
+%But since $\psi$ is also a map from $\mathrm{Mor}(X)$ onto an abelian group, we know that it must factor uniquely though some other homomorphism $\mathrm{Mor}(X)^{\mathrm{ab}} \to \mathrm{M}(X)^{\mathrm{ab}}$, which we will call $\psi'$. This map will inherit from $\psi$ the property that
+%\begin{eq*} \psi'\big( \, \mathrm{ab}(\mathrm{id}_{x}) \, \big) \quad = \quad \psi(\mathrm{id}_{x}) \quad = \quad e \end{eq*}
+%for all  $x \in \mathrm{Ob}(X)$.
+
+ %It follows that for any $\phi$ with $\phi(\mathrm{ab}(\mathrm{id}_x)) = e$, there must exist a unique homomorphism $\mathrm{M}(X)^{\mathrm{ab}} \to A$ which factors $\phi$ through $\psi'$. But this in turn is just the universal property of the quotient $\mathrm{Mor}(X)^{\mathrm{ab}}/\mathrm{Ob}(X)^{\mathrm{ab}}$ in $\mathrm{Ab}$. Since colimits like quotient groups are unique up to isomorphism, we can therefore conclude that
+%\begin{eq*} \mathrm{M}(X)^{\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{Mor}(X)^{\mathrm{ab}}}{\mathrm{Ob}(X)^{\mathrm{ab}}} \end{eq*}
 \end{proof}
 
-Now at last we are finished. All that remains for us to do is simply chain together all of our previous results from this chapter into a single description of the group $\mathrm{Mor}(L_n)$.
+We come now to our first description of the group $\mathrm{Mor}(L_n)$.
 
-\begin{prop} \label{Zmor} For crossed action operads $G$, the morphism monoid of $L_n$ is equal to
-\begin{eq*} \mathrm{Mor}(L_n) \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \end{eq*}
+\begin{prop} \label{Zmor} For crossed action operads $\ML$, the morphism monoid of $L_n$ is 
+\begin{eq*} \mathrm{Mor}(L_n) \quad \cong \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \end{eq*}
 \end{prop}
+
+Start here
+
 \begin{proof}
 Consider the quotient group
 \begin{eq*} L_n(I,I) \quad = \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \end{eq*}
