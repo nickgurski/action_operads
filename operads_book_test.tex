@@ -7103,33 +7103,34 @@ We come now to our first description of the group $\mathrm{Mor}(L_n)$.
 \begin{prop} \label{Zmor} For crossed action operads $\ML$, the morphism monoid of $L_n$ is 
 \[ \mathrm{Mor}(L_n) \quad \cong \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \]
 \end{prop}
+
+Start here
+
 \begin{proof}
 Consider the quotient group
 \[ L_n(I,I) \quad = \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
 from \cref{Zmor1}, and not that this quotient clearly depends on the way that have chosen to see $(s \times t)(L_n)$ as a subgroup of of the morphisms $L_n$. Recall that  in the proof of \cref{stGnsub}, we used the freeness of the monoid $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ to define a subgroup by choosing values for some function $\rho$ on generators; this choice of $\rho$ was then further constrained by requiring $\rho \delta = \delta \rho$ whenever both sides of this equation are defined. Now $(z_i, z_i)$ is indecomposable for any generator $z_i$ of $\mathbb{N}^{*n}$ and not in the image of $\delta$, so we may choose $\rho(z_i, z_i) = e_1$ for each such generator. The corresponding element of $(s \times t)(L_n)$ is then $\mathrm{id}_{z_i}$, and the group
 \[ \mathrm{Ob}(L_n) \quad \cong \quad \{ \, \mathrm{id}_x \, ; \, x \in \, \mathrm{Ob}(L_n) \}\]
 will be a subgroup of $(s \times t)(L_n)$, and thus $\mathrm{Ob}(L_n)^{\mathrm{ab}}$ a subgroup of $(s \times t)(L_n)^{\mathrm{ab}}$. Then 
-\[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad \cong \quad \frac{\left(\quotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}. \]
+\[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad \cong \quad \frac{\left(\quotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)} \]
+
+
+
+
+. Since these $\rho(z,z')$ can be whichever element of the appropriate $G(m)$ we want, we can retroactively pick them in a way that makes our current calculations easier. Specifically, if we let $\rho(z_i, z_i) = e_1$ for each generator $z_i$ of $\mathbb{N}^{\ast n}$, then the corresponding element of the subgroup $(s \times t)(L_n)$ will be
+\[ \alpha_{L_n}(e_1;z_i) \quad = \quad \mathrm{id}_{z_i}\]
+Given this choice, clearly . It follows that
+\[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)} \]
 Using \cref{colquot} to change the numerator and \cref{Zobj,stpullback} to simplify the denominator, this quotient becomes
 \[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \]
 But from \cref{Zmor1} we know that
 \[ \mathrm{Mor}(L_n) \quad = \quad (s \times t)(L_n) \, \times \, \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
 and together these give the required description of the morphisms of $L_n$.
-
-
-
-%Since these $\rho(z,z')$ can be whichever element of the appropriate $G(m)$ we want, we can retroactively pick them in a way that makes our current calculations easier. Specifically, if we let $\rho(z_i, z_i) = e_1$ for each generator $z_i$ of $\mathbb{N}^{\ast n}$, then the corresponding element of the subgroup $(s \times t)(L_n)$ will be
-%\[ \alpha_{L_n}(e_1;z_i) \quad = \quad \mathrm{id}_{z_i}\]
-%Given this choice, clearly . It follows that
-%\[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)} \]
-
 \end{proof}
 
-\section{Calculating the abelianized source and target}
+\section{Abelianising sources and targets}
  
-%To say that the expression for $\mathrm{Mor}(L_n)$ we just found is `complicated' would probably be an understatement. If we are to have any hope of eventually being able to use \cref{Zmor}, we need to work out a more explicit presentation for its quotient part. We'll start by trying to find the value of $(s \times t)(L_n)^{\mathrm{ab}}$ for crossed $G$, the abelian group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. This will require some careful consideration, since in general limits such as the pullback do not interact with abelianization in a simple way. What would help is a suitable presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in terms of some generators and relations. 
-
-We now spend this section calculating the group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^\mathrm{{ab}}$. We begin by giving a presentation of just $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$.
+To say that the expression for $\mathrm{Mor}(L_n)$ we just found is `complicated' would probably be an understatement. If we are to have any hope of eventually being able to use \cref{Zmor}, we need to work out a more explicit presentation for its quotient part. We'll start by trying to find the value of $(s \times t)(L_n)^{\mathrm{ab}}$ for crossed $G$, the abelian group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. This will require some careful consideration, since in general limits such as the pullback do not interact with abelianization in a simple way. What would help is a suitable presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in terms of some generators and relations. 
 
 \begin{prop} \label{pushpres} The pullback group $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is generated by two families of elements,
 \[ \langle x \rangle \quad := \quad (x, x) \quad \quad \text{and} \quad \quad \langle xy \rangle \quad := \quad (xy, yx) \]
@@ -7147,87 +7148,56 @@ where $x,y \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ are generators of the free 
 		\end{array}
 \]
 \end{prop}
-
-Start here
-
 \begin{proof}
-We begin by constructing a certain symmetric monoidal category denoted $Z$. 
+We'll begin by constructing a certain monoidal category, which we'll call $Z$. 
 \begin{itemize}
-\item The objects of $Z$ are the elements of the group $\mathbb{Z}^{\ast n}$, with the usual group multiplication as the tensor product.
-\item There is a unique morphisms between any two objects $x$ and $y$ for which $\mathrm{ab}(x) = \mathrm{ab}(y)$, where $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$ is the quotient map of abelianization. In other words, the monoid of morphisms of $Z$ are the elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, with group multiplication as the tensor product and composition given by
-\[ (y,z) \circ (x,y) \quad = \quad (x, z). \]
+\item The objects of $Z$ are the elements of the group $\mathbb{Z}^{\ast n}$, with the usual multiplication as the tensor product.
+\item There is a unique morphisms between any two objects $x$ and $y$ for which $\mathrm{ab}(x) = \mathrm{ab}(y)$, where $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$ is the quotient map of abelianization. In other words, the morphisms of $Z$ are the elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, with multiplication as the tensor product and composition given by
+\[ (x,y) \circ (y,z) \quad = \quad (x, z) \]
 \item The identity map on an object $x$ is then the unique map $(x,x) : x \to x$.
 \end{itemize}
-The axioms for a symmetric monoidal category are satisfied since any morphisms with the same source and target are equal.
-%$Z$ is almost the subcategory of $L_n$ whose morphisms are the subgroup isomorphic to $(s \times t)(L_n)$ that we chose in \cref{stZsub}. However, we never required those representatives to be closed under composition, so $Z$ is a strictly formal version of the subcategory on $(s \times t)(L_n)$, one that doesn't involve any specific choice of the map $\rho$. 
-%It is a well-defined monoidal category; the only thing that might not be immediately clear is the law of interchange, which is just given by
-%\[ \begin{array}{rll}
-%			\big( \, (x,y) \circ (y,z) \, \big) \otimes \big( \, (x',y') \circ (y',z') \, \big) & = & (x,z) \otimes (x',z') \\
-%			& = & (xx',zz') \\
-%			& = & (xx',yy') \circ (yy',zz') \\
-%			& = & \big( \, (x,y) \otimes (x',y') \, \big) \circ \big( \, (y,z) \otimes (y',z') \, \big) 
-%		\end{array}
-%\]
+$Z$ is almost the subcategory of $L_n$ whose morphisms are the subgroup isomorphic to $(s \times t)(L_n)$ that we chose in \cref{stZsub}. However, we never required those representatives to be closed under composition, so $Z$ is a strictly formal version of the subcategory on $(s \times t)(L_n)$, one that doesn't involve any specific choice of the map $\rho$. It is a well-defined monoidal category; the only thing that might not be immediately clear is the law of interchange, which is just given by
+\[ \begin{array}{rll}
+			\big( \, (x,y) \circ (y,z) \, \big) \otimes \big( \, (x',y') \circ (y',z') \, \big) & = & (x,z) \otimes (x',z') \\
+			& = & (xx',zz') \\
+			& = & (xx',yy') \circ (yy',zz') \\
+			& = & \big( \, (x,y) \otimes (x',y') \, \big) \circ \big( \, (y,z) \otimes (y',z') \, \big) 
+		\end{array}
+\]
 But now recall from \cref{tenscomp} that in any monoidal category the composition of morphisms along an intertible object can be rewritten in terms of only the tensor product. In the case of $Z$, where all of the objects have inverses, we will have
-\[ (y,z) \circ (x,y) \quad = \quad (y, z) \otimes  (y^*, y^*) \otimes (x, y).   \]
+\[ (x,y) \circ (y, z) \quad = \quad (x, y) \otimes (y^*, y^*) \otimes (y, z) \]
+Using this composition operation will make it easier to understand the structure of the group $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$.
 
-
-Next, let $\mathbb{S}_{2n}$ be the free $\mathrm{E}\Sigma$-algebra on $2n$ objects, where $\Sigma$ is the symmetric action operad. Then there is an obvious symmetric monoidal functor $\psi : \mathbb{S}_{2n} \to Z$, given by
+Next, let $\mathbb{S}_{2n}$ be the free $\mathrm{E}S$-algebra on $2n$ objects, where $S$ is the symmetric action operad. Then there is an obvious monoidal functor $\psi : \mathbb{S}_{2n} \to Z$, given by
 \[ \begin{array}{rcrcl}
 			\psi & : & \mathbb{S}_{2n} & \to & Z \\
 			 & : & z_i & \mapsto & z_i \\
 			 & : & z_{n+i} & \mapsto & z_i^* \\
-	%		 & : & \alpha(\sigma; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) & \mapsto & (x_1 \otimes ... \otimes x_m, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)})
+			 & : & \alpha(\sigma; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) & \mapsto & (x_1 \otimes ... \otimes x_m, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)})
 		\end{array}
 \]
-The condition for $(y, y')$ to be an element of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is that there exists some sequence of generators and their inverses $x_1, ..., x_m \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ and some permutation $\sigma \in S_m$ for which
-\[ y \, = \, x_1 \otimes ... \otimes x_m, \quad \quad \quad y' \, = \, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)}, \]
-so the functor $\psi$ is clearly surjective. Thus it suffices to find generators of $\mathrm{Mor}(\mathbb{S}_{2n})$ under tensor product and composition, and the elementary transposition suffice. These give the generating morphism as \[ (x, x) \quad \quad \text{or} \quad \quad (x y, y x), \quad \quad \quad x, y \in \{z_1, ..., z_n, z_1^*, ..., z_n^* \} \]
-which we have written as $\langle x \rangle$ and $\langle xy \rangle$ in the statement of the proposition.
-%It follows from this that if we can find a collection of morphisms which generate $\mathrm{Mor}(\mathbb{S}_{2n})$ under composition and tensor product, their images under $\psi$ will also generate $\mathrm{Mor}(Z) = \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ under composition and tensor product, and hence under just tensor product. To begin, we know that any permutation $\sigma \in S_m$ can be written as a product $\sigma_{i_k} \cdot ... \cdot \sigma_{i_1}$ of elementary transpositions, giving
-%\[ \begin{array}{rlll}
-%			\alpha( \, \sigma \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha( \, \sigma_{i_k} \cdot ... \cdot \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
-%			& = &  \alpha( \, \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, )  \\
-%			& & \circ \, \alpha( \, \sigma_{i_2} \, ; \,  \mathrm{id}_{x_{\sigma_{i_1}(1)}}, ..., \mathrm{id}_{x_{\sigma_{i_1}(m)}} \, ) \, \circ ... \\
-%			& & \circ \, \alpha( \, \sigma_{i_k} \, ; \,  \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot ... \cdot \sigma_{i_1}(1)}}, ..., \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot ... \cdot \sigma_{i_1}(m)}} \, )
-%		\end{array}
-%\]
-%Then if $\sigma_i = (i \, \, i+1) \in S_m$ is some elementary transposition we will have
-%\[ \begin{array}{rll}
-%			\alpha( \, (i \, \, i+1) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha( \, e_{i-1} \otimes (1 2) \otimes e_{m-i-1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
-%			& = & \mathrm{id}_{x_1 \otimes ... \otimes x_{i-1}} \otimes \alpha( \, (1 2) \, ; \, \mathrm{id}_{x_i}, \mathrm{id}_{x_{i+1}} \, ) \otimes \mathrm{id}_{x_{i+2} \otimes ... \otimes x_m}
-%		\end{array}
-%\]
-%Therefore all of the morphisms of $\mathbb{S}_{2n}$ are generated by just the identities and the action maps $\alpha( \, (1 2) \, ; \, \mathrm{id}_{x_1}, \mathrm{id}_{x_2} \, )$ for all pairs $x_1, x_2 \in \{z_1, ..., z_{2n} \}$. Passing through $\psi$, this means that elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ can always be expressed as a tensor product of elements of the form
-
-
-Next we turn to the relations. The only ambiguity in the generators is 
-\[ \langle xx \rangle \quad = \quad (xx,xx) \quad = \quad (x,x) \otimes (x,x) \quad = \quad \langle x \rangle\langle x \rangle, \]
-but the symmetry on $x \otimes x$ in $Z$ is necessarily trivial so $\langle xx \rangle = \langle x \rangle\langle x \rangle$ is true as morphisms in $Z$ and thus is our first relation. Functoriality of the tensor product requires
-\[
-(c \otimes f) \circ (g \otimes b) = g \otimes f = (g \otimes d) \circ (a \otimes f)
+A necessary condition for $(y, y')$ to be an element of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is that there exists some sequence of generators and their inverses $x_1, ..., x_m \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ and some permutation $\sigma \in S_m$ for which
+\[ y \, = \, x_1 \otimes ... \otimes x_m, \quad \quad \quad y' \, = \, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)} \]
+Hence the functor $\psi$ is clearly surjective. It follows from this that if we can find a collection of morphisms which generate $\mathrm{Mor}(\mathbb{S}_{2n})$ under composition and tensor product, their images under $\psi$ will also generate $\mathrm{Mor}(Z) = \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ under composition and tensor product, and hence under just tensor product. To begin, we know that any permutation $\sigma \in S_m$ can be written as a product $\sigma_{i_k} \cdot ... \cdot \sigma_{i_1}$ of elementary transpositions, giving
+\[ \begin{array}{rlll}
+			\alpha( \, \sigma \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha( \, \sigma_{i_k} \cdot ... \cdot \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+			& = &  \alpha( \, \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, )  \\
+			& & \circ \, \alpha( \, \sigma_{i_2} \, ; \,  \mathrm{id}_{x_{\sigma_{i_1}(1)}}, ..., \mathrm{id}_{x_{\sigma_{i_1}(m)}} \, ) \, \circ ... \\
+			& & \circ \, \alpha( \, \sigma_{i_k} \, ; \,  \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot ... \cdot \sigma_{i_1}(1)}}, ..., \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot ... \cdot \sigma_{i_1}(m)}} \, )
+		\end{array}
 \]
-for every $f: b \to d, g: a \to c$. Using \cref{tenscomp}, the second equality is vacuous and the first corresponds to
-\[
-f \otimes g = 
+Then if $\sigma_i = (i \, \, i+1) \in S_m$ is some elementary transposition we will have
+\[ \begin{array}{rll}
+			\alpha( \, (i \, \, i+1) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha( \, e_{i-1} \otimes (1 2) \otimes e_{m-i-1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
+			& = & \mathrm{id}_{x_1 \otimes ... \otimes x_{i-1}} \otimes \alpha( \, (1 2) \, ; \, \mathrm{id}_{x_i}, \mathrm{id}_{x_{i+1}} \, ) \otimes \mathrm{id}_{x_{i+2} \otimes ... \otimes x_m}
+		\end{array}
 \]
+Therefore all of the morphisms of $\mathbb{S}_{2n}$ are generated by just the identities and the action maps $\alpha( \, (1 2) \, ; \, \mathrm{id}_{x_1}, \mathrm{id}_{x_2} \, )$ for all pairs $x_1, x_2 \in \{z_1, ..., z_{2n} \}$. Passing through $\psi$, this means that elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ can always be expressed as a tensor product of elements of the form
+\[ (x, x) \quad \quad \text{or} \quad \quad (x y, y x), \quad \quad \quad x, y \in \{z_1, ..., z_n, z_1^*, ..., z_n^* \} \]
+These are exactly the $\langle x \rangle$ and $\langle xy \rangle$ given in the statement of the proposition.
 
-The first one, the symmetry condition that $\sigma^2 = \mathrm{id}$, corresponds to the relation
-\[ 
-%\begin{array}{rrll}
-%			& (xy, yx) \circ (yx, xy) & = & (xy, xy) \\
-%			\implies & (xy, yx) \otimes (yx, yx)^* \otimes (yx, xy) & = & (x, x) \otimes (y,y) \\
-%			\implies & (xy, yx) \otimes (x^*, x^*) \otimes (y^*, y^*)  \otimes (yx, xy) & = & (x, x) \otimes (y,y) \\
-%			\implies & \langle xy \rangle\langle x^* \rangle\langle y^* \rangle\langle yx \rangle & = & \langle x \rangle\langle y \rangle \\
-%		\end{array}
-\langle x \rangle \langle y \rangle = \langle yx \rangle \langle x^* \rangle \langle y^* \rangle \langle xy \rangle .
-\]
-
-
-
-
-
-
+Now we need to consider what relations these generators will obey. Firstly, their definitions overlap in the following case:
+\[ \langle xx \rangle \quad = \quad (xx,xx) \quad = \quad (x,x) \otimes (x,x) \quad = \quad \langle x \rangle\langle x \rangle \]
 Next we have to account for the law of interchange we discussed earlier. Using \cref{tenscomp}, we see that this condition will induce the following relation:
 \[ \begin{array}{rll}
 			\langle xy \rangle \langle x^* \rangle \langle y^* \rangle \langle yx \rangle & = & (xy, yx) \otimes (x^*, x^*) \otimes (y^*, y^*) \otimes (yx, xy) \\
@@ -7245,7 +7215,14 @@ Also, by functoriality these generators will inherit any relations are obeyed to
 			(\sigma_i \sigma_{i+1})^3 & = & e &
 		\end{array}
 \]
-
+The first one, the symmetry condition, corresponds to the relation
+\[ \begin{array}{rrll}
+			& (xy, yx) \circ (yx, xy) & = & (xy, xy) \\
+			\implies & (xy, yx) \otimes (yx, yx)^* \otimes (yx, xy) & = & (x, x) \otimes (y,y) \\
+			\implies & (xy, yx) \otimes (x^*, x^*) \otimes (y^*, y^*)  \otimes (yx, xy) & = & (x, x) \otimes (y,y) \\
+			\implies & \langle xy \rangle\langle x^* \rangle\langle y^* \rangle\langle yx \rangle & = & \langle x \rangle\langle y \rangle \\
+		\end{array}
+\]
 The second relation is just an example of interchange, which we have already looked at. The third yields
 \[ \begin{array}{rll}
 			(xy, yx)(x^*,x^*)(xz,zx)(x^*,x^*)(z^*,z^*)(y^*,y^*)(yz,zy) & & \\
