@@ -7415,36 +7415,36 @@ We fix an element $\rho(2) \in \pi^{-1}(1\, 2)$, and choose $\rho(x_ix_j, x_jx_i
 %
 %Of course, $\rho$ was an arbitrary permutation-preserving map $\mathbb{N}^{\ast n} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to G$, chosen using the freeness of its source monoid. Thus if we wanted to we could just pick the same element $\rho(2) \in \pi^{-1}((1 \, 2))$ to act as $\rho(z_i \otimes z_j, z_j \otimes z_i)$ for all $i, j$. For simplicity's sake, we will indeed be assuming this from now on.
 
-Start
+
 
 \section{Freely generated action operads}
 
-The next group we are interested in understanding a little better is $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$. Per \cref{Morder}, the operations needed to produce this group out of $\mathrm{Mor}(\ELnn) = G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}$ can be done in any order we choose, and so we will save the identification of $\otimes$ and $\circ$ until last. This will let us keep the tensor product as simple as possible whilst we are in the process of group completing and abelianising it.
+The next group we are interested in understanding is $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$. By \cref{Morder}, the operations needed to produce this group out of $\mathrm{Mor}(\ELnn) \cong \ML \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}$ can be done in any order we choose, and so we will save the identification of $\otimes$ and $\circ$ until last, focusing now on group completion and abelianization. We first focus on understanding $\ML$ as a monoid, and then move on to group completing and abelianizing $\mathrm{Mor}(\ELnn)$.
 
-So the obvious place to start is to ask how to simplify the expression $(G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n})^{\mathrm{gp}}$. In principle we might not be able to, since for generic $G$ we lack any sort of a presentation by generators and relations. It would help if we at least knew that the group completion map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ was injective --- or equivalently, that there exists any group $H$ and injective homomorphism $G \to H$ --- but proving this kind of statement is notoriously tricky. In 1935, a paper by Anton Sushkevich `proved' that a semigroup, and thus a monoid, could be embedded into a group if and only if it was cancellative.
-
-\begin{Defi} We say that a monoid $M$ is \emph{left-cancellative} if for any $a, b, c \in M$, we have
-\[ ab \, = \, ac \quad \implies \quad b \, = \, c \]
-That is, common factors may be cancelled out on the left. Similarly, we call $M$ \emph{right-cancellative} if common factors can be cancelled on the right:
-\[ ac \, = \, bc \quad \implies \quad a \, = \, b \]
-A monoid that is both left- and right-cancellative is simply referred to as \emph{cancellative}.
+\begin{Defi}\label{cancellative}
+Let $M$ be a monoid.
+\begin{itemize}
+\item $M$ is \emph{left cancellative} when for all $a, b, c \in M$, $ab = ac$ implies $b=c$.
+\item $M$ is \emph{right cancellative} when for all $a, b, c \in M$, $ba = ca$ implies $b=c$.
+\item $M$ is \emph{cancellative} when it is both left and right cancellative.
+\end{itemize}
 \end{Defi}
 
-However, just two years later Anatoly Malcev published a simple counterexample \cite{malcev-immer1} to Sushkevich's proposition. To make matters worse, in 1939 Malcev would go on to show that the actual set of necessary and sufficient conditions for a semigroup to be embeddable in a group consisted of an infinite collection of independent relations \cite{malcev-immer2}. Thus the requirement that the group completion of monoid be injective is a deceptively complicated one. 
-
-Luckily for us though, there does exist a much simpler set of sufficient-but-not-necessary conditions for embeddability which all action operads $G$ happen to satisfy. These come from a 1948 paper by Raouf Doss \cite{doss-imm}, and in addition to cancellativity they depend on the way that a monoid deals with multiples of different elements being equal.
-
-\begin{Defi} An element $a$ of a monoid $M$ is said to be \emph{regular on the left} if it shares a common left-multiple with every other element of $M$. That is,
-\[ \forall \, b \in M, \quad \exists \, c, d \in M \quad : \quad ca \, = \, db \]
-The monoid as a whole is said to be \emph{regular on the left} if all of its elements are, but we can also define a notion of $M$ being \emph{quasi-regular on the left}. This means that any two elements $a,b$ of $M$ will share a common left-multiple if and only if
-\[ \exists \, c, d \in M \quad : \quad ca \, = \, db, \quad \quad \text{$c$ or $d$ is regular in $M$} \]
-Again, we can define a similar condition for being quasi-regular on the right, and we say that a monoid is \emph{quasi-regular} when it is both.
+\begin{Defi}\label{quasireg}
+Let $M$ be a monoid.
+\begin{itemize}
+\item $a \in M$ is \emph{regular on the left} when for $b \in M$, there exist $c, d \in M$ such that $ca = db$. 
+\item $M$ is \emph{regular on the left} if every element of $M$ is regular on the left.
+\item $M$ is \emph{quasi-regular on the left} if, for all $a, b \in M$, whenever there exist $c, d \in M$ such that $ca = db$, then there also exist $c', d' \in M$ such that $c'a = d'b$ and either $c'$ or $d'$ is regular on the left.
+\end{itemize}
 \end{Defi}
 
-\begin{prop} If a monoid $M$ is cancellative and quasi-regular on the left, then it can be embedded into a group.
-\end{prop}
+\begin{rem}
+We have corresponding notions of regularity and quasi-regularity on the right. While these are not necessary for the embedding theorem below, we do need them to establish the cancellative property in \cref{cqr}. This is elementary, and we leave those details to the reader.
+\end{rem}
 
-For a given action operad, both of these conditions will follow from the way that operadic multiplication interacts with the elements of the abelian group $G(0)$.
+\begin{thm}[\cite{doss-imm}] If a monoid $M$ is cancellative and quasi-regular on the left, then it can be embedded into a group.
+\end{thm}
 
 \begin{prop} \label{cqr} Every action operad $G$ is both cancellative and quasi-regular as a monoid under tensor product.
 \end{prop}
@@ -7467,9 +7467,9 @@ and without loss of generality assume that $|g| \ge |g'|$, so also $|h| \le |h'|
 \]
 Put another way,
 \[ \exists \, e_0, k \in G \quad : \quad e_0 \otimes g \quad = \quad g \quad = \quad k \otimes g' \]
-and $e_0$ obviously regular, since it is the unit $I$ in $G$. Thus $G$ is quasi-regular on the left.  For quasi-regularity on the right, there is an argument  which is completely analogous to what we have done already, but which lets us rewrite $h'$ as $h \otimes k'$ for some $k' \in G$.
+and $e_0$ obviously regular, since it is the unit $I$ in $G$. Thus $G$ is quasi-regular on the left.  Quasi-regularity on the right follows similarly.
 
-Moreover, if we set $h = h'$ then we see that
+For cancellativity, assume $h \otimes g = h \otimes g'$. Following the above argument we see that
 \[ k \quad = \quad \mu(h; e_0, ..., e_0)^* \otimes \mu(h; e_0, ..., e_0) \quad = \quad I \]
 and so
 \[ h \otimes g \, = \, h \otimes g' \quad \implies \quad g \, = \, g'  \]
@@ -7479,76 +7479,117 @@ which is left-cancellativity. Right-cancellativity follows from quasi-regularity
 \begin{cor} \label{gpcompin} The canonical map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ associated with the group completion of $G$ is an inclusion.
 \end{cor}
 
-As a result of this, from now on we can just write $g$ for $\mathrm{gp}(g)$ and $g^*$ for $\mathrm{gp}(g)^*$ in order to save on space.
+%So the obvious place to start is to ask how to simplify the expression $(G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n})^{\mathrm{gp}}$. In principle we might not be able to, since for generic $G$ we lack any sort of a presentation by generators and relations. It would help if we at least knew that the group completion map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ was injective --- or equivalently, that there exists any group $H$ and injective homomorphism $G \to H$ --- but proving this kind of statement is notoriously tricky. In 1935, a paper by Anton Sushkevich `proved' that a semigroup, and thus a monoid, could be embedded into a group if and only if it was cancellative.
+%
+%\begin{Defi} We say that a monoid $M$ is \emph{left-cancellative} if for any $a, b, c \in M$, we have
+%\[ ab \, = \, ac \quad \implies \quad b \, = \, c \]
+%That is, common factors may be cancelled out on the left. Similarly, we call $M$ \emph{right-cancellative} if common factors can be cancelled on the right:
+%\[ ac \, = \, bc \quad \implies \quad a \, = \, b \]
+%A monoid that is both left- and right-cancellative is simply referred to as \emph{cancellative}.
+%\end{Defi}
+%
+%However, just two years later Anatoly Malcev published a simple counterexample \cite{malcev-immer1} to Sushkevich's proposition. To make matters worse, in 1939 Malcev would go on to show that the actual set of necessary and sufficient conditions for a semigroup to be embeddable in a group consisted of an infinite collection of independent relations \cite{malcev-immer2}. Thus the requirement that the group completion of monoid be injective is a deceptively complicated one. 
+%
+%Luckily for us though, there does exist a much simpler set of sufficient-but-not-necessary conditions for embeddability which all action operads $G$ happen to satisfy. These come from a 1948 paper by Raouf Doss \cite{doss-imm}, and in addition to cancellativity they depend on the way that a monoid deals with multiples of different elements being equal.
+%
+%\begin{Defi} An element $a$ of a monoid $M$ is said to be \emph{regular on the left} if it shares a common left-multiple with every other element of $M$. That is,
+%\[ \forall \, b \in M, \quad \exists \, c, d \in M \quad : \quad ca \, = \, db \]
+%The monoid as a whole is said to be \emph{regular on the left} if all of its elements are, but we can also define a notion of $M$ being \emph{quasi-regular on the left}. This means that any two elements $a,b$ of $M$ will share a common left-multiple if and only if
+%\[ \exists \, c, d \in M \quad : \quad ca \, = \, db, \quad \quad \text{$c$ or $d$ is regular in $M$} \]
+%Again, we can define a similar condition for being quasi-regular on the right, and we say that a monoid is \emph{quasi-regular} when it is both.
+%\end{Defi}
+%
+%\begin{prop} If a monoid $M$ is cancellative and quasi-regular on the left, then it can be embedded into a group.
+%\end{prop}
+%
+%For a given action operad, both of these conditions will follow from the way that operadic multiplication interacts with the elements of the abelian group $G(0)$.
+%
+%As a result of this, from now on we can just write $g$ for $\mathrm{gp}(g)$ and $g^*$ for $\mathrm{gp}(g)^*$ in order to save on space.
 
-Knowing that the monoid $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ always has a particularly well-behaved group completion is a good first step towards finding a description for said completion. However, it is worth noting that \cref{gpcompin} is true for all action operads $G$, which is more than we really need. After all, the only reason we care about $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ is that we know from \cref{Zmor} that it is crucial to understanding the morphisms of \emph{crossed} action operads. Thus it would be nice if we could use some consequence of crossedness to tell us even more about the inclusion map $\mathrm{gp} : G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to {(G \times_{\mathbb{N}} \mathbb{N}^{\ast n})}^{\mathrm{gp}}$.
+Knowing that the monoid $\ML$ always has a particularly well-behaved group completion is a good first step towards finding a description for the group completion of $\ML \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. However, it is worth noting that \cref{gpcompin} is true for all action operads $\ML$, which is more than we really need since, using \cref{Zmor}, we are only interested in the crossed case. One consequence of being crossed was established in \cref{noscalarcross}: if $\ML$ is a crossed action operad, then the free $\ML$-monoidal category on $n$ invertible objects is isomorphic to the free $\ML'$-monoidal category on $n$ invertible objects where $\ML'(m) = \ML(m)/\ML(0)$. We note that, by additivity of lengths, the only invertible elements of $\ML$ as a monoid reside in $\ML(0)$, so in particular $\ML'$ has no invertible elements. We can actually say something much stronger about $\ML'$ as a monoid.
 
-One such consequence was given back in \cref{noscalarcross}. If $G$ is a crossed action operad, then the action operad $G'$ defined by $G'(m) = G(m)/G(0)$ possesses the same free algebra on invertible algebra that $G$ does. In other words, we don't even need to worry about finding $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ for all crossed $G$, merely those which have a trivial $G(0)$. As it turns out, this fact is hugely relevant to our search for group completions, since elements of $G(0)$ are the only ones in $G$ which might already have an inverse under tensor product. This follows from additivity of lengths:
-\[ \begin{array}{rclcrcccll}
-			g \otimes h & = & e_0 & \quad \implies \quad & |g| + |h| & = & |e_0| & = & 0 & \\
-			& & & \quad \implies \quad & & & |g| & = & -|h|, & \quad |g|, |h| \in \mathbb{N} \\
-			& & & \quad \implies \quad & |g| & = & |h| & = & 0& 
-		\end{array}
-\]
-Cancellativity, quasi-regularity, and lack of invertible objects then combine to give something much stronger than mere injectivity of the group completion map.
+%the action operad $\ML'$ defined by $\ML'(m) = \ML(m)/\ML(0)$ possesses the same free algebra on invertible algebra that $G$ does. In other words, we don't even need to worry about finding $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ for all crossed $G$, merely those which have a trivial $G(0)$. As it turns out, this fact is hugely relevant to our search for group completions, since elements of $G(0)$ are the only ones in $G$ which might already have an inverse under tensor product. This follows from additivity of lengths:
+%\[ \begin{array}{rclcrcccll}
+%			g \otimes h & = & e_0 & \quad \implies \quad & |g| + |h| & = & |e_0| & = & 0 & \\
+%			& & & \quad \implies \quad & & & |g| & = & -|h|, & \quad |g|, |h| \in \mathbb{N} \\
+%			& & & \quad \implies \quad & |g| & = & |h| & = & 0& 
+%		\end{array}
+%\]
+%Cancellativity, quasi-regularity, and lack of invertible objects then combine to give something much stronger than mere injectivity of the group completion map.
 
-\begin{prop} \label{Gfree} If $G$ is an action operad with trivial $G(0)$, then $G$ is a free monoid under tensor product.
+%Knowing that the monoid $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ always has a particularly well-behaved group completion is a good first step towards finding a description for said completion. However, it is worth noting that \cref{gpcompin} is true for all action operads $G$, which is more than we really need. After all, the only reason we care about $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ is that we know from \cref{Zmor} that it is crucial to understanding the morphisms of \emph{crossed} action operads. Thus it would be nice if we could use some consequence of crossedness to tell us even more about the inclusion map $\mathrm{gp} : G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to {(G \times_{\mathbb{N}} \mathbb{N}^{\ast n})}^{\mathrm{gp}}$.
+\begin{prop} \label{Gfree} If $\ML$ is an action operad with trivial $\ML(0)$, then $\ML$ is a free monoid under tensor product.
 \end{prop}
 \begin{proof}
-Let $\mathcal{G}$ be a subset of the monoid $G$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $G$. Notice that every relation in $\mathcal{R}$ can be written in the form $h \otimes g = h' \otimes g'$, where $g,g' \in \mathcal{G}$ are generators and $h,h' \in G$ some other elements. This is because the only other kind of relations are one like $h \otimes g = e_0$, and as we've seen this is not possible if $G(0)$ is trivial. We'll assume that in this case $|g| \ge |g'|$ and hence $|h| \le |h'|$. Using the reasoning from the proof of \cref{cqr}, we can then find $k, k' \in G$ for which
-\[ g \, = \, k \otimes g', \quad \quad \quad h' \, = \, h \otimes k' \]
-It follows that
-\[ h \otimes k \otimes g' \quad = \quad h \otimes g \quad = \quad h' \otimes g' \quad = \quad h \otimes k \otimes g' \]
-and thus by left- and right-cancellativity, $k = k'$.  In other words, the relation $h \otimes g = h' \otimes g'$ implies and is implied by a pair of relations $g = k \otimes g'$, $h' = h \otimes k$. 
-
-There are a few scenarios to consider here. 
-\begin{itemize}
-\item $|k| = |g|$. This is actually not possible, as it would follow from additivity of length that $|g'|=0$, and thus by assumption $g' = e_0$, which is not a generator of $G$.
-\item $|k|=0$. This would mean that $k=e_0$, and so we'd also get $g=g'$ and $h = h'$. Thus we could simplify the presentation of $G$ by replacing the relation $h \otimes g = h' \otimes g'$ in the set $\mathcal{R}$ with $h' = h$.
-\item $0 < |k| < |g|$. In this case $|g| > |g'|$ and thus $g \neq g'$, and so we could change our presentation of $G$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$.
-\end{itemize}
-Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller lengths, and replacing relations with ones whose left- and right-hand side have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $e_0 = e_0$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminated all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
+As in QQQ previous freeness proofs QQQ, we say that $g \in \ML$ is indecomposable if it cannot be written as $g = h \otimes k$ for both $h, k$ non-identity elements; note that $\ML(0)$ being trivial and multiplication adding lengths ensures that indecomposability is well-defined and that every element can be written as a finite product of indecomposables. We show that any such product is unique. Assume $h \otimes g = h' \otimes g'$ with $g, g'$ indecomposable. By the argument in \cref{cqr}, we can find $k$ such that $g = k \otimes g'$, contradicting indecomposability unless $k$ is the identity and $g=g'$. We can then cancel the $g$'s on the right and continue by induction.
+%Let $\mathcal{G}$ be a subset of the monoid $G$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $G$. Notice that every relation in $\mathcal{R}$ can be written in the form $h \otimes g = h' \otimes g'$, where $g,g' \in \mathcal{G}$ are generators and $h,h' \in G$ some other elements. This is because the only other kind of relations are one like $h \otimes g = e_0$, and as we've seen this is not possible if $G(0)$ is trivial. We'll assume that in this case $|g| \ge |g'|$ and hence $|h| \le |h'|$. Using the reasoning from the proof of \cref{cqr}, we can then find $k, k' \in G$ for which
+%\[ g \, = \, k \otimes g', \quad \quad \quad h' \, = \, h \otimes k' \]
+%It follows that
+%\[ h \otimes k \otimes g' \quad = \quad h \otimes g \quad = \quad h' \otimes g' \quad = \quad h \otimes k \otimes g' \]
+%and thus by left- and right-cancellativity, $k = k'$.  In other words, the relation $h \otimes g = h' \otimes g'$ implies and is implied by a pair of relations $g = k \otimes g'$, $h' = h \otimes k$. 
+%
+%There are a few scenarios to consider here. 
+%\begin{itemize}
+%\item $|k| = |g|$. This is actually not possible, as it would follow from additivity of length that $|g'|=0$, and thus by assumption $g' = e_0$, which is not a generator of $G$.
+%\item $|k|=0$. This would mean that $k=e_0$, and so we'd also get $g=g'$ and $h = h'$. Thus we could simplify the presentation of $G$ by replacing the relation $h \otimes g = h' \otimes g'$ in the set $\mathcal{R}$ with $h' = h$.
+%\item $0 < |k| < |g|$. In this case $|g| > |g'|$ and thus $g \neq g'$, and so we could change our presentation of $G$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$.
+%\end{itemize}
+%Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller lengths, and replacing relations with ones whose left- and right-hand side have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $e_0 = e_0$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminated all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
 \end{proof} 
 
-Whenever we can be sure of that $G$ is a free monoid --- whether by using \cref{Gfree} or some other method --- this freeness will carry over directly to the algebras $\ELn$, giving us a new way to represent their morphisms.
+\begin{rem}
+The above result should not be surprising once we consider some examples. Taking the action operad of braid groups, the indecomposable elements are those braids which have projections onto the plane which are topologically connected (we require this for all geometric braids in the homotopy class of the braid in question). It is then obvious that every braid can be uniquely written as a sum of indecomposables.
+\end{rem}
 
-\begin{prop} \label{freemor} Let $\mathcal{G}$ be a set that freely generates the action operad $G$ under tensor product, and for each $m \in \mathbb{N}$ define $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, the subset of $\mathcal{G}$ containing all elements of length $m$. Then the monoid $\mathrm{Mor}(\ELn)$ is 
-\[ G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathbb{N}^{\ast ( \, |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... \, )} \]
+%Whenever we can be sure of that $G$ is a free monoid --- whether by using \cref{Gfree} or some other method --- this freeness will carry over directly to the algebras $\ELn$, giving us a new way to represent their morphisms.
+
+\begin{prop} \label{freemor} Let $\mathcal{G}$ be a set that freely generates the action operad $\ML$ under tensor product, and for each $m \in \mathbb{N}$ define $\mathcal{G}_m := \mathcal{G} \, \cap \,  \ML(m)$, the subset of $\mathcal{G}$ containing all elements of length $m$. Then the monoid $\mathrm{Mor}(\ELn)$ is isomorphic to
+\[ \ML \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad \cong \quad \mathbb{N}^{\ast ( \, |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... \, )} \]
 \end{prop}
 \begin{proof}
-Let $(g, w)$ be an arbitrary element of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. The monoid $G$ is free of the generators $\mathcal{G}$, and $\mathbb{N}^{\ast n}$ is free on $\{z_1, ..., z_n\}$, so we can find unique expansions of $g$ and $w$ as tensor products
+Let $(g, w)$ be an arbitrary element of $\ML \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. The monoid $\ML$ is free of the generators $\mathcal{G}$, and $\mathbb{N}^{\ast n}$ is free on $\{z_1, ..., z_n\}$, so we can find unique expansions of $g$ and $w$ as tensor products
 \[ \begin{array}{rclcrcl}
-			g & = & g_1 \otimes ... \otimes g_k, & \quad & g_1, ..., g_k & \in & \mathcal{G} \\
-			w & = & x_1 \otimes ... \otimes x_m, & \quad & x_1, ..., x_m & \in & \{z_1, ..., z_n\}
+			g & = & g_1 \otimes \cdots \otimes g_k, & \quad & g_1, \cdots, g_k & \in & \mathcal{G} \\
+			w & = & x_1 \otimes \cdots \otimes x_m, & \quad & x_1, \cdots, x_m & \in & \{z_1, \ldots, z_n\}
 		\end{array}
 \]
 But each of the generators $z_1, ..., z_n$ has length 1, so the index $m$ here is really just the length $|w|$, which by the definition of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is also the length $|g| = |g_1| + ... + |g_k|$. Therefore we may write
 \[ \begin{array}{rll}
-			(g, w) & = & (g_1 \otimes ... \otimes g_k, x_1 \otimes ... \otimes x_{|w|}) \\
-			& = & (g_1, x_1 \otimes ... \otimes x_{|g_1|}) \otimes (g_2, x_{|g_1|+1} \otimes ... \otimes x_{|g_1|+|g_2|}) \otimes ... \\
-			& & \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|})
+			(g, w) & = & (g_1 \otimes \cdots \otimes g_k, x_1 \otimes \cdots \otimes x_{|w|}) \\
+			& = & (g_1, x_1 \otimes \cdots \otimes x_{|g_1|}) \otimes (g_2, x_{|g_1|+1} \otimes \cdots \otimes x_{|g_1|+|g_2|}) \otimes \cdots \\
+			& & \otimes (g_k, x_{|g_1| + \cdots + |g_{k-1}|+1} \otimes \cdot \otimes x_{|g_1| + ... + |g_k|}).
 		\end{array}
 \]
-That is, every element in $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ may be expressed as a product of elements from the subset $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. Furthermore, the freeness of $G$ and $\mathbb{N}^{\ast n}$ make sure that this expansion is unique, since
-\[ \begin{array}{rl}
-			& (g_1, x_1 \otimes ... x_{|g_1|}) \otimes ... \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|}) \\
-			= & (g'_1, x'_1 \otimes ... \otimes x'_{|g'_1|}) \otimes ... \otimes (g'_{k'}, x'_{|g'_1| + ... + |g'_{k'-1}|+1} \otimes ... \otimes x'_{|g'_1| + ... + |g'_{k'}|})
-		\end{array}
+That is, every element in $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ may be expressed as a product of elements from the subset $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. Furthermore, the freeness of $G$ and $\mathbb{N}^{\ast n}$ make sure that this expansion is unique, so $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is the free monoid on the set 
+\[ 
+\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}  =  \mathcal{G}_0 \times \{ z_1, \ldots, z_n \}^0  \, \cup \, \mathcal{G}_1 \times \{ z_1, \ldots, z_n \}^1 \, \cup \, \mathcal{G}_2 \times \{ z_1, \ldots, z_n \}^2 \, \cup \, \cdots
 \]
-\[ \begin{array}{rcclcccl}
-			\implies \quad \quad & g_1 \otimes ... \otimes g_k & = & g'_1 \otimes ... \otimes g'_{k'}, & \quad \quad & x_1 \otimes ... \otimes x_{m} & = & x'_1 \otimes ... \otimes x'_{m'} \\
-			& & & & & & & \\
-			\implies \quad \quad & g_i \, = \, g'_i, & & 1 \le i \le k = k', & \quad \quad & x_j \, = \, x'_j, & & 1 \le j \le m = m' 
-		\end{array}
+which is a set with
+\[
+|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + \cdots
 \]
-Thus $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is the free monoid on the set 
-\[ \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathcal{G}_0 \times \{ z_1, ..., z_n \}^0  \, \cup \, \mathcal{G}_1 \times \{ z_1, ..., z_n \}^1 \, \cup \, \mathcal{G}_2 \times \{ z_1, ..., z_n \}^2 \, \cup \, ...\]
-which is just the $m$-fold free product of $\mathbb{N}$ with itself, where $m$ is the number of generators,
-\[ \begin{array}{rll}
-			|\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}| & = & |\mathcal{G}_0| \cdot |\{ z_1, ..., z_n \}^0|  \, + \, |\mathcal{G}_1| \cdot |\{ z_1, ..., z_n \}^1| \, + \, |\mathcal{G}_2| \cdot |\{ z_1, ..., z_n \}^2| \, + \, ... \\
-			& = & |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... 
-		\end{array}	
-\]
+many elements.
+
+%which is just the $m$-fold free product of $\mathbb{N}$ with itself, where $m$ is the number of generators,
+%\[ \begin{array}{rll}
+%			|\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}| & = & |\mathcal{G}_0| \cdot |\{ z_1, ..., z_n \}^0|  \, + \, |\mathcal{G}_1| \cdot |\{ z_1, ..., z_n \}^1| \, + \, |\mathcal{G}_2| \cdot |\{ z_1, ..., z_n \}^2| \, + \, ... \\
+%			& = & |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... 
+%		\end{array}	
+%\]
+
+%since
+%\[ \begin{array}{rl}
+%			& (g_1, x_1 \otimes ... x_{|g_1|}) \otimes ... \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|}) \\
+%			= & (g'_1, x'_1 \otimes ... \otimes x'_{|g'_1|}) \otimes ... \otimes (g'_{k'}, x'_{|g'_1| + ... + |g'_{k'-1}|+1} \otimes ... \otimes x'_{|g'_1| + ... + |g'_{k'}|})
+%		\end{array}
+%\]
+%\[ \begin{array}{rcclcccl}
+%			\implies \quad \quad & g_1 \otimes ... \otimes g_k & = & g'_1 \otimes ... \otimes g'_{k'}, & \quad \quad & x_1 \otimes ... \otimes x_{m} & = & x'_1 \otimes ... \otimes x'_{m'} \\
+%			& & & & & & & \\
+%			\implies \quad \quad & g_i \, = \, g'_i, & & 1 \le i \le k = k', & \quad \quad & x_j \, = \, x'_j, & & 1 \le j \le m = m' 
+%		\end{array}
+%\]
+
 \end{proof}
 
 This makes the group completion and abelianization we want to do trivial. 
@@ -7556,6 +7597,8 @@ This makes the group completion and abelianization we want to do trivial.
 \begin{cor} \label{freemorgpab} If $\mathcal{G}$ is a set that freely generates $G$ under tensor product, and $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, then the abelian group $\mathrm{Mor}(\ELn)^{\mathrm{gp}, \mathrm{ab}}$ is 
 \[ (G \times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...} \]
 \end{cor}
+
+Start here
 
 Now all that remains is to account for what happens when we collapse the morphisms of $\ELn$ --- that is, evaluate the quotient
 \[ \mathrm{M}(\ELn)^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}}{\otimes \sim \circ} \]
