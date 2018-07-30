@@ -7287,8 +7287,8 @@ subject to the following relations.
 \item $\sigma_{ii} = x_i^2$ for any $i$.
 \item $\sigma_{ij} x_j^{-1} x_i^{-1} \sigma_{ji} = x_j x_i$ for any $i, j$.
 \item $\sigma_{ij} w \sigma_{kl} = x_j x_i w \sigma_{kl} x_l^{-1} x_k^{-1} w^{-1} x_i^{-1} x_j^{-1}\sigma_{ij} w x_k x_l$ for any $i, j, k, l$ and element $w$.
-\item $\sigma_{jk}x_k^{-1} \sigma_{ik} x_i^{-1} x_j^{-1} \sigma_{ij} x_k = x_k \simga_{ij} x_j^{-1} x_i^{-1} x_{k}^{-1} \sigma_{ik} x_k^{-1} \sigma_{jk}$ for any $i, j, k$.
-\end{enumearete}
+\item $\sigma_{jk}x_k^{-1} \sigma_{ik} x_i^{-1} x_j^{-1} \sigma_{ij} x_k = x_k \sigma_{ij} x_j^{-1} x_i^{-1} x_{k}^{-1} \sigma_{ik} x_k^{-1} \sigma_{jk}$ for any $i, j, k$.
+\end{enumerate}
 \end{prop}
 \begin{proof}
 Let $\qsn$ denote the following symmetric strict monoidal category. The objects of $\qsn$ are the elements of the group $\mathbb{Z}^{\ast n}$. There is a unique isomorphism between a pair of objects $x, y$ if and only if $\mathrm{ab}(x) = \mathrm{ab}(y)$, where $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$ is the abelianization map. The monoidal structure on objects is given by the group structure of $\mathbb{Z}^{\ast n}$, and the tensor product is clearly well-defined on morphisms. By definition, $\mathrm{xy} = \mathrm{yx}$ so there is a unique isomorphism $xy \cong yx$ for any $x,y$, giving the symmetric structure.
