@@ -4911,7 +4911,18 @@ Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{weakl
 
 \end{Defi}
 
-We will later derive results about weakly invertible objects from those about invertible ones using standard 2-monadic techniques.
+We will later derive results about weakly invertible objects from those about invertible ones using standard 2-monadic techniques. The following is a standard result.
+
+\begin{prop}\label{inv_endofun}
+Let $(M, \otimes, I)$ be a monoidal category, and let $m \in M$. Then $m$ is invertible if and only if both $m \otimes -: M \to M$ and $- \otimes m:M \to M$ are isomorphisms of categories, and $m$ is weakly invertible if and only if both $m \otimes -$ and $- \otimes m$ are equivalences of categories.
+\end{prop}
+\begin{proof}
+We prove the first half and leave the second to the reader. If $m$ is invertible, then 
+\[
+(m^{-1} \otimes -) \circ (m \otimes -) = (m^{-1} \otimes m) \otimes - = I \otimes - = \id;
+\]
+the argument for $(m \otimes -) \circ (m^{-1} \otimes -)$ is the same, as are the two analogous arguments for $- \otimes m$. If $m \otimes -$ is an isomorphism, there exists a unique $n$ such that $m \otimes n = I$; similarly, there exists a unique $l$ such that $l \otimes m = I$. Standard arguments show $n = l$, so $m$ is invertible.
+\end{proof}
 
 
 
@@ -5045,6 +5056,8 @@ We have the following 2-natural isomorphisms from the adjunctions for $L$ and th
 %$X_{\mathrm{inv}}$ and $U(X_{\mathrm{inv}})$ are obviously isomorphic as categories, and so \( LF(\{z_1, ..., z_n\}) = L_n \) satisfies the requirements for the free algebra on $n$ invertible objects.
 \end{proof}
 
+We first verify that every object and every morphism of $L(x)$ is invertible.
+
 \begin{prop} \label{linveql} For any $E\Lambda$-algebra $X$, we have $L(X)_{\mathrm{inv}} = L(X)$.
 \end{prop}
 \begin{proof}
@@ -5082,6 +5095,10 @@ in which the identity on the right is really $j_{inv} \circ -$. Thus composition
 \end{proof}
 
 
+
+
+
+
 \begin{cor} \label{epi} The component of the unit of the adjunction $L \dashv (-)_{inv}$ at $E\Lambda(\underline{n})$,  $\eta_{E\Lambda(\underline{n})}: E\Lambda(\underline{n}) \to (L_n)_{inv}$, is an epimorphism in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{cor}
 \begin{proof}
@@ -5097,7 +5114,23 @@ By \cref{linveql}, we first have that $(L_n)_{inv} = L_n$. Let $F,G: L_n \to X$ 
 \end{proof}
 
 
-QQQ Need to explain that the goal is to understand some group actions
+The goal for the remainder of this work is a coherence theorem for invertible objects in $\ML$-monoidal categories. We take the perspective that such a theorem amounts to computing $L_n$ as a function of the set $\un{n}$. Computing $L_n$ amounts to knowing when parallel morphisms are equal, or equivalently (because $L_n$ is a groupoid by \cref{linveql}) when an automorphism is the identity. By \cref{inv_endofun}, if $m \in M$ is invertible then tensoring with $m$ gives an isomorphism of monoids
+\[
+m \otimes -: M(I,I) \to M(m,m).
+\]
+Thus the central feature of any coherence theorem will be an identification of $L_n(I,I)$. We will prove two such theorems, the first of which we describe below.
+\begin{thm}[Coherence version 1]\label{coh_v1}
+For an action operad $\ML$, the abelian group $L_n(I,I)$ is isomorphic to a quotient group $G_n/H_n$ where both $G_n, H_n$ are either explicitly given or computed in terms of the free $\ML$-monoidal categories $\ELn$.
+\end{thm}
+We will give an explicit if abstract construction of the groups $G_n, H_n$, and closer inspection of the colimits involved will yield our second coherence theorem.
+\begin{thm}[Coherence version 2]\label{coh_v2}
+For an action operad $\ML$, the abelian group $L_n(I,I)$ is given by a presentation with
+\begin{itemize}
+\item generators determined by $\ML$, but not canonically so, and
+\item relations given explicitly and canonically.
+\end{itemize}
+\end{thm}
+We will then use this second theorem to work through explicit examples, recovering a result of Dugger's QQQ cite QQQ for invertible objects in symmetric monoidal categories but also extending the calculations for braided and ribbon braided monoidal categories.
 
 %\section{The objects of $L_n$}
 \section{Adjunctions involving monoidal categories}
@@ -6585,7 +6618,7 @@ For analogous reasons we also get
 and using these equations the lemma follows immediately from the definition of $\Delta$.
 \end{proof}
 
-\chapter{Morphisms of free invertible algebras}
+\section{Morphisms of free invertible algebras: this text needs to find a new home}
 \label{morphisms}
  
 The goal of this chapter will be to show that we can reconstruct all of the morphisms of $L_n$ from the abelian group $\mathrm{M}(L_n)^{\mathrm{gp, ab}}$, and therefore that we can actually use the adjunction from \cref{Moradj} to help find a description of the free $E\Lambda$-algebra on $n$ invertible objects. 
@@ -7623,10 +7656,10 @@ Thus any element $(g, w)$ of $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n
 
 Beyond this, the value of this quotient will have to be found separately for each individual action operad. 
 
-\chapter{Complete descriptions of free invertible algebras}
-\label{mainthm}
-
-At last, we finally have an expression for the morphisms of $L_n$, one built out of smaller parts which we know how to calculate. This means that it is almost time to draw together everything we have done over the past three chapters into a single, complete description of free invertible $E\Lambda$-algebras --- at least, in cases where $G$ is crossed or $G(1)$-generated. 
+%\chapter{Complete descriptions of free invertible algebras}
+%\label{mainthm}
+%
+%At last, we finally have an expression for the morphisms of $L_n$, one built out of smaller parts which we know how to calculate. This means that it is almost time to draw together everything we have done over the past three chapters into a single, complete description of free invertible $E\Lambda$-algebras --- at least, in cases where $G$ is crossed or $G(1)$-generated. 
 
 \section{The action of \texorpdfstring{$L_n$}{L_n}}
 
@@ -7804,7 +7837,7 @@ We know that these objects and morphisms are correct by \cref{Zobj,Zmor,nchoose2
 The action we just found in \cref{crossact} then completes this description of $L_n$.
 \end{proof}
 
-\section{Free symmetric monoidal categories on invertible objects}
+\section{Example: the free symmetric monoidal categories on invertible objects}
 
 Even collected all together, \cref{freeinvalgc} is still a fairly opaque result. In the next couple of sections we will work through some specific applications of the theorem, which will hopefully prove enlightening in this regard. A good place to start will be with the simplest of all the crossed action operads, the symmetric operad $\mathrm{S}$. As one might expect, the free invertible algebras $L\mathbb{S}_n$ have a particularly straightforward form when viewed as monoidal categories.
 
@@ -7945,7 +7978,7 @@ Moreover, two parallel morphisms in $L\mathbb{S}_n$ are equal if and only if the
 \[ \big\{ \, \beta_{z_i, z_i}, \, \beta_{z_i^*, z_i}, \, \beta_{z_i, z_i^*}, \, \beta_{z_i^*, z_i^*} \, \big\} \]
 appearing in these two expressions has the same parity, for each $1 \le i \le n$.
 
-\section{Free braided monoidal categories on invertible objects} 
+\section{Example: the free braided monoidal categories on invertible objects} 
 
 Having successfully understood the symmetric monoidal case, we should now be ready to tackle the very similar world of braided monoidal categories. Indeed, since the only difference between the braid groups $B_{n}$ and the symmetric groups $\Sigma_{n}$ is the presence or absence of a self-invertibility condition, the abelian group $A(B,n)$ is simply the value we would gotten for $A(\mathrm{S},n)$ if we had never set $((1 \, 2); z_i, z_j) \otimes ((1 \, 2); z_i, z_j) \sim I$.
 
@@ -8057,7 +8090,7 @@ This means that in the case of the braid operad, we have the unusual identity
 \[ (s \times t)(L\mathbb{B}_n)^{\mathrm{ab}} \quad \cong \quad L\mathbb{B}_n(I,I) \]
 What is the significance of this fact? It is not entirely clear, though certainly the isomorphism involved is highly nontrivial. For example the $\mathbb{Z}^n$ subgroup of $(s \times t)(L\mathbb{B}_n)^{\mathrm{ab}}$ has generators representing maps with source and target $z_i \to z_i$, $1 \le i \le n$, while the same generators of $\mathbb{Z}^n \subseteq L\mathbb{B}_n(I,I)$ represent the braidings $\beta_{z_i, z_i} = \alpha( b;\mathrm{id}_{z_i}, \mathrm{id}_{z_i})$. Of course, it is possible that this connection between the groups that make up $\mathrm{Mor}(L\mathbb{B}_n)$ could simply be a conincidence. It would help if we could compare $B$ to another action operad which shares this property --- either another crossed $G$ whose algebra has the same underlying category as the $L\mathbb{B}_n$, or an uncrossed $G$ whose algebra has $L_n(I,I) = (\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^{n}$ --- but none of these are currently known to the author.
 
-\section{Free ribbon braided monoidal categories on invertible objects}
+\section{Example: the free ribbon braided monoidal categories on invertible objects}
 
 The last action operad whose invertible algebras we will calculate explicitly is the ribbon braid operad, $RB$. The details will prove largely similar to those we saw for the braided case in \cref{invbraidcat}, much as the braided case itself was built upon the symmetric case with a few small changes. 
 
