@@ -1375,11 +1375,9 @@ which we proved back in \cref{Zmor2}. Since the bottom-right inclusion completes
 
 Of course, $\rho$ was an arbitrary permutation-preserving map $\mathbb{N}^{\ast n} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to G$, chosen using the freeness of its source monoid. Thus if we wanted to we could just pick the same element $\rho(2) \in \pi^{-1}((1 \, 2))$ to act as $\rho(z_i \otimes z_j, z_j \otimes z_i)$ for all $i, j$. For simplicity's sake, we will indeed be assuming this from now on.
 
-\section{Freely generated action operads}
+\section{Calculation: collapsed morphisms}
 
-The next group we are interested in understanding a little better is $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$. Per \cref{Morder}, the operations needed to produce this group out of $\mathrm{Mor}(\ELnn) = G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}$ can be done in any order we choose, and so we will save the identification of $\otimes$ and $\circ$ until last. This will let us keep the tensor product as simple as possible whilst we are in the process of group completing and abelianising it.
-
-So the obvious place to start is to ask how to simplify the expression $(G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n})^{\mathrm{gp}}$. In principle we might not be able to, since for generic $G$ we lack any sort of a presentation by generators and relations. It would help if we at least knew that the group completion map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ was injective --- or equivalently, that there exists any group $H$ and injective homomorphism $G \to H$ --- but proving this kind of statement is notoriously tricky. In 1935, a paper by Anton Sushkevich `proved' that a semigroup, and thus a monoid, could be embedded into a group if and only if it was cancellative.
+The next group we are interested in understanding better is $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$. Per \cref{Morder}, the operations needed to produce this group out of $\mathrm{Mor}(\ELnn) = G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}$ can be done in any order we choose, and so we will save the identification of $\otimes$ and $\circ$ until last. This will let us keep the tensor product as simple as possible while we are in the process of group completing and abelianizing it. We begin with group completion, using a method developed by Raouf Doss \cite{doss-imm}.
 
 \begin{Defi} We say that a monoid $M$ is \emph{left-cancellative} if for any $a, b, c \in M$, we have
 \[ ab \, = \, ac \quad \implies \quad b \, = \, c \]
@@ -1388,18 +1386,15 @@ That is, common factors may be cancelled out on the left. Similarly, we call $M$
 A monoid that is both left- and right-cancellative is simply referred to as \emph{cancellative}.
 \end{Defi}
 
-However, just two years later Anatoly Malcev published a simple counterexample \cite{malcev-immer1} to Sushkevich's proposition. To make matters worse, in 1939 Malcev would go on to show that the actual set of necessary and sufficient conditions for a semigroup to be embeddable in a group consisted of an infinite collection of independent relations \cite{malcev-immer2}. Thus the requirement that the group completion of monoid be injective is a deceptively complicated one. 
-
-Luckily for us though, there does exist a much simpler set of sufficient-but-not-necessary conditions for embeddability which all action operads $G$ happen to satisfy. These come from a 1948 paper by Raouf Doss \cite{doss-imm}, and in addition to cancellativity they depend on the way that a monoid deals with multiples of different elements being equal.
-
 \begin{Defi} An element $a$ of a monoid $M$ is said to be \emph{regular on the left} if it shares a common left-multiple with every other element of $M$. That is,
 \[ \forall \, b \in M, \quad \exists \, c, d \in M \quad : \quad ca \, = \, db \]
-The monoid as a whole is said to be \emph{regular on the left} if all of its elements are, but we can also define a notion of $M$ being \emph{quasi-regular on the left}. This means that any two elements $a,b$ of $M$ will share a common left-multiple if and only if
-\[ \exists \, c, d \in M \quad : \quad ca \, = \, db, \quad \quad \text{$c$ or $d$ is regular in $M$} \]
+The monoid as a whole is said to be \emph{regular on the left} if all of its elements are.
+ $M$ is \emph{quasi-regular on the left} if for any two elements $a,b$ of $M$ share a common left-multiple ($ca = db$ as above) if and only if
+\[ \exists \, c', d' \in M \quad : \quad c'a \, = \, d'b, \quad \quad \text{$c'$ or $d'$ is regular in $M$} \]
 Again, we can define a similar condition for being quasi-regular on the right, and we say that a monoid is \emph{quasi-regular} when it is both.
 \end{Defi}
 
-\begin{prop} If a monoid $M$ is cancellative and quasi-regular on the left, then it can be embedded into a group.
+\begin{prop}[\cite{doss-imm}] If a monoid $M$ is cancellative and quasi-regular on the left, then it can be embedded into a group.
 \end{prop}
 
 For a given action operad, both of these conditions will follow from the way that operadic multiplication interacts with the elements of the abelian group $G(0)$.
@@ -1408,7 +1403,7 @@ For a given action operad, both of these conditions will follow from the way tha
 \end{prop}
 \begin{proof}
 Let $g$ and $g'$ be any elements of $G$ which share a left-multiple, so that there exists at least one pair $h, h'$ in $G$ for which
-\[ h \otimes g \quad = \quad h' \otimes g' \]
+\[ h \otimes g \quad = \quad h' \otimes g', \]
 and without loss of generality assume that $|g| \ge |g'|$, so also $|h| \le |h'|$. The operadic product $\mu(h; e_0, ..., e_0)$ is clearly an element of the group $G(0)$, and we know from \cref{G0abel} that this is an abelian group under tensor product, so also let $\mu(h; e_0, ..., e_0)^*$ be its inverse. Then
 \[ \begin{array}{rll}
 			g & = & \mu(h; e_0, ..., e_0)^* \otimes \mu(h; e_0, ..., e_0) \otimes \mu(g; e_1, ..., e_1) \\
@@ -1423,15 +1418,8 @@ and without loss of generality assume that $|g| \ge |g'|$, so also $|h| \le |h'|
 			& =: & k \otimes g'
 		\end{array}
 \]
-Put another way,
-\[ \exists \, e_0, k \in G \quad : \quad e_0 \otimes g \quad = \quad g \quad = \quad k \otimes g' \]
-and $e_0$ obviously regular, since it is the unit $I$ in $G$. Thus $G$ is quasi-regular on the left.  For quasi-regularity on the right, there is an argument  which is completely analogous to what we have done already, but which lets us rewrite $h'$ as $h \otimes k'$ for some $k' \in G$.
-
-Moreover, if we set $h = h'$ then we see that
-\[ k \quad = \quad \mu(h; e_0, ..., e_0)^* \otimes \mu(h; e_0, ..., e_0) \quad = \quad I \]
-and so
-\[ h \otimes g \, = \, h \otimes g' \quad \implies \quad g \, = \, g'  \]
-which is left-cancellativity. Right-cancellativity follows from quasi-regularity on the right in the same way.
+Put another way, if $h \otimes g = h' \otimes g'$, there exists $k \in \ML$ such that $g = k \otimes g'$, or equivalently $e_0 \otimes g = k \otimes g'$. Since
+ $e_0$ is obviously regular because it is the unit, the operad $\ML$ viewed as a monoid is quasi-regular on the left; quasi-regularity on the right is analogous. Furthermore, following through the argument above when $h = h'$ prove that $h \otimes g = h \otimes g'$ implies $g = g'$, or left-cancellativity.
 \end{proof}
 
 \begin{cor} \label{gpcompin} The canonical map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ associated with the group completion of $G$ is an inclusion.
