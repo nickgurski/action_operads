@@ -1422,36 +1422,57 @@ Put another way, if $h \otimes g = h' \otimes g'$, there exists $k \in \ML$ such
  $e_0$ is obviously regular because it is the unit, the operad $\ML$ viewed as a monoid is quasi-regular on the left; quasi-regularity on the right is analogous. Furthermore, following through the argument above when $h = h'$ prove that $h \otimes g = h \otimes g'$ implies $g = g'$, or left-cancellativity.
 \end{proof}
 
-\begin{cor} \label{gpcompin} The canonical map $\mathrm{gp} : G \to G^{\mathrm{gp}}$ associated with the group completion of $G$ is an inclusion.
+\begin{cor} \label{gpcompin} The canonical map $\mathrm{gp} : \ML \to \ML^{\mathrm{gp}}$ associated with the group completion of $\ML$ is an inclusion. Further, the canonical map $\mathrm{gp} : \ML\times_{\mathbb{N}} \mathbb{N}^{\ast n} \to (\ML\times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}}$  is also an inclusion.
 \end{cor}
+\begin{proof}
+The first statement is immediate. For the second, note that both $\ML$ and $\mathbb{N}^{\ast n}$ embed into groups so their product and hence any submonoid of their product does too.
+\end{proof}
 
-As a result of this, from now on we can just write $g$ for $\mathrm{gp}(g)$ and $g^*$ for $\mathrm{gp}(g)^*$ in order to save on space.
+%from now on we can just write $g$ for $\mathrm{gp}(g)$ and $g^*$ for $\mathrm{gp}(g)^*$ in order to save on space.
 
-Knowing that the monoid $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ always has a particularly well-behaved group completion is a good first step towards finding a description for said completion. However, it is worth noting that \cref{gpcompin} is true for all action operads $G$, which is more than we really need. After all, the only reason we care about $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ is that we know from \cref{Zmor} that it is crucial to understanding the morphisms of \emph{crossed} action operads. Thus it would be nice if we could use some consequence of crossedness to tell us even more about the inclusion map $\mathrm{gp} : G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to {(G \times_{\mathbb{N}} \mathbb{N}^{\ast n})}^{\mathrm{gp}}$.
+%Knowing that the monoid $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ always has a particularly well-behaved group completion is a good first step towards finding a description for said completion. However, it is worth noting that \cref{gpcompin} is true for all action operads $G$, which is more than we really need. After all, the only reason we care about $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ is that we know from \cref{Zmor} that it is crucial to understanding the morphisms of \emph{crossed} action operads. Thus it would be nice if we could use some consequence of crossedness to tell us even more about the inclusion map $\mathrm{gp} : G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to {(G \times_{\mathbb{N}} \mathbb{N}^{\ast n})}^{\mathrm{gp}}$.
+%
+%One such consequence was given back in \cref{noscalarcross}. If $G$ is a crossed action operad, then the action operad $G'$ defined by $G'(m) = G(m)/G(0)$ possesses the same free algebra on invertible algebra that $G$ does. In other words, we don't even need to worry about finding $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ for all crossed $G$, merely those which have a trivial $G(0)$. As it turns out, this fact is hugely relevant to our search for group completions, since elements of $G(0)$ are the only ones in $G$ which might already have an inverse under tensor product. This follows from additivity of lengths:
+%\[ \begin{array}{rclcrcccll}
+%			g \otimes h & = & e_0 & \quad \implies \quad & |g| + |h| & = & |e_0| & = & 0 & \\
+%			& & & \quad \implies \quad & & & |g| & = & -|h|, & \quad |g|, |h| \in \mathbb{N} \\
+%			& & & \quad \implies \quad & |g| & = & |h| & = & 0& 
+%		\end{array}
+%\]
+%Cancellativity, quasi-regularity, and lack of invertible objects then combine to give something much stronger than mere injectivity of the group completion map.
 
-One such consequence was given back in \cref{noscalarcross}. If $G$ is a crossed action operad, then the action operad $G'$ defined by $G'(m) = G(m)/G(0)$ possesses the same free algebra on invertible algebra that $G$ does. In other words, we don't even need to worry about finding $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ for all crossed $G$, merely those which have a trivial $G(0)$. As it turns out, this fact is hugely relevant to our search for group completions, since elements of $G(0)$ are the only ones in $G$ which might already have an inverse under tensor product. This follows from additivity of lengths:
-\[ \begin{array}{rclcrcccll}
-			g \otimes h & = & e_0 & \quad \implies \quad & |g| + |h| & = & |e_0| & = & 0 & \\
-			& & & \quad \implies \quad & & & |g| & = & -|h|, & \quad |g|, |h| \in \mathbb{N} \\
-			& & & \quad \implies \quad & |g| & = & |h| & = & 0& 
-		\end{array}
-\]
-Cancellativity, quasi-regularity, and lack of invertible objects then combine to give something much stronger than mere injectivity of the group completion map.
+As a consequence, we can identify the monoids $\ML$ and $\ML\times_{\mathbb{N}} \mathbb{N}^{\ast n}$ with their images in the group completion. Further, recall from \cref{noscalarcross} that for studying invertible objects, it suffices to study action operads $\ML$ with $\Lambda(0)$ the trivial group.
 
-\begin{prop} \label{Gfree} If $G$ is an action operad with trivial $G(0)$, then $G$ is a free monoid under tensor product.
+\begin{prop}\label{Gfree}
+Let $M$ be a monoid equipped with a monoid homomorphism $\pi: M \to \mathbb{N}$ such that 
+\begin{itemize}
+\item $\pi^{-1}(0) = \{1\}$, and
+\item if $hg = h' g'$ in $M$, then there exists a $k \in M$ such that $g = kg'$, $h' = hg$.
+\end{itemize}
+Then $M$ is a free monoid.
 \end{prop}
 \begin{proof}
-Let $\mathcal{G}$ be a subset of the monoid $G$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $G$. Notice that every relation in $\mathcal{R}$ can be written in the form $h \otimes g = h' \otimes g'$, where $g,g' \in \mathcal{G}$ are generators and $h,h' \in G$ some other elements. This is because the only other kind of relations are one like $h \otimes g = e_0$, and as we've seen this is not possible if $G(0)$ is trivial. We'll assume that in this case $|g| \ge |g'|$ and hence $|h| \le |h'|$. Using the reasoning from the proof of \cref{cqr}, we can then find $k, k' \in G$ for which
-\[ g \, = \, k \otimes g', \quad \quad \quad h' \, = \, h \otimes k' \]
-It follows that
-\[ h \otimes k \otimes g' \quad = \quad h \otimes g \quad = \quad h' \otimes g' \quad = \quad h \otimes k \otimes g' \]
-and thus by left- and right-cancellativity, $k = k'$.  In other words, the relation $h \otimes g = h' \otimes g'$ implies and is implied by a pair of relations $g = k \otimes g'$, $h' = h \otimes k$. 
 
-There are a few scenarios to consider here. 
+\end{proof}
+\begin{cor}
+If $\ML$ is an action operad with trivial $\Lambda(0)$, then $\ML$ is a free monoid under tensor product.
+\end{cor}
+\begin{prop} %\label{Gfree} 
+If $\ML$ is an action operad with trivial $\Lambda(0)$, then $\ML$ is a free monoid under tensor product.
+\end{prop}
+\begin{proof}
+Let $\mathcal{G}$ be a subset of the monoid $\ML$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $\ML$ as a monoid. We can assume that $e_0 \notin \mathcal{G}$ as it is the unit element. Notice that every relation in $\mathcal{R}$ can be written in the form $h \otimes g = h' \otimes g'$, where $g,g' \in \mathcal{G}$ are generators because the only other kind of relations are of the form $h \otimes g = e_0$, and  this is not possible if $\Lambda(0)$ is trivial. We can assume that  $|g| \ge |g'|$ and hence $|h| \le |h'|$ without loss of generality. Using the reasoning from the proof of \cref{cqr}, we can then find $k \in \Lambda$ for which $g = k \otimes g'$, $h' = h \otimes k$. 
+%
+%\[ g \, = \, k \otimes g', \quad \quad \quad h' \, = \, h \otimes k' \]
+%It follows that
+%\[ h \otimes k \otimes g' \quad = \quad h \otimes g \quad = \quad h' \otimes g' \quad = \quad h \otimes k \otimes g' \]
+%and thus by left- and right-cancellativity, $k = k'$.  In other words, the relation $h \otimes g = h' \otimes g'$ implies and is implied by a pair of relations $g = k \otimes g'$, $h' = h \otimes k$. 
+
+We consider the following cases.
 \begin{itemize}
-\item $|k| = |g|$. This is actually not possible, as it would follow from additivity of length that $|g'|=0$, and thus by assumption $g' = e_0$, which is not a generator of $G$.
-\item $|k|=0$. This would mean that $k=e_0$, and so we'd also get $g=g'$ and $h = h'$. Thus we could simplify the presentation of $G$ by replacing the relation $h \otimes g = h' \otimes g'$ in the set $\mathcal{R}$ with $h' = h$.
-\item $0 < |k| < |g|$. In this case $|g| > |g'|$ and thus $g \neq g'$, and so we could change our presentation of $G$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$.
+\item $|k| = |g|$. This is not possible, as it would follow from additivity of length that $|g'|=0$, and thus by assumption $g' = e_0$, which we have assumed is not a generator.
+\item $|k|=0$. This would mean that $k=e_0$, and so we conclude that $g=g'$ and $h = h'$. Thus we could simplify the presentation of $\Lambda$ by replacing the relation $h \otimes g = h' \otimes g'$ in the set $\mathcal{R}$ with $h' = h$, a relation of shorter length.
+\item $0 < |k| < |g|$. In this case $|g| > |g'|$ and thus $g \neq g'$, and so we could change our presentation of $\Lambda$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$.
 \end{itemize}
 Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller lengths, and replacing relations with ones whose left- and right-hand side have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $e_0 = e_0$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminated all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
 \end{proof} 
