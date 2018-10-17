@@ -77,6 +77,7 @@
 \newcommand{\twocat}{\ensuremath{\textrm{2-Cat}}}
 \newcommand{\Icon}{\ensuremath{\textrm{Icon}}}
 \newcommand{\ML}{\mathbf{\Lambda}}
+\newcommand{\LL}{\Lambda}
 %\newcommand{\to}{\rightarrow}
 \def\srarrow{\relbar\joinrel\mapstochar\joinrel\rightarrow}
 %\newcommand{\id}{\ensuremath{\textnormal{id}}\xspace}
@@ -1380,31 +1381,31 @@ Of course, $\rho$ was an arbitrary permutation-preserving map $\mathbb{N}^{\ast 
 The next group we are interested in understanding better is $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$. Per \cref{Morder}, the operations needed to produce this group out of $\mathrm{Mor}(\ELnn) = G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}$ can be done in any order we choose, and so we will save the identification of $\otimes$ and $\circ$ until last. This will let us keep the tensor product as simple as possible while we are in the process of group completing and abelianizing it. We begin with group completion, using a method developed by Raouf Doss \cite{doss-imm}.
 
 \begin{Defi} We say that a monoid $M$ is \emph{left-cancellative} if for any $a, b, c \in M$, we have
-\[ ab \, = \, ac \quad \implies \quad b \, = \, c \]
+\[ ab \, = \, ac \quad \implies \quad b \, = \, c. \]
 That is, common factors may be cancelled out on the left. Similarly, we call $M$ \emph{right-cancellative} if common factors can be cancelled on the right:
-\[ ac \, = \, bc \quad \implies \quad a \, = \, b \]
+\[ ac \, = \, bc \quad \implies \quad a \, = \, b. \]
 A monoid that is both left- and right-cancellative is simply referred to as \emph{cancellative}.
 \end{Defi}
 
 \begin{Defi} An element $a$ of a monoid $M$ is said to be \emph{regular on the left} if it shares a common left-multiple with every other element of $M$. That is,
-\[ \forall \, b \in M, \quad \exists \, c, d \in M \quad : \quad ca \, = \, db \]
+\[ \forall \, b \in M, \quad \exists \, c, d \in M \quad : \quad ca \, = \, db. \]
 The monoid as a whole is said to be \emph{regular on the left} if all of its elements are.
- $M$ is \emph{quasi-regular on the left} if for any two elements $a,b$ of $M$ share a common left-multiple ($ca = db$ as above) if and only if
-\[ \exists \, c', d' \in M \quad : \quad c'a \, = \, d'b, \quad \quad \text{$c'$ or $d'$ is regular in $M$} \]
+ $M$ is \emph{quasi-regular on the left} if any two elements $a,b$ of $M$ share a common left-multiple ($ca = db$ as above) if and only if
+\[ \exists \, c', d' \in M \quad : \quad c'a \, = \, d'b, \quad \quad \text{$c'$ or $d'$ is regular in $M$.} \]
 Again, we can define a similar condition for being quasi-regular on the right, and we say that a monoid is \emph{quasi-regular} when it is both.
 \end{Defi}
 
 \begin{prop}[\cite{doss-imm}] If a monoid $M$ is cancellative and quasi-regular on the left, then it can be embedded into a group.
 \end{prop}
 
-For a given action operad, both of these conditions will follow from the way that operadic multiplication interacts with the elements of the abelian group $G(0)$.
+For a given action operad, both of these conditions will follow from the way that operadic multiplication interacts with the elements of the abelian group $\Lambda(0)$.
 
-\begin{prop} \label{cqr} Every action operad $G$ is both cancellative and quasi-regular as a monoid under tensor product.
+\begin{prop} \label{cqr} For every action operad $\ML$, the monoid $(\Lambda, \otimes)$ is both cancellative and quasi-regular as a monoid under tensor product.
 \end{prop}
 \begin{proof}
-Let $g$ and $g'$ be any elements of $G$ which share a left-multiple, so that there exists at least one pair $h, h'$ in $G$ for which
+Let $g$ and $g'$ be any elements of $\Lambda$ which share a left-multiple, so that there exists at least one pair $h, h'$ in $\Lambda$ for which
 \[ h \otimes g \quad = \quad h' \otimes g', \]
-and without loss of generality assume that $|g| \ge |g'|$, so also $|h| \le |h'|$. The operadic product $\mu(h; e_0, ..., e_0)$ is clearly an element of the group $G(0)$, and we know from \cref{G0abel} that this is an abelian group under tensor product, so also let $\mu(h; e_0, ..., e_0)^*$ be its inverse. Then
+and without loss of generality assume that $|g| \ge |g'|$, so also $|h| \le |h'|$. The operadic product $\mu(h; e_0, ..., e_0)$ is clearly an element of the group $\LL(0)$, and we know from \cref{G0abel} that this is an abelian group under tensor product, so also let $\mu(h; e_0, ..., e_0)^*$ be its inverse. Then
 \[ \begin{array}{rll}
 			g & = & \mu(h; e_0, ..., e_0)^* \otimes \mu(h; e_0, ..., e_0) \otimes \mu(g; e_1, ..., e_1) \\
 			& = & \mu(h; e_0, ..., e_0)^* \otimes \mu\big( \, e_2 \, ; \, \mu(h; e_0, ..., e_0), \mu(g; e_1, ..., e_1) \, \big) \\
@@ -1419,10 +1420,10 @@ and without loss of generality assume that $|g| \ge |g'|$, so also $|h| \le |h'|
 		\end{array}
 \]
 Put another way, if $h \otimes g = h' \otimes g'$, there exists $k \in \ML$ such that $g = k \otimes g'$, or equivalently $e_0 \otimes g = k \otimes g'$. Since
- $e_0$ is obviously regular because it is the unit, the operad $\ML$ viewed as a monoid is quasi-regular on the left; quasi-regularity on the right is analogous. Furthermore, following through the argument above when $h = h'$ prove that $h \otimes g = h \otimes g'$ implies $g = g'$, or left-cancellativity.
+ $e_0$ is obviously regular because it is the unit, the operad $\LL$ viewed as a monoid is quasi-regular on the left; quasi-regularity on the right is analogous. Furthermore, following through the argument above when $h = h'$ prove that $h \otimes g = h \otimes g'$ implies $g = g'$, or left-cancellativity.
 \end{proof}
 
-\begin{cor} \label{gpcompin} The canonical map $\mathrm{gp} : \ML \to \ML^{\mathrm{gp}}$ associated with the group completion of $\ML$ is an inclusion. Further, the canonical map $\mathrm{gp} : \ML\times_{\mathbb{N}} \mathbb{N}^{\ast n} \to (\ML\times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}}$  is also an inclusion.
+\begin{cor} \label{gpcompin} The canonical map $\mathrm{gp} : (\ML, \otimes) \to (\ML, \otimes)^{\mathrm{gp}}$ associated with the group completion of $\ML$ is an inclusion. Further, the canonical map $\mathrm{gp} : (\ML, \otimes) \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to ((\ML, \otimes) \times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}}$  is also an inclusion.
 \end{cor}
 \begin{proof}
 The first statement is immediate. For the second, note that both $\ML$ and $\mathbb{N}^{\ast n}$ embed into groups so their product and hence any submonoid of their product does too.
@@ -1444,24 +1445,15 @@ The first statement is immediate. For the second, note that both $\ML$ and $\mat
 As a consequence, we can identify the monoids $\ML$ and $\ML\times_{\mathbb{N}} \mathbb{N}^{\ast n}$ with their images in the group completion. Further, recall from \cref{noscalarcross} that for studying invertible objects, it suffices to study action operads $\ML$ with $\Lambda(0)$ the trivial group.
 
 \begin{prop}\label{Gfree}
-Let $M$ be a monoid equipped with a monoid homomorphism $\pi: M \to \mathbb{N}$ such that 
+Let $M$ be a monoid with unit element $1$, and assume $M$ is equipped with a monoid homomorphism $\pi: M \to \mathbb{N}$ such that 
 \begin{itemize}
 \item $\pi^{-1}(0) = \{1\}$, and
-\item if $hg = h' g'$ in $M$, then there exists a $k \in M$ such that $g = kg'$, $h' = hg$.
+\item if $hg = h' g'$ in $M$, then there exists a $k \in M$ such that $g = kg'$, $h' = hk$.
 \end{itemize}
 Then $M$ is a free monoid.
 \end{prop}
 \begin{proof}
-
-\end{proof}
-\begin{cor}
-If $\ML$ is an action operad with trivial $\Lambda(0)$, then $\ML$ is a free monoid under tensor product.
-\end{cor}
-\begin{prop} %\label{Gfree} 
-If $\ML$ is an action operad with trivial $\Lambda(0)$, then $\ML$ is a free monoid under tensor product.
-\end{prop}
-\begin{proof}
-Let $\mathcal{G}$ be a subset of the monoid $\ML$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $\ML$ as a monoid. We can assume that $e_0 \notin \mathcal{G}$ as it is the unit element. Notice that every relation in $\mathcal{R}$ can be written in the form $h \otimes g = h' \otimes g'$, where $g,g' \in \mathcal{G}$ are generators because the only other kind of relations are of the form $h \otimes g = e_0$, and  this is not possible if $\Lambda(0)$ is trivial. We can assume that  $|g| \ge |g'|$ and hence $|h| \le |h'|$ without loss of generality. Using the reasoning from the proof of \cref{cqr}, we can then find $k \in \Lambda$ for which $g = k \otimes g'$, $h' = h \otimes k$. 
+Let $\mathcal{G}$ be a subset of the monoid $M$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $M$ as a monoid. We assume that $1 \notin \mathcal{G}$ as it is the unit element. Notice that every relation in $\mathcal{R}$ can be written in the form $h g = h' g'$, where $g,g' \in \mathcal{G}$ are generators because the only other kind of relations are of the form $h  g = 1$, and  this is not possible if $\pi^{-1}(0) = \{1\}$. We can assume that  $\pi(g) \ge \pi(g')$ and hence $\pi(h) \le \pi(h')$ without loss of generality. By the second hypothesis, we can then find $k \in M$ for which $g = k g'$, $h' = h k$. 
 %
 %\[ g \, = \, k \otimes g', \quad \quad \quad h' \, = \, h \otimes k' \]
 %It follows that
@@ -1475,9 +1467,18 @@ We consider the following cases.
 \item $0 < |k| < |g|$. In this case $|g| > |g'|$ and thus $g \neq g'$, and so we could change our presentation of $\Lambda$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$.
 \end{itemize}
 Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller lengths, and replacing relations with ones whose left- and right-hand side have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $e_0 = e_0$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminated all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
+
+\end{proof}
+\begin{cor}\label{cor:ML_free}
+If $\ML$ is an action operad with trivial $\Lambda(0)$, then $(\ML, \otimes)$ is a free monoid under tensor product.
+\end{cor}
+\begin{prop} %\label{Gfree} 
+If $\ML$ is an action operad with trivial $\Lambda(0)$, then $\ML$ is a free monoid under tensor product.
+\end{prop}
+\begin{proof}
 \end{proof} 
 
-Whenever we can be sure of that $G$ is a free monoid --- whether by using \cref{Gfree} or some other method --- this freeness will carry over directly to the algebras $\ELn$, giving us a new way to represent their morphisms.
+Whenever we can be sure of that $(\ML, \otimes)$ is a free monoid --- whether by using \cref{cor:ML_free} or some other method --- this freeness will carry over directly to the algebras $\ELn$, giving us a new way to represent their morphisms.
 
 \begin{prop} \label{freemor} Let $\mathcal{G}$ be a set that freely generates the action operad $G$ under tensor product, and for each $m \in \mathbb{N}$ define $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, the subset of $\mathcal{G}$ containing all elements of length $m$. Then the monoid $\mathrm{Mor}(\ELn)$ is 
 \[ G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathbb{N}^{\ast ( \, |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... \, )} \]
