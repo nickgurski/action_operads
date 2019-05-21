@@ -1455,67 +1455,113 @@ Let $M$ be a monoid with unit element $1$, and assume $M$ is equipped with a mon
 Then $M$ is a free monoid.
 \end{prop}
 \begin{proof}
-Let $\mathcal{G}$ be a subset of the monoid $M$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $M$ as a monoid. We assume that $1 \notin \mathcal{G}$ as it is the unit element. Notice that every relation in $\mathcal{R}$ can be written in the form $h g = h' g'$, where $g,g' \in \mathcal{G}$ are generators because the only other kind of relations are of the form $h  g = 1$, and  this is not possible if $\pi^{-1}(0) = \{1\}$. We can assume that  $\pi(g) \ge \pi(g')$ and hence $\pi(h) \le \pi(h')$ without loss of generality. By the second hypothesis, we can then find $k \in M$ for which $g = k g'$, $h' = h k$. 
-We consider the following cases.
-\begin{itemize}
-\item $\pi(k) = \pi(g)$: This is not possible, as it would follow that $\pi(g')=0$, and thus by assumption $g' = 1$, and we have assumed 1 is not a generator.
-\item $\pi(k)=0$: This would mean that $k=1$, and so we conclude that $g=g'$, $h = h'$. Thus we could simplify the presentation of $M$ by replacing the relation $h g = h' g'$ in the set $\mathcal{R}$ with $h' = h$. If we define the length of a relation $h g = h' g'$ as $\pi(hg) = \pi(h'g')$, this substitution produces a relation of shorter length.
-\item $0 < \pi(k) < \pi(g|)$: In this case $\pi(g) > \pi(g')$ and thus $g \neq g'$. Therefore we could change our presentation of $M$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$.
-\end{itemize}
-Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller image under $\pi$, and replacing relations with ones whose left- and right-hand sides have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $1 = 1$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminate all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
-QQQ If $M$ is not finitely presented, I'm not sure this last step works, need to think harder. Our monoids are likely NOT finitely presented.
+Let $\mathcal{G}$ be a subset of the monoid $M$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $M$ . We assume that $1 \notin \mathcal{G}$. Call a generator $g \in \mathcal{G}$ indivisible if there are no non-identity elements $h, h'$ such that $g = hh'$. If $g \in \mathcal{G}$ is not indivisible, then $g = hh'$ with $\pi(h), \pi(h') < \pi(g)$ since $\pi^{-1}(0) = \{1\}$; in particular, every generator can be written as a product of indivisible generators since any generator $f$ with $\pi(f)=1$ must be indivisible. By enlarging $\mathcal{G}, \mathcal{R}$ if necessary, we can assume all the generators are indivisible.
+
+Notice that every relation in $\mathcal{R}$ can be written as $g_1 g_2 \cdots g_n = h_1 h_2 \cdots h_m$, where $g_i, h_j \in \mathcal{G}$ are generators: the only other kind of relations are of the form $ g_1 g_2 \cdots g_n = 1$, and  this is not possible when $\pi^{-1}(0) = \{1\}$. Applying the second hypothesis above to the relation $g_1 g_2 \cdots g_n = h_1 h_2 \cdots h_m$, there exists an element $k$ such that
+\[
+g_n = k h_m, \quad h_1 \cdots h_{m-1} = g_1 \cdots g_{n-1} k.
+\]
+Since $g_n$ is indivisible, we get that $k=1$ and $g_n = h_m$. Thus $n=m$ and $g_i = h_i$ for all $i$ by an easy induction argument, at the monoid $M$ is therefore free on  a set of indivisible generators.
+
+%We can assume that  $\pi(g) \ge \pi(g')$ and hence $\pi(h) \le \pi(h')$ without loss of generality. By the second hypothesis, we can then find $k \in M$ for which $g = k g'$, $h' = h k$. 
+%We consider the following cases.
+%\begin{itemize}
+%\item $\pi(k) = \pi(g)$: This is not possible, as it would follow that $\pi(g')=0$ so $g' = 1$, and we have assumed 1 is not a generator.
+%\item $\pi(k)=0$: This would mean that $k=1$, and so we conclude that $g=g'$, $h = h'$. Thus we could simplify the presentation of $M$ by replacing the relation $h g = h' g'$ in the set $\mathcal{R}$ with $h' = h$. If we define the length of a relation $h g = h' g'$ as $\pi(hg) = \pi(h'g')$, this substitution produces a relation of shorter length.
+%\item $0 < \pi(k) < \pi(g)$: In this case $\pi(g) > \pi(g')$ and thus $g \neq g'$. Therefore we could change our presentation of $M$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h  g = h'  g'$ by $h' = h  k$ in the relations $\mathcal{R}$.
+%\end{itemize}
+%Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller image under $\pi$, and replacing relations with ones whose left- and right-hand sides have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $1 = 1$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminate all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
+%QQQ If $M$ is not finitely presented, I'm not sure this last step works, need to think harder. Our monoids are likely NOT finitely presented.
 
 \end{proof}
-\begin{cor}\label{cor:ML_free}
-If $\ML$ is an action operad with trivial $\Lambda(0)$, then $(\ML, \otimes)$ is a free monoid under tensor product.
+
+We can use \cref{Gfree} to show that the pullback
+\begin{center}
+    \begin{tikzpicture}[x=20mm,y=15mm]
+		\node (a) at (0,0) {$M \times_{\mathbb{N}} \mathbb{N}^{*n}$};
+		\node (b) at (1,0) {$M$};
+		\node (c) at (0,-1) {$\mathbb{N}^{*n}$};
+		\node (d) at (1,-1) {$\mathbb{N}$};
+			\draw [->] (a) to node [above] {$$} (b);
+			\draw [->] (b) to node [right] {$\pi$} (d);
+			\draw [->] (a) to node [left] {$$} (c);
+			\draw [->] (c) to node [below] {$s$} (d);
+    \end{tikzpicture}
+\end{center}
+is also a free monoid, where the map $s:\mathbb{N}^{* n} \to \mathbb{N}$ sends every generator to 1.
+
+\begin{cor}\label{freemor} 
+Let $(M, \pi)$ be as in \cref{Gfree}, and $\mathcal{G}$ a generating set of indivisible elements. Then the monoid $M \times_{\mathbb{N}} \mathbb{N}^{*n}$ is free on
+\[
+\sum_{k= 0}^{\infty} n^k |\mathcal{G}_k|
+\]
+generators, where $\mathcal{G}_k \subset \mathcal{G}$ consists of all generators $g \in \mathcal{G}$ such that $\pi(g) =k$.
+
+
+%Assume that an action operad $\ML$ is free as a monoid under tensor product on the set $\mathcal{G}$, and define $\mathcal{G}_k := \mathcal{G} \, \cap \,  \Lambda(k)$. Then the monoid of morphisms of the free $\ML$-monoidal category on $n$ generators, $ (\ML, \otimes) \times_{\mathbb{N}} \mathbb{N}^{\ast n}$, is free on 
+%\[
+%\sum_{k= 0}^{\infty} n^k |\mathcal{G}_k|
+%\]
+%generators.
+%
+%Let $\mathcal{G}$ be a set that freely generates the action operad $G$ under tensor product, and for each $m \in \mathbb{N}$ define $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, the subset of $\mathcal{G}$ containing all elements of length $m$. Then the monoid $\mathrm{Mor}(\ELn)$ is 
+%\[ G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathbb{N}^{\ast ( \, |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... \, )} \]
 \end{cor}
-
-Whenever we can be sure of that $(\ML, \otimes)$ is a free monoid --- whether by using \cref{cor:ML_free} or some other method --- this freeness will carry over directly to the algebras $\ELn$, giving us a new way to represent their morphisms.
-
-\begin{prop} \label{freemor} Let $\mathcal{G}$ be a set that freely generates the action operad $G$ under tensor product, and for each $m \in \mathbb{N}$ define $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, the subset of $\mathcal{G}$ containing all elements of length $m$. Then the monoid $\mathrm{Mor}(\ELn)$ is 
-\[ G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathbb{N}^{\ast ( \, |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... \, )} \]
-\end{prop}
 \begin{proof}
-Let $(g, w)$ be an arbitrary element of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. The monoid $G$ is free of the generators $\mathcal{G}$, and $\mathbb{N}^{\ast n}$ is free on $\{z_1, ..., z_n\}$, so we can find unique expansions of $g$ and $w$ as tensor products
+Let $(m, w)$ be an arbitrary element of $M \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. The monoid $M$ is free of the generators $\mathcal{G}$, and $\mathbb{N}^{\ast n}$ is free on $\{z_1, ..., z_n\}$, so we can find unique expansions of $g$ and $w$ as products
 \[ \begin{array}{rclcrcl}
-			g & = & g_1 \otimes ... \otimes g_k, & \quad & g_1, ..., g_k & \in & \mathcal{G} \\
-			w & = & x_1 \otimes ... \otimes x_m, & \quad & x_1, ..., x_m & \in & \{z_1, ..., z_n\}
+			g & = & g_1 g_2 \cdots g_k, & \quad & g_1, ..., g_k & \in & \mathcal{G} \\
+			w & = & x_1 x_2 \cdots x_m, & \quad & x_1, ..., x_m & \in & \{z_1, ..., z_n\}
 		\end{array}
 \]
-But each of the generators $z_1, ..., z_n$ has length 1, so the index $m$ here is really just the length $|w|$, which by the definition of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is also the length $|g| = |g_1| + ... + |g_k|$. Therefore we may write
+Each of the generators $z_1, ..., z_n$ maps to 1 via $s$, so $\pi(g)$ is just the length $|w|$. Since $\pi$ is a homomorphism, we also have $\pi(g) = \pi(g_1) + ... + \pi(g_k)$. Write $\pi(\leq i)$ for the sum $\pi(g_1) + \cdots + \pi(g_i)$. We then have the equalities
 \[ \begin{array}{rll}
-			(g, w) & = & (g_1 \otimes ... \otimes g_k, x_1 \otimes ... \otimes x_{|w|}) \\
-			& = & (g_1, x_1 \otimes ... \otimes x_{|g_1|}) \otimes (g_2, x_{|g_1|+1} \otimes ... \otimes x_{|g_1|+|g_2|}) \otimes ... \\
-			& & \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|})
+			(g, w) & = & ( g_1 g_2 \cdots g_k, x_1 x_2 \cdots x_{|w|}) \\
+			& = & (g_1, x_1 \cdots x_{\pi(g_1)}) \cdot (g_2, x_{\pi(\leq 1)+1} \cdots x_{\pi(\leq 2)}) \cdot  (g_k, x_{\pi(\leq k-1)+1}\cdots x_{\pi(\leq k)}).
 		\end{array}
 \]
-That is, every element in $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ may be expressed as a product of elements from the subset $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. Furthermore, the freeness of $G$ and $\mathbb{N}^{\ast n}$ make sure that this expansion is unique, since
-\[ \begin{array}{rl}
-			& (g_1, x_1 \otimes ... x_{|g_1|}) \otimes ... \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|}) \\
-			= & (g'_1, x'_1 \otimes ... \otimes x'_{|g'_1|}) \otimes ... \otimes (g'_{k'}, x'_{|g'_1| + ... + |g'_{k'-1}|+1} \otimes ... \otimes x'_{|g'_1| + ... + |g'_{k'}|})
-		\end{array}
+This shows that every element in $M \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ may be expressed as a product of elements from the subset $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. Furthermore, the freeness of $M$ and $\mathbb{N}^{\ast n}$ make sure that this expansion is unique, so $M \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is free on
+\[
+\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n} = \coprod_{k \geq 1} \mathcal{G}_k \times \{z_1, \ldots, z_n \}^k.
 \]
-\[ \begin{array}{rcclcccl}
-			\implies \quad \quad & g_1 \otimes ... \otimes g_k & = & g'_1 \otimes ... \otimes g'_{k'}, & \quad \quad & x_1 \otimes ... \otimes x_{m} & = & x'_1 \otimes ... \otimes x'_{m'} \\
-			& & & & & & & \\
-			\implies \quad \quad & g_i \, = \, g'_i, & & 1 \le i \le k = k', & \quad \quad & x_j \, = \, x'_j, & & 1 \le j \le m = m' 
-		\end{array}
-\]
-Thus $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is the free monoid on the set 
-\[ \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathcal{G}_0 \times \{ z_1, ..., z_n \}^0  \, \cup \, \mathcal{G}_1 \times \{ z_1, ..., z_n \}^1 \, \cup \, \mathcal{G}_2 \times \{ z_1, ..., z_n \}^2 \, \cup \, ...\]
-which is just the $m$-fold free product of $\mathbb{N}$ with itself, where $m$ is the number of generators,
-\[ \begin{array}{rll}
-			|\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}| & = & |\mathcal{G}_0| \cdot |\{ z_1, ..., z_n \}^0|  \, + \, |\mathcal{G}_1| \cdot |\{ z_1, ..., z_n \}^1| \, + \, |\mathcal{G}_2| \cdot |\{ z_1, ..., z_n \}^2| \, + \, ... \\
-			& = & |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... 
-		\end{array}	
-\]
+
+%since
+%\[ \begin{array}{rl}
+%			& (g_1, x_1 \otimes ... x_{|g_1|}) \otimes ... \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|}) \\
+%			= & (g'_1, x'_1 \otimes ... \otimes x'_{|g'_1|}) \otimes ... \otimes (g'_{k'}, x'_{|g'_1| + ... + |g'_{k'-1}|+1} \otimes ... \otimes x'_{|g'_1| + ... + |g'_{k'}|})
+%		\end{array}
+%\]
+%\[ \begin{array}{rcclcccl}
+%			\implies \quad \quad & g_1 \otimes ... \otimes g_k & = & g'_1 \otimes ... \otimes g'_{k'}, & \quad \quad & x_1 \otimes ... \otimes x_{m} & = & x'_1 \otimes ... \otimes x'_{m'} \\
+%			& & & & & & & \\
+%			\implies \quad \quad & g_i \, = \, g'_i, & & 1 \le i \le k = k', & \quad \quad & x_j \, = \, x'_j, & & 1 \le j \le m = m' 
+%		\end{array}
+%\]
+%Thus $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is the free monoid on the set 
+%\[ \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathcal{G}_0 \times \{ z_1, ..., z_n \}^0  \, \cup \, \mathcal{G}_1 \times \{ z_1, ..., z_n \}^1 \, \cup \, \mathcal{G}_2 \times \{ z_1, ..., z_n \}^2 \, \cup \, ...\]
+%which is just the $m$-fold free product of $\mathbb{N}$ with itself, where $m$ is the number of generators,
+%\[ \begin{array}{rll}
+%			|\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}| & = & |\mathcal{G}_0| \cdot |\{ z_1, ..., z_n \}^0|  \, + \, |\mathcal{G}_1| \cdot |\{ z_1, ..., z_n \}^1| \, + \, |\mathcal{G}_2| \cdot |\{ z_1, ..., z_n \}^2| \, + \, ... \\
+%			& = & |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... 
+%		\end{array}	
+%\]
 \end{proof}
 
-This makes the group completion and abelianization we want to do trivial. 
+\begin{cor}\label{cor:ML_free}
+If $\ML$ is an action operad with trivial $\Lambda(0)$, then both $(\ML, \otimes)$ and $\mathrm{Mor}(\ELn) = (\ML, \otimes) \times_{\mathbb{N}} \mathbb{N}^{\ast n}$  are free monoids under tensor product.
+\end{cor}
+\begin{proof}
+The first statement follows from \cref{Gfree} and the proof of \cref{cqr}, and then the second is a consequence of the first and \cref{freemor}.
 
-\begin{cor} \label{freemorgpab} If $\mathcal{G}$ is a set that freely generates $G$ under tensor product, and $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, then the abelian group $\mathrm{Mor}(\ELn)^{\mathrm{gp}, \mathrm{ab}}$ is 
+\end{proof}
+
+\cref{cor:ML_free} makes the group completion and abelianization we want to compute trivial. 
+
+\begin{cor} \label{freemorgpab} If $\mathcal{G}$ is a set that freely generates $(\ML, \otimes)$ under tensor product, and $\mathcal{G}_k := \mathcal{G} \, \cap \,  \Lambda(k)$, then the abelian group $\mathrm{Mor}(\ELn)^{\mathrm{gp}, \mathrm{ab}}$ is 
 \[ (G \times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...} \]
 \end{cor}
+
+QQQ start here
 
 Now all that remains is to account for what happens when we collapse the morphisms of $\ELn$ --- that is, evaluate the quotient
 \[ \mathrm{M}(\ELn)^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}}{\otimes \sim \circ} \]
