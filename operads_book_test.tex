@@ -62,6 +62,8 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\nn}{\mathbb{N}}
 \newcommand{\m}[1]{\mathcal{#1}}
 \newcommand{\id}{\textrm{id}}
 \newcommand{\un}{\underline}
@@ -1058,12 +1060,13 @@ For crossed $G$, recall from \cref{spacial} that all $E\Lambda$-algebras are spa
 and so $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$, thus normal. 
 \end{proof}
 
-\section{Automorphisms of the unit in \texorpdfstring{$L_n$}{L_n}, part 1}
+\section{The underlying groupoid of \texorpdfstring{$L_n$}{L_n}}
 
-In this section we will collect together many of the arguments of this chapter to give the first closed form expression for the automorphism group of the unit object, $I$, in $L_n$.
-\begin{prop} \label{morprod} For any action operad $G$,
+We will now provide a concise description of the underlying groupoid of $L_n$ in terms of its group of objects and automorphisms of the unit $I$. We defer the construction of the automorphism group $L_n(I,I)$ to sections QQQ.
+
+\begin{prop} \label{morprod} For any action operad $\ML$,
 \[ \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \ltimes L_n(I,I) \]
-Moreover, if $G$ is a crossed action operad, then
+Moreover, if $\ML$ is a crossed action operad, then
 \[ \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
 \end{prop}
 \begin{proof}
@@ -1087,6 +1090,27 @@ and we have a group extension
 \end{tikzcd} \]
 But recall from \cref{stZsub} that this extension is split, or equivalently $\mathrm{Mor}(L_n)$ is a semi direct product $(s \times t)(L_n) \ltimes L_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$, and so it will follow that $\mathrm{Mor}(L_n)$ is also a central extension of $(s \times t)(L_n)$. In that case $\mathrm{Mor}(L_n)$ is just the direct product $(s \times t)(L_n) \times L_n(I,I)$.
 \end{proof}
+
+\begin{cor}\label{und_gpd}
+For a crossed action operad $\ML$, the underlying groupoid of $L_n$ is isomorphic to the groupoid with
+\begin{itemize}
+\item objects the elements of $\zz^{*n}$,
+\item morphisms the triples $(x,y,h)$ where $x, y \in \zz^{*n}$ are elements which become equal in the abelianization $\zz^{n}$ and $h \in L_n(I,I)$,
+\item composition given by $(y,z,j) \circ (x,y,h) : = (x,z,jh)$ where $jh$ is the product in $L_n(I,I)$, and
+\item the identity on $x$ given by $(x, x, 1)$.
+\end{itemize}
+\end{cor}
+\begin{proof}
+This is the correct group of objects by QQQ ref. Two objects are isomorphic if and only if they abelianize to the same element in $\zz^n$ by QQQ ref. By \cref{morprod}, every morphism can be written uniquely as a pair of an element of $(s \times t)(L_n)$ and an element of $L_n(I,I)$ which we write as a triple. The identity morphism on $x$ clearly maps to the triple $(x,x,1)$. By QQQ ref, the composition $(y,z,j) \circ (x,y,h)$ is equal to $(y,z,j) \cdot (y,y,1)^{-1} \cdot (x,y,h)$. Since $(y,y,1)^{-1} = (y^{-1}, y^{-1}, 1)$, we get the composition law above.
+
+\end{proof}
+
+
+
+\section{Automorphisms of the unit in \texorpdfstring{$L_n$}{L_n}, part 1}
+
+In this section we will collect together many of the arguments of this chapter to give the first closed form expression for the automorphism group of the unit object, $I$, in $L_n$.
+
 \begin{cor}\label{Zmor1} Let $G$ be a crossed action operad. Then the endomorphisms of the unit object of $L_n$ are
 \[ L_n(I, I) \quad \cong \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
 and therefore
@@ -1586,9 +1610,35 @@ Thus any element $(g, w)$ of $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n
 
 Beyond this, the value of this quotient will have to be found separately for each individual action operad. 
 
-\section{The action of \texorpdfstring{$L_n$}{L_n}}
+\section{The operad action on \texorpdfstring{$L_n$}{L_n}}
 
 We have determined the monoid of objects of $L_n$ in QQQ, and the abelian group of automorphisms of the unit $L_n(I,I)$ combining QQQ, all that remains is to explicitly construct $L_n$ as a $\ML$-monoidal category. Thus we turn to equipping the underlying groupoid we have constructed with an $E\Lambda$-action. For this, we will exploit the required surjectivity of the $\ML$-monoidal functor $\ELnn \to L_n$ from  \cref{actmorLGn} and express the operad action on $L_n$ in terms of the operad action on $\ELnn$.
+
+Recall that $\zz^{*n}$ (on generators $g_1, \ldots, g_n$) is a quotient of the free monoid $\nn^{*2n}$ (on generators $m_1, \ldots, m_{2n}$) by the relation setting $m_i m_{n+i} = 1 = m_{n+i} m_i$; then $g_i$ is the image of $m_i$, and $g_i^{-1}$ is the image of $m_{n+i}$. If we write $q$ for the quotient homomorphism $\nn^{*2n} \to \zz^{*n}$, then $q$ has a canonical section $s$ (which is just a function, and not a monoid homomorphism) described as follows. Every element of $\zz^{*n}$ can be written uniquely in normal form as a word $w = w_1 w_2 \cdots w_k$ of minimal length, where each $w_j \in \{g_1^{\pm 1}, \ldots, g_m^{\pm 1}\}$. Then define $s(w) = s(w_1) \cdot s(w_2) \cdots s(w_k)$ by
+\[
+s(w_j) = \left\{
+\begin{array}{rcl}
+m_i & \textrm{if} & w_j = g_i, \\
+m_{n+i} & \textrm{if} & w_j = g_i^{-1}.
+\end{array} \right.
+\]
+
+\begin{prop}\label{crossact}
+Let $\ML$ be a crossed action operad, $m \in \nn$, $g \in \Lambda(m)$, and $x_1, \ldots, x_m \in \mathrm{Ob}(L_n) $. Then the morphism 
+\[
+g^{\otimes}: x_1 \otimes \cdots x_m \to x_{\pi(g^{-1})(1)} \otimes \cdots \otimes x_{\pi(g^{-1})(m)}
+\]
+is given by 
+\[
+\Psi \Big( g^{\otimes}: s(x_1) \otimes \cdots s(x_m) \to s(x_{\pi(g^{-1})(1)}) \otimes \cdots \otimes s(x_{\pi(g^{-1})(m)}) \Big)
+\]
+where $\Psi: \mathrm{Mor}(\ELnn) \to L_n(I,I)$ is composite
+\[
+stuff.
+\] 
+
+\end{prop}
+
 %
 %At this stage, there is only one part of this $E\Lambda$-algebra that we have yet to find --- its action, $\alpha_{L_n}$. When our action operad $G$ is $G(1)$-generated, everything is so simple that there is really only one thing the action could be.
 %
@@ -1600,7 +1650,7 @@ We have determined the monoid of objects of $L_n$ in QQQ, and the abelian group 
 %\end{proof}
 %For crossed $G$, things are more complicated. What we need to do is employ the trick that was previously mentioned in \cref{actmorLGn}, where we exploit the surjectivity of the algebra map $q: \ELnn \to L_n$. This will allow us to express $\alpha_{L_n}$ in terms of the action $\alpha_{\ELnn}$. 
 
-\begin{prop} \label{crossact} Let $G$ be a crossed action operad, and for some $m \in \mathbb{N}$ choose an element $g \in G(m)$ and morphisms $(x_1, y_1, h_1), ..., (x_m, y_m, h_m)$ in $L_n$. That is, the $(x_i, y_i)$ are pairs of objects from $(s \times t)(L_n)$, and the $h_i$ are morphisms in $L_n(I,I)$. Then the action of $L_n$ is given by
+\begin{prop} \label{crossact_orig} Let $G$ be a crossed action operad, and for some $m \in \mathbb{N}$ choose an element $g \in G(m)$ and morphisms $(x_1, y_1, h_1), ..., (x_m, y_m, h_m)$ in $L_n$. That is, the $(x_i, y_i)$ are pairs of objects from $(s \times t)(L_n)$, and the $h_i$ are morphisms in $L_n(I,I)$. Then the action of $L_n$ is given by
 \[ \begin{array}{c}
 			\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
 			= \\
