@@ -62,8 +62,6 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
-\newcommand{\zz}{\mathbb{Z}}
-\newcommand{\nn}{\mathbb{N}}
 \newcommand{\m}[1]{\mathcal{#1}}
 \newcommand{\id}{\textrm{id}}
 \newcommand{\un}{\underline}
@@ -632,7 +630,7 @@ Let $f$ be an arbitrary morphism in $L_n$. By surjectivity of $q$, there must ex
 \end{proof}
 
 
-Note that while this result shows that every morphism of $L_n$ is induced by the action of some $g \in \Lambda(m)$, it does not imply that this $g$ is unique. It will, however, furnish us with all the group actions required to give $L_n$ a $\ML$-monoidal structure once we have given it a mere \emph{monoidal} one using that $q$ is surjective (\cref{qsurj}).  
+Note that while this result shows that every morphism of $L_n$ is induced by the action of some $g \in \Lambda(m)$, it does not imply that this $g$ is unique. It will, however, furnish us with all the group actions required to give $L_n$ a $\ML$-monoidal structure once we have given it a mere \emph{monoidal} one using that $q$ is surjective.  QQQ Forward ref to where we accomplish this.
 
 \begin{lem} \label{noscalar} For any element $g \in \Lambda(m), m \in \mathbb{N}$ of an action operad $\ML$, the morphism
 \[
@@ -641,7 +639,6 @@ g: I^m \to I^m
 in $L_n$ is the identity.
 Equivalently, for any element $h \in \Lambda(0)$, $h$ induces the identity morphism $I \to I$.
 \end{lem}
-
 \begin{proof}
 First, let $g \in \Lambda(m)$. Then $g: I^m \to I^m$ is equal to $q(g):q(I^m) \to q(I^m)$ which is equal to $q\delta(g): q\delta(I^m) \to q\delta(I^m)$. Since $q$ is the coequalizer of $\delta$ and the zero map, $q\delta(g) = \id$ for all $g \in \Lambda(m)$. This clearly implies that every $h \in \Lambda(0)$ induces the identity map $I \to I$, but note that the morphism $g:I^m \to I^m$ is also the morphism induced by $\mu(g; e_0, \ldots, e_0) \in \Lambda(0)$, so these two claims are equivalent.
 \end{proof}
@@ -1062,10 +1059,9 @@ For crossed $G$, recall from \cref{spacial} that all $E\Lambda$-algebras are spa
 and so $L_n(I,I)$ is a subgroup of the center of $\morln$, thus normal. 
 \end{proof}
 
-\section{The underlying groupoid of \texorpdfstring{$L_n$}{L_n}}
+\section{Automorphisms of the unit in \texorpdfstring{$L_n$}{L_n}, part 1}
 
-We will now provide a concise description of the underlying groupoid of $L_n$ in terms of its group of objects and automorphisms of the unit $I$. We defer the construction of the automorphism group $L_n(I,I)$ to sections QQQ.
-
+In this section we will collect together many of the arguments of this chapter to give the first closed form expression for the automorphism group of the unit object, $I$, in $L_n$.
 \begin{prop} \label{morprod} For any action operad $G$,
 \[ \morln \quad \cong \quad (s \times t)(L_n) \ltimes L_n(I,I) \]
 Moreover, if $G$ is a crossed action operad, then
@@ -1092,27 +1088,6 @@ and we have a group extension
 \end{tikzcd} \]
 But recall from \cref{stZsub} that this extension is split, or equivalently $\morln$ is a semi direct product $(s \times t)(L_n) \ltimes L_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L_n(I,I)$ is a subgroup of the center of $\morln$, and so it will follow that $\morln$ is also a central extension of $(s \times t)(L_n)$. In that case $\morln$ is just the direct product $(s \times t)(L_n) \times L_n(I,I)$.
 \end{proof}
-
-\begin{cor}\label{und_gpd}
-For a crossed action operad $\ML$, the underlying groupoid of $L_n$ is isomorphic to the groupoid with
-\begin{itemize}
-\item objects the elements of $\zz^{*n}$,
-\item morphisms the triples $(x,y,h)$ where $x, y \in \zz^{*n}$ are elements which become equal in the abelianization $\zz^{n}$ and $h \in L_n(I,I)$,
-\item composition given by $(y,z,j) \circ (x,y,h) : = (x,z,jh)$ where $jh$ is the product in $L_n(I,I)$, and
-\item the identity on $x$ given by $(x, x, 1)$.
-\end{itemize}
-\end{cor}
-\begin{proof}
-This is the correct group of objects by QQQ ref. Two objects are isomorphic if and only if they abelianize to the same element in $\zz^n$ by QQQ ref. By \cref{morprod}, every morphism can be written uniquely as a pair of an element of $(s \times t)(L_n)$ and an element of $L_n(I,I)$ which we write as a triple. The identity morphism on $x$ clearly maps to the triple $(x,x,1)$. By QQQ ref, the composition $(y,z,j) \circ (x,y,h)$ is equal to $(y,z,j) \cdot (y,y,1)^{-1} \cdot (x,y,h)$. Since $(y,y,1)^{-1} = (y^{-1}, y^{-1}, 1)$, we get the composition law above.
-
-\end{proof}
-
-
-
-\section{Automorphisms of the unit in \texorpdfstring{$L_n$}{L_n}, part 1}
-
-In this section we will collect together many of the arguments of this chapter to give the first closed form expression for the automorphism group of the unit object, $I$, in $L_n$.
-
 \begin{cor}\label{Zmor1} Let $G$ be a crossed action operad. Then the endomorphisms of the unit object of $L_n$ are
 \[ L_n(I, I) \quad \cong \quad \bigquotient{{\morln}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
 and therefore
@@ -1481,114 +1456,67 @@ Let $M$ be a monoid with unit element $1$, and assume $M$ is equipped with a mon
 Then $M$ is a free monoid. QQQ This second condition implies that $M$ is a group? $1h = h1$ so there exists $k \in M$ such that $1 = kh$ and $1 = hk$. QQQ
 \end{prop}
 \begin{proof}
-
-Let $\mathcal{G}$ be a subset of the monoid $M$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $M$ . We assume that $1 \notin \mathcal{G}$. Call a generator $g \in \mathcal{G}$ indivisible if there are no non-identity elements $h, h'$ such that $g = hh'$. If $g \in \mathcal{G}$ is not indivisible, then $g = hh'$ with $\pi(h), \pi(h') < \pi(g)$ since $\pi^{-1}(0) = \{1\}$; in particular, every generator can be written as a product of indivisible generators since any generator $f$ with $\pi(f)=1$ must be indivisible. By enlarging $\mathcal{G}, \mathcal{R}$ if necessary, we can assume all the generators are indivisible.
-
-Notice that every relation in $\mathcal{R}$ can be written as $g_1 g_2 \cdots g_n = h_1 h_2 \cdots h_m$, where $g_i, h_j \in \mathcal{G}$ are generators: the only other kind of relations are of the form $ g_1 g_2 \cdots g_n = 1$, and  this is not possible when $\pi^{-1}(0) = \{1\}$. Applying the second hypothesis above to the relation $g_1 g_2 \cdots g_n = h_1 h_2 \cdots h_m$, there exists an element $k$ such that
-\[
-g_n = k h_m, \quad h_1 \cdots h_{m-1} = g_1 \cdots g_{n-1} k.
-\]
-Since $g_n$ is indivisible, we get that $k=1$ and $g_n = h_m$. Thus $n=m$ and $g_i = h_i$ for all $i$ by an easy induction argument, at the monoid $M$ is therefore free on  a set of indivisible generators.
-
-%We can assume that  $\pi(g) \ge \pi(g')$ and hence $\pi(h) \le \pi(h')$ without loss of generality. By the second hypothesis, we can then find $k \in M$ for which $g = k g'$, $h' = h k$. 
-%We consider the following cases.
-%\begin{itemize}
-%\item $\pi(k) = \pi(g)$: This is not possible, as it would follow that $\pi(g')=0$ so $g' = 1$, and we have assumed 1 is not a generator.
-%\item $\pi(k)=0$: This would mean that $k=1$, and so we conclude that $g=g'$, $h = h'$. Thus we could simplify the presentation of $M$ by replacing the relation $h g = h' g'$ in the set $\mathcal{R}$ with $h' = h$. If we define the length of a relation $h g = h' g'$ as $\pi(hg) = \pi(h'g')$, this substitution produces a relation of shorter length.
-%\item $0 < \pi(k) < \pi(g)$: In this case $\pi(g) > \pi(g')$ and thus $g \neq g'$. Therefore we could change our presentation of $M$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h  g = h'  g'$ by $h' = h  k$ in the relations $\mathcal{R}$.
-%\end{itemize}
-%Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller image under $\pi$, and replacing relations with ones whose left- and right-hand sides have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $1 = 1$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminate all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
-%QQQ If $M$ is not finitely presented, I'm not sure this last step works, need to think harder. Our monoids are likely NOT finitely presented.
+Let $\mathcal{G}$ be a subset of the monoid $M$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $M$ as a monoid. We assume that $1 \notin \mathcal{G}$ as it is the unit element. Notice that every relation in $\mathcal{R}$ can be written in the form $h g = h' g'$, where $g,g' \in \mathcal{G}$ are generators because the only other kind of relations are of the form $h  g = 1$, and  this is not possible if $\pi^{-1}(0) = \{1\}$. We can assume that  $\pi(g) \ge \pi(g')$ and hence $\pi(h) \le \pi(h')$ without loss of generality. By the second hypothesis, we can then find $k \in M$ for which $g = k g'$, $h' = h k$. 
+We consider the following cases.
+\begin{itemize}
+\item $\pi(k) = \pi(g)$: This is not possible, as it would follow that $\pi(g')=0$, and thus by assumption $g' = 1$, and we have assumed 1 is not a generator.
+\item $\pi(k)=0$: This would mean that $k=1$, and so we conclude that $g=g'$, $h = h'$. Thus we could simplify the presentation of $M$ by replacing the relation $h g = h' g'$ in the set $\mathcal{R}$ with $h' = h$. If we define the length of a relation $h g = h' g'$ as $\pi(hg) = \pi(h'g')$, this substitution produces a relation of shorter length.
+\item $0 < \pi(k) < \pi(g|)$ QQQ Vertical line? QQQ: In this case $\pi(g) > \pi(g')$ and thus $g \neq g'$. Therefore we could change our presentation of $M$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$. QQQ Does $h \otimes g$ mean the same thing as $hg$? QQQ
+\end{itemize}
+Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller image under $\pi$, and replacing relations with ones whose left- and right-hand sides have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $1 = 1$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminate all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
+QQQ If $M$ is not finitely presented, I'm not sure this last step works, need to think harder. Our monoids are likely NOT finitely presented.
 
 \end{proof}
-
-We can use \cref{Gfree} to show that the pullback
-\begin{center}
-    \begin{tikzpicture}[x=20mm,y=15mm]
-		\node (a) at (0,0) {$M \times_{\mathbb{N}} \mathbb{N}^{*n}$};
-		\node (b) at (1,0) {$M$};
-		\node (c) at (0,-1) {$\mathbb{N}^{*n}$};
-		\node (d) at (1,-1) {$\mathbb{N}$};
-			\draw [->] (a) to node [above] {$$} (b);
-			\draw [->] (b) to node [right] {$\pi$} (d);
-			\draw [->] (a) to node [left] {$$} (c);
-			\draw [->] (c) to node [below] {$s$} (d);
-    \end{tikzpicture}
-\end{center}
-is also a free monoid, where the map $s:\mathbb{N}^{* n} \to \mathbb{N}$ sends every generator to 1.
-
-\begin{cor}\label{freemor} 
-Let $(M, \pi)$ be as in \cref{Gfree}, and $\mathcal{G}$ a generating set of indivisible elements. Then the monoid $M \times_{\mathbb{N}} \mathbb{N}^{*n}$ is free on
-\[
-\sum_{k= 0}^{\infty} n^k |\mathcal{G}_k|
-\]
-generators, where $\mathcal{G}_k \subset \mathcal{G}$ consists of all generators $g \in \mathcal{G}$ such that $\pi(g) =k$.
-
-
-%Assume that an action operad $\ML$ is free as a monoid under tensor product on the set $\mathcal{G}$, and define $\mathcal{G}_k := \mathcal{G} \, \cap \,  \Lambda(k)$. Then the monoid of morphisms of the free $\ML$-monoidal category on $n$ generators, $ (\ML, \otimes) \times_{\mathbb{N}} \mathbb{N}^{\ast n}$, is free on 
-%\[
-%\sum_{k= 0}^{\infty} n^k |\mathcal{G}_k|
-%\]
-%generators.
-%
-%Let $\mathcal{G}$ be a set that freely generates the action operad $G$ under tensor product, and for each $m \in \mathbb{N}$ define $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, the subset of $\mathcal{G}$ containing all elements of length $m$. Then the monoid $\mathrm{Mor}(\ELn)$ is 
-%\[ G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathbb{N}^{\ast ( \, |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... \, )} \]
-\end{cor}
-\begin{proof}
-Let $(m, w)$ be an arbitrary element of $M \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. The monoid $M$ is free of the generators $\mathcal{G}$, and $\mathbb{N}^{\ast n}$ is free on $\{z_1, ..., z_n\}$, so we can find unique expansions of $g$ and $w$ as products
-\[ \begin{array}{rclcrcl}
-			g & = & g_1 g_2 \cdots g_k, & \quad & g_1, ..., g_k & \in & \mathcal{G} \\
-			w & = & x_1 x_2 \cdots x_m, & \quad & x_1, ..., x_m & \in & \{z_1, ..., z_n\}
-		\end{array}
-\]
-Each of the generators $z_1, ..., z_n$ maps to 1 via $s$, so $\pi(g)$ is just the length $|w|$. Since $\pi$ is a homomorphism, we also have $\pi(g) = \pi(g_1) + ... + \pi(g_k)$. Write $\pi(\leq i)$ for the sum $\pi(g_1) + \cdots + \pi(g_i)$. We then have the equalities
-\[ \begin{array}{rll}
-			(g, w) & = & ( g_1 g_2 \cdots g_k, x_1 x_2 \cdots x_{|w|}) \\
-			& = & (g_1, x_1 \cdots x_{\pi(g_1)}) \cdot (g_2, x_{\pi(\leq 1)+1} \cdots x_{\pi(\leq 2)}) \cdot  (g_k, x_{\pi(\leq k-1)+1}\cdots x_{\pi(\leq k)}).
-		\end{array}
-\]
-This shows that every element in $M \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ may be expressed as a product of elements from the subset $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. Furthermore, the freeness of $M$ and $\mathbb{N}^{\ast n}$ make sure that this expansion is unique, so $M \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is free on
-\[
-\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n} = \coprod_{k \geq 1} \mathcal{G}_k \times \{z_1, \ldots, z_n \}^k.
-\]
-
-%since
-%\[ \begin{array}{rl}
-%			& (g_1, x_1 \otimes ... x_{|g_1|}) \otimes ... \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|}) \\
-%			= & (g'_1, x'_1 \otimes ... \otimes x'_{|g'_1|}) \otimes ... \otimes (g'_{k'}, x'_{|g'_1| + ... + |g'_{k'-1}|+1} \otimes ... \otimes x'_{|g'_1| + ... + |g'_{k'}|})
-%		\end{array}
-%\]
-%\[ \begin{array}{rcclcccl}
-%			\implies \quad \quad & g_1 \otimes ... \otimes g_k & = & g'_1 \otimes ... \otimes g'_{k'}, & \quad \quad & x_1 \otimes ... \otimes x_{m} & = & x'_1 \otimes ... \otimes x'_{m'} \\
-%			& & & & & & & \\
-%			\implies \quad \quad & g_i \, = \, g'_i, & & 1 \le i \le k = k', & \quad \quad & x_j \, = \, x'_j, & & 1 \le j \le m = m' 
-%		\end{array}
-%\]
-%Thus $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is the free monoid on the set 
-%\[ \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathcal{G}_0 \times \{ z_1, ..., z_n \}^0  \, \cup \, \mathcal{G}_1 \times \{ z_1, ..., z_n \}^1 \, \cup \, \mathcal{G}_2 \times \{ z_1, ..., z_n \}^2 \, \cup \, ...\]
-%which is just the $m$-fold free product of $\mathbb{N}$ with itself, where $m$ is the number of generators,
-%\[ \begin{array}{rll}
-%			|\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}| & = & |\mathcal{G}_0| \cdot |\{ z_1, ..., z_n \}^0|  \, + \, |\mathcal{G}_1| \cdot |\{ z_1, ..., z_n \}^1| \, + \, |\mathcal{G}_2| \cdot |\{ z_1, ..., z_n \}^2| \, + \, ... \\
-%			& = & |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... 
-%		\end{array}	
-%\]
-\end{proof}
-
 \begin{cor}\label{cor:ML_free}
-If $\ML$ is an action operad with trivial $\Lambda(0)$, then both $(\ML, \otimes)$ and $\mathrm{Mor}(\ELn) = (\ML, \otimes) \times_{\mathbb{N}} \mathbb{N}^{\ast n}$  are free monoids under tensor product.
+If $\ML$ is an action operad with trivial $\Lambda(0)$, then $(\ML, \otimes)$ is a free monoid under tensor product.
 \end{cor}
-\begin{proof}
-The first statement follows from \cref{Gfree} and the proof of \cref{cqr}, and then the second is a consequence of the first and \cref{freemor}.
 
+Whenever we can be sure of that $(\ML, \otimes)$ is a free monoid --- whether by using \cref{cor:ML_free} or some other method --- this freeness will carry over directly to the algebras $\ELn$, giving us a new way to represent their morphisms.
+
+\begin{prop} \label{freemor} Let $\mathcal{G}$ be a set that freely generates the action operad $G$ under tensor product, and for each $m \in \mathbb{N}$ define $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, the subset of $\mathcal{G}$ containing all elements of length $m$. Then the monoid $\mathrm{Mor}(\ELn)$ is 
+\[ G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathbb{N}^{\ast ( \, |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... \, )} \]
+\end{prop}
+\begin{proof}
+Let $(g, w)$ be an arbitrary element of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. The monoid $G$ is free of the generators $\mathcal{G}$, and $\mathbb{N}^{\ast n}$ is free on $\{z_1, ..., z_n\}$, so we can find unique expansions of $g$ and $w$ as tensor products
+\[ \begin{array}{rclcrcl}
+			g & = & g_1 \otimes ... \otimes g_k, & \quad & g_1, ..., g_k & \in & \mathcal{G} \\
+			w & = & x_1 \otimes ... \otimes x_m, & \quad & x_1, ..., x_m & \in & \{z_1, ..., z_n\}
+		\end{array}
+\]
+But each of the generators $z_1, ..., z_n$ has length 1, so the index $m$ here is really just the length $|w|$, which by the definition of $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is also the length $|g| = |g_1| + ... + |g_k|$. Therefore we may write
+\[ \begin{array}{rll}
+			(g, w) & = & (g_1 \otimes ... \otimes g_k, x_1 \otimes ... \otimes x_{|w|}) \\
+			& = & (g_1, x_1 \otimes ... \otimes x_{|g_1|}) \otimes (g_2, x_{|g_1|+1} \otimes ... \otimes x_{|g_1|+|g_2|}) \otimes ... \\
+			& & \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|})
+		\end{array}
+\]
+That is, every element in $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ may be expressed as a product of elements from the subset $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. Furthermore, the freeness of $G$ and $\mathbb{N}^{\ast n}$ make sure that this expansion is unique, since
+\[ \begin{array}{rl}
+			& (g_1, x_1 \otimes ... x_{|g_1|}) \otimes ... \otimes (g_k, x_{|g_1| + ... + |g_{k-1}|+1} \otimes ... \otimes x_{|g_1| + ... + |g_k|}) \\
+			= & (g'_1, x'_1 \otimes ... \otimes x'_{|g'_1|}) \otimes ... \otimes (g'_{k'}, x'_{|g'_1| + ... + |g'_{k'-1}|+1} \otimes ... \otimes x'_{|g'_1| + ... + |g'_{k'}|})
+		\end{array}
+\]
+\[ \begin{array}{rcclcccl}
+			\implies \quad \quad & g_1 \otimes ... \otimes g_k & = & g'_1 \otimes ... \otimes g'_{k'}, & \quad \quad & x_1 \otimes ... \otimes x_{m} & = & x'_1 \otimes ... \otimes x'_{m'} \\
+			& & & & & & & \\
+			\implies \quad \quad & g_i \, = \, g'_i, & & 1 \le i \le k = k', & \quad \quad & x_j \, = \, x'_j, & & 1 \le j \le m = m' 
+		\end{array}
+\]
+Thus $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ is the free monoid on the set 
+\[ \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \quad = \quad \mathcal{G}_0 \times \{ z_1, ..., z_n \}^0  \, \cup \, \mathcal{G}_1 \times \{ z_1, ..., z_n \}^1 \, \cup \, \mathcal{G}_2 \times \{ z_1, ..., z_n \}^2 \, \cup \, ...\]
+which is just the $m$-fold free product of $\mathbb{N}$ with itself, where $m$ is the number of generators,
+\[ \begin{array}{rll}
+			|\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}| & = & |\mathcal{G}_0| \cdot |\{ z_1, ..., z_n \}^0|  \, + \, |\mathcal{G}_1| \cdot |\{ z_1, ..., z_n \}^1| \, + \, |\mathcal{G}_2| \cdot |\{ z_1, ..., z_n \}^2| \, + \, ... \\
+			& = & |\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ... 
+		\end{array}	
+\]
 \end{proof}
 
-\cref{cor:ML_free} makes the group completion and abelianization we want to compute trivial. 
+This makes the group completion and abelianization we want to do trivial. 
 
-\begin{cor} \label{freemorgpab} If $\mathcal{G}$ is a set that freely generates $(\ML, \otimes)$ under tensor product, and $\mathcal{G}_k := \mathcal{G} \, \cap \,  \Lambda(k)$, then the abelian group $\mathrm{Mor}(\ELn)^{\mathrm{gp}, \mathrm{ab}}$ is 
+\begin{cor} \label{freemorgpab} If $\mathcal{G}$ is a set that freely generates $G$ under tensor product, and $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$, then the abelian group $\mathrm{Mor}(\ELn)^{\mathrm{gp}, \mathrm{ab}}$ is 
 \[ (G \times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...} \]
 \end{cor}
-
-QQQ start here. Is the rest of this section necessary/useful?
 
 Now all that remains is to account for what happens when we collapse the morphisms of $\ELn$ --- that is, evaluate the quotient
 \[ \mathrm{M}(\ELn)^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}}{\otimes \sim \circ} \]
@@ -1613,232 +1541,132 @@ Thus any element $(g, w)$ of $\mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n
 
 Beyond this, the value of this quotient will have to be found separately for each individual action operad. 
 
-\section{The operad action on \texorpdfstring{$L_n$}{L_n}}
+\section{The action of \texorpdfstring{$L_n$}{L_n}}
 
-We have determined the monoid of objects of $L_n$ in QQQ, and the abelian group of automorphisms of the unit $L_n(I,I)$ combining QQQ, all that remains is to explicitly construct $L_n$ as a $\ML$-monoidal category. Thus we turn to equipping the underlying groupoid we have constructed with an $E\Lambda$-action. For this, we will exploit the required surjectivity of the $\ML$-monoidal functor $\ELnn \to L_n$ from  \cref{qsurj} and express the operad action on $L_n$ in terms of the operad action on $\ELnn$.
+At this stage, there is only one part of this $E\Lambda$-algebra that we have yet to find --- its action, $\alpha_{L_n}$. When our action operad $G$ is $G(1)$-generated, everything is so simple that there is really only one thing the action could be.
 
-Recall that $\zz^{*n}$ (on generators $g_1, \ldots, g_n$) is a quotient of the free monoid $\nn^{*2n}$ (on generators $m_1, \ldots, m_{2n}$) by the relation setting $m_i m_{n+i} = 1 = m_{n+i} m_i$; then $g_i$ is the image of $m_i$, and $g_i^{-1}$ is the image of $m_{n+i}$. If we write $q$ for the quotient homomorphism $\nn^{*2n} \to \zz^{*n}$, then $q$ has a canonical section $s$ (which is just a function, and not a monoid homomorphism) described as follows. Every element of $\zz^{*n}$ can be written uniquely in normal form as a word $w = w_1 w_2 \cdots w_k$ of minimal length, where each $w_j \in \{g_1^{\pm 1}, \ldots, g_m^{\pm 1}\}$. Then define $s(w) = s(w_1) \cdot s(w_2) \cdots s(w_k)$ by
-\[
-s(w_j) = \left\{
-\begin{array}{rcl}
-m_i & \textrm{if} & w_j = g_i, \\
-m_{n+i} & \textrm{if} & w_j = g_i^{-1}.
-\end{array} \right.
-\]
-
-\begin{prop}\label{crossact}
-Let $\ML$ be a crossed action operad, $m \in \nn$, $g \in \Lambda(m)$, and $x_1, \ldots, x_m \in \mathrm{Ob}(L_n) $. Then the morphism 
-\[
-g^{\otimes}: x_1 \otimes \cdots x_m \to x_{\pi(g^{-1})(1)} \otimes \cdots \otimes x_{\pi(g^{-1})(m)}
-\]
-in $L_n$ is given by 
-\[
-\Psi \Big( g^{\otimes}: s(x_1) \otimes \cdots s(x_m) \to s(x_{\pi(g^{-1})(1)}) \otimes \cdots \otimes s(x_{\pi(g^{-1})(m)}) \Big)
-\]
-where $\Psi: \mathrm{Mor}(\ELnn) \to L_n(I,I)$ is composite
-\[
-\mathrm{Mor}(\ELnn) \to \mathrm{M}(\ELnn)^{\mathrm{gp}, \mathrm{ab}} \to \bigquotient{\mathrm{M}(\ELnn)^{\mathrm{gp}, \mathrm{ab}}}{\Delta} \to L_n(I,I)
-\] 
-of the homomorphisms from QQQ ref, ref, and ref.
-\end{prop}
+\begin{lem} \label{G1act} Let $G$ be a $G(1)$-generated action operad, $g$ an element of $G(m)$ for some $m \in \mathbb{N}$, and $x_1, ..., x_m$ elements of $\mathbb{Z}^{\ast n}$. Then the action of $L_n$ is given by
+\[ \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \]
+\end{lem}
 \begin{proof}
+In order for $\alpha_{L_n}$ to be a well-defined $E\Lambda$-action, the map $\alpha_{L_n}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ needs to have source $x_1 \otimes ... \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}$, where by non-crossedness of $G$ the latter is also $x_1 \otimes ... \otimes x_m$. But we know from \cref{trivendo} that all morphisms in this $L_n$ are identities, and hence we get the result.
+\end{proof}
 
-The source and target of $g^{\otimes}$ are $x_1 \otimes ... \otimes x_m$ and $x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}$ by definition, so to see this morphism as an element of the monoid
-\[ \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
-we only need to compute its projection onto $L_n(I,I)$. By \cref{qsurj}, $q: \ELnn \to L_n$ is a surjective map of $E\Lambda$-algebras, so 
-\[
-q\Big( g^{\otimes}_{\ELnn}:s(x_1) \otimes \cdots s(x_m) \to s(x_{\pi(g^{-1})(1)}) \otimes \cdots \otimes s(x_{\pi(g^{-1})(m)}) \Big) = g^{\otimes}_{L_n}.
+For crossed $G$, things are more complicated. What we need to do is employ the trick that was previously mentioned in \cref{actmorLGn}, where we exploit the surjectivity of the algebra map $q: \ELnn \to L_n$. This will allow us to express $\alpha_{L_n}$ in terms of the action $\alpha_{\ELnn}$. 
+
+\begin{prop} \label{crossact} Let $G$ be a crossed action operad, and for some $m \in \mathbb{N}$ choose an element $g \in G(m)$ and morphisms $(x_1, y_1, h_1), ..., (x_m, y_m, h_m)$ in $L_n$. That is, the $(x_i, y_i)$ are pairs of objects from $(s \times t)(L_n)$, and the $h_i$ are morphisms in $L_n(I,I)$. Then the action of $L_n$ is given by
+\[ \begin{array}{c}
+			\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
+			= \\
+			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
+		\end{array}
 \]
-If we write $p_I:  \mathrm{Mor}(L_{n}) \to L_{n}(I,I)$ for the projection onto the automorphisms of the unit, we will therefore have
-$p_I q (g^{\otimes}_{\ELnn}) = p_I(g^{\otimes}_{L_n})$.
-
-Next consider the diagram
+Here $q^{-1}: \mathrm{Ob}(L_n) \to \mathrm{Ob}(\ELnn)$ is the function 
+\[ \begin{array}{rcrcl}
+			q^{-1} & : & \mathbb{Z}^{\ast n} & \to & \mathbb{N}^{\ast 2n} \\
+			& : & z_i & \mapsto & z_i \\
+			& : & z_i^* & \mapsto & z_{n+1} \\
+			& : & w & \mapsto & \bigotimes_{i=1}^{|w|} \, q^{-1}\big( \, d(w, i) \, \big)
+		\end{array}
+\]
+with $\bigotimes_{i=1}^{|w|} d(w, i)$ the decomposition of $w$ given in \cref{decompdef}, and $\Psi: \mathrm{Mor}(\ELnn) \to L_n(I,I)$ is the canonical map associated with the repeated quotient
 \[ \begin{tikzcd}
-\mathrm{Mor}(\ELnn) \ar[rr, "\mathrm{Mor}(q)"] \ar[dd] & & \mathrm{Mor}(L_n) \ar[d, "\mathrm{ab}"] \ar[rr, "p_I"] & &  L\mathbb{G}_{n}(I,I) \ar[d, "\cong"] \\
-& & \mathrm{Mor}(L_n)^{\mathrm{ab}} \ar[d] \ar[rr] & & \bigquotient{\mathrm{Mor}{L_{n})^{\mathrm{ab}}}}{(s \times t)(L_n)^{\mathrm{ab}}} \ar[d, "\cong"] \\
-\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}} \ar[rr, swap, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \ar[rr] & & \bigquotient{\mathrm{M}(L_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
+\mathrm{Mor}(\ELnn) \ar[r] & \mathrm{M}(\ELnn)^{\mathrm{gp}, \mathrm{ab}} \ar[r] & \bigquotient{\mathrm{M}(\ELnn)^{\mathrm{gp}, \mathrm{ab}}}{\Delta} \ar[d, equals] & \\
+& & \mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}} \ar[r] & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}} \ar[d, equals] \\
+& & & L_n(I,I)
 \end{tikzcd} \]
-where all unlabelled arrows are the appropriate quotient maps. The region on the left commutes by naturality of the units for the group completion and abelianization adjunctions, and the bottom-right square is the third isomorphism theorem for groups in for the form
-\[
-\bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} \cong\frac{ \displaystyle  \left(\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_{n})^{\mathrm{ab}} \right)}{ \displaystyle \left( (s \times t)(L_n)^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_{n})^{\mathrm{ab}} \right)} \cong \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}.
+\end{prop} 
+\begin{proof}
+Firstly, by the rules governing $E\Lambda$-actions and \cref{tenscomp}, we know that
+\[ \begin{array}{rl} 
+			& \alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
+			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \circ \big( \, (x_1, y_1, h_1) \otimes ... \otimes (x_m, y_m, h_m) \, \big) \\
+			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \circ ( \, x_1 \otimes ... \otimes x_m, \, y_1 \otimes ... \otimes y_m, \, h_1 \otimes ... \otimes h_m \, ) \\
+			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \otimes \mathrm{id}_{y_1 \otimes ... \otimes y_m}^* \otimes ( \, x_1 \otimes ... \otimes x_m, \, y_1 \otimes ... \otimes y_m, \, h_1 \otimes ... \otimes h_m \, ) \\
+		\end{array}
 \]
+Since we already understand tensor products of objects and unit endomorphisms, we now only need to find the action morphisms on identities. Moreover, we know that the source and target of $\alpha_{L_n}(g; \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m})$ have to be $y_1 \otimes ... \otimes y_m$ and $y_{\pi(g^{-1})(1)} \otimes ... \otimes y_{\pi(g^{-1})(m)}$ respectively, so to see this morphism as an element of the monoid
+\[ \morln \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
+all that is left to understand is its projection onto the unit endomorphisms.
 
-%\[ \begin{array}{rllll}
-			%\bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} & = & \frac{ \displaystyle  \left(\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_{n})^{\mathrm{ab}} \right)}{ \displaystyle \left( (s \times t)(L_n)^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_{n})^{\mathrm{ab}} \right)} & = & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
-		%\end{array}
-%\]
-As for the square on the top-right, recall the split extension of groups from \cref{splitex}.
-\begin{center}
-\begin{tikzpicture}[x=15mm,y=25mm]
-  \draw[tikzob,mm] %objects
-  (0,0) node (a) {L_n(I,I)}
-  (2,0) node (b) {\mathrm{Mor}(L_n)}
-  (4,0) node (c) {(s \times t)(L_n)};
-\path[->,auto,mm] %arrows;  have to use this instead of tikzar, 
-                    % for some reason
-  (a) edge node {} (b)
-  (b) edge[swap] node {s \times t} (c)
-  (c) edge[swap, bend right=35] node {i} (b);
-\end{tikzpicture}
-\end{center}
-By the proof of \cref{splitex}, the specific isomorphism we are using is
-
+Now, recall that $q: \ELnn \to L_n$ is a surjective map of $E\Lambda$-algebras, so that for any $f_i \in \mathrm{Mor}(L\mathbb{G}_{n})$ there exist $f'_i \in \mathrm{Mor}(\ELnn)$ with $q(f'_i) = f_i$, and hence
+\[ q\big( \, \alpha_{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \quad = \quad \alpha_{L_n}( \, g \, ; \, f_1, ..., f_m \, ) \]
+In particular, for the identities $\mathrm{id}_{y_i} \in \mathrm{Mor}(L\mathbb{G}_{n})$ we can choose $\mathrm{id}_{q^{-1}(y_i)} \in \mathrm{Mor}(\ELnn)$, as by design $q(\mathrm{id}_{q^{-1}(y_i)}) = \mathrm{id}_{qq^{-1}(y_i)} = \mathrm{id}_{y_i}$. This means that if we denote by $p_I :  \mathrm{Mor}(L\mathbb{G}_{n}) \to L\mathbb{G}_{n}(I,I)$ the projection onto unit endomorphisms, we will have
+\[ p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) \quad = \quad  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \]
+But $p_I \circ q$ is a map that can be described in a different way. Consider the commutative diagram
+\[ \begin{tikzcd}
+\mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dd] & & \morln \ar[d, "\mathrm{ab}"] \ar[rr, "p_I"] & &  L\mathbb{G}_{n}(I,I) \ar[d, equals] \\
+& & \morln^{\mathrm{ab}} \ar[d] \ar[rr] & & \bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} \ar[d, equals] \\
+\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \ar[rr] & & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
+\end{tikzcd} \]
+where all unlabelled arrows are the appropriate quotient maps. The region on the left commutes by naturality of the adjoint functor $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$, and the bottom-right square uses the fact that
+\[ \begin{array}{rllll}
+			\bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} & = & \frac{ \displaystyle  \left(\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_{n})^{\mathrm{ab}} \right)}{ \displaystyle \left( (s \times t)(L_n)^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_{n})^{\mathrm{ab}} \right)} & = & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
+		\end{array}
+\]
+As for the square on the top-right, remember that the split extension of groups
+\[ \begin{tikzcd}
+L_n(I,I) \ar[r, hookrightarrow] & \morln \ar[r, shift left, "s \times t"] & (s \times t)(L_n) \ar[l, shift left, hookrightarrow, ""]
+\end{tikzcd} \]
+was the source of our product description of morphisms of $L_n$. Thus by the proof of \cref{splitex}, the specific isomorphism we are using is
 \[ \begin{array}{rll}
 			\morln & \cong & (s \times t)(L_n) \times L_n(I,I) \\
 			f & \mapsto & \Big( \, s(f), \, t(f), \, f \otimes i\big( \, s(f), t(f) \, \big)^* \, \Big)
 		\end{array}
 \]
+and so the projection $p_I$ is given by tensoring a morphism with the inverse of the representative of its source and target under the inclusion $(s \times t)(L_n) \hookrightarrow \morln$. But the monoid $\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}}$ is exactly what we get when we quotient out by those representatives, so we see that
+\[ \begin{array}{rll}
+			[\mathrm{ab}(f)] & = &  [\mathrm{ab}(f)] \otimes \Big[ \mathrm{ab}\Big( \, i\big( \, s(f), t(f) \, \big)^* \, \Big) \, \Big] \\
+			& = & \Big[ \, \mathrm{ab}\Big( \, f \otimes i\big( \, s(f), t(f) \, \big)^* \, \Big) \, \Big] \\
+			& = & \mathrm{ab}\big( \, p_I(f) \, \big) \\
+			& = & p_I(f)
+		\end{array}
+\]
+Here we've used that fact that the equivalence class of a unit endomorphism under the quotient map $\morln^{\mathrm{gp},\mathrm{ab}} \to \mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}} = L_n(I,I)$ is just the same endomorphism again, and also that $L_n(I,I)^{\mathrm{ab}} = L_n(I,I)$. 
 
-so $p_I(f) = f \otimes i\big( \, s(f), t(f) \, \big)^*$, which gives the commutativity of the top right square.
-Thus all of the regions within the diagram commute, and hence so will the outside. Thus $p_I \circ q$ is equal to the composite along the left, bottom, and then right edges, which by QQQ refs is $\Psi$. 
-
-
-%%\[ \begin{tikzcd}
-%%L_n(I,I) \ar[r, hookrightarrow] & \mathrm{Mor}(L_n) \ar[r, shift left, "s \times t"] & (s \times t)(L_n) \ar[l, shift left, hookrightarrow, "i"]
-%%\end{tikzcd} \]
- %But the monoid $\mathrm{Mor}(L_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}}$ is exactly what we get when we quotient out by those representatives, so we see that
-%\[ \begin{array}{rll}
-			%[\mathrm{ab}(f)] & = &  [\mathrm{ab}(f)] \otimes \Big[ \mathrm{ab}\Big( \, i\big( \, s(f), t(f) \, \big)^* \, \Big) \, \Big] \\
-			%& = & \Big[ \, \mathrm{ab}\Big( \, f \otimes i\big( \, s(f), t(f) \, \big)^* \, \Big) \, \Big] \\
-			%& = & \mathrm{ab}\big( \, p_I(f) \, \big) \\
-			%& = & p_I(f)
-		%\end{array}
-%\]
-%Here we've used that fact that the equivalence class of a unit endomorphism under the quotient map $\mathrm{Mor}(L_n)^{\mathrm{gp},\mathrm{ab}} \to \mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}} = L_n(I,I)$ is just the same endomorphism again, and also that $L_n(I,I)^{\mathrm{ab}} = L_n(I,I)$. 
-
-
+Thus all of the regions within the diagram commute, and hence so will the outside. That is, $p_I \circ q$ is equal to the composite along the left and bottom edges, which is $\Psi$. This means that the projection onto $L_n(I,I)$ of our action on identities is
+\[ \begin{array}{rll}
+			p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) & = &  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \\
+			& = & \Psi \big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big)
+		\end{array}
+\]
+and therefore the action of $L_n$ is given by
+\[ \begin{array}{c}
+			\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
+			= \\
+			\alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \circ \, \bigotimes_i (x_i, y_i, h_i) \\
+			= \\
+			\big( \, \bigotimes_i y_i, \, \bigotimes_i y_{\pi(g^{-1})(i)}, \, \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \otimes \, \mathrm{id}_{\otimes_i y_i}^* \otimes ( \, \bigotimes_i x_i, \, \bigotimes_i y_i, \, \bigotimes_i h_i \, ) \\
+			= \\
+			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
+		\end{array}
+\]
+as required.
 \end{proof}
 
-%
-%At this stage, there is only one part of this $E\Lambda$-algebra that we have yet to find --- its action, $\alpha_{L_n}$. When our action operad $G$ is $G(1)$-generated, everything is so simple that there is really only one thing the action could be.
-%
-%\begin{lem} \label{G1act} Let $G$ be a $G(1)$-generated action operad, $g$ an element of $G(m)$ for some $m \in \mathbb{N}$, and $x_1, ..., x_m$ elements of $\mathbb{Z}^{\ast n}$. Then the action of $L_n$ is given by
-%\[ \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \]
-%\end{lem}
-%\begin{proof}
-%In order for $\alpha_{L_n}$ to be a well-defined $E\Lambda$-action, the map $\alpha_{L_n}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ needs to have source $x_1 \otimes ... \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}$, where by non-crossedness of $G$ the latter is also $x_1 \otimes ... \otimes x_m$. But we know from \cref{trivendo} that all morphisms in this $L_n$ are identities, and hence we get the result.
-%\end{proof}
-%For crossed $G$, things are more complicated. What we need to do is employ the trick that was previously mentioned in \cref{actmorLGn}, where we exploit the surjectivity of the algebra map $q: \ELnn \to L_n$. This will allow us to express $\alpha_{L_n}$ in terms of the action $\alpha_{\ELnn}$.
-
-%\begin{prop} \label{crossact_orig} Let $G$ be a crossed action operad, and for some $m \in \mathbb{N}$ choose an element $g \in G(m)$ and morphisms $(x_1, y_1, h_1), ..., (x_m, y_m, h_m)$ in $L_n$. That is, the $(x_i, y_i)$ are pairs of objects from $(s \times t)(L_n)$, and the $h_i$ are morphisms in $L_n(I,I)$. Then the action of $L_n$ is given by
-%\[ \begin{array}{c}
-			%\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
-			%= \\
-			%\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
-		%\end{array}
-%\]
-%Here $q^{-1}: \mathrm{Ob}(L_n) \to \mathrm{Ob}(\ELnn)$ is the function 
-%\[ \begin{array}{rcrcl}
-			%q^{-1} & : & \mathbb{Z}^{\ast n} & \to & \mathbb{N}^{\ast 2n} \\
-			%& : & z_i & \mapsto & z_i \\
-			%& : & z_i^* & \mapsto & z_{n+i} \\
-			%& : & w & \mapsto & \bigotimes_{i=1}^{|w|} \, q^{-1}\big( \, d(w, i) \, \big)
-		%\end{array}
-%\]
-%with $\bigotimes_{i=1}^{|w|} d(w, i)$ the decomposition of $w$ given in \cref{decompdef}, and $\Psi: \mathrm{Mor}(\ELnn) \to L_n(I,I)$ is the canonical map associated with the repeated quotient
-%\[ \begin{tikzcd}
-%\mathrm{Mor}(\ELnn) \ar[r] & \mathrm{M}(\ELnn)^{\mathrm{gp}, \mathrm{ab}} \ar[r] & \bigquotient{\mathrm{M}(\ELnn)^{\mathrm{gp}, \mathrm{ab}}}{\Delta} \ar[d, equals] & \\
-%& & \mathrm{M}(L_{n})^{\mathrm{gp}, \mathrm{ab}} \ar[r] & \bigquotient{\mathrm{M}(L_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}} \ar[d, equals] \\
-%& & & L_n(I,I)
-%\end{tikzcd} \]
-%\end{prop} 
-%\begin{proof}
-%%Firstly, by the rules governing $E\Lambda$-actions and \cref{tenscomp}, we know that
-%%\[ \begin{array}{rl} 
-%%			& \alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
-%%			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \circ \big( \, (x_1, y_1, h_1) \otimes ... \otimes (x_m, y_m, h_m) \, \big) \\
-%%			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \circ ( \, x_1 \otimes ... \otimes x_m, \, y_1 \otimes ... \otimes y_m, \, h_1 \otimes ... \otimes h_m \, ) \\
-%%			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \otimes \mathrm{id}_{y_1 \otimes ... \otimes y_m}^* \otimes ( \, x_1 \otimes ... \otimes x_m, \, y_1 \otimes ... \otimes y_m, \, h_1 \otimes ... \otimes h_m \, ) \\
-%%		\end{array}
-%%\]
-%%Since we already understand tensor products of objects and unit endomorphisms, we now only need to find the action morphisms on identities. Moreover, we know that the source and target of $\alpha_{L_n}(g; \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m})$ have to be $y_1 \otimes ... \otimes y_m$ and $y_{\pi(g^{-1})(1)} \otimes ... \otimes y_{\pi(g^{-1})(m)}$ respectively, so to see this morphism as an element of the monoid
-%%\[ \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
-%%all that is left to understand is its projection onto the unit endomorphisms.
-%
-%%Now, recall that $q: \ELnn \to L_n$ is a surjective map of $E\Lambda$-algebras, so that for any $f_i \in \mathrm{Mor}(L\mathbb{G}_{n})$ there exist $f'_i \in \mathrm{Mor}(\ELnn)$ with $q(f'_i) = f_i$, and hence
-%%\[ q\big( \, \alpha_{\ELnn}( \, g \, ; \, f'_1, ..., f'_m \, ) \, \big) \quad = \quad \alpha_{L_n}( \, g \, ; \, f_1, ..., f_m \, ). \]
-%%In particular, for the identities $\mathrm{id}_{y_i} \in \mathrm{Mor}(L\mathbb{G}_{n})$ we can choose $\mathrm{id}_{q^{-1}(y_i)} \in \mathrm{Mor}(\ELnn)$, as by design $q(\mathrm{id}_{q^{-1}(y_i)}) = \mathrm{id}_{qq^{-1}(y_i)} = \mathrm{id}_{y_i}$. This means that if we denote by $p_I :  \mathrm{Mor}(L\mathbb{G}_{n}) \to L\mathbb{G}_{n}(I,I)$ the projection onto unit endomorphisms, we will have
-%%\[ p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) \quad = \quad  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big). \]
-%
-%But $p_I \circ q$ is a map that can be described in a different way. Consider the commutative diagram
-%\[ \begin{tikzcd}
-%\mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dd] & & \mathrm{Mor}(L_n) \ar[d, "\mathrm{ab}"] \ar[rr, "p_I"] & &  L\mathbb{G}_{n}(I,I) \ar[d, equals] \\
-%& & \mathrm{Mor}(L_n)^{\mathrm{ab}} \ar[d] \ar[rr] & & \bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} \ar[d, equals] \\
-%\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \ar[rr] & & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
-%\end{tikzcd} \]
-%where all unlabelled arrows are the appropriate quotient maps. The region on the left commutes by naturality of the adjoint functor $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$, and the bottom-right square uses the fact that
-%\[ \begin{array}{rllll}
-			%\bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} & = & \frac{ \displaystyle  \left(\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_{n})^{\mathrm{ab}} \right)}{ \displaystyle \left( (s \times t)(L_n)^{\mathrm{ab}}/\mathrm{Ob}(L\mathbb{G}_{n})^{\mathrm{ab}} \right)} & = & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
-		%\end{array}
-%\]
-%As for the square on the top-right, remember that the split extension of groups
-%\[ \begin{tikzcd}
-%L_n(I,I) \ar[r, hookrightarrow] & \mathrm{Mor}(L_n) \ar[r, shift left, "s \times t"] & (s \times t)(L_n) \ar[l, shift left, hookrightarrow, ""]
-%\end{tikzcd} \]
-%was the source of our product description of morphisms of $L_n$. Thus by the proof of \cref{splitex}, the specific isomorphism we are using is
-%\[ \begin{array}{rll}
-			%\mathrm{Mor}(L_n) & \cong & (s \times t)(L_n) \times L_n(I,I) \\
-			%f & \mapsto & \Big( \, s(f), \, t(f), \, f \otimes i\big( \, s(f), t(f) \, \big)^* \, \Big)
-		%\end{array}
-%\]
-%and so the projection $p_I$ is given by tensoring a morphism with the inverse of the representative of its source and target under the inclusion $(s \times t)(L_n) \hookrightarrow \mathrm{Mor}(L_n)$. But the monoid $\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}}$ is exactly what we get when we quotient out by those representatives, so we see that
-%\[ \begin{array}{rll}
-			%[\mathrm{ab}(f)] & = &  [\mathrm{ab}(f)] \otimes \Big[ \mathrm{ab}\Big( \, i\big( \, s(f), t(f) \, \big)^* \, \Big) \, \Big] \\
-			%& = & \Big[ \, \mathrm{ab}\Big( \, f \otimes i\big( \, s(f), t(f) \, \big)^* \, \Big) \, \Big] \\
-			%& = & \mathrm{ab}\big( \, p_I(f) \, \big) \\
-			%& = & p_I(f)
-		%\end{array}
-%\]
-%Here we've used that fact that the equivalence class of a unit endomorphism under the quotient map $\mathrm{Mor}(L_n)^{\mathrm{gp},\mathrm{ab}} \to \mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}} = L_n(I,I)$ is just the same endomorphism again, and also that $L_n(I,I)^{\mathrm{ab}} = L_n(I,I)$. 
-%
-%Thus all of the regions within the diagram commute, and hence so will the outside. That is, $p_I \circ q$ is equal to the composite along the left and bottom edges, which is $\Psi$. 
-%
-%%This means that the projection onto $L_n(I,I)$ of our action on identities is
-%%\[ \begin{array}{rll}
-			%%p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) & = &  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \\
-			%%& = & \Psi \big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big)
-		%%\end{array}
-%%\]
-%%and therefore the action of $L_n$ is given by
-%%\[ \begin{array}{c}
-			%%\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), ..., (x_m, y_m, h_m) \, \big) \\
-			%%= \\
-			%%\alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \circ \, \bigotimes_i (x_i, y_i, h_i) \\
-			%%= \\
-			%%\big( \, \bigotimes_i y_i, \, \bigotimes_i y_{\pi(g^{-1})(i)}, \, \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \otimes \, \mathrm{id}_{\otimes_i y_i}^* \otimes ( \, \bigotimes_i x_i, \, \bigotimes_i y_i, \, \bigotimes_i h_i \, ) \\
-			%%= \\
-			%%\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
-		%%\end{array}
-%%\]
-%%as required.
-%\end{proof}
-
 \section{A full description of \texorpdfstring{$L_n$}{L_n}}
-We now collect together all the results which give a complete and explicit description of $L_n$.
 
-%With this last proposition proven, the results in this thesis now collectively describe how to construct the free $E\Lambda$-algebras on $n$ invertible objects for most values of $G$. However, since this characterization was discovered by us in such a piecemeal fashion, we will now restate everything in one place, for ease of reading. We'll begin with the non-crossed case, or as much of it as we were able to draw a complete conclusion about.
+With this last proposition proven, the results in this thesis now collectively describe how to construct the free $E\Lambda$-algebras on $n$ invertible objects for most values of $G$. However, since this characterization was discovered by us in such a piecemeal fashion, we will now restate everything in one place, for ease of reading. We'll begin with the non-crossed case, or as much of it as we were able to draw a complete conclusion about.
 
-%\begin{thm} \label{freeinvalgG1} Let $G$ be a $G(1)$-generated action operad. Then the free $E\Lambda$-algebra on $n$ invertible objects is just the discrete category
-%\[ L_n \quad = \quad \mathbb{Z}^{\ast n} \]
-%equipped with a tensor product which is the usual monoid multiplication, and an $E\Lambda$-action given by
-%\[ \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \]
-%\end{thm}
-%\begin{proof}
-%The object monoid is from \cref{Zobj}, the fact that $L_n$ is discrete follows from \cref{trivendo}, and the action is given by \cref{G1act}.
-%\end{proof}
-%
-%It is a shame that we were not able to find a formulation for uncrossed $L_n$ in full generality. This will have to be the subject of future research.
+\begin{thm} \label{freeinvalgG1} Let $G$ be a $G(1)$-generated action operad. Then the free $E\Lambda$-algebra on $n$ invertible objects is just the discrete category
+\[ L_n \quad = \quad \mathbb{Z}^{\ast n} \]
+equipped with a tensor product which is the usual monoid multiplication, and an $E\Lambda$-action given by
+\[ \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \]
+\end{thm}
+\begin{proof}
+The object monoid is from \cref{Zobj}, the fact that $L_n$ is discrete follows from \cref{trivendo}, and the action is given by \cref{G1act}.
+\end{proof}
 
-%By contrast, in the case of crossed action operads we were able to achieve a complete description. First, using various results from \cref{colimalgebra,morphisms} we showed that the unit endomorphisms of $L_n$ were isomorphic to a certain quotient of abelian groups, which from now on we will refer to as $A(G,n)$. The long process of calculating this group can now be condensed down into a single definition:
+It is a shame that we were not able to find a formulation for uncrossed $L_n$ in full generality. This will have to be the subject of future research.
 
-We condense all our results QQQ into the following definition.
+By contrast, in the case of crossed action operads we were able to achieve a complete description. First, using various results from \cref{colimalgebra,morphisms} we showed that the unit endomorphisms of $L_n$ were isomorphic to a certain quotient of abelian groups, which from now on we will refer to as $A(G,n)$. The long process of calculating this group can now be condensed down into a single definition:
 
-\begin{Defi} \label{AGndef} Let $\ML$ be a crossed action operad, and $\ML'$ the action operad defined by $\Lambda'(m) := \Lambda(m)/\Lambda(0)$. Choose a subset $\mathcal{G}$ that generates $\Lambda'$ under a combination of tensor product and group multiplication, which itself has subsets $\mathcal{G}_m := \mathcal{G} \, \cap \, \Lambda'(m)$. Then for each $n \in \mathbb{N}$, we will denote by $A(\ML,n)$ the abelian group obtained from the free abelian group 
+\begin{Defi} \label{AGndef} Let $G$ be a crossed action operad, and $G'$ the action operad defined by $G'(m) := G(m)/G(0)$. Choose a subset $\mathcal{G}$ that generates $G'$ under a combination of tensor product and group multiplication, which itself has subsets $\mathcal{G}_m := \mathcal{G} \, \cap \, G'(m)$. Then for each $n \in \mathbb{N}$, we will denote by $A(G,n)$ the abelian group obtained from the free abelian group 
 \[ \mathrm{F}( \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}) \quad = \quad \mathbb{Z}^{2n|\mathcal{G}_1| + (2n)^2|\mathcal{G}_2| + ...} \]
-via the following steps.
+via the following steps:
 \begin{enumerate}%[leftmargin=*]
-\item For all $g, g' \in \Lambda(m)$ and $w \in \mathbb{N}^{\ast 2n}$ with $|w| = m$, quotient out by the relation 
-\[ (g, w) \, \otimes \, \big( \, g', \pi(g^{-1})(w) \, \big) \quad \sim \quad (g \cdot g', w). \]
+\item For all $g, g' \in G(m)$ and $w \in \mathbb{N}^{\ast 2n}$ with $|w| = m$, quotient out by the relation 
+\[ (g, w) \, \otimes \, \big( \, g', \pi(g^{-1})(w) \, \big) \quad \sim \quad (g \cdot g', w) \]
 \item Quotient out by the subgroup $\Delta$, which is generated by the equivalence classes of elements of the form
 \[ \begin{array}{c}
 				\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, ..., e_{|\tilde{\delta}(x_m)|} \, ), \, \tilde{\delta}( \, x_1 \otimes ... \otimes x_m \, ) \, \big) \\
@@ -1849,19 +1677,19 @@ via the following steps.
 where $g \in G(m)$, the $x_i$ are generators of $\mathbb{N}^{\ast 4n}$, and for all $1 \le i \le n$,
 \[ \begin{array}{rclcrclcrclcrcl}
 			\tilde{\delta}(z_i) & = & z_i, & & \tilde{\delta}(z_{2n+i}) & = & z_i \otimes z_{n+i}, & & \tilde{I}(z_i) & = & z_i, & &\tilde{I}(z_{2n+i}) & = & I,\\
-			\tilde{\delta}(z_{n+i}) & = & z_{n+i}, &  & \tilde{\delta}(z_{3n+i}) & = & z_{n+i} \otimes z_i & & \tilde{I}(z_{n+i}) & = & z_{n+i}, & & \tilde{I}(z_{3n+i}) & = & I.
+			\tilde{\delta}(z_{n+i}) & = & z_{n+i}, &  & \tilde{\delta}(z_{3n+i}) & = & z_{n+i} \otimes z_i & & \tilde{I}(z_{n+i}) & = & z_{n+i}, & & \tilde{I}(z_{3n+i}) & = & I
 			 \end{array}
 \] 
 \item Choose any $\rho(2) \in \pi^{-1}((1 \, 2))$, and then quotient out by the $\mathbb{Z}^{{n}\choose{2}}$ subgroup generated by the equivalence classes of the elements 
-\[ \big( \, \rho(2) \, ; \, z_i, z_j \, \big), \quad \quad 1 \le i < j \le n. \]
+\[ \big( \, \rho(2) \, ; \, z_i, z_j \, \big), \quad \quad 1 \le i < j \le n \]
 \end{enumerate}
-We write $\Psi: G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \to A(G,n)$ to represent the corresponding quotient map. 
+Also, we will use $\Psi: G \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \to A(G,n)$ to represent the corresponding quotient map. 
 \end{Defi}
 
-With this notation, our main result can be stated concisely.
+With this new notation, the main result of this thesis can be stated quite concisely.
 
-\begin{thm}\label{freeinvalgc} Let $\ML$ be a crossed action operad. Then the free $E\Lambda$-algebra on $n$ invertible objects is the category
-\[ L_n \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \mathrm{B}A(\ML,n) \]
+\begin{thm}\label{freeinvalgc} Let $G$ be a crossed action operad. Then the free $E\Lambda$-algebra on $n$ invertible objects is the category
+\[ L_n \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \mathrm{B}A(G,n) \]
 equipped with a component-wise tensor product,
 \[ (x', y' ,h') \otimes (x, y, h) \, = \, ( \, x' \otimes x, \, y' \otimes y, \, h'h \, ) \]
 and the $E\Lambda$-action given in \cref{crossact}:
@@ -1873,8 +1701,8 @@ and the $E\Lambda$-action given in \cref{crossact}:
 \]
 \end{thm}
 \begin{proof}
-The category $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n} \times \mathrm{B}A(\ML,n)$ is just the one which has objects $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, morphisms $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n} \times A(\ML,n)$, and composition 
-\[ (y, z , h') \circ (x, y, h) \quad = \quad (x, z, h'h). \]
+The category $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n} \times \mathrm{B}A(G,n)$ is just the one which has objects $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, morphisms $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n} \times A(G,n)$, and composition 
+\[ (y, z , h') \circ (x, y, h) \quad = \quad (x, z, h'h) \]
 We know that these objects and morphisms are correct by \cref{Zobj,Zmor,nchoose2,freemor,noscalarcross}, and those results also tell us that the monoidal structure is as given above. For composition, it follows from \cref{tenscomp} that
 \[ \begin{array}{rll} 
 			(y, z , h') \circ (x, y, h) & = & (y, z , h') \otimes \mathrm{id}_{y^*} \otimes (x, y, h) \\
