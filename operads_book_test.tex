@@ -100,7 +100,6 @@
 \newcommand{\cat}{\ensuremath{\mb{Cat}}}
 \newcommand{\epz}{\varepsilon}
 \newcommand{\Alg}{\mbox{-}\mb{Alg}}
-\newcommand{\morln}{\morln}
 \newcolumntype{L}{>{$}l<{$}}
 \newcolumntype{C}{>{$}c<{$}}
 \newcolumntype{R}{>{$}r<{$}}
@@ -187,8 +186,8 @@
 
 The goal of this chapter will be to show that we can reconstruct all of the morphisms of $L_n$ from the abelian group $\mathrm{M}(L_n)^{\mathrm{gp, ab}}$, and therefore that we can actually use the adjunction from \cref{Moradj} to help find a description of the free $E\Lambda$-algebra on $n$ invertible objects. 
 
-The first step towards this goal will involve splitting $\morln$ up as the product of two other monoids. The first of these will encode all of the possible combinations of source and target data for morphisms in $L_n$, while the second will just be the endomorphisms of the unit object, $L_n(I, I)$. 
-Once we have done this, we can then use the fact that $L_n(I, I)$ is always an abelian group to rewrite $\morln$ in terms of its abelian group completion, $\morln^{\mathrm{gp, ab}}$. This is not quite the same thing as $\mathrm{M}(L_n)^{\mathrm{gp, ab}}$, but they are close enough that we can find a simple equation linking the two, which will in turn allow us to frame the former in terms of the quotient of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ we described last chapter. All together, this will constitute an expression for $\morln$ that is built up of pieces which we know how to calculate.
+The first step towards this goal will involve splitting $\mathrm{Mor}(L_n)$ up as the product of two other monoids. The first of these will encode all of the possible combinations of source and target data for morphisms in $L_n$, while the second will just be the endomorphisms of the unit object, $L_n(I, I)$. 
+Once we have done this, we can then use the fact that $L_n(I, I)$ is always an abelian group to rewrite $\mathrm{Mor}(L_n)$ in terms of its abelian group completion, $\mathrm{Mor}(L_n)^{\mathrm{gp, ab}}$. This is not quite the same thing as $\mathrm{M}(L_n)^{\mathrm{gp, ab}}$, but they are close enough that we can find a simple equation linking the two, which will in turn allow us to frame the former in terms of the quotient of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ we described last chapter. All together, this will constitute an expression for $\mathrm{Mor}(L_n)$ that is built up of pieces which we know how to calculate.
 
 \section{Introduction to invertibility}
 
@@ -396,7 +395,7 @@ By the interchange law for monoidal categories,
 \]
 \end{proof} 
 
-Thus in cases where every object of $X$ is invertible, the monoidal structure together with knowledge of each morphism's source and target will be enough to determine $X$ uniquely. Since all objects in $L_n$ are invertible, this means that we could choose to ignore composition of elements of $\morln$ for the time being, and focus on its status as a monoid under tensor product.
+Thus in cases where every object of $X$ is invertible, the monoidal structure together with knowledge of each morphism's source and target will be enough to determine $X$ uniquely. Since all objects in $L_n$ are invertible, this means that we could choose to ignore composition of elements of $\mathrm{Mor}(L_n)$ QQQ this should have had a notation environment a long time ago QQQ for the time being, and focus on its status as a monoid under tensor product.
 
 
 
@@ -446,7 +445,7 @@ For a commutative monoid $A$, it is clear that $M(BA)^{ab} = A$, so we can defin
 
 \begin{enumerate}
 \item Our goal was to have an adjunction involving $\lmc$, not $\moncat$, since we want to apply it to strict $\ML$-monoidal functors instead of arbitrary strict monoidal functors. 
-\item Even if we do find a way to use this adjunction to extract information about $L_n$, it will not be the monoid $\morln$ we were originally after, only a strange abelianized version where tensor product and composition coincide.  
+\item Even if we do find a way to use this adjunction to extract information about $L_n$, it will not be the monoid $\mathrm{Mor}(L_n)$ we were originally after, only a strange abelianized version where tensor product and composition coincide.  
 \end{enumerate} 
 
 Unfortunately, this adjunction seems to be the best that we can do. 
@@ -863,7 +862,7 @@ Recalling \cref{Gnobj,Gnconcomp,Zobj,crossconcomp}, we can immediately conclude 
 where the pullbacks are taken over the quotients of abelianization for $(\mathbb{N}^{\ast n})^{\mathrm{ab}} = \mathbb{N}^n$ and $(\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^n$ respectively.
 \end{cor}
 
-Next, we want to show that this $(s \times t)(L_n)$ we have described is in fact a submonoid of $\morln$.  We will accomplish this  by first proving the analogous statement for all $\ELn$, and then recovering the $L_n$ version from it later.  For any pair $(w, w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ such that the images of $w$ and $w'$ in the commutative monoid $\mathbb{N}^n$ are the same, there are generators $x_1, ..., x_m$ for which 
+Next, we want to show that this $(s \times t)(L_n)$ we have described is in fact a submonoid of $\mathrm{Mor}(L_n)$.  We will accomplish this  by first proving the analogous statement for all $\ELn$, and then recovering the $L_n$ version from it later.  For any pair $(w, w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ such that the images of $w$ and $w'$ in the commutative monoid $\mathbb{N}^n$ are the same, there are generators $x_1, ..., x_m$ for which 
 \[ w \quad = \quad x_1 \otimes ... \otimes x_m \]
 and there exists at least one permutation $\sigma \in S_m$ such that
 \[ w' \quad = \quad x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)}. \]
@@ -886,16 +885,16 @@ and being an element of the pullback immediately implies $k=j$. We then define a
 \[
 (w,w') = c_1 \cdots c_s = d_1 \cdots d_t,
 \]
-then the length of $c_1$, as defined in Proposition \ref{Gfree}, must be either strictly less than or strictly greater than the length of $d_1$; if they had equal length, then they would be equal. Without loss of generality assume $c_1$ has length $l_c$ which is strictly less than the length $l_d$ of $d_1$. But then the first $l_c$ terms appearing in $d_1$ would agree with $c_1$, proving that $d_1$ is not indecomposable. Straightforward induction then finishes the proof that every element of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ can be written as a product of indecomposables in a unique way, making $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ free on the set of indecomposables.
+then the length (QQQ we defined this kind of thing somewhere) of $c_1$ must be either strictly less than or strictly greater than the length of $d_1$; if they had equal length, then they would be equal. Without loss of generality assume $c_1$ has length $l_c$ which is strictly less than the length $l_d$ of $d_1$. But then the first $l_c$ terms appearing in $d_1$ would agree with $c_1$, proving that $d_1$ is not indecomposable. Straightforward induction then finishes the proof that every element of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ can be written as a product of indecomposables in a unique way, making $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ free on the set of indecomposables.
 \end{proof}
 
 We can now construct the desired injection using the function $\rho$ from \cref{rho_ww'}.
 \begin{prop} \label{stGnsub} $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ is a split epi of monoids, so $(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$. Furthermore, we can choose the injection $i:(s \times t)(\ELn) \to \mathrm{Mor}(\ELn)$ such that the following diagram commutes.
 \begin{center}
-    \begin{tikzpicture}[x=30mm,y=15mm]
+    \begin{tikzpicture}[x=20mm,y=15mm]
 		\node (a) at (0,0) {$\mathrm{Ob}(\ELn)$};
-		\node (b) at (10,0) {$(s \times t)(\ELn)$};
-		\node (d) at (10,-10) {$\mathrm{Mor}(\ELn)$};
+		\node (b) at (1,0) {$(s \times t)(\ELn)$};
+		\node (d) at (1,-1) {$\mathrm{Mor}(\ELn)$};
       \draw [->] (a) to (b);
 			\draw [->] (a) to node [above] {$$} (b);
 			\draw [->] (b) to node [right] {$i$} (d);
@@ -950,12 +949,12 @@ The first statement follows immediately from the injectivity of $\delta$ on obje
 \end{proof}
 
 
-\begin{prop} \label{stZsub} $\morln \to (s \times t)(L_n)$ is a split epi of monoids, so $(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\morln$. Furthermore, we can choose the injection $i:(s \times t)(L_n) \to \morln$ such that the following diagram commutes.
+\begin{prop} \label{stZsub} $\mathrm{Mor}(L_n) \to (s \times t)(L_n)$ is a split epi of monoids, so $(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(L_n)$. Furthermore, we can choose the injection $i:(s \times t)(L_n) \to \mathrm{Mor}(L_n)$ such that the following diagram commutes.
 \begin{center}
     \begin{tikzpicture}[x=20mm,y=15mm]
 		\node (a) at (0,0) {$\mathrm{Ob}(L_n)$};
 		\node (b) at (1,0) {$(s \times t)(L_n)$};
-		\node (d) at (1,-1) {$\morln$};
+		\node (d) at (1,-1) {$\mathrm{Mor}(L_n)$};
       \draw [->] (a) to (b);
 			\draw [->] (a) to node [above] {$$} (b);
 			\draw [->] (b) to node [right] {$i$} (d);
@@ -985,26 +984,26 @@ Furthermore, $(v,v')$ cannot be written as $\delta(u,u')$ for any indecomposable
 
 The functor $q:\ELnn \to L_n$ is the cokernel of $\delta$, so the composite
 \[
-\mathrm{Mor}(\ELnn) \stackrel{\mathrm{Mor}\delta}{\longrightarrow} \mathrm{Mor}(\ELnn) \stackrel{\mathrm{Mor}q}{\longrightarrow} \morln
+\mathrm{Mor}(\ELnn) \stackrel{\mathrm{Mor}\delta}{\longrightarrow} \mathrm{Mor}(\ELnn) \stackrel{\mathrm{Mor}q}{\longrightarrow} \mathrm{Mor}(L_n)
 \]
 is the zero map. From the definition of $\delta$ in \cref{qdef} and the description of the monoids $(s \times t)(\ELn), (s \times t)(L_n)$ in \cref{stpullback}, the composite
 \[
 (s \times t)(\ELnn) \stackrel{(s \times t)(\delta)}{\longrightarrow}  (s \times t)(\ELnn) \stackrel{(s \times t)(q)}{\longrightarrow} (s \times t)(L_n)
 \]
-exhibits $(s \times t)(L_n)$ as the cokernel of $(s \times t)(\delta)$ which induces a unique monoid homomorphism $i: (s \times t)(L_n) \to \morln$ making the square below commute.
+exhibits $(s \times t)(L_n)$ as the cokernel of $(s \times t)(\delta)$ which induces a unique monoid homomorphism $i: (s \times t)(L_n) \to \mathrm{Mor}(L_n)$ making the square below commute.
 \begin{center}
     \begin{tikzpicture}[x=20mm,y=15mm]
 		\node (a) at (0,0) {$(s \times t)(\ELnn)$};
 		\node (b) at (2,0) {$\mathrm{Mor}(\ELnn)$};
 		\node (c) at (0,-1) {$(s \times t)(L_n) $};
-		\node (d) at (2,-1) {$\morln$};
+		\node (d) at (2,-1) {$\mathrm{Mor}(L_n)$};
 			\draw [->] (a) to node [above] {$i$} (b);
 			\draw [->] (b) to node [right] {$q$} (d);
 			\draw [->] (a) to node [left] {$q$} (c);
 			\draw [->] (c) to node [below] {$i$} (d);
     \end{tikzpicture}
 \end{center}
-This homomorphism $i$ splits $\morln \to (s \times t)(L_n)$ as desired.
+This homomorphism $i$ splits $\mathrm{Mor}(L_n) \to (s \times t)(L_n)$ as desired.
 
 The final claim about commuting with the inclusion of objects follows using the same argument as in  \cref{stGnsub}, so we must also require $\rho(x_i, x_i) = e_1$.
 
@@ -1012,14 +1011,14 @@ The final claim about commuting with the inclusion of objects follows using the 
 
 \section{Unit endomorphisms of \texorpdfstring{$L_n$}{L_n}}
 
-We now consider the monoid of unit endomorphisms, $L_n(I,I)$. This is a particularly important submonoid of the morphisms $\morln$, since it is the only submonoid which is also a homset of the category $L_n$. Moreover, because the maps in $L_n(I,I)$ all share the same source and target, what we have is not just a monoid under tensor product but also under composition as well. This fact leads to a series of special properties for $L_n(I,I)$, the first of which is just another instance of the classic Eckmann-Hilton argument. QQQ Reference here?
+We now consider the monoid of unit endomorphisms, $L_n(I,I)$. This is a particularly important submonoid of the morphisms $\mathrm{Mor}(L_n)$, since it is the only submonoid which is also a homset of the category $L_n$. Moreover, because the maps in $L_n(I,I)$ all share the same source and target, what we have is not just a monoid under tensor product but also under composition as well. This fact leads to a series of special properties for $L_n(I,I)$, the first of which is just another instance of the classic Eckmann-Hilton argument. QQQ Reference here?
 
 \begin{prop} \label{endcom} $L_n(I,I)$ is a commutative monoid under both tensor product and composition, with $f \otimes f' = f \circ f'$. Since $L_n$ is a groupoid, this commutative monoid is actually an abelian group.
 \end{prop}
 
 Indeed, by using a slightly broader argument we can extend this result to every morphism of $L_n$.
 
-\begin{prop} \label{tensinv} Every morphism $f: w \to v$ in $L_n$ has an inverse under tensor product, $f^*: w^* \to v^*$. That is, the monoid $\morln$ is actually a group.
+\begin{prop} \label{tensinv} Every morphism $f: w \to v$ in $L_n$ has an inverse under tensor product, $f^*: w^* \to v^*$. That is, the monoid $\mathrm{Mor}(L_n)$ is actually a group.
 \end{prop}
 \begin{proof}
 For any $f: w \to v$ in $L_n$, consider the map $\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$, where $f^{-1}$ is the compositional inverse of $f$, as in the proof of \cref{endab}. This morphism has source $w^* \otimes v \otimes v^* = w^*$ and target $w^* \otimes w \otimes v^* = v^*$, which allows us to apply the law of interchange to get
@@ -1036,18 +1035,18 @@ and
 			& = & (\mathrm{id}_{w^*} \otimes f^{-1}) \circ (\mathrm{id}_{w^*} \otimes f) \\
 			& = & \mathrm{id}_I,
 \end{longtable}
-so $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the inverse of $f$ in the monoid $\morln$.
+so $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the inverse of $f$ in the monoid $\mathrm{Mor}(L_n)$.
 \end{proof}
 
 
-\begin{prop} \label{endnorm} $L_n(I,I)$ is a normal subgroup of $\morln$. Moreover, if $G$ is a crossed action operad, then $L_n(I,I)$ is a subgroup of the center of $\morln$.
+\begin{prop} \label{endnorm} $L_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L_n)$. Moreover, if $G$ is a crossed action operad, then $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$.
 \end{prop}
 \begin{proof}
-From \cref{endab,tensinv}, we know that $L_n(I,I)$ is a subgroup of $\morln$. For normality, we need to again consider both crossed and non-crossed action operads separately. 
+From \cref{endab,tensinv}, we know that $L_n(I,I)$ is a subgroup of $\mathrm{Mor}(L_n)$. For normality, we need to again consider both crossed and non-crossed action operads separately. 
 
 If $G$ is non-crossed, then by \cref{crossconcomp} we know that the map assigning objects of $L_n$ to their connected component is just the identity $\mathrm{id}_{\mathbb{Z}^{\ast n}}$. In other words, every object belongs to its own unique component, so that every morphism of $L_n$ is actually an endomorphism. It follows that the group $L_n(I,I)$ is the kernel of the source homomorphism $s$ from \cref{st} and thus normal.
 
-For crossed $G$, recall from \cref{spacial} that all $E\Lambda$-algebras are spacial, and so in particular $L_n$ is. This means that for any $h \in L_n(I,I)$ and $w \in \mathrm{Ob}(L_n)$ we will always have $h \otimes \mathrm{id}_w = \mathrm{id}_w \otimes h$. Thus for any $f:w \to v$ in $\morln$, we get
+For crossed $G$, recall from \cref{spacial} that all $E\Lambda$-algebras are spacial, and so in particular $L_n$ is. This means that for any $h \in L_n(I,I)$ and $w \in \mathrm{Ob}(L_n)$ we will always have $h \otimes \mathrm{id}_w = \mathrm{id}_w \otimes h$. Thus for any $f:w \to v$ in $\mathrm{Mor}(L_n)$, we get
 \[ \begin{array}{rll}
 		h \otimes f & = & (\mathrm{id}_I \circ h) \otimes (f \circ \mathrm{id}_w) \\
 		& = & (\mathrm{id}_I \otimes f) \circ (h \otimes \mathrm{id}_w) \\
@@ -1056,42 +1055,42 @@ For crossed $G$, recall from \cref{spacial} that all $E\Lambda$-algebras are spa
 		& = & f \otimes h
 		\end{array}
 \]
-and so $L_n(I,I)$ is a subgroup of the center of $\morln$, thus normal. 
+and so $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$, thus normal. 
 \end{proof}
 
 \section{Automorphisms of the unit in \texorpdfstring{$L_n$}{L_n}, part 1}
 
 In this section we will collect together many of the arguments of this chapter to give the first closed form expression for the automorphism group of the unit object, $I$, in $L_n$.
 \begin{prop} \label{morprod} For any action operad $G$,
-\[ \morln \quad \cong \quad (s \times t)(L_n) \ltimes L_n(I,I) \]
+\[ \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \ltimes L_n(I,I) \]
 Moreover, if $G$ is a crossed action operad, then
-\[ \morln \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
+\[ \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
 \end{prop}
 \begin{proof}
-We just saw in \cref{endnorm} that $L_n(I,I)$ is a normal subgroup of $\morln$, so we can consider the quotient group
+We just saw in \cref{endnorm} that $L_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L_n)$, so we can consider the quotient group
 \[ \begin{tikzcd}
-L_n(I,I) \ar[r, hookrightarrow] & \morln \ar[r] & \bigquotient{\morln}{L_n(I,I)}
+L_n(I,I) \ar[r, hookrightarrow] & \mathrm{Mor}(L_n) \ar[r] & \bigquotient{\mathrm{Mor}(L_n)}{L_n(I,I)}
 \end{tikzcd} \]
-By the universal property of quotients, the map $\morln \to \morln / L_n(I,I)$ will uniquely factor any homomorphism whose composite with the inclusion $L_n(I,I) \hookrightarrow \morln$ is the zero map. But our source/target map $s \times t : \morln \to (s \times t)(L_n)$ is one such homomorphism, since for any $h: I \to I$ clearly $(s \times t)(h) = (I, I)$, which is the identity element in $(s \times t)(L_n)$. Therefore there must exist a unique homomorphism $u$ making the triangle below commute:
+By the universal property of quotients, the map $\mathrm{Mor}(L_n) \to \mathrm{Mor}(L_n) / L_n(I,I)$ will uniquely factor any homomorphism whose composite with the inclusion $L_n(I,I) \hookrightarrow \mathrm{Mor}(L_n)$ is the zero map. But our source/target map $s \times t : \mathrm{Mor}(L_n) \to (s \times t)(L_n)$ is one such homomorphism, since for any $h: I \to I$ clearly $(s \times t)(h) = (I, I)$, which is the identity element in $(s \times t)(L_n)$. Therefore there must exist a unique homomorphism $u$ making the triangle below commute:
 \[ \begin{tikzcd}
-\morln \ar[dd] \ar[ddrr, "s \times t"] & & \\
+\mathrm{Mor}(L_n) \ar[dd] \ar[ddrr, "s \times t"] & & \\
 & & \\
-\bigquotient{\morln}{L_n(I,I)} \ar[rr, "u"] & & (s \times t)(L_n)
+\bigquotient{\mathrm{Mor}(L_n)}{L_n(I,I)} \ar[rr, "u"] & & (s \times t)(L_n)
 \end{tikzcd} \]
-This map $u$ will be surjective --- because $s \times t$ is --- but in fact it will also be injective. This is because if two morphisms $f, f'$ of $L_n$ have the same source and target, then the map $h = f^* \otimes f'$ is an element of $L_n(I,I)$ for which $f \otimes h = f'$, and so clearly $f$ and $f'$ are part of the same equivalence class in $\morln/L_n(I,I)$. 
+This map $u$ will be surjective --- because $s \times t$ is --- but in fact it will also be injective. This is because if two morphisms $f, f'$ of $L_n$ have the same source and target, then the map $h = f^* \otimes f'$ is an element of $L_n(I,I)$ for which $f \otimes h = f'$, and so clearly $f$ and $f'$ are part of the same equivalence class in $\mathrm{Mor}(L_n)/L_n(I,I)$. 
 
 Thus $u$ is bijective, so that
-\[ \bigquotient{\morln}{L_n(I,I)} \quad \cong \quad (s \times t)(L_n) \]
+\[ \bigquotient{\mathrm{Mor}(L_n)}{L_n(I,I)} \quad \cong \quad (s \times t)(L_n) \]
 and we have a group extension
 \[ \begin{tikzcd}
-0 \ar[r] & L_n(I,I) \ar[r, hookrightarrow] & \morln \ar[r, "s \times t"] & (s \times t)(L_n) \ar[r] & 0.
+0 \ar[r] & L_n(I,I) \ar[r, hookrightarrow] & \mathrm{Mor}(L_n) \ar[r, "s \times t"] & (s \times t)(L_n) \ar[r] & 0.
 \end{tikzcd} \]
-But recall from \cref{stZsub} that this extension is split, or equivalently $\morln$ is a semi direct product $(s \times t)(L_n) \ltimes L_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L_n(I,I)$ is a subgroup of the center of $\morln$, and so it will follow that $\morln$ is also a central extension of $(s \times t)(L_n)$. In that case $\morln$ is just the direct product $(s \times t)(L_n) \times L_n(I,I)$.
+But recall from \cref{stZsub} that this extension is split, or equivalently $\mathrm{Mor}(L_n)$ is a semi direct product $(s \times t)(L_n) \ltimes L_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$, and so it will follow that $\mathrm{Mor}(L_n)$ is also a central extension of $(s \times t)(L_n)$. In that case $\mathrm{Mor}(L_n)$ is just the direct product $(s \times t)(L_n) \times L_n(I,I)$.
 \end{proof}
 \begin{cor}\label{Zmor1} Let $G$ be a crossed action operad. Then the endomorphisms of the unit object of $L_n$ are
-\[ L_n(I, I) \quad \cong \quad \bigquotient{{\morln}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
+\[ L_n(I, I) \quad \cong \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
 and therefore
-\[ \morln \quad \cong \quad (s \times t)(L_n) \, \times \, \bigquotient{{\morln}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}}. \]
+\[ \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \, \times \, \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}}. \]
 \end{cor}
 \begin{proof}
 Both statements follow from the simple fact that abelianization preserves products.
@@ -1133,17 +1132,17 @@ L_n(I,I) \cong \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab
 \]
 and the monoid of morphisms of $L_n$ is therefore
 \[ 
-\morln \quad \cong \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)}. \]
+\mathrm{Mor}(L_n) \quad \cong \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)}. \]
 \end{thm}
 \begin{proof}
 We have the isomorphism
-\[ L_n(I,I) \quad \cong \quad \bigquotient{{\morln}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
+\[ L_n(I,I) \quad \cong \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
 from \cref{Zmor1}. Note that this quotient  depends on the embedding of $(s \times t)(L_n)$ as a subgroup of the morphisms $L_n$ in \cref{stZsub}. The proof there ensured that the embedding we construct commutes with the inclusion of the monoid of objects, so
-\[ \bigquotient{{\morln}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad \cong \quad \frac{\left(\quotient{{\morln}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)} \]
+\[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad \cong \quad \frac{\left(\quotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)} \]
 by standard group theory.
 
 Using \cref{colquot} to change the numerator and \cref{Zobj,stpullback} to simplify the denominator, this quotient becomes
-\[ \bigquotient{{\morln}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \]
+\[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \]
 as desired.
 \end{proof}
 
@@ -1162,7 +1161,7 @@ It should be clear that there is further work to do in order to give a useable c
 \]
 in \cref{nchoose2}.
  \end{itemize}
-%To say that the expression for $\morln$ we just found is `complicated' would probably be an understatement. If we are to have any hope of eventually being able to use \cref{Zmor}, we need to work out a more explicit presentation for its quotient part. We'll start by trying to find the value of $(s \times t)(L_n)^{\mathrm{ab}}$ for crossed $G$, the abelian group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. This will require some careful consideration, since in general limits such as the pullback do not interact with abelianization in a simple way. What would help is a suitable presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in terms of some generators and relations. 
+%To say that the expression for $\mathrm{Mor}(L_n)$ we just found is `complicated' would probably be an understatement. If we are to have any hope of eventually being able to use \cref{Zmor}, we need to work out a more explicit presentation for its quotient part. We'll start by trying to find the value of $(s \times t)(L_n)^{\mathrm{ab}}$ for crossed $G$, the abelian group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. This will require some careful consideration, since in general limits such as the pullback do not interact with abelianization in a simple way. What would help is a suitable presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in terms of some generators and relations. 
 
 \begin{prop} \label{pushpres} The pullback group $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is generated by two families of elements,
 \[ \langle x \rangle \quad := \quad (x, x) \quad \quad \text{and} \quad \quad \langle xy \rangle \quad := \quad (xy, yx) \]
@@ -1367,7 +1366,7 @@ Before moving on, we should be clear about exactly which $\mathbb{Z}^{{n}\choose
 Thus, consider the following commutative diagram, whose top-left region comes from \cref{stZsub}, bottom-left from the naturality of the adjoint functor $\mathrm{M}( \, \_ \, )^{\mathrm{gp},\mathrm{ab}}$, and right-hand square from \cref{colquot}.
 \[ \begin{tikzcd}[column sep=tiny] 
 & (s \times t)(\ELnn) \ar[dl, hookrightarrow] \ar[rr, "q"] & & (s \times t)(L\mathbb{G}_{n}) \ar[dl, hookrightarrow] \ar[dr] & \\
-\mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dr] & & \morln \ar[dr] & & \frac{\displaystyle (s \times t)(L\mathbb{G}_{n})^{\mathrm{ab}}}{\displaystyle \mathrm{Ob}(L_n)^{\mathrm{ab}}} \ar[dl, hookrightarrow] \\
+\mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dr] & & \mathrm{Mor}(L_n) \ar[dr] & & \frac{\displaystyle (s \times t)(L\mathbb{G}_{n})^{\mathrm{ab}}}{\displaystyle \mathrm{Ob}(L_n)^{\mathrm{ab}}} \ar[dl, hookrightarrow] \\
 & \mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}
 \end{tikzcd} \]
 What we've just said that if we start with the element $(z_i \otimes z_j, z_j \otimes z_i)$ of $(s \times t)(\ELnn)$, moving clockwise around the diagram will send it to the generator $\langle z_i z_j \rangle$ in ${(s \times t)}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L_n)^{\mathrm{ab}} = \mathbb{Z}^{{n}\choose{2}}$. If we instead move anticlockwise, then we will first pass to our chosen representative $\alpha_{\ELnn}(\rho(z_i \otimes z_j, z_j \otimes z_i); \mathrm{id}_{z_i}, \mathrm{id}_{z_j})$ in $\mathrm{Mor}(\ELnn)$, then its equivalence class in $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$, then its equivalence class in $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$, using the fact that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is the canonical map associated with the quotient
@@ -1453,7 +1452,7 @@ Let $M$ be a monoid with unit element $1$, and assume $M$ is equipped with a mon
 \item $\pi^{-1}(0) = \{1\}$, and
 \item if $hg = h' g'$ in $M$, then there exists a $k \in M$ such that $g = kg'$, $h' = hk$.
 \end{itemize}
-Then $M$ is a free monoid. QQQ This second condition implies that $M$ is a group? $1h = h1$ so there exists $k \in M$ such that $1 = kh$ and $1 = hk$. QQQ
+Then $M$ is a free monoid.
 \end{prop}
 \begin{proof}
 Let $\mathcal{G}$ be a subset of the monoid $M$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $M$ as a monoid. We assume that $1 \notin \mathcal{G}$ as it is the unit element. Notice that every relation in $\mathcal{R}$ can be written in the form $h g = h' g'$, where $g,g' \in \mathcal{G}$ are generators because the only other kind of relations are of the form $h  g = 1$, and  this is not possible if $\pi^{-1}(0) = \{1\}$. We can assume that  $\pi(g) \ge \pi(g')$ and hence $\pi(h) \le \pi(h')$ without loss of generality. By the second hypothesis, we can then find $k \in M$ for which $g = k g'$, $h' = h k$. 
@@ -1461,7 +1460,7 @@ We consider the following cases.
 \begin{itemize}
 \item $\pi(k) = \pi(g)$: This is not possible, as it would follow that $\pi(g')=0$, and thus by assumption $g' = 1$, and we have assumed 1 is not a generator.
 \item $\pi(k)=0$: This would mean that $k=1$, and so we conclude that $g=g'$, $h = h'$. Thus we could simplify the presentation of $M$ by replacing the relation $h g = h' g'$ in the set $\mathcal{R}$ with $h' = h$. If we define the length of a relation $h g = h' g'$ as $\pi(hg) = \pi(h'g')$, this substitution produces a relation of shorter length.
-\item $0 < \pi(k) < \pi(g|)$ QQQ Vertical line? QQQ: In this case $\pi(g) > \pi(g')$ and thus $g \neq g'$. Therefore we could change our presentation of $M$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$. QQQ Does $h \otimes g$ mean the same thing as $hg$? QQQ
+\item $0 < \pi(k) < \pi(g|)$: In this case $\pi(g) > \pi(g')$ and thus $g \neq g'$. Therefore we could change our presentation of $M$ by replacing $g$ with $k$ in the generator set $\mathcal{G}$, and also $h \otimes g = h' \otimes g'$ by $h' = h \otimes k$ in the relations $\mathcal{R}$.
 \end{itemize}
 Notice that in the latter two cases, we are always changing generators for ones that have strictly smaller image under $\pi$, and replacing relations with ones whose left- and right-hand sides have strictly smaller total length. But lengths are natural numbers, and therefore if we choose any relation in $\mathcal{R}$ and repeatedly apply this process to it, after a finite number of steps we will find that we have replaced it with $1 = 1$, the only relation whose sides have total length $0$. Proceeding like this will let us eliminate all of the relations in $\mathcal{R}$, leaving us with a set $\mathcal{G}$ that freely generates the action operad $G$ under tensor product.
 QQQ If $M$ is not finitely presented, I'm not sure this last step works, need to think harder. Our monoids are likely NOT finitely presented.
@@ -1586,7 +1585,7 @@ Firstly, by the rules governing $E\Lambda$-actions and \cref{tenscomp}, we know 
 		\end{array}
 \]
 Since we already understand tensor products of objects and unit endomorphisms, we now only need to find the action morphisms on identities. Moreover, we know that the source and target of $\alpha_{L_n}(g; \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m})$ have to be $y_1 \otimes ... \otimes y_m$ and $y_{\pi(g^{-1})(1)} \otimes ... \otimes y_{\pi(g^{-1})(m)}$ respectively, so to see this morphism as an element of the monoid
-\[ \morln \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
+\[ \mathrm{Mor}(L_n) \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
 all that is left to understand is its projection onto the unit endomorphisms.
 
 Now, recall that $q: \ELnn \to L_n$ is a surjective map of $E\Lambda$-algebras, so that for any $f_i \in \mathrm{Mor}(L\mathbb{G}_{n})$ there exist $f'_i \in \mathrm{Mor}(\ELnn)$ with $q(f'_i) = f_i$, and hence
@@ -1595,8 +1594,8 @@ In particular, for the identities $\mathrm{id}_{y_i} \in \mathrm{Mor}(L\mathbb{G
 \[ p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, ..., \mathrm{id}_{y_m} \, ) \, \big) \quad = \quad  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, ..., \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \]
 But $p_I \circ q$ is a map that can be described in a different way. Consider the commutative diagram
 \[ \begin{tikzcd}
-\mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dd] & & \morln \ar[d, "\mathrm{ab}"] \ar[rr, "p_I"] & &  L\mathbb{G}_{n}(I,I) \ar[d, equals] \\
-& & \morln^{\mathrm{ab}} \ar[d] \ar[rr] & & \bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} \ar[d, equals] \\
+\mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dd] & & \mathrm{Mor}(L_n) \ar[d, "\mathrm{ab}"] \ar[rr, "p_I"] & &  L\mathbb{G}_{n}(I,I) \ar[d, equals] \\
+& & \mathrm{Mor}(L_n)^{\mathrm{ab}} \ar[d] \ar[rr] & & \bigquotient{\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}}{(s \times t)(L_n)^{\mathrm{ab}}} \ar[d, equals] \\
 \mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}} \ar[rr] & & \bigquotient{\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp}, \mathrm{ab}}}{\mathbb{Z}^{{n}\choose{2}}}
 \end{tikzcd} \]
 where all unlabelled arrows are the appropriate quotient maps. The region on the left commutes by naturality of the adjoint functor $\mathrm{M}(\, \_ \,)^{\mathrm{gp},\mathrm{ab}}$, and the bottom-right square uses the fact that
@@ -1606,15 +1605,15 @@ where all unlabelled arrows are the appropriate quotient maps. The region on the
 \]
 As for the square on the top-right, remember that the split extension of groups
 \[ \begin{tikzcd}
-L_n(I,I) \ar[r, hookrightarrow] & \morln \ar[r, shift left, "s \times t"] & (s \times t)(L_n) \ar[l, shift left, hookrightarrow, ""]
+L_n(I,I) \ar[r, hookrightarrow] & \mathrm{Mor}(L_n) \ar[r, shift left, "s \times t"] & (s \times t)(L_n) \ar[l, shift left, hookrightarrow, ""]
 \end{tikzcd} \]
 was the source of our product description of morphisms of $L_n$. Thus by the proof of \cref{splitex}, the specific isomorphism we are using is
 \[ \begin{array}{rll}
-			\morln & \cong & (s \times t)(L_n) \times L_n(I,I) \\
+			\mathrm{Mor}(L_n) & \cong & (s \times t)(L_n) \times L_n(I,I) \\
 			f & \mapsto & \Big( \, s(f), \, t(f), \, f \otimes i\big( \, s(f), t(f) \, \big)^* \, \Big)
 		\end{array}
 \]
-and so the projection $p_I$ is given by tensoring a morphism with the inverse of the representative of its source and target under the inclusion $(s \times t)(L_n) \hookrightarrow \morln$. But the monoid $\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}}$ is exactly what we get when we quotient out by those representatives, so we see that
+and so the projection $p_I$ is given by tensoring a morphism with the inverse of the representative of its source and target under the inclusion $(s \times t)(L_n) \hookrightarrow \mathrm{Mor}(L_n)$. But the monoid $\mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}}$ is exactly what we get when we quotient out by those representatives, so we see that
 \[ \begin{array}{rll}
 			[\mathrm{ab}(f)] & = &  [\mathrm{ab}(f)] \otimes \Big[ \mathrm{ab}\Big( \, i\big( \, s(f), t(f) \, \big)^* \, \Big) \, \Big] \\
 			& = & \Big[ \, \mathrm{ab}\Big( \, f \otimes i\big( \, s(f), t(f) \, \big)^* \, \Big) \, \Big] \\
@@ -1622,7 +1621,7 @@ and so the projection $p_I$ is given by tensoring a morphism with the inverse of
 			& = & p_I(f)
 		\end{array}
 \]
-Here we've used that fact that the equivalence class of a unit endomorphism under the quotient map $\morln^{\mathrm{gp},\mathrm{ab}} \to \mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}} = L_n(I,I)$ is just the same endomorphism again, and also that $L_n(I,I)^{\mathrm{ab}} = L_n(I,I)$. 
+Here we've used that fact that the equivalence class of a unit endomorphism under the quotient map $\mathrm{Mor}(L_n)^{\mathrm{gp},\mathrm{ab}} \to \mathrm{Mor}(L\mathbb{G}_{n})^{\mathrm{ab}}/(s \times t)(L_n)^{\mathrm{ab}} = L_n(I,I)$ is just the same endomorphism again, and also that $L_n(I,I)^{\mathrm{ab}} = L_n(I,I)$. 
 
 Thus all of the regions within the diagram commute, and hence so will the outside. That is, $p_I \circ q$ is equal to the composite along the left and bottom edges, which is $\Psi$. This means that the projection onto $L_n(I,I)$ of our action on identities is
 \[ \begin{array}{rll}
