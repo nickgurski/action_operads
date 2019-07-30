@@ -962,7 +962,7 @@ But recall from \cref{stZsub} that this extension is split, or equivalently $\ma
 \end{proof}
 
 \begin{conv}
-In what follows, we fix an isomorphism $\mathrm{Mor}(L_n) \cong (s \times t)(L_n) \times L_n(I,I)$; we note that this isomorphism (and in particular the projection homomorphism $\mathrm{Mor}(L_n) \to L_n(I,I)$) depends on the choices made in the proof of \cref{stZsub}.
+In what follows QQQ forward ref all the places we need this?, we fix an isomorphism $\mathrm{Mor}(L_n) \cong (s \times t)(L_n) \times L_n(I,I)$; we note that this isomorphism (and in particular the projection homomorphism $\mathrm{Mor}(L_n) \to L_n(I,I)$) depends on the choices made in the proof of \cref{stZsub}.
 
 \end{conv}
 
@@ -975,27 +975,30 @@ Let $\ML$ be an action operad, and $L_n$ the free $\ML$-monoidal category on $n$
 \begin{enumerate}
 \item $f = g$,
 \item $g^{-1} f = \id_x$, and
-\item the image of $g^{-1} f$ under the homomorphism $\mathrm{Mor}(L_n) \to (s \times t)(L_n)$ lands in the subgroup $\mathrm{Ob}(L_n) \subseteq (s \times t)(L_n)$. QQQ this seems wrong to me, does it just compute if s/t are the same?
+\item the automorphism of the unit object $x^{-1} \otimes (g^{-1} f)$ is the identity in $L_n(I,I)$.
 \end{enumerate}
 \end{thm}
 \begin{proof}
-QQQ insert
+1 implies 2 and 2 implies 3 are trivial. For 3 implies 1, we need only note that the invertibility of $x$ means that the function $x \otimes -:L_n(I,I) \to L_n(x,x)$ is a monoid isomorphism (with inverse $x^{-1} \otimes -$) so sends identities to identities.
 \end{proof}
 
-QQQ Can we improve this slightly? What do we know about $\mathrm{Ob}(L_n) \subseteq (s \times t)(L_n)$?
-
-QQQ $L_n(I,I) \to L_n(x,x)$ iso by invertibility, sends identity to identity
+In practice, computing $x^{-1} \otimes (g^{-1} f)$ from $g^{-1} f$ is relatively simple, so we should view this theorem as affording the following strategy for resolving the potential equality of a pair of parallel morphisms $f, g:x \to y$.
+\begin{enumerate}
+\item Determine the group $L_n(I,I)$ in such a way as to make the equality of two elements decidable.
+\item Compute $x^{-1} \otimes (g^{-1} f)$ as an element of this group.
+\end{enumerate}
+The following chapters are devoted to the first step of this strategy.
 
 \chapter{Computing automorphisms of the unit}
 
-\section{Used to be somewhere else: now on to nasty quotients}
+Now we turn to the matter of computing the group $L_n(I,I)$. This group completely controls the morphisms which arise from the presence of $n$ different invertible objects as we saw in \cref{split_coh}. Our computations are necessarily of a different flavor from the theory we have so far established as the goal has changed from establishing the existence of this group to determining it explicitly with generators and relations.
 
-
- It will, however, furnish us with all the group actions required to give $L_n$ a $\ML$-monoidal structure once we have given it a mere \emph{monoidal} one using that $q$ is surjective.  QQQ Forward ref to where we accomplish this.
+\section{Nullary operations}
+We will begin our computational investigations by first studying the nullary operations, the elements $g \in \Lambda(0)$.
 
 \begin{lem} \label{noscalar} For any element $g \in \Lambda(m), m \in \mathbb{N}$ of an action operad $\ML$, the morphism
 \[
-g: I^m \to I^m
+g^{\otimes}: I^m \to I^m
 \]
 in $L_n$ is the identity.
 Equivalently, for any element $h \in \Lambda(0)$, $h$ induces the identity morphism $I \to I$.
@@ -1004,7 +1007,7 @@ Equivalently, for any element $h \in \Lambda(0)$, $h$ induces the identity morph
 First, let $g \in \Lambda(m)$. Then $g: I^m \to I^m$ is equal to $q(g):q(I^m) \to q(I^m)$ which is equal to $q\delta(g): q\delta(I^m) \to q\delta(I^m)$. Since $q$ is the coequalizer of $\delta$ and the zero map, $q\delta(g) = \id$ for all $g \in \Lambda(m)$. This clearly implies that every $h \in \Lambda(0)$ induces the identity map $I \to I$, but note that the morphism $g:I^m \to I^m$ is also the morphism induced by $\mu(g; e_0, \ldots, e_0) \in \Lambda(0)$, so these two claims are equivalent.
 \end{proof}
 
-This is a curious result. The morphisms $I \to I$ in QQQ $n\ML$ vs $\ELn$ QQQ are exactly the elements of the group $\Lambda(0)$, but all of these become the identity in $L_n$. In other words, $L_n$ cannot detect any morphisms in $\Lambda(0)$, an idea we make precise now. 
+This is a curious result. The morphisms $I \to I$ in $\ELn$ are exactly the elements of the group $\Lambda(0)$, but all of these become the identity in $L_n$. In other words, $L_n$ cannot detect any morphisms in $\Lambda(0)$, an idea we make precise now. 
 
 
 \begin{prop} \label{G0quot} Let $\Lambda$ be a crossed action operad. Then there exists another crossed action operad $\Lambda'$ given by $\Lambda'(m) = \Lambda(m)/\Lambda(0)$ for all $m \in \mathrm{N}$.
@@ -1051,12 +1054,12 @@ is well-defined. With $h, h_1, ..., h_m \in \Lambda(0)$ as above, we have
 using the fact that $\pi(h \otimes e_m)$ is the identity permutation. By the commutative square above, $\mu^{\Lambda}(h \otimes e_m; \cdot h_1 \otimes e_{k_1}, \ldots, \cdot h_m \otimes e_{k_m})$ is in the image of $\Lambda(0) \to \Lambda(k_1 + \cdots + k_m)$, so $\mu^{\Lambda'}$ is well-defined. It is now straightforward to check the rest of the action operad axioms for $\Lambda'$ using those of $\Lambda$.
 \end{proof}
 
-For crossed $\Lambda$, this notion of quotient by $\Lambda(0)$ does exactly what we wanted it to do --- remove certain information which is unnecessary for forming the algebra $L_n$. We will use this later in QQQ for something.
+We end this section by proving that the quotient action operad $\Lambda'$ removes the unnecessary nullary operations without changing the invertible objects.
 
-\begin{prop} \label{noscalarcross} Let $\Lambda$ be a crossed action operad, and let $\Lambda'$ be the action operad with $\Lambda'(m) = \Lambda(m)/\Lambda(0)$ constructed in \cref{G0quot}. Then for any $n \in \mathrm{N}$,
+\begin{thm} \label{noscalarcross} Let $\Lambda$ be a crossed action operad, and let $\Lambda'$ be the action operad with $\Lambda'(m) = \Lambda(m)/\Lambda(0)$ constructed in \cref{G0quot}. Then for any $n \in \mathrm{N}$,
 \[ L\ML'_n \quad \cong \quad L\ML_n \]
 both as $E\Lambda$-algebras and as $E\Lambda'$-algebras.  
-\end{prop}
+\end{thm}
 \begin{proof}
 
 The quotient map $[-]:\ML \to \ML'$ induces a $\ML$-algebra structure on $L\ML'_n$, and hence produces a unique strict $\ML$-monoidal functor $L\ML_n \to L\ML'_n$ by the universal property of $L\ML_n$. $L\ML_n$ is also a $\ML'$-monoidal category by defining $[g]^{\otimes} : x_1 \otimes \cdots \otimes x_n \to x_{[g]^{-1}1} \otimes \cdots \otimes x_{[g]^{-1}n}$ to be $g^{\otimes}$. This is well-defined, as whenever we have $[g] = [h]$ it is because there is some $x \in \ML(0)$ for which $h = x \otimes g = \mu_2(e_2; x, g)$. Then
@@ -1066,10 +1069,7 @@ h^{\otimes} = (x \otimes g)^{\otimes} = x^{\otimes} \otimes g^{\otimes} = \id_I 
 using \cref{otimesotimes}. Thus we also have an induced map $L\ML'_n \to L\ML_n$ using the universal property of $L\ML'_n$. By inspection, both of these functors preserve the $\ML$- and $\ML'$-actions, hence must be inverse to each other.
 \end{proof}
 
-I am taking out the $G(1)$-generated stuff for now.
-
-
-Just note everything is true for monoidal categories, \cref{alsowithoutgroups}.
+\section{Reflexivity and a first calculation}
 
 \begin{nota}\label{plus_notation}
 Let $f: A \to C, g: B \to C$ be maps in a category with coproducts. We will write $f;g: A \coprod B \to C$ for the unique map induced by the universal property of the coproduct.
@@ -1191,6 +1191,8 @@ and using these equations the lemma follows immediately from the definition of $
 
 \section{Consequences of the splitting}
 
+We now combine the splitting result (\cref{morprod}) with the quotients in the previous section.
+
 \begin{cor}\label{Zmor1} Let $G$ be a crossed action operad. Then the endomorphisms of the unit object of $L_n$ are
 \[ L_n(I, I) \quad \cong \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
 and therefore
@@ -1227,7 +1229,7 @@ Now let $A$ be an abelian group and $\phi: \mathrm{Mor}(X)^{\mathrm{ab}} \to A$ 
 By \cref{Morder} this is the defining relation for the group $\mathrm{M}(X)^{\mathrm{ab}}$, so $\mathrm{M}(X)^{\mathrm{ab}}$ and $\mathrm{Mor}(X)^{\mathrm{ab}}/\mathrm{Ob}(X)^{\mathrm{ab}}$ have the same universal property, hence are uniquely isomorphic under $\mathrm{Mor}(X)^{\mathrm{ab}}$.
 \end{proof}
 
-Here is the main theorem of this section, a description of $L_n(I,I)$.
+Here is the main theorem of this section, a first description of $L_n(I,I)$.
 
 \begin{thm}
 For any crossed action operad $\ML$, 
@@ -1242,8 +1244,8 @@ and the monoid of morphisms of $L_n$ is therefore
 We have the isomorphism
 \[ L_n(I,I) \quad \cong \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
 from \cref{Zmor1}. Note that this quotient  depends on the embedding of $(s \times t)(L_n)$ as a subgroup of the morphisms $L_n$ in \cref{stZsub}. The proof there ensured that the embedding we construct commutes with the inclusion of the monoid of objects, so
-\[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad \cong \quad \frac{\left(\quotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)} \]
-by standard group theory.
+\[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad \cong \quad \frac{\left(\quotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}{\left(\quotient{{(s \times t)(L_n)}^{\mathrm{ab}}}{\mathrm{Ob}(L_n)^{\mathrm{ab}}}\right)}. \]
+
 
 Using \cref{colquot} to change the numerator and \cref{Zobj,stpullback} to simplify the denominator, this quotient becomes
 \[ \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \quad = \quad \frac{\left(\quotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}}{\Delta}\right)}{\left(\quotient{{(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})}^{\mathrm{ab}}}{\mathbb{Z}^n}\right)} \]
@@ -1254,7 +1256,7 @@ It should be clear that there is further work to do in order to give a useable c
 
 \section{Calculation: abelianizing sources and targets}
  
- Our first calculation is to give a presentation for $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. We were able to prove that $\mathbb{N}^{\ast n} \times_{\mathbb{Z}^N} \mathbb{N}^{\ast n}$ is a free monoid, but one cannot then conclude that $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is a free group since group completion is a left adjoint and does not interact well with pullbacks. Abelianization is also a left adjoint, and we cannot commute it past the pullback for the same reason. Thus we give a presentation directly. For the reader uninterested in the algebra involved, we record the main results of this section now:
+ Our first calculation will give a presentation for $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. We were able to prove that $\mathbb{N}^{\ast n} \times_{\mathbb{Z}^N} \mathbb{N}^{\ast n}$ is a free monoid, but one cannot then conclude that $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is a free group since group completion is a left adjoint and does not commute with pullbacks. Abelianization is also a left adjoint, and we cannot commute it past the pullback for the same reason. Thus we give a presentation directly. For the reader uninterested in the algebra involved, we record the main results of this section now:
  \begin{itemize}
  \item we prove
  \[ (\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}} \quad \cong \quad \mathbb{Z}^n \times {\mathbb{Z}}^{{n}\choose{2}} \]
@@ -1661,26 +1663,32 @@ Therefore any generator $(g, w) \in \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{
 
 \section{A full description of \texorpdfstring{$L_n$}{L_n}}
 
-With this last proposition proven, the results in this thesis now collectively describe how to construct the free $E\Lambda$-algebras on $n$ invertible objects for most values of $G$. However, since this characterization was discovered by us in such a piecemeal fashion, we will now restate everything in one place, for ease of reading. We'll begin with the non-crossed case, or as much of it as we were able to draw a complete conclusion about.
+We now give our most complete description of the free $\ML$-monoidal category generated by $n$ invertible objects. We know that an arbitrary morphism of $L_n$ can be described using its source, target, and an element of $L_n(I,I)$. We use this knowledge, together with a chosen isomorphism $\mathrm{Mor}(L_n) \cong (s \times t)(L_n) \times L_n(I,I)$, to write down $L_n$ as a $\ML$-monoidal category.
 
-\begin{thm} \label{freeinvalgG1} Let $G$ be a $G(1)$-generated action operad. Then the free $E\Lambda$-algebra on $n$ invertible objects is just the discrete category
-\[ L_n \quad = \quad \mathbb{Z}^{\ast n} \]
-equipped with a tensor product which is the usual monoid multiplication, and an $E\Lambda$-action given by
-\[ \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \]
-\end{thm}
-\begin{proof}
-The object monoid is from \cref{Zobj}, the fact that $L_n$ is discrete follows from \cref{trivendo}, and the action is given by \cref{G1act}.
-\end{proof}
+\begin{conv}
+Recall that we have fixed an isomorphism $\mathrm{Mor}(L_n) \cong (s \times t)(L_n) \times L_n(I,I)$ as per \cref{morprod}. Further, assume that $\Lambda(0)$ is the trivial group; if not, replace $\Lambda$ with the action operad $\Lambda'$ of \cref{noscalarcross}.
+\end{conv}
 
-It is a shame that we were not able to find a formulation for uncrossed $L_n$ in full generality. This will have to be the subject of future research.
+%\begin{thm} \label{freeinvalgG1} Let $G$ be a $G(1)$-generated action operad. Then the free $E\Lambda$-algebra on $n$ invertible objects is just the discrete category
+%\[ L_n \quad = \quad \mathbb{Z}^{\ast n} \]
+%equipped with a tensor product which is the usual monoid multiplication, and an $E\Lambda$-action given by
+%\[ \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \]
+%\end{thm}
+%\begin{proof}
+%The object monoid is from \cref{Zobj}, the fact that $L_n$ is discrete follows from \cref{trivendo}, and the action is given by \cref{G1act}.
+%\end{proof}
+%
+%It is a shame that we were not able to find a formulation for uncrossed $L_n$ in full generality. This will have to be the subject of future research.
+%
+%By contrast, in the case of crossed action operads we were able to achieve a complete description. First, using various results from \cref{colimalgebra,morphisms} we showed that the unit endomorphisms of $L_n$ were isomorphic to a certain quotient of abelian groups, which from now on we will refer to as $A(G,n)$. The long process of calculating this group can now be condensed down into a single definition:
 
-By contrast, in the case of crossed action operads we were able to achieve a complete description. First, using various results from \cref{colimalgebra,morphisms} we showed that the unit endomorphisms of $L_n$ were isomorphic to a certain quotient of abelian groups, which from now on we will refer to as $A(G,n)$. The long process of calculating this group can now be condensed down into a single definition:
+We begin by giving a recipe for constructing the group $L_n(I,I)$ from a presentation of the operad $\ML$.
 
-\begin{Defi} \label{AGndef} Let $G$ be a crossed action operad, and $G'$ the action operad defined by $G'(m) := G(m)/G(0)$. Choose a subset $\mathcal{G}$ that generates $G'$ under a combination of tensor product and group multiplication, which itself has subsets $\mathcal{G}_m := \mathcal{G} \, \cap \, G'(m)$. Then for each $n \in \mathbb{N}$, we will denote by $A(G,n)$ the abelian group obtained from the free abelian group 
+\begin{Defi} \label{AGndef} Let $\ML$ be a crossed action operad. Choose a subset $\mathcal{G}$ that generates $\ML$ under a combination of tensor product and group multiplication, which itself has subsets $\mathcal{G}_m := \mathcal{G} \, \cap \, \Lambda(m)$. Then for each $n \in \mathbb{N}$, we will denote by $A(\ML,n)$ the abelian group obtained from the free abelian group 
 \[ \mathrm{F}( \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}) \quad = \quad \mathbb{Z}^{2n|\mathcal{G}_1| + (2n)^2|\mathcal{G}_2| + ...} \]
 via the following steps:
 \begin{enumerate}%[leftmargin=*]
-\item For all $g, g' \in G(m)$ and $w \in \mathbb{N}^{\ast 2n}$ with $|w| = m$, quotient out by the relation 
+\item For all $g, g' \in \mathcal{G}_m$ and $w \in \mathbb{N}^{\ast 2n}$ with $|w| = m$, quotient out by the relation 
 \[ (g, w) \, \otimes \, \big( \, g', \pi(g^{-1})(w) \, \big) \quad \sim \quad (g \cdot g', w) \]
 \item Quotient out by the subgroup $\Delta$, which is generated by the equivalence classes of elements of the form
 \[ \begin{array}{c}
