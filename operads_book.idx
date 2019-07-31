@@ -32,20 +32,19 @@
 \indexentry{action operad!of an abelian group|hyperpage}{12}
 \indexentry{action operad!maps|hyperpage}{13}
 \indexentry{action operad!category of|hyperpage}{13}
-\indexentry{action operad!limits of|hyperpage}{13}
 \indexentry{action operad!kernel|hyperpage}{13}
-\indexentry{action operad!crossed|hyperpage}{13}
-\indexentry{crossed simplicial group|hyperpage}{14}
+\indexentry{crossed simplicial group|hyperpage}{13}
 \indexentry{category!filtered|hyperpage}{18}
 \indexentry{colimit!filtered|hyperpage}{18}
 \indexentry{object!finitely presentable|hyperpage}{18}
 \indexentry{category!locally finitely presentable|hyperpage}{18}
-\indexentry{category!slice category|hyperpage}{19}
+\indexentry{category!slice category|hyperpage}{18}
 \indexentry{collection!non-symmetric|hyperpage}{19}
 \indexentry{collection!symmetric|hyperpage}{19}
+\indexentry{action operad!limits of|hyperpage}{19}
 \indexentry{action operad!presentation|hyperpage}{19}
-\indexentry{operad!$\Lambda$-operad|hyperpage}{20}
-\indexentry{operad!$\Lambda$-operad!category of|hyperpage}{20}
+\indexentry{operad!$\ML$-operad|hyperpage}{20}
+\indexentry{operad!$\ML$-operad!category of|hyperpage}{20}
 \indexentry{action operad!initial|hyperpage}{20}
 \indexentry{operad!terminal|hyperpage}{20}
 \indexentry{operad!of symmetric groups|hyperpage}{20}
@@ -57,14 +56,14 @@
 \indexentry{operad!endomorphism operad|hyperpage}{21}
 \indexentry{monad|hyperpage}{22}
 \indexentry{operad!associated monad|hyperpage}{22}
-\indexentry{monad!maps|hyperpage}{23}
+\indexentry{monad!maps|hyperpage}{24}
 \indexentry{monad!maps!transformation|hyperpage}{24}
-\indexentry{collection!$\Lambda$-collection|hyperpage}{25}
-\indexentry{collection!$\Lambda$-collection!category of|hyperpage}{25}
-\indexentry{collection!$\Lambda$-collection|hyperpage}{25}
+\indexentry{collection!$\ML$-collection|hyperpage}{25}
+\indexentry{collection!$\ML$-collection!category of|hyperpage}{25}
+\indexentry{collection!$\ML$-collection|hyperpage}{26}
 \indexentry{collection!convolution|hyperpage}{26}
 \indexentry{monoid!category of|hyperpage}{26}
-\indexentry{Day convolution|hyperpage}{26}
+\indexentry{Day convolution|hyperpage}{27}
 \indexentry{colimit!copower|hyperpage}{30}
 \indexentry{$2$-monad|hyperpage}{31}
 \indexentry{algebra!pseudoalgebra|hyperpage}{32}
@@ -109,8 +108,8 @@
 \indexentry{operad!generalized|hyperpage}{52}
 \indexentry{monad!collection|hyperpage}{52}
 \indexentry{collection!$T$-collection|hyperpage}{52}
-\indexentry{monad!$T$-operad|hyperpage}{53}
-\indexentry{operad!$T$-operad|hyperpage}{53}
+\indexentry{monad!$T$-operad|hyperpage}{52}
+\indexentry{operad!$T$-operad|hyperpage}{52}
 \indexentry{club|hyperpage}{53}
 \indexentry{club!generators and relations|hyperpage}{56}
 \indexentry{monoidal category!symmetric strict|hyperpage}{57}
@@ -122,14 +121,15 @@
 \indexentry{category!coboundary|hyperpage}{58}
 \indexentry{monoidal category!coboundary category|hyperpage}{58}
 \indexentry{monoidal category!coboundary category!coboundary functor|hyperpage}{59}
-\indexentry{group!cactus|hyperpage}{60}
+\indexentry{group!cactus|hyperpage}{59}
 \indexentry{action operad!of cactus groups|hyperpage}{60}
-\indexentry{monoidal category!spacial|hyperpage}{64}
+\indexentry{action operad!crossed|hyperpage}{62}
+\indexentry{monoidal category!spacial|hyperpage}{63}
 \indexentry{action operad!underlying monoid|hyperpage}{65}
 \indexentry{multilinear map|hyperpage}{67}
-\indexentry{$2$-monad!strength|hyperpage}{68}
+\indexentry{$2$-monad!strength|hyperpage}{67}
 \indexentry{$2$-monad!costrength|hyperpage}{68}
-\indexentry{$2$-monad!pseudo-commutativity|hyperpage}{69}
+\indexentry{$2$-monad!pseudo-commutativity|hyperpage}{68}
 \indexentry{$2$-monad!pseudo-commutativity!symmetric|hyperpage}{74}
 \indexentry{operad!$\Lambda$-operad!contractible|hyperpage}{75}
 \indexentry{monoidal category!braided strict|hyperpage}{75}
@@ -144,13 +144,3 @@
 \indexentry{monad!in a bicategory|hyperpage}{79}
 \indexentry{monad!oplax map|hyperpage}{80}
 \indexentry{monad!maps!transformation|hyperpage}{80}
-\indexentry{object!invertible|hyperpage}{83}
-\indexentry{object!weakly invertible|hyperpage}{83}
-\indexentry{algebra!of weakly invertible objects|hyperpage}{83}
-\indexentry{monoidal category!$\ML$-monoidal!free|hyperpage}{84}
-\indexentry{monoidal category!$\ML$-monoidal|hyperpage}{86}
-\indexentry{group completion|hyperpage}{86}
-\indexentry{action operad!crossed|hyperpage}{87}
-\indexentry{monoidal category!monoid of morphisms|hyperpage}{88}
-\indexentry{abelianization|hyperpage}{88}
-\indexentry{functor!surjective|hyperpage}{91}
