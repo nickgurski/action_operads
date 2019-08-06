@@ -4036,44 +4036,6 @@ But by QQQ Missing ref QQQ \cref{Gnmapsaction}, each element of $\mathrm{Mor}(\E
 and hence it is a monoid isomorphism, as required.
 \end{proof}
 
-
-\section{Coequalizers of $\ML$-monoidal categories}
-QQQ Need to define what we mean by $\ML$-monoidal categories. QQQ
-In this section, we will compare the coequalizer of a diagram of $\ML$-monoidal categories as it is computed in $\ML\moncat$, in $\moncat$, and in $\cat$. Our goal will be to show that the forgetful functors 
-\[
-\ML\mbox{-}\moncat \to \moncat \to \cat
-\]
-all create reflexive coequalizers. This has the effect of allowing us to compute coequalizers in $\ML\mbox{-}\moncat$ by converting them into reflexive coequalizers and then computing them in either $\moncat$ or $\cat$. This technique will be necessary in our construction of the free $\ML$-monoidal category on $n$ invertible objects. The strategy here follows that in Section 4.1 of \cite{lack-cod}.
-
-\begin{lem}\label{P_pres_refl}
-Let $P$ be a $\ML$-operad in $\cat$, with $\und{P}$ its associated 2-monad. Then $\und{P}$ preserves reflexive coequalizers.
-
-\end{lem}
-\begin{proof}
-We have a functor $P:B\Lambda^{op} \to \cat$ which sends $n$ to $P(n)$ and uses the right action $P(n) \times \Lambda(n) \to P(n)$ to define the functor on morphisms. Given a category $X \in \cat$, there is also a functor $R_X:B\Lambda \to \cat$ sending $n$ to $X^n$ and $g \in \Lambda(n)$ to the permutation given by $\pi(n)$. The weighted colimit $P \cdot R_X$ is then easily seen to be the free algebra $\und{P}(X)$. The functor $P \cdot -$ is cocontinuous, so the free $\und{P}$-algebra functor $\cat \to \cat$ will preserve whatever colimits the functor $X \mapsto R_X$ preserves. Colimits in the functor category $[B\Lambda, \cat]$ are computed pointwise, and the functors $X \mapsto X^n$ for $n \in \mathbb{N}$ preserve reflexive coequalizers, so $X \mapsto R_X$ does also and therefore the free $\und{P}$-algebra functor preserves reflexive coequalizers.
-\end{proof}
-
-\begin{lem}\label{creation_triangle}
-Let $A,B,C$ be cocomplete categories, and let $A \stackrel{F}{\to} B \stackrel{G}{\to} C$ be functors such that $G$ is conservative, and both $G$ preserves and $GF$ creates colimits of shape $\mathbb{D}$. Then $F$ creates colimits of shape $\mathbb{D}$.
-\end{lem}
-\begin{proof}
-Let $d:\mathbb{D} \to A$ be a diagram with colimit $\colim d$. Since $GF$ preserves colimits of shape $\mathbb{D}$, the natural map $\colim GFd \to GF \colim d$ is an isomorphism; since $G$ preserves colimits of shape $\mathbb{D}$, the natural map $\colim GFd \to G\colim Fd$ is also an isomorphism. By the assumption that $G$ is conservative, the natural map $\colim Fd \to F\colim d$ is an isomorphism so $F$ preserves colimits of shape $\mathbb{D}$.
-
-Now assume $a \in A$ is the vertex of a cocone over $d$ such that $Fa$ is the colimit of $Fd$. Since $G$ preserves colimits of shape $\mathbb{D}$, $GFa$ is the colimit of $GFd$. But $GF$ creates colimits of shape $\mathbb{D}$, so $a$ was the colimit of $d$ in $A$. Thus $F$ creates colimits of shape $\mathbb{D}$.
-\end{proof}
-
-For an monad $T$ on a category $C$, the forgetful functor $T\Alg \to C$ creates any colimit that $T$ preserves. This fact and the previous lemmas prove the following proposition using the operad $P = E\Lambda$.
-\begin{prop}\label{refcoeq_calcs}
-For any action operad $\ML$, the forgetful functor $\ML\mbox{-}\moncat \to \cat$ is conservative and creates reflexive coequalizers. Consequently, $\ML\mbox{-}\moncat \to \moncat$ is also conservative and creates reflexive coequalizers.
-
-\end{prop}
-
-
-
-
-
-
-
 \section{Pseudo-commutativity}
 
 This section gives conditions sufficient to equip the 2-monad $\underline{P}$ induced by a $\ML$-operad $P$ in $\mb{Cat}$ with a pseudo-commutative structure.  Such a pseudo-commutativity will then give the 2-category $\mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$ some additional structure that we briefly explain here.  For a field $k$, the category $\mb{Vect}$\nomenclature[C]{$\mb{Vect}$}{of vector spaces over a given field $k$ and $k$-linear maps} of vector spaces over $k$ has many nice features.  Of particular interest to us are the following three structures.  First, the category $\mb{Vect}$ is monoidal using the tensor product $\otimes_{k}$.  Second, the set of linear maps $V \rightarrow W$ is itself a vector space which we denote $[V,W]$.  Third, there is a notion of multilinear map\index{multilinear map} $V_{1} \times \cdots \times V_{n} \rightarrow W$, with linear maps being the 1-ary version.  While these three structures are each useful in isolation, they are tied together by natural isomorphisms
