@@ -472,7 +472,7 @@ To lift $B$ to $\lmc$, we need only assign the trivial action of each $\Lambda_n
 
 
 
- We will eventually prove that the morphisms of $L_n$ actually form a group under tensor product \cref{??}, so instead of working directly with the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}}: \moncat \to \cmon$, we will focus on its composite with the group completion functor, $gp : \cmon \to \mathrm{Ab}$. We end with a brief exploration of this new functor $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$.  
+ We will eventually prove that the morphisms of $L_n$ actually form a group under tensor product \cref{??}, so instead of working directly with the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}}: \moncat \to \cmon$, we will focus on its composite with the group completion functor, $gp : \cmon \to \mb{Ab}$. We end with a brief exploration of this new functor $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$.  
 It is well known that group completion and abelianization commute since their right adjoints commute, but we further note that group completion commutes with collapsing morphisms.
 
 
@@ -490,11 +490,17 @@ This follows immediately from $M$ being given explicitly as a quotient, and both
 \end{proof}
 
 
+QQQ Institute the following where possible
+\begin{conv}\label{plus}
+We default to writing any abelian group, such as those in the image of $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$, with additive notation, using $+$ for the group operation and 0 for the identity element.
+\end{conv}
+
+
 
 \section{The free object as a cokernel}
 \label{colimalgebra} 
 
-QQQ I think I might suggest $L_n$ for the free thing on $n$ invertible objects.
+%QQQ I think I might suggest $L_n$ for the free thing on $n$ invertible objects.
 
 
 This section will present a different approach to $L_n$. Consider for a moment the free $\ML$-monoidal category on $2n$ objects $z_1, z_2, \ldots, z_{2n}$. If we were to take this category and then add the relations $z_{n+1} = z_1^{-1}, ..., z_{2n} = z_n^{-1}$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. Thus we would see $L_n$ as a quotient of the larger monoidal category $\EL(2n)$. We will now work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$.
@@ -587,7 +593,7 @@ Next, let $f: v \to w$ and $f' : w' \to v'$ be any two morphisms of the category
 \[ \begin{array}{rll}
 		k(h) & = & k(f' \otimes \mathrm{id}_y \otimes f) \\
 		& = & k(f') \otimes \mathrm{id}_{k(y)} \otimes k(f) \\
-		& = & k(f') \otimes \mathrm{id}_{k(w)^*} \otimes k(f)
+		& = & k(f') \otimes \mathrm{id}_{k(w)^{-1}} \otimes k(f)
 		\end{array}
 \]
 and so by \cref{tenscomp}, this is the composite $k(f') \circ k(f)$. Therefore the set of morphisms of $Z$ which are images of morphisms of $Y$ is closed under composition. 
@@ -658,9 +664,83 @@ q \Big(g^{\otimes}: q^{-1}(a_1) \otimes \cdots \otimes q^{-1}(a_m) \to   q^{-1}(
 \]
 \end{cor}
 
-\section{From strictly to weakly invertible objects}
+\section{A second coequalizer argument}
+In this section, we will compare the coequalizer of a diagram of $\ML$-monoidal categories as it is computed in $\ML\moncat$, in $\moncat$, and in $\cat$. Our goal will be to show that the forgetful functors 
+\[
+\ML\mbox{-}\moncat \to \moncat \to \cat
+\]
+all create reflexive coequalizers. This has the effect of allowing us to compute coequalizers in $\ML\mbox{-}\moncat$ by converting them into reflexive coequalizers and then computing them in either $\moncat$ or $\cat$. This technique will be necessary in our construction of the free $\ML$-monoidal category on $n$ invertible objects. The strategy here follows that in Section 4.1 of \cite{lack-cod}.
 
-Repeat some adjoint functor theorem arguments
+\begin{lem}\label{P_pres_refl}
+Let $P$ be a $\ML$-operad in $\cat$, with $\und{P}$ its associated 2-monad. Then $\und{P}$ preserves reflexive coequalizers.
+
+\end{lem}
+\begin{proof}
+We have a functor $P:B\ML^{op} \to \cat$ which sends $n$ to $P(n)$ and uses the right action $P(n) \times \ML(n) \to P(n)$ to define the functor on morphisms. Given a category $X \in \cat$, there is also a functor $R_X:B\ML \to \cat$ sending $n$ to $X^n$ and $g \in \Lambda(n)$ to the permutation given by $\pi(n)$. The weighted colimit $P \cdot R_X$ is then easily seen to be the free algebra $\und{P}(X)$. The functor $P \cdot -$ is cocontinuous, so the free $\und{P}$-algebra functor $\cat \to \cat$ will preserve whatever colimits the functor $X \mapsto R_X$ preserves. Colimits in the functor category $[B\ML, \cat]$ are computed pointwise, and the functors $X \mapsto X^n$ for $n \in \mathbb{N}$ preserve reflexive coequalizers, so $X \mapsto R_X$ does also and therefore the free $\und{P}$-algebra functor preserves reflexive coequalizers.
+\end{proof}
+
+\begin{lem}\label{creation_triangle}
+Let $A,B,C$ be cocomplete categories, and let $A \stackrel{F}{\to} B \stackrel{G}{\to} C$ be functors such that $G$ is conservative, and both $G$ preserves and $GF$ creates colimits of shape $\mathbb{D}$. Then $F$ creates colimits of shape $\mathbb{D}$.
+\end{lem}
+%\begin{proof}
+%Let $d:\mathbb{D} \to A$ be a diagram with colimit $\colim d$. Since $GF$ preserves colimits of shape $\mathbb{D}$, the natural map $\colim GFd \to GF \colim d$ is an isomorphism; since $G$ preserves colimits of shape $\mathbb{D}$, the natural map $\colim GFd \to G\colim Fd$ is also an isomorphism. By the assumption that $G$ is conservative, the natural map $\colim Fd \to F\colim d$ is an isomorphism so $F$ preserves colimits of shape $\mathbb{D}$.
+%
+%Now assume $a \in A$ is the vertex of a cocone over $d$ such that $Fa$ is the colimit of $Fd$. Since $G$ preserves colimits of shape $\mathbb{D}$, $GFa$ is the colimit of $GFd$. But $GF$ creates colimits of shape $\mathbb{D}$, so $a$ was the colimit of $d$ in $A$. Thus $F$ creates colimits of shape $\mathbb{D}$.
+%\end{proof}
+
+For an monad $T$ on a category $C$, the forgetful functor $T\Alg \to C$ creates any colimit that $T$ preserves. This fact and the previous lemmas prove the following proposition using the operad $P = E\ML$.
+\begin{prop}\label{refcoeq_calcs}
+For any action operad $\ML$, the forgetful functor $\ML\mbox{-}\moncat \to \cat$ is conservative and creates reflexive coequalizers. Consequently, $\ML\mbox{-}\moncat \to \moncat$ is also conservative and creates reflexive coequalizers.
+
+\end{prop}
+
+\begin{nota}\label{plus_notation}
+Let $f: A \to C, g: B \to C$ be maps in a category with coproducts. We will write $f;g: A \coprod B \to C$ for the unique map induced by the universal property of the coproduct.
+\end{nota}
+
+\begin{lem}\label{sum_coeq}
+Let $f, g: A \to B$ be maps in a cocomplete category with coequalizer $c: B \to C$. Then $c$ is also the coequalizer of $f;\id_B$ and $g; \id_B$.
+\end{lem}
+\begin{proof}
+A map $h: B \to X$ coequalizes $f;\id_B$ and $g; \id_B$ if and only if $hf = hg$ and $h \id_B = h \id_B$ by the universal property of the coproduct, so $c$ is still the universal map which coequalizes.
+
+\end{proof}
+
+\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} = \mathrm{id}_{\ELnn};\delta$.
+Explicitly, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
+\[ \begin{array}{rlrlll}
+			\tilde{\delta} & : & \ELnnnn & \to & \ELnn \\
+			&  & z_i & \mapsto & z_i  \\
+			&  & z_{n+i} & \mapsto & z_{n+i} \\
+			&  & z_{2n+i} & \mapsto & z_i \otimes z_{n+i} \\
+			&  & z_{3n+i} & \mapsto & z_{n+i} \otimes z_i			
+		\end{array}
+\]
+for $1 \le i \le n$. Similarly, let $\tilde{I} = \mathrm{id}_{\ELnn};I$.
+Explicitly, $\tilde{I}$ is the map of $E\Lambda$-algebras which acts on generators by
+\[ \begin{array}{rlrlll}
+			\tilde{I} & : & \ELnnnn & \to & \ELnn \\
+			&  & z_i & \mapsto & z_i  \\
+			& & z_{n+i} & \mapsto & z_{n+i} \\
+			& & z_{2n+i} & \mapsto & I \\
+			&  & z_{3n+i} & \mapsto & I
+		\end{array} 
+\]
+for $1 \le i \le n$. 
+\end{Defi}
+
+
+
+\begin{cor}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mb{Alg}_S$.
+\end{cor}
+
+By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\Lambda\mbox{-}\mb{Alg}_S$, so by \cref{refcoeq_calcs} we have the further corollary below.
+
+\begin{cor}\label{q_other_coeq2} The functor $q$  is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $\moncat$ or in $\cat$.
+\end{cor}
+
+
+\section{From strictly to weakly invertible objects}
 
 We now turn to weakly invertible objects, and more specifically how we can apply our results about invertible objects to the weakly invertible ones. We begin with the analogue of \cref{invdef}.
 
@@ -889,6 +969,12 @@ We now consider the monoid of unit endomorphisms, $L_n(I,I)$. This is a particul
 
 Indeed, by using a slightly broader argument we can extend this result to every morphism of $L_n$.
 
+\begin{Defi}\label{def_tensinv}
+A morphism $f: w \to v$ in a monoidal category $X$ is \emph{invertible under tensor product} or \emph{has an inverse under tensor product} if there is another morphism $g: w^{-1} \to v^{-1}$ such that $f \otimes g = \id_I = g \otimes f$; note that this requires $w, v$ to both be invertible with inverses $w^{-1}, v^{-1}$, respectively.
+\end{Defi}
+
+QQQ Change $y*$ to $y^{-1}$, but keep $f*$ as the tensor inverse of $f$
+
 \begin{prop} \label{tensinv} Every morphism $f: w \to v$ in $L_n$ has an inverse under tensor product, $f^*: w^* \to v^*$. That is, the monoid $\mathrm{Mor}(L_n)$ is actually a group.
 \end{prop}
 \begin{proof}
@@ -910,7 +996,7 @@ so $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the in
 \end{proof}
 
 
-\begin{prop} \label{endnorm} $L_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L_n)$. Moreover, if $G$ is a crossed action operad, then $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$.
+\begin{prop} \label{endnorm} $L_n(I,I)$ is a normal subgroup of $\mathrm{Mor}(L_n)$. Moreover, if $\ML$ is a crossed action operad, then $L_n(I,I)$ is a subgroup of the center of $\mathrm{Mor}(L_n)$.
 \end{prop}
 \begin{proof}
 From \cref{endab,tensinv}, we know that $L_n(I,I)$ is a subgroup of $\mathrm{Mor}(L_n)$. For normality, we need to again consider both crossed and non-crossed action operads separately. 
@@ -1071,69 +1157,20 @@ using \cref{otimesotimes}. Thus we also have an induced map $L\ML'_n \to L\ML_n$
 
 \section{Reflexivity and a first calculation}
 
-\begin{nota}\label{plus_notation}
-Let $f: A \to C, g: B \to C$ be maps in a category with coproducts. We will write $f;g: A \coprod B \to C$ for the unique map induced by the universal property of the coproduct.
-\end{nota}
-
-\begin{lem}\label{sum_coeq}
-Let $f, g: A \to B$ be maps in a cocomplete category with coequalizer $c: B \to C$. Then $c$ is also the coequalizer of $f;\id_B$ and $g; \id_B$.
-\end{lem}
-\begin{proof}
-A map $h: B \to X$ coequalizes $f;\id_B$ and $g; \id_B$ if and only if $hf = hg$ and $h \id_B = h \id_B$ by the universal property of the coproduct, so $c$ is still the universal map which coequalizes.
-
-\end{proof}
-
-\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} = \mathrm{id}_{\ELnn};\delta$.
-Explicitly, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
-\[ \begin{array}{rlrlll}
-			\tilde{\delta} & : & \ELnnnn & \to & \ELnn \\
-			&  & z_i & \mapsto & z_i  \\
-			&  & z_{n+i} & \mapsto & z_{n+i} \\
-			&  & z_{2n+i} & \mapsto & z_i \otimes z_{n+i} \\
-			&  & z_{3n+i} & \mapsto & z_{n+i} \otimes z_i			
-		\end{array}
-\]
-for $1 \le i \le n$. Similarly, let $\tilde{I} = \mathrm{id}_{\ELnn};I$.
-Explicitly, $\tilde{I}$ is the map of $E\Lambda$-algebras which acts on generators by
-\[ \begin{array}{rlrlll}
-			\tilde{I} & : & \ELnnnn & \to & \ELnn \\
-			&  & z_i & \mapsto & z_i  \\
-			& & z_{n+i} & \mapsto & z_{n+i} \\
-			& & z_{2n+i} & \mapsto & I \\
-			&  & z_{3n+i} & \mapsto & I
-		\end{array} 
-\]
-for $1 \le i \le n$. 
-\end{Defi}
-
-
-
-\begin{cor}\label{q_other_coeq} The functor $q$ (\cref{qdef}) is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $E\Lambda\mbox{-}\mb{Alg}_S$.
-\end{cor}
-
-By construction, $\tilde{\delta}$ and $\tilde{I}$ form a reflexive pair in $E\Lambda\mbox{-}\mb{Alg}_S$, so by \cref{refcoeq_calcs} we have the further corollary below.
-
-\begin{cor}\label{q_other_coeq2} The functor $q$  is the coequalizer of $\tilde{\delta}$ and $\tilde{I}$ in $\moncat$ or in $\cat$.
-\end{cor}
-
-Now that we can  express the map $q: \ELnn \to L_n$ as a colimit of mere monoidal categories, we can use the adjunction from \cref{Moradj} to calculate $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$. 
-
-QQQ Need to think about the $f^*$ below
+Recall that the functor $q: \ELnn \to L_n$ expresses $L_n$ as a reflexive coequalizer of $\ML$-monoidal categories and hence also as a reflexive coequalizer of mere monoidal categories by \cref{q_other_coeq2}. We can therefore use the adjunction from \cref{Moradj} to calculate $\mathrm{M}(L_n)^{\mathrm{gp},\mathrm{ab}}$. 
 
 \begin{prop}\label{Zmor2} Let $\Delta$ be the subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ generated by elements of the form
-\[ \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) \, \otimes \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f)^*, \quad \quad \quad f \in \mathrm{M}(\ELnnnn)^{\mathrm{gp, ab}} \]
-Then the abelianization of the group completion of the collapsed morphisms of $L_n$ is 
-\[ \mathrm{M}(L_n)^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta} \]
-with $\mathrm{M}(q)^{\mathrm{gp, ab}}$ acting as the appropriate quotient map. 
+\[ \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) \, - \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f), \quad \quad \quad f \in \mathrm{M}(\ELnnnn)^{\mathrm{gp, ab}} \]
+Then the abelianization of the group completion of the collapsed morphisms of $L_n$ is computed as the quotient below.
+\[ \mathrm{M}(L_n)^{\mathrm{gp, ab}} \quad \cong \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta} \]
 \end{prop}
 \begin{proof}
-From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}: \moncat \to \mathrm{Ab}$ is a left adjoint functor. This means that it preserves all colimits in $\moncat$, so
-\[ \mathrm{coeq}\big( \, \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}, \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}} \, \big) \quad \cong \quad \mathrm{M}\big( \, \mathrm{coeq}(\tilde{\delta}, \tilde{I}) \, \big)^{\mathrm{gp, ab}} \quad \cong \quad \mathrm{M}(q)^{\mathrm{gp, ab}}. \]
-
+From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}}: \moncat \to \mb{Ab}$ is a left adjoint functor. This means that it preserves all colimits in $\moncat$, so
+\[ \mathrm{coeq}\big( \, \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}, \, \mathrm{M}(\tilde{I})^{\mathrm{gp, ab}} \, \big) \quad \cong \quad \mathrm{M}\big( \, \mathrm{coeq}(\tilde{\delta}, \tilde{I}) \, \big)^{\mathrm{gp, ab}} \quad. \]
 The coequalizer of two abelian group homomorphisms is just the quotient of their common target by the image of their difference. Hence in this case we have
 \[ 
 \begin{array}{rcl}
-\mathrm{M}(L\mathbb{G}_{n})^{\mathrm{gp, ab}}  & \cong &  \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\mathrm{im}\big( \, {\mathrm{M}(\tilde{\delta})}^{\mathrm{gp, ab}} - {\mathrm{M}(\tilde{I})}^{\mathrm{gp, ab}} \, \big)} \\
+\mathrm{M}(L_{n})^{\mathrm{gp, ab}}  & \cong &  \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\mathrm{im}\big( \, {\mathrm{M}(\tilde{\delta})}^{\mathrm{gp, ab}} - {\mathrm{M}(\tilde{I})}^{\mathrm{gp, ab}} \, \big)} \\
 & \cong & \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta}.
 \end{array}
 \]
@@ -1145,7 +1182,7 @@ Note that $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$ is a subgroup of $
 
 
 
-QQQ I actually don't know the purpose of this lemma yet.
+QQQ Rewrite with better notation
 
 Our goal is to explicitly compute the group acting on a set of $n$ invertible objects in a $\ML$-monoidal category, so we will need an explicit description of the elements of the subgroup $\Delta$.
 
@@ -1191,7 +1228,7 @@ and using these equations the lemma follows immediately from the definition of $
 
 \section{Consequences of the splitting}
 
-We now combine the splitting result (\cref{morprod}) with the quotients in the previous section.
+In this section we will combine our splitting result (\cref{morprod}) with the quotients in the previous section.
 
 \begin{cor}\label{Zmor1} Let $G$ be a crossed action operad. Then the endomorphisms of the unit object of $L_n$ are
 \[ L_n(I, I) \quad \cong \quad \bigquotient{{\mathrm{Mor}(L_n)}^{\mathrm{ab}}}{{(s \times t)(L_n)}^{\mathrm{ab}}} \]
@@ -1201,32 +1238,33 @@ and therefore
 \begin{proof}
 Both statements follow from the simple fact that abelianization preserves products and quotients.
 \end{proof}
-\begin{lem} \label{colquot} Let $X$ be any monoidal category whose objects and morphisms are all invertible under tensor product. Then the monoid of collapsed morphisms $\mathrm{M}(X)$ is already a group, and its abelianization is isomorphic to $\mathrm{Mor}(X)^{\mathrm{ab}}/ \mathrm{Ob}(X)^{\mathrm{ab}}$.
+
+\begin{lem} \label{colquot} Let $X$ be any monoidal category whose objects and morphisms are all invertible under tensor product (see \cref{def_tensinv} and \cref{tensinv}). Then the monoid of collapsed morphisms $\mathrm{M}(X)$ is already a group, and its abelianization is isomorphic to $\mathrm{Mor}(X)^{\mathrm{ab}}/ \mathrm{Ob}(X)^{\mathrm{ab}}$.
 
 \end{lem}
 \begin{proof}
 Let  $f: x \to y$, $f': y \to z$ be a composable pair of morphisms in $X$. Recall  that in any monoidal category with invertible objects,
-\[ f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y*} \otimes f \]
+\[ f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y^{-1}} \otimes f \]
 by \cref{tenscomp}, so both $\mathrm{Mor}(X)$ and $\mathrm{M}(X)$ are groups. Consider the canonical homomorphism $\psi: \mathrm{Mor}(X) \to \mathrm{M}(X) \to \mathrm{M}(X)^{\mathrm{ab}}$. Then we have
 \[ \begin{array}{rll}
 			\psi(f' \otimes f) & = & \psi(f' \circ f) \\
-			& = & \psi(f' \otimes \mathrm{id}_{y*} \otimes f) \\
-			& = & \psi(f') \otimes \psi(\mathrm{id}_{y*}) \otimes \psi(f) \\
-			& = & \psi(f') \otimes \psi(f) \otimes \psi(\mathrm{id}_{y*}) \\
-			& = & \psi(f' \otimes f) \otimes \psi(\mathrm{id}_{y*}) \\
+			& = & \psi(f' \otimes \mathrm{id}_{y^{-1}} \otimes f) \\
+			& = & \psi(f') \otimes \psi(\mathrm{id}_{y^{-1}}) \otimes \psi(f) \\
+			& = & \psi(f') \otimes \psi(f) \otimes \psi(\mathrm{id}_{y^{-1}}) \\
+			& = & \psi(f' \otimes f) \otimes \psi(\mathrm{id}_{y^{-1}}) \\
 		\end{array}
 \]
-so $\psi(\mathrm{id}_{y*}) = e$ for any object $y$, and $\mathrm{Ob}(X)$ is contained in the kernel of $\psi$.
+so $\psi(\mathrm{id}_{y^{-1}}) = e$ for any object $y$, and $\mathrm{Ob}(X)$ is contained in the kernel of $\psi$.
 
 Now let $A$ be an abelian group and $\phi: \mathrm{Mor}(X)^{\mathrm{ab}} \to A$ any homomorphism of groups which satisfies the condition $\phi(\mathrm{ab}(\mathrm{id}_x)) = e$ for all objects $x$. Then
 \[ \begin{array}{rll}
-			\phi\big( \, \mathrm{ab}(f' \circ f) \, \big)  & = & \phi\big( \, \mathrm{ab}(f' \otimes \mathrm{id}_{y*} \otimes f) \, \big) \\
-			& = & \phi\big( \, \mathrm{ab}(f') \, \big) \otimes \phi\big( \, \mathrm{ab}(\mathrm{id}_{y*}) \, \big) \otimes \phi\big( \, \mathrm{ab}(f) \, \big) \\
+			\phi\big( \, \mathrm{ab}(f' \circ f) \, \big)  & = & \phi\big( \, \mathrm{ab}(f' \otimes \mathrm{id}_{y^{-1}} \otimes f) \, \big) \\
+			& = & \phi\big( \, \mathrm{ab}(f') \, \big) \otimes \phi\big( \, \mathrm{ab}(\mathrm{id}_{y^{-1}}) \, \big) \otimes \phi\big( \, \mathrm{ab}(f) \, \big) \\
 			& = & \phi\big( \, \mathrm{ab}(f') \, \big) \otimes \phi\big( \, \mathrm{ab}(f) \, \big) \\
-			& = & \phi\big( \, \mathrm{ab}(f' \otimes f) \, \big)
+			& = & \phi\big( \, \mathrm{ab}(f' \otimes f) \, \big),
 		\end{array}
 \]
-By \cref{Morder} this is the defining relation for the group $\mathrm{M}(X)^{\mathrm{ab}}$, so $\mathrm{M}(X)^{\mathrm{ab}}$ and $\mathrm{Mor}(X)^{\mathrm{ab}}/\mathrm{Ob}(X)^{\mathrm{ab}}$ have the same universal property, hence are uniquely isomorphic under $\mathrm{Mor}(X)^{\mathrm{ab}}$.
+but using \cref{Morder} it is easy to see that this is the defining relation for the group $\mathrm{M}(X)^{\mathrm{ab}}$, so $\mathrm{M}(X)^{\mathrm{ab}}$ and $\mathrm{Mor}(X)^{\mathrm{ab}}/\mathrm{Ob}(X)^{\mathrm{ab}}$ have the same universal property and are therefore uniquely isomorphic under $\mathrm{Mor}(X)^{\mathrm{ab}}$.
 \end{proof}
 
 Here is the main theorem of this section, a first description of $L_n(I,I)$.
@@ -1252,7 +1290,7 @@ Using \cref{colquot} to change the numerator and \cref{Zobj,stpullback} to simpl
 as desired.
 \end{proof}
 
-It should be clear that there is further work to do in order to give a useable construction of the category $L_n$ and the group $L_n(I,I)$. We will spend the next two sections performing some necessary algebra to interpret the complicated parts of the formula above, namely $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$ and ${\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}$.
+It should be clear that there is further work to do in order to give a usable construction of the category $L_n$ and the group $L_n(I,I)$. We will spend the next two sections performing some necessary algebra to interpret the complicated parts of the formula above, namely $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$ and ${\mathrm{M}(\ELnn)}^{\mathrm{gp},\mathrm{ab}}$.
 
 \section{Calculation: abelianizing sources and targets}
  
@@ -2182,3 +2220,6 @@ as required.
 \bibliographystyle{plain}
 \bibliography{action_op_ref}
 \end{document}
+
+
+
