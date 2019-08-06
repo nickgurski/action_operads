@@ -1,84 +1,84 @@
 \begin{theindex}
 
-  \item $2$-monad, \hyperpage{31}
-    \subitem algebra, \hyperpage{36}
-    \subitem cartesian, \hyperpage{42}, \hyperpage{46, 47}
-    \subitem costrength, \hyperpage{68}
-    \subitem finitary, \hyperpage{40}
-    \subitem pseudo-commutativity, \hyperpage{68}
-      \subsubitem symmetric, \hyperpage{74}
-    \subitem pseudoalgebra, \hyperpage{36}
-    \subitem strength, \hyperpage{67}
+  \item $2$-monad, \hyperpage{33}
+    \subitem algebra, \hyperpage{38}
+    \subitem cartesian, \hyperpage{44}, \hyperpage{48, 49}
+    \subitem costrength, \hyperpage{70}
+    \subitem finitary, \hyperpage{42}
+    \subitem pseudo-commutativity, \hyperpage{70}
+      \subsubitem symmetric, \hyperpage{76}
+    \subitem pseudoalgebra, \hyperpage{38}
+    \subitem strength, \hyperpage{69}
 
   \indexspace
 
   \item action operad, \hyperpage{11}
     \subitem category of, \hyperpage{13}
-    \subitem crossed, \hyperpage{62}
+    \subitem crossed, \hyperpage{64}
     \subitem initial, \hyperpage{11}, \hyperpage{20}
     \subitem kernel, \hyperpage{13}
     \subitem limits of, \hyperpage{19}
     \subitem maps, \hyperpage{13}
     \subitem of an abelian group, \hyperpage{12}
     \subitem of braid groups, \hyperpage{11}
-    \subitem of cactus groups, \hyperpage{12}, \hyperpage{58}, 
-		\hyperpage{60}
+    \subitem of cactus groups, \hyperpage{12}, \hyperpage{60}, 
+		\hyperpage{62}
     \subitem of ribbon braid groups, \hyperpage{11, 12}
     \subitem of symmetric groups, \hyperpage{11}
     \subitem presentation, \hyperpage{19}
     \subitem terminal, \hyperpage{11}
-    \subitem underlying monoid, \hyperpage{65}
+    \subitem underlying monoid, \hyperpage{67}
   \item algebra
     \subitem $\Lambda$-operad, \hyperpage{21}
     \subitem operad, \hyperpage{20}
-    \subitem pseudoalgebra, \hyperpage{32}, \hyperpage{36}
-      \subsubitem category of, \hyperpage{35}
-      \subsubitem pseudomorphism, \hyperpage{36}
-      \subsubitem strict morphism, \hyperpage{35}, \hyperpage{37}
-    \subitem pseudomorphism, \hyperpage{34}
-      \subsubitem transformation, \hyperpage{35}, \hyperpage{37}
-    \subitem strict, \hyperpage{34}, \hyperpage{36}
-      \subsubitem category of, \hyperpage{35}
+    \subitem pseudoalgebra, \hyperpage{34}, \hyperpage{38}
+      \subsubitem category of, \hyperpage{37}
+      \subsubitem pseudomorphism, \hyperpage{38}
+      \subsubitem strict morphism, \hyperpage{37}, \hyperpage{39}
+    \subitem pseudomorphism, \hyperpage{36}
+      \subsubitem transformation, \hyperpage{37}, \hyperpage{39}
+    \subitem strict, \hyperpage{36}, \hyperpage{38}
+      \subsubitem category of, \hyperpage{37}
 
   \indexspace
 
-  \item Borel, \hyperpage{47}
+  \item Borel, \hyperpage{49}
   \item braid
     \subitem block sum, \hyperpage{10}
-    \subitem minimal, \hyperpage{76}
-    \subitem positive, \hyperpage{76}
+    \subitem minimal, \hyperpage{78}
+    \subitem positive, \hyperpage{78}
 
   \indexspace
 
   \item category
-    \subitem coboundary, \hyperpage{58}
-    \subitem cocomplete symmetric monoidal, \hyperpage{49}
+    \subitem coboundary, \hyperpage{60}
+    \subitem cocomplete symmetric monoidal, \hyperpage{51}
     \subitem filtered, \hyperpage{18}
     \subitem locally finitely presentable, \hyperpage{18}
-    \subitem permutative, \hyperpage{57}
+    \subitem permutative, \hyperpage{59}
     \subitem slice category, \hyperpage{18}
-    \subitem translation, \hyperpage{47}
-  \item club, \hyperpage{53}
-    \subitem generators and relations, \hyperpage{56}
-  \item cocompletion, \hyperpage{79}
-  \item coherence, \hyperpage{41}
+    \subitem translation, \hyperpage{49}
+  \item club, \hyperpage{55}
+    \subitem generators and relations, \hyperpage{58}
+  \item cocompletion, \hyperpage{81}
+  \item coherence, \hyperpage{43}
   \item colimit
-    \subitem copower, \hyperpage{30}, \hyperpage{49}
+    \subitem copower, \hyperpage{31}, \hyperpage{51}
     \subitem filtered, \hyperpage{18}
-    \subitem free cocompletion, \hyperpage{79}
+    \subitem free cocompletion, \hyperpage{81}
   \item collection
-    \subitem $T$-collection, \hyperpage{52}
+    \subitem $T$-collection, \hyperpage{54}
     \subitem $\ML$-collection, \hyperpage{25, 26}
       \subsubitem category of, \hyperpage{25}
     \subitem convolution, \hyperpage{26}
     \subitem non-symmetric, \hyperpage{8}, \hyperpage{19}
     \subitem symmetric, \hyperpage{8}, \hyperpage{19}
-  \item contractible, \hyperpage{51}
+  \item contractible, \hyperpage{53}
   \item crossed simplicial group, \hyperpage{13}
 
   \indexspace
 
-  \item Day convolution, \hyperpage{27}, \hyperpage{50}
+  \item Day convolution, \hyperpage{27}, \hyperpage{52}
 
   \indexspace
 
@@ -87,62 +87,62 @@
   \indexspace
 
   \item factorization system
-    \subitem enhanced, \hyperpage{42}
-    \subitem orthogonal, \hyperpage{41}
+    \subitem enhanced, \hyperpage{44}
+    \subitem orthogonal, \hyperpage{43}
 
   \indexspace
 
   \item group
     \subitem braid, \hyperpage{7}
-    \subitem cactus, \hyperpage{12}, \hyperpage{58, 59}
-    \subitem delooping, \hyperpage{47}
+    \subitem cactus, \hyperpage{12}, \hyperpage{60, 61}
+    \subitem delooping, \hyperpage{49}
     \subitem identity, \hyperpage{7}
     \subitem ribbon braid, \hyperpage{12}
     \subitem symmetric, \hyperpage{7}
   \item group action, \hyperpage{7}
     \subitem braid, \hyperpage{10}
-    \subitem free, \hyperpage{43}
+    \subitem free, \hyperpage{45}
     \subitem symmetric, \hyperpage{7}
 
   \indexspace
 
-  \item isofibration, \hyperpage{47}
+  \item isofibration, \hyperpage{49}
 
   \indexspace
 
   \item monad, \hyperpage{22}
-    \subitem $T$-operad, \hyperpage{52}
-    \subitem cartesian, \hyperpage{42}
-      \subsubitem transformation, \hyperpage{43}, \hyperpage{45}
-    \subitem collection, \hyperpage{52}
-    \subitem in a bicategory, \hyperpage{79}
+    \subitem $T$-operad, \hyperpage{54}
+    \subitem cartesian, \hyperpage{44}
+      \subsubitem transformation, \hyperpage{45}, \hyperpage{47}
+    \subitem collection, \hyperpage{54}
+    \subitem in a bicategory, \hyperpage{81}
     \subitem maps, \hyperpage{24}
-      \subsubitem transformation, \hyperpage{24}, \hyperpage{80}
-    \subitem oplax map, \hyperpage{80}
+      \subsubitem transformation, \hyperpage{24}, \hyperpage{82}
+    \subitem oplax map, \hyperpage{82}
   \item monoid
-    \subitem category of, \hyperpage{26}
+    \subitem category of, \hyperpage{27}
   \item monoidal category
-    \subitem braided strict, \hyperpage{57}, \hyperpage{75}
-    \subitem coboundary category, \hyperpage{58}
-      \subsubitem coboundary functor, \hyperpage{59}
-    \subitem cocomplete symmetric, \hyperpage{49}
-    \subitem ribbon braided, \hyperpage{58}
-    \subitem spacial, \hyperpage{63}
-    \subitem symmetric strict, \hyperpage{57}
-  \item multicategory, \hyperpage{78}
-    \subitem $\Lambda$-multicategory, \hyperpage{78}
-    \subitem $\Lambda$-multifunctor, \hyperpage{78}
-  \item multilinear map, \hyperpage{67}
+    \subitem braided strict, \hyperpage{59}, \hyperpage{77}
+    \subitem coboundary category, \hyperpage{60}
+      \subsubitem coboundary functor, \hyperpage{61}
+    \subitem cocomplete symmetric, \hyperpage{51}
+    \subitem ribbon braided, \hyperpage{60}
+    \subitem spacial, \hyperpage{65}
+    \subitem symmetric strict, \hyperpage{59}
+  \item multicategory, \hyperpage{80}
+    \subitem $\Lambda$-multicategory, \hyperpage{80}
+    \subitem $\Lambda$-multifunctor, \hyperpage{80}
+  \item multilinear map, \hyperpage{69}
 
   \indexspace
 
   \item object
     \subitem finitely presentable, \hyperpage{18}
   \item operad
-    \subitem $T$-operad, \hyperpage{52}
+    \subitem $T$-operad, \hyperpage{54}
     \subitem $\Lambda$-operad
-      \subsubitem contractible, \hyperpage{75}
-    \subitem $\Lambda_{\infty}$-operad, \hyperpage{51}
+      \subsubitem contractible, \hyperpage{77}
+    \subitem $\Lambda_{\infty}$-operad, \hyperpage{53}
     \subitem $\ML$-operad, \hyperpage{20}
       \subsubitem category of, \hyperpage{20}
     \subitem action operad, \hyperpage{11}
@@ -150,16 +150,16 @@
       \subsubitem category of, \hyperpage{21}
     \subitem associated monad, \hyperpage{22}
     \subitem braided, \hyperpage{10}
-    \subitem endomorphism operad, \hyperpage{21}, \hyperpage{39}
-    \subitem generalized, \hyperpage{52}
+    \subitem endomorphism operad, \hyperpage{21}, \hyperpage{41}
+    \subitem generalized, \hyperpage{54}
     \subitem maps, \hyperpage{10}
     \subitem non-symmetric, \hyperpage{8}
     \subitem of braid groups, \hyperpage{10}, \hyperpage{20}, 
-		\hyperpage{76}
+		\hyperpage{78}
     \subitem of ribbon braid groups, \hyperpage{12}
     \subitem of symmetric groups, \hyperpage{9}, \hyperpage{20}
-    \subitem pseudoalgebra, \hyperpage{32}
-    \subitem pseudomorphism, \hyperpage{39}
+    \subitem pseudoalgebra, \hyperpage{34}
+    \subitem pseudomorphism, \hyperpage{41}
     \subitem ribbon braid, \hyperpage{12}
     \subitem symmetric, \hyperpage{7}
     \subitem terminal, \hyperpage{11}, \hyperpage{20}

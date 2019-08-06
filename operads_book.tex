@@ -607,7 +607,7 @@ The category $\mb{AOp}$\index{action operad!category of} of action operads has o
 We begin with a simple proposition.
 
 \begin{prop}
-The map $\pi:\ML \to \mb{Sigma}$ is a map of action operads.
+The map $\pi:\ML \to \mb{\Sigma}$ is a map of action operads.
 \end{prop}
 
 
@@ -972,8 +972,6 @@ One can easily form new action operads from old ones by taking limits\index{acti
 There is a forgetful functor $U:\mb{AOp} \rightarrow \mb{Sets}/\SS$ which preserves all limits and filtered colimits.
 \end{thm}
 
-
-QQQ Possibly reword the following given the remark about limits.
 \begin{proof}
 The functor $U$ is obvious, and the preservation of filtered colimits follows from the fact that these are computed pointwise, together with the fact that every map between action operads preserves underlying permutations.
 % For limits, recall that limits in $\mb{AOp}$ are computed as in the category of operads over $\Sigma$.
@@ -1008,7 +1006,7 @@ A \textit{presentation}\index{action operad!presentation} for an action operad $
 \section{Operads and algebras with general group actions}
 Just as we had the definitions of operad, symmetric operad, and braided operad, we now come to the general definition of a $\ML$-operad, where $\ML$ is an action operad.
 
-\begin{Defi}
+\begin{Defi}\label{Defi:lamop}
 Let $\ML$ be an action operad.  A \textit{$\ML$-operad}\index{operad!$\ML$-operad} $P$ (in $\mb{Sets}$) consists of
 \begin{itemize}
 \item a non-symmetric operad $P$ in $\mb{Sets}$ and
@@ -1034,8 +1032,6 @@ The category $\ML\mbox{-}\mb{Op}$\nomenclature[C]{$\ML\mbox{-}\mb{Op}$}{of $\Lam
 \item Let $\mb{B}$\index{operad!of braid groups} denote the operad of braid groups with $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ the canonical projection of a braid onto its underlying permutation.  Then a $\mb{B}$-operad is a braided operad in the sense of Fiedorowicz \cite{fie-br}.
 \end{enumerate}
 \end{example}
-
-QQQ Inconsistencies around using $\ML$ and $\Lambda$. $\ML$ is the action operad and $\Lambda$ is the underlying operad with nothing else.QQQ
 
 A further example of a $\ML$-operad is given by the underlying operad, $\Lambda$, of $\ML$ itself.
 \begin{prop}\label{gisgop}
@@ -1163,14 +1159,28 @@ In the case that we take $P = \Lambda$, we do not get algebras more interesting 
 Let $\ML$ be an action operad. The category of algebras, $\Lambda\mbox{-}\mb{Alg}$, for $\Lambda$ taken as a $\ML$-operad, is equivalent to the category of monoids.
 \end{prop}
 \begin{proof}
-QQQ Proof missing.
+QQQ Proof added. Enough detail? QQQ
+The key observation here is that, for each $n \in \mathbb{N}$,
+	\[
+		\Lambda(n) \times_{\Lambda(n)} X^n \cong X^n.
+	\]
+We will describe this bijection and leave the rest of the proof to the reader, which falls out of the various axioms either for being a monoid or for being a $\ML$-algebra.
 
+Recall that the elements of $\Lambda(n) \times_{\Lambda(n)} X^n$ are equivalence classes of the form $[g ; x_1, \ldots, x_n]$ for which
+	\[
+		(gh; x_1, \ldots, x_n) \sim (g; x_{\pi(h)^{-1}(1)}, \ldots, x_{\pi(h)^{-1}(n)}).
+	\]
+There is an obvious map $X^n \rightarrow \Lambda(n) \times_{\Lambda(n)} X^n$ sending $(x_1, \ldots, x_n)$ to the equivalence class $[e; x_1, \ldots, x_n]$. The inverse to this map is given by the map $\Lambda(n) \times_{\Lambda(n)} X^n \rightarrow X^n$ sending $[g;x_1,\ldots,x_n]$ to the element $(x_{\pi(g)^{-1}(1)},\ldots,x_{\pi(g)^{-1}(n)})$. It is then clear that these are inverses, relying on the equivalence relation to see that
+	\[
+		[g;x_1,\ldots,x_n] = [e;x_{\pi(g)^{-1}(1)},\ldots,x_{\pi(g)^{-1}(n)}].
+	\]
+That the second map is well-defined is simple to show.
 \end{proof}
 
 We end this section with a discussion of the relationship between symmetric operads and $\ML$-operads for an arbitrary action operad $\ML$.
 
 \begin{thm}\label{thm_sym}
-Let $\Lambda$ be an action operad.
+Let $\ML$ be an action operad.
 \begin{enumerate}
 \item There is an adjunction between the category of $\ML$-operads and the category of symmetric operads, with right adjoint $\pi^{*}:\ML\mbox{-}\mb{Op} \to \mb{\Sigma}\mbox{-}\mb{Op}$ and left adjoint denoted $S$.
 \item The counit of this adjunction is an isomorphism, but the unit is not, thus this adjunction is not an equivalence of categories
@@ -1563,7 +1573,7 @@ The above result can be interpreted for $\ML$-operads in an arbitrary cocomplete
 
 \chapter{Monoidal structures and multicategories}
  \section{Introduction to monoidal structures}
- 
+ QQQ Nothing here
 
 \section{Operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{section:operads_in_Cat}
 
@@ -2411,7 +2421,7 @@ These isomorphisms are then required to satisfy their own axioms, and these ensu
 
 \section{2-categorical properties of operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{sec:propofopsincat}
 
-This section will be concerned with characterizing various properties of those $2$-monads induced by $\ML$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary.  Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\Lambda$-operad $P$).  Both of these results are simple extensions of well-known results about operads.  Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
+This section will be concerned with characterizing various properties of those $2$-monads induced by $\ML$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary.  Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\ML$-operad $P$).  Both of these results are simple extensions of well-known results about operads.  Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
 
  The $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these 2-categories can often be deduced from properties of the 2-monad $T$, the most common being that $T$ is finitary.  In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables.  If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}.  There are additional results of a purely 2-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
     \[
@@ -2502,7 +2512,7 @@ Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-a
 
 
 
-We finally turn to a discussion of the interaction between operads and pullbacks.  The monads arising from a non-symmetric operad are always cartesian, as described in \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and so it is useful to be able to characterize exactly when they are. An example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian, as we now describe.
+We finally turn to a discussion of the interaction between operads and pullbacks.  The monads arising from a non-symmetric operad are always cartesian, as described in \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and so it is useful to be able to characterize exactly when they are. An example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\ML$-operad is $2$-cartesian, as we now describe.
 
 \begin{Defi}
 A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit{$2$-cartesian}\index{monad!cartesian}\index{$2$-monad!cartesian} if
@@ -3101,23 +3111,6 @@ The functor $E:\mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the set of ob
 %\end{small}
 %\end{proof}
 
-
-QQQ Repetition of action operad definition. QQQ
-\begin{Defi}\label{Defi:lamop}
-Let $\mb{\Lambda}$ be an action operad.  A \textit{$\mb{\Lambda}$-operad} $P$ (in $\mb{Sets}$) consists of
-\begin{itemize}
-\item an operad $P$ in $\mb{Sets}$ and
-\item for each $n$, an action $\alpha_n:P(n) \times \Lambda(n) \rightarrow P(n)$ of $\Lambda(n)$ on $P(n)$
-\end{itemize}
-such that the following two equivariance axioms hold for $P$.
-\[
-\begin{array}{rcl}
-\mu^{P}(x; y_{1} \cdot g_{1}, \ldots, y_{n} \cdot g_{n}) & = & \mu^{P}(x; y_{1}, \ldots, y_{n}) \cdot \mu^{\Lambda}(e; g_{1}, \ldots, g_{n})  \\
-\mu^{P}(x \cdot g; y_{1}, \ldots, y_{n}) &  = & \mu^{P}(x; y_{\pi(g)^{-1}(1)}, \ldots, y_{\pi(g)^{-1}(n)}) \cdot \mu^{\Lambda}(g; e_{1}, \ldots, e_{n})
-\end{array}
-\]
-\end{Defi}
-
 We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which tensoring with a fixed object preserves colimits).  While the definition above gives the correct notion of a $\mb{\Lambda}$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms.  In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category.  This follows that standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower.  Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
 
 \[
@@ -3169,9 +3162,9 @@ In the second diagram, the morphism  $\tilde{\mu}^P:P(n) \times \Sigma_n \times 
 
 
 \begin{Defi}\label{Defi:actop_to_cat}
-Let $\mb{\Lambda}$ be an action operad.  Then $B\mb{\Lambda}$ (see \cref{nota:e_b}) is the category with objects the natural numbers and
+Let $\mb{\Lambda}$ be an action operad.  Then $B\Lambda$ (see \cref{nota:e_b}) is the category with objects the natural numbers and
 \[
-B\mb{\Lambda}(m,n) = \left\{ \begin{array}{lc}
+B\Lambda(m,n) = \left\{ \begin{array}{lc}
 \Lambda(n), & m = n \\
 \varnothing, & m \neq n,
 \end{array} \right.
@@ -3180,8 +3173,11 @@ where composition is given by group multiplication and the identity morphism is 
 \end{Defi}
 
 \begin{Defi}\label{cocom_symm_mon_cat}
-A cocomplete symmetric monoidal category is a symmetric monoidal category which is cocomplete.
-QQQ Define cocomplete symmetric monoidal category, definition used in Theorem \ref{preserveGop}
+% A cocomplete symmetric monoidal category is a symmetric monoidal category which is cocomplete.
+% QQQ Define cocomplete symmetric monoidal category, definition used in Theorem \ref{preserveGop}
+A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
+
+QQQ Is this what we mean by a cocomplete symmetric monoidal category? QQQ
 \end{Defi}\index{category!cocomplete symmetric monoidal}\index{monoidal category!cocomplete symmetric}
 
 \begin{thm}\label{preserveGop}
@@ -3192,17 +3188,17 @@ F_{*}:\mb{\Lambda}\mbox{-}Op(M) \rightarrow \mb{\Lambda}\mbox{-}Op(N)
 from the category of $\mb{\Lambda}$-operads in $M$ to the category of $\mb{\Lambda}$-operads in $N$.
 \end{thm}
 \begin{proof}
-The category of $\mb{\Lambda}$-operads in $M$ is the category of monoids for the composition product $\circ_{M}$ on $[B\mb{\Lambda}^{\textrm{op}}, M]$ constructed in \cref{sec:opasmon}.  Composition with $F$ gives a functor
+The category of $\mb{\Lambda}$-operads in $M$ is the category of monoids for the composition product $\circ_{M}$ on $[B\Lambda^{\textrm{op}}, M]$ constructed in \cref{sec:opasmon}.  Composition with $F$ gives a functor
 \[
-F_{*}: [B\mb{\Lambda}^{\textrm{op}}, M] \rightarrow [B\mb{\Lambda}^{\textrm{op}}, N],
+F_{*}: [B\Lambda^{\textrm{op}}, M] \rightarrow [B\Lambda^{\textrm{op}}, N],
 \]
-and to show that it gives a functor between the categories of monoids we need only prove that $F_{*}$ is lax monoidal with respect to $\circ_{M}$ and $\circ_{N}$.  In other words, we must construct natural transformations with components $F_{*}X \circ_{N} F_{*}Y \rightarrow F_{*}(X \circ_{M} Y)$ and $I_{Op(N)} \rightarrow F_{*}(I_{Op(M)})$ and then verify the lax monoidal functor axioms.  We note that in the calculations below, we often write $F$ instead of $F_{*}$, but it should be clear from context when we are applying $F$ to objects and morphisms in $M$ and when we are applying $F_{*}$ to a functor $ B\mb{\Lambda}^{\textrm{op}} \to M$.
+and to show that it gives a functor between the categories of monoids we need only prove that $F_{*}$ is lax monoidal with respect to $\circ_{M}$ and $\circ_{N}$.  In other words, we must construct natural transformations with components $F_{*}X \circ_{N} F_{*}Y \rightarrow F_{*}(X \circ_{M} Y)$ and $I_{Op(N)} \rightarrow F_{*}(I_{Op(M)})$ and then verify the lax monoidal functor axioms.  We note that in the calculations below, we often write $F$ instead of $F_{*}$, but it should be clear from context when we are applying $F$ to objects and morphisms in $M$ and when we are applying $F_{*}$ to a functor $ B\Lambda^{\textrm{op}} \to M$.
 
 We first remind the reader about copowers\index{colimit!copower} in cocomplete categories.  For an object $X$ and set $S$, the copower $X \odot S$ is the coproduct $\coprod_{s \in S} X$.  We have natural isomorphisms $(X \odot S) \odot T \cong X \odot (S \times T)$ and $X \odot 1 \cong X$, and using these we can define an action of a group $G$ on an object $X$ using a map $X \odot G \rightarrow X$.  Any functor $F$ between categories with coproducts is lax monoidal with respect to those coproducts:  the natural map $FA \coprod FB \rightarrow F(A \coprod B)$ is just the map induced by the universal property of the coproduct using $F$ applied to the coproduct inclusions $A \hookrightarrow A \coprod B, B \hookrightarrow A \coprod B$.  In particular, for any functor $F$ we get an induced map $FX \odot S \rightarrow F(X \odot S)$.
 
-The unit object in $[B\mb{\Lambda}^{\textrm{op}}, M]$ for $\circ_{M}$ is the copower $I_{M} \odot B\mb{\Lambda}(-,1)$.  Thus the unit constraint for $F_{*}$ is the composite
+The unit object in $[B\Lambda^{\textrm{op}}, M]$ for $\circ_{M}$ is the copower $I_{M} \odot B\Lambda(-,1)$.  Thus the unit constraint for $F_{*}$ is the composite
 \[
-I_{N} \odot B\mb{\Lambda}(-,1) \stackrel{\varphi_{0} \odot 1}{\longrightarrow} FI_{M} \odot B\mb{\Lambda}(-,1) \rightarrow F(I_{M} \odot B\mb{\Lambda}(-,1) ).
+I_{N} \odot B\Lambda(-,1) \stackrel{\varphi_{0} \odot 1}{\longrightarrow} FI_{M} \odot B\Lambda(-,1) \rightarrow F(I_{M} \odot B\Lambda(-,1) ).
 \]
 
 For the tensor constraint, we will require a map
@@ -3222,10 +3218,10 @@ t:(FY)^{\star n}(k) \rightarrow F\big(Y^{\star n}(k)\big)
 where both isomorphisms are induced by universal properties (see Section \ref{section:operads_in_Cat} for more details) and the unlabeled arrow is induced by the same argument as that for coproducts above but this time using coends.  The arrow $t$ is constructed in a similar fashion, and is the composite below.
 \[
 \begin{array}{rcl}
-(FY)^{\star n}(k) & = & \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\mb{\Lambda}(k, \sum k_{i}) \\
-& \rightarrow &  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\mb{\Lambda}(k, \sum k_{i}) \\
-& \rightarrow & \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\mb{\Lambda}(k, \sum k_{i}) ) \\
-& \rightarrow & F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\mb{\Lambda}(k, \sum k_{i})  \\
+(FY)^{\star n}(k) & = & \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\Lambda(k, \sum k_{i}) \\
+& \rightarrow &  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\Lambda(k, \sum k_{i}) \\
+& \rightarrow & \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i}) ) \\
+& \rightarrow & F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i})  \\
 & = & F(Y^{\star n}(k))
 \end{array}
 \]
@@ -3283,7 +3279,7 @@ Let $\mb{\Lambda}$ be an action operad.  A \textit{$\mb{\Lambda}_{\infty}$ opera
 \end{Defi}
 
 \begin{rem}
-One should also note that by \cref{cor:elambda_lambdaop} we get a canonical $\mb{\Lambda}_{\infty}$ operad in $\mb{Cat}$, namely $E \mb{\Lambda}$ itself, and thus also in the category of simplicial sets by taking the nerve (the nerve functor is represented by a cosimplicial category, namely $\Delta \subseteq \mb{Cat}$, so preserves products) and in suitable categories of topological spaces by taking the geometric realization (once again, product-preserving with the correct category of spaces).  Thus we have something like a Barratt-Eccles $\mb{\Lambda}_{\infty}$ operad for any action operad $\mb{\Lambda}$.
+One should also note that by \cref{cor:elambda_lambdaop} we get a canonical $\mb{\Lambda}_{\infty}$ operad in $\mb{Cat}$, namely $E\Lambda$ itself, and thus also in the category of simplicial sets by taking the nerve (the nerve functor is represented by a cosimplicial category, namely $\Delta \subseteq \mb{Cat}$, so preserves products) and in suitable categories of topological spaces by taking the geometric realization (once again, product-preserving with the correct category of spaces).  Thus we have something like a Barratt-Eccles $\mb{\Lambda}_{\infty}$ operad for any action operad $\mb{\Lambda}$.
 \end{rem}
 
 \begin{rem}
@@ -3400,10 +3396,10 @@ We will usually just refer to a club by its underlying category $K$.
 
 
 \begin{thm}
-Let $\mb{\Lambda}$ be an action operad.  Then the map of operads $\pi:\Lambda \rightarrow \Sigma$ gives the category $B\mb{\Lambda} = \coprod B\Lambda(n)$ the structure of a club.
+Let $\mb{\Lambda}$ be an action operad.  Then the map of operads $\pi:\Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ the structure of a club.
 \end{thm}
 \begin{proof}
-To give the functor $B\pi \cn B\mb{\Lambda} \to B \mb{\Sigma}$ the structure of a club it suffices (see \cite{leinster}) to show that
+To give the functor $B\pi \cn B\Lambda \to B \Sigma$ the structure of a club it suffices (see \cite{leinster}) to show that
 \begin{itemize}
 \item the induced monad, which we will show to be $E\Lambda$, is a cartesian monad on $\mb{Cat}$,
 \item the transformation $\tilde{\pi}:E\Lambda \Rightarrow E\Sigma$ induced by the functor $E\pi$ is cartesian, and
@@ -3490,13 +3486,13 @@ The club, which we now denote $K_{\mb{\Lambda}}$, associated to $E\Lambda$ has t
 \begin{thm}\label{thm:club=operad}
 Let $K$ be a club such that
 \begin{itemize}
-\item the map $K \rightarrow B \mb{\Sigma}$ is bijective on objects and
+\item the map $K \rightarrow B\Sigma$ is bijective on objects and
 \item $K$ is a groupoid.
 \end{itemize}
 Then $K \cong K_{\mb{\Lambda}}$ for some action operad $\mb{\Lambda}$.  The assignment $\mb{\Lambda} \mapsto K_{\mb{\Lambda}}$ is a full and faithful embedding of the category of action operads $\mb{AOp}$ into the category of clubs.
 \end{thm}
 \begin{proof}
-Let $K$ be such a club.  Our hypotheses immediately imply that $K$ is a groupoid with objects in bijection with the natural numbers; we will now assume the functor $K \to B\mb{\Sigma}$ is the identity on objects.  Let $\Lambda(n) = K(n,n)$.  Now $K$ comes equipped with a functor to $B \mb{\Sigma}$, in other words group homomorphisms $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$.  We claim that the club structure on $K$ makes the collection of groups $\{ \Lambda(n) \}$ an action operad.  In order to do so, we will employ \cref{thm:charAOp}.
+Let $K$ be such a club.  Our hypotheses immediately imply that $K$ is a groupoid with objects in bijection with the natural numbers; we will now assume the functor $K \to B\Sigma$ is the identity on objects.  Let $\Lambda(n) = K(n,n)$.  Now $K$ comes equipped with a functor to $B\Sigma$, in other words group homomorphisms $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$.  We claim that the club structure on $K$ makes the collection of groups $\{ \Lambda(n) \}$ an action operad.  In order to do so, we will employ \cref{thm:charAOp}.
 
 First, we give the group homomorphism $\beta$ using \cref{nota:clubmult}.  Define 
 \[
@@ -3520,7 +3516,7 @@ where here $e_{i}$ is the identity morphism of $k_{i}$ in $K$.
 %\]
 %This is the morphism in $K$ produced by evaluating the club multiplication $K \circ K \rightarrow K$ on the morphism in the pullback determined by the pair consisting of $g$ and $[e; k_{1}, \ldots, k_{n}] \cong [\pi(g); k_{1}, \ldots, k_{n}]$.  This gives a function $\Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$ by $g \mapsto \delta_{n; k_{1}, \ldots, k_{n}}(g) := \overline{g}$, and as before this will be $\mu(g; e_{1}, \ldots, e_{n})$ in the action operad.
 
-There are now nine axioms to verify in \cref{thm:charAOp}.  The club multiplication functor is a map of collections, so a map over $B\mb{\Sigma}$; this fact immediately implies that axioms \eqref{eq1} (using morphisms in $K \circ K$ with only $g_{i}$ parts) and \eqref{eq4} (using morphisms in $K \circ K$ with only $f$ parts) hold.  The mere fact that multiplication is a functor also implies axioms \eqref{eq6} (once again using morphisms with only $f$ parts) and \eqref{eq8} (by considering the composite of a morphism with only an $f$ with a morphism with only $g_{i}$'s).  Axiom \eqref{eq2} is the equation $e_{1}(g) = g$ which is a direct consequence of the unit axiom for the club $K$; the same is true of axiom \eqref{eq5}.  Axioms \eqref{eq3}, \eqref{eq7},  and \eqref{eq9} all follow from the associativity of the club multiplication.
+There are now nine axioms to verify in \cref{thm:charAOp}.  The club multiplication functor is a map of collections, so a map over $B\Sigma$; this fact immediately implies that axioms \eqref{eq1} (using morphisms in $K \circ K$ with only $g_{i}$ parts) and \eqref{eq4} (using morphisms in $K \circ K$ with only $f$ parts) hold.  The mere fact that multiplication is a functor also implies axioms \eqref{eq6} (once again using morphisms with only $f$ parts) and \eqref{eq8} (by considering the composite of a morphism with only an $f$ with a morphism with only $g_{i}$'s).  Axiom \eqref{eq2} is the equation $e_{1}(g) = g$ which is a direct consequence of the unit axiom for the club $K$; the same is true of axiom \eqref{eq5}.  Axioms \eqref{eq3}, \eqref{eq7},  and \eqref{eq9} all follow from the associativity of the club multiplication.
 
 
 %Now we must check that these homomorphisms $\beta, \delta$ satisfy three axioms.  Using the club maps $M \rightarrow K \rightarrow  B\Sigma$ discussed above, it is easy to see that $K \rightarrow B\Sigma$ is a strict monoidal functor; this immediately implies the axiom involving $\beta$'s and $\pi$'s.  The axiom involving $\delta$'s and $\pi$'s holds by construction.  Finally, the axiom involving both $\beta$ and $\delta$ is a direct consequence of $K \circ X$ being defined by pullback, and hence each isomorphism $\overline{g}$ being natural in the obvious sense.  Thus by Lemma \ref{charAOp}, the groups $\Lambda(n)$ have the structure of an action operad.
@@ -3549,9 +3545,9 @@ and the functor $B$ from groups to categories is faithful, so $K_{-}$ is also fa
 \end{proof}
 
 \begin{rem}
-First, one should note that being a club over $B \mb{\Sigma}$ means that every $K$-algebra has an underlying strict monoidal structure.  Second, requiring that $K \rightarrow B \mb{\Sigma}$ be bijective on objects ensures that $K$ does not have  operations other than $\otimes$, such as duals or internal hom-objects, from which to build new types of objects.  Finally, $K$ being a groupoid ensures that all of the ``constraint morphisms'' that exist in algebras for $K$ are invertible.
+First, one should note that being a club over $B\Sigma$ means that every $K$-algebra has an underlying strict monoidal structure.  Second, requiring that $K \rightarrow B\Sigma$ be bijective on objects ensures that $K$ does not have  operations other than $\otimes$, such as duals or internal hom-objects, from which to build new types of objects.  Finally, $K$ being a groupoid ensures that all of the ``constraint morphisms'' that exist in algebras for $K$ are invertible.
 
-These hypotheses could be relaxed somewhat.  Instead of having a club over $B \mb{\Sigma}$, we could have a club over the free symmetric monoidal category on one object (note that the free symmetric monoidal category monad on $\mb{Cat}$ is still cartesian).  This would produce $K$-algebras with underlying monoidal structures which are not necessarily strict.  This change should have relatively little impact on how the theory is developed.  Changing $K$ to be a category instead of a groupoid would likely have a larger impact, as the resulting action operads would have monoids instead of groups at each level.  We have made repeated use of inverses throughout the proofs in the basic theory of action operads, and these would have to be revisited if groups were replaced by monoids in the definition of action operads.
+These hypotheses could be relaxed somewhat.  Instead of having a club over $B\Sigma$, we could have a club over the free symmetric monoidal category on one object (note that the free symmetric monoidal category monad on $\mb{Cat}$ is still cartesian).  This would produce $K$-algebras with underlying monoidal structures which are not necessarily strict.  This change should have relatively little impact on how the theory is developed.  Changing $K$ to be a category instead of a groupoid would likely have a larger impact, as the resulting action operads would have monoids instead of groups at each level.  We have made repeated use of inverses throughout the proofs in the basic theory of action operads, and these would have to be revisited if groups were replaced by monoids in the definition of action operads.
 \end{rem}
 
 In \cite{kelly_club1}, Kelly discusses clubs given by generators and relations\index{club!generators and relations}.  His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible.  In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $E\Lambda$ are always strict monoidal categories with additional structure.  Tracing through his discussion of generators and relations for a club gives the following theorem.
@@ -4041,7 +4037,8 @@ and hence it is a monoid isomorphism, as required.
 \end{proof}
 
 
-\section{Coequalizers of \texorpdfstring{$\ML$}{\Lambda}-monoidal categories}
+\section{Coequalizers of $\ML$-monoidal categories}
+QQQ Need to define what we mean by $\ML$-monoidal categories. QQQ
 In this section, we will compare the coequalizer of a diagram of $\ML$-monoidal categories as it is computed in $\ML\moncat$, in $\moncat$, and in $\cat$. Our goal will be to show that the forgetful functors 
 \[
 \ML\mbox{-}\moncat \to \moncat \to \cat
@@ -4053,7 +4050,7 @@ Let $P$ be a $\ML$-operad in $\cat$, with $\und{P}$ its associated 2-monad. Then
 
 \end{lem}
 \begin{proof}
-We have a functor QQQ $B\Lambda$ or $B\ML$? QQQ $P:B\ML^{op} \to \cat$ which sends $n$ to $P(n)$ and uses the right action $P(n) \times \Lambda(n) \to P(n)$ to define the functor on morphisms. Given a category $X \in \cat$, there is also a functor $R_X:B\ML \to \cat$ sending $n$ to $X^n$ and $g \in \Lambda(n)$ to the permutation given by $\pi(n)$. The weighted colimit $P \cdot R_X$ is then easily seen to be the free algebra $\und{P}(X)$. The functor $P \cdot -$ is cocontinuous, so the free $\und{P}$-algebra functor $\cat \to \cat$ will preserve whatever colimits the functor $X \mapsto R_X$ preserves. Colimits in the functor category $[B\ML, \cat]$ are computed pointwise, and the functors $X \mapsto X^n$ for $n \in \mathbb{N}$ preserve reflexive coequalizers, so $X \mapsto R_X$ does also and therefore the free $\und{P}$-algebra functor preserves reflexive coequalizers.
+We have a functor $P:B\Lambda^{op} \to \cat$ which sends $n$ to $P(n)$ and uses the right action $P(n) \times \Lambda(n) \to P(n)$ to define the functor on morphisms. Given a category $X \in \cat$, there is also a functor $R_X:B\Lambda \to \cat$ sending $n$ to $X^n$ and $g \in \Lambda(n)$ to the permutation given by $\pi(n)$. The weighted colimit $P \cdot R_X$ is then easily seen to be the free algebra $\und{P}(X)$. The functor $P \cdot -$ is cocontinuous, so the free $\und{P}$-algebra functor $\cat \to \cat$ will preserve whatever colimits the functor $X \mapsto R_X$ preserves. Colimits in the functor category $[B\Lambda, \cat]$ are computed pointwise, and the functors $X \mapsto X^n$ for $n \in \mathbb{N}$ preserve reflexive coequalizers, so $X \mapsto R_X$ does also and therefore the free $\und{P}$-algebra functor preserves reflexive coequalizers.
 \end{proof}
 
 \begin{lem}\label{creation_triangle}
@@ -4065,7 +4062,7 @@ Let $d:\mathbb{D} \to A$ be a diagram with colimit $\colim d$. Since $GF$ preser
 Now assume $a \in A$ is the vertex of a cocone over $d$ such that $Fa$ is the colimit of $Fd$. Since $G$ preserves colimits of shape $\mathbb{D}$, $GFa$ is the colimit of $GFd$. But $GF$ creates colimits of shape $\mathbb{D}$, so $a$ was the colimit of $d$ in $A$. Thus $F$ creates colimits of shape $\mathbb{D}$.
 \end{proof}
 
-For an monad $T$ on a category $C$, the forgetful functor $T\Alg \to C$ creates any colimit that $T$ preserves. This fact and the previous lemmas prove the following proposition using the operad $P = E\ML$.
+For an monad $T$ on a category $C$, the forgetful functor $T\Alg \to C$ creates any colimit that $T$ preserves. This fact and the previous lemmas prove the following proposition using the operad $P = E\Lambda$.
 \begin{prop}\label{refcoeq_calcs}
 For any action operad $\ML$, the forgetful functor $\ML\mbox{-}\moncat \to \cat$ is conservative and creates reflexive coequalizers. Consequently, $\ML\mbox{-}\moncat \to \moncat$ is also conservative and creates reflexive coequalizers.
 
@@ -4150,7 +4147,6 @@ The strength and costrength for the associated $2$-monad $\underline{P}$ are qui
 which sends an object $(a, [p;b_1,\ldots,b_n])$ to the object $[p;(a,b_1),\ldots,(a,b_n)]$. We also define the costrength similarly, sending an object $([p;a_1,\ldots,a_n],b)$ to the object $[p;(a_1,b), \ldots, (a_n, b)]$. Both the strength and the costrength are defined in the obvious way on morphisms.
 
 \begin{rem}
-QQQ $\ML$-actions, $\ML$-equivariance... Or $\Lambda$-actions, etc.? QQQ
 It is crucial to note that the strength $d$ and the costrength $d^{*}$ do not depend on the $\Lambda$-actions in the following sense.  The $\ML$-operad $P$ has an underlying non-symmetric operad that we also denote $P$, and it has a strength
 \[
         d_{A,B} \colon A \times \left(\amalg P(n) \times B^n\right) \rightarrow \amalg P(n) \times \left(A \times B \right)^n
