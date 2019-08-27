@@ -178,10 +178,16 @@
 
 
 \chapter{Action operads}
- \section{Introduction to operads}
- 
- \section{Action operads}
- In this section, we will explore the general definition of an operad $P$ which is equipped with groups of equivariance $\Lambda(n)$.  The group $\Lambda(n)$ will act on the right on the object $P(n)$, and the operad structure of $P$ will be required to respect this action.  For certain choices of the groups $\Lambda(n)$, we will recover standard notions of operads such as symmetric operads, non-symmetric operads, and braided operads.  The definitions here will, unless otherwise stated, apply in any symmetric monoidal category $\mathcal{V}$ in which the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X \in \mathcal{V}$.
+\section{Introduction to operads}
+ QQQ
+ \begin{itemize}
+ 	\item discussion of operads
+ 	\item action operads
+ 	\item algebra and presentations
+ 	\item $\ML$-operads
+ \end{itemize}
+\section{Action operads}
+In this section, we will explore the general definition of an operad $P$ which is equipped with groups of equivariance $\Lambda(n)$.  The group $\Lambda(n)$ will act on the right on the object $P(n)$, and the operad structure of $P$ will be required to respect this action.  For certain choices of the groups $\Lambda(n)$, we will recover standard notions of operads such as symmetric operads, non-symmetric operads, and braided operads.  The definitions here will, unless otherwise stated, apply in any symmetric monoidal category $\mathcal{V}$ in which the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X \in \mathcal{V}$.
 
 \begin{conv}
 We adopt the following conventions throughout.
@@ -964,7 +970,7 @@ Let $\SS$ be the set which is the disjoint union of the underlying sets of all t
 In standard presentations of the theory of operads (see, for example, \cite{mss-op}), a nonsymmetric operad will have an underlying collection\index{collection!non-symmetric} (or $\mathbb{N}$-indexed collection of sets) while a symmetric operad will have an underlying symmetric collection\index{collection!symmetric} (or $\mathbb{N}$-indexed collection of sets in which the $n$th set has an action of $\Sigma_{n}$).  Our collections over $\SS$ more closely resemble the former as there is no group action present.
 %an action operad is \textit{a priori} a nonsymmetric operad with some extra structure.  Part of that structure is the notion of the underlying permutation of an element $g \in \Lambda(n)$, and a collection over $\SS$ keeps track of all the underlying permutations separately.  To recover a notion of collection akin to that for symmetric operads, we should define $X(n)$ to be the preimage of all $\sigma \in \Sigma_{n}$ under $f:X \rightarrow \SS$.
 \end{rem}
-% QQQ Move this example below somewhere else, near limits stuff?
+
 \begin{example}
 One can easily form new action operads from old ones by taking limits\index{action operad!limits of}.  To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there.  Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$\nomenclature[C]{$C/c$}{the slice category of $C$ over an object $c$ in $C$} (see QQQ) which themselves are (possibly wide) pullbacks in the category of operads.  This pullback will then be computed levelwise, showing that at each dimension we have a group structure with a group homomorphism to the appropriate $\Sigma_{n}$ and that the final action operad axiom holds since it does in each component.  The equalizer of a pair of maps will then just be the levelwise equalizer.  This shows that the pointwise product of an action operad $P$ with an action operad of the form $Z(Q)$ is again an action operad, but the pointwise product of two arbitrary action operads might not be.
 \end{example}
@@ -1159,7 +1165,6 @@ In the case that we take $P = \Lambda$, we do not get algebras more interesting 
 Let $\ML$ be an action operad. The category of algebras, $\Lambda\mbox{-}\mb{Alg}$, for $\Lambda$ taken as a $\ML$-operad, is equivalent to the category of monoids.
 \end{prop}
 \begin{proof}
-QQQ Proof added. Enough detail? QQQ
 The key observation here is that, for each $n \in \mathbb{N}$,
 	\[
 		\Lambda(n) \times_{\Lambda(n)} X^n \cong X^n.
@@ -1314,7 +1319,7 @@ The first diagram commutes since the left hand side is the second diagram requir
 
 A morphism $f : (X, \sigma_X) \rightarrow (Y, \sigma_Y)$ of $S$-algebras is sent to the morphism $Ff : (FX, F\sigma_X \cdot \alpha_X) \rightarrow (FY, F\sigma_Y \cdot \alpha_Y$), being a map of $T$-algebras following from the naturality of $\alpha$ and of $f$ being an $S$-algebra map. Functoriality follows from that of $F$.
 
-% QQQ Moved Definition \ref{cocom_symm_mon_cat} from here.
+% Moved Definition \ref{cocom_symm_mon_cat} from here.
 
 \begin{prop}\label{monoidal_to_monadmap}
 Let $C,D$ be cocomplete symmetric monoidal categories.  Let $\ML$ be an action operad, and $P$ be a $\ML$-operad in $C$. Let $F:C \to D$ be a lax symmetric monoidal functor. Then $FP$ is a $\ML$-operad in $D$, and the pair $(F, \id)$ is a monad map $(C,P) \to (D, FP)$.  
@@ -1571,10 +1576,13 @@ The above result can be interpreted for $\ML$-operads in an arbitrary cocomplete
 
 
 
-\chapter{Monoidal structures and multicategories}
- \section{Introduction to monoidal structures}
- QQQ Nothing here
-
+\chapter{Operads in the category of categories}
+ QQQ chapter title okay?
+ 	\begin{itemize}
+ 		\item operads in $\bf{Cat}$
+ 		\item $2$-categorical properties
+ 		\item Borel construction and properties
+ 	\end{itemize}
 \section{Operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{section:operads_in_Cat}
 
 This section will study those $\ML$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ is in $\mb{Cat}$. The extra structure that this 2-categorical setting provides allows us to consider notions of pseudoalgebras for an operad, as well as pseudomorphisms of operads. The induced monad associated to an operad of this sort can be shown to be a $2$-monad\index{$2$-monad} (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated 2-monad correspond precisely, i.e., there is an isomorphism of $2$-categories between the 2-category with either strict or pseudo-level cells defined operadically and the 2-category with either strict or pseudo-level cells defined 2-monadically.
@@ -3173,8 +3181,6 @@ where composition is given by group multiplication and the identity morphism is 
 \end{Defi}
 
 \begin{Defi}\label{cocom_symm_mon_cat}
-% A cocomplete symmetric monoidal category is a symmetric monoidal category which is cocomplete.
-% QQQ Define cocomplete symmetric monoidal category, definition used in Theorem \ref{preserveGop}
 A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
 
 QQQ Is this what we mean by a cocomplete symmetric monoidal category? QQQ
@@ -3587,6 +3593,16 @@ such that the underlying permutation of $F$ equals the underlying permutation of
 \end{itemize}
 \end{cor}
 
+\chapter{Monoidal structures and multicategories}
+ \section{Introduction to monoidal structures}
+QQQ
+	\begin{itemize}
+		\item need to start off by talking about monoidal structures and what this chapter will lead to
+		\item starts off with Examples section
+		\item monoidal categories via action operads
+		\item pseudo-commutativity
+		\item profunctors and multicategories
+	\end{itemize}
 \section{Examples}\label{sec:examples}
 
 In this section we will discuss examples of the preceding theory.  We have seen that there are three equivalent incarnations of the same algebraic structure:
@@ -3896,7 +3912,7 @@ QQQ Comment on crossedness.
 \begin{Defi} 
 An action operad $\ML$ is \emph{crossed}\index{action operad!crossed} if the map $\pi \colon \ML \to \Sigma$ is surjective.
 
-QQQ If each of the maps $\pi_n \colon \Lambda(n) \rightarrow \Sigma(n)$ is surjective? Also, bold $\mb{\Sigma}$?QQQ
+QQQ If each of the maps $\pi_n \colon \Lambda(n) \rightarrow \Sigma(n)$ is surjective?QQQ
 \end{Defi}
 
 \begin{lem} \label{Gnobj} $\mathrm{Ob}(\ELn)$ is the free monoid on $n$ generators, which is $\mathbb{N}^{\ast n}$, the free product of $n$ copies of $\mathbb{N}$. \end{lem}
