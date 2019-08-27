@@ -178,6 +178,7 @@
 
 
 \chapter{Action operads}
+
 \section{Introduction to operads}
  QQQ
  \begin{itemize}
@@ -187,7 +188,8 @@
  	\item $\ML$-operads
  \end{itemize}
 \section{Action operads}
-In this section, we will explore the general definition of an operad $P$ which is equipped with groups of equivariance $\Lambda(n)$.  The group $\Lambda(n)$ will act on the right on the object $P(n)$, and the operad structure of $P$ will be required to respect this action.  For certain choices of the groups $\Lambda(n)$, we will recover standard notions of operads such as symmetric operads, non-symmetric operads, and braided operads.  The definitions here will, unless otherwise stated, apply in any symmetric monoidal category $\mathcal{V}$ in which the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X \in \mathcal{V}$.
+
+In this chapter, we will explore the general definition of an operad $P$ which is equipped with groups of equivariance $\Lambda(n)$.  The group $\Lambda(n)$ will act on the right on the object $P(n)$, and the operad structure of $P$ will be required to respect this action.  For certain choices of the groups $\Lambda(n)$, we will recover standard notions of operads such as symmetric operads, non-symmetric operads, and braided operads.  The definitions here will, unless otherwise stated, apply in any symmetric monoidal category $\mathcal{V}$ in which the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X \in \mathcal{V}$.
 
 \begin{conv}
 We adopt the following conventions throughout.
@@ -409,6 +411,9 @@ In the above definition and below, we adopt the convention that if an equation r
 One can form an operad $B$\index{operad!of braid groups} where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$.  This is done in much the same way as we did for the symmetric operad, and the collection of maps $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutations constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
 One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$.  This is done in much the same way as we did for the symmetric operad, and the collection of maps $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutations constitutes an operad map (of non-symmetric or braided operads) operads $B \rightarrow \Sigma$.
 \end{example}
+\section{Action operads}
+
+
 
 One should note that the axioms for symmetric and braided operads each use the fact that the groups of equivariance themselves form an operad.  This is what we call an action operad.
 
@@ -609,6 +614,7 @@ The category $\mb{AOp}$\index{action operad!category of} of action operads has o
 \end{Defi}
 
 \section{Some algebra in action operads}
+Here we describe a host of useful results about action operads, including a characterisation of action operads via algebra involving the groups $\Lambda(n)$.
 
 We begin with a simple proposition.
 
@@ -3305,6 +3311,7 @@ Once again, this proof holds in a wide context.  We required that the product of
 %\begin{cor}\label{egisinf}
 %$E\Lambda$ is $\mb{\Lambda}_{\infty}$, hence unique in the sense above.
 %\end{cor}
+QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
 QQQ Insert explicit descriptions of cells
 \begin{prop}\label{el_via_moncats}
 A strict $\EL$-algebra structure on $X$ determines and is determined by
