@@ -8,21 +8,21 @@
 \nomenclatureentry{N$\mb{\Lambda}$@[{$\mb{\Lambda}$}]\begingroup action operad\nomeqref {0}|nompageref}{11}
 \nomenclatureentry{N$T$@[{$T$}]\begingroup terminal operad\nomeqref {1}|nompageref}{11}
 \nomenclatureentry{N$\mathbf{T}$@[{$\mathbf{T}$}]\begingroup terminal operad as an action operad\nomeqref {1}|nompageref}{11}
-\nomenclatureentry{N$\mb{B}$@[{$\mb{B}$}]\begingroup action operad of braid groups\nomeqref {1}|nompageref}{11}
-\nomenclatureentry{N$\mb{RB}$@[{$\mb{RB}$}]\begingroup action operad of ribbon braid groups\nomeqref {1}|nompageref}{11}
+\nomenclatureentry{N$\mb{B}$@[{$\mb{B}$}]\begingroup action operad of braid groups\nomeqref {1}|nompageref}{12}
+\nomenclatureentry{N$\mb{RB}$@[{$\mb{RB}$}]\begingroup action operad of ribbon braid groups\nomeqref {1}|nompageref}{12}
 \nomenclatureentry{N$\mathbb{N}$@[{$\mathbb{N}$}]\begingroup the set of natural numbers\nomeqref {1}|nompageref}{12}
 \nomenclatureentry{N$RB_{n}$@[{$RB_{n}$}]\begingroup ribbon braid group on $n$ ribbons\nomeqref {1}|nompageref}{12}
-\nomenclatureentry{N$A^{\bullet}$@[{$A^{\bullet}$}]\begingroup action operad of an abelian group $A$\nomeqref {1}|nompageref}{12}
-\nomenclatureentry{C$\mb{AOp}$@[{$\mb{AOp}$}]\begingroup of action operads and maps of action operads\nomeqref {1}|nompageref}{12}
+\nomenclatureentry{N$A^{\bullet}$@[{$A^{\bullet}$}]\begingroup action operad of an abelian group $A$\nomeqref {1}|nompageref}{13}
+\nomenclatureentry{C$\mb{AOp}$@[{$\mb{AOp}$}]\begingroup of action operads and maps of action operads\nomeqref {1}|nompageref}{13}
 \nomenclatureentry{C$\mb{Op}(\mb{Grp})$@[{$\mb{Op}(\mb{Grp})$}]\begingroup of operads in groups and maps of operads in groups\nomeqref {1}|nompageref}{13}
-\nomenclatureentry{C$\mathbf{CSGrp}$@[{$\mathbf{CSGrp}$}]\begingroup of crossed simplicial groups and morphisms of crossed simplicial groups\nomeqref {1}|nompageref}{13}
+\nomenclatureentry{C$\mathbf{CSGrp}$@[{$\mathbf{CSGrp}$}]\begingroup of crossed simplicial groups and morphisms of crossed simplicial groups\nomeqref {1}|nompageref}{14}
 \nomenclatureentry{C$C_{fp}$@[{$C_{fp}$}]\begingroup the subcategory of finitely presentable objects in $C$\nomeqref {3}|nompageref}{18}
-\nomenclatureentry{C$\mb{Op}^{g}$@[{$\mb{Op}^{g}$}]\begingroup of operads $P$ for which each $P(n)$ has a group structure and operad maps\nomeqref {3}|nompageref}{18}
+\nomenclatureentry{C$\mb{Op}^{g}$@[{$\mb{Op}^{g}$}]\begingroup of operads $P$ for which each $P(n)$ has a group structure and operad maps\nomeqref {3}|nompageref}{19}
 \nomenclatureentry{C$C/c$@[{$C/c$}]\begingroup the slice category of $C$ over an object $c$ in $C$\nomeqref {3}|nompageref}{19}
-\nomenclatureentry{C$[A,B]$@[{$[A,B]$}]\begingroup of functors between categories $A$ and $B$ and natural transformations\nomeqref {3}|nompageref}{19}
+\nomenclatureentry{C$[A,B]$@[{$[A,B]$}]\begingroup of functors between categories $A$ and $B$ and natural transformations\nomeqref {3}|nompageref}{20}
 \nomenclatureentry{C$\ML\mbox{-}\mb{Op}$@[{$\ML\mbox{-}\mb{Op}$}]\begingroup of $\Lambda$-operads and maps of operads which are levelwise equivariant with respect to the $\Lambda(n)$-actions\nomeqref {3}|nompageref}{20}
-\nomenclatureentry{C$P\mbox{-}\mb{Alg}$@[{$P\mbox{-}\mb{Alg}$}]\begingroup of $P$-algebras and morphisms for an operad (or monad) $P$\nomeqref {3}|nompageref}{21}
-\nomenclatureentry{N$\mathcal{E}_{X}$@[{$\mathcal{E}_{X}$}]\begingroup the endomorphism operad of a set $X$\nomeqref {3}|nompageref}{21}
+\nomenclatureentry{C$P\mbox{-}\mb{Alg}$@[{$P\mbox{-}\mb{Alg}$}]\begingroup of $P$-algebras and morphisms for an operad (or monad) $P$\nomeqref {3}|nompageref}{22}
+\nomenclatureentry{N$\mathcal{E}_{X}$@[{$\mathcal{E}_{X}$}]\begingroup the endomorphism operad of a set $X$\nomeqref {3}|nompageref}{22}
 \nomenclatureentry{N$\underline{P}$@[{$\underline{P}$}]\begingroup the monad induced by an operad $P$\nomeqref {3}|nompageref}{22}
 \nomenclatureentry{C$\mb{Cat}$@[{$\mb{Cat}$}]\begingroup of categories and functors\nomeqref {3}|nompageref}{26}
 \nomenclatureentry{C$\Lambda\mb{\mbox{-}Coll}$@[{$\Lambda\mb{\mbox{-}Coll}$}]\begingroup of $\ML$-collections and $\Lambda(n)$-equivariant maps\nomeqref {3}|nompageref}{26}
@@ -37,12 +37,12 @@
 \nomenclatureentry{C$BG$@[{$BG$}]\begingroup delooping of a group $G$ as a category\nomeqref {3}|nompageref}{49}
 \nomenclatureentry{C$\mb{\Lambda}\mbox{-}Op(M)$@[{$\mb{\Lambda}\mbox{-}Op(M)$}]\begingroup of $\mb{\Lambda}$-operads in the cocomplete symmetric monoidal category $M$ with $\mb{Lambda}$-operad maps\nomeqref {3}|nompageref}{51}
 \nomenclatureentry{C$\mb{Club}$@[{$\mb{Club}$}]\begingroup of clubs and morphisms between clubs\nomeqref {3}|nompageref}{57}
-\nomenclatureentry{C$\mb{CobCat}$@[{$\mb{CobCat}$}]\begingroup the $2$-category of coboundary categories, coboundary functors, and monoidal transformations\nomeqref {3}|nompageref}{60}
-\nomenclatureentry{N$J_n$@[{$J_n$}]\begingroup the $n$-fruit cactus group\nomeqref {3}|nompageref}{61}
-\nomenclatureentry{N$\mb{J}$@[{$\mb{J}$}]\begingroup action operad of cactus groups\nomeqref {3}|nompageref}{64}
+\nomenclatureentry{C$\mb{CobCat}$@[{$\mb{CobCat}$}]\begingroup the $2$-category of coboundary categories, coboundary functors, and monoidal transformations\nomeqref {3}|nompageref}{61}
+\nomenclatureentry{N$J_n$@[{$J_n$}]\begingroup the $n$-fruit cactus group\nomeqref {3}|nompageref}{62}
+\nomenclatureentry{N$\mb{J}$@[{$\mb{J}$}]\begingroup action operad of cactus groups\nomeqref {3}|nompageref}{65}
 \nomenclatureentry{C$\mb{Vect}$@[{$\mb{Vect}$}]\begingroup of vector spaces over a given field $k$ and $k$-linear maps\nomeqref {3}|nompageref}{69}
 \nomenclatureentry{N$\mathbb{N}_+$@[{$\mathbb{N}_+$}]\begingroup the set of positive natural numbers\nomeqref {3}|nompageref}{72}
-\nomenclatureentry{N$PM_n$@[{$PM_n$}]\begingroup subset of $B_{n}$ consists of positive minimal braids\nomeqref {3}|nompageref}{78}
-\nomenclatureentry{C$\mb{Prof}$@[{$\mb{Prof}$}]\begingroup the bicategory of categories, profunctors, and transformations\nomeqref {3}|nompageref}{80}
+\nomenclatureentry{N$PM_n$@[{$PM_n$}]\begingroup subset of $B_{n}$ consists of positive minimal braids\nomeqref {3}|nompageref}{77}
+\nomenclatureentry{C$\mb{Prof}$@[{$\mb{Prof}$}]\begingroup the bicategory of categories, profunctors, and transformations\nomeqref {3}|nompageref}{79}
 \nomenclatureentry{C$\mb{Kl}_{T}$@[{$\mb{Kl}_{T}$}]\begingroup the Kleisli bicategory of a pseudomonad $T$\nomeqref {3}|nompageref}{81}
 \nomenclatureentry{C$\mb{\Lambda}\mbox{-}\mb{Multicat}$@[{$\mb{\Lambda}\mbox{-}\mb{Multicat}$}]\begingroup of $\Lambda$-multicategories and $\Lambda$-multifunctors\nomeqref {3}|nompageref}{82}

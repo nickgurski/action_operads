@@ -179,10 +179,14 @@
 
 \chapter{Action operads}
 In this chapter, we will explore the general definition of an operad $P$ which is equipped with groups of equivariance $\Lambda(n)$.  The group $\Lambda(n)$ will act on the right on the object $P(n)$, and the operad structure of $P$ will be required to respect this action.  For certain choices of the groups $\Lambda(n)$, we will recover standard notions of operads such as symmetric operads, non-symmetric operads, and braided operads.  The definitions here will, unless otherwise stated, apply in any symmetric monoidal category $\mathcal{V}$ in which the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X \in \mathcal{V}$.
-
 \section{Introduction to operads}
 This section will provide an introduction to the basic definitions of operads, including some specific types such as symmetric and braided operads.
-
+ QQQ introduction to operads
+ 	\begin{itemize}
+ 		\item introduces notations and conventions
+ 		\item reviews definitions of operads (general basic overview) including symmetric, non-symmetric, and braided
+ 		\item remarks and examples are included
+ 	\end{itemize}
 
 \begin{conv}
 We adopt the following conventions throughout.
@@ -404,9 +408,16 @@ In the above definition and below, we adopt the convention that if an equation r
 One can form an operad $B$\index{operad!of braid groups} where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$.  This is done in much the same way as we did for the symmetric operad, and the collection of maps $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutations constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
 One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$.  This is done in much the same way as we did for the symmetric operad, and the collection of maps $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutations constitutes an operad map (of non-symmetric or braided operads) operads $B \rightarrow \Sigma$.
 \end{example}
+
 \section{Action operads}
 
-
+ 	QQQ chapter: action operads
+ 	\begin{itemize}
+ 		\item defines action operads 
+ 		\item considers familiar examples including symmetric, braided and ribbon braided
+ 		\item remarks about terminal and initial action operads
+ 		\item introduction of action operad maps
+ 	\end{itemize}
 
 One should note that the axioms for symmetric and braided operads each use the fact that the groups of equivariance themselves form an operad.  This is what we call an action operad.
 
@@ -607,7 +618,12 @@ The category $\mb{AOp}$\index{action operad!category of} of action operads has o
 \end{Defi}
 
 \section{Some algebra in action operads}
-Here we describe a host of useful results about action operads, including a characterisation of action operads via algebra involving the groups $\Lambda(n)$.
+ 	QQQ chapter: some algebra in action operads
+ 	\begin{itemize}
+ 		\item discusses group-like properties of action operads and their maps: kernels, short exact sequences, fitting Grp-operads into the picture
+ 		\item some useful technical algebraic lemmas
+ 		\item algebraic characterisation of action operads via $\beta$ and $\delta$ maps
+ 	\end{itemize}
 
 We begin with a simple proposition.
 
@@ -915,6 +931,7 @@ The action operad axiom is now the calculation below, and uses axioms \eqref{eq4
 
 
 \section{Presentations of action operads}\label{sec:presofacops}
+ 	QQQ chapter: presentations of action operads - intro to this section seems fine
 
 One of the most useful methods for constructing new examples of some given algebraic structure is through the use of presentations.  A presentation consists of generating data together with relations between generators using the operations of the algebra involved.  In categorical terms, the generators  and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer.  This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and 2-monad.  The most direct route to the desired results uses the theory of locally finitely presentable categories.  We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
 
@@ -1009,6 +1026,19 @@ A \textit{presentation}\index{action operad!presentation} for an action operad $
 
 
 \section{Operads and algebras with general group actions}
+ 	QQQ chapter: operads and algebras with general group actions
+ 	\begin{itemize}
+ 		\item defines $\ML$-operads
+ 		\item goes over familiar examples
+ 		\item recasts familar operad algebra stuff for $\ML$-operads
+ 		\begin{itemize}
+	 		\item defines algebras and pseudoalgebras for $\ML$-operads
+	 		\item characterises algebras using the endomorphism operads
+	 		\item monads via operads
+	 	\end{itemize}
+	 	\item theorem about the adjunction between $\ML-\bf{Op}$ and $\bf{\Sigma}-\bf{Op}$
+	 	\item technical results about monad maps
+ 	\end{itemize}
 Just as we had the definitions of operad, symmetric operad, and braided operad, we now come to the general definition of a $\ML$-operad, where $\ML$ is an action operad.
 
 \begin{Defi}\label{Defi:lamop}
@@ -1345,7 +1375,8 @@ These constitute an adjunction $(F,\id) \dashv (\id, \eta^*) \circ (U, \id)$ in 
 \end{cor}
 
 \section{Operads as monoids}\label{sec:opasmon}
-
+ 	QQQ chapter: operads as monoids - intro is probably fine
+ 	
 In this section, we will show that $\ML$-operads are the monoids in the category of $\ML$-collections\index{collection!$\ML$-collection}\index{collection!$\ML$-collection!category of} equipped with an appropriate substitution product.  Such a result is fairly standard \cite{mss-op}, and in both the symmetric and non-symmetric cases can easily be proven directly.  Since we work with an arbitrary action operad, however, it will be more economical to take the abstract approach using coends and Day convolution.
 
 \begin{rem}
@@ -1575,10 +1606,13 @@ The above result can be interpreted for $\ML$-operads in an arbitrary cocomplete
 
 
 
-\chapter{Monoidal structures and multicategories}
- \section{Introduction to monoidal structures}
- QQQ Nothing here
-
+\chapter{Operads in the category of categories}
+ QQQ chapter title okay?
+ 	\begin{itemize}
+ 		\item operads in $\bf{Cat}$
+ 		\item $2$-categorical properties
+ 		\item Borel construction and properties
+ 	\end{itemize}
 \section{Operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{section:operads_in_Cat}
 
 This section will study those $\ML$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ is in $\mb{Cat}$. The extra structure that this 2-categorical setting provides allows us to consider notions of pseudoalgebras for an operad, as well as pseudomorphisms of operads. The induced monad associated to an operad of this sort can be shown to be a $2$-monad\index{$2$-monad} (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated 2-monad correspond precisely, i.e., there is an isomorphism of $2$-categories between the 2-category with either strict or pseudo-level cells defined operadically and the 2-category with either strict or pseudo-level cells defined 2-monadically.
@@ -3177,8 +3211,6 @@ where composition is given by group multiplication and the identity morphism is 
 \end{Defi}
 
 \begin{Defi}\label{cocom_symm_mon_cat}
-% A cocomplete symmetric monoidal category is a symmetric monoidal category which is cocomplete.
-% QQQ Define cocomplete symmetric monoidal category, definition used in Theorem \ref{preserveGop}
 A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
 
 QQQ Is this what we mean by a cocomplete symmetric monoidal category? QQQ
@@ -3303,7 +3335,8 @@ Once again, this proof holds in a wide context.  We required that the product of
 %\begin{cor}\label{egisinf}
 %$E\Lambda$ is $\mb{\Lambda}_{\infty}$, hence unique in the sense above.
 %\end{cor}
-QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
+% QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
+QQQ Possibly move these results to the next chapter?
 QQQ Insert explicit descriptions of cells
 \begin{prop}\label{el_via_moncats}
 A strict $\EL$-algebra structure on $X$ determines and is determined by
@@ -3592,6 +3625,16 @@ such that the underlying permutation of $F$ equals the underlying permutation of
 \end{itemize}
 \end{cor}
 
+\chapter{Monoidal structures and multicategories}
+ \section{Introduction to monoidal structures}
+QQQ
+	\begin{itemize}
+		\item need to start off by talking about monoidal structures and what this chapter will lead to
+		\item starts off with Examples section
+		\item monoidal categories via action operads
+		\item pseudo-commutativity
+		\item profunctors and multicategories
+	\end{itemize}
 \section{Examples}\label{sec:examples}
 
 In this section we will discuss examples of the preceding theory.  We have seen that there are three equivalent incarnations of the same algebraic structure:
@@ -3901,7 +3944,7 @@ QQQ Comment on crossedness.
 \begin{Defi} 
 An action operad $\ML$ is \emph{crossed}\index{action operad!crossed} if the map $\pi \colon \ML \to \Sigma$ is surjective.
 
-QQQ If each of the maps $\pi_n \colon \Lambda(n) \rightarrow \Sigma(n)$ is surjective? Also, bold $\mb{\Sigma}$?QQQ
+QQQ If each of the maps $\pi_n \colon \Lambda(n) \rightarrow \Sigma(n)$ is surjective?QQQ
 \end{Defi}
 
 \begin{lem} \label{Gnobj} $\mathrm{Ob}(\ELn)$ is the free monoid on $n$ generators, which is $\mathbb{N}^{\ast n}$, the free product of $n$ copies of $\mathbb{N}$. \end{lem}
