@@ -722,7 +722,9 @@ where $\underline{k} = \sum k_{i}$.  The second is a kind of diagonal map which 
 \[
 \delta = \delta_{n; k_{1}, \ldots, k_{n}}:\Sigma_{n} \rightarrow \Sigma_{\underline{k}},
 \]
-is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on.  The first of these, $\beta$, is a group homomorphism, while $\delta$ QQQ put these in the notation index? is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.  We now use these ideas to give the following algebraic characterization of action operads via the following definition.
+is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on.  The first of these, $\beta$\nomenclature[N]{$\beta$}{block sum of permutations}, is a group homomorphism, while $\delta$\nomenclature[N]{$\delta$}{diagonal map permuting in a block}
+% QQQ put these in the notation index? Need to run the index command so these appear.
+is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.  We now use these ideas to give the following algebraic characterization of action operads via the following definition.
 
 \begin{Defi}\label{Defi:aop_bl}
 For an action operad $\mb{\Lambda}$,  define
@@ -931,18 +933,7 @@ The action operad axiom is now the calculation below, and uses axioms \eqref{eq4
 
 
 \section{Presentations of action operads}\label{sec:presofacops}
- 	QQQ chapter: presentations of action operads - intro to this section seems fine
-
-One of the most useful methods for constructing new examples of some given algebraic structure is through the use of presentations.  A presentation consists of generating data together with relations between generators using the operations of the algebra involved.  In categorical terms, the generators  and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer.  This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and 2-monad.  The most direct route to the desired results uses the theory of locally finitely presentable categories.  We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
-
-QQQ Do we use any of these definitions? We seem to need to know the following things about locally finitely presentable categories:
-	\begin{itemize}
-		\item That any presheaf category is lfp.
-		\item That $\bf{Cat}$ is lfp.
-		\item That if $\m{C}$ is lfp and $X \in \m{C}$, then the slice category $\m{C}/X$ is lfp.
-		\item That a category which is an equational theory with only finitely many elements is lfp.
-	\end{itemize}
-These should all be simple facts following from Adamek/Rosicky (AR), except maybe the last one which I think is just a case of awkward wording. Maybe we should take the definitions out and just refer to AR? QQQ
+A useful method for constructing new examples of some given algebraic structure is through the use of presentations. A presentation consists of generating data together with relations between generators using the operations of the algebra involved.  In categorical terms, the generators and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer. This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and 2-monad. The most direct route to the desired results uses the theory of locally finitely presentable categories. We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
 
 \begin{Defi}
 A \textit{filtered category}\index{category!filtered} is a nonempty category $C$ such that
@@ -968,14 +959,16 @@ A \textit{locally finitely presentable category}\index{category!locally finitely
 \end{itemize}
 \end{Defi}
 
-The definition of a locally finitely presentable category has many equivalent variants, and our applications are quite straightforward so we have given what is probably the most common version of the definition.  We refer the reader to \cite{ar} for more information.  The following result will be clear to the experts, so we just sketch a proof. QQQ Too informal.
+The definition of a locally finitely presentable category has many equivalent variants, and our applications are quite straightforward so we have given a commonly stated version of the definition.
 
 
 \begin{thm}
 The category $\mb{AOp}$ is locally finitely presentable.
 \end{thm}
 \begin{proof}
-$\mb{Op}^{g}$\nomenclature[C]{$\mb{Op}^{g}$}{of operads $P$ for which each $P(n)$ has a group structure and operad maps} whose objects are operads $P$ in which each $P(n)$ also carries a group structure. This is an equational theory using equations with only finitely many elements, so $\mb{Op}^{g}$ is locally finitely presentable. QQQ Reference? (Adamek and Rosicky?) The symmetric operad is an object of this category, so the slice category\index{category!slice category} $\mb{Op}^{g}/\Sigma$ is also locally finitely presentable.  There is an obvious inclusion functor $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$.  Now $\mb{AOp}$ is a full subcategory of $\mb{Op}^{g}/\Sigma$ which is closed under products, subobjects, and any object of $\mb{Op}^{g}/\Sigma$ isomorphic to an action operad is in fact an action operad, so the inclusion   $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$ is actually the inclusion of a reflective subcategory.  One easily checks that $\mb{AOp}$ is in fact closed under all limits and filtered colimits in $\mb{Op}^{g}/\Sigma$, so by the Reflection Theorem (2.48 in \cite{ar}), $\mb{AOp}$ is locally finitely presentable.
+First note that there is a category $\mb{Op}^{g}$\nomenclature[C]{$\mb{Op}^{g}$}{of operads $P$ for which each $P(n)$ has a group structure and operad maps}, whose objects are operads $P$ in which each $P(n)$ also carries a group structure. This is an equational theory using equations with only finitely many elements, so $\mb{Op}^{g}$ is locally finitely presentable. QQQ \cite[Corollary 3.7]{ar} QQQ? A slice category of a locally finitely presentable category is itself locally finite presentable \cite[Proposition 1.57]{ar} and since the symmetric operad is an object of $\mb{Op}^{g}$, the slice category\index{category!slice category} $\mb{Op}^{g}/\Sigma$ is locally finitely presentable.
+
+There is an obvious inclusion functor $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$.  Now $\mb{AOp}$ is a full subcategory of $\mb{Op}^{g}/\Sigma$ which is closed under products, subobjects. Since any object of $\mb{Op}^{g}/\Sigma$ isomorphic to an action operad is in fact an action operad, the inclusion   $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$ is actually the inclusion of a reflective subcategory.  One easily checks that $\mb{AOp}$ is in fact closed under all limits and filtered colimits in $\mb{Op}^{g}/\Sigma$, so by the Reflection Theorem (2.48 in \cite{ar}), $\mb{AOp}$ is locally finitely presentable.
 \end{proof}
 
 \begin{Defi}
