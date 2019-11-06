@@ -723,7 +723,7 @@ where $\underline{k} = \sum k_{i}$.  The second is a kind of diagonal map which 
 \delta = \delta_{n; k_{1}, \ldots, k_{n}}:\Sigma_{n} \rightarrow \Sigma_{\underline{k}},
 \]
 is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on.  The first of these, $\beta$\nomenclature[N]{$\beta$}{block sum of permutations}, is a group homomorphism, while $\delta$\nomenclature[N]{$\delta$}{diagonal map permuting in a block}
-% QQQ put these in the notation index? Need to run the index command so these appear.
+% QQQ Need to run the index command so these appear.
 is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.  We now use these ideas to give the following algebraic characterization of action operads via the following definition.
 
 \begin{Defi}\label{Defi:aop_bl}
@@ -3206,7 +3206,7 @@ where composition is given by group multiplication and the identity morphism is 
 \begin{Defi}\label{cocom_symm_mon_cat}
 A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
 
-QQQ Is this what we mean by a cocomplete symmetric monoidal category? QQQ
+QQQ Is this what we mean by a cocomplete symmetric monoidal category? The statement of the following theorem then requires that the tensor product preserves colimits in each variable but the definition already includes this. QQQ
 \end{Defi}\index{category!cocomplete symmetric monoidal}\index{monoidal category!cocomplete symmetric}
 
 \begin{thm}\label{preserveGop}
@@ -3479,7 +3479,9 @@ It only remains to show that $\tilde{\pi}$ is cartesian and that the induced mon
 {\ar^{} "01" ; "11"};
 \endxy
 \]
-By \cref{coeq-lem} (QQQ happy with this reference?), this amounts to showing that the square below is a pullback.
+By \cref{coeq-lem}
+%(QQQ happy with this reference? QQQ Seems like the right thing?)
+, this amounts to showing that the square below is a pullback.
 \[
 \xy
 % var defs
@@ -4039,9 +4041,9 @@ Therefore, $h \cdot \mu(e_2; k^{-1}, e_1)$ is exactly the $g$ we were looking fo
 \]
 \end{proof} 
 
-Finally, \cref{Gnmapsaction} also gives a complete description of how the morphisms of $\ELn$ interact as a monoid under tensor product, though to best express this we need a bit of new terminology.
+Finally, \cref{Gnmapsaction} also gives a complete description of how the morphisms of $\ELn$ interact as a monoid under tensor product, though to best express this we need some new terminology.
 
-\begin{Defi} Let $\ML$ be an action operad. Then we will also the notation $\Lambda$ to denote the \emph{underlying monoid}\index{action operad!underlying monoid} of this action operad. This is the natural way to consider $\Lambda$ as a monoid, with its element set being all of its elements together, $\coprod_n \Lambda(n)$, and with tensor product as its binary operation, $g \otimes h = \mu(e_2; g, h)$.
+\begin{Defi} Let $\ML$ be an action operad. Then we will also use the notation $\Lambda$ to denote the \emph{underlying monoid}\index{action operad!underlying monoid} of this action operad. The underlying set of $\ML$ is the disjoint union, $\coprod_n \Lambda(n)$, with tensor product as the binary operation, $g \otimes h = \mu(e_2; g, h)$.
 
 Also, note that this monoid comes equipped with a homomorphism $| \, \_ \, | : \Lambda \to \mathbb{N}$, sending each $g \in \Lambda$ to the natural number $m$ if and only if $g$ is an element of the group $\Lambda(m)$. We'll call this number $|g|$ the \emph{length} of $g$.
 \end{Defi}
@@ -4062,7 +4064,7 @@ where this is a pullback taken over the respective length homomorphisms,
 using the fact that $\mathbb{N}^{\ast n}$ is the free monoid $F\big( \, \{z_1, ..., z_n\} \, \big)$.
 \end{lem}
 \begin{proof}
-An element of $\Lambda \times_{\mathbb{N}} F( \, \{z_1, ..., z_n\} \, )$ is just an element $g \in \Lambda(m)$ for some $m$, together with an $m$-tuple of objects $(x_1, ..., x_m)$ from the set of generators $\{z_1, ..., z_n\}$. Thus the action on $\ELn$ defines an obvious function 
+An element of $\Lambda \times_{\mathbb{N}} F( \, \{z_1, ..., z_n\} \, )$ is an element $g \in \Lambda(m)$ for some $m$, together with an $m$-tuple of objects $(x_1, ..., x_m)$ from the set of generators $\{z_1, ..., z_n\}$. Thus the action on $\ELn$ defines a function 
 \[ \begin{array}{rlrll}
 			\alpha & : & \Lambda \times_{\mathbb{N}} F\big( \, \{z_1, ..., z_n\} \, \big) & \to & \mathrm{Mor}(\ELn) \\
 			& : & (g;x_1, ..., x_m) & \mapsto & \alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})
@@ -4642,6 +4644,8 @@ It is worth noting that this bijection is not an isomorphism of groups, since $P
 
 \begin{proof}[Proof of Theorem \ref{braidpscomm}]
 In order to use Theorem \ref{pscomm} with the action operad being the braid operad $\mb{B}$, we must first construct elements $t_{m,n} \in B_{mn}$ satisfying certain properties.  Using Lemma \ref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$.  Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in B_{n}$ is positive and minimal, we have that $t_{1,n} = e_{n} = t_{n,1}$ in $B_{n}$.  Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
+
+QQQ The capital M in the following sentence isn't used anywhere. Is it capital N?
 
 Let $l, m_{1}, \ldots, m_{l}, n$ be natural numbers, and let $M = \sum m_{i}$.  We must check that
 \[
