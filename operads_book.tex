@@ -228,16 +228,11 @@ for any $x \in O(n)$.
 \item The functions $\mu$ (called operadic multiplication or operadic composition) are associative in the sense that the diagram below commutes.
 \[
 \xy
-% var defs
-% 00    20
-% 	    21
-% 02    22
 (0,0)*+{\scriptstyle O(n) \times O(k_{1}) \times \cdots \times O(k_{n}) \times O(l_{1,1}) \times \cdots \times O(l_{{1},k_{1}}) \times \cdots \times O(l_{n,1}) \times \cdots \times O(l_{{n},k_{n}})} ="00";
 (0,-50)*+{\scriptstyle O(k_{1} + \cdots + k_{n}) \times O(l_{1,1}) \times \cdots \times O(l_{{1},k_{1}}) \times \cdots \times O(l_{n,1})\times \cdots \times O(l_{{n},k_{n}})} ="02";
 (55,-10)*+{\scriptstyle O(n) \times \prod_{i=1}^n O(k_{1}) \times O(l_{i,1}) \times \cdots \times O(l_{{i}, k_{i}}) } ="20";
 (55,-25)*+{\scriptstyle O(n) \times O(\sum l_{1,-}) \times \cdots \times O(\sum l_{n,-})} ="21";
 (55, -40)*+{\scriptstyle  O(\sum l_{-,-})} ="22";
-% diagram
 {\ar_{\scriptstyle \mu \times 1} "00" ; "02"};
 {\ar_{\mu} "02" ; "22"};
 {\ar^{\cong} "00" ; "20"};
@@ -421,33 +416,6 @@ One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid
 
 One should note that the axioms for symmetric and braided operads each use the fact that the groups of equivariance themselves form an operad.  This is what we call an action operad.
 
-
-% \begin{Defi}\label{aoperad}
-% An \textit{action operad} $\Lambda$ consists of
-% \begin{itemize}
-% \item an operad $\Lambda = \{ \Lambda(n) \}_{n \in \N}$ in the category of sets such that each $\Lambda(n)$ is equipped with the structure of a group and
-% \item a map $\pi:\Lambda \rightarrow \Sigma$ which is simultaneously a map of operads and a group homomorphism $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$ for each $n$
-% \end{itemize}
-% such that
-% \[
-% \mu(g; f_1, \ldots f_n)  \mu(g'; f_1', \ldots, f_n') = \mu (gg'; f_{\pi(g')(1)}f_{1}', \ldots, f_{\pi(g')(n)}f_{n}')
-% \]
-% holds in the group $\Lambda(k_{1} + \cdots + k_{n})$, provided both sides make sense.  This occurs precisely when
-% \begin{itemize}
-% \item $g, g' \in \Lambda(n)$,
-% \item $f_{i} \in \Lambda(k_{\pi(g')^{-1}(i)})$, and
-% \item $f_{i}' \in \Lambda(k_{i})$.
-% \end{itemize}
-% %one additional axiom holds.  Write
-% %\[
-% %\mu: \Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) \rightarrow \Lambda(k_{1} + \cdots + k_{n})
-% %\]
-% %for the multiplication in the operad $\Lambda$.  Let $(g; f_1, \ldots f_n)$ be an element of the product $\Lambda(n) \times \Lambda(k_{\pi(g')^{-1}(1)}) \times \cdots \times \Lambda(k_{\pi(g')^{-1}(1)})$ and $(g'; f_1', \ldots, f_n')$ be an element of the product $\Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n})$.  We require that
-% %\[
-% %\mu(g; f_1, \ldots f_n)  \mu(g'; f_1', \ldots, f_n') = \mu (gg'; f_{\pi(g')(1)}f_{1}', \ldots, f_{\pi(g')(n)}f_{n}')
-% %\]
-% \end{Defi}
-
 \begin{Defi}\label{Defi:aop}
 An \textit{action operad}\index{action operad}\index{operad!action operad} $\mb{\Lambda}$\nomenclature[N]{$\mb{\Lambda}$}{action operad} consists of
 \begin{itemize}
@@ -530,8 +498,6 @@ for the multiplication in the operad $\Lambda$.  Let $(g; f_1, \ldots, f_n)$ be 
 \begin{enumerate}
 \item The terminal operad $T$\nomenclature[N]{$T$}{terminal operad}\index{operad!terminal} in the category of sets has a unique action operad structure, $\mathbf{T}$\nomenclature[N]{$\mathbf{T}$}{terminal operad as an action operad}.  Since $T(n)$ is a singleton for each $n$, the group structure is unique as is the map $\pi$.  The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity.  This is the initial object\index{action operad!initial} in the category of action operads (see \cref{Defi:cat_aop} the definition of morphisms in the category of action operads).
 \item The symmetric operad $\Sigma$\index{action operad!of symmetric groups} has a canonical action operad structure.  It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$.  This is the terminal object\index{action operad!terminal} in the category of action operads.
-% \item There are two trivial examples of action operads.  The first is the symmetric operad  $\Lambda = \mb{\Sigma}$ with the identity map; this is the terminal object in the category of action operads (see Definition \ref{mapaop}).  The second is $\Lambda = \mb{T}$ consisting of the terminal groups $T(n) = *$.  Here the $\pi_{n}$'s are given by the inclusion of identity elements; this is the initial object in the category of action operads.
-
 \item Two less trivial examples are given by the braid groups, $\ML = \mb{B}$\nomenclature[N]{$\mb{B}$}{action operad of braid groups}\index{action operad!of braid groups}, and the ribbon braid groups, $\ML = \mb{RB}$\nomenclature[N]{$\mb{RB}$}{action operad of ribbon braid groups}\index{action operad!of ribbon braid groups}.  (A ribbon braid is given, geometrically, as a braid with strands replaced by ribbons in which we allow full twists.  The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.)  In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after Definition \ref{broperad}.  We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
 \item The operad of $n$-fruit cactus groups\index{action operad!of cactus groups}\index{group!cactus} defined by Henriques and Kamnitzer in \cite{hk-cobound} has an action operad structure that we will discuss in \cref{sec:examples}.
 \end{enumerate}
@@ -581,15 +547,6 @@ Much as the symmetric groups can be represented by crossings of a collection of 
 			$b$ & & $t$ 
 \end{tabular} \end{center}
 This operad $RB$\index{action operad!of ribbon braid groups} is also clearly an action operad, since we can just define $\pi^{RB} : RB_{n} \to \mathrm{S}_n$ to act like $\pi^B$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
-
-% \begin{example}
-% \begin{enumerate}
-
-
-% \item The operad of braid groups also has an obvious action operad structure in which the map $\pi$ is the group homomorphism sending a braid to its underlying permutation.  We will denote this action operad by $\mathbf{Br}$.  The operad of ribbon braids has an action operad structure, essentially using the same map $\pi$, and was studied by Wahl in \cite{wahl-thesis}.
-
-% \end{enumerate}
-% \end{example}
 
 \begin{example}
 Every abelian group $A$ gives rise to action operad $A^{\bullet}$\nomenclature[N]{$A^{\bullet}$}{action operad of an abelian group $A$}\index{action operad!of an abelian group} as follows.  The group $A^{\bullet}(n)$ is the direct sum of $n$ copies of $A$, $A^{n}$.  The identity element is required to be $e \in A^{1}$, and the multiplication is defined by
@@ -651,10 +608,6 @@ form an action operad for which the inclusion $\textrm{Ker}\,\pi \hookrightarrow
 For $\textrm{Ker}\,\pi \hookrightarrow \Lambda$ to be a map of action operads, we must define the map $\textrm{Ker}\,\pi \rightarrow \Sigma$ to be zero,  and we must check that the operadic multiplication of elements in the kernel is also in the kernel.  This last fact is a trivial consequence of $\pi$ being an operad map.
 \end{proof}
 
-%\begin{rem}
-%Zhang shows in Corollary 2.17 of \cite{zhang-grp} that the maps $\pi$ are either all zero or all surjective.  In particular, we now see that every action operad is either an operad in the category groups or an extension of $\Sigma$ by such an operad.  This gives a simple proof that the operads of pure braids and pure ribbon braids are both operads in groups.
-%\end{rem}
-
 
 \begin{prop}[Corollary 2.17,  \cite{zhang-grp}]\label{zero/surj}
 The homomorphisms $\pi_n : \Lambda_n \to \Sigma_n$ are either all surjective or all the zero map.
@@ -669,7 +622,7 @@ by which we mean this is a sequence of action operad maps which is an exact sequ
 \end{cor}
 
 \begin{rem}
-Thus we see that an action operad is either an operad in groups, or is an extension of $\Sigma$ by an operad in groups.
+Thus we see that an action operad is either an operad in groups, or is an extension of $\Sigma$ by an operad in groups. This gives a simple proof that the operads of pure braids and pure ribbon braids are both operads in groups.
 \end{rem}
 
 \begin{rem}
@@ -769,15 +722,10 @@ Axioms:
 \item\label{eq1} The homomorphisms $\beta$ are natural with respect to the maps $\pi_{n}$, where $\underline{k} = k_{1} + \cdots + k_{n}$.
 \[
 \xy
-% var defs
-% 00    20
-% 01    21
-%    12(end)
 (0,0)*+{\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) } ="00";
 (0,-15)*+{\Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}}  } ="01";
 (40,0)*+{\Lambda(\underline{k}) } ="20";
 (40,-15)*+{\Sigma_{\underline{k}} } ="21";
-% diagram
 {\ar^{\beta} "00" ; "20"};
 {\ar^{\pi} "20" ; "21"};
 {\ar_{\pi_1 \times \cdots \times \pi_n} "00" ; "01"};
@@ -793,10 +741,6 @@ holds.
 \item\label{eq4} The functions $\delta_{n; k_{1}, \ldots, k_{n}}$ are natural with respect to the maps $\pi_{n}$.
 \[
 \xy
-% var defs
-% 00    20
-% 01    21
-%    12(end)
 (0,0)*+{\Lambda(n)} ="00";
 (40,0)*+{\Lambda(k_{1} + \cdots + k_{n}) } ="20";
 (0,-15)*+{\Sigma_{n}  } ="01";
@@ -977,7 +921,6 @@ Let $\SS$ be the set which is the disjoint union of the underlying sets of all t
 
 \begin{rem}
 In standard presentations of the theory of operads (see, for example, \cite{mss-op}), a nonsymmetric operad will have an underlying collection\index{collection!non-symmetric} (or $\mathbb{N}$-indexed collection of sets) while a symmetric operad will have an underlying symmetric collection\index{collection!symmetric} (or $\mathbb{N}$-indexed collection of sets in which the $n$th set has an action of $\Sigma_{n}$).  Our collections over $\SS$ more closely resemble the former as there is no group action present.
-%an action operad is \textit{a priori} a nonsymmetric operad with some extra structure.  Part of that structure is the notion of the underlying permutation of an element $g \in \Lambda(n)$, and a collection over $\SS$ keeps track of all the underlying permutations separately.  To recover a notion of collection akin to that for symmetric operads, we should define $X(n)$ to be the preimage of all $\sigma \in \Sigma_{n}$ under $f:X \rightarrow \SS$.
 \end{rem}
 
 \begin{example}
@@ -989,8 +932,6 @@ There is a forgetful functor $U:\mb{AOp} \rightarrow \mb{Sets}/\SS$ which preser
 
 \begin{proof}
 The functor $U$ is obvious, and the preservation of filtered colimits follows from the fact that these are computed pointwise, together with the fact that every map between action operads preserves underlying permutations.
-% For limits, recall that limits in $\mb{AOp}$ are computed as in the category of operads over $\Sigma$.
-% This means that equalizers are computed levelwise, and the product $\mb{\Lambda} \times \mb{\Lambda}'$ has underlying operad the pullback $\Lambda \times_{\Sigma} \Lambda'$; this pullback is itself computed levelwise.  Together, these imply that $U$ also preserves all limits.
 As equalizers are computed levelwise, and the product $\mb{\Lambda} \times \mb{\Lambda}'$ has underlying operad the pullback $\Lambda \times_{\Sigma} \Lambda'$; this pullback is itself computed levelwise.  Together, these imply that $U$ also preserves all limits.
 \end{proof}
 
@@ -1264,17 +1205,14 @@ Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \em
       (0,0)*+{FX}="a";
       (20,10)*+{TFX}="b";
       (20,-10)*+{FSX}="c";
-      %
       {\ar^{\eta^T_{FX}} "a" ; "b"};
       {\ar^{\alpha_X} "b" ; "c"};
       {\ar_{F\eta^S_X} "a" ; "c"};
-      %
       (40,0)*+{T^2FX}="a";
       (60,10)*+{TFSX}="b";
       (85,10)*+{FS^2X}="c";
       (60,-10)*+{TFX}="d";
       (85,-10)*+{FSX}="e";
-      %
       {\ar^{T\alpha_X} "a" ; "b"};
       {\ar^{\alpha_{SX}} "b" ; "c"};
       {\ar^{F\mu^S_X} "c" ; "e"};
@@ -1291,7 +1229,6 @@ A \emph{transformation}\index{monad!maps!transformation} $\Gamma : (F, \alpha) \
       (20,0)*+{TGX}="b";
       (0,-20)*+{FSX}="c";
       (20,-20)*+{GSX}="d";
-      %
       {\ar_{\alpha_X} "a" ; "c"};
       {\ar_{\Gamma_{SX}} "c" ; "d"};
       {\ar^{T\Gamma_X} "a" ; "b"};
@@ -1312,7 +1249,6 @@ Every monad map $(F,\alpha)$ induces a functor $S\Alg \rightarrow T\Alg$ on the 
       (20,-30)*+{FSX}="e";
       (40,-15)*+{FSX}="g";
       (40,-30)*+{FX}="h";
-      %
       {\ar^{T\alpha_X} "a" ; "b"};
       {\ar^{TF\sigma} "b" ; "c"};
       {\ar^{\alpha_X} "c" ; "g"};
@@ -1323,12 +1259,10 @@ Every monad map $(F,\alpha)$ induces a functor $S\Alg \rightarrow T\Alg$ on the 
       {\ar_{\alpha_{SX}} "b" ; "f"};
       {\ar_{F\mu^S_X} "f" ; "e"};
       {\ar^{FS\sigma} "f" ; "g"};
-      %
       (60,0)*+{FX}="a1";
       (85,0)*+{TFX}="b1";
       (85,-15)*+{FSX}="c1";
       (85,-30)*+{FX}="d1";
-      %
       {\ar^{\eta^T_{FX}} "a1" ; "b1"};
       {\ar^{\alpha_X} "b1" ; "c1"};
       {\ar^{F\sigma} "c1" ; "d1"};
@@ -1631,20 +1565,7 @@ It is a simple observation that this constitutes a $2$-functor, and that the com
 The material in this section can be given a rather more abstract interpretation, in the sense of \cite{KL97}. The idea here is that the category of $\ML$-collections acts on the category $\mathbf{Cat}$ via a functor $\diamond \colon \ML\text{-}\mathbf{Coll} \times \mathbf{Cat} \rightarrow \mathbf{Cat}$ which sends $(P,X)$ to $\underline{P}(X)$ as described above. Fixing a $\ML$-collection $P$ produces an endofunctor $\underline{P} \colon \mathbf{Cat} \rightarrow \mathbf{Cat}$ which is then a monad when $P$ is a $\ML$-operad, just as monoids in $\ML\text{-}\mathbf{Coll}$ are precisely $\ML$-operads.
 \end{rem}
 
-%
-%The unit of the monad is given by the composite
-%	\[
-%		\eta_X: X \cong 1 \times X \rightarrow P(1) \times_{\Lambda(1)} X \hookrightarrow \coprod_n P(n) \times_{\Lambda(n)} X^n = \underline{P}(X),
-%	\]
-%and the multiplication is given by the composite
-%	\begin{align*}
-%		\mu_X: \underline{P}^2(X) &= \coprod_n P(n) \times_{\Lambda(n)} \left(\coprod_m P(m) \times_{\Lambda(m)} X^m\right)^n \\
-%		&\cong \coprod_n P(n) \times_{\Lambda(n)} \coprod_{m_i} \left(\prod_{m_1}^{m_n} P(m_i) \times_{\Lambda(m_i)} X^{m_i}\right) \\
-%		&\rightarrow \coprod_n \coprod_{m_i} P(n) \times P(m_1) \times \ldots \times P(m_n) \times X^{m_1} \times \ldots \times X^{m_n} \\
-%		&\rightarrow \coprod_n P(n) \times_{\Lambda(n)} X^n = \underline{P}(X).
-%	\end{align*}
-%The first morphism in the composite which isn't an isomorphism is the map corresponding to $\Lambda$-equivariance of the $P(n)$, whilst the second is a coproduct of composition maps. Naturality of the these components follow easily from commuting squares involving these maps. **Axioms?
-%
+
 First we will set out some conventions and definitions.
 \begin{conv}\label{conv_coeq}
 We will identify maps $\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow X$ with maps $\tilde{\alpha}_n \colon P(n) \times X^n \rightarrow X$ which are equivariant with respect to the $\Lambda$-actions via the universal property of the coequalizer.  The coequalizer in $\mb{Cat}$ also has a 2-dimensional aspect to its universal property, so that a natural transformation $\Gamma \colon \alpha_{n} \Rightarrow \beta_{n}$ between functors as above determines and is determined by a transformation $\tilde{\Gamma} \colon \tilde{\alpha}_{n} \Rightarrow \tilde{\beta}_{n}$ with the property that the two possible whiskerings of $\tilde{\Gamma}$ with the two functors $P(n) \times \Lambda(n) \times X^{n} \to P(n) \times X^{n}$ are equal.
@@ -1674,13 +1595,11 @@ Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra}\index{algebra!pseudoalgebra}
                     (0,-20)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="02";
                     (60,-20)*+{\scriptstyle X}="12";
                     (60,0)*+{\scriptstyle P_n \times X^n}="11";
-                    %
                     {\ar_{} "00" ; "01"};
                     {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "00" ; "11"};
                     {\ar^{\tilde{\alpha}_n} "11" ; "12"};
                     {\ar_{\mu^P \times 1} "01" ; "02"};
                     {\ar_>>>>>>>>>>>>>>>>>>>{\tilde{\alpha}_{\Sigma k_i}} "02" ; "12"};
-                    %
                     {\ar@{=>}^{\tilde{\phi}_{k_1, \ldots, k_n}} (30,-8) ; (30,-12)};
                 \endxy
             \]
@@ -1691,12 +1610,10 @@ Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra}\index{algebra!pseudoalgebra}
                     (0,-15)*+{1 \times X}="x10";
                     (0,-30)*+{P(1) \times X}="10";
                     (30,-30)*+{X}="11";
-                    %
                     {\ar_{\eta^P \times 1} "x10" ; "10"};
                     {\ar_{\tilde{\alpha}_1} "10" ; "11"};
                     {\ar^{1} "00" ; "11"};
                     {\ar_{\cong} "00" ; "x10"};
-                    %
                     {\ar@{=>}^{\tilde{\phi}_\eta} (10,-18) ; (10,-22)};
                 \endxy
             \]
@@ -1712,46 +1629,36 @@ satisfying the following axioms.
                     (30,-50)*+{\scriptstyle P_{\Sigma\Sigma m_{ij}} \times X^{\Sigma \Sigma m_{ij}}}="04";
                     (80,-20)*+{\scriptstyle P_n \times X^n}="12";
                     (80,-50)*+{\scriptstyle X}="14";
-                    %
                     {\ar^>>>>>>>>>>>>>>{1 \times \prod\left(1 \times \prod \tilde{\alpha}_{m_ij}\right)} "00" ; "10"};
                     {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "10" ; "12"};
                     {\ar^{\tilde{\alpha}_n} "12" ; "14"};
                     {\ar_{\mu^P \times 1} "00" ; "02"};
                     {\ar_{\mu^P \times 1} "02" ; "04"};
                     {\ar_{\tilde{\alpha}_{\Sigma\Sigma m_{ij}}} "04" ; "14"};
-                    %
                     (30,-20)*+{\scriptstyle P_n \times \prod_i\left(P_{\Sigma m_{ij}} \times X^{\Sigma m_{ij}}\right)}="22";
-                    %
                     {\ar^{\mu^P \times 1} "00" ; "22"};
                     {\ar^{1 \times \prod \tilde{\alpha}_{\Sigma m_{ij}}} "22" ; "12"};
                     {\ar^{\mu^P \times 1} "22" ; "04"};
-                    %
                     (0,-70)*+{\scriptstyle P_n \times \prod_i\left(P_{k_i} \times \prod_j \left(P_{m_{ij}} \times X^{m_{ij}}\right)\right)}="b00";
                     (50,-70)*+{\scriptstyle P_n \times \prod_i \left(P_{k_i} \times X^{k_i}\right)}="b10";
                     (0,-100)*+{\scriptstyle P_{\Sigma k_i} \times \prod_i\prod_j\left(P_{m_{ij}} \times X^{m_{ij}}\right)}="b02";
                     (20,-120)*+{\scriptstyle P_{\Sigma\Sigma m_{ij}} \times X^{\Sigma \Sigma m_{ij}}}="b04";
                     (80,-90)*+{\scriptstyle P_n \times X^n}="b12";
                     (80,-120)*+{\scriptstyle X}="b14";
-                    %
                     {\ar^>>>>>>>>>{1 \times \prod\left(1 \times \prod \tilde{\alpha}_{m_ij}\right)} "b00" ; "b10"};
                     {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "b10" ; "b12"};
                     {\ar^{\tilde{\alpha}_n} "b12" ; "b14"};
                     {\ar_{\mu^P \times 1} "b00" ; "b02"};
                     {\ar_{\mu^P \times 1} "b02" ; "b04"};
                     {\ar_{\tilde{\alpha}_{\Sigma\Sigma m_{ij}}} "b04" ; "b14"};
-                    %
                     (50,-100)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="b22";
-                    %
                     {\ar_{\mu^P \times 1} "b10" ; "b22"};
                     {\ar^>>>>>>>>>>>>>>>>{1 \times \prod\prod \tilde{\alpha}_{m_{ij}}} "b02" ; "b22"};
                     {\ar^{\tilde{\alpha}_{\Sigma k_i}} "b22" ; "b14"};
-                    %
                     {\ar@{=>}^{1 \times \prod_i \tilde{\phi}_{m_{i1}, \ldots, m_{ik_{i}}}} (35,-8) ; (35,-12)};
                     {\ar@{=>}^{\tilde{\phi}_{\Sigma m_{1j}, \ldots, \Sigma m_{nj}}} (50,-33) ; (50,-37)};
-                    %
                     {\ar@{=>}^{\tilde{\phi}_{k_1,\ldots,k_n}} (60,-92) ; (60,-96)};
                     {\ar@{=>}^{\tilde{\phi}_{m_{11}, \ldots, m_{nk_n}}} (30,-108) ; (30,-112)};
-                    %
                     {\ar@{=} (45,-58) ; (45,-62)};
                 \endxy
             \]
@@ -1765,7 +1672,6 @@ satisfying the following axioms.
                     (60,-48)*+{X}="34";
                     (24,-36)*+{P_n \times P_1^n \times X^n}="23";
                     (24,-48)*+{P_n \times X^n}="24";
-                    %
                     {\ar@/^2.5pc/^{1} "00" ; "32"};
                     {\ar^{\tilde{\alpha}_n} "32" ; "34"};
                     {\ar^{\cong} "00" ; "11"};
@@ -1775,7 +1681,6 @@ satisfying the following axioms.
                     {\ar_{\cong} "22" ; "23"};
                     {\ar_{\mu^P \times 1} "23" ; "24"};
                     {\ar_{\tilde{\alpha}_n} "24" ; "34"};
-                    %
                     {\ar@{=>}^{1 \times \tilde{\phi}_\eta^n} (32,-8) ; (32,-12)};
                     {\ar@{=>}^{\tilde{\phi}_{1,\ldots,1}} (40,-34) ; (40,-38)};
                 \endxy
@@ -1799,12 +1704,10 @@ Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudo
                     (20,0)*+{X}="10";
                     (0,-15)*+{P_n \times Y^n}="01";
                     (20,-15)*+{Y}="11";
-                    %
                     {\ar^>>>>>{\tilde{\alpha}_n} "00" ; "10"};
                     {\ar^{f} "10" ; "11"};
                     {\ar_{1 \times f^n} "00" ; "01"};
                     {\ar_>>>>>{\tilde{\beta}_n} "01" ; "11"};
-                    %
                     {\ar@{=>}^{\overline{f}_n} (10,-5.5) ; (10,-9.5)};
                 \endxy
             \]
@@ -1821,7 +1724,6 @@ satisfying the following axioms.
                     (75,-15)*{\scriptstyle P_n \times Y^n}="21";
                     (75,-40)*+{\scriptstyle Y}="22";
                     (25,-40)*+{\scriptstyle X}="02";
-                    %
                     {\ar^{1 \times \prod(1 \times f^{k_i})} "00" ; "10"};
                     {\ar^{1 \times \prod \tilde{\beta}_{k_i}} "10" ; "21"};
                     {\ar_{\mu^P \times 1} "00" ; "01"};
@@ -1831,10 +1733,8 @@ satisfying the following axioms.
                     {\ar_{\tilde{\beta}_{\Sigma k_i}} "11" ; "22"};
                     {\ar_{\mu^P \times 1} "10" ; "11"};
                     {\ar^{\tilde{\beta}_n} "21" ; "22"};
-                    %
                     {\ar@{=>}^{\overline{f}_n} (37.5,-30.5) ; (37.5,-34.5)};
                     {\ar@{=>}^{\tilde{\psi}_{k_1,\ldots,k_n}} (57.5,-16.5) ; (57.5,-20.5)};
-                    %
                     (0,-55)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times X^{k_i})}="b00";
                     (50,-55)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times Y^{k_i})}="b10";
                     (0,-80)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="b01";
@@ -1842,7 +1742,6 @@ satisfying the following axioms.
                     (75,-70)*{\scriptstyle P_n \times Y^n}="b21";
                     (75,-95)*+{\scriptstyle Y}="b22";
                     (25,-95)*+{\scriptstyle X}="b02";
-                    %
                     {\ar^{1 \times \prod(1 \times f^{k_i})} "b00" ; "b10"};
                     {\ar^{1 \times \prod \tilde{\beta}_{k_i}} "b10" ; "b21"};
                     {\ar_{\mu^P \times 1} "b00" ; "b01"};
@@ -1852,7 +1751,6 @@ satisfying the following axioms.
                     {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "b00" ; "b11"};
                     {\ar^{1 \times f^n} "b11" ; "b21"};
                     {\ar_{\tilde{\alpha}_n} "b11" ; "b02"};
-                    %
                     {\ar@{=>}^{\overline{f}_n} (50,-80.5) ; (50,-84.5)};
                     {\ar@{=>}^{1 \times \prod\overline{f}_{k_i}} (37.5,-60.5) ; (37.5,-64.5)};
                     {\ar@{=>}^{\tilde{\phi}_{k_1,\ldots,k_n}} (9,-72) ; (9,-76)};
@@ -1870,7 +1768,6 @@ satisfying the following axioms.
                         (20,-30)*+{P_1 \times Y}="12";
                         (20,-45)*+{X}="r02";
                         (40,-45)*+{Y}="r12";
-                        %
                         {\ar^{f} "00" ; "10"};
                         {\ar@/^2pc/^{1} "10" ; "r12"};
                         {\ar_{\cong} "00" ; "01"};
@@ -1882,17 +1779,14 @@ satisfying the following axioms.
                         {\ar_{\cong} "10" ; "11"};
                         {\ar_{\eta^P \times 1} "11" ; "12"};
                         {\ar_{f} "r02" ; "r12"};
-                        %
                         {\ar@{=>}^{\overline{f}_1} (20,-35.5) ; (20,-39.5)};
                         {\ar@{=>}^{\tilde{\psi}_{\eta}} (30,-20) ; (30,-24)};
-                        %
                         (60,0)*+{X}="x00";
                         (80,0)*+{Y}="x10";
                         (60,-15)*+{1 \times X}="x01";
                         (60,-30)*+{P_1 \times X}="x02";
                         (80,-45)*+{X}="xr02";
                         (100,-45)*+{Y}="xr12";
-                        %
                         {\ar^{f} "x00" ; "x10"};
                         {\ar@/^2pc/^{1} "x10" ; "xr12"};
                         {\ar_{\cong} "x00" ; "x01"};
@@ -1900,7 +1794,6 @@ satisfying the following axioms.
                         {\ar_{\tilde{\alpha}_1} "x02" ; "xr02"};
                         {\ar_{f} "xr02" ; "xr12"};
                         {\ar@/^2pc/^{1} "x00" ; "xr02"};
-                        %
                         {\ar@{=>}^{\tilde{\phi}_\eta} (70,-20) ; (70,-24)};
                         {\ar@{=} (45,-22.5) ; (49,-22.5)};
                     \endxy
@@ -1924,27 +1817,22 @@ Let $P$ be a $\ML$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) \rig
             (30,0)*+{P_n \times Y^n}="10";
             (0,-20)*+{X}="01";
             (30,-20)*+{Y}="11";
-            %
             {\ar@/^1.5pc/^{1 \times f^n} "00" ; "10"};
             {\ar_{1 \times g^n} "00" ; "10"};
             {\ar^{\tilde{\beta}_n} "10" ; "11"};
             {\ar_{\tilde{\alpha}_n} "00" ; "01"};
             {\ar_{g} "01" ; "11"};
-            %
             {\ar@{=>}^{1 \times \gamma^n} (13.5,5.5) ; (13.5,1.5)};
             {\ar@{=>}^{\overline{g}_n} (13.5,-8) ; (13.5,-12)};
-            %
             (60,0)*+{P_n \times X^n}="x00";
             (90,0)*+{P_n \times Y^n}="x10";
             (60,-20)*+{X}="x01";
             (90,-20)*+{Y}="x11";
-            %
             {\ar^{1 \times f^n} "x00" ; "x10"};
             {\ar^{\tilde{\beta}_n} "x10" ; "x11"};
             {\ar_{\tilde{\alpha}_n} "x00" ; "x01"};
             {\ar^{f} "x01" ; "x11"};
             {\ar@/_1.5pc/_{g} "x01" ; "x11"};
-            %
             {\ar@{=>}^{\gamma} (75,-21.5) ; (75,-25.5)};
             {\ar@{=>}^{\overline{f}_n} (75,-8) ; (75,-12)};
             {\ar@{=} (42.75,-10) ; (46.75,-10)};
@@ -1972,22 +1860,17 @@ Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A $T$-\textit{pseudoalgeb
             (20,0)*+{TX}="10";
             (0,-15)*+{TX}="01";
             (20,-15)*+{X}="11";
-            %
             {\ar^{T\alpha} "00" ; "10"};
             {\ar^{\alpha} "10" ; "11"};
             {\ar_{\mu_X} "00" ;  "01"};
             {\ar_{\alpha} "01" ; "11"};
-            %
             {\ar@{=>}^{\Phi} (10,-5.5) ; (10,-9.5)};
-            %
             (40,0)*+{X}="20";
             (52.5,-15)*+{TX}="31";
             (72.5,-15)*+{X}="41";
-            %
             {\ar_{\eta_X} "20" ; "31"};
             {\ar_{\alpha} "31" ; "41"};
             {\ar@/^1.5pc/^{1_X} "20" ; "41"};
-            %
             {\ar@{=>}^{\Phi_{\eta}} (54.5,-5.5) ; (54.5,-9.5)};
         \endxy
     \]
@@ -2003,7 +1886,6 @@ satisfying the following axioms.
             (48,-17.5)*+{TX}="txl2";
             (48,-35)*+{X}="xl";
             (24,-17.5)*+{T^2X}="t2xl3";
-            %
             {\ar^{T^2\alpha} "t3xl" ; "t2xl1"};
             {\ar^{T\alpha} "t2xl1" ; "txl2"};
             {\ar^{\alpha} "txl2" ; "xl"};
@@ -2015,7 +1897,6 @@ satisfying the following axioms.
             {\ar_{\mu_X} "t2xl3" ; "txl1"};
             {\ar@{=>}_{T\Phi} (26,-6) ; (26,-10)};
             {\ar@{=>}^{\Phi} (36,-24) ; (36,-28)};
-            %
             (64,0)*+{T^3X}="t3xr";
             (88,0)*+{T^2X}="t2xr1";
             (64,-17.5)*+{T^2X}="t2xr2";
@@ -2023,7 +1904,6 @@ satisfying the following axioms.
             (107,-17.5)*+{TX}="txr2";
             (107,-35)*+{X}="xr";
             (88,-17.5)*+{TX}="txr3";
-            %
             {\ar^{T^2\alpha} "t3xr" ; "t2xr1"};
             {\ar^{T\alpha} "t2xr1" ; "txr2"};
             {\ar^{\alpha} "txr2" ; "xr"};
@@ -2035,7 +1915,6 @@ satisfying the following axioms.
             {\ar_{\mu_X} "t2xr1" ; "txr3"};
             {\ar@{=>}_{\Phi} (98,-15) ; (98,-19)};
             {\ar@{=>}^{\Phi} (85,-24) ; (85,-28)};
-            %
             {\ar@{=} (54,-20) ; (56,-20)};
         \endxy
     \]
@@ -2047,7 +1926,6 @@ satisfying the following axioms.
             (15,-30)*+{TX}="txl2";
             (35,-15)*+{TX}="txl3";
             (35,-30)*+{X}="xl";
-            %
             {\ar@/^1.7pc/^{1_{TX}} "txl1" ; "txl3"};
             {\ar@/_1.7pc/_{1_{TX}} "txl1" ; "txl2"};
             {\ar_{T\eta_X} "txl1" ; "t2x"};
@@ -2074,12 +1952,10 @@ Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$, $(Y,\beta,\Psi,\Psi_
             (20,0)*+{TY}="10";
             (0,-15)*+{X}="01";
             (20,-15)*+{Y}="11";
-            %
             {\ar^{Tf} "00" ; "10"};
             {\ar^{\beta} "10" ; "11"};
             {\ar_{\alpha} "00" ; "01"};
             {\ar_{f} "01" ; "11"};
-            %
             {\ar@{=>}^{\bar{f}} (10,-5.5) ; (10,-9.5)};
         \endxy
     \]
@@ -2095,7 +1971,6 @@ satisfying the following axioms.
             (48,-17.5)*+{TY}="txl2";
             (48,-35)*+{Y}="xl";
             (24,-17.5)*+{TX}="t2xl3";
-            %
             {\ar^{T^2f} "t3xl" ; "t2xl1"};
             {\ar^{T\beta} "t2xl1" ; "txl2"};
             {\ar^{\beta} "txl2" ; "xl"};
@@ -2108,7 +1983,6 @@ satisfying the following axioms.
             {\ar@{=>}^{T\bar{f}} (24,-6) ; (24,-10)};
             {\ar@{=>}^{\bar{f}} (36,-24) ; (36,-28)};
             {\ar@{=>}^{\Phi} (13.5,-15.5) ; (13.5,-19.5)};
-            %
             (64,0)*+{T^2X}="t3xr";
             (88,0)*+{T^2Y}="t2xr1";
             (64,-17.5)*+{TX}="t2xr2";
@@ -2116,7 +1990,6 @@ satisfying the following axioms.
             (107,-17.5)*+{TY}="txr2";
             (107,-35)*+{Y}="xr";
             (88,-17.5)*+{TX}="txr3";
-            %
             {\ar^{T^2f} "t3xr" ; "t2xr1"};
             {\ar^{T\beta} "t2xr1" ; "txr2"};
             {\ar^{\beta} "txr2" ; "xr"};
@@ -2128,7 +2001,6 @@ satisfying the following axioms.
             {\ar_{\mu_Y} "t2xr1" ; "txr3"};
             {\ar@{=>}_{\Psi} (98,-15) ; (98,-19)};
             {\ar@{=>}^{\bar{f}} (85,-24) ; (85,-28)};
-            %
             {\ar@{=} (54,-20) ; (56,-20)};
         \endxy
     \]
@@ -2141,7 +2013,6 @@ satisfying the following axioms.
             (20,-20)*+{TY}="11";
             (10,-35)*+{X}="02";
             (30,-35)*+{Y}="12";
-            %
             {\ar^{f} "00" ; "10"};
             {\ar@/^1.5pc/^{1_Y} "10" ; "12"};
             {\ar_{\eta_X} "00" ; "01"};
@@ -2150,23 +2021,19 @@ satisfying the following axioms.
             {\ar_{\alpha} "01" ; "02"};
             {\ar_{f} "02" ; "12"};
             {\ar^{\beta} "11" ; "12"};
-            %
             {\ar@{=>}^{\bar{f}} (15,-25.5) ; (15,-29.5)};
             {\ar@{=>}^{\Psi_{\eta}} (25,-17) ; (25,-21)};
-            %
             (50,0)*+{X}="30";
             (70,0)*+{Y}="40";
             (50,-20)*+{TX}="31";
             (60,-35)*+{X}="32";
             (80,-35)*+{Y}="42";
-           %
             {\ar^{f} "30" ; "40"};
             {\ar_{\eta_X} "30" ; "31"};
             {\ar_{\alpha} "31" ; "32"};
             {\ar_{f} "32" ; "42"};
             {\ar@/^1.5pc/^{1_X} "30" ; "32"};
             {\ar@/^1.5pc/^{1_Y} "40" ; "42"};
-           %
             {\ar@{=>}^{\Phi_{\eta}} (55,-17) ; (55,-21)};
         \endxy
         \]
@@ -2189,27 +2056,22 @@ Let $(f, \overline{f}), (g, \overline{g}):X \rightarrow Y$ be pseudomorphisms of
             (30,0)*+{TY}="10";
             (0,-20)*+{X}="01";
             (30,-20)*+{Y}="11";
-            %
             {\ar@/^1.5pc/^{Tf} "00" ; "10"};
             {\ar_{Tg} "00" ; "10"};
             {\ar^{\beta} "10" ; "11"};
             {\ar_{\alpha} "00" ; "01"};
             {\ar_{g} "01" ; "11"};
-            %
             {\ar@{=>}^{T \gamma} (13.5,5.5) ; (13.5,1.5)};
             {\ar@{=>}^{\overline{g}} (13.5,-8) ; (13.5,-12)};
-            %
             (60,0)*+{TX}="x00";
             (90,0)*+{TY}="x10";
             (60,-20)*+{X}="x01";
             (90,-20)*+{Y}="x11";
-            %
             {\ar^{Tf} "x00" ; "x10"};
             {\ar^{\beta} "x10" ; "x11"};
             {\ar_{\alpha} "x00" ; "x01"};
             {\ar^{f} "x01" ; "x11"};
             {\ar@/_1.5pc/_{g} "x01" ; "x11"};
-            %
             {\ar@{=>}^{\gamma} (75,-21.5) ; (75,-25.5)};
             {\ar@{=>}^{\overline{f}} (75,-8) ; (75,-12)};
             {\ar@{=} (42.75,-10) ; (46.75,-10)};
@@ -2252,40 +2114,12 @@ A proof of the first statement follows from our proof of the second by inserting
             (0,0)*+{\alpha_n \colon P(n) \times_{\Lambda(n)} X^n}="00";
             (35,0)*+{\underline{P}(X)}="10";
             (55,0)*+{X.}="20";
-            %
             {\ar@{^{(}->} "00" ; "10"};
             {\ar^{\alpha} "10" ; "20"};
         \endxy
     \]
 The isomorphisms $\phi_{k_1,\ldots,k_n}$ are defined using $\Phi$ as in the following diagram
-%\[
-%         \xy
-%                    (0,0)*+{\scriptstyle P(n) \times \prod_{i=1}^n \left(P(k_i) \times_{\Lambda_{k_i}} X^{k_i}\right)}="00";
-%                    (0,-15)*+{\scriptstyle P(n) \times \prod_{i=1}^n P(k_i) \times X^{\Sigma_{i=1}^n k_i}}="01";
-%                    (0,-30)*+{\scriptstyle P(\Sigma_{i=1}^n k_i) \times_{\Lambda_{\Sigma k_i}} X^{k_1 + \ldots + k_n}}="02";
-%                    (80,-30)*+{\scriptstyle X}="22";
-%                    (80,0)*+{\scriptstyle P(n) \times_{\Lambda_n} X^n}="20";
-%                    %
-%                    (40,0)*+{\scriptstyle P_n \times_{\Lambda_{n}} \underline{P}(X)^n}="10";
-%                    (40,-15)*+{\scriptstyle \underline{P}^2(X)}="11";
-%                    (40,-30)*+{\scriptstyle \underline{P}(X)}="12";
-%                    (80,-15)*+{\scriptstyle \underline{P}(X)}="21";
-%                    %
-%                    {\ar_{} "00" ; "01"};
-%                    {\ar_{\mu^P \times 1} "01" ; "02"};
-%                    {\ar@{^{(}->} "00" ; "10"};
-%                    {\ar@{^{(}->} "10" ; "11"};
-%                    {\ar@{^{(}->} "02" ; "12"};
-%                    {\ar@{^{(}->} "20" ; "21"};
-%                    {\ar^{1 \times \alpha^n} "10" ; "20"};
-%                    {\ar^{\alpha} "21" ; "22"};
-%                    {\ar_{\alpha} "12"; "22"};
-%                    {\ar_{\mu_x} "11" ; "12"};
-%                    {\ar^{\underline{P}\alpha} "11" ; "21"};
-%                    %
-%                    {\ar@{=>}^{\Phi} (60,-20.5) ; (60,-24.5)};
-%                \endxy
-%    \]
+
 	\[
 		\xy
 			(-10,0)*+{\scriptstyle P_n \times \prod_{i=1}^n\left(P_{k_i} \times X^{k_i}\right)}="00";
@@ -2301,7 +2135,6 @@ The isomorphisms $\phi_{k_1,\ldots,k_n}$ are defined using $\Phi$ as in the foll
             (30,-30)*+{\scriptstyle P_{\Sigma k_i} \times_{\Lambda_{\Sigma k_i}} X^{\Sigma k_i}}="12";
             (60,-30)*+{\scriptstyle \underline{P}(X)}="23";
             (90,-30)*+{\scriptstyle X}="33";
-            %
             {\ar "00" ; "10"};
             {\ar "00" ; "01"};
             {\ar_{\mu^P \times 1} "01" ; "02"};
@@ -2317,7 +2150,6 @@ The isomorphisms $\phi_{k_1,\ldots,k_n}$ are defined using $\Phi$ as in the foll
             {\ar^{\alpha} "32" ; "33"};
             {\ar "02" ; "12"};
             {\ar@{^{(}->} "12" ; "23"};
-            %
             {\ar@{=>}^{\Phi} (75,-20.5) ; (75,-24.5)};
         \endxy
     \]
@@ -2334,7 +2166,6 @@ For a $1$-cell $(f,\overline{f}) \colon (X, \alpha) \rightarrow (Y, \beta)$, we 
             (0,-15)*+{P(n) \times_{\Lambda(n)} Y^n}="01";
             (30,-15)*+{\underline{P}(Y)}="11";
             (60,-15)*+{Y}="21";
-            %
             {\ar@{^{(}->} "00" ; "10"};
             {\ar^{\alpha} "10" ; "20"};
             {\ar_{1 \times f^n} "00" ; "01"};
@@ -2345,7 +2176,6 @@ For a $1$-cell $(f,\overline{f}) \colon (X, \alpha) \rightarrow (Y, \beta)$, we 
             {\ar "-10" ; "00"};
             {\ar "-11" ; "01"};
             {\ar_{1 \times f^n} "-10" ; "-11"};
-            %
             {\ar@{=>}^{\overline{f}} (45,-5.5) ; (45,-9.5)};
         \endxy
     \]
@@ -2358,7 +2188,6 @@ For there to be an isomorphism of $2$-categories, we require an inverse to $R$, 
             (0,0)*+{P(n) \times_{\Lambda(n)} X^n}="00";
             (30,0)*+{\underline{P}(X)}="10";
             (30,-15)*+{X}="11";
-            %
             {\ar "-10" ; "00"};
             {\ar^{\alpha_n} "00" ; "11"};
             {\ar@{^{(}->} "00" ; "10"};
@@ -2395,60 +2224,15 @@ together with isomorphisms instead of the standard algebra axioms.  For example,
                     (35,0)*+{\scriptstyle Q(n) \times \prod_i Q(k_i)}="10";
                     (0,-15)*+{\scriptstyle P(\Sigma k_i)}="01";
                     (35,-15)*+{\scriptstyle Q(\Sigma k_i)}="11";
-                    %
                     {\ar^{F_n \times \prod_i F_{k_i}} "00" ; "10"};
                     {\ar^{\mu^Q} "10" ; "11"};
                     {\ar_{\mu^P} "00" ; "01"};
                     {\ar_{F_{\Sigma k_i}} "01" ; "11"};
-                    %
                     {\ar@{=>}^{\psi_{k_1,\ldots,k_n}} (15,-5.5) ; (15,-9.5)};
                 \endxy
             \]
 These isomorphisms are then required to satisfy their own axioms, and these ensure that we have a weak map of 2-monads $\underline{P} \Rightarrow \underline{Q}$.  In particular, one can show that a pseudomorphism from $P$ into the endomorphism operad $\mathcal{E}_X$ produces pseudoalgebras for the operad $P$ using the closed structure on $\mb{Cat}$.  While abstractly pleasing, we do not pursue this argument any further here.
 \end{rem}
-
-
-
-
-%\begin{Defi}
-%Let $P$ be a $\Lambda$-operad.
-%\begin{itemize}
-%\item A \textit{strict $P$-algebra} is just an algebra for the operad $P$ in the usual sense.
-%\item Similarly, a \textit{strict morphism} is just a morphism of $P$-algebras in the usual sense.
-%\item Let $f,g:X \rightarrow Y$ be strict morphisms between strict $P$-algebras.  A \textit{$P$-transformation} is then a natural transformation $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds, for all $n$.
-%    \[
-%        \xy
-%            (0,0)*+{P_n \times X^n}="00";
-%            (30,0)*+{P_n \times Y^n}="10";
-%            (0,-20)*+{X}="01";
-%            (30,-20)*+{Y}="11";
-%            %
-%            {\ar@/^1.5pc/^{1 \times f^n} "00" ; "10"};
-%            {\ar_{1 \times g^n} "00" ; "10"};
-%            {\ar^{\tilde{\beta}_n} "10" ; "11"};
-%            {\ar_{\tilde{\alpha}_n} "00" ; "01"};
-%            {\ar_{f} "01" ; "11"};
-%            %
-%            {\ar@{=>}^{1 \times \gamma^n} (13.5,5.5) ; (13.5,1.5)};
-%                        %
-%            (60,0)*+{P_n \times X^n}="x00";
-%            (90,0)*+{P_n \times Y^n}="x10";
-%            (60,-20)*+{X}="x01";
-%            (90,-20)*+{Y}="x11";
-%            %
-%            {\ar^{1 \times f^n} "x00" ; "x10"};
-%            {\ar^{\tilde{\beta}_n} "x10" ; "x11"};
-%            {\ar_{\tilde{\alpha}_n} "x00" ; "x01"};
-%            {\ar^{f} "x01" ; "x11"};
-%            {\ar@/_1.5pc/_{g} "x01" ; "x11"};
-%            %
-%            {\ar@{=>}^{\gamma} (75,-21.5) ; (75,-25.5)};
-%                        {\ar@{=} (42.75,-10) ; (46.75,-10)};
-%        \endxy
-%    \]
-%\end{itemize}
-%\end{Defi}
-
 
 \section{2-categorical properties of operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{sec:propofopsincat}
 
@@ -2492,7 +2276,6 @@ for which the components of the unit of the adjunction are equivalences. We focu
             (15,0)*+{C}="10";
             (0,-15)*+{B}="01";
             (15,-15)*+{D}="11";
-        %
             {\ar^{f} "00" ; "10"};
             {\ar^{r} "10" ; "11"};
             {\ar_{l} "00" ; "01"};
@@ -2506,27 +2289,21 @@ where $l \in \m{L}$ and $r \in {R}$, there exists a unique morphism $m \colon B 
             (15,0)*+{C}="10";
             (0,-15)*+{B}="01";
             (15,-15)*+{D}="11";
-            %
             {\ar^{f} "00" ; "10"};
             {\ar^{r} "10" ; "11"};
             {\ar_{l} "00" ; "01"};
             {\ar_{g} "01" ; "11"};
-            %
             {\ar@{=>}^{\alpha} (9.375,-5.625) ; (5.625,-9.375)};
-            %
             (22.5,-7.5)*+{=};
-            %
             (30,0)*+{A}="20";
             (45,0)*+{C}="30";
             (30,-15)*+{B}="21";
             (45,-15)*+{D}="31";
-            %
             {\ar^{f} "20" ; "30"};
             {\ar^{r} "30" ; "31"};
             {\ar_{l} "20" ; "21"};
             {\ar_{g} "21" ; "31"};
             {\ar^{m} "21" ; "30"};
-            %
             {\ar@{=>}^{\beta} (41,-8) ; (38,-12)};
         \endxy
     \]
@@ -2563,30 +2340,30 @@ Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right acti
     \]
 If this action of $G$ on $A \times B$ is free, then the category $A \times B/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $A \times_G B$.
 \end{lem}
-%\begin{proof}
-%The category $A \times_G B$ is defined as the coequalizer
-%    \[
-%        \xy
-%            (0,0)*+{A \times G \times B}="00";
-%            (30,0)*+{A \times B}="10";
-%            (60,0)*+{A \times_G B}="20";
-%            %
-%            {\ar@<1ex>^{\lambda} "00" ; "10"};
-%            {\ar@<-1ex>_{\rho} "00" ; "10"};
-%            {\ar^{\varepsilon} "10" ; "20"};
-%        \endxy
-%    \]
-%where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow A \times B/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
-%    \[
-%        [a \cdot g, b] = [(a \cdot g) \cdot g^{-1}, g \cdot b] = [a, g \cdot b].
-%    \]
-%
-%Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we get a functor $\phi \colon A \times B/G \rightarrow X$ defined by $\phi[a,b] = \chi(a,b)$. That this is well defined is clear, since
-%    \[
-%        \phi[a \cdot g, g^{-1} \cdot b] = \chi(a \cdot g, g^{-1} \cdot b) = \chi(a \cdot (gg^{-1}), b) = \chi(a, b) = \phi[a,b].
-%    \]
-%This is also unique and so we find that $A \times B/G$ satisfies the universal property of the coequalizer.
-%\end{proof}
+\begin{proof}
+The category $A \times_G B$ is defined as the coequalizer
+    \[
+        \xy
+            (0,0)*+{A \times G \times B}="00";
+            (30,0)*+{A \times B}="10";
+            (60,0)*+{A \times_G B}="20";
+            %
+            {\ar@<1ex>^{\lambda} "00" ; "10"};
+            {\ar@<-1ex>_{\rho} "00" ; "10"};
+            {\ar^{\varepsilon} "10" ; "20"};
+        \endxy
+    \]
+where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow A \times B/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
+    \[
+        [a \cdot g, b] = [(a \cdot g) \cdot g^{-1}, g \cdot b] = [a, g \cdot b].
+    \]
+
+Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we get a functor $\phi \colon A \times B/G \rightarrow X$ defined by $\phi[a,b] = \chi(a,b)$. That this is well defined is clear, since
+    \[
+        \phi[a \cdot g, g^{-1} \cdot b] = \chi(a \cdot g, g^{-1} \cdot b) = \chi(a \cdot (gg^{-1}), b) = \chi(a, b) = \phi[a,b].
+    \]
+This is also unique and so we find that $A \times B/G$ satisfies the universal property of the coequalizer.
+\end{proof}
 
 We begin our study of the cartesian property in the context of symmetric operads.
 
