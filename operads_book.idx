@@ -1,146 +1,83 @@
-\indexentry{group!symmetric|hyperpage}{7}
-\indexentry{group!braid|hyperpage}{7}
-\indexentry{group action|hyperpage}{7}
-\indexentry{group!identity|hyperpage}{7}
-\indexentry{equivalence class|hyperpage}{7}
-\indexentry{operad!symmetric|hyperpage}{7}
-\indexentry{group action!symmetric|hyperpage}{7}
-\indexentry{operad!non-symmetric|hyperpage}{8}
-\indexentry{collection!symmetric|hyperpage}{8}
-\indexentry{collection!non-symmetric|hyperpage}{9}
-\indexentry{operad!of symmetric groups|hyperpage}{9}
-\indexentry{permutation!block sum|hyperpage}{9}
-\indexentry{operad!braided|hyperpage}{10}
-\indexentry{group action!braid|hyperpage}{10}
-\indexentry{braid!block sum|hyperpage}{10}
-\indexentry{operad!maps|hyperpage}{10}
-\indexentry{operad!of braid groups|hyperpage}{10}
-\indexentry{action operad|hyperpage}{11}
-\indexentry{operad!action operad|hyperpage}{11}
-\indexentry{operad!terminal|hyperpage}{11}
-\indexentry{action operad!initial|hyperpage}{12}
-\indexentry{action operad!of symmetric groups|hyperpage}{12}
-\indexentry{action operad!terminal|hyperpage}{12}
-\indexentry{action operad!of braid groups|hyperpage}{12}
-\indexentry{action operad!of ribbon braid groups|hyperpage}{12}
-\indexentry{action operad!of cactus groups|hyperpage}{12}
-\indexentry{group!cactus|hyperpage}{12}
-\indexentry{group!ribbon braid|hyperpage}{12}
-\indexentry{operad!of ribbon braid groups|hyperpage}{12}
-\indexentry{operad!ribbon braid|hyperpage}{12}
-\indexentry{action operad!of ribbon braid groups|hyperpage}{12}
-\indexentry{action operad!of an abelian group|hyperpage}{13}
-\indexentry{action operad!maps|hyperpage}{13}
-\indexentry{action operad!category of|hyperpage}{13}
-\indexentry{action operad!kernel|hyperpage}{13}
-\indexentry{crossed simplicial group|hyperpage}{14}
-\indexentry{category!filtered|hyperpage}{18}
-\indexentry{colimit!filtered|hyperpage}{18}
-\indexentry{object!finitely presentable|hyperpage}{18}
-\indexentry{category!locally finitely presentable|hyperpage}{18}
-\indexentry{category!slice category|hyperpage}{18}
-\indexentry{collection!non-symmetric|hyperpage}{19}
-\indexentry{collection!symmetric|hyperpage}{19}
-\indexentry{action operad!limits of|hyperpage}{19}
-\indexentry{action operad!presentation|hyperpage}{19}
-\indexentry{operad!$\ML$-operad|hyperpage}{20}
-\indexentry{operad!$\ML$-operad!category of|hyperpage}{20}
-\indexentry{action operad!initial|hyperpage}{20}
-\indexentry{operad!terminal|hyperpage}{20}
-\indexentry{operad!of symmetric groups|hyperpage}{20}
-\indexentry{operad!of braid groups|hyperpage}{20}
-\indexentry{algebra!operad|hyperpage}{20}
-\indexentry{operad!algebra|hyperpage}{20}
-\indexentry{algebra!$\Lambda$-operad|hyperpage}{21}
-\indexentry{operad!algebra!category of|hyperpage}{21}
-\indexentry{operad!endomorphism operad|hyperpage}{21}
-\indexentry{monad|hyperpage}{22}
-\indexentry{operad!associated monad|hyperpage}{22}
-\indexentry{monad!maps|hyperpage}{24}
-\indexentry{monad!maps!transformation|hyperpage}{24}
-\indexentry{collection!$\ML$-collection|hyperpage}{25}
-\indexentry{collection!$\ML$-collection!category of|hyperpage}{25}
-\indexentry{collection!$\ML$-collection|hyperpage}{26}
-\indexentry{collection!convolution|hyperpage}{26}
-\indexentry{monoid!category of|hyperpage}{27}
-\indexentry{Day convolution|hyperpage}{27}
-\indexentry{colimit!copower|hyperpage}{31}
-\indexentry{$2$-monad|hyperpage}{33}
-\indexentry{algebra!pseudoalgebra|hyperpage}{34}
-\indexentry{operad!pseudoalgebra|hyperpage}{34}
+\indexentry{group!symmetric|hyperpage}{5}
+\indexentry{group!braid|hyperpage}{5}
+\indexentry{group action|hyperpage}{5}
+\indexentry{group!identity|hyperpage}{5}
+\indexentry{equivalence class|hyperpage}{5}
+\indexentry{operad!symmetric|hyperpage}{5}
+\indexentry{group action!symmetric|hyperpage}{5}
+\indexentry{operad!non-symmetric|hyperpage}{6}
+\indexentry{collection!symmetric|hyperpage}{6}
+\indexentry{collection!non-symmetric|hyperpage}{7}
+\indexentry{operad!of symmetric groups|hyperpage}{7}
+\indexentry{permutation!block sum|hyperpage}{7}
+\indexentry{operad!braided|hyperpage}{8}
+\indexentry{group action!braid|hyperpage}{8}
+\indexentry{braid!block sum|hyperpage}{8}
+\indexentry{operad!maps|hyperpage}{8}
+\indexentry{operad!of braid groups|hyperpage}{8}
+\indexentry{action operad|hyperpage}{9}
+\indexentry{operad!action operad|hyperpage}{9}
+\indexentry{operad!terminal|hyperpage}{10}
+\indexentry{action operad!initial|hyperpage}{10}
+\indexentry{action operad!of symmetric groups|hyperpage}{10}
+\indexentry{action operad!terminal|hyperpage}{10}
+\indexentry{action operad!of braid groups|hyperpage}{10}
+\indexentry{action operad!of ribbon braid groups|hyperpage}{10}
+\indexentry{action operad!of cactus groups|hyperpage}{10}
+\indexentry{group!cactus|hyperpage}{10}
+\indexentry{group!ribbon braid|hyperpage}{10}
+\indexentry{operad!of ribbon braid groups|hyperpage}{10}
+\indexentry{operad!ribbon braid|hyperpage}{10}
+\indexentry{action operad!of ribbon braid groups|hyperpage}{11}
+\indexentry{action operad!of an abelian group|hyperpage}{11}
+\indexentry{action operad!maps|hyperpage}{11}
+\indexentry{action operad!category of|hyperpage}{11}
+\indexentry{action operad!kernel|hyperpage}{11}
+\indexentry{crossed simplicial group|hyperpage}{12}
+\indexentry{category!filtered|hyperpage}{16}
+\indexentry{colimit!filtered|hyperpage}{16}
+\indexentry{object!finitely presentable|hyperpage}{16}
+\indexentry{category!locally finitely presentable|hyperpage}{16}
+\indexentry{category!slice category|hyperpage}{17}
+\indexentry{collection!non-symmetric|hyperpage}{17}
+\indexentry{collection!symmetric|hyperpage}{17}
+\indexentry{action operad!limits of|hyperpage}{17}
+\indexentry{action operad!presentation|hyperpage}{18}
+\indexentry{operad!$\ML$-operad|hyperpage}{18}
+\indexentry{operad!$\ML$-operad!category of|hyperpage}{18}
+\indexentry{action operad!initial|hyperpage}{18}
+\indexentry{operad!terminal|hyperpage}{18}
+\indexentry{operad!of symmetric groups|hyperpage}{18}
+\indexentry{operad!of braid groups|hyperpage}{18}
+\indexentry{algebra!operad|hyperpage}{19}
+\indexentry{operad!algebra|hyperpage}{19}
+\indexentry{algebra!$\Lambda$-operad|hyperpage}{19}
+\indexentry{operad!algebra!category of|hyperpage}{20}
+\indexentry{operad!endomorphism operad|hyperpage}{20}
+\indexentry{monad|hyperpage}{20}
+\indexentry{operad!associated monad|hyperpage}{20}
+\indexentry{monad!maps|hyperpage}{22}
+\indexentry{monad!maps!transformation|hyperpage}{22}
+\indexentry{collection!$\ML$-collection|hyperpage}{24}
+\indexentry{collection!$\ML$-collection!category of|hyperpage}{24}
+\indexentry{collection!$\ML$-collection|hyperpage}{24}
+\indexentry{collection!convolution|hyperpage}{24}
+\indexentry{monoid!category of|hyperpage}{25}
+\indexentry{Day convolution|hyperpage}{25}
+\indexentry{colimit!copower|hyperpage}{29}
+\indexentry{$2$-monad|hyperpage}{31}
+\indexentry{algebra!pseudoalgebra|hyperpage}{32}
+\indexentry{operad!pseudoalgebra|hyperpage}{32}
+\indexentry{algebra!strict|hyperpage}{34}
+\indexentry{algebra!pseudomorphism|hyperpage}{34}
+\indexentry{algebra!pseudoalgebra!strict morphism|hyperpage}{35}
+\indexentry{algebra!pseudomorphism!transformation|hyperpage}{35}
+\indexentry{algebra!strict!category of|hyperpage}{35}
+\indexentry{algebra!pseudoalgebra!category of|hyperpage}{35}
+\indexentry{$2$-monad!pseudoalgebra|hyperpage}{36}
+\indexentry{algebra!pseudoalgebra|hyperpage}{36}
+\indexentry{$2$-monad!algebra|hyperpage}{36}
 \indexentry{algebra!strict|hyperpage}{36}
-\indexentry{algebra!pseudomorphism|hyperpage}{36}
+\indexentry{algebra!pseudoalgebra!pseudomorphism|hyperpage}{36}
 \indexentry{algebra!pseudoalgebra!strict morphism|hyperpage}{37}
-\indexentry{algebra!pseudomorphism!transformation|hyperpage}{37}
-\indexentry{algebra!strict!category of|hyperpage}{37}
-\indexentry{algebra!pseudoalgebra!category of|hyperpage}{37}
-\indexentry{$2$-monad!pseudoalgebra|hyperpage}{38}
-\indexentry{algebra!pseudoalgebra|hyperpage}{38}
-\indexentry{$2$-monad!algebra|hyperpage}{38}
-\indexentry{algebra!strict|hyperpage}{38}
-\indexentry{algebra!pseudoalgebra!pseudomorphism|hyperpage}{38}
-\indexentry{algebra!pseudoalgebra!strict morphism|hyperpage}{39}
-\indexentry{algebra!pseudomorphism!transformation|hyperpage}{39}
-\indexentry{operad!endomorphism operad|hyperpage}{41}
-\indexentry{operad!pseudomorphism|hyperpage}{41}
-\indexentry{$2$-monad!finitary|hyperpage}{42}
-\indexentry{coherence|hyperpage}{43}
-\indexentry{factorization system!orthogonal|hyperpage}{43}
-\indexentry{factorization system!enhanced|hyperpage}{44}
-\indexentry{monad!cartesian|hyperpage}{44}
-\indexentry{$2$-monad!cartesian|hyperpage}{44}
-\indexentry{monad!cartesian!transformation|hyperpage}{45}
-\indexentry{group action!free|hyperpage}{45}
-\indexentry{|hyperpage}{45}
-\indexentry{monad!cartesian!transformation|hyperpage}{47}
-\indexentry{$2$-monad!cartesian|hyperpage}{48}
-\indexentry{$2$-monad!cartesian|hyperpage}{49}
-\indexentry{Borel|hyperpage}{49}
-\indexentry{category!translation|hyperpage}{49}
-\indexentry{group!delooping|hyperpage}{49}
-\indexentry{isofibration|hyperpage}{49}
-\indexentry{category!cocomplete symmetric monoidal|hyperpage}{51}
-\indexentry{monoidal category!cocomplete symmetric|hyperpage}{51}
-\indexentry{colimit!copower|hyperpage}{51}
-\indexentry{Day convolution|hyperpage}{52}
-\indexentry{operad!$\Lambda_{\infty}$-operad|hyperpage}{53}
-\indexentry{contractible|hyperpage}{53}
-\indexentry{operad!generalized|hyperpage}{54}
-\indexentry{monad!collection|hyperpage}{54}
-\indexentry{collection!$T$-collection|hyperpage}{54}
-\indexentry{monad!$T$-operad|hyperpage}{54}
-\indexentry{operad!$T$-operad|hyperpage}{54}
-\indexentry{club|hyperpage}{55}
-\indexentry{club!generators and relations|hyperpage}{58}
-\indexentry{monoidal category!symmetric strict|hyperpage}{59}
-\indexentry{category!permutative|hyperpage}{59}
-\indexentry{monoidal category!braided strict|hyperpage}{60}
-\indexentry{monoidal category!ribbon braided|hyperpage}{60}
-\indexentry{action operad!of cactus groups|hyperpage}{60}
-\indexentry{group!cactus|hyperpage}{60}
-\indexentry{category!coboundary|hyperpage}{60}
-\indexentry{monoidal category!coboundary category|hyperpage}{60}
-\indexentry{monoidal category!coboundary category!coboundary functor|hyperpage}{61}
-\indexentry{group!cactus|hyperpage}{62}
-\indexentry{action operad!of cactus groups|hyperpage}{62}
-\indexentry{action operad!crossed|hyperpage}{65}
-\indexentry{monoidal category!spacial|hyperpage}{66}
-\indexentry{action operad!underlying monoid|hyperpage}{68}
-\indexentry{multilinear map|hyperpage}{69}
-\indexentry{$2$-monad!strength|hyperpage}{69}
-\indexentry{$2$-monad!costrength|hyperpage}{70}
-\indexentry{$2$-monad!pseudo-commutativity|hyperpage}{70}
-\indexentry{$2$-monad!pseudo-commutativity!symmetric|hyperpage}{76}
-\indexentry{operad!$\Lambda$-operad!contractible|hyperpage}{76}
-\indexentry{monoidal category!braided strict|hyperpage}{77}
-\indexentry{operad!of braid groups|hyperpage}{77}
-\indexentry{braid!positive|hyperpage}{77}
-\indexentry{braid!minimal|hyperpage}{77}
-\indexentry{multicategory|hyperpage}{79}
-\indexentry{multicategory!$\Lambda$-multicategory|hyperpage}{79}
-\indexentry{multicategory!$\Lambda$-multifunctor|hyperpage}{80}
-\indexentry{cocompletion|hyperpage}{81}
-\indexentry{colimit!free cocompletion|hyperpage}{81}
-\indexentry{monad!in a bicategory|hyperpage}{81}
-\indexentry{monad!oplax map|hyperpage}{81}
-\indexentry{monad!maps!transformation|hyperpage}{82}
+\indexentry{algebra!pseu

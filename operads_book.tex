@@ -77,6 +77,10 @@
 \newcommand{\twocat}{\ensuremath{\textrm{2-Cat}}}
 \newcommand{\Icon}{\ensuremath{\textrm{Icon}}}
 \newcommand{\ML}{\mathbf{\Lambda}}
+\newcommand{\MLn}{\mathbf{\Lambda}_n}
+\newcommand{\MorLn}{QQQ fix later}
+\newcommand{\ELAlg}{QQQ fix later}
+\newcommand{\LL}{\Lambda}
 %\newcommand{\to}{\rightarrow}
 \def\srarrow{\relbar\joinrel\mapstochar\joinrel\rightarrow}
 %\newcommand{\id}{\ensuremath{\textnormal{id}}\xspace}
@@ -2347,7 +2351,6 @@ The category $A \times_G B$ is defined as the coequalizer
             (0,0)*+{A \times G \times B}="00";
             (30,0)*+{A \times B}="10";
             (60,0)*+{A \times_G B}="20";
-            %
             {\ar@<1ex>^{\lambda} "00" ; "10"};
             {\ar@<-1ex>_{\rho} "00" ; "10"};
             {\ar^{\varepsilon} "10" ; "20"};
@@ -2404,10 +2407,6 @@ It is easy then to see that $X$ is the coproduct of the $n=1$ cospan, and that t
 
 \begin{prop}
 Let $P$ be a symmetric operad. Then the $2$-monad $\underline{P}$ preserves pullbacks if and only if $\Sigma_{n}$ acts freely on $P(n)$\index{group action!free}\index{} for all $n$.
-%is $2$-cartesian if and only if the action of each $\Lambda(n)$ on $P(n)$ has the following property:
-%    \begin{itemize}
-%        \item if $p \in P(n)$ and $g \in \Lambda(n)$ such that $p \cdot g = p$, then $g \in ker \pi_n$, where $\pi_n \colon \Lambda(n) \rightarrow \Sigma_n$.
-%    \end{itemize}
 \end{prop}
 \begin{proof}
 Consider the following pullback of discrete categories.
@@ -2417,7 +2416,6 @@ Consider the following pullback of discrete categories.
             (40,0)*+{\lbrace y,y' \rbrace}="10";
             (0,-15)*+{\lbrace x, x' \rbrace}="01";
             (40,-15)*+{\lbrace z \rbrace}="11";
-            %
             {\ar "00" ; "10"};
             {\ar "10" ; "11"};
             {\ar "00" ; "01"};
@@ -2431,7 +2429,6 @@ Letting $\mathbf{4}$ denote the pullback and similarly writing $\mathbf{2}_X = \
             (40,0)*+{\coprod P(n) \times_{\Sigma_n} \mathbf{2}_Y^n}="10";
             (0,-15)*+{\coprod P(n) \times_{\Sigma_n} \mathbf{2}_X^n}="01";
             (40,-15)*+{\coprod P(n)/\Sigma_n}="11";
-            %
             {\ar "00" ; "10"};
             {\ar "10" ; "11"};
             {\ar "00" ; "01"};
@@ -2477,7 +2474,6 @@ Now assume that each $\Sigma_n$ acts freely on $P(n)$.  Given a pullback
             (15,0)*+{B}="10";
             (0,-15)*+{C}="01";
             (15,-15)*+{D}="11";
-            %
             {\ar^{F} "00" ; "10"};
             {\ar^{S} "10" ; "11"};
             {\ar_{R} "00" ; "01"};
@@ -2491,7 +2487,6 @@ we must show that the image of the diagram under $\underline{P}$ is also a pullb
                 (30,0)*+{P(n) \times_{\Sigma_n} B^n}="10";
                 (0,-15)*+{P(n) \times_{\Sigma_n} C^n}="01";
                 (30,-15)*+{P(n) \times_{\Sigma_n} D^n}="11";
-                %
                 {\ar^{1 \times F^n} "00" ; "10"};
                 {\ar^{1 \times S^n} "10" ; "11"};
                 {\ar_{1 \times R^n} "00" ; "01"};
@@ -2538,7 +2533,6 @@ Note that if all of the diagrams
             (20,0)*+{\underline{P}^2(1)}="10";
             (0,-15)*+{\underline{P}(X)}="01";
             (20,-15)*+{\underline{P}(1)}="11";
-            %
             {\ar^{\underline{P}^2(!)} "00" ; "10"};
             {\ar^{\mu_1} "10" ; "11"};
             {\ar_{\mu_X} "00" ; "01"};
@@ -2554,7 +2548,6 @@ are pullbacks then the outside of the diagram
             (0,-15)*+{\underline{P}(X)}="01";
             (20,-15)*+{\underline{P}(Y)}="11";
             (40,-15)*+{\underline{P}(1)}="21";
-            %
             {\ar^{\underline{P}^2(f)} "00" ; "10"};
             {\ar^{\underline{P}^2(!)} "10" ; "20"};
             {\ar^{\mu_{1}} "20" ; "21"};
@@ -2571,7 +2564,6 @@ is also a pullback and so each of the naturality squares for $\mu$ must therefor
             (60,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(P(k_i) / \Sigma_{k_i}\right)}="10";
             (0,-20)*+{P(n) \times_{\Sigma_{n}} X^n}="01";
             (60,-20)*+{P(n) / \Sigma_{n}}="11";
-            %
             {\ar "00" ; "10"};
             {\ar "00" ; "01"};
             {\ar "01" ; "11"};
@@ -2603,32 +2595,6 @@ Now applying the induced functor we find that we get back an object in the pullb
     \]
 which is what we started with. Showing the other composite is an identity is similar, here using the fact that the identity acts trivially on $\mu^P(q;p_1,\ldots,p_n)$. Taking the coproduct of these squares then gives us the original diagram that we wanted to show was a pullback and, since each individual square is a pullback, so is the original.
 \end{proof}
-
-%\begin{proof}
-%Assume that, for some $n \in \mathbb{N}$, the action $P(n) \times \Sigma_n \rightarrow P(n)$ is non-free. Find $p \in P(n)$ and a non-identity element $\sigma \in \Sigma_n$ such that $p \cdot \sigma = p$. We will show that the naturality square for $\mu$ at the unique morphism $\mathbf{2} \rightarrow \mathbf{1}$ is not a pullback. Since $\mathbf{2}$ has two elements, an element of $\underline{P}(\mathbf{2})$ is an equivalence class $[p; v_1, \ldots, v_n]$ where we think of each $v_i$ as being either a $0$ or a $1$
-%
-%Take $q_i \in P(m_i)$ for each $1 \leq i \leq n$, ensuring that $q_k$ and $q_{\sigma^{-1}(k)}$ are distinct but in the same $P(m_i)$, and suppose that $k$ is permuted by the permutation $\sigma$. There are two distinct elements in $\underline{P}^2(\mathbf{2})$ which are mapped to the same elements in $\underline{P}^2(\mathbf{1})$ and $\underline{P}(\mathbf{2})$. The first is
-%    \[
-%        [p ; [q_1; \underline{1}], \ldots, [q_k; \underline{0}], \ldots, [q_n; \underline{1}]]
-%    \]
-%where the underlined values means a tuple consisting solely of that element. This is mapped by $\mu$ to
-%    \[
-%        [\mu^P(p;q_1, \ldots, q_n); \underline{1}, \ldots, \underline{1}, \underline{0}, \underline{1}, \ldots, \underline{1}]
-%    \]
-%where the $0$'s are in the $j_{k1}^{th}$ to the $j_{km_{k}}^{th}$ positions. Under $\underline{P}^2(!)$ it is simply sent to $[p; [q_1], \ldots, [q_n]] = [p \cdot \sigma ; [q_1], \ldots, [q_n]] = [p; [q_{\sigma^{-1}(1)}], \ldots, [q_{\sigma^{-1}(n)}]]$.
-%
-%The second element is
-%    \[
-%        [p; [q_{\sigma^{-1}(1)}; \underline{1}], \ldots, [q_{\sigma^{-1}(k)};\underline{0}],\ldots,[q_{\sigma^{-1}(n)};\underline{1}]].
-%    \]
-%This is mapped by $\mu$ to
-%    \[
-%        [\mu^P(p;q_{\sigma^{-1}(1)}, \ldots, q_{\sigma^{-1}(n)});\underline{1}, \ldots, \underline{1}, \underline{0},\underline{1},\ldots,\underline{1}]
-%    \]
-%where the $0$'s are in the $j_{\sigma^{-1}(k)1}^{th}$ to the $m_{\sigma^{-1}(k)m_{\sigma^{-1}(k)}}^{th}$ positions. Under $\underline{P}^2(!)$ it is sent to the same as the previous element.
-%
-%As $p = p \cdot \sigma$ then $\mu^P(p; q_1, \ldots, q_n) = \mu^P(p; q_{\sigma^{-1}(1)}, \ldots, q_{\sigma^{-1}(n)}) \cdot \mu^{\Sigma}(\sigma; e, \ldots, e)$. It is then clear that image of the first element under $\mu$ is the same as that of the second. However, since the tuples of $0$'s originally correspond to distinct $q_i$'s then the two elements are distinct in $\underline{P}^2(\mathbf{2})$, showing that if the action is non-free then that naturality square for $\mu$ is not cartesian.
-%\end{proof}
 
 Collecting these results together gives the following corollary.
 
@@ -2703,236 +2669,15 @@ The following lemma is a straightforward verification.
 The functor $E:\mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the set of objects functor.  Therefore $E$ preserves all limits, and in particular is a symmetric monoidal functor when both categories are equipped with their cartesian monoidal structures.
 \end{lem}
 
-% We now recall the definitions of an action operad $\mb{\Lambda}$ from \cite{cg}.
-
-%Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations.  The first is the block sum of permutations which we denote by
-%\[
-%\beta: \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{\underline{k}},
-%\]
-%where $\underline{k} = \sum k_{i}$.  The second is a kind of diagonal map which is defined for any natural number $n$ together with natural numbers $k_{1}, \ldots, k_{n}$.  Then
-%\[
-%\delta = \delta_{n; k_{1}, \ldots, k_{n}}:\Sigma_{n} \rightarrow \Sigma_{\underline{k}},
-%\]
-%is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on.  The first of these, $\beta$, is a group homomorphism, while $\delta$ is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.  We now use these ideas to give the following algebraic characterization of action operads via the following definition.
-%
-%\begin{Defi}\label{Defi:aop_bl}
-%For an action operad $\mb{\Lambda}$,  define
-%\[
-%\begin{array}{rcl}
-%\beta(h_{1}, \ldots, h_{n}) &=& \mu(e; h_{1}, \ldots, h_{n}) \\
-%\delta(g) &=& \mu(g; e_{1}, \ldots, e_{n}).
-%\end{array}
-%\]
-%\end{Defi}
-%
-%\begin{nota}
-%We will denote our identity elements in groups generically as $e$. If $\{ G_{i} \}_{i \in I}$ are groups indexed by a set $I$, then $e_{i}$ is the identity element in $G_{i}$.
-%\end{nota}
-%
-%\begin{thm}\label{thm:charAOp}
-%An action operad $\mb{\Lambda}$ determines, and is determined by, the following:
-%\begin{itemize}
-%\item groups $\Lambda(n)$ together with group homomorphisms $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$,
-%\item a group homomorphism
-%\[
-%\begin{array}{rcl}
-%\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) & \stackrel{\beta}{\longrightarrow} & \Lambda(k_{1} + \cdots + k_{n}),
-%\end{array}
-%\]
-%for each $k_{1}, \ldots, k_{n}$ together with the degenerate case of $n=0$ which then is a group homomorphism $1 \to \Lambda(0)$, and
-%\item a function of sets
-%\[
-%\begin{array}{rcl}
-%\Lambda(n) & \stackrel{\delta_{n; k_{1}, \ldots, k_{n}}}{\longrightarrow} & \Lambda(k_{1} + \cdots + k_{n})
-%\end{array}
-%\]
-%for each $n, k_{1}, \ldots, k_{n}$,
-%\end{itemize}
-%subject to the axioms below.  In what we write below, we use the following notational conventions.
-%\begin{itemize}
-%\item The symbols $f,g,h$, with or without subscripts, always refer to an element of some group $\Lambda(n)$.
-%\item The symbols $j,k,m,n,p$ are all natural numbers, and $i$ is a natural number between 1 and $n$.
-%\end{itemize}
-%Axioms:
-%\begin{enumerate}
-%\item\label{eq1} The homomorphisms $\beta$ are natural with respect to the maps $\pi_{n}$, where $\underline{k} = k_{1} + \cdots + k_{n}$.
-%\[
-%\xy
-%% var defs
-%% 00    20
-%% 01    21
-%%    12(end)
-%(0,0)*+{\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) } ="00";
-%(0,-15)*+{\Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}}  } ="01";
-%(40,0)*+{\Lambda(\underline{k}) } ="20";
-%(40,-15)*+{\Sigma_{\underline{k}} } ="21";
-%% diagram
-%{\ar^{\beta} "00" ; "20"};
-%{\ar^{\pi} "20" ; "21"};
-%{\ar_{\pi_1 \times \cdots \times \pi_n} "00" ; "01"};
-%{\ar_{\beta} "01" ; "21"};
-%\endxy
-%\]
-%\item\label{eq2} The homomorphism $\beta:\Lambda(k) \to \Lambda(k)$ is the identity.
-%\item\label{eq3} The homomorphisms $\beta$ are associative in the sense that
-%\[
-%\beta(h_{11}, \ldots, h_{1j_{1}}, h_{21}, \ldots, h_{2j_{2}}, \ldots, h_{nj_{n}}) = \beta\big( \beta(h_{11}, \ldots, h_{1j_{1}}), \ldots, \beta(h_{n1}, \ldots, h_{nj_{n}}) \big)
-%\]
-%holds.
-%\item\label{eq4} The functions $\delta_{n; k_{1}, \ldots, k_{n}}$ are natural with respect to the maps $\pi_{n}$.
-%\[
-%\xy
-%% var defs
-%% 00    20
-%% 01    21
-%%    12(end)
-%(0,0)*+{\Lambda(n)} ="00";
-%(40,0)*+{\Lambda(k_{1} + \cdots + k_{n}) } ="20";
-%(0,-15)*+{\Sigma_{n}  } ="01";
-%(40,-15)*+{\Sigma_{k_{1} + \cdots + k_{n}} } ="21";
-%{\ar^{\delta} "00" ; "20"};
-%{\ar^{\pi} "20" ; "21"};
-%{\ar_{\pi} "00" ; "01"};
-%{\ar_{\delta} "01" ; "21"};
-%\endxy
-%\]
-%\item\label{eq5} The functions $\delta_{n; 1, \ldots, 1}, \, \delta_{1;n} : \Lambda(n) \to \Lambda(n)$ are the identity.
-%\item\label{eq6} The equation $\delta_{n; k_{i}}(g) \delta_{n; j_{i}}(h) = \delta_{n; j_{i}}(gh)$ holds when
-%\[
-%k_{i} = j_{\pi(h)^{-1}(i)}.
-%\]
-%\item\label{eq7} The functions $\delta$ are associative in the sense that
-%\[
-%\delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{n}}}\big( \delta_{n; m_{1}, \ldots, m_{n}}(f) \big) = \delta_{n; P_{1}, \ldots, P_{n}}(f)
-%\]
-%where $P_{i} = p_{i1} + \cdots + p_{im_{i}}$.
-%\item\label{eq8} $\delta(g) \beta(h_{1}, \ldots, h_{n}) = \beta(h_{\pi(g)^{-1}(1)}, \ldots,  h_{\pi(g)^{-1}(n)}) \delta(g)$, where $h_{i} \in \Lambda(k_{i})$ and $\delta:\Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$.
-%\item\label{eq9} The equation
-%\[
-%\beta(\delta_{1}(g_{1}), \ldots, \delta_{n}(g_{n})) = \delta_{c}(\beta(g_{1}, \ldots, g_{n}))
-%\]
-%holds, where $\delta_{i}(g_{i})$ is shorthand for $\delta_{k_{i}; m_{i1}, \ldots, m_{ik_{i}}}(g_{i})$ and $\delta_{c}$ is shorthand for
-%\[
-%\delta_{k_{1}+\cdots + k_{n}; m_{11}, m_{12}, \ldots, m_{1k_{1}}, m_{21}, \ldots, m_{nk_{n}}}.
-%\]
-%\end{enumerate}
-%\end{thm}
-%
-%\begin{proof}
-%Let $\mb{\Lambda}$ be an action operad, and define $\beta, \delta$ as in \cref{Defi:aop_bl}.  Since $\pi:\Lambda \rightarrow \Sigma$ is an operad map, axioms \eqref{eq1} and \eqref{eq4} hold.  Since $\Lambda$ is an operad of sets, axioms \eqref{eq2} and \eqref{eq5} follow from the operad unit axioms, and axioms \eqref{eq3}, \eqref{eq7}, and \eqref{eq9} follow from the operad associativity axiom.  Axioms \eqref{eq6} and \eqref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
-%
-%Given the data above, we need only define the operad multiplication, verify the operad unit and multiplication axioms,  and finally check the action operad axiom.  Multiplication is given by
-%\[
-%\mu(g; h_{1}, \ldots, h_{n}) = \delta_{n; k_{1}, \ldots, k_{n}}(g) \beta(h_{1}, \ldots, h_{n})
-%\]
-%where $h_{i} \in \Lambda(k_{i})$.  The unit is $e \in \Lambda(1)$.
-%
-%We now verify the operad unit axioms.
-%\[
-%\begin{array}{rcl}
-%\mu(e; g) & = & \delta(e)\beta(g) \\
-%& = & e \cdot g \\
-%& = & g
-%\end{array}
-%\]
-%\[
-%\begin{array}{rcl}
-%\mu(h; e, \ldots, e) & = & \delta(h)\beta(e, \ldots, e) \\
-%& = & h \cdot e \\
-%& = & h
-%\end{array}
-%\]
-%These follow from axioms \eqref{eq2} and \eqref{eq5}, together with the fact that $\beta$ is a group homomorphism.
-%
-%For the operad associativity axiom, let
-%\begin{itemize}
-%\item $f \in \Lambda(m),$
-%\item $g_{i} \in \Lambda(n_{i})$ for $i=1, \ldots, m$, and
-%\item $h_{ij} \in \Lambda(p_{i,j})$ for $i=1, \ldots, m$ and $j=1, \ldots, n_{i}$.
-%\end{itemize}
-%Further, let $P_{i} = p_{i1} + \cdots + p_{in_{i}}$ and $\underline{h_{i\bullet}}$ denote the list $h_{i1}, h_{i2}, \ldots, h_{in_{i}}$.  We must then show that
-%\[
-%\mu\big( f; \mu(g_{1}; \underline{h_{1\bullet}}), \ldots, \mu(g_{m}; \underline{h_{m\bullet}}) \big) = \mu\big( \mu (f; g_{1}, \ldots, g_{m}); h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} \big).
-%\]
-%By definition, the left side of this equation is
-%\[
-%\delta_{m; P_{1}, \ldots, P_{m}}(f) \beta\big( \mu(g_{1}; \underline{h_{1\bullet}}), \ldots, \mu(g_{m}; \underline{h_{m\bullet}}) \big),
-%\]
-%and
-%\[
-%\mu(g_{i}; \underline{h_{i\bullet}}) = \delta_{n_{i}; p_{i1}, \ldots, p_{in_{i}}}(g_{i})\beta(h_{i1}, \ldots, h_{in_{i}}).
-%\]
-%Since $\beta$ is a group homomorphism, we can then rewrite the left side as
-%\[
-%\delta(f)\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big)\beta\big(\beta(h_{1\bullet}), \ldots, \beta(h_{m\bullet})\big)
-%\]
-%where we have suppressed the subscripts on the $\delta$'s.  By axiom \eqref{eq3} , we have
-%\[
-%\beta\big(\beta(h_{1\bullet}), \ldots, \beta(h_{m\bullet})\big) = \beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}}).
-%\]
-%Further, axiom \eqref{eq9} above shows that
-%\[
-%\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big) = \delta\big(\beta(g_{1}, \ldots, g_{m})\big).
-%\]
-%Thus we have shown that the left side of the operad associativity axiom is equal to
-%\[
-%\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big)\beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}}).
-%\]
-%Now the right side is
-%\[
-%\mu\big( \mu (f; g_{1}, \ldots, g_{m}); h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} \big)
-%\]
-%which is by definition
-%\[
-%\delta\big(\mu (f; g_{1}, \ldots, g_{m})\big)\beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} ).
-%\]
-%Thus verifying the operad associativity axiom reduces to showing
-%\begin{eqn}\label{eqn:opass}
-%\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big) = \delta\big(\mu (f; g_{1}, \ldots, g_{m})\big).
-%\end{eqn}By the definition of $\mu$, we have
-%\[
-%\delta(\mu (f; g_{1}, \ldots, g_{m})) = \delta\big(\delta(f)\beta(g_{1}, \ldots, g_{m}) \big)
-%\]
-%which is itself equal to
-%\begin{eqn}\label{eqn:opass2}
-%\delta\big(\delta(f)\big) \delta\big(\beta(g_{1}, \ldots, g_{m})\big)
-%\end{eqn}by axiom \eqref{eq6} above.  Now the $\delta(f)$ on the left side of \cref{eqn:opass} uses $\delta_{n; P_{1}, \ldots, P_{n}}$, while the $\delta(\delta(f))$ in \cref{eqn:opass2} is actually
-%\[
-%\delta_{m_1 + \cdots + m_{n}; q_{ij}}(\delta_{n; m_{1}, \ldots, m_{n}} (f))
-%\]
-%where the $q_{ij}$ are defined, by axiom \eqref{eq6}, to be given by
-%\[
-%q_{ij} = p_{i,\pi(g_{i})^{-1}(j)}
-%\]
-%using the compatibility of $\beta$ and $\pi$ in axiom \eqref{eq1}.  By axiom \eqref{eq7}, this composite of $\delta$'s  is then $\delta_{n; Q_{1}, \ldots, Q_{n}}$ where $Q_{i} = q_{i1} + \cdots + q_{im_{i}}$.  But by the definition of the $q_{ij}$, we immediately see that $Q_{i} = P_{i}$, so the $\delta(f)$ in \cref{eqn:opass} is equal to the $\delta(\delta(f))$ appearing in \cref{eqn:opass2}, concluding the proof of the operad associativity axiom.
-%
-%The action operad axiom is now the calculation below, and uses axioms \eqref{eq4} and \eqref{eq8}.
-%\begin{small}
-%\[
-%\begin{array}{rcl}
-%\mu(g; h_{1}, \ldots, h_{n})\mu(g'; h_{1}', \ldots, h_{n}') & = & \delta(g) \beta(h_{1}, \ldots, h_{n}) \delta(g') \beta(h_{1}', \ldots, h_{n}') \\
-%& = & \delta(g) \delta(g') \beta(h_{\pi(g')(1)}, \ldots, h_{\pi(g')(n)})  \beta(h_{1}', \ldots, h_{n}') \\
-%& = & \delta(gg') \beta(h_{\pi(g')(1)}h_{1}', \ldots, h_{\pi(g')(n)}h_{n}') \\
-%& = & \mu(gg'; h_{\pi(g')(1)}h_{1}', \ldots, h_{\pi(g')(n)}h_{n}')
-%\end{array}
-%\]
-%\end{small}
-%\end{proof}
-
 We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which tensoring with a fixed object preserves colimits).  While the definition above gives the correct notion of a $\mb{\Lambda}$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms.  In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category.  This follows that standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower.  Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
 
 \[
 \xy
-% var defs
-% 00    20
-% 01    21
-%    12(end)
 (0,0)*+{\scriptstyle P(n) \times P(k_{1}) \times \cdots \times P(k_{n}) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) } ="00";
 (0,-15)*+{\scriptstyle P(\underline{k}) \times \Lambda(\underline{k}) } ="01";
 (70,0)*+{\scriptstyle P(n) \times P(k_{1}) \times \Lambda(k_{1}) \times \cdots \times P(k_{n}) \times  \Lambda(k_{n}) } ="20";
 (70,-15)*+{\scriptstyle P(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="21";
-(35, -25)*+{\scriptstyle P(\underline{k}) } ="12";
-% diagram
+(35, -25)*+{\scriptstyle P(\underline{k}) } ="12";% diagram
 {\ar^{\cong} "00" ; "20"};
 {\ar^{\alpha_{k_1} \times \cdots \times \alpha_{k_n}} "20" ; "21"};
 {\ar^{\mu^P} "21" ; "12"};
@@ -2940,14 +2685,8 @@ We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other
 {\ar_{\alpha_{\underline{k}}} "01" ; "12"};
 \endxy
 \]
-%Equivarience Diagram #2
 \[
 \xy
-% var defs
-% 00    20
-% 01
-% 02    21(end)
-% 03 13
 (0,0)*+{\scriptstyle P(n) \times \Lambda(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="00";
 (0,-10)*+{\scriptstyle P(n) \times \Lambda(n) \times \Lambda(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="01";
 (0,-20)*+{\scriptstyle P(n) \times \Lambda(n) \times P(k_{1}) \times \cdots \times P(k_{n}) \times \Lambda(n) } ="02";
@@ -2955,7 +2694,6 @@ We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other
 (55,-30)*+{\scriptstyle P(\underline{k}) \times \Lambda(\underline{k}) } ="13";
 (70,0)*+{\scriptstyle P(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="20";
 (70,-18)*+{\scriptstyle P(\underline{k}) } ="21";
-% diagram
 {\ar_{1 \times \Delta \times 1} "00" ; "01"};
 {\ar^{\cong} "01" ; "02"};
 {\ar_{1 \times \pi_{n} \times 1} "02" ; "03"};
@@ -3102,9 +2840,6 @@ Given $\mb{\Lambda}_{\infty}$ operads $P$, $Q$ in $\mb{Cat}$, the product $P \ti
 Once again, this proof holds in a wide context.  We required that the product of free actions is again free, true in any complete category.  We also required that the product of contractible objects is contractible; this condition will hold, for example, in any Quillen model category in which all objects are fibrant or in which the product of weak equivalences is again a weak equivalence.
 \end{rem}
 
-%\begin{cor}\label{egisinf}
-%$E\Lambda$ is $\mb{\Lambda}_{\infty}$, hence unique in the sense above.
-%\end{cor}
 % QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
 QQQ Possibly move these results to the next chapter?
 QQQ Insert explicit descriptions of cells
@@ -3147,16 +2882,12 @@ Let $C$ be a category with finite limits.
 \item Given a pair of $T$-collections $X \stackrel{x}{\rightarrow} T1, Y \stackrel{y}{\rightarrow} T1$, their \textit{composition product} $X \circ Y$ is given by the pullback below together with the morphism along the top.
     \[
 \xy
-% var defs
-% 00 10 20 30
-% 01 11
 (0,0)*+{X \circ Y} ="00";
 (15,0)*+{TY} ="10";
 (30,0)*+{T^{2}1} ="20";
 (45,0)*+{T1} ="30";
 (0,-10)*+{X} ="01";
 (15,-10)*+{T1} ="11";
-% diagram
 {\ar^{} "00" ; "10"};
 {\ar^{Ty} "10" ; "20"};
 {\ar^{\mu} "20" ; "30"};
@@ -3216,16 +2947,12 @@ To give the functor $B\pi \cn B\Lambda \to B \Sigma$ the structure of a club it 
 The monad $E\Lambda$ is always cartesian by results of \cref{sec:propofopsincat}.  The transformation $\tilde{\pi}$ is the coproduct of the maps $\tilde{\pi}_{n}$ which are induced by the universal property of the coequalizer as shown below.
 \[
 \xy
-% var defs
-% 00 10 20
-% 01 11 21
 (0,0)*+{\scriptstyle E\Lambda(n) \times \Lambda(n) \times X^n} ="00";
 (0,-10)*+{\scriptstyle E\Sigma_{n} \times \Sigma_{n} \times X^n} ="01";
 (30,0)*+{\scriptstyle E\Lambda(n) \times X^n} ="10";
 (30,-10)*+{\scriptstyle E\Sigma_{n} \times X^n} ="11";
 (60,0)*+{\scriptstyle E\Lambda(n) \times_{\Lambda(n)} X^n} ="20";
 (60,-10)*+{\scriptstyle E\Sigma_{n} \times_{\Sigma_{n}}  X^n} ="21";
-% diagram
 {\ar (12,1)*{}; (22,1)*{} };
 {\ar (12,-1)*{}; (22,-1)*{} };
 {\ar_{E\pi \times \pi \times 1} "00" ; "01"};
@@ -3242,14 +2969,10 @@ Naturality is immediate, and since $\pi$ is a map of operads $\tilde{\pi}$ also 
 It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $E\Lambda$.  Since the monads $E\Lambda$ and $E\Sigma$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
 \[
 \xy
-% var defs
-% 00 10
-% 01 11
 (0,0)*+{E\Lambda(n) \times_{\Lambda(n)} X^n} ="00";
 (0,-10)*+{B\Lambda(n)} ="01";
 (35,0)*+{E\Sigma_{n} \times_{\Sigma_{n}} X^n} ="10";
 (35,-10)*+{B\Sigma_{n}} ="11";
-% diagram
 {\ar^{} "00" ; "10"};
 {\ar^{} "10" ; "11"};
 {\ar^{} "00" ; "01"};
@@ -3261,14 +2984,10 @@ By \cref{coeq-lem}
 , this amounts to showing that the square below is a pullback.
 \[
 \xy
-% var defs
-% 00 10
-% 01 11
 (0,0)*+{E\Lambda(n) \times X^n/\Lambda(n)} ="00";
 (0,-10)*+{B\Lambda(n)} ="01";
 (35,0)*+{E\Sigma_{n} \times X^n/\Sigma_{n}} ="10";
 (35,-10)*+{B\Sigma_{n}} ="11";
-% diagram
 {\ar^{} "00" ; "10"};
 {\ar^{} "10" ; "11"};
 {\ar^{} "00" ; "01"};
@@ -3289,9 +3008,6 @@ Mapping down to $B\Lambda(n)$ gives $ge^{-1} = g$, while mapping over to $E\Sigm
 \end{proof}
 
 The club, which we now denote $K_{\mb{\Lambda}}$, associated to $E\Lambda$ has the following properties.  First, the functor $K_{\mb{\Lambda}} \rightarrow B\Sigma$ is a functor between groupoids.  Second, the functor $K_{\mb{\Lambda}} \rightarrow B\Sigma$ is  bijective-on-objects.  We claim that these properties characterize those clubs which arise from action operads.  Thus the clubs arising from action operads are very similar to PROPs \cite{mac_prop, markl_prop}.
-%In particular, this means there is an obvious transformation $i:M \Rightarrow K_{\mb{\Lambda}} \circ -$ from the 2-monad $M$ for strict monoidal categories to the club $K_{\mb{\Lambda}} \circ -$; this transformation commutes with the monad structures (i.e., is a map of clubs), and in fact factors the transformation $M \Rightarrow S$ from the strict monoidal category 2-monad to the symmetric strict monoidal category 2-monad $S$ (which is in fact the club $K_{\mb{\Sigma}}$). Note that $M$ is actually the club $K_{\mb{T}}$ given by the initial action operad $\mb{T}$ consisting of only trivial groups.
-
-
 
 \begin{thm}\label{thm:club=operad}
 Let $K$ be a club such that
@@ -3314,38 +3030,7 @@ First, we give the group homomorphism $\beta$ using \cref{nota:clubmult}.  Defin
 \]
 where here $e_{i}$ is the identity morphism of $k_{i}$ in $K$.
 
-%Let $M$ be the natural numbers as a discrete category.  We can give $M$ the structure of a club by including it as the objects of $B \Sigma$; the $M$-algebras are just strict monoidal categories.  Now $K$ also has the natural numbers as its set of objects, and including $M$ into $K$ is easily checked to be a map of clubs.  Therefore every $K$-algebra has an underlying strict monoidal category and as $K$ is itself a $K$-algebra, we let $\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) \stackrel{\beta}{\longrightarrow} \Lambda(k_{1} + \cdots + k_{n})$ be given by the $n$-fold tensor product of morphisms.  Since tensor is a functor, this function is a group homomorphism.  Using the language of clubs, a morphism in $M \circ K$ has source and target $k_{1} + \cdots + k_{m}$ (here the sum is formal) and is given by morphisms $g_{i}: k_{i} \rightarrow k_{i}$.  The $M$-algebra on $K$ then evaluates this to a morphism $\sum k_{i} \rightarrow \sum k_{i}$ (here we use an actual sum), and that is the morphism denoted $g_{1} \otimes \cdots \otimes g_{m}$ using the strict monoidal structure.
-
-%Second, we give the function $\delta: \Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$.  Since $K$ has the same objects as $B \Sigma$, the free $K$-algebra on a category $X$ will have the same objects as the free symmetric strict monoidal category on $X$; these are merely finite strings of objects of $X$.  Then for any $g \in \Lambda(n)$ with $\pi(g) = \sigma$, we get an isomorphism
-%\[
-%\overline{g}:x_{1} \otimes \cdots \otimes x_{n} \rightarrow x_{\sigma^{-1}(1)} \otimes \cdots \otimes %x_{\sigma^{-1}(n)}
-%\%]
-%using the universal property of the pullback defining $K \circ X$.  In particular, the natural numbers $k_{1}, \ldots, %k_{n}$ are objects of $K$, so for any $g \in \Lambda(n)$ we get a morphism
-%\[
-%k_{1} + \cdots + k_{n} \stackrel{\overline{g}}{\longrightarrow} k_{\sigma^{-1}(1)} + \cdots + k_{\sigma^{-1}(n)}.
-%\]
-%This is the morphism in $K$ produced by evaluating the club multiplication $K \circ K \rightarrow K$ on the morphism in the pullback determined by the pair consisting of $g$ and $[e; k_{1}, \ldots, k_{n}] \cong [\pi(g); k_{1}, \ldots, k_{n}]$.  This gives a function $\Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$ by $g \mapsto \delta_{n; k_{1}, \ldots, k_{n}}(g) := \overline{g}$, and as before this will be $\mu(g; e_{1}, \ldots, e_{n})$ in the action operad.
-
 There are now nine axioms to verify in \cref{thm:charAOp}.  The club multiplication functor is a map of collections, so a map over $B\Sigma$; this fact immediately implies that axioms \eqref{eq1} (using morphisms in $K \circ K$ with only $g_{i}$ parts) and \eqref{eq4} (using morphisms in $K \circ K$ with only $f$ parts) hold.  The mere fact that multiplication is a functor also implies axioms \eqref{eq6} (once again using morphisms with only $f$ parts) and \eqref{eq8} (by considering the composite of a morphism with only an $f$ with a morphism with only $g_{i}$'s).  Axiom \eqref{eq2} is the equation $e_{1}(g) = g$ which is a direct consequence of the unit axiom for the club $K$; the same is true of axiom \eqref{eq5}.  Axioms \eqref{eq3}, \eqref{eq7},  and \eqref{eq9} all follow from the associativity of the club multiplication.
-
-
-%Now we must check that these homomorphisms $\beta, \delta$ satisfy three axioms.  Using the club maps $M \rightarrow K \rightarrow  B\Sigma$ discussed above, it is easy to see that $K \rightarrow B\Sigma$ is a strict monoidal functor; this immediately implies the axiom involving $\beta$'s and $\pi$'s.  The axiom involving $\delta$'s and $\pi$'s holds by construction.  Finally, the axiom involving both $\beta$ and $\delta$ is a direct consequence of $K \circ X$ being defined by pullback, and hence each isomorphism $\overline{g}$ being natural in the obvious sense.  Thus by Lemma \ref{charAOp}, the groups $\Lambda(n)$ have the structure of an action operad.
-
-%Now the underlying category of the club $K$ is the disjoint union $\coprod B\Lambda(n)$ by definition, so $K \cong K_{\mb{\Lambda}}$ as categories.  We must only check that this isomorphism commutes with the club structures.  Now a club structure is nothing more than a monoid structure for $\circ$, so we check the axioms for $K \cong K_{\mb{\Lambda}}$ to be an isomorphism of monoids.  The unit for $K$ is the map $1 \rightarrow K$ picking out the natural number $1$, and the same holds for $K_{\mb{\Lambda}}$, so the unit axiom for a monoid homomorphism holds. The multiplication axiom is that the following diagram commutes.
-%\[
-%mult axiom
-%\]
-%First, it is clear that this diagram commutes on objects, as both vertical legs are given by addition of natural numbers and both horizontal legs are the identity on objects.  A morphism in $K \circ K$ has source and target of the form $k_{1} + \cdots + k_{m}$, and can be identified with the following data using the description as a pullback:
-%\begin{itemize}
-%\item an element $\sigma \in \Sigma_{n}$ where $n = k_{1} + \cdots + k_{m}$,
-%\item an element $g \in K(n,n)$ such that $\pi(g) = \sigma$, and
-%\item morphisms $h_{i}:k_{i} \rightarrow k_{i}$ in $K$.
-%\end{itemize}
-%The multiplication map for $K$ as a club then produces a morphism $g(h_{1}, \ldots, h_{m}) \in K(n,n)$.  By functoriality of multiplication and the definition of the pullback, this is also equal to
-%\[
-%g(e_{1}, \ldots, e_{n}) \circ e_{n}(h_{1}, \ldots, h_{m}),
-%\]
-%which is immediately seen to be the formula for the operad composition for $\mb{\Lambda}$, hence also the multiplication for the club $K_{\mb{\Lambda}}$.  Therefore $K \cong K_{\mb{\Lambda}}$ as clubs.
 
 Finally, we would like to show that this gives a full and faithful embedding $K_{-}:\mb{AOp} \rightarrow \mb{Club}$\nomenclature[C]{$\mb{Club}$}{of clubs and morphisms between clubs} of the category of action operads into the category of clubs.  Let $f, f':\mb{\Lambda} \rightarrow \mb{\Lambda'}$ be maps between action operads.  Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$.  But these functors are nothing more than the coproducts of the functors
 \[
@@ -3581,21 +3266,7 @@ Let $s_{p_{i}, q_{i}} \in J_{k_{i}}$.  Let $r_{i} = k_{1} + k_{2} + \cdots + k_{
 \beta(s_{p_{1}, q_{1}}, \ldots, s_{p_{n}, q_{n}}) = s_{p_{1}, q_{1}} s_{p_{2}+r_{2}, q_{2}+r_{2}} \cdots s_{p_{n}+r_{n}, q_{n}+r_{n}}.
 \]
 Note that $s_{p_{i}+r_{i}, q_{i}+r_{i}}$ and $s_{p_{j}+r_{j}, q_{j}+r_{j}}$ are disjoint when $i \neq j$.
-%
-%Denote the element $(s_{p_{1}, q_{1}}, \ldots, s_{p_{n}, q_{n}})$ by $\overline{s}$.  This disjointness property shows that $\beta(\overline{s})^{2} = e$.  Furthermore, let $\overline{t} = (s_{u_{1}, v_{1}}, \ldots, s_{u_{n}, v_{n}})$ be another element in the domain of $\beta$.  We say that $\overline{s}$ and $\overline{t}$ are disjoint when $s_{p_{i}, q_{i}}$ and $s_{u_{i}, v_{i}}$ are disjoint for all $i$.  Then the disjointness property of $\beta$ ensures that
-%\[
-%\beta(\overline{s})\beta(\overline{t}) = \beta(\overline{t})\beta(\overline{s})
-%\]
-%when $\overline{s}$ and $\overline{t}$ are disjoint.  Now if $p_{i}<q_{i}$ contains $u_{i}<v_{i}$, then $s_{p_{i},q_{i}}s_{u_{i},v_{i}} = s_{a_{i},b_{i}}s_{p_{i},q_{i}}$ where
-%\begin{itemize}
-%\item $a_{i} = \hat{s}_{p_{i},q_{i}}(v_{i})$ and
-%\item $b_{i} = \hat{s}_{p_{i},q_{i}}(u_{i})$.
-%\end{itemize}
-%Thus if $\overline{s}$ contains $\overline{t}$ in each component, then
-%\[
-%\beta(\overline{s})\beta(\overline{t}) = \beta(\overline{T})\beta(\overline{s})
-%\]
-%where $\overline{T} = (s_{a_{1}, b_{1}}, \ldots, s_{a_{n}, b_{n}})$.
+
 It is easy to check that this disjointness property ensures that $\beta$ gives a well-defined group homomorphism
 \[
 J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{\underline{k}}.
@@ -3678,10 +3349,6 @@ All of the terms coming from an $m_{p_{ij}}$ can be collected together, and sinc
 m_{P_{1} + \cdots P_{n}} \cdot \beta \big( m_{P_{1}}, \ldots,  m_{P_{n}} \big)
 \]
 which is the right hand side of axiom \eqref{eq9} as desired.
-
-
-
-%To show that $\delta$ gives a group homomorphism, we must check three equations.  The first is that $\delta(s_{p,q})^{2} = e$.  Since $\beta$ is a group homomorphism, this reduces to showing that $M^{2}=e$ using our first definition above.
 \end{proof}
 
 \begin{lem}
@@ -3865,7 +3532,6 @@ This section gives conditions sufficient to equip the 2-monad $\underline{P}$ in
 expressing that $\otimes$ gives a closed monoidal structure which represents the multicategory of multilinear maps.  Moreover, the adjunction between $\mb{Vect}$ and $\mb{Sets}$ respects all of this structure in the appropriate way.  This incredibly rich interplay between the tensor product, the internal mapping space, and the multicategory of multilinear maps all arises from the free vector space monad on $\mb{Sets}$ being a \textit{commutative} monad \cite{kock-monads, kock-closed, kock-strong}.  The notion of a pseudo-commutative 2-monad \cite{HP} is then a generalization of this machinery to a 2-categorical context, and can be viewed as a starting point for importing tools from linear algebra into category theory.
 
 The aim of this section is to give conditions that ensure that the 2-monad $\underline{P}$ associated to a $\ML$-operad $P$ has a pseudo-commutative structure. We give the definition of pseudo-commutativity as in \cite{HP} but before doing so we require the definition of a strength for a $2$-monad.
-%
 \begin{Defi}
 A \textit{strength}\index{$2$-monad!strength} for an endo-$2$-functor $T \colon \m{K} \rightarrow \m{K}$ on a 2-category with products and terminal object $1$ consists of a $2$-natural transformation $d$ with components
     \[
@@ -3939,7 +3605,7 @@ given by essentially the same formula:
 \]
 The strength for the $\Lambda$-equivariant $P$ is just the induced functor between coequalizers.
 \end{rem}
-%
+
 \begin{Defi}
     Given a $2$-monad $T \colon \m{K} \rightarrow \m{K}$ with strength $d$ and costrength $d^{\ast}$, a \textit{pseudo-commutativity}\index{$2$-monad!pseudo-commutativity} consists of an invertible modification $\gamma$ with components
         \[
@@ -3950,15 +3616,12 @@ The strength for the $\Lambda$-equivariant $P$ is just the induced functor betwe
                 (0,-15)*+{T(TA \times B)}="01";
                 (30,-15)*+{T^2(A \times B)}="11";
                 (60,-15)*+{T(A \times B)}="21";
-                %
                 {\ar^{d^{\ast}_{A,TB}} "00" ; "10"};
                 {\ar^{Td_{A,B}} "10" ; "20"};
                 {\ar^{\mu_{A \times B}} "20" ; "21"};
-               %
                 {\ar_{d_{TA,B}} "00" ; "01"};
                 {\ar_{Td^{\ast}_{A,B}} "01" ; "11"};
                 {\ar_{\mu_{A \times B}} "11" ; "21"};
-                %
                 {\ar@{=>}^{\gamma_{A,B}} (30,-5.5) ; (30,-9.5)};
             \endxy
         \]
@@ -3984,7 +3647,6 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
                     (30,-30)*+{\scriptstyle T(TA \times B)}="12";
                     (60,-30)*+{\scriptstyle T^2(A \times B)}="22";
                     (90,-30)*+{\scriptstyle T(A \times B)}="32";
-                    %
                     {\ar^{d^{\ast}_{TA,TB}} "00" ; "10"};
                     {\ar^{Td^{\ast}_{A,TB}} "10" ; "20"};
                     {\ar^{T^2 d_{A,B}} "20" ; "30"};
@@ -4000,7 +3662,6 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
                     {\ar_{\mu_{TA \times B}} "02" ; "12"};
                     {\ar_{Td^{\ast}_{A,B}} "12" ; "22"};
                     {\ar_{\mu_{A \times B}} "22" ; "32"};
-                    %
                     {\ar@{=>}^{T\gamma_{A,B}} (60,-5.5) ; (60,-9.5)};
                     {\ar@{=>}^{\gamma_{TA,B}} (12.5,-13) ; (12.5,-17)};
                 \endxy
@@ -4020,7 +3681,6 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
                     (0,-45)*+{\scriptstyle T^3(A \times B)}="03";
                     (30,-45)*+{\scriptstyle T^2(A \times B)}="13";
                     (60,-45)*+{\scriptstyle T(A \times B)}="23";
-                    %
                     {\ar^{d^{\ast}_{A,T^2B}} "00" ; "10"};
                     {\ar^{Td_{A,TB}} "10" ; "20"};
                     {\ar_{d_{TA,TB}} "00" ; "01"};
@@ -4036,24 +3696,19 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
                     {\ar^{\mu_{A \times B}} "22" ; "23"};
                     {\ar_{T\mu_{A \times B}} "03" ; "13"};
                     {\ar_{\mu_{A \times B}} "13" ; "23"};
-                    %
                     {\ar@{=>}^{T\gamma_{A,B}} (13,-28) ; (13,-32)};
                     {\ar@{=>}^{\gamma_{A,TB}} (30,-5.5) ; (30,-9.5)};
                 \endxy
             \]
     \end{enumerate}
 \end{Defi}
-%
+
 \begin{rem}
     It is noted in \cite{HP} that this definition has some redundancy and therein it is shown that any two of the strength axioms immediately implies the third. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold, as well as the following associativity axiom:
         \[
             \gamma_{A,B \times C} \circ (1_{TA} \times \gamma_{B,C}) = \gamma_{A \times B,C} \times (\gamma_{A,B} \times 1_{TC}).
         \]
 \end{rem}
-%
-
-
-
 
 We need some notation before stating our main theorem.  Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two lists.  Then the set $\{ (a_{i}, b_{j})\}$ has $mn$ elements, and two natural lexicographic orderings.  One of these we write as $\underline{(a, \underline{b})}$, and it has the order given by
 \[
@@ -4127,7 +3782,6 @@ These must satisfy the following:
                     (0,-45)*+{\mu\Big(\mu(p;\underline{r}) \cdot t_{n,l} ; \underline{q_1,\ldots,q_n}\Big)}="03";
                     (60,-60)*+{\mu\Big(r;\underline{\mu(p;q_1,\ldots,q_n)}\Big)}="13";
                     (0,-60)*+{\mu\Big(\mu(r,\underline{p});\underline{q_1,\ldots,q_n}\Big)}="04";
-                    %
                     {\ar@{=} "00" ; "10"};
                     {\ar@{=} "00" ; "01"};
                     {\ar@{=} "10" ; "11"};
@@ -4151,13 +3805,11 @@ These must satisfy the following:
                         (60,-30)*+{\mu\Big(p;\underline{\mu(q;r_1,\ldots,r_m)}\Big) \cdot t_{N,l}}="12";
                         (60,-45)*+{\mu\Big(\mu(q;r_1,\ldots,r_m); \underline{\underline{p}}\Big)}="13";
                         (60,-60)*+{\mu\Big(q;\underline{\mu(r_i;\underline{p})}\Big)}="14";
-                        %
                         {\ar@{=} "00" ; "10"};
                         {\ar@{=} "10" ; "11"};
                         {\ar@{=} "11" ; "12"};
                         {\ar^{\lambda_{p,\mu(q;r_1,\ldots,r_m)}} "12" ; "13"};
                         {\ar@{=} "13" ; "14"};
-                        %
                         {\ar_{\mu(\lambda_{p,q};1) \cdot 1} "00" ; "01"};
                         {\ar@{=} "01" ; "02"};
                         {\ar@{=} "02" ; "03"};
@@ -4166,38 +3818,6 @@ These must satisfy the following:
                 \]
     \end{enumerate}
 \end{thm}
-%\begin{proof}
-%We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$.  Such a transformation $\gamma_{A,B}$ has components with source
-%\[
-%[\mu(p; \underline{q}); \underline{(x, \underline{y})}]
-%\]
-%and target
-%\[
-%[\mu(q; \underline{p}); \underline{(\underline{x},y)}].
-%\]
-%These are given by the isomorphisms
-%    \[
-%       (\gamma_{A,B})_{[p;a_1,\ldots,a_n],[q;b_1,\ldots,b_m]} = [\lambda_{p,q},\underline{1}],
-%    \]
-%    by which we mean the composite
-%    \[
-%    [\mu(p; \underline{q}); \underline{(x, \underline{y})}] = [\mu(p; \underline{q}) \cdot t_{m,n}; t_{m,n}^{-1} \cdot \underline{(x, \underline{y})}] \stackrel{[\lambda, 1]}{\longrightarrow} [\mu(q; \underline{p}); \underline{(\underline{x},y)}].
-%    \]
-%In the case that either $p$ or $q$ is an identity then we choose the component of $\gamma$ to be the isomorphism involving the appropriate identity element, as assumed to exist in the statement of the theorem.
-%There are two things to note about the definition above before we continue.  First, it is easy to check that
-%\[
-%t_{m,n}^{-1} \cdot \underline{(x, \underline{y})} = \underline{(\underline{x},y)}
-%\]
-%since $\pi(t_{m,n}) = \tau_{m,n}$.  Second, the morphism above has second component the identity.  This is actually forced upon us by the requirement that $\gamma$ be a modification:  in the case that $A,B$ are discrete categories, the only possible morphism is an identity, and the modification axiom then forces that statement to be true for general $A,B$ by considering the inclusion $A_{0} \times B_{0} \hookrightarrow A \times B$ where $A_{0}, B_{0}$ are the discrete categories with the same objects as $A, B$.
-%
-%We show that this is a modification by noting that it does not rely on objects in the lists $a_1, \ldots, a_n$ or $b_1, \ldots, b_m$, only on their lengths and the operations $p$ and $q$. As a result, if we have functors $f \colon X \rightarrow X'$ and $g \colon Y \rightarrow Y'$, then it is clear that
-%    \[
-%        (\underline{P}(f\times g) \circ \gamma_{X,Y})_{[p;\underline{x}],[q;\underline{y}]} = [\lambda_{p,q},\underline{1}] = (\gamma_{X',Y'} \circ (\underline{P}f\times \underline{P}g))_{[p;\underline{x}],[q;\underline{y}]}.
-%    \]
-%As such we can simply write $(\gamma_{X,Y})_{[p;\underline{x}],[q;\underline{y}]}$ in shorthand as $\gamma_{p,q}$.
-%
-%The three strength axioms are immediately satisfied, again since $\gamma_{p,q}$ has no dependence on the objects in the lists and as such the isomorphisms are the same. The unit axioms follow from the assumption that $t_{1,n} = e_n = t_{n,1}$ and that components of $\gamma$ involving an identity operation are also identity maps. The multiplication axioms follow from the two diagrams assumed to commute in the statement of the theorem.  If we consider each axiom to consist of two equations, one in $P(n)$ and one in some power  $(A \times B)^{n}$, then the two diagrams at the end of the statement of the theorem actually force the first components of the two multiplication axioms to hold in $P(n)$ before taking any equivalence classes in the coequalizer aside from the ones used to define $\gamma_{A,B}$ above..
-%\end{proof}
 
 \begin{proof}
 We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$.  Such a transformation $\gamma_{A,B}$ has components with source
@@ -4340,7 +3960,6 @@ The pseudo-commutative structure for $\underline{P}$ given by Theorem \ref{pscom
                     (30,0)*+{\mu(p;\underline{q}) \cdot e_{mn}}="10";
                     (0,-15)*+{\mu(q;\underline{p}) \cdot t_{n,m}}="01";
                     (30,-15)*+{\mu(p;\underline{q})}="11";
-                    %
                     {\ar@{=} "00" ; "10"};
                     {\ar_{\lambda_{p,q} \cdot 1} "00" ; "01"};
                     {\ar@{=} "10" ; "11"};
@@ -5046,38 +4665,32 @@ Since $\ob$ is a left adjoint, it preserves colimits and thus cokernels. It is c
 \cref{Qobj} gives a unique map shown by the dashed arrow below.
     \[
   \begin{tikzpicture}[x=7mm,y=5mm]
-    \draw[tikzob,mm] %objects
+    \draw[tikzob,mm] 
     (0,0) node (0) {\EL(\underline{n})}
     (3,0) node (1) {\EL(\underline{2n})}
     (6,0) node (2) {Q}
     (3,-2) node (d) {L_n};
-    \path[tikzar,mm] %arrows
+    \path[tikzar,mm] 
     (0) edge node {i} (1)
     (1) edge node {q} (2)
     (0) edge (d)
     (d) edge[dashed] (2);
-%    \draw[tikzob,mm]
-%    (0.5,-0.5) node[rotate=270,font=\Large] {\Rightarrow}
-%    ++(3mm,0mm) node {v};
   \end{tikzpicture}
   \]
 We also have a unique map $\EL(\underline{2n}) \to L_n$ which agrees with the canonical map $\EL(\underline{n}) \to L_n$ on $z_1, \ldots, z_n$ and sends $z_{i+n}$ to the inverse of the image of $z_i$. This gives the diagram below, once again with the dashed arrow induced by the definition of $\delta$ and the universal property.
     \[
   \begin{tikzpicture}[x=7mm,y=5mm]
-    \draw[tikzob,mm] %objects
+    \draw[tikzob,mm] 
     (0,0) node (0) {\EL(\underline{n})}
     (3,0) node (1) {\EL(\underline{2n})}
     (6,0) node (2) {Q}
     (3,-2) node (d) {L_n};
-    \path[tikzar,mm] %arrows
+    \path[tikzar,mm] 
     (0) edge node {i} (1)
     (1) edge node {q} (2)
     (0) edge (d)
     (1) edge (d)
     (2) edge[dashed] (d);
-%    \draw[tikzob,mm]
-%    (0.5,-0.5) node[rotate=270,font=\Large] {\Rightarrow}
-%    ++(3mm,0mm) node {v};
   \end{tikzpicture}
   \]
  The two dashed arrows are then forced to be inverse to each other. 
@@ -5124,13 +4737,13 @@ We have an isomorphism of groups as below.
 One important consequence of the surjectivity of $q$ is that it will allow us to use some results about the free algebra $\ELnn$ to deduce information about the free invertible algebra $L_n$. In fact, we have done this once already: looking back at \cref{Qobj} with our current knowledge that $Q = L_n$, we can see that it is a direct analogue of \cref{Gnobj}, using the fact that $q$ is surjective on objects. 
 
 
-QQQ Reference ``Gnmapsaction'' is missing.
+%QQQ Reference ``Gnmapsaction'' is missing.
 
 
 In that same vein, one might ask if we can take \cref{Gnmapsaction}, a statement about the morphisms $\ELnn$, and extend it to an analagous result on $L_n$, using surjectivity of $q$ on morphisms instead. That is, since every morphism of $\ELnn$ is an action morphism, and since strict $\ML$-monoidal functors always send action morphisms to action morphisms, we should be able to use $q$ to identify every morphism of $L_n$ as an action morphism. 
 
 
-QQQ Get some notation for what Ed calls action maps, I don't like all the $\alpha$'s
+%QQQ Get some notation for what Ed calls action maps, I don't like all the $\alpha$'s
 
 \begin{nota}\label{newaction}
 Let's think about $g^{\otimes}$ for the iso induced by $g$.
@@ -5187,11 +4800,6 @@ We have a functor $P:B\ML^{op} \to \cat$ which sends $n$ to $P(n)$ and uses the 
 \begin{lem}\label{creation_triangle}
 Let $A,B,C$ be cocomplete categories, and let $A \stackrel{F}{\to} B \stackrel{G}{\to} C$ be functors such that $G$ is conservative, and both $G$ preserves and $GF$ creates colimits of shape $\mathbb{D}$. Then $F$ creates colimits of shape $\mathbb{D}$.
 \end{lem}
-%\begin{proof}
-%Let $d:\mathbb{D} \to A$ be a diagram with colimit $\colim d$. Since $GF$ preserves colimits of shape $\mathbb{D}$, the natural map $\colim GFd \to GF \colim d$ is an isomorphism; since $G$ preserves colimits of shape $\mathbb{D}$, the natural map $\colim GFd \to G\colim Fd$ is also an isomorphism. By the assumption that $G$ is conservative, the natural map $\colim Fd \to F\colim d$ is an isomorphism so $F$ preserves colimits of shape $\mathbb{D}$.
-%
-%Now assume $a \in A$ is the vertex of a cocone over $d$ such that $Fa$ is the colimit of $Fd$. Since $G$ preserves colimits of shape $\mathbb{D}$, $GFa$ is the colimit of $GFd$. But $GF$ creates colimits of shape $\mathbb{D}$, so $a$ was the colimit of $d$ in $A$. Thus $F$ creates colimits of shape $\mathbb{D}$.
-%\end{proof}
 
 For an monad $T$ on a category $C$, the forgetful functor $T\Alg \to C$ creates any colimit that $T$ preserves. This fact and the previous lemmas prove the following proposition using the operad $P = E\ML$.
 \begin{prop}\label{refcoeq_calcs}
@@ -5522,8 +5130,6 @@ and so $L_n(I,I)$ is a subgroup of the center of $\MorLn$, thus normal.
 
 \section{Splitting the monoid of morphisms}
 
-%utomorphisms of the unit in \texorpdfstring{$L_n$}{L_n}}
-
 In this section we will collect together many of the arguments of this chapter to give the first closed form expression for the automorphism group of the unit object, $I$, in $L_n$.
 \begin{prop} \label{morprod} For any action operad $G$,
 \[ \MorLn \quad \cong \quad (s \times t)(L_n) \ltimes L_n(I,I) \]
@@ -5687,7 +5293,7 @@ Note that $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$ is a subgroup of $
 
 
 
-QQQ Rewrite with better notation
+%QQQ Rewrite with better notation
 
 Our goal is to explicitly compute the group acting on a set of $n$ invertible objects in a $\ML$-monoidal category, so we will need an explicit description of the elements of the subgroup $\Delta$.
 
@@ -5810,7 +5416,6 @@ It should be clear that there is further work to do in order to give a usable co
 \]
 in \cref{nchoose2}.
  \end{itemize}
-%To say that the expression for $\MorLn$ we just found is `complicated' would probably be an understatement. If we are to have any hope of eventually being able to use \cref{Zmor}, we need to work out a more explicit presentation for its quotient part. We'll start by trying to find the value of $(s \times t)(L_n)^{\mathrm{ab}}$ for crossed $G$, the abelian group $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$. This will require some careful consideration, since in general limits such as the pullback do not interact with abelianization in a simple way. What would help is a suitable presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in terms of some generators and relations. 
 
 \begin{prop} \label{pushpres} The pullback group $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is generated by two families of elements,
 \[ \langle x \rangle \quad := \quad (x, x) \quad \quad \text{and} \quad \quad \langle xy \rangle \quad := \quad (xy, yx) \]
@@ -5935,8 +5540,6 @@ But we can also insert an element and its inverse into different points of the s
 The relations $(xy, yx) = (zz^*xy, yzz^*x)$ and so forth are all composed of successive instance of the above, so these are all of the relations on our generators $\langle x \rangle$ and $\langle xy \rangle$.
 \end{proof}
 
-%Of course, the collection of relations we just gave in \cref{pushpres} are nowhere near minimal. Many of them clearly interact with each other in ways that would let us simplify or cancel some relations, or even generators. However, we will not expend any effort trying to do this, because we do not need to. With this inefficient presentation of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ in hand, we have in a sense already found its abelianization. After all, for any presentation of some group $H$, the group $H^{\mathrm{ab}}$ possesses a presentation consisting of the exact same generators, subject to the same relations, plus a commutativity condition. This too will not normally be the most efficient description of the new group, but that remains true even if the presentation of $H$ we started with was minimal, and so any time spent finding one will just be wasted. Instead, we'll suppress the urge to simplify \cref{pushpres} and move straight on to tackling $(\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}}$.
-
 \begin{prop} \label{abst}
 \[ (\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}} \quad \cong \quad \mathbb{Z}^n \times {\mathbb{Z}}^{{n}\choose{2}} \]
 \end{prop}
@@ -6010,7 +5613,7 @@ The $\mathbb{Z}^n$ term in the product of \cref{abst} represents the free abelia
 But this is exactly the same $\mathbb{Z}^n$ group that appears in the denominator of our quotient, $\mathrm{Ob}(L_n)^{\mathrm{ab}}$, so they cancel.
 \end{proof}
 
-QQQ I don't completely understand the following discussion.
+%QQQ I don't completely understand the following discussion.
 
 Before moving on, we should be clear about exactly which $\mathbb{Z}^{{n}\choose{2}}$ subgroup of $\MLn^{\mathrm{ab}}$ we have just identified --- after all, we will eventually need to perform a quotient involving it. In \cref{pushpres} we defined the generators $\langle z_i z_j \rangle$ to be the elements $(z_i \otimes z_j, z_j \otimes z_i)$ of the monoid $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, which are the source/target combinations of morphisms of $L_n$. Using \cref{stZsub} we can identify this with a particular submonoid of the morphisms of $L_n$, specifically the image under $q$ of the submonoid $\mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n} = (s \times t)(\ELnn) \subseteq \mathrm{Mor}(\ELnn)$ we chose in \cref{stGnsub}. In particular, since on objects we have $q(z_i) = z_i$ for all $1 \le i \le n$, the generators $(z_i \otimes z_j, z_j \otimes z_i)$ of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ are clearly the image of the generators $(z_i \otimes z_j, z_j \otimes z_i)$ of $\mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n}$. 
 
@@ -6051,7 +5654,7 @@ Again, we can define a similar condition for being quasi-regular on the right, a
 
 For a given action operad, both of these conditions will follow from the way that operadic multiplication interacts with the elements of the abelian group $\Lambda(0)$.
 
-QQQ New notation: $(\ML, \otimes)$ is the monoid associated to an action operad
+%QQQ New notation: $(\ML, \otimes)$ is the monoid associated to an action operad
 
 \begin{prop} \label{cqr} For every action operad $\ML$, the monoid $(\ML, \otimes)$ is both cancellative and quasi-regular as a monoid under tensor product.
 \end{prop}
@@ -6082,19 +5685,6 @@ Put another way, if $h \otimes g = h' \otimes g'$, there exists $k \in \ML$ such
 The first statement is immediate. For the second, note that both $\ML$ and $\mathbb{N}^{\ast n}$ embed into groups so their product and hence any submonoid of their product does too.
 \end{proof}
 
-%from now on we can just write $g$ for $\mathrm{gp}(g)$ and $g^*$ for $\mathrm{gp}(g)^*$ in order to save on space.
-
-%Knowing that the monoid $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ always has a particularly well-behaved group completion is a good first step towards finding a description for said completion. However, it is worth noting that \cref{gpcompin} is true for all action operads $G$, which is more than we really need. After all, the only reason we care about $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ is that we know from \cref{Zmor} that it is crucial to understanding the morphisms of \emph{crossed} action operads. Thus it would be nice if we could use some consequence of crossedness to tell us even more about the inclusion map $\mathrm{gp} : G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to {(G \times_{\mathbb{N}} \mathbb{N}^{\ast n})}^{\mathrm{gp}}$.
-%
-%One such consequence was given back in \cref{noscalarcross}. If $G$ is a crossed action operad, then the action operad $G'$ defined by $G'(m) = G(m)/G(0)$ possesses the same free algebra on invertible algebra that $G$ does. In other words, we don't even need to worry about finding $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$ for all crossed $G$, merely those which have a trivial $G(0)$. As it turns out, this fact is hugely relevant to our search for group completions, since elements of $G(0)$ are the only ones in $G$ which might already have an inverse under tensor product. This follows from additivity of lengths:
-%\[ \begin{array}{rclcrcccll}
-%			g \otimes h & = & e_0 & \quad \implies \quad & |g| + |h| & = & |e_0| & = & 0 & \\
-%			& & & \quad \implies \quad & & & |g| & = & -|h|, & \quad |g|, |h| \in \mathbb{N} \\
-%			& & & \quad \implies \quad & |g| & = & |h| & = & 0& 
-%		\end{array}
-%\]
-%Cancellativity, quasi-regularity, and lack of invertible objects then combine to give something much stronger than mere injectivity of the group completion map.
-
 As a consequence, we can identify the monoids $\ML$ and $\ML\times_{\mathbb{N}} \mathbb{N}^{\ast n}$ with their images in the group completion. Further, recall from \cref{noscalarcross} that for studying invertible objects, it suffices to study action operads $\ML$ with $\Lambda(0)$ the trivial group.
 
 \begin{prop}\label{Gfree}
@@ -6106,7 +5696,7 @@ Let $M$ be a monoid with unit element $1$, and assume $M$ is equipped with a mon
 Then $M$ is a free monoid.
 \end{prop}
 
-QQQ Replace this whole proof with the one from Ed's email
+%QQQ Replace this whole proof with the one from Ed's email
 
 \begin{proof}
 Let $\mathcal{G}$ be a subset of the monoid $M$, and $\mathcal{R}$ a collection of relations on the elements of $\mathcal{G}$, such that $(\mathcal{G},\mathcal{R})$ is a presentation of $M$ as a monoid. We assume that $1 \notin \mathcal{G}$ as it is the unit element. Notice that every relation in $\mathcal{R}$ can be written in the form $h g = h' g'$, where $g,g' \in \mathcal{G}$ are generators because the only other kind of relations are of the form $h  g = 1$, and  this is not possible if $\pi^{-1}(0) = \{1\}$. We can assume that  $\pi(g) \ge \pi(g')$ and hence $\pi(h) \le \pi(h')$ without loss of generality. By the second hypothesis, we can then find $k \in M$ for which $g = k g'$, $h' = h k$. 
@@ -6123,9 +5713,7 @@ Notice that in the latter two cases, we
 If $\ML$ is an action operad with trivial $\Lambda(0)$, then $(\ML, \otimes)$ is a free monoid under tensor product.
 \end{cor}
 
-%Whenever we can be sure of that $(\ML, \otimes)$ is a free monoid --- whether by using \cref{cor:ML_free} or some other method --- this freeness will carry over directly to the algebras $\ELn$, giving us a new way to represent their morphisms.
-
-QQQ Need to make sure we are using the correct notation: the operad, the monad, the monoid, etc
+%QQQ Need to make sure we are using the correct notation: the operad, the monad, the monoid, etc
 
 We can now use these results to express the monoid $\mathrm{Mor}(\ELn)$ using generators for the action operad $\ML$.
 
@@ -6174,10 +5762,6 @@ This makes the group completion and abelianization we want to do trivial.
 \[ (\ML \times_{\mathbb{N}} \mathbb{N}^{\ast n})^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}. \]
 \end{cor}
 
-%Now all that remains is to account for what happens when we collapse the morphisms of $\ELn$ --- that is, evaluate the quotient
-%\[ \mathrm{M}(\ELn)^{\mathrm{gp}, \mathrm{ab}} \quad = \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}}{\otimes \sim \circ} \]
-%Unfortunately, because this will depend on the exact multiplicative structure of the operad groups $G(m)$, there is no way to carry out this computation in general. The best we can say is that as composition in $\mathrm{Mor}(\ELn)$ is partly determined by the group multiplication of the $G(m)$, then in place of $\mathcal{G}$ in the quotient in \cref{freemorgpab} it would suffice to have some collection of elements which generate $G$ when using multiplication as well as tensor product.
-
 If we use a subset $\mathcal{G}' \subseteq \mathcal{G}$ which generates $\ML$ using both the tensor product and group multiplication, then we can reduce the number of generators even further.
 
 \begin{cor} Let $\mathcal{G}$ be a subset of the action operad $\ML$ that freely generates it under tensor product, and let $\mathcal{G'}$ be a subset of $\mathcal{G}$ which generates $\ML$ under a combination of tensor product and group multiplication. Also let $\mathcal{G}_m := \mathcal{G} \, \cap \,  G(m)$ and $\mathcal{G}'_m := \mathcal{G}' \, \cap \,  G(m)$. Then
@@ -6188,21 +5772,7 @@ If we use a subset $\mathcal{G}' \subseteq \mathcal{G}$ which generates $\ML$ us
 Composition in $\ELn$ is given by group multiplication (when defined) by the formula
 \[ \big( \, g', \pi(g^{-1})(w) \, \big) \, \circ \, (g, w) \quad = \quad (g'g, w). \]
 Therefore any generator $(g, w) \in \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ can be expressed in terms of elements of $\mathcal{G}' \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ by way of tensor product and group multiplication. After making the identification $\otimes \sim \circ$ we obtain the desired isomorphism.
-
-%Compostion in $\mathrm{Mor}(\ELn)$ is given by
-%\[ \alpha(g'; \mathrm{id}_{x_{\pi(g^{-1})(1)}}, ..., \mathrm{id}_{x_{\pi(g^{-1})(m)}}) \, \circ \, \alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \quad = \quad \alpha(g'g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})\]
-%which in $G \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ terms is
-
-%Thus any element  All we need to do is find and expansion for $g$ using $\mathcal{G}'$, and then pull all of the multiplication and tensors outside of the brackets via the equation above and those we employed back in \cref{freemon}. This means that when we take the quotient by the relation $\otimes \sim \circ$, the equivalence class for $(g, w)$ will be a tensor product of equivalence classes of elements from $\mathcal{G}' \times_{\mathbb{N}} \mathbb{N}^{\ast n}$. In other words, every generator of $\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}/\otimes \sim \circ$ is contained within the subgroup coming from $\mathcal{G}'$, and therefore so is the whole of the group. That is, 
-%\[ \begin{array}{rcl}
-%			\bigquotient{\mathbb{Z}^{|\mathcal{G}_0| + n|\mathcal{G}_1| + n^2 |\mathcal{G}_2| + ...}}{\otimes \sim \circ} \quad & = & \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}' \, \cap \, \mathcal{G}_0| + n|\mathcal{G}' \, \cap \, \mathcal{G}_1| + n^2 |\mathcal{G}' \, \cap \, \mathcal{G}_2| + ...}}{\otimes \sim \circ} \\
-%			& = & \quad \bigquotient{\mathbb{Z}^{|\mathcal{G}'_0| + n|\mathcal{G}'_1| + n^2 |\mathcal{G}'_2| + ...}}{\otimes \sim \circ}
-%		\end{array}
-%\]
 \end{proof}
-
-%Beyond this, the value of this quotient will have to be found separately for each individual action operad. 
-
 
 \section{A full description of \texorpdfstring{$L_n$}{L_n}}
 
@@ -6212,25 +5782,12 @@ We now give our most complete description of the free $\ML$-monoidal category ge
 Recall that we have fixed an isomorphism $\MorLn \cong (s \times t)(L_n) \times L_n(I,I)$ as per \cref{morprod}. Further, assume that $\Lambda(0)$ is the trivial group; if not, replace $\Lambda$ with the action operad $\Lambda'$ of \cref{noscalarcross}.
 \end{conv}
 
-%\begin{thm} \label{freeinvalgG1} Let $G$ be a $G(1)$-generated action operad. Then the free $E\Lambda$-algebra on $n$ invertible objects is just the discrete category
-%\[ L_n \quad = \quad \mathbb{Z}^{\ast n} \]
-%equipped with a tensor product which is the usual monoid multiplication, and an $E\Lambda$-action given by
-%\[ \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1 \otimes ... \otimes x_m} \]
-%\end{thm}
-%\begin{proof}
-%The object monoid is from \cref{Zobj}, the fact that $L_n$ is discrete follows from \cref{trivendo}, and the action is given by \cref{G1act}.
-%\end{proof}
-%
-%It is a shame that we were not able to find a formulation for uncrossed $L_n$ in full generality. This will have to be the subject of future research.
-%
-%By contrast, in the case of crossed action operads we were able to achieve a complete description. First, using various results from \cref{colimalgebra,morphisms} we showed that the unit endomorphisms of $L_n$ were isomorphic to a certain quotient of abelian groups, which from now on we will refer to as $A(G,n)$. The long process of calculating this group can now be condensed down into a single definition:
-
 We begin by giving a recipe for constructing the group $L_n(I,I)$ from a presentation of the operad $\ML$.
 
 \begin{Defi} \label{AGndef} Let $\ML$ be a crossed action operad. Choose a subset $\mathcal{G}$ that generates $\ML$ under a combination of tensor product and group multiplication, which itself has subsets $\mathcal{G}_m := \mathcal{G} \, \cap \, \Lambda(m)$. Then for each $n \in \mathbb{N}$, we will denote by $A(\ML,n)$ the abelian group obtained from the free abelian group 
 \[ \mathrm{F}( \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast 2n}) \quad = \quad \mathbb{Z}^{2n|\mathcal{G}_1| + (2n)^2|\mathcal{G}_2| + ...} \]
 via the following steps:
-\begin{enumerate}%[leftmargin=*]
+\begin{enumerate}
 \item For all $g, g' \in \mathcal{G}_m$ and $w \in \mathbb{N}^{\ast 2n}$ with $|w| = m$, quotient out by the relation 
 \[ (g, w) \, \otimes \, \big( \, g', \pi(g^{-1})(w) \, \big) \quad \sim \quad (g \cdot g', w) \]
 \item Quotient out by the subgroup $\Delta$, which is generated by the equivalence classes of elements of the form
@@ -6613,20 +6170,20 @@ In order for $\alpha_{L_n}$ to be a well-defined $E\Lambda$-action, the map $\al
 
 For crossed $G$, things are more complicated. What we need to do is employ the trick that was previously mentioned in , where 
 
-QQQ I think the real point here is that given some groups, we can define the $\ML$-action, but that really seems to be its own result so I don't see the point of this. Everything commented below is what was left from last time.
+%QQQ I think the real point here is that given some groups, we can define the $\ML$-action, but that really seems to be its own result so I don't see the point of this. Everything commented below is what was left from last time.
 
 
 
 
 We will now exploit the surjectivity of the algebra map $q: \ELnn \to L_n$ as discussed in \cref{qsurj} in order to determine the $\ML$-monoidal structure on $L_n$.
 
-QQQ It isn't clear to me that this is the best way to express this result. Could get iso's, check they give an operad action
+%QQQ It isn't clear to me that this is the best way to express this result. Could get iso's, check they give an operad action
 
 
 
 \begin{prop} \label{crossact} Let $\ML$ be a crossed action operad, and for some $m \in \mathbb{N}$ choose an element $g \in \Lambda(m)$ and morphisms $(x_1, y_1, h_1), ..., (x_m, y_m, h_m)$ in $L_n$. That is, the $(x_i, y_i)$ are pairs of objects from $(s \times t)(L_n)$, and the $h_i$ are morphisms in $L_n(I,I)$. 
 
-QQQ Fix iso somewhere to make this identification??
+%QQQ Fix iso somewhere to make this identification??
 
 Then the action of $L_n$ is given by
 \[ \begin{array}{c}
