@@ -1,0 +1,9 @@
+This is makeindex, version 2.15 [MiKTeX 2.9.6800 64-bit] (kpathsea + Thai support).
+Scanning input file operads_book.idx....
+!! Input index error (file = operads_book.idx, line = 94):
+   -- Illegal null field.
+done (156 entries accepted, 1 rejected).
+Sorting entries....done (1193 comparisons).
+Generating output file operads_book.ind....done (183 lines written, 0 warnings).
+Output written in operads_book.ind.
+Transcript written in operads_book.ilg.
