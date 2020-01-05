@@ -182,15 +182,9 @@
 
 
 \chapter{Action operads}
-In this chapter, we will explore the general definition of an operad $P$ which is equipped with groups of equivariance $\Lambda(n)$.  The group $\Lambda(n)$ will act on the right on the object $P(n)$, and the operad structure of $P$ will be required to respect this action.  For certain choices of the groups $\Lambda(n)$, we will recover standard notions of operads such as symmetric operads, non-symmetric operads, and braided operads.  The definitions here will, unless otherwise stated, apply in any symmetric monoidal category $\mathcal{V}$ in which the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X \in \mathcal{V}$.
+In this chapter, we will explore the general definition of an operad, $P$ ,which is equipped with groups of equivariance, $\Lambda(n)$.  The group $\Lambda(n)$ will act on the right on the object $P(n)$, and the operad structure of $P$ will be required to respect this action.  For certain choices of the groups $\Lambda(n)$, we will recover standard notions of operads such as symmetric operads, non-symmetric operads, and braided operads.  The definitions here will, unless otherwise stated, apply in any symmetric monoidal category $\mathcal{V}$ in which the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X \in \mathcal{V}$.
 \section{Introduction to operads}
-This section will provide an introduction to the basic definitions of operads, including some specific types such as symmetric and braided operads.
- QQQ introduction to operads
- 	\begin{itemize}
- 		\item introduces notations and conventions
- 		\item reviews definitions of operads (general basic overview) including symmetric, non-symmetric, and braided
- 		\item remarks and examples are included
- 	\end{itemize}
+This section will provide an introduction to operads, including a general overview of the definitions of plain, symmetric, and braided operads. Remarks and examples are provided throughout and the section begins with conventions around notation.
 
 \begin{conv}
 We adopt the following conventions throughout.
@@ -211,7 +205,7 @@ We begin with the basic definitions.
 \begin{Defi}
 A \textit{symmetric operad}\index{operad!symmetric} $O$\nomenclature[N]{$O$}{operad} (in the category of sets) consists of
 \begin{itemize}
-\item sets $O(n)$ for each natural number $n$,
+\item a set, $O(n)$, for each natural number $n$,
 \item for each $n$, a right $\Sigma_{n}$-action on $O(n)$\index{group action!symmetric},
 \item an element $\textrm{id} \in O(1)$, and
 \item functions
@@ -230,19 +224,35 @@ satisfying the following three axioms.
 \]
 for any $x \in O(n)$.
 \item The functions $\mu$ (called operadic multiplication or operadic composition) are associative in the sense that the diagram below commutes.
+% \[
+% \xy
+% (0,0)*+{\scriptstyle O(n) \times O(k_{1}) \times \cdots \times O(k_{n}) \times O(l_{1,1}) \times \cdots \times O(l_{{1},k_{1}}) \times \cdots \times O(l_{n,1}) \times \cdots \times O(l_{{n},k_{n}})} ="00";
+% (0,-50)*+{\scriptstyle O(k_{1} + \cdots + k_{n}) \times O(l_{1,1}) \times \cdots \times O(l_{{1},k_{1}}) \times \cdots \times O(l_{n,1})\times \cdots \times O(l_{{n},k_{n}})} ="02";
+% (55,-10)*+{\scriptstyle O(n) \times \prod_{i=1}^n O(k_{i}) \times O(l_{i,1}) \times \cdots \times O(l_{{i}, k_{i}}) } ="20";
+% (55,-25)*+{\scriptstyle O(n) \times O(\sum l_{1,-}) \times \cdots \times O(\sum l_{n,-})} ="21";
+% (55, -40)*+{\scriptstyle  O(\sum l_{-,-})} ="22";
+% {\ar_{\scriptstyle \mu \times 1} "00" ; "02"};
+% {\ar_{\mu} "02" ; "22"};
+% {\ar^{\cong} "00" ; "20"};
+% {\ar^{1 \times \prod \mu} "20" ; "21"};
+% {\ar^{\mu} "21" ; "22"};
+% \endxy
+% \]
+
 \[
-\xy
-(0,0)*+{\scriptstyle O(n) \times O(k_{1}) \times \cdots \times O(k_{n}) \times O(l_{1,1}) \times \cdots \times O(l_{{1},k_{1}}) \times \cdots \times O(l_{n,1}) \times \cdots \times O(l_{{n},k_{n}})} ="00";
-(0,-50)*+{\scriptstyle O(k_{1} + \cdots + k_{n}) \times O(l_{1,1}) \times \cdots \times O(l_{{1},k_{1}}) \times \cdots \times O(l_{n,1})\times \cdots \times O(l_{{n},k_{n}})} ="02";
-(55,-10)*+{\scriptstyle O(n) \times \prod_{i=1}^n O(k_{1}) \times O(l_{i,1}) \times \cdots \times O(l_{{i}, k_{i}}) } ="20";
-(55,-25)*+{\scriptstyle O(n) \times O(\sum l_{1,-}) \times \cdots \times O(\sum l_{n,-})} ="21";
-(55, -40)*+{\scriptstyle  O(\sum l_{-,-})} ="22";
-{\ar_{\scriptstyle \mu \times 1} "00" ; "02"};
-{\ar_{\mu} "02" ; "22"};
-{\ar^{\cong} "00" ; "20"};
-{\ar^{1 \times \prod \mu} "20" ; "21"};
-{\ar^{\mu} "21" ; "22"};
-\endxy
+  \xy
+    (0,0)*+{\scriptstyle O(n) \times \left(\prod_{i=1}^n O(k_i)\right) \times \left(\prod_{i=1}^n\prod_{j=1}^{k_i} O(l_{i,j})\right)}="a";
+    (65,0)*+{\scriptstyle O(n) \times \prod_{i=1}^n \left(O(k_i) \times \prod_{j=1}^{k_i} O(l_{i,j})\right)}="b";
+    (65,-20)*+{\scriptstyle O(n) \times \prod_{i=1}^n O\left(\sum_{j=1}^{k_i} l_{i,j}\right)}="c";
+    (65,-40)*+{\scriptstyle O\left(\sum_{i=1}^n \sum_{j=1}^{k_i} l_{i,j}\right)}="d";
+    (0,-40)*+{\scriptstyle O\left(\sum_{i=1}^n k_i\right) \times \prod_{i=1}^n \prod_{j=1}^{k_i} O(l_{i,j})}="e";
+    %
+    {\ar^{\cong} "a" ; "b"};
+    {\ar^{1 \times \prod \mu} "b" ; "c"};
+    {\ar^{\mu} "c" ; "d"};
+    {\ar_{\mu \times 1} "a" ; "e"};
+    {\ar_{\mu} "e" ; "d"};
+  \endxy
 \]
 \item The functions $\mu$ are equivariant with respect to the symmetric group actions, and so satisfies the following two equations.
 \[
@@ -251,16 +261,20 @@ for any $x \in O(n)$.
 \mu(x \cdot \sigma; y_{1}, \ldots, y_{n}) & =  & \mu(x; y_{\sigma^{-1}(1)}, \ldots, y_{\sigma^{-1}(n)}) \cdot \sigma^{+}
 \end{array}
 \]
-For the above equations to make sense, we must have
-\begin{itemize}
-\item $x \in O(n)$,
-\item $y_{i} \in O(k_{i})$ for $i=1, \ldots, n$,
-\item $\tau_{i} \in \Sigma_{k_{i}}$, and
-\item $\sigma \in \Sigma_{n}$, and then $\sigma^{+}$ is the permutation in Example \ref{exSigma} below.
-\end{itemize}
 \end{enumerate}
 \end{Defi}
 
+\begin{rem}
+It is useful to write out in full what the sets in the diagram of the second axiom above mean. The use of numerous products and indices is to save space but the full picture becomes much clearer when these are expanded. For the equations in the third axiom above to make sense, we must have
+\begin{itemize}
+\item $x \in O(n)$,
+\item $y_{i} \in O(k_{i})$ for $i=1, \ldots, n$,
+\item $\tau_{i} \in \Sigma_{k_{i}}$,
+\item $\sigma \in \Sigma_{n}$, and
+\item $\tau_1 \oplus \ldots \oplus \tau_n , \sigma^{+} \in \Sigma_{k_1 + \ldots + k_n}$ as in Example \ref{exSigma} below.
+\end{itemize}
+
+\end{rem}
 \begin{Defi}
 A \emph{non-symmetric operad}\index{operad!non-symmetric} $O$ consists of the same data as above but without any symmetric group actions, and only satisfying the first and second axioms.
 \end{Defi}
@@ -405,7 +419,6 @@ In the above definition and below, we adopt the convention that if an equation r
 
 \begin{example}
 One can form an operad $B$\index{operad!of braid groups} where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$.  This is done in much the same way as we did for the symmetric operad, and the collection of maps $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutations constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
-One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$.  This is done in much the same way as we did for the symmetric operad, and the collection of maps $\pi_{n}:B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutations constitutes an operad map (of non-symmetric or braided operads) operads $B \rightarrow \Sigma$.
 \end{example}
 
 \section{Action operads}
@@ -416,6 +429,7 @@ One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid
  		\item considers familiar examples including symmetric, braided and ribbon braided
  		\item remarks about terminal and initial action operads
  		\item introduction of action operad maps
+    \item Possibly cite Yau around here (or in the introduction?)
  	\end{itemize}
 
 One should note that the axioms for symmetric and braided operads each use the fact that the groups of equivariance themselves form an operad.  This is what we call an action operad.
@@ -494,13 +508,13 @@ for the multiplication in the operad $\Lambda$.  Let $(g; f_1, \ldots, f_n)$ be 
 (64.5,-25)*{\scriptstyle \mu\big((23)\cdot (132); \textrm{id} \cdot (12), (12) \cdot \textrm{id}, (12) \cdot (12)\big)} ;
 \endxy
 \]
-\item Our definition of an action operad is the same as that appearing in Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective.  It is also the same as that appearing in work of Zhang \cite{zhang-grp}, although we prove later (see Lemma \ref{calclem}) that the condition $e_{1} = \textrm{id}$ in Zhang's definition follows from the rest of the axioms.
+\item Our definition of an action operad is the same as that appearing in Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective.  It is also the same as that appearing in work of Zhang \cite{zhang-grp}, although we prove later (see Lemma \ref{calclem}) that Zhang's condition of $e_{1} \in \Lambda(1)$ being the identity element follows from the rest of the axioms.
 \end{itemize}
 \end{rem}
 
 \begin{example}
 \begin{enumerate}
-\item The terminal operad $T$\nomenclature[N]{$T$}{terminal operad}\index{operad!terminal} in the category of sets has a unique action operad structure, $\mathbf{T}$\nomenclature[N]{$\mathbf{T}$}{terminal operad as an action operad}.  Since $T(n)$ is a singleton for each $n$, the group structure is unique as is the map $\pi$.  The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity.  This is the initial object\index{action operad!initial} in the category of action operads (see \cref{Defi:cat_aop} the definition of morphisms in the category of action operads).
+\item The terminal operad $T$\nomenclature[N]{$T$}{terminal operad}\index{operad!terminal} in the category of sets has a unique action operad structure, $\mathbf{T}$\nomenclature[N]{$\mathbf{T}$}{terminal operad as an action operad}.  Since $T(n)$ is a singleton for each $n$, the group structure is unique, as is the map $\pi$.  The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity.  This is the initial object\index{action operad!initial} in the category of action operads (see \cref{Defi:cat_aop} for the definition of morphisms in the category of action operads).
 \item The symmetric operad $\Sigma$\index{action operad!of symmetric groups} has a canonical action operad structure.  It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$.  This is the terminal object\index{action operad!terminal} in the category of action operads.
 \item Two less trivial examples are given by the braid groups, $\ML = \mb{B}$\nomenclature[N]{$\mb{B}$}{action operad of braid groups}\index{action operad!of braid groups}, and the ribbon braid groups, $\ML = \mb{RB}$\nomenclature[N]{$\mb{RB}$}{action operad of ribbon braid groups}\index{action operad!of ribbon braid groups}.  (A ribbon braid is given, geometrically, as a braid with strands replaced by ribbons in which we allow full twists.  The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.)  In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after Definition \ref{broperad}.  We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
 \item The operad of $n$-fruit cactus groups\index{action operad!of cactus groups}\index{group!cactus} defined by Henriques and Kamnitzer in \cite{hk-cobound} has an action operad structure that we will discuss in \cref{sec:examples}.
@@ -508,11 +522,11 @@ for the multiplication in the operad $\Lambda$.  Let $(g; f_1, \ldots, f_n)$ be 
 \end{example}
 
 \begin{Defi} For each $n \in \mathbb{N}$\nomenclature[N]{$\mathbb{N}$}{the set of natural numbers}, the \emph{ribbon braid group}\index{group!ribbon braid} $RB_{n}$\nomenclature[N]{$RB_{n}$}{ribbon braid group on $n$ ribbons} is the group whose presentation is the same as that of the braid group $B_{n}$, except with the addition of $n$ new generators $t_1, ..., t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
-\[ b_i \cdot t_i \quad = \quad t_{i+1} \cdot b_i, \quad \quad \quad \quad \quad b_i \cdot t_{i+1} \quad = \quad t_i \cdot b_i \]
+\[ b_i \cdot t_i = t_{i+1} \cdot b_i, \quad \quad \quad \quad \quad b_i \cdot t_{i+1} = t_i \cdot b_i \]
 The \emph{ribbon braid operad}\index{operad!of ribbon braid groups}\index{operad!ribbon braid} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{broperad}, but with some additional rules for dealing with twists. With regards to the tensor product, we have that for any twist $t_i \in RB_{n}$,
-\[ t_i \quad = \quad e_{i-1} \otimes t \otimes e_{n-i} \]
+\[ t_i = e_{i-1} \otimes t \otimes e_{n-i} \]
 where $t$ is the sole twist in $RB_1$, and for the `block twists' $t_{(m)}$ we again work recursively:
-\[ t_{(0)} \, = \, e_n, \quad \quad \quad t_{(m+m')} \quad = \quad (t_{(m)} \otimes t_{(m')}) \cdot b_{(m', m)} \cdot b_{(m, m')} \]
+\[ t_{(0)} = e_n, \quad \quad \quad t_{(m+m')} = (t_{(m)} \otimes t_{(m')}) \cdot b_{(m', m)} \cdot b_{(m, m')} \]
 \end{Defi}
 
 Much as the symmetric groups can be represented by crossings of a collection of strings, and the braid groups by braidings of strings, the ribbon braid groups deal with the ways that one can braid together several flat ribbons, including the ability to twist a ribbon about its own axis by 360 degrees.
@@ -604,7 +618,7 @@ We have the following corollary.
 \begin{cor}\label{corZ}
 For an action operad $\ML$, the sets\index{action operad!kernel}
 \[
-\textrm{Ker}\,\pi(n) = \{g \in \Lambda(n) : \pi_{n}(g) = e_{n} \}
+\textrm{Ker}\,\pi_n = \{g \in \Lambda(n) : \pi_{n}(g) = e_{n} \}
 \]
 form an action operad for which the inclusion $\textrm{Ker}\,\pi \hookrightarrow \Lambda$ is a map of action operads.
 \end{cor}
@@ -630,7 +644,7 @@ Thus we see that an action operad is either an operad in groups, or is an extens
 \end{rem}
 
 \begin{rem}
-The crossed simplicial groups\index{crossed simplicial group} of Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. There is a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$\nomenclature[C]{$\mathbf{CSGrp}$}{of crossed simplicial groups and morphisms of crossed simplicial groups} from the category of action operads just described into the category of crossed simplicial groups. This functor takes an action operad $\ML$ and defines $C(\Lambda)(n) = \Lambda_{n+1}$. The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition inherent of $\Lambda$ - the description of the maps via the operad structure can be viewed in a similar way to Construction 1.1 of \cite{Kra96}. This functor is, however, not faithful, nor is it conservative.
+The crossed simplicial groups\index{crossed simplicial group} of Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. There is a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$\nomenclature[C]{$\mathbf{CSGrp}$}{of crossed simplicial groups and morphisms of crossed simplicial groups} from the category of action operads just described into the category of crossed simplicial groups. This functor takes an action operad $\ML$ and defines $C(\Lambda)(n) = \Lambda_{n+1}$. The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition inherent of $\Lambda$ - the description of the maps via the operad structure can be viewed in a similar way to Construction 1.1 of \cite{Kra96}. This functor is, however, not faithful, nor is it conservative. (Recall that a functor $F \colon \mathcal{C} \rightarrow \mathcal{D}$ is conservative if when $Ff$ is an isomorphism in $\mathcal{D}$, then $f$ is an isomorphism in $\mathcal{C}$.)
 \end{rem}
 %Salvatore-Wahl:  Framed disks operads...
 
@@ -668,14 +682,14 @@ For the second claim, write the operadic product as $\mu(e; \underline{e})$, and
 \]
 where the first equality follows from the last action operad axiom together with the fact that $e$ gets mapped to the identity permutation; here $\underline{e} \cdot \underline{e}$ is the sequence $e_{i_{1}} \cdot e_{i_{1}}, \ldots, e_{i_{n}} \cdot e_{i_{n}}$.  Thus $\mu(e; \underline{e})$ is an idempotent element of the group $\Lambda(I)$, so must be the identity element $e_{I}$.
 
-For the final claim, note that operadic multiplication $\mu:\Lambda(1) \times \Lambda(1) \rightarrow \Lambda(1)$ is a group homomorphism by the action operad axioms, and $\textrm{id} = e_{1}$ is a two-sided unit, so the Eckmann-Hilton argument shows that $\mu$ is actually group multiplication and that $\Lambda_{1}$ is abelian.
+For the final claim, note that the specific operadic multiplication map $\mu:\Lambda(1) \times \Lambda(1) \rightarrow \Lambda(1)$ is a group homomorphism following from the action operad axioms, and $\textrm{id} = e_{1}$ is a two-sided unit, so the Eckmann-Hilton argument shows that $\mu$ is actually group multiplication and that $\Lambda_{1}$ is abelian.
 \end{proof}
 
 Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations.  The first is the block sum of permutations which we denote by
 \[
-\beta: \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{\underline{k}},
+\beta: \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{K},
 \]
-where $\underline{k} = \sum k_{i}$.  The second is a kind of diagonal map which is defined for any natural number $n$ together with natural numbers $k_{1}, \ldots, k_{n}$.  Then
+where $K = \sum k_{i}$.  The second is a kind of diagonal map which is defined for any natural number $n$ together with natural numbers $k_{1}, \ldots, k_{n}$.  Then
 \[
 \delta = \delta_{n; k_{1}, \ldots, k_{n}}:\Sigma_{n} \rightarrow \Sigma_{\underline{k}},
 \]
@@ -737,11 +751,14 @@ Axioms:
 \endxy
 \]
 \item\label{eq2} The homomorphism $\beta:\Lambda(k) \to \Lambda(k)$ is the identity.
-\item\label{eq3} The homomorphisms $\beta$ are associative in the sense that
+\item\label{eq3} The homomorphisms $\beta$ are associative in the sense that the equation
+% \[
+% \beta(h_{11}, \ldots, h_{1j_{1}}, h_{21}, \ldots, h_{2j_{2}}, \ldots, h_{nj_{n}}) = \beta\big( \beta(h_{11}, \ldots, h_{1j_{1}}), \ldots, \beta(h_{n1}, \ldots, h_{nj_{n}}) \big)
+% \]
 \[
-\beta(h_{11}, \ldots, h_{1j_{1}}, h_{21}, \ldots, h_{2j_{2}}, \ldots, h_{nj_{n}}) = \beta\big( \beta(h_{11}, \ldots, h_{1j_{1}}), \ldots, \beta(h_{n1}, \ldots, h_{nj_{n}}) \big)
+  \beta(\underline{h_1},\ldots,\underline{h_n}) = \beta(\beta(\underline{h_1},\ldots,\beta(\underline{h_n}))
 \]
-holds.
+holds, where $\underline{h_i} = h_{i1},\ldots,h_{ij_i}$.
 \item\label{eq4} The functions $\delta_{n; k_{1}, \ldots, k_{n}}$ are natural with respect to the maps $\pi_{n}$.
 \[
 \xy
@@ -760,12 +777,19 @@ holds.
 \[
 k_{i} = j_{\pi(h)^{-1}(i)}.
 \]
-\item\label{eq7} The functions $\delta$ are associative in the sense that
+\item\label{eq7} The functions $\delta$ are associative in the sense that the equation
+% \[
+% \delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{n}}}\big( \delta_{n; m_{1}, \ldots, m_{n}}(f) \big) = \delta_{n; P_{1}, \ldots, P_{n}}(f)
+% \]
 \[
-\delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{n}}}\big( \delta_{n; m_{1}, \ldots, m_{n}}(f) \big) = \delta_{n; P_{1}, \ldots, P_{n}}(f)
+\delta_{m_1 + \cdots + m_n; \underline{p_1},\ldots,\underline{p_n}}\big( \delta_{n; m_{1}, \ldots, m_{n}}(f) \big) = \delta_{n; P_{1}, \ldots, P_{n}}(f)
 \]
-where $P_{i} = p_{i1} + \cdots + p_{im_{i}}$.
-\item\label{eq8} $\delta(g) \beta(h_{1}, \ldots, h_{n}) = \beta(h_{\pi(g)^{-1}(1)}, \ldots,  h_{\pi(g)^{-1}(n)}) \delta(g)$, where $h_{i} \in \Lambda(k_{i})$ and $\delta:\Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$.
+holds, where $P_{i} = p_{i1} + \cdots + p_{im_{i}}$ and $\underline{p_i} = p_{i1}, \ldots, p_{im_i}$.
+\item\label{eq8} The equation
+\[
+\delta(g) \beta(h_{1}, \ldots, h_{n}) = \beta(h_{\pi(g)^{-1}(1)}, \ldots,  h_{\pi(g)^{-1}(n)}) \delta(g)
+\]
+holds, where $h_{i} \in \Lambda(k_{i})$ and $\delta:\Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$.
 \item\label{eq9} The equation
 \[
 \beta(\delta_{1}(g_{1}), \ldots, \delta_{n}(g_{n})) = \delta_{c}(\beta(g_{1}, \ldots, g_{n}))
@@ -780,7 +804,7 @@ holds, where $\delta_{i}(g_{i})$ is shorthand for $\delta_{k_{i}; m_{i1}, \ldots
 \begin{proof}
 Let $\mb{\Lambda}$ be an action operad, and define $\beta, \delta$ as in \cref{Defi:aop_bl}.  Since $\pi:\Lambda \rightarrow \Sigma$ is an operad map, axioms \eqref{eq1} and \eqref{eq4} hold.  Since $\Lambda$ is an operad of sets, axioms \eqref{eq2} and \eqref{eq5} follow from the operad unit axioms, and axioms \eqref{eq3}, \eqref{eq7}, and \eqref{eq9} follow from the operad associativity axiom.  Axioms \eqref{eq6} and \eqref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
 
-Given the data above, we need only define the operad multiplication, verify the operad unit and multiplication axioms,  and finally check the action operad axiom.  Multiplication is given by
+Conversely, given the data above, we need only define the operad multiplication, verify the operad unit and multiplication axioms,  and finally check the action operad axiom.  Multiplication is given by
 \[
 \mu(g; h_{1}, \ldots, h_{n}) = \delta_{n; k_{1}, \ldots, k_{n}}(g) \beta(h_{1}, \ldots, h_{n})
 \]
@@ -809,25 +833,25 @@ For the operad associativity axiom, let
 \item $g_{i} \in \Lambda(n_{i})$ for $i=1, \ldots, m$, and
 \item $h_{ij} \in \Lambda(p_{i,j})$ for $i=1, \ldots, m$ and $j=1, \ldots, n_{i}$.
 \end{itemize}
-Further, let $P_{i} = p_{i1} + \cdots + p_{in_{i}}$ and $\underline{h_{i\bullet}}$ denote the list $h_{i1}, h_{i2}, \ldots, h_{in_{i}}$.  We must then show that
+Further, let $P_{i} = p_{i1} + \cdots + p_{in_{i}}$ and $\underline{h_i}$ denote the list $h_{i1}, h_{i2}, \ldots, h_{in_{i}}$.  We must then show that
 \[
-\mu\big( f; \mu(g_{1}; \underline{h_{1\bullet}}), \ldots, \mu(g_{m}; \underline{h_{m\bullet}}) \big) = \mu\big( \mu (f; g_{1}, \ldots, g_{m}); h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} \big).
+\mu\big( f; \mu(g_{1}; \underline{h_1}), \ldots, \mu(g_{m}; \underline{h_m}) \big) = \mu\big( \mu (f; g_{1}, \ldots, g_{m}); \underline{h_1}, \ldots, \underline{h_m} \big).
 \]
 By definition, the left side of this equation is
 \[
-\delta_{m; P_{1}, \ldots, P_{m}}(f) \beta\big( \mu(g_{1}; \underline{h_{1\bullet}}), \ldots, \mu(g_{m}; \underline{h_{m\bullet}}) \big),
+\delta_{m; P_{1}, \ldots, P_{m}}(f) \beta\big( \mu(g_{1}; \underline{h_1}), \ldots, \mu(g_{m}; \underline{h_m}) \big),
 \]
 and
 \[
-\mu(g_{i}; \underline{h_{i\bullet}}) = \delta_{n_{i}; p_{i1}, \ldots, p_{in_{i}}}(g_{i})\beta(h_{i1}, \ldots, h_{in_{i}}).
+\mu(g_{i}; \underline{h_i}) = \delta_{n_{i}; p_{i1}, \ldots, p_{in_{i}}}(g_{i})\beta(h_{i1}, \ldots, h_{in_{i}}).
 \]
 Since $\beta$ is a group homomorphism, we can then rewrite the left side as
 \[
-\delta(f)\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big)\beta\big(\beta(h_{1\bullet}), \ldots, \beta(h_{m\bullet})\big)
+\delta(f)\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big)\beta\big(\beta(\underline{h_1}), \ldots, \beta(\underline{h_m})\big)
 \]
 where we have suppressed the subscripts on the $\delta$'s.  By axiom \eqref{eq3} , we have
 \[
-\beta\big(\beta(h_{1\bullet}), \ldots, \beta(h_{m\bullet})\big) = \beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}}).
+\beta\big(\beta(\underline{h_1}), \ldots, \beta(\underline{h_m})\big) = \beta(\underline{h_1},\ldots,\underline{h_m}).
 \]
 Further, axiom \eqref{eq9} above shows that
 \[
@@ -835,15 +859,15 @@ Further, axiom \eqref{eq9} above shows that
 \]
 Thus we have shown that the left side of the operad associativity axiom is equal to
 \[
-\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big)\beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}}).
+\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big)\beta(\underline{h_1},\ldots,\underline{h_m}).
 \]
 Now the right side is
 \[
-\mu\big( \mu (f; g_{1}, \ldots, g_{m}); h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} \big)
+\mu\big( \mu (f; g_{1}, \ldots, g_{m}); \underline{h_1}, \ldots, \underline{h_m} \big)
 \]
 which is by definition
 \[
-\delta\big(\mu (f; g_{1}, \ldots, g_{m})\big)\beta(h_{11}, \ldots, h_{1n_{1}}, h_{21}, \ldots, h_{mn_{m}} ).
+\delta\big(\mu (f; g_{1}, \ldots, g_{m})\big)\beta(\underline{h_1}, \ldots, \underline{h_m} ).
 \]
 Thus verifying the operad associativity axiom reduces to showing
 \begin{eqn}\label{eqn:opass}
@@ -883,7 +907,7 @@ The action operad axiom is now the calculation below, and uses axioms \eqref{eq4
 \section{Presentations of action operads}\label{sec:presofacops}
 A useful method for constructing new examples of some given algebraic structure is through the use of presentations. A presentation consists of generating data together with relations between generators using the operations of the algebra involved.  In categorical terms, the generators and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer. This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and 2-monad. The most direct route to the desired results uses the theory of locally finitely presentable categories. We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
 
-\begin{Defi}
+\begin{Defi}\label{def:filtered}
 A \textit{filtered category}\index{category!filtered} is a nonempty category $C$ such that
 \begin{itemize}
 \item if $a,b$ are objects of $C$, then there is another object $c \in C$ and morphisms $a \to c, b \to c$; and
@@ -914,7 +938,7 @@ The definition of a locally finitely presentable category has many equivalent va
 The category $\mb{AOp}$ is locally finitely presentable.
 \end{thm}
 \begin{proof}
-First note that there is a category $\mb{Op}^{g}$\nomenclature[C]{$\mb{Op}^{g}$}{of operads $P$ for which each $P(n)$ has a group structure and operad maps}, whose objects are operads $P$ in which each $P(n)$ also carries a group structure. This is an equational theory using equations with only finitely many elements, so $\mb{Op}^{g}$ is locally finitely presentable. QQQ \cite[Corollary 3.7]{ar} QQQ? A slice category of a locally finitely presentable category is itself locally finite presentable \cite[Proposition 1.57]{ar} and since the symmetric operad is an object of $\mb{Op}^{g}$, the slice category\index{category!slice category} $\mb{Op}^{g}/\Sigma$ is locally finitely presentable.
+First note that there is a category $\mb{Op}^{g}$\nomenclature[C]{$\mb{Op}^{g}$}{of operads $P$ for which each $P(n)$ has a group structure and operad maps}, whose objects are operads $P$ in which each $P(n)$ also carries a group structure. This is an equational theory using equations with only finitely many elements, so $\mb{Op}^{g}$ is locally finitely presentable \cite[Corollary 3.7]{ar}. A slice category of a locally finitely presentable category is itself locally finite presentable \cite[Proposition 1.57]{ar} and since the symmetric operad is an object of $\mb{Op}^{g}$, the slice category\index{category!slice category} $\mb{Op}^{g}/\Sigma$ is locally finitely presentable.
 
 There is an obvious inclusion functor $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$.  Now $\mb{AOp}$ is a full subcategory of $\mb{Op}^{g}/\Sigma$ which is closed under products, subobjects. Since any object of $\mb{Op}^{g}/\Sigma$ isomorphic to an action operad is in fact an action operad, the inclusion   $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$ is actually the inclusion of a reflective subcategory.  One easily checks that $\mb{AOp}$ is in fact closed under all limits and filtered colimits in $\mb{Op}^{g}/\Sigma$, so by the Reflection Theorem (2.48 in \cite{ar}), $\mb{AOp}$ is locally finitely presentable.
 \end{proof}
@@ -928,7 +952,7 @@ In standard presentations of the theory of operads (see, for example, \cite{mss-
 \end{rem}
 
 \begin{example}
-One can easily form new action operads from old ones by taking limits\index{action operad!limits of}.  To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there.  Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$\nomenclature[C]{$C/c$}{the slice category of $C$ over an object $c$ in $C$} (see QQQ) which themselves are (possibly wide) pullbacks in the category of operads.  This pullback will then be computed levelwise, showing that at each dimension we have a group structure with a group homomorphism to the appropriate $\Sigma_{n}$ and that the final action operad axiom holds since it does in each component.  The equalizer of a pair of maps will then just be the levelwise equalizer.  This shows that the pointwise product of an action operad $P$ with an action operad of the form $Z(Q)$ is again an action operad, but the pointwise product of two arbitrary action operads might not be.
+One can easily form new action operads from old ones by taking limits\index{action operad!limits of}.  To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there.  Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$\nomenclature[C]{$C/c$}{the slice category of $C$ over an object $c$ in $C$} (see QQQ) which themselves are (possibly wide) pullbacks in the category of operads.  This pullback will then be computed levelwise, showing that at each dimension we have a group structure with a group homomorphism to the appropriate $\Sigma_{n}$ and that the final action operad axiom holds since it does in each component.  The equalizer of a pair of maps will then just be the levelwise equalizer.  This shows that the pointwise product of an action operad $P$ with an action operad of the form $Z(Q)$ (as in Proposition \ref{Z}) is again an action operad, but the pointwise product of two arbitrary action operads might not be.
 \end{example}
 \begin{thm}\label{underlyingSS}
 There is a forgetful functor $U:\mb{AOp} \rightarrow \mb{Sets}/\SS$ which preserves all limits and filtered colimits.
@@ -995,7 +1019,7 @@ such that the following two equivariance axioms hold.
 \end{Defi}
 
 \begin{Defi}
-The category $\ML\mbox{-}\mb{Op}$\nomenclature[C]{$\ML\mbox{-}\mb{Op}$}{of $\Lambda$-operads and maps of operads which are levelwise equivariant with respect to the $\Lambda(n)$-actions}\index{operad!$\ML$-operad!category of} of $\Lambda$-operads has objects the $\ML$-operads and morphisms those maps of operads which are levelwise equivariant with respect to the $\Lambda(n)$-actions.
+The category $\ML\mbox{-}\mb{Op}$\nomenclature[C]{$\ML\mbox{-}\mb{Op}$}{of $\ML$-operads and maps of operads which are levelwise equivariant with respect to the $\Lambda(n)$-actions}\index{operad!$\ML$-operad!category of} of $\Lambda$-operads has objects the $\ML$-operads and morphisms those maps of operads which are levelwise equivariant with respect to the $\Lambda(n)$-actions.
 \end{Defi}
 
 \begin{example}
@@ -1024,7 +1048,7 @@ Let $O$ be a non-symmetric operad.  An \textit{algebra}\index{algebra!operad}\in
 \alpha_{1}(\textrm{id}; x) = x
 \]
 for all $x \in X$.
-\item The maps $\alpha_{n}$ are associative in the sense that the diagram
+\item The maps $\alpha_{n}$ are associative in the sense that the following diagram commutes.
 \[
 \xy
 (0,0)*+{O(n) \times O(k_{1}) \times X^{k_{1}} \times \cdots \times O(k_{n}) \times X^{k_{n}}}="ul";
@@ -1039,7 +1063,6 @@ for all $x \in X$.
 {\ar_{\alpha_{\sum k_{i}}} "bl"; "br"};
 \endxy
 \]
-commutes.
 \end{enumerate}
 \end{Defi}
 
@@ -1058,7 +1081,7 @@ using $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$ together with the canonical ac
 \]
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad.  An \textit{algebra}\index{algebra!$\Lambda$-operad} for $P$ consists of a set $X$ together with maps $\alpha_{n}:P(n) \times_{\Lambda(n)} X^{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the operad algebra axioms given in Definition \ref{opalgax}.
+Let $P$ be a $\ML$-operad.  An \textit{algebra}\index{algebra!$\Lambda$-operad} for $P$ consists of a set $X$ together with maps $\alpha_{n}:P(n) \times_{\Lambda(n)} X^{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the operad algebra axioms given in Definition \ref{opalgax}.
 \end{Defi}
 
 \begin{rem}
@@ -1066,7 +1089,7 @@ It is worth noting that the equivariance required for a $P$-algebra is built int
 \end{rem}
 
 \begin{Defi}
-The category of algebras\index{operad!algebra!category of} for $P$, $P\mbox{-}\mb{Alg}$\nomenclature[C]{$P\mbox{-}\mb{Alg}$}{of $P$-algebras and morphisms for an operad (or monad) $P$}, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
+Let $P$ be a $\ML$-operad. The category of algebras\index{operad!algebra!category of} for $P$, $P\mbox{-}\mb{Alg}$\nomenclature[C]{$P\mbox{-}\mb{Alg}$}{of $P$-algebras and morphisms for an operad (or monad) $P$}, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f: (X, \alpha) \rightarrow (Y, \beta)$ those functions $f:X \rightarrow Y$ such that the following diagram commutes for every $n$.
 \[
 \xy
 {\ar^{1 \times f^{n}} (0,0)*+{P(n) \times X^{n}}; (50,0)*+{P(n) \times Y^{n}} };
@@ -1088,14 +1111,14 @@ Let $\ML$ be an action operad, and let $X$ be a set.  Then $\mathcal{E}_{X}$ car
 \begin{proof}
 $\mathcal{E}_{X}$ is a symmetric operad, so we define the actions by
 \[
-\mathcal{E}_{X}(n) \times \Lambda(n) \stackrel{1 \times \pi_{n}}{\longrightarrow} \mathcal{E}_{X}(n) \times \Sigma_{n} \rightarrow \mathcal{E}_{X}.
+\mathcal{E}_{X}(n) \times \Lambda(n) \stackrel{1 \times \pi_{n}}{\longrightarrow} \mathcal{E}_{X}(n) \times \Sigma_{n} \rightarrow \mathcal{E}_{X}(n).
 \]
 \end{proof}
 
 The previous result is really a change-of-structure-groups result.  We record the general result as the following proposition.
 
 \begin{prop}\label{pbaop}
-Let $f:\ML \rightarrow \ML'$ be a map of action operads.  Then $f$ induces a functor $f^{*}:\Lambda'\mbox{-}\mb{Op} \to \Lambda\mbox{-}\mb{Op}$.
+Let $f:\ML \rightarrow \ML'$ be a map of action operads.  Then $f$ induces a functor $f^{*}:\ML'\mbox{-}\mb{Op} \to \ML\mbox{-}\mb{Op}$.
 \end{prop}
 
 We can now use endomorphism operads to characterize algebra structures.
@@ -1167,18 +1190,21 @@ and this inherits a right $\Sigma_{n}$-action by multiplication.  The unit of $S
 \[
 * \stackrel{\eta}{\longrightarrow} P(1) \longrightarrow P(1)\times_{\Lambda(1)}\Sigma_{1} \cong P(1)/\Lambda(1).
 \]
-For the multiplication, let $\underline{k} = k_1 + \cdots + k_n$, so we must define
+For the multiplication, let $K = k_1 + \cdots + k_n$, so we must define
+% \[
+% \mu \colon (P(n) \times_{\Lambda(n)} \Sigma_{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \to P(K) \times_{\Lambda(K)} \Sigma_{K}.
+% \]
 \[
-\mu: (P(n) \times_{\Lambda(n)} \Sigma_{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \to P(\underline{k}) \times_{\Lambda(\underline{k})} \Sigma_{\underline{k}}.
+  \mu \colon \left(P(n) \times_{\Lambda(n)} \Sigma_n \right) \times \prod_{i=1}^n \left(P(k_i) \times_{\Lambda(k_i)} \Sigma_{k_i} \right) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_K.
 \]
-Using the universal property of the coequalizer, this is induced by
-\[
-\begin{array}{rcl}
-(P(n) \times \Sigma_{n}) \times (P(k_1) \times \Sigma_{k_1}) \times \cdots \times (P(k_n) \times \Sigma_{k_n}) & \cong & \\
- \Big(P(n) \times \prod P(k_{i}) \Big) \times \Big(\Sigma_{n} \times \prod \Sigma_{k_{i}} \Big) & \to &\\
-   P(\underline{k}) \times \Sigma_{\underline{k}} & \to &  P(\underline{k}) \times_{\Lambda(\underline{k})} \Sigma_{\underline{k}}.
-   \end{array}
-\]
+Using the universal property of the coequalizer, this is induced by the following composite.
+
+\begin{align*}
+(P(n) \times \Sigma_{n}) \times \prod_{i=1}^n \left(P(k_i) \times \Sigma_{k_i}\right) &\cong \left(P(n) \times \prod_{i=1}^n P(k_{i}) \right) \times \left(\Sigma_{n} \times \prod_{i=1}^n \Sigma_{k_{i}} \right)\\
+ &\xrightarrow{\mu^P \times \mu^{\Sigma}} P(K) \times \Sigma_{K}\\
+    &\longrightarrow  P(K) \times_{\Lambda(K)} \Sigma_{K}
+   \end{align*}
+
 We leave verification of the associativity, unit, and equivariance axioms to the reader, they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\ML$-operad axioms for $P$.  It is then straightforward to check the bijection between $\ML$-operad maps $P \to \pi^{*}Q$ and symmetric operad maps $S(P) \to Q$, thus establishing the adjunction.
 
 The second claim is a simple calculation using the coequalizer that defines $S(\pi^{*}Q)$, using that $Q(n)$ is itself the coequalizer of the obvious pair of maps $Q(n) \times \Sigma_{n} \times \Sigma_{n}$.
@@ -1225,7 +1251,7 @@ Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \em
     \endxy
   \]
  
-A \emph{transformation}\index{monad!maps!transformation} $\Gamma : (F, \alpha) \Rightarrow (G, \beta)$ is a natural transformation $\Gamma: F \Rightarrow G$ such that the following diagram commutes.
+A \emph{transformation}\index{monad!maps!transformation} $\Gamma : (F, \alpha) \Rightarrow (G, \beta)$ between monad maps is a natural transformation $\Gamma: F \Rightarrow G$ such that the following diagram commutes.
   
   \[
     \xy
@@ -1277,7 +1303,7 @@ Every monad map $(F,\alpha)$ induces a functor $S\Alg \rightarrow T\Alg$ on the 
 
 The first diagram commutes since the left hand side is the second diagram required to commute for $(F,\alpha)$ to be a monad map, the square at the top right is an instance of naturality for $\alpha$, while the bottom right square commutes since $(X,\sigma)$ is an $S$-algebra. The second diagram commutes since the top triangle is again a requirement of $\alpha$ being a transformation, with the lower triangle commuting again as a result of $(X,\sigma)$ being an $S$-algebra.
 
-A morphism $f : (X, \sigma_X) \rightarrow (Y, \sigma_Y)$ of $S$-algebras is sent to the morphism $Ff : (FX, F\sigma_X \cdot \alpha_X) \rightarrow (FY, F\sigma_Y \cdot \alpha_Y$), being a map of $T$-algebras following from the naturality of $\alpha$ and of $f$ being an $S$-algebra map. Functoriality follows from that of $F$.
+A morphism $f : (X, \sigma_X) \rightarrow (Y, \sigma_Y)$ of $S$-algebras is sent to the morphism $Ff : (FX, F\sigma_X \cdot \alpha_X) \rightarrow (FY, F\sigma_Y \cdot \alpha_Y$), this being a map of $T$-algebras following from the naturality of $\alpha$ and of $f$ being an $S$-algebra map. Functoriality follows from that of $F$.
 
 % Moved Definition \ref{cocom_symm_mon_cat} from here.
 
@@ -1329,7 +1355,7 @@ with the opposite category arising from our choice of right actions.  A key step
 \begin{Defi}
 Let $\ML$ be an action operad, and let $X, Y$ be $\ML$-collections.  We define the $\ML$-collection $X \circ Y$\index{collection!convolution} to be
 \[
-X \circ Y (n) = \Big( \coprod_{k_{1} + \cdots + k_{r} = n} X(r) \times Y(k_{1}) \times \cdots \times Y(k_{r}) \Big) \times \Lambda(n) / \sim
+X \circ Y (n) = \left( \coprod_{k_{1} + \cdots + k_{r} = n} X(r) \times Y(k_{1}) \times \cdots \times Y(k_{r}) \right) \times \Lambda(n) / \sim
 \]
 where the equivalence relation is generated by
 \[
@@ -1354,7 +1380,7 @@ We will now develop the tools to prove that the category $\ML\mb{\mbox{-}Coll}$ 
 \begin{thm}\label{operad=monoid}
 Let $\ML$ be an action operad.
 \begin{enumerate}
-\item The category $\ML\mb{\mbox{-}Coll}$ has a monoidal structure with tensor product given by $\circ$ and unit given by the collection $I$ with $I(n) = \emptyset$ when $n \neq 1$, and $I(1) = \Lambda(1)$ with the $\Lambda$-action given by multiplication on the right.
+\item The category $\ML\mb{\mbox{-}Coll}$ has a monoidal structure with tensor product given by $\circ$ and unit given by the collection $I$ with $I(n) = \emptyset$ when $n \neq 1$, and $I(1) = \Lambda(1)$ with the $\ML$-action given by multiplication on the right.
 \item The category $\mb{Mon}(\ML\mb{\mbox{-}Coll})$\nomenclature[C]{$\mb{Mon}(C)$}{of monoids in $C$ and morphisms preserving the monoid structure}\index{monoid!category of} of monoids in $\ML\mb{\mbox{-}Coll}$ is equivalent to the category of $\ML$-operads.
 \end{enumerate}
 \end{thm}
@@ -1409,7 +1435,7 @@ We refer the reader to \cite{day-thesis} for further details.  We do note, howev
 \[
 Y^{\star n}(k) = \int^{(k_{1}, \ldots, k_{n}) \in \mathbb{\Lambda}^{n}} Y(k_{1}) \times \cdots \times Y(k_{n}) \times \mathbb{\Lambda}(k, k_{1} + \cdots + k_{n})
 \]
-Computations with Day convolution will necessarily involve heavy use of the calculus of coends, and we refer the reader in need of a refresher course on coends to \cite{maclane-catwork}.  Our goal is to express the substitution tensor product as a coend just as in \cite{kelly-op}, and to do that we need one final result about the Day convolution product.
+Computations with Day convolution will necessarily involve heavy use of the calculus of coends, and we refer the reader in need of a refresher course on coends to \cite{maclane-catwork} or \cite{loregian}.  Our goal is to express the substitution tensor product as a coend just as in \cite{kelly-op}, and to do that we need one final result about the Day convolution product.
 
 \begin{lem}\label{calclem2}
 Let $\ML$ be an action operad, let $Y \in \hat{\mathbb{\Lambda}}$, and let $k$ be a fixed natural number.  Then the assignment
@@ -1490,7 +1516,7 @@ using the same methods.
 For associativity, we compute $(X \circ Y) \circ Z$ and $X \circ (Y \circ Z)$.
 \[
 \begin{array}{rcl}
-(X \circ Y) \circ Z (k) & = & \int^{m} X \circ Y (m) \times Z^{\star m}(k) \\
+((X \circ Y) \circ Z) (k) & = & \int^{m} X \circ Y (m) \times Z^{\star m}(k) \\
 & = & \int^{m} \big( \int^{l} X(l) \times Y^{\star l}(m) \big) \times Z^{\star m}(k) \\
 & \cong & \int^{m,l} X(l) \times Y^{\star l}(m) \times Z^{\star m}(k) \\
 & \cong & \int^{l} X(l) \times \int^{m} Y^{\star l}(m) \times Z^{\star m}(k)
@@ -1498,12 +1524,12 @@ For associativity, we compute $(X \circ Y) \circ Z$ and $X \circ (Y \circ Z)$.
 \]
 The first isomorphism is from products distributing over colimits and hence coends, and the second is that fact plus the Fubini Theorem for coends \cite{maclane-catwork}.  A similar calculation shows
 \[
-X \circ (Y \circ Z)(k) \cong \int^{l} X(l) \times (Y \circ Z)^{\star l}(k).
+(X \circ (Y \circ Z))(k) \cong \int^{l} X(l) \times (Y \circ Z)^{\star l}(k).
 \]
 Thus the associativity isomorphism will be induced once we construct an isomorphism $\int^{m} Y^{\star l}(m) \times Z^{\star m} \cong (Y \circ Z)^{\star l}$.  We do this by induction, with the $l=1$ case being the isomorphism $Y^{\star 1} \cong Y$ together with the definition of $\circ.$  Assuming true for $l$, we prove the case for $l+1$ by the calculations below.
 \[
 \begin{array}{rcl}
-(Y \circ Z)^{\star l+1} & \cong & (Y \circ Z) \star (Y \circ Z)^{\star l} \\
+(Y \circ Z)^{\star (l+1)} & \cong & (Y \circ Z) \star (Y \circ Z)^{\star l} \\
 & \cong & (Y \circ Z) \star \big( \int^{m} Y^{\star l}(m) \times Z^{\star m} \big) \\
 & = & \big( \int^{n} Y(n) \times Z^{\star n} \big) \star \big( \int^{m} Y^{\star l}(m) \times Z^{\star m} \big) \\
 & = & \int^{a,b} \big( \int^{n} Y(n) \times Z^{\star n}(a) \big)  \times \big( \int^{m} Y^{\star l}(m) \times Z^{\star m}(b) \big) \times \mathbb{\Lambda}(-, a+b) \\
@@ -1517,9 +1543,9 @@ Each isomorphism above arises from the symmetric monoidal structure on $\mb{Sets
 
 For the monoidal category axioms on $\hat{\mathbb{\Lambda}}$, we only need to note that the unit and associativity isomorphisms arise, using the universal properties of the coend, from the unit and associativity isomorphisms on the category of sets together with the interaction between products and colimits.  Hence the monoidal category axioms follow by those same axioms in $\mb{Sets}$ together with the universal property of the coend.
 
-Now we must show that monoids in $(\hat{\mathbb{\Lambda}}, \circ)$ are operads.  By the Yoneda lemma, a map of $\ML$-collections $\eta: I \rightarrow X$ corresponds to an element $\textrm{id} \in X(1)$ since $I = \mathbb{\Lambda}(-,1)$.  A map $\mu:X \circ X \rightarrow X$ is given by a collection of $\Lambda(k)$-equivariant maps $X \circ X (k) \rightarrow X(k)$.  By the universal property of the coend, this is equivalent to giving maps
+Now we must show that monoids in $(\hat{\mathbb{\Lambda}}, \circ)$ are operads.  By the Yoneda lemma, a map of $\ML$-collections $\eta \colon I \rightarrow X$ corresponds to an element $\textrm{id} \in X(1)$ since $I = \mathbb{\Lambda}(-,1)$.  A map $\mu \colon (X \circ X) \rightarrow X$ is given by a collection of $\Lambda(k)$-equivariant maps $X \circ X (k) \rightarrow X(k)$.  By the universal property of the coend, this is equivalent to giving maps
 \[
-\mu_{n, \underline{k}}:X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times \mathbb{\Lambda}(k, k_{1}+\cdots +k_{n}) \rightarrow X(k)
+\mu_{n, \underline{k}} \colon X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times \mathbb{\Lambda}(k, k_{1}+\cdots +k_{n}) \rightarrow X(k)
 \]
 which are compatible with the actions of $\Lambda(k)$ (using the hom-set in the source, and the standard right action in the target) as well as each of $\Lambda(n), \Lambda(k_{1}), \ldots, \Lambda(k_{n})$.  The hom-set in $\mathbb{\Lambda}$ is nonempty precisely when $k=k_{1} + \cdots + k_{n}$, so we define the operad multiplication $\mu$ for $X$ to be
 \[
@@ -1529,7 +1555,7 @@ Compatibility with the actions of the  $\Lambda(n), \Lambda(k_{1}), \ldots, \Lam
 \end{proof}
 
 \begin{rem}
-The above result can be interpreted for $\ML$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which tensor distributes over colimits in each variable.  In order to do so, the following changes must be made.  First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects.  Second, any product with a hom-set from $\mathbb{\Lambda}$ must be replaced by a copower\index{colimit!copower} with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$\nomenclature[N]{$S \odot X$}{copower of set $S$ with an object $X$}).  The same changes also allow one to interpret the results below about algebras in such a category, unless noted otherwise.
+The above result can be interpreted for $\ML$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which tensor distributes over colimits in each variable.  In order to do so, the following changes must be made.  First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects.  Second, any product with a hom-set from $\mathbb{\Lambda}$ must be replaced by a copower\index{colimit!copower} with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$\nomenclature[N]{$S \odot X$}{copower of set $S$ with an object $X$}).  The same changes also allow one to interpret the results in the following chapter about algebras in such a category, unless noted otherwise.
 \end{rem}
 
 
@@ -1576,7 +1602,7 @@ We will identify maps $\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow 
 
 Note also that in the following definitions we will often write the composite
     \[
-        P(n) \times \prod(P(k_i) \times X^{k_i}) \rightarrow P(n) \times \prod P(k_i) \times X^{\Sigma k_i} \xrightarrow{\mu^P \times 1} P(\Sigma_{k_i}) \times X^{\Sigma k_i}
+        P(n) \times \prod_{i=1}^n \left(P(k_i) \times X^{k_i}\right) \rightarrow P(n) \times \prod_{i=1}^n P(k_i) \times X^{\Sigma k_i} \xrightarrow{\mu^P \times 1} P(\Sigma_{k_i}) \times X^{\Sigma k_i}
     \]
 simply abbreviated as $\mu^P \times 1$.  Furthermore, instead of using an element $\textrm{id} \in P(1)$ as the operadic unit, we will now denote this as $\eta^{P}:1 \rightarrow P(1)$.
 \end{conv}
@@ -1589,7 +1615,7 @@ Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra}\index{algebra!pseudoalgebra}
         \item a category $X$,
         \item a family of functors
             \[
-                \left(\alpha_n: P(n) \times_{\Lambda(n)} X^n \rightarrow X \right)_{n \in \mathbb{N}},
+                \left(\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow X \right)_{n \in \mathbb{N}},
             \]
         \item for each $n, k_1, \ldots, k_n \in \mathbb{N}$, a natural isomorphism $\phi_{k_1, \ldots, k_n}$ (corresponding, via Conventions \ref{conv_coeq}) to a natural isomorphism
             \[
@@ -1810,7 +1836,7 @@ Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudo
 \end{Defi}
 
 \begin{rem}
-A strict algebra for a $\ML$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an operad on the \textit{category} of small categories and functors.  A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense.  We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
+A strict algebra for a $\ML$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an QQQ (operad \textit{in} or monad \textit{on}?) operad on the \textit{category} of small categories and functors.  A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense.  We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
 \end{rem}
 
 \begin{Defi}
@@ -2093,10 +2119,10 @@ Let $T$ be a 2-monad.
 \end{itemize}
 \end{Defi}
 
-Our main result in this section is the following, showing that one can consider algebras and higher cells, in either strict or pseudo strength, using either the operadic or 2-monadic incarnation of a $\Lambda$-operad $P$.  This extends Proposition \ref{op=monad1}.
+Our main result in this section is the following, showing that one can consider algebras and higher cells, in either strict or pseudo strength, using either the operadic or 2-monadic incarnation of a $\ML$-operad $P$.  This extends Proposition \ref{op=monad1}.
 
 \begin{thm}
-Let $P$ be a $\Lambda$-operad in $\mb{Cat}$.
+Let $P$ be a $\ML$-operad in $\mb{Cat}$.
 \begin{itemize}
 \item There is an isomorphism of $2$-categories
     \[
@@ -2112,7 +2138,7 @@ Let $P$ be a $\Lambda$-operad in $\mb{Cat}$.
 \begin{proof}
 We begin by noting that we suppress the difference between 2-cells $\Gamma$ and those $\tilde{\Gamma}$ as in \ref{conv_coeq}, implicitly always using 2-cells defined on a coequalizer which are appropriately equivariant with respect to the group actions involved.
 
-A proof of the first statement follows from our proof of the second by inserting identities where appropriate.  Thus we begin by constructing a $2$-functor $R \colon \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg} \rightarrow \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$. We map a $\underline{P}$-pseudoalgebra $(X,\alpha,\Phi,\Phi_\eta)$ to the following $P$-pseudoalgebra on the same object $X$. First we define the functor $\alpha_n$ to be the composite
+A proof of the first statement follows from our proof of the second by inserting identities where appropriate.  Thus we begin by constructing a $2$-functor $R \colon \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg} \rightarrow \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$. We map a $\underline{P}$-pseudoalgebra $(X,\alpha,\Phi,\Phi_\eta)$ to the following $P$-pseudoalgebra on the same category $X$. First we define the functor $\alpha_n$ to be the composite
     \[
         \xy
             (0,0)*+{\alpha_n \colon P(n) \times_{\Lambda(n)} X^n}="00";
@@ -2130,15 +2156,15 @@ The isomorphisms $\phi_{k_1,\ldots,k_n}$ are defined using $\Phi$ as in the foll
            	(30,0)*+{\scriptstyle P_n \times \prod_i \left( P_{k_i} \times_{\Lambda_{k_i}} X^{k_i} \right)}="10";
             (60,0)*+{\scriptstyle P_n \times \underline{P}(X)^n}="20";
             (90,0)*+{\scriptstyle P_n \times X^n}="30";
-            (-10,-15)*+{\scriptstyle P_n \times \prod_{i} P_{k_i} \times X^{\Sigma k_I}}="01";
-            (-10,-30)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_{i}}}="02";
-            (60,-7.5)*+{\scriptstyle P_n \times_{\Lambda_n} \underline{P}(X)^n}="21";
-            (60,-15)*+{\scriptstyle \underline{P}^2(X)}="22";
-            (90,-7.5)*+{\scriptstyle P_n \times_{\Lambda_n} X^n}="31";
-            (90,-15)*+{\scriptstyle \underline{P}(X)}="32";
-            (30,-30)*+{\scriptstyle P_{\Sigma k_i} \times_{\Lambda_{\Sigma k_i}} X^{\Sigma k_i}}="12";
-            (60,-30)*+{\scriptstyle \underline{P}(X)}="23";
-            (90,-30)*+{\scriptstyle X}="33";
+            (-10,-20)*+{\scriptstyle P_n \times \prod_{i} P_{k_i} \times X^{\Sigma k_I}}="01";
+            (-10,-40)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_{i}}}="02";
+            (60,-10)*+{\scriptstyle P_n \times_{\Lambda_n} \underline{P}(X)^n}="21";
+            (60,-20)*+{\scriptstyle \underline{P}^2(X)}="22";
+            (90,-10)*+{\scriptstyle P_n \times_{\Lambda_n} X^n}="31";
+            (90,-20)*+{\scriptstyle \underline{P}(X)}="32";
+            (30,-40)*+{\scriptstyle P_{\Sigma k_i} \times_{\Lambda_{\Sigma k_i}} X^{\Sigma k_i}}="12";
+            (60,-40)*+{\scriptstyle \underline{P}(X)}="23";
+            (90,-40)*+{\scriptstyle X}="33";
             {\ar "00" ; "10"};
             {\ar "00" ; "01"};
             {\ar_{\mu^P \times 1} "01" ; "02"};
@@ -2154,7 +2180,7 @@ The isomorphisms $\phi_{k_1,\ldots,k_n}$ are defined using $\Phi$ as in the foll
             {\ar^{\alpha} "32" ; "33"};
             {\ar "02" ; "12"};
             {\ar@{^{(}->} "12" ; "23"};
-            {\ar@{=>}^{\Phi} (75,-20.5) ; (75,-24.5)};
+            {\ar@{=>}^{\Phi} (75,-28) ; (75,-32)};
         \endxy
     \]
 whilst $\Phi_\eta$ is simply sent to itself, since the composition of $\alpha$ with the composite of the coequalizer and inclusion map from $P(1) \times X$ into $\underline{P}(X)$ is just $\tilde{\alpha_1}$. Checking the axioms here is most easily done on components and it is easily seen that the axioms required of this data to be a $P$-pseudoalgebra are precisely those that they satisfy by virtue of $X$ being  a $\underline{P}$-pseudoalgebra.
@@ -2203,7 +2229,7 @@ Of course, this can be induced using either $\alpha_n$ or $\tilde{\alpha}_n$, ea
     \[
         [p;[q_1;\underline{x}_1],\ldots,[q_n;\underline{x}_n]]
     \]
-to be component of $\phi_{|\underline{x}_1|, \ldots, |\underline{x}_n|}$ at the same object. To make this clearer, consider the object $[p;[q_1;x_{11}],[q_2;x_{21},x_{22}],[q_3;x_{31}]]$. The component of $\Phi$ at this object is given by the component of $\phi_{1,2,1}$ at the same object. The isomorphism $\phi_\eta$ is again sent to itself.
+to be the component of $\phi_{|\underline{x}_1|, \ldots, |\underline{x}_n|}$ at the same object. To make this clearer, consider the object $[p;[q_1;x_{11}],[q_2;x_{21},x_{22}],[q_3;x_{31}]]$. The component of $\Phi$ at this object is given by the component of $\phi_{1,2,1}$ at the same object. The isomorphism $\phi_\eta$ is again sent to itself.
 
 Now given a $1$-cell $f$ with structure $2$-cells $\overline{f}_n$ we define a $1$-cell $(F,\overline{F})$ with underlying $1$-cell $f$ and structure $2$-cell $\overline{F}$ with components
     \[
@@ -2215,9 +2241,9 @@ The mapping for $2$-cells is just the identity as before. These mappings again c
 \end{proof}
 
 \begin{rem}
-Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad\index{operad!endomorphism operad} (Proposition \ref{endoalg}). We can similarly define pseudomorphisms for a $\mathbf{Cat}$-enriched $\Lambda$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
+Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad\index{operad!endomorphism operad} (Proposition \ref{endoalg}). We can similarly define pseudomorphisms for a $\mathbf{Cat}$-enriched $\ML$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
 
-If $P$, $Q$ are $\Lambda$-operads then a \textit{pseudomorphism}\index{operad!pseudomorphism} of $\Lambda$-operads $F \colon P \rightarrow Q$ consists of a family of $\Lambda$-equivariant functors
+If $P$, $Q$ are $\ML$-operads then a \textit{pseudomorphism}\index{operad!pseudomorphism} of $\ML$-operads $F \colon P \rightarrow Q$ consists of a family of $\ML$-equivariant functors
             \[
                 \left(F_n \colon P(n) \rightarrow Q(n)\right)_{n \in \mathbb{N}}
             \]
@@ -2242,7 +2268,7 @@ These isomorphisms are then required to satisfy their own axioms, and these ensu
 
 This section will be concerned with characterizing various properties of those $2$-monads induced by $\ML$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary.  Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\ML$-operad $P$).  Both of these results are simple extensions of well-known results about operads.  Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
 
- The $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these 2-categories can often be deduced from properties of the 2-monad $T$, the most common being that $T$ is finitary.  In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables.  If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}.  There are additional results of a purely 2-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
+ For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these 2-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary.  In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables.  If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}.  There are additional results of a purely 2-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
     \[
         \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg} \rightarrow T\mbox{-}\mb{Alg}_s
     \]
@@ -2253,12 +2279,13 @@ We begin by showing each associated $2$-monad is finitary.
 Let $P$ be a $\ML$-operad. Then $\underline{P}$ is finitary.\index{$2$-monad!finitary}
 \end{prop}
 \begin{proof}
-To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
+To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits \ref{def:filtered} or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
     \begin{align*}
         \underline{P}(\text{colim}X_{i}) &= \coprod_n P(n) \times_{\Lambda(n)} (\text{colim}X_{i})^n \\
                                                                &\cong \coprod_n P(n) \times_{\Lambda(n)} \text{colim}(X_{i}^n) \\
                                                                &\cong \coprod_n \text{colim}(P(n) \times_{\Lambda(n)} X_{i}^n) \\
-                                                               &\cong \text{colim}\coprod_n P(n) \times_{\Lambda(n)} X_{i}^n = \text{colim}\underline{P}(X_{i}).
+                                                               &\cong \text{colim}\coprod_n P(n) \times_{\Lambda(n)} X_{i}^n \\
+                                                               &= \text{colim}\underline{P}(X_{i}).
     \end{align*}
 Since $\mathbf{Cat}$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
 \end{proof}
@@ -2311,7 +2338,7 @@ where $l \in \m{L}$ and $r \in {R}$, there exists a unique morphism $m \colon B 
             {\ar@{=>}^{\beta} (41,-8) ; (38,-12)};
         \endxy
     \]
-there is a unique pair $(m,\beta)$ where $m \colon C \rightarrow B$ is a $1$-cell and $\beta \colon rm \Rightarrow g$ is an invertible $2$-cell such that $ml = f$ and $\beta \ast 1_{l} = \alpha$.
+there is a unique pair $(m,\beta)$ where $m \colon B \rightarrow C$ is a $1$-cell and $\beta \colon rm \Rightarrow g$ is an invertible $2$-cell such that $ml = f$ and $\beta \ast 1_{l} = \alpha$.
 
 Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system\index{factorization system!enhanced} where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which follows simply from the fact that the set of objects functor preserves colimits, being left adjoint to the indiscrete category functor as described in Lemma \ref{symmoncor}.
 
@@ -2342,7 +2369,7 @@ Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right acti
     \[
         (a,b) \cdot g \colon= (a \cdot g, g^{-1} \cdot b).
     \]
-If this action of $G$ on $A \times B$ is free, then the category $A \times B/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $A \times_G B$.
+If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $A \times_G B$.
 \end{lem}
 \begin{proof}
 The category $A \times_G B$ is defined as the coequalizer
@@ -2392,7 +2419,7 @@ The pullback of this diagram is isomorphic to the coproduct of the pullbacks of 
 			(30,-15)*+{P(1) \times Y}="11";
 			{\ar^{} "10" ; "11"};
 			{\ar_{1 \times f} "01" ; "11"};
-			(45,-7.5)*{,};
+			% (45,-7.5)*{};
 			(90,0)*+{\emptyset}="60";
 			(60,-15)*+{P(n) \times_{\Sigma_{n}} X^n}="51";
 			(90,-15)*+{P(n) \times_{\Sigma_{n}} Y^n}="61";
@@ -2557,7 +2584,7 @@ are pullbacks then the outside of the diagram
             {\ar_{\mu_Y} "10" ; "11"};
         \endxy
     \]
-is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares
+is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares below is a pullback.
     \[
         \xy
             (0,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(P(k_i) \times_{\Sigma_{k_i}} X^{k_i}\right)}="00";
@@ -2570,7 +2597,7 @@ is also a pullback and so each of the naturality squares for $\mu$ must therefor
             {\ar "10" ; "11"};
         \endxy
     \]
-is a pullback. The map along the bottom is the obvious one, sending $[p; x_1, \ldots, x_n]$ simply to the equivalence class $[p]$. Along the right hand side the map is the one corresponding to operadic composition, sending $[q;[p_1],\ldots,[p_m]]$ to $[\mu^P(q;p_1,\ldots,p_n)]$. The pullback of these maps would be the category consisting of pairs
+The map along the bottom is the obvious one, sending $[p; x_1, \ldots, x_n]$ simply to the equivalence class $[p]$. Along the right hand side the map is the one corresponding to operadic composition, sending $[q;[p_1],\ldots,[p_m]]$ to $[\mu^P(q;p_1,\ldots,p_n)]$. The pullback of these maps would be the category consisting of pairs
     \[
         \left([p;x_1,\ldots,x_{\Sigma k_i}],[q;[p_1],\ldots,[p_n]]\right),
     \]
@@ -2643,9 +2670,9 @@ The classical Borel construction\index{Borel} is a functor from $G$-spaces to sp
 \end{Defi}
 
 \begin{Defi}
-A functor $F:X \to Y$ is an \emph{isofibration}\index{isofibration} if given $x \in X$ and an isomorphism $f: y \cong F(x)$ in $Y$, there is an isomorphism $g$ in $X$ such that $F(g) = f$.
+A functor $F \colon X \to Y$ is an \emph{isofibration}\index{isofibration} if given $x \in X$ and an isomorphism $f\colon y \xrightarrow{\cong} F(x)$ in $Y$, then there is an isomorphism $g$ in $X$ such that $F(g) = f$.
 \end{Defi}
-
+QQQ Following functors don't typecheck. Needs rewording
 \begin{prop}
 There is a natural transformation $p:EU \Rightarrow B$, where $U$ is the underlying set of a group, which is pointwise an isofibration.  Applying the classifying space functor to the component $p_{G}$ gives a universal principal $G$-bundle.
 \end{prop}
@@ -2669,7 +2696,7 @@ The following lemma is a straightforward verification.
 The functor $E:\mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the set of objects functor.  Therefore $E$ preserves all limits, and in particular is a symmetric monoidal functor when both categories are equipped with their cartesian monoidal structures.
 \end{lem}
 
-We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which tensoring with a fixed object preserves colimits).  While the definition above gives the correct notion of a $\mb{\Lambda}$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms.  In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category.  This follows that standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower.  Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
+We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which tensoring with a fixed object preserves colimits).  While the definition above gives the correct notion of a $\mb{\Lambda}$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms.  In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category.  This follows the standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower.  Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
 
 \[
 \xy
@@ -2679,7 +2706,7 @@ We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other
 (70,-15)*+{\scriptstyle P(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="21";
 (35, -25)*+{\scriptstyle P(\underline{k}) } ="12";% diagram
 {\ar^{\cong} "00" ; "20"};
-{\ar^{\alpha_{k_1} \times \cdots \times \alpha_{k_n}} "20" ; "21"};
+{\ar^{1 \times \alpha_{k_1} \times \cdots \times \alpha_{k_n}} "20" ; "21"};
 {\ar^{\mu^P} "21" ; "12"};
 {\ar_{\mu^P \times \mu^\Lambda(e;-)} "00" ; "01"};
 {\ar_{\alpha_{\underline{k}}} "01" ; "12"};
@@ -2712,7 +2739,7 @@ Let $\mb{\Lambda}$ be an action operad.  Then $B\Lambda$ (see \cref{nota:e_b}) i
 \[
 B\Lambda(m,n) = \left\{ \begin{array}{lc}
 \Lambda(n), & m = n \\
-\varnothing, & m \neq n,
+\emptyset, & m \neq n,
 \end{array} \right.
 \]
 where composition is given by group multiplication and the identity morphism is the unit element $e_n \in \Lambda(n)$.
@@ -6058,7 +6085,7 @@ where the $1$ appears in the $i$th coordinate of $\mathbb{Z}^{n}$ when $i=j$, an
 \begin{proof}
 Similarly to the symmetric case, the fact that any braid $x \in B_m$ can be written as tensor product and group multiple of $e_1$ and $b$ will let us recover all of the values of $\alpha_{L\mathbb{S}_n}$ from just those four families of action morphisms which appear in the proposition. Their sources and targets are clearly correct, so all we need to do examine their $\mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}}$ coordinates.
 
-We saw in the the proof of \cref{invbraidcat} that under the map
+We saw in the proof of \cref{invbraidcat} that under the map
 \[ \begin{tikzcd}
 B \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \ar[r] & \mathbb{Z}^{2n + (2n)^2} \ar[r] & \mathbb{Z}^{(2n)^2} \ar[r] & \mathbb{Z}^{n^2} \ar[r] & \mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}} 
 \end{tikzcd} \]
