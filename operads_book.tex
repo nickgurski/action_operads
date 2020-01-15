@@ -4375,16 +4375,22 @@ First note that this is indeed a well-defined $E\Lambda$-algebra since the tenso
 \end{prop}
 
 
-\begin{prop} \label{invadj} The 2-functor $(\_)_{\mathrm{inv}}: \ELAlg \to \ELAlg$ has a left adjoint, $L: \ELAlg \to \ELAlg$.
+\begin{prop} \label{invadj} The 2-functor $(\_)_{\mathrm{inv}}: \ELAlg \to \ELAlg$ has a left 2-adjoint, $L: \ELAlg \to \ELAlg$.
 \end{prop}
 \begin{proof} Since we already know that $\ELAlg$ is locally finitely presentable, the conditions for \cref{aftlfp} amount to showing that $(\_)_{\mathrm{inv}}$ preserves both limits and filtered colimits.
 \begin{itemize}
 \item Given an indexed collection of $E\Lambda$-algebras $X_i$, the $E\Lambda$-action of their product $\prod X_i$ is defined componentwise. In particular, this means that the tensor product of two objects in $\prod X_i$ is just the collection of the tensor products of their components in each of the $X_i$. An invertible object in $\prod X_i$ is thus simply a family of invertible objects from the $X_i$, so $(\prod X_i)_{\mathrm{inv}} = \prod (X_i)_{\mathrm{inv}}$.
-\item Given maps of $E\Lambda$-algebras $F: X \to Z$, $G : Y \to Z$, the $E\Lambda$-action of their pullback $X \times_Z Y$ is also defined component-wise. It follows that an invertible object in $X \times_Z Y$ is just a pair of invertible objects $(x, y)$ from $X$ and $Y$, such that $F(x) = G(y)$. But this is the same as asking for a pair of objects $(x, y)$ from $X_{\mathrm{inv}}$ and $Y_{\mathrm{inv}}$ such that $F_{\mathrm{inv}}(x) = G_{\mathrm{inv}}(y)$, and hence $(X \times_Z Y)_{\mathrm{inv}} = X_{\mathrm{inv}} \times_{Z_{\mathrm{inv}}} Y_{\mathrm{inv}}$.
+\item Given maps of $E\Lambda$-algebras $F, G: X \to Z$,  the $E\Lambda$-action on their equalizer is the restriction of that on $X$. As above, this implies that an invertible object of the equalizer is merely an object of the equalizer which is invertible in $X$, so $X \mapsto X_{\mathrm{inv}}$ preserves equalizers. Combined with the previous point, taking invertible objects therefore preserves all ordinary limits.
 \item Given a filtered diagram $D$ of $E\Lambda$-algebras, the $E\Lambda$-action of its colimit $\mathrm{colim}(D)$ is defined in the following way: use filteredness to find an algebra which contains (representatives of the classes of) all the things you want to act on, then apply the action of that algebra. In the case of tensor products this means that $[x]\otimes[y] = [x \otimes y]$, and thus an invertible object in $\mathrm{colim}(D)$ is just (the class of) an invertible object in one of the algebras of $D$. In other words, $\mathrm{colim}(D)_{\mathrm{inv}} = \mathrm{colim}(D_{\mathrm{inv}})$.
 \end{itemize}
-Preservation of products and pullbacks give preservation of limits, and preservation of limits and filtered colimits together give the result.
+Thus the underlying functor of $(\_)_{\mathrm{inv}}$ has a left adjoint.
+
+To upgrade this into a 2-adjunction, we require MORE STUFF.
 \end{proof}
+
+\begin{nota}\label{eta}
+From this point forward, we reserve $\eta$ for the unit of the 2-adjunction in \cref{invadj}.
+\end{nota}
 
 
 
@@ -4408,7 +4414,7 @@ We have the following 2-natural isomorphisms from the adjunctions for $L$ and th
 
 \end{proof}
 
-\begin{prop} \label{linveql} For any $E\Lambda$-algebra $X$, we have $L(X)_{\mathrm{inv}} = L(X)$.
+\begin{prop} \label{linveql} For any $E\Lambda$-algebra $X$, we have $(LX)_{\mathrm{inv}} = LX$.
 \end{prop}
 \begin{proof}
 Let $j: X_{inv} \to X$ denote the obvious inclusion functor. By construction, we have an equality of functors $(\_)_{\mathrm{inv}} \circ (\_)_{\mathrm{inv}} = (\_)_{\mathrm{inv}}$ and moreover $j_{inv}: (X_{inv})_{inv} \to X_{inv}$ is the identity for every $X$. Since $\ELAlg(LX , Y)\cong \ELAlg(X, Y_{\mathrm{inv}})$ is natural in $Y$, we have a commutative square
@@ -4425,21 +4431,17 @@ Let $j: X_{inv} \to X$ denote the obvious inclusion functor. By construction, we
     \end{tikzpicture}
     \end{center}
 in which the identity on the right is really $j_{inv} \circ -$. Thus composition with $j$ is an isomorphism in this case, so the identity map on $LX$ factors as $j \circ g$ for some $g: LX \to (LX)_{inv}$. Since $j$ is an inclusion, this factorization forces it to be the identity.
-
-
 \end{proof}
-
 
 \begin{cor} \label{epi} The component of the unit of the adjunction $L \dashv (-)_{inv}$ at $E\Lambda(\underline{n})$,  $\eta_{E\Lambda(\underline{n})}: E\Lambda(\underline{n}) \to (L_n)_{inv}$, is an epimorphism in $E\Lambda\mbox{-}\mathrm{Alg}_S$.
 \end{cor}
 \begin{proof}
-
 By \cref{linveql}, we first have that $(L_n)_{inv} = L_n$. Let $F,G: L_n \to X$ be a pair of algebra maps for which $F \eta = G \eta$. Thus the algebra maps $E\Lambda(\underline{n}) \to X_{inv}$ corresponding to $F, G$ are equal, so $F,G$ are equal.
-
-
-
-
 \end{proof}
+
+\begin{rem}
+include forward ref to where we use \cref{epi}
+\end{rem}
 
 
 QQQ Need to explain that the goal is to understand some group actions
@@ -4447,15 +4449,12 @@ QQQ Need to explain that the goal is to understand some group actions
 
 \section{Adjunctions involving monoidal categories}
 
-This section will study three different adjunctions between $\ML$-monoidal categories\index{monoidal category!$\ML$-monoidal} on the one hand and categories such as that of monoids or commutative monoids on the other hand. Two of these adjunctions are purely formal, and are induced by adjunctions between categories and sets, while the third requires a direct proof. We then investigate some simple consequences of these adjunctions for $\ML$-monoidal categories of the form $L(E\Lambda S)$ for a set $S$.
+This section will study three different adjunctions between $\ML$-monoidal categories\index{monoidal category!$\ML$-monoidal} on the one hand and categories such as that of monoids or commutative monoids on the other hand. Two of these adjunctions are purely formal, and are induced by adjunctions between categories and sets, while the third requires a direct proof. We then investigate some simple consequences of these adjunctions for $\ML$-monoidal categories of the form $L_n$.
 
-\begin{prop}\label{Ob-E_adj}
-The functor $\ob$ from categories to sets, taking the set of objects, is left adjoint to the functor $E$ of \cref{Defi:e_b} QQQ. This adjunction is monoidal, hence induces an adjunction $\ob \dashv E$ between $\lmc$ and $\mon$\nomenclature[C]{$\mon$}{of monoids and monoid homomorphisms}.
-\end{prop}
-\begin{proof}
-This is a straightforward application of \cref{...}; the only thing to note is that $\ob(\EL) = \Lambda$ as a $\ML$-operad.
 
-\end{proof}
+Recall from \cref{symmoncor} that
+the functor $\ob$ from categories to sets, taking the set of objects, is left adjoint to the functor $E$ of \cref{Defi:e_b}. This adjunction is monoidal, hence induces an adjunction $\ob \dashv E$ between $\lmc$ and $\mon$\nomenclature[C]{$\mon$}{of monoids and monoid homomorphisms}.
+We also note that $\ob(\EL) = \Lambda$ as a $\ML$-operad.
 
 \begin{Defi}
 Let $\ML$ be an action operad. Let $T_{\ML}$\nomenclature[N]{$T_{\ML}$}{the terminal $\ML$-operad} denote the terminal $\ML$-operad in sets, which is a singleton set in each dimension with the unique action of $\Lambda_n$.
@@ -4481,11 +4480,11 @@ This is now a simple application of \cref{monoidaladj_cor}, where we now only no
 
 
 
-\begin{Defi} For a monoid $M$, we write $M^{\mathrm{gp}}$ for its \emph{group completion}\index{group completion}, the universal group with a homomorphism $M \to M^{gp}$.  We write the functor $M \mapsto M^{gp}$ as $gp$.
+\begin{Defi} For a monoid $M$, we write $M^{\mathrm{gp}}$ for its \emph{group completion}\index{group completion}, the universal group with a homomorphism $M \to M^{\mathrm{gp}}$.  We write the functor $M \mapsto M^{\mathrm{gp}}$ as $\mathrm{gp}$.
 \end{Defi}
 
 \begin{rem}
-The category of groups is a reflective subcategory of the category of monoids, and $gp$ is the reflection.
+The category of groups is a reflective subcategory of the category of monoids, and $\mathrm{gp}$ is the reflection.
 \end{rem}
 
 \begin{prop}\label{oblel_fg}
@@ -4494,34 +4493,24 @@ The functor $\ob \circ L \circ \EL: \sets \to \mon$ is naturally isomorphic to t
 \begin{proof}
 Using that the objects of $\EL(M)_{inv}$ for a monoid $M$ are the same as the objects of $\EL(M^{\times})$, where $M^{\times}$ is the subgroup of invertible elements of $M$, we see that both of these functors are left adjoints to the functor $M \mapsto M^{\times}$.
 \end{proof}
-There are several different ways to actually calculate the group completion of a monoid. One is to use that fact that $M^{\mathrm{gp}}$ is the group whose group presentation is the same as the monoid presentation of $M$. That is, if $M$ is the quotient of the free monoid on generators $\mathcal{G}$ by the relations $\mathcal{R}$, then $M^{\mathrm{gp}}$ is the quotient of the free \emph{group} on generators $\mathcal{G}$ by relations $\mathcal{R}$. This makes finding the completion of free monoids particularly simple.
+There are several different ways to calculate the group completion of a monoid. One is to use that fact that $M^{\mathrm{gp}}$ is the group whose group presentation is the same as the monoid presentation of $M$. That is, if $M$ is the quotient of the free monoid on generators $\mathcal{G}$ by the relations $\mathcal{R}$, then $M^{\mathrm{gp}}$ is the quotient of the free \emph{group} on generators $\mathcal{G}$ by relations $\mathcal{R}$. This makes finding the completion of free monoids particularly simple.
 
 \begin{nota}
 We write $M^{*n}$\nomenclature[N]{$M^{*n}$}{the coproduct of $n$ copies of the monoid $M$} for the coproduct of $n$ copies of the monoid $M$. We use the same notation for groups, although the $n$-fold coproduct of a group is different when considered as a monoid than as a group; it should be clear from context which we intend.
 \end{nota}
 
 \begin{cor}\label{Zobj}
-The object monoid of $L_n$ is $\mathbb{Z}^{*n}$\nomenclature[N]{$\mathbb{Z}$}{the set of integers}, the group completion of the object monoid of $\ELn$. The restriction of $\eta$ on objects, $\mathrm{Ob}(\eta)$, is then the obvious inclusion $\mathbb{N}^{*n} \hookrightarrow \mathbb{Z}^{*n}$.
+The object monoid of $L_n$ is $\mathbb{Z}^{*n}$\nomenclature[N]{$\mathbb{Z}$}{the set of integers}, the group completion of the object monoid of $\ELn$. The restriction of $\eta$ (see \cref{eta}) on objects, $\mathrm{Ob}(\eta)$, is then the obvious inclusion $\mathbb{N}^{*n} \hookrightarrow \mathbb{Z}^{*n}$.
 \end{cor}
 
-
-
-
-
-The core of \cref{Zobj} --- that $\mathrm{Ob}(L_n)$ is the group completion of $\mathrm{Ob}(\ELn)$ --- makes concrete the sense in which the functor $L$ represents `freely adding inverses' to objects. Extending this same logic to connected components as well, it would seem reasonable to expect that $\pi_0(L_n)$ is also the group completion of $\pi_0(\ELn)$. This is indeed the case, and the proof proceeds in a way completely analogous to \cref{Zobj}. 
-
-
-
+The core of \cref{Zobj} --- that $\mathrm{Ob}(L_n)$ is the group completion of the monoid $\mathrm{Ob}(\ELn)$ --- makes concrete the sense in which the functor $L$ represents `freely adding inverses' to objects. Extending this same logic to connected components as well, it would seem reasonable to expect that $\pi_0(L_n)$ is also the group completion of $\pi_0(\ELn)$. This is indeed the case, and the proof proceeds analogously. We record this observation below. 
 
 \begin{prop}\label{pilel_gppiel}
-The functor $\pi_0 \circ L: \lmc \to T_{\ML}\mbox{-}\mb{Alg}$ is naturally isomorphic to the functor $\textrm{gp} \circ \pi_0$.
+The functor $\pi_0 \circ L: \lmc \to T_{\ML}\mbox{-}\mb{Alg}$ is naturally isomorphic to the functor $\mathrm{gp} \circ \pi_0$.
 \end{prop}
-\begin{proof}
-The proof is the same style as above, with both functors being  left adjoints of the functor $M \mapsto (DM)_{inv} = D(M^{\times})$.
-\end{proof}
+
 \begin{cor}\label{Zconcomp} The connected components of $L_n$ are the group completion of the connected components of $\ELn$. Also, the restriction of $\eta$ onto connected components, $\pi_0(\eta)$, is the canonical map $\pi_0(\ELn) \to \pi_0(\ELn)^{\mathrm{gp}}$ associated with that group completion.
 \end{cor}
-
 
 We summarize these results below.
 \begin{cor}\label{crossconcomp} If $G$ is a crossed action operad\index{action operad!crossed} then
@@ -4585,18 +4574,18 @@ Note that for any monoidal category $M$, the monoid $M(I,I)$ is always commutati
 
 
 
-\begin{Defi} For a monoid $M$, we write $M^{\mathrm{ab}}$ for its \emph{abelianization}\index{abelianization}, the universal commutative monoid with a homomorphism $M \to M^{ab}$.  We write the functor $M \mapsto M^{ab}$ as $ab$. We use the same notation for groups as well.
+\begin{Defi} For a monoid $M$, we write $M^{\mathrm{ab}}$ for its \emph{abelianization}\index{abelianization}, the universal commutative monoid with a homomorphism $M \to M^{\mathrm{ab}}$.  We write the functor $M \mapsto M^{\mathrm{ab}}$ as $\mathrm{ab}$. We use the same notation for groups as well.
 \end{Defi}
 
 \begin{rem}
-The categories of commutative monoids, resp. abelian groups, are reflective subcategories of the categories of monoids, resp. groups, and $ab$ is the reflection.
+The categories of commutative monoids, resp. abelian groups, are reflective subcategories of the categories of monoids, resp. groups, and $\mathrm{ab}$ is the reflection.
 \end{rem}
 
 
 \begin{prop}\label{Moradj} $\mathrm{B}: \cmon \to \moncat$ is a right adjoint to the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}} : \moncat \to \cmon$.
 \end{prop}
 \begin{proof}
-For a commutative monoid $A$, it is clear that $M(BA)^{ab} = A$, so we can define the counit to be the identity. For a monoidal category $X$, define $X \to B(MX^{ab})$ by sending every object of $X$ to the unique object, and by sending the morphism $f$ to the morphism given by the equivalence class of $f$. This is clearly natural in strict monoidal functors $X \to Y$, and the triangle identities make for a straightforward calculation.
+For a commutative monoid $A$, it is clear that $M(BA)^{\mathrm{ab}} = A$, so we can define the counit to be the identity. For a monoidal category $X$, define $X \to B(MX^{\mathrm{ab}})$ by sending every object of $X$ to the unique object, and by sending the morphism $f$ to the morphism given by the equivalence class of $f$. This is clearly natural in strict monoidal functors $X \to Y$, and the triangle identities make for a straightforward calculation.
 
 \end{proof}
 
@@ -4623,7 +4612,7 @@ To lift $B$ to $\lmc$, we need only assign the trivial action of each $\Lambda_n
 
 
 
- We will eventually prove that the morphisms of $L_n$ actually form a group under tensor product \cref{??}, so instead of working directly with the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}}: \moncat \to \cmon$, we will focus on its composite with the group completion functor, $gp : \cmon \to \mb{Ab}$. We end with a brief exploration of this new functor $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$.  
+ We will eventually prove that the morphisms of $L_n$ actually form a group under tensor product in \cref{tensinv}, so instead of working directly with the functor $\mathrm{M}(\, - \,)^{\mathrm{ab}}: \moncat \to \cmon$, we will focus on its composite with the group completion functor, $\mathrm{gp} : \cmon \to \mb{Ab}$. We end with a brief exploration of this new functor $\mathrm{M}(\, - \,)^{\mathrm{gp},\mathrm{ab}}$.  
 It is well known that group completion and abelianization commute since their right adjoints commute, but we further note that group completion commutes with collapsing morphisms.
 
 
@@ -4637,7 +4626,7 @@ Then
 \[ \mathrm{M}_{\mathrm{gp}}(X) \cong \mathrm{M}(X)^{\mathrm{gp}}, \quad \quad \quad \mathrm{M}_{\mathrm{ab}}(X) \cong \mathrm{M}(X)^{\mathrm{ab}} \]
 \end{lem}
 \begin{proof}
-This follows immediately from $M$ being given explicitly as a quotient, and both functors $ab$ and $gp$ preserving colimits..
+This follows immediately from $M$ being given explicitly as a quotient, and both functors $\mathrm{ab}$ and $\mathrm{gp}$ preserving colimits..
 \end{proof}
 
 
@@ -4650,10 +4639,6 @@ We default to writing any abelian group, such as those in the image of $\mathrm{
 
 \section{The free object as a cokernel}
 \label{colimalgebra} 
-
-%QQQ I think I might suggest $L_n$ for the free thing on $n$ invertible objects.
-
-
 This section will present a different approach to $L_n$. Consider for a moment the free $\ML$-monoidal category on $2n$ objects $z_1, z_2, \ldots, z_{2n}$. If we were to take this category and then add the relations $z_{n+1} = z_1^{-1}, ..., z_{2n} = z_n^{-1}$, then we would be changing it from a structure with $2n$ independent generators into one with $n$ independent generators and their inverses. Thus we would see $L_n$ as a quotient of the larger monoidal category $\EL(2n)$. We will now work towards making this idea precise, and then examine some of its consequences, the most important of which will be allowing us to describe the group $\MLn^{\mathrm{gp},\mathrm{ab}}$.
 
 
@@ -4686,7 +4671,7 @@ Since $\ob$ is a left adjoint, it preserves colimits and thus cokernels. It is c
 \end{proof}
 
 
-\begin{prop}\label{coker} Let $i: \ELn \to \EL(\underline{2n})$ be the inclusion of $\ML$-monoidal categories defined on generators by $i(z_j) = z_j$. Then $i \circ q$ exhibits $Q$ as the initial $\ML$-monoidal category on $n$ invertible objects, so $Q \cong L_n$.
+\begin{prop}\label{coker} Let $i: \ELn \to \EL(\underline{2n})$ be the inclusion of $\ML$-monoidal categories defined on generators by $i(z_j) = z_j$. Then $qi$ exhibits $Q$ as the initial $\ML$-monoidal category on $n$ invertible objects, so $Q \cong L_n$.
 \end{prop}
 \begin{proof}
 \cref{Qobj} gives a unique map shown by the dashed arrow below.
@@ -4750,8 +4735,6 @@ Now consider $k(Y)$, the subcategory of $Z$ that contains every object $x'$ for 
 We note that, since we haven't used any feature of $\ML$ in the above proofs, they all apply equally in the case of no group actions at all, i.e., strict monoidal categories or when $\ML = \mb{T}$ is the terminal action operad consisting only of trivial groups.
 \end{rem}
 
-
-
 \begin{cor}\label{qsurj} The cokernel map $q: \EL(\underline{2n}) \to L_n$ is surjective.
 \end{cor}
 
@@ -4760,17 +4743,9 @@ We have an isomorphism of groups as below.
 \[ \MLn^{\mathrm{gp},\mathrm{ab}} \quad \cong \quad \bigquotient{\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}}{\mathrm{ker}\big( \, \mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}} \, \big)} \]
 \end{cor}
 
-
 One important consequence of the surjectivity of $q$ is that it will allow us to use some results about the free algebra $\ELnn$ to deduce information about the free invertible algebra $L_n$. In fact, we have done this once already: looking back at \cref{Qobj} with our current knowledge that $Q = L_n$, we can see that it is a direct analogue of \cref{Gnobj}, using the fact that $q$ is surjective on objects. 
 
-
-%QQQ Reference ``Gnmapsaction'' is missing.
-
-
-In that same vein, one might ask if we can take \cref{Gnmapsaction}, a statement about the morphisms $\ELnn$, and extend it to an analagous result on $L_n$, using surjectivity of $q$ on morphisms instead. That is, since every morphism of $\ELnn$ is an action morphism, and since strict $\ML$-monoidal functors always send action morphisms to action morphisms, we should be able to use $q$ to identify every morphism of $L_n$ as an action morphism. 
-
-
-%QQQ Get some notation for what Ed calls action maps, I don't like all the $\alpha$'s
+In that same vein, one might ask if we can take \cref{hom-set-lemma}, a statement about the morphisms in free $\ML$-monoidal categories, and extend it to an analagous result on $L_n$, using surjectivity of $q$ on morphisms instead. 
 
 \begin{nota}\label{newaction}
 Let's think about $g^{\otimes}$ for the iso induced by $g$.
@@ -4785,13 +4760,13 @@ for some $g \in \Lambda(m)$ and $x_i \in \{z_1, ..., z_n, z_1^*, ..., z_n^* \}$.
 \end{prop}
 
 \begin{proof}
-Let $f$ be an arbitrary morphism in $L_n$. By surjectivity of $q$, there must exist at least one morphism $f'$ in $\ELnn$ such that $q(f') = f$, and from \cref{Gnmapsaction} we know that this $f'$ can be expressed uniquely as $g^{\otimes}$ for some $g \in \Lambda(m)$. 
+Let $f$ be an arbitrary morphism in $L_n$. By surjectivity of $q$, there must exist at least one morphism $f'$ in $\ELnn$ such that $q(f') = f$, and from \cref{hom-set-lemma} we know that this $f'$ can be expressed uniquely as $g^{\otimes}$ for some $g \in \Lambda(m)$. 
 \end{proof}
 
 Note that while this result shows that every morphism of $L_n$ is induced by the action of some $g \in \Lambda(m)$, it does not imply that this $g$ is unique.
 
 \begin{conv}
-The monoid homomorphism $\mathrm{Ob}(q)  :  \mathbb{N}^{\ast 2n}  \to  \mathbb{Z}^{\ast n}$ has a canonical section $q^{-1}$ given as follows. An element $w \in \mathbb{Z}^{* n}$ can be written as a word in $z_i, z_i^*$ in normal form, that is in the fewest number of symbols. We define $q^{-1}(z_i) = z_i$ and $q^{-1}(z_i^*) = z_{n+i}$, and then 
+The monoid homomorphism $\mathrm{Ob}(q)  :  \mathbb{N}^{\ast 2n}  \to  \mathbb{Z}^{\ast n}$ has a canonical section $q^{-1}$ given as follows. An element $w \in \mathbb{Z}^{* n}$ can be written as a word in $z_i, z_i^*$ in normal form, that is in the fewest number of symbols with instances of $z_i$ or $z_i^*$ appearing before those of $z_j, z_j^*$ when $i < j$. We define $q^{-1}(z_i) = z_i$ and $q^{-1}(z_i^*) = z_{n+i}$, and then 
 \[
 q^{-1}(w) = q^{-1}(w_1) \cdots q^{-1}(w_k)
 \]
