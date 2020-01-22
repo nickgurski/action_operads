@@ -78,8 +78,8 @@
 \newcommand{\Icon}{\ensuremath{\textrm{Icon}}}
 \newcommand{\ML}{\mathbf{\Lambda}}
 \newcommand{\MLn}{\mathbf{\Lambda}_n}
-\newcommand{\MorLn}{QQQ fix later}
-\newcommand{\ELAlg}{QQQ fix later}
+\newcommand{\MorLn}{\mathrm{Mor}(L_n)}
+\newcommand{\ELAlg}{\lmc}
 \newcommand{\LL}{\Lambda}
 %\newcommand{\to}{\rightarrow}
 \def\srarrow{\relbar\joinrel\mapstochar\joinrel\rightarrow}
@@ -564,7 +564,7 @@ Much as the symmetric groups can be represented by crossings of a collection of 
 			\end{tikzpicture} \\
 			$b$ & & $t$ 
 \end{tabular} \end{center}
-This operad $RB$\index{action operad!of ribbon braid groups} is also clearly an action operad, since we can just define $\pi^{RB} : RB_{n} \to \mathrm{S}_n$ to act like $\pi^B$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
+This operad $RB$\index{action operad!of ribbon braid groups} is also clearly an action operad, since we can just define $\pi^{RB} : RB_{n} \to \Sigma_n$ to act like $\pi^B$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
 
 \begin{example}
 Every abelian group $A$ gives rise to action operad $A^{\bullet}$\nomenclature[N]{$A^{\bullet}$}{action operad of an abelian group $A$}\index{action operad!of an abelian group} as follows.  The group $A^{\bullet}(n)$ is the direct sum of $n$ copies of $A$, $A^{n}$.  The identity element is required to be $e \in A^{1}$, and the multiplication is defined by
@@ -902,7 +902,10 @@ The action operad axiom is now the calculation below, and uses axioms \eqref{eq4
 \end{small}
 \end{proof}
 
-
+\begin{nota}\label{beta_to_oplus}
+Leaning more heavily into the interpretation that the operations denoted $\beta$ above are block sums, we also write $g_1 \oplus g_2 \oplus \cdots \oplus g_n$ for
+$\beta(g_1, g_2, \ldots, g_n)$.
+\end{nota}
 
 \section{Presentations of action operads}\label{sec:presofacops}
 A useful method for constructing new examples of some given algebraic structure is through the use of presentations. A presentation consists of generating data together with relations between generators using the operations of the algebra involved.  In categorical terms, the generators and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer. This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and 2-monad. The most direct route to the desired results uses the theory of locally finitely presentable categories. We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
@@ -2814,58 +2817,9 @@ X \mapsto \coprod_{n \geq 0} E\Lambda(n) \times_{\Lambda(n)} X^{n}
 \]
 where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n}:\Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category.  The 2-monad $E\Sigma$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
 
-It will be useful for our calculations later to give an explicit description of the categories $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.  Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
-\[
-(gh; x_1, \ldots, x_n) \sim (g; x_{\pi(h)^{-1}(1)}, \ldots, x_{\pi(h)^{-1}(n)});
-\]
-we write these classes as $[g; x_1, \ldots, x_n]$.  Morphisms are then equivalence classes of morphisms
-\[
-(!; f_1, \ldots, f_n): (g; x_1, \ldots, x_n) \to (h; x_1', \ldots, x_n').
-\]
-We have two distinguished classes of morphisms, one for which the map $!: g \to h$ is the identity and one for which all the $f_{i}$'s are the identity.  Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type.  Now $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is in the image of the quotient map.  Using this fact, we can prove the following useful lemma.
-
-\begin{lem}\label{hom-set-lemma}
-For an action operad $\mb{\Lambda}$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is
-\[
-\coprod_{g \in \Lambda(n)} \prod_{i=1}^{n} X(x_i, y_{\pi(g)(i)}).
-\]
-\end{lem}
-\begin{proof}
-A morphism with source $(e; x_1, \ldots, x_n)$ in $E\Lambda(n) \times X^{n}$ is uniquely a composite
-\[
-(e; x_1, \ldots, x_n) \stackrel{(\id; f_{1}, \ldots, f_{n})}{\longrightarrow} (e; x_1', \ldots, x_n') \stackrel{(!; \id, \ldots, \id)}{\longrightarrow} (g; x_1', \ldots, x_n').
-\]
-Descending to the quotient, this becomes a morphism
-\[
-[e; x_1, \ldots, x_n] \to [g; x_1', \ldots, x_n'] = [e; x_{\pi(g)^{-1}(1)}', \ldots, x_{\pi(g)^{-1}(n)}'],
-\]
-and therefore is a morphism $[e; x_1, \ldots, x_n] \to [e; y_1, \ldots, y_n]$ precisely when $y_i = x_{\pi(g)^{-1}(i)}'$, and so $f_i \in   X(x_i, y_{\pi(g)(i)})$.
-\end{proof}
-
-
-The 2-monad $E\Lambda$ is both finitary and cartesian (see \cref{sec:propofopsincat}).  In fact we can characterize this operad uniquely (up to equivalence) using a standard argument.
-
-\begin{Defi}
-Let $\mb{\Lambda}$ be an action operad.  A \textit{$\mb{\Lambda}_{\infty}$ operad}\index{operad!$\Lambda_{\infty}$-operad} $P$ is a $\mb{\Lambda}$-operad in which each action $P(n) \times \Lambda(n) \rightarrow P(n)$ is free and each $P(n)$ is contractible\index{contractible}.
+\begin{Defi}\label{lmc}
+A \emph{$\Lambda$-monoidal category} is a strict algebra for the 2-monad $\EL$. A \emph{$\Lambda$-monoidal functor} is a strict morphism for this 2-monad $\EL$. The 2-category $\lmc$ is the 2-category of strict algebras, strict morphisms, and algebra 2-cells for $\EL$.
 \end{Defi}
-
-\begin{rem}
-One should also note that by \cref{cor:elambda_lambdaop} we get a canonical $\mb{\Lambda}_{\infty}$ operad in $\mb{Cat}$, namely $E\Lambda$ itself, and thus also in the category of simplicial sets by taking the nerve (the nerve functor is represented by a cosimplicial category, namely $\Delta \subseteq \mb{Cat}$, so preserves products) and in suitable categories of topological spaces by taking the geometric realization (once again, product-preserving with the correct category of spaces).  Thus we have something like a Barratt-Eccles $\mb{\Lambda}_{\infty}$ operad for any action operad $\mb{\Lambda}$.
-\end{rem}
-
-\begin{rem}
-The above definition makes sense in a wide context, but needs interpretation.  We can interpret the freeness condition in any complete category, as completeness allows one to compute fixed points using equalizers.  Contractibility then requires a notion of equivalence or weak equivalence, such as in an $(\infty, 1)$-category or Quillen model category, and a terminal object.  Our interest is in the above definition interpreted in $\mb{Cat}$, in which case both conditions (free action and contractible $P(n)$'s) mean the obvious thing.
-\end{rem}
-
-\begin{prop}
-For any two $\mb{\Lambda}_{\infty}$ operads $P,Q$ in $\mb{Cat}$, there is a span $P \leftarrow R \rightarrow Q$  of pointwise equivalences of $\mb{\Lambda}$-operads.
-\end{prop}
-\begin{proof}
-Given $\mb{\Lambda}_{\infty}$ operads $P$, $Q$ in $\mb{Cat}$, the product $P \times Q$ with the diagonal action is also $\mb{\Lambda}_{\infty}$.  Each of the projection maps is a pointwise equivalence of $\mb{\Lambda}$-operads.
-\end{proof}
-\begin{rem}
-Once again, this proof holds in a wide context.  We required that the product of free actions is again free, true in any complete category.  We also required that the product of contractible objects is contractible; this condition will hold, for example, in any Quillen model category in which all objects are fibrant or in which the product of weak equivalences is again a weak equivalence.
-\end{rem}
 
 % QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
 QQQ Possibly move these results to the next chapter?
@@ -2895,6 +2849,94 @@ Let $X,Y$ be strict $\EL$-algebras, and $F:X \to Y$ be a functor. The structure 
 \begin{proof}
 
 \end{proof}
+
+\begin{prop}\label{el_2cells}
+Let $X,Y$ be strict $\EL$-algebras, and $F, G:X \to Y$ be strict $\EL$-algebra maps. The structure of an $\EL$-algebra 2-cell $\alpha:F \Rightarrow G$ determines and is determined by some stuff.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+\section{Free $\ML$-monoidal categories}
+
+
+It will be useful for our calculations later to give an explicit description of the categories $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.  Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
+\[
+(gh; x_1, \ldots, x_n) \sim (g; x_{\pi(h)^{-1}(1)}, \ldots, x_{\pi(h)^{-1}(n)});
+\]
+we write these classes as $[g; x_1, \ldots, x_n]$.  Morphisms are then equivalence classes of morphisms
+\[
+(!; f_1, \ldots, f_n): (g; x_1, \ldots, x_n) \to (h; x_1', \ldots, x_n').
+\]
+We have two distinguished classes of morphisms, one for which the map $!: g \to h$ is the identity and one for which all the $f_{i}$'s are the identity.  Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type.  Now $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is in the image of the quotient map.  Using this fact, we can prove the following useful lemma.
+
+\begin{lem}\label{hom-set-lemma}
+For an action operad $\mb{\Lambda}$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is
+\[
+\coprod_{g \in \Lambda(n)} \prod_{i=1}^{n} X(x_i, y_{\pi(g)(i)}).
+\]
+\end{lem}
+\begin{proof}
+A morphism with source $(e; x_1, \ldots, x_n)$ in $E\Lambda(n) \times X^{n}$ is uniquely a composite
+\[
+(e; x_1, \ldots, x_n) \stackrel{(\id; f_{1}, \ldots, f_{n})}{\longrightarrow} (e; x_1', \ldots, x_n') \stackrel{(!; \id, \ldots, \id)}{\longrightarrow} (g; x_1', \ldots, x_n').
+\]
+Descending to the quotient, this becomes a morphism
+\[
+[e; x_1, \ldots, x_n] \to [g; x_1', \ldots, x_n'] = [e; x_{\pi(g)^{-1}(1)}', \ldots, x_{\pi(g)^{-1}(n)}'],
+\]
+and therefore is a morphism $[e; x_1, \ldots, x_n] \to [e; y_1, \ldots, y_n]$ precisely when $y_i = x_{\pi(g)^{-1}(i)}'$, and so $f_i \in   X(x_i, y_{\pi(g)(i)})$.
+\end{proof}
+
+\begin{nota}\label{tensor_notation}
+For $g \in \ML(n)$ and objects $x_1, \ldots, x_n$ of a $\ML$-monoidal category $X$, we write 
+\[
+g^{\otimes}:x_1 \otimes \cdots x_n \to x_{\pi(h)^{-1}(1)} \otimes \cdots x_{\pi(h)^{-1}(n)}
+\]
+for the image of the map
+\[
+(!; \mathrm{id}, \ldots, \mathrm{id}): (e; x_1, \ldots, x_n) \to (g; x_1, \ldots, x_n)
+\]
+in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.
+\end{nota}
+
+\begin{Defi}\label{action_map}
+We call the map 
+\[
+g^{\otimes}:x_1 \otimes \cdots x_n \to x_{\pi(h)^{-1}(1)} \otimes \cdots x_{\pi(h)^{-1}(n)}
+\]
+the \emph{action} of $g$ on $x_1 \otimes \cdots x_n$.
+\end{Defi}
+
+\begin{rem}
+It is obvious that $g^{\otimes} \otimes h^{\otimes} = \mu(e_2; g, h)^{\otimes}$. The latter can also be written $\beta(g, h)^{\otimes}$ (using \cref{thm:charAOp}) or $(g \oplus h)^{\otimes}$  (using \cref{beta_to_oplus}).
+\end{rem}
+
+The 2-monad $E\Lambda$ is both finitary and cartesian (see \cref{sec:propofopsincat}).  In fact we can characterize this operad uniquely (up to equivalence) using a standard argument.
+
+\begin{Defi}
+Let $\mb{\Lambda}$ be an action operad.  A \textit{$\mb{\Lambda}_{\infty}$ operad}\index{operad!$\Lambda_{\infty}$-operad} $P$ is a $\mb{\Lambda}$-operad in which each action $P(n) \times \Lambda(n) \rightarrow P(n)$ is free and each $P(n)$ is contractible\index{contractible}.
+\end{Defi}
+
+\begin{rem}
+One should also note that by \cref{cor:elambda_lambdaop} we get a canonical $\mb{\Lambda}_{\infty}$ operad in $\mb{Cat}$, namely $E\Lambda$ itself, and thus also in the category of simplicial sets by taking the nerve (the nerve functor is represented by a cosimplicial category, namely $\Delta \subseteq \mb{Cat}$, so preserves products) and in suitable categories of topological spaces by taking the geometric realization (once again, product-preserving with the correct category of spaces).  Thus we have something like a Barratt-Eccles $\mb{\Lambda}_{\infty}$ operad for any action operad $\mb{\Lambda}$.
+\end{rem}
+
+\begin{rem}
+The above definition makes sense in a wide context, but needs interpretation.  We can interpret the freeness condition in any complete category, as completeness allows one to compute fixed points using equalizers.  Contractibility then requires a notion of equivalence or weak equivalence, such as in an $(\infty, 1)$-category or Quillen model category, and a terminal object.  Our interest is in the above definition interpreted in $\mb{Cat}$, in which case both conditions (free action and contractible $P(n)$'s) mean the obvious thing.
+\end{rem}
+
+\begin{prop}
+For any two $\mb{\Lambda}_{\infty}$ operads $P,Q$ in $\mb{Cat}$, there is a span $P \leftarrow R \rightarrow Q$  of pointwise equivalences of $\mb{\Lambda}$-operads.
+\end{prop}
+\begin{proof}
+Given $\mb{\Lambda}_{\infty}$ operads $P$, $Q$ in $\mb{Cat}$, the product $P \times Q$ with the diagonal action is also $\mb{\Lambda}_{\infty}$.  Each of the projection maps is a pointwise equivalence of $\mb{\Lambda}$-operads.
+\end{proof}
+\begin{rem}
+Once again, this proof holds in a wide context.  We required that the product of free actions is again free, true in any complete category.  We also required that the product of contractible objects is contractible; this condition will hold, for example, in any Quillen model category in which all objects are fibrant or in which the product of weak equivalences is again a weak equivalence.
+\end{rem}
+
+
 \section{Abstract properties of the Borel construction}
 
 Kelly's theory of clubs \cite{kelly_club1, kelly_club0, kelly_club2} was designed to simplify and explain certain aspects of coherence results, namely the fact that many coherence results rely on extrapolating information about general free objects for a 2-monad $T$ from information about the specific free object $T1$ where $1$ denotes the terminal category.  This occurs, for example, in the study of the many different flavors of monoidal category:  plain monoidal category, braided monoidal category, symmetric monoidal category, and so on.  This section will explain how every action operad gives rise to a club, as well as compute the clubs which arise as the image of this procedure.
@@ -3432,7 +3474,7 @@ when $\ML$ is crossed, and the identity map $\mathrm{id}_{\mathbb{N}^{*n}}$ othe
 By QQQ Missing reference QQQ \cref{Gnmapsaction}, all morphisms in $\ELn$ can be written uniquely as $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, for some $g \in G(m)$ and $x_i \in \{z_1, ..., z_n \}$. Since maps of this form have source $x_1 \otimes ... \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}$, we see that the only pairs of object which might have a morphism between them are those that can be expanded as tensor products that differ by some permutation. 
 
 
-If our action operad $\ML$ is crossed, then for any two objects like this --- say source $x_1 \otimes ... \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes ... \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \mathrm{S}_m$ --- we can always find a map $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ between them, because by \cref{surjortriv} QQQ Missing ref QQQ the underlying permutations maps $\pi_m: G(m) \to S_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
+If our action operad $\ML$ is crossed, then for any two objects like this --- say source $x_1 \otimes ... \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes ... \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \Sigma_m$ --- we can always find a map $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ between them, because by \cref{surjortriv} QQQ Missing ref QQQ the underlying permutations maps $\pi_m: G(m) \to \Sigma_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
 
 \[ [z_i] \otimes [z_j] \quad = \quad [z_i \otimes z_j] \quad = \quad [z_j \otimes z_i] \quad = \quad [z_j] \otimes [z_i] \]
 Thus the canonical map $[ \, \_ \, ] : \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ is the one that makes the free product of $\mathbb{N}^{*n}$ commutative; that is, the quotient map for the abelianization $\mathrm{ab} : \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}}$. Hence $\pi_0(\ELn) = \mathbb{N}^n$.
@@ -4352,7 +4394,7 @@ Current understanding is four steps:
 
 Our main focus will be on invertible objects, although not in the usual sense.
 \begin{Defi}
-Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{invertible}\index{object!invertible} if there exists another object $m^{-1}$ such that $m \otimes m^{-1} = I$ and $m^{-1} \otimes m = I$.
+Let $(M, \otimes, I)$ be a strict monoidal category. An object $m \in M$ is \emph{invertible}\index{object!invertible} if there exists another object $m^{-1}$ such that $m \otimes m^{-1} = I$ and $m^{-1} \otimes m = I$.
 
 \end{Defi}
 
@@ -4361,9 +4403,34 @@ Most authors give the following as the definition of an invertible object, what 
 Let $(M, \otimes, I)$ be a monoidal category. An object $m \in M$ is \emph{weakly invertible}\index{object!weakly invertible} if there exists another object $m^{*}$ such that $m \otimes m^{*} \cong I$ and $m^{*} \otimes m \cong I$.
 
 \end{Defi}
-
 We will later derive results about weakly invertible objects from those about invertible ones using standard 2-monadic techniques.
 
+The following lemmas describe the interaction between invertibility of objects and other aspects of the monoidal structure.
+
+\begin{lem} \label{tenscomp} Let $f: x \to y$ and $f': y \to z$ be morphisms in a strict monoidal category, and assume $y$ is an invertible object with inverse $y^{-1}$. Then
+\[ f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y^{-1}} \otimes f \]
+\end{lem}
+\begin{proof}
+By the interchange law for monoidal categories,
+\[\begin{array}{rll} 
+			f' \circ f & = & (f' \otimes \mathrm{id}_I) \circ (\mathrm{id}_I \otimes f) \\
+			& = & (f' \otimes \mathrm{id}_{y^{-1}} \otimes \mathrm{id}_y) \circ (\mathrm{id}_y \otimes \mathrm{id}_{y^{-1}} \otimes f) \\
+			& = & (f' \circ \mathrm{id}_y) \otimes (\mathrm{id}_{y^{-1}} \circ \mathrm{id}_{y^{-1}}) \otimes (\mathrm{id}_y \circ f) \\
+			& = & f' \otimes \mathrm{id}_{y^{-1}} \otimes f .
+		\end{array}
+\]
+\end{proof} 
+
+\begin{lem}\label{inv_implies_invertible}
+Let $x, y$ be invertible objects in a strict monoidal category $M$ with inverses $x^{-1}, y^{-1}$. Let $f:x \to y$, $g:x^{-1} \to y^{-1}$ be morphisms such that $f \otimes g = 1_I = g \otimes f$. Then $f, g$ are isomorphisms in $M$.
+\end{lem}
+\begin{proof}
+The inverse of $f$ is given by 
+\[
+y = xx^{-1} y \stackrel{\mathrm{id}_x g \mathrm{id}_y}{\longrightarrow} xy^{-1}y = x
+\]
+by a similar proof to that above.
+\end{proof}
 
 
 \begin{Defi}\label{invdef} Given an $E\Lambda$-algebra $X$, we will denote by $X_{\mathrm{inv}}$\nomenclature[N]{$X_{\mathrm{inv}}$}{the sub-$E\Lambda$-algebra of $X$ of objects invertible under tensor product}\index{algebra!of weakly invertible objects} the sub-$E\Lambda$-algebra of $X$ containing all objects which are invertible under tensor product, and all of the isomorphisms between them. \end{Defi} 
@@ -4377,15 +4444,20 @@ First note that this is indeed a well-defined $E\Lambda$-algebra since the tenso
 
 \begin{prop} \label{invadj} The 2-functor $(\_)_{\mathrm{inv}}: \ELAlg \to \ELAlg$ has a left 2-adjoint, $L: \ELAlg \to \ELAlg$.
 \end{prop}
-\begin{proof} Since we already know that $\ELAlg$ is locally finitely presentable, the conditions for \cref{aftlfp} amount to showing that $(\_)_{\mathrm{inv}}$ preserves both limits and filtered colimits.
+\begin{proof} Since we already know that $\ELAlg$ is locally finitely presentable as an ordinary category, the conditions for \cref{aftlfp} amount to showing that $(\_)_{\mathrm{inv}}$ preserves both limits and filtered colimits.
 \begin{itemize}
 \item Given an indexed collection of $E\Lambda$-algebras $X_i$, the $E\Lambda$-action of their product $\prod X_i$ is defined componentwise. In particular, this means that the tensor product of two objects in $\prod X_i$ is just the collection of the tensor products of their components in each of the $X_i$. An invertible object in $\prod X_i$ is thus simply a family of invertible objects from the $X_i$, so $(\prod X_i)_{\mathrm{inv}} = \prod (X_i)_{\mathrm{inv}}$.
 \item Given maps of $E\Lambda$-algebras $F, G: X \to Z$,  the $E\Lambda$-action on their equalizer is the restriction of that on $X$. As above, this implies that an invertible object of the equalizer is merely an object of the equalizer which is invertible in $X$, so $X \mapsto X_{\mathrm{inv}}$ preserves equalizers. Combined with the previous point, taking invertible objects therefore preserves all ordinary limits.
-\item Given a filtered diagram $D$ of $E\Lambda$-algebras, the $E\Lambda$-action of its colimit $\mathrm{colim}(D)$ is defined in the following way: use filteredness to find an algebra which contains (representatives of the classes of) all the things you want to act on, then apply the action of that algebra. In the case of tensor products this means that $[x]\otimes[y] = [x \otimes y]$, and thus an invertible object in $\mathrm{colim}(D)$ is just (the class of) an invertible object in one of the algebras of $D$. In other words, $\mathrm{colim}(D)_{\mathrm{inv}} = \mathrm{colim}(D_{\mathrm{inv}})$.
+\item Given a filtered diagram $D$ of $E\Lambda$-algebras, the $E\Lambda$-action of its colimit $\mathrm{colim}(D)$ is defined in the following way: use filteredness to find an algebra which contains (representatives of the classes of) all the things you want to act on, then apply the action in that algebra. In the case of tensor products this means that $[x]\otimes[y] = [x \otimes y]$, and thus an invertible object in $\mathrm{colim}(D)$ is just (the class of) an invertible object in one of the algebras of $D$. In other words, $\mathrm{colim}(D)_{\mathrm{inv}} = \mathrm{colim}(D_{\mathrm{inv}})$.
 \end{itemize}
-Thus the underlying functor of $(\_)_{\mathrm{inv}}$ has a left adjoint.
+Thus the underlying functor of $(\_)_{\mathrm{inv}}$ has a left adjoint $L$.
 
-To upgrade this into a 2-adjunction, we require MORE STUFF.
+To upgrade this into a 2-adjunction, we require that $(\_)_{\mathrm{inv}}$ preserves cotensors (see \cite{borceux2} Theorem 6.7.6) over $\cat$. Let $A$ be a category and $X$ a $\ML$-monoidal category. It is straightforward to check that the cotensor $[A, X]$ is just the functor category equipped with the pointwise $E\Lambda$-action. The unit object is the constant functor at $I$, the unit object of $X$;  we write this $c_I$. The cotensor $[A, X_{\mathrm{inv}}]$ consists has
+\begin{itemize}
+\item objects all functors $F:A \to X$ with the property that $Fa$ is invertible under tensor product or composition, respectively, in $X$ for all objects or morphisms, respectively, in $A$; and
+\item morphisms all natural isomorphisms between them.
+\end{itemize}
+It is clear that $[A, X_{\mathrm{inv}}]$ is a full sub-$\ML$-monoidal category of $[A, X]_{\mathrm{inv}}$, so we check they have the same objects. If $F \otimes G = c_I = G \otimes F$ in $[A, X]$, then it is clear that $Fa$ is invertible in $X$ for every object $a \in A$. The analogous statement on the level of morphisms follows from \cref{inv_implies_invertible}.
 \end{proof}
 
 \begin{nota}\label{eta}
@@ -4439,12 +4511,13 @@ in which the identity on the right is really $j_{inv} \circ -$. Thus composition
 By \cref{linveql}, we first have that $(L_n)_{inv} = L_n$. Let $F,G: L_n \to X$ be a pair of algebra maps for which $F \eta = G \eta$. Thus the algebra maps $E\Lambda(\underline{n}) \to X_{inv}$ corresponding to $F, G$ are equal, so $F,G$ are equal.
 \end{proof}
 
-\begin{rem}
-include forward ref to where we use \cref{epi}
-\end{rem}
+%\begin{rem}
+%include forward ref to where we use \cref{epi}
+%\end{rem}
+%I couldn't find one
 
 
-QQQ Need to explain that the goal is to understand some group actions
+
 
 
 \section{Adjunctions involving monoidal categories}
@@ -4527,23 +4600,7 @@ If instead $G$ is non-crossed, then
 \end{itemize}
 \end{cor}
 
-We now turn to our third adjunction, which is of a less formal nature than the first two. We begin by showing that composition along invertible objects in $X$ can always be restated in terms of the tensor product.
-
-\begin{lem} \label{tenscomp} Let $f: x \to y$ and $f': y \to z$ be morphisms in a strict monoidal category, and assume $y$ is an invertible object with inverse $y^{-1}$. Then
-\[ f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y^{-1}} \otimes f \]
-\end{lem}
-\begin{proof}
-By the interchange law for monoidal categories,
-\[\begin{array}{rll} 
-			f' \circ f & = & (f' \otimes \mathrm{id}_I) \circ (\mathrm{id}_I \otimes f) \\
-			& = & (f' \otimes \mathrm{id}_{y^{-1}} \otimes \mathrm{id}_y) \circ (\mathrm{id}_y \otimes \mathrm{id}_{y^{-1}} \otimes f) \\
-			& = & (f' \circ \mathrm{id}_y) \otimes (\mathrm{id}_{y^{-1}} \circ \mathrm{id}_{y^{-1}}) \otimes (\mathrm{id}_y \circ f) \\
-			& = & f' \otimes \mathrm{id}_{y^{-1}} \otimes f .
-		\end{array}
-\]
-\end{proof} 
-
-Thus in cases where every object of $X$ is invertible, the monoidal structure together with knowledge of each morphism's source and target will be enough to determine $X$ uniquely. Since all objects in $L_n$ are invertible, this means that we could choose to ignore composition of elements of $\MorLn$ for the time being, and focus on its status as a monoid under tensor product.
+We now turn to our third adjunction, which is of a less formal nature than the first two. Recall that, using \cref{tenscomp}, that composition along invertible objects in $X$ can always be restated in terms of the tensor product. Thus in cases where every object of $X$ is invertible, the monoidal structure together with knowledge of each morphism's source and target will be enough to determine $X$ uniquely. Since all objects in $L_n$ are invertible, this means that we could choose to ignore composition of elements of $\MorLn$ for the time being, and focus on its status as a monoid under tensor product.
 
 
 
@@ -4785,11 +4842,11 @@ q \Big(g^{\otimes}: q^{-1}(a_1) \otimes \cdots \otimes q^{-1}(a_m) \to   q^{-1}(
 \end{cor}
 
 \section{A second coequalizer argument}
-In this section, we will compare the coequalizer of a diagram of $\ML$-monoidal categories as it is computed in $\ML\moncat$, in $\moncat$, and in $\cat$. Our goal will be to show that the forgetful functors 
+In this section, we will compare the coequalizer of a diagram of $\ML$-monoidal categories as it is computed in $\lmc$, in $\moncat$, and in $\cat$. Our goal will be to show that the forgetful functors 
 \[
-\ML\mbox{-}\moncat \to \moncat \to \cat
+\lmc \to \moncat \to \cat
 \]
-all create reflexive coequalizers. This has the effect of allowing us to compute coequalizers in $\ML\mbox{-}\moncat$ by converting them into reflexive coequalizers and then computing them in either $\moncat$ or $\cat$. This technique will be necessary in our construction of the free $\ML$-monoidal category on $n$ invertible objects. The strategy here follows that in Section 4.1 of \cite{lack-cod}.
+all create reflexive coequalizers. This has the effect of allowing us to compute coequalizers in $\lmc$ by converting them into reflexive coequalizers and then computing them in either $\moncat$ or $\cat$. This technique will be necessary in our construction of the free $\ML$-monoidal category on $n$ invertible objects. The strategy here follows that in Section 4.1 of \cite{lack-cod}.
 
 \begin{lem}\label{P_pres_refl}
 Let $P$ be a $\ML$-operad in $\cat$, with $\und{P}$ its associated 2-monad. Then $\und{P}$ preserves reflexive coequalizers.
@@ -4888,25 +4945,26 @@ Use some coherence theorems
 \end{proof}
 
 \chapter{Invertibility and group actions}
-The goal of this chapter is to reduce coherence questions about invertible objects (be they strict or weak by \cref{L_is_K}) to the calculation of a group action. The group we are interested in is the group of automorphisms of the unit, $L_n(I,I)$, and it acts on $L_n(x,y)$ for any two objects $x$ and $y$. In QQQ forward ref QQQ, we will explain how to use this group action to determine whether some pair of parallel morphisms are equal or not.
+The goal of this chapter is to reduce coherence questions about invertible objects (be they strict or weak by \cref{L_is_K}) to the calculation of a group action. The group we are interested in is the group of automorphisms of the unit, $L_n(I,I)$, and it acts on $L_n(x,y)$ for any two objects $x$ and $y$. In \cref{splitting_as_coh}, we will explain how to use this group action to determine whether some pair of parallel morphisms are equal or not.
 
 More intro here
 
 \section{Sources and targets in \texorpdfstring{$L_n$}{L_n}}   
 
-\begin{Defi}\label{st} For any $E\Lambda$-algebra $X$, denote by $s: \mathrm{Mor}(X) \to \mathrm{Ob}(X)$ and $t: \mathrm{Mor}(X) \to \mathrm{Ob}(X)$ the monoid homomorphisms which send each morphism of $X$ to its source and target, respectively. That is,
+\begin{Defi}\label{st} For any $\ML$-monoidal category $X$, denote by $s: \mathrm{Mor}(X) \to \mathrm{Ob}(X)$ and $t: \mathrm{Mor}(X) \to \mathrm{Ob}(X)$ the monoid homomorphisms which send each morphism of $X$ to its source and target, respectively. That is,
 \[ s( \, f: x \to y) \, = \, x, \quad \quad t( \, f: x \to y) \, = \, y. \]
 \end{Defi}
 
-
-\begin{lem}\label{stmon} Let $X$ be an $E\Lambda$-algebra whose underlying category is a groupoid, and $s \times t: \mathrm{Mor}(X) \to \mathrm{Ob}(X)^2$ the map induced from $s$ and $t$ using the universal property of products. Then the image of this map is
-\[ (s \times t)(X) \, = \, \mathrm{Ob}(X) \times_{\pi_0(X)} \mathrm{Ob}(X) \]
-where this pullback is taken over the canonical maps sending objects of $X$ to their connected components:
+\begin{Defi}\label{s_times_t}
+For a $\ML$-monoidal category $X$, define $(s \times t)(X)$ to be the pullback (in the category of monoids) $\mathrm{Ob}(X) \times_{\pi_0(X)} \mathrm{Ob}(X)$ of the diagram below. 
 \[ \begin{tikzcd}
 \mathrm{Ob}(X) \times_{\pi_0(X)} \mathrm{Ob}(X) \ar[dd, shift left=12] \ar[rr] \ar[ddrr, phantom, "\lrcorner", near start, shift left=4] & & \mathrm{Ob}(X) \ar[dd, "\lbrack \, \_ \, \rbrack"] & \\ 
 & & & \\
 \quad \quad \quad \quad \quad \quad \mathrm{Ob}(X) \ar[rr, "\lbrack \, \_ \, \rbrack"] & & \pi_0(X)
 \end{tikzcd} \]
+\end{Defi}
+
+\begin{lem}\label{stmon} Let $X$ be a $\ML$-monoidal category whose underlying category is a groupoid, and $s \times t: \mathrm{Mor}(X) \to \mathrm{Ob}(X)^2$ the map induced from $s$ and $t$ using the universal property of products. Then the image of this map is $(s \times t)(X)$.
 \end{lem} 
 
 
@@ -4928,15 +4986,19 @@ Recalling \cref{Gnobj,Gnconcomp,Zobj,crossconcomp}, we can immediately conclude 
 where the pullbacks are taken over the quotients of abelianization for $(\mathbb{N}^{\ast n})^{\mathrm{ab}} = \mathbb{N}^n$ and $(\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^n$ respectively.
 \end{cor}
 
-Next, we want to show that this $(s \times t)(L_n)$ we have described is in fact a submonoid of $\MorLn$.  We will accomplish this  by first proving the analogous statement for all $\ELn$, and then recovering the $L_n$ version from it later.  For any pair $(w, w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ such that the images of $w$ and $w'$ in the commutative monoid $\mathbb{N}^n$ are the same, there are generators $x_1, ..., x_m$ for which 
+We want to show that the group $(s \times t)(L_n)$ we have described is in fact a submonoid of $\MorLn$.  We will accomplish this  by first proving the analogous statement for all $\ELn$.  For any pair $(w, w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ such that the images of $w$ and $w'$ in the commutative monoid $\mathbb{N}^n$ are the same, there are generators $x_1, ..., x_m$ for which 
 \[ w \quad = \quad x_1 \otimes ... \otimes x_m \]
-and there exists at least one permutation $\sigma \in S_m$ such that
+and there exists at least one permutation $\sigma \in \Sigma_m$ such that
 \[ w' \quad = \quad x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)}. \]
-Since the underlying permutation maps $\pi : G(m) \to \mathrm{S}_m$ of a crossed action operad $G$ are all surjective, we can always find an element of $g \in G(m)$ for which $\pi(g) = \sigma$. 
+Since the underlying permutation maps $\pi : \Lambda(m) \to \Sigma_m$ of a crossed action operad $G$ are all surjective, we can always find an element of $g \in G(m)$ for which $\pi(g) = \sigma$. 
 
 \begin{nota}\label{rho_ww'}
 Let $\rho:\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \to \bigcup \EL(m)$ be an arbitrary, but fixed, function such that $\rho(w,w')$ satisfies $\pi(\rho(w,w')) = \sigma$ as defined above.
 \end{nota}
+
+\begin{Defi}\label{length}
+Let $S$ be a set, and consider the free monoid $\N^{*S}$ given by words in the elements of $S$. \emph{Length} $\ell:\N^{*S} \to \N$ is the monoid homomorphism which is given by the identity homomorphism on each copy of $\N$ in the coproduct $\N^{*S}$. Concretely, the length $\ell(w)$ of a word $w \in \N^{*S}$ is the total number of letters in it.
+\end{Defi}
 
 
 
@@ -4951,13 +5013,13 @@ and being an element of the pullback immediately implies $k=j$. We then define a
 \[
 (w,w') = c_1 \cdots c_s = d_1 \cdots d_t,
 \]
-then the length (see Definition \ref{def:und_monoid}) of $c_1$ must be either strictly less than or strictly greater than the length of $d_1$; if they had equal length, then they would be equal. Without loss of generality assume $c_1$ has length $l_c$ which is strictly less than the length $l_d$ of $d_1$. But then the first $l_c$ terms appearing in $d_1$ would agree with $c_1$, proving that $d_1$ is not indecomposable. Straightforward induction then finishes the proof that every element of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ can be written as a product of indecomposables in a unique way, making $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ free on the set of indecomposables.
+then the length  of $c_1$ must be either strictly less than or strictly greater than the length of $d_1$; if they had equal length, then they would be equal. Without loss of generality assume $\ell(c_1) < \ell(d_1)$. But then the first $\ell(c_1)$ terms appearing in $d_1$ would agree with $c_1$, proving that $d_1$ is not indecomposable. Straightforward induction then finishes the proof that every element of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ can be written as a product of indecomposables in a unique way, making $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ free on the set of indecomposables.
 \end{proof}
 
 We can now construct the desired injection using the function $\rho$ from \cref{rho_ww'}.
 \begin{prop} \label{stGnsub} $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ is a split epi of monoids, so $(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$. Furthermore, we can choose the injection $i:(s \times t)(\ELn) \to \mathrm{Mor}(\ELn)$ such that the following diagram commutes.
 \begin{center}
-    \begin{tikzpicture}[x=20mm,y=15mm]
+    \begin{tikzpicture}[x=30mm,y=15mm]
 		\node (a) at (0,0) {$\mathrm{Ob}(\ELn)$};
 		\node (b) at (1,0) {$(s \times t)(\ELn)$};
 		\node (d) at (1,-1) {$\mathrm{Mor}(\ELn)$};
@@ -5165,7 +5227,7 @@ In what follows QQQ forward ref all the places we need this?, we fix an isomorph
 
 \end{conv}
 
-\section{Splitting as a coherence theorem}
+\section{Splitting as a coherence theorem}\label{splitting_as_coh}
 
 Coherence theorems often take the form of a statement that all diagrams with a certain property commute. For example, coherence for ordinary monoidal categories states that every diagram in the free monoidal category generated by a set of objects commutes and coherence for symmetric monoidal categories states that a pair of parallel morphisms (i.e., the two legs around some diagram of interest) are equal if and only if their underlying permutations are equal.
 
@@ -5436,7 +5498,7 @@ where $x,y \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ are generators of the free 
 \]
 \end{prop}
 \begin{proof}
-We'll begin by constructing a certain monoidal category, which we'll call $Z$. 
+We'll begin by constructing a certain monoidal category, which we will call $Z$. 
 \begin{itemize}
 \item The objects of $Z$ are the elements of the group $\mathbb{Z}^{\ast n}$, with the usual multiplication as the tensor product.
 \item There is a unique morphisms between any two objects $x$ and $y$ for which $\mathrm{ab}(x) = \mathrm{ab}(y)$, where $\mathrm{ab}: \mathbb{Z}^{\ast n} \to \mathbb{Z}^n$ is the quotient map of abelianization. In other words, the morphisms of $Z$ are the elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, with multiplication as the tensor product and composition given by
@@ -5463,9 +5525,9 @@ Next, let $\mathbb{S}_{2n}$ be the free $\mathrm{E}S$-algebra on $2n$ objects, w
 			 & : & \alpha(\sigma; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) & \mapsto & (x_1 \otimes ... \otimes x_m, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)})
 		\end{array}
 \]
-A necessary condition for $(y, y')$ to be an element of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is that there exists some sequence of generators and their inverses $x_1, ..., x_m \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ and some permutation $\sigma \in S_m$ for which
+A necessary condition for $(y, y')$ to be an element of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is that there exists some sequence of generators and their inverses $x_1, ..., x_m \in \{z_1, ..., z_n, z_1^*, ..., z_n^*\}$ and some permutation $\sigma \in \Sigma_m$ for which
 \[ y \, = \, x_1 \otimes ... \otimes x_m, \quad \quad \quad y' \, = \, x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)} \]
-Hence the functor $\psi$ is clearly surjective. It follows from this that if we can find a collection of morphisms which generate $\mathrm{Mor}(\mathbb{S}_{2n})$ under composition and tensor product, their images under $\psi$ will also generate $\mathrm{Mor}(Z) = \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ under composition and tensor product, and hence under just tensor product. To begin, we know that any permutation $\sigma \in S_m$ can be written as a product $\sigma_{i_k} \cdot ... \cdot \sigma_{i_1}$ of elementary transpositions, giving
+Hence the functor $\psi$ is clearly surjective. It follows from this that if we can find a collection of morphisms which generate $\mathrm{Mor}(\mathbb{S}_{2n})$ under composition and tensor product, their images under $\psi$ will also generate $\mathrm{Mor}(Z) = \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ under composition and tensor product, and hence under just tensor product. To begin, we know that any permutation $\sigma \in \Sigma_m$ can be written as a product $\sigma_{i_k} \cdot ... \cdot \sigma_{i_1}$ of elementary transpositions, giving
 \[ \begin{array}{rlll}
 			\alpha( \, \sigma \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha( \, \sigma_{i_k} \cdot ... \cdot \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
 			& = &  \alpha( \, \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, )  \\
@@ -5473,7 +5535,7 @@ Hence the functor $\psi$ is clearly surjective. It follows from this that if we 
 			& & \circ \, \alpha( \, \sigma_{i_k} \, ; \,  \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot ... \cdot \sigma_{i_1}(1)}}, ..., \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot ... \cdot \sigma_{i_1}(m)}} \, )
 		\end{array}
 \]
-Then if $\sigma_i = (i \, \, i+1) \in S_m$ is some elementary transposition we will have
+Then if $\sigma_i = (i \, \, i+1) \in \Sigma_m$ is some elementary transposition we will have
 \[ \begin{array}{rll}
 			\alpha( \, (i \, \, i+1) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) & = & \alpha( \, e_{i-1} \otimes (1 2) \otimes e_{m-i-1} \, ; \,  \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m} \, ) \\
 			& = & \mathrm{id}_{x_1 \otimes ... \otimes x_{i-1}} \otimes \alpha( \, (1 2) \, ; \, \mathrm{id}_{x_i}, \mathrm{id}_{x_{i+1}} \, ) \otimes \mathrm{id}_{x_{i+2} \otimes ... \otimes x_m}
@@ -5495,7 +5557,7 @@ Next we have to account for the law of interchange we discussed earlier. Using \
 			& = & \langle yx \rangle \langle x^* \rangle \langle y^* \rangle \langle xy \rangle
 		\end{array}
 \]
-Also, by functoriality these generators will inherit any relations are obeyed to the corresponding morphisms of $\mathbb{S}_{2n}$, which in turn are just relations among different elementary transpositions. Each symmetric group $S_m$ is subject to three families of these, namely
+Also, by functoriality these generators will inherit any relations are obeyed to the corresponding morphisms of $\mathbb{S}_{2n}$, which in turn are just relations among different elementary transpositions. Each symmetric group $\Sigma_m$ is subject to three families of these, namely
 \[ \begin{array}{rrll}
 			(\sigma_i)^2 & = & e & \\
 			\sigma_i \sigma_j & = & \sigma_j \sigma_i, & \quad j \neq i \pm 1 \\
@@ -5843,22 +5905,22 @@ The action we just found in \cref{crossact} then completes this description of $
 
 \section{Free symmetric monoidal categories on invertible objects}
 
-Even collected all together, \cref{freeinvalgc} is still a fairly opaque result. In the next couple of sections we will work through some specific applications of the theorem, which will hopefully prove enlightening in this regard. A good place to start will be with the simplest of all the crossed action operads, the symmetric operad $\mathrm{S}$. As one might expect, the free invertible algebras $L\mathbb{S}_n$ have a particularly straightforward form when viewed as monoidal categories.
+Even collected all together, \cref{freeinvalgc} is still a fairly opaque result. In the next couple of sections we will work through some specific applications of the theorem, which will hopefully prove enlightening in this regard. A good place to start will be with the simplest of all the crossed action operads, the symmetric operad $\Sigma$. As one might expect, the free invertible algebras $L\mathbb{S}_n$ have a particularly straightforward form when viewed as monoidal categories.
 
-\begin{prop} \label{invsymcat} For the symmetric operad $\mathrm{S}$, the abelian groups $A(\mathrm{S},n)$ are the $n$-fold products of the cyclic group of order 2,
-\[ A(\mathrm{S},n) \quad = \quad \mathbb{Z}_2^{n} \]
+\begin{prop} \label{invsymcat} For the symmetric operad $\Sigma$, the abelian groups $A(\Sigma,n)$ are the $n$-fold products of the cyclic group of order 2,
+\[ A(\Sigma,n) \quad = \quad \mathbb{Z}_2^{n} \]
 Thus by \cref{freeinvalgc}, the underlying monoidal category of the free $\mathrm{ES}$-algebra on $n$ invertible objects is
 \[ L\mathbb{S}_n \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \mathrm{B}\mathbb{Z}_2^{n} \]
 with component-wise tensor product.
 \end{prop}
 \begin{proof}
-The symmetric operad has only one nullary operation, $e_0$, the identity permutation on 0 objects, and so the quotient operad $\mathrm{S}/\mathrm{S}_0$ is still just $\mathrm{S}$. Moreover, we saw back in \cref{operad} that the symmetric groups $\mathrm{S}_m$ are generated by the elementary transpositions $(i \, \, \, i+1)$, which in turn are tensor products
+The symmetric operad has only one nullary operation, $e_0$, the identity permutation on 0 objects, and so the quotient operad $\Sigma/\Sigma_0$ is still just $\Sigma$. Moreover, we saw back in \cref{operad} that the symmetric groups $\Sigma_m$ are generated by the elementary transpositions $(i \, \, \, i+1)$, which in turn are tensor products
 \[ \begin{array}{rll}
 			(i \, \, \,  i+1) & = & e_{i-1} \otimes (1 \, 2) \otimes e_{m-i-1} \\
 			& = & (e_1)^{\otimes (i-1)} \otimes (1 \, 2) \otimes (e_1)^{\otimes (m-i-1)}
 		\end{array}
 \]
-in the operad $\mathrm{S}$. Therefore the set $\mathcal{S} = \{ e_1, (1 \, 2) \}$ will suffice to generate $\mathrm{S}$ under multiplication and tensor product, and so our search for the unit endomorphisms of $L\mathbb{S}_n$ can begin with the group
+in the operad $\Sigma$. Therefore the set $\mathcal{S} = \{ e_1, (1 \, 2) \}$ will suffice to generate $\Sigma$ under multiplication and tensor product, and so our search for the unit endomorphisms of $L\mathbb{S}_n$ can begin with the group
 \[ \mathbb{Z}^{2n|\mathcal{S}_1| + (2n)^2|\mathcal{S}_2| + ...}  \quad = \quad \mathbb{Z}^{2n + (2n)^2} \]
 
 Following the steps of \cref{AGndef}, we first of all need to collapse the composition and tensor product inherited from $\mathbb{S}_{2n}$ into the same operation. For the generators with permutation part $e_1$, we have
@@ -5922,9 +5984,9 @@ which contributes nothing to the group $\Delta$; the same is also true when inst
 The presence of elements like the above will mean that when we quotient out by $\Delta$, we will force equivalence classes of the generators $((1 \, 2);  z_i , z_j )$ and $((1 \, 2) ; z_i, z_{n+j})$ to become inverses of one another. In an analogous way, setting $x_1 = z_{2n+j}$ and $x_2 = z_j$ shows that $((1 \, 2) ; z_{n+i}, z_j)$ will also become an inverse of $((1 \, 2); z_i , z_j)$, which means that $((1 \, 2) ; z_{n+i}, z_j) \sim ((1 \, 2) ; z_i, z_{n+j})$, whilst the choices $x_1 = z_{n+i}$ and $x_2 = z_{2n+j}$ will yield $((1 \, 2) ; z_{n+i}, z_j)^* \sim ((1 \, 2) ; z_{n+i}, z_{n+j})$, and hence $((1 \, 2) ; z_{n+i}, z_{n+j}) \sim ((1 \, 2) ; z_i, z_j)$. All other combinations of $x_1, x_2$ will end up repeating one of these relations, and so when we are done all that is left are the $n^2 = n + {{n}\choose{2}}$ generators of the form $((1 \, 2) ; z_i, z_j)$. That is,
 \[ \bigquotient{\mathbb{Z}_2^{2n} \times \mathbb{Z}^{{2n}\choose{2}}}{\Delta} \quad = \quad \mathbb{Z}_2^{n} \times \mathbb{Z}^{{n}\choose{2}} \]
 
-The last step needed to calculate the group $A(G,n)$ is to quotient out by a $\mathbb{Z}^{{n}\choose{2}}$ subgroup, the one generated by equivalence classes of elements $(\rho(2) ; z_i, z_j )$ for given $\rho(2) \in \pi^{-1}((1 \, 2))$ and $1 \le i < j \le n$. Of course, the underlying permutation map of permutations $\pi^{\mathrm{S}}$ is the identity, so $\rho(2)$ must be $(1 \, 2)$ itself. This gives a nice easy final quotient,
+The last step needed to calculate the group $A(G,n)$ is to quotient out by a $\mathbb{Z}^{{n}\choose{2}}$ subgroup, the one generated by equivalence classes of elements $(\rho(2) ; z_i, z_j )$ for given $\rho(2) \in \pi^{-1}((1 \, 2))$ and $1 \le i < j \le n$. Of course, the underlying permutation map of permutations $\pi^{\Sigma}$ is the identity, so $\rho(2)$ must be $(1 \, 2)$ itself. This gives a nice easy final quotient,
 \[ \bigquotient{\mathbb{Z}_2^{n} \times \mathbb{Z}^{{n}\choose{2}}}{\mathbb{Z}^{{n}\choose{2}}} \quad = \quad \mathbb{Z}_2^{n}\]
-Therefore by \cref{AGndef}, the family of abelian groups $A(\mathrm{S},n)$ is indeed just given by $\mathbb{Z}_2^{n}$, and hence \cref{freeinvalgc} tells us that
+Therefore by \cref{AGndef}, the family of abelian groups $A(\Sigma,n)$ is indeed just given by $\mathbb{Z}_2^{n}$, and hence \cref{freeinvalgc} tells us that
 \[ L\mathbb{S}_n \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \mathrm{B}\mathbb{Z}_2^{n} \]
 as a monoidal category.
 \end{proof} 
@@ -5956,13 +6018,13 @@ for all morphisms $f_i: x_i \to y_i$, and
 			= & \alpha\big( \, \mu(g; e_1, ..., e_1, e_2, e_1, ..., e_1) \, ; \, \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_{i-1}}, \mathrm{id}_{x_i}, \mathrm{id}_{x'_{i}}, \mathrm{id}_{x_{i+1}}, ..., \mathrm{id}_{x_m} \, \big)
 		\end{array}
 \]
-for all elements $g \in G$ and objects $x_1, ..., x_m, x'_i$. Hence we can recover all values of $\alpha_{\mathbb{S}_{2n}}$ from those on identities morphisms, and more specifically identities of generators and their inverses. Further, the fact that we can express any $\sigma \in \mathrm{S}$ in terms of $e_1$ and $(1 \, 2)$ via tensor product and group multiplication tells us that the action will also be determined solely by its values on $(1 \, 2)$. Thus the equations in the statement of the proposition really would suffice to fix $\alpha_{L\mathbb{S}_n}$; all we need now is prove that they hold. The sources and targets are easy enough, so we'll focus on the $\mathbb{Z}_2^{n}$ coordinate.
+for all elements $g \in G$ and objects $x_1, ..., x_m, x'_i$. Hence we can recover all values of $\alpha_{\mathbb{S}_{2n}}$ from those on identities morphisms, and more specifically identities of generators and their inverses. Further, the fact that we can express any $\sigma \in \Sigma$ in terms of $e_1$ and $(1 \, 2)$ via tensor product and group multiplication tells us that the action will also be determined solely by its values on $(1 \, 2)$. Thus the equations in the statement of the proposition really would suffice to fix $\alpha_{L\mathbb{S}_n}$; all we need now is prove that they hold. The sources and targets are easy enough, so we'll focus on the $\mathbb{Z}_2^{n}$ coordinate.
 
 Per \cref{freeinvalgc}, we will start by forming the action morphisms
 \[ \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{q^{-1}(z_i)}, \mathrm{id}_{q^{-1}(z_j)} \, \big) \quad = \quad \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) \]
-and then find their images under the map $\Psi: \mathrm{S} \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \to \mathbb{Z}_2^{n}$. However, we just saw in \cref{invsymcat} how this homomorphism is built up as a composite
+and then find their images under the map $\Psi: \Sigma \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \to \mathbb{Z}_2^{n}$. However, we just saw in \cref{invsymcat} how this homomorphism is built up as a composite
 \[ \begin{tikzcd}
- \mathrm{S} \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \ar[r] & \mathbb{Z}^{2n + (2n)^2} \ar[r] & \mathbb{Z}_2^{2n} \times \mathbb{Z}^{{2n}\choose{2}} \ar[r] & \mathbb{Z}_2^{n} \times \mathbb{Z}^{{n}\choose{2}}  \ar[r] & \mathbb{Z}_2^{n}
+ \Sigma \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \ar[r] & \mathbb{Z}^{2n + (2n)^2} \ar[r] & \mathbb{Z}_2^{2n} \times \mathbb{Z}^{{2n}\choose{2}} \ar[r] & \mathbb{Z}_2^{n} \times \mathbb{Z}^{{n}\choose{2}}  \ar[r] & \mathbb{Z}_2^{n}
 \end{tikzcd} \]
 When $i \neq j$, the equivalence classes of the morphisms $\alpha((1 \, 2);\mathrm{id}_{z_i}, \mathrm{id}_{z_j})$ get sent to zero by the rightmost arrow, whereas the $\alpha((1 \, 2);\mathrm{id}_{z_i}, \mathrm{id}_{z_i})$ are each sent to a different generator of $\mathbb{Z}_2^{n}$, which is denoted by the appropriate $n$-tuple $(0,...,0, 1, 0,...,0)$. 
 
@@ -5984,7 +6046,7 @@ appearing in these two expressions has the same parity, for each $1 \le i \le n$
 
 \section{Free braided monoidal categories on invertible objects} 
 
-Having successfully understood the symmetric monoidal case, we should now be ready to tackle the very similar world of braided monoidal categories. Indeed, since the only difference between the braid groups $B_{n}$ and the symmetric groups $\Sigma_{n}$ is the presence or absence of a self-invertibility condition, the abelian group $A(B,n)$ is simply the value we would gotten for $A(\mathrm{S},n)$ if we had never set $((1 \, 2); z_i, z_j) \otimes ((1 \, 2); z_i, z_j) \sim I$.
+Having successfully understood the symmetric monoidal case, we should now be ready to tackle the very similar world of braided monoidal categories. Indeed, since the only difference between the braid groups $B_{n}$ and the symmetric groups $\Sigma_{n}$ is the presence or absence of a self-invertibility condition, the abelian group $A(B,n)$ is simply the value we would gotten for $A(\Sigma,n)$ if we had never set $((1 \, 2); z_i, z_j) \otimes ((1 \, 2); z_i, z_j) \sim I$.
 
 \begin{prop} \label{invbraidcat} For the braid operad $B$, the abelian groups $A(B,n)$ are all repeated products of the integers, specifically
 \[ A(B,n) \quad = \quad \mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}} \]
