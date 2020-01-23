@@ -78,6 +78,7 @@
 \newcommand{\Icon}{\ensuremath{\textrm{Icon}}}
 \newcommand{\ML}{\mathbf{\Lambda}}
 \newcommand{\MLn}{\mathbf{\Lambda}_n}
+\newcommand{\lop}{\Lambda^{\oplus}}
 \newcommand{\MorLn}{\mathrm{Mor}(L_n)}
 \newcommand{\ELAlg}{\lmc}
 \newcommand{\LL}{\Lambda}
@@ -512,6 +513,10 @@ for the multiplication in the operad $\Lambda$.  Let $(g; f_1, \ldots, f_n)$ be 
 \end{itemize}
 \end{rem}
 
+\begin{nota}\label{en_units}
+For an action operad $\ML$, we write $e_n$ for the identity element for the group $\Lambda(n)$. We drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand.
+\end{nota}
+
 \begin{example}
 \begin{enumerate}
 \item The terminal operad $T$\nomenclature[N]{$T$}{terminal operad}\index{operad!terminal} in the category of sets has a unique action operad structure, $\mathbf{T}$\nomenclature[N]{$\mathbf{T}$}{terminal operad as an action operad}.  Since $T(n)$ is a singleton for each $n$, the group structure is unique, as is the map $\pi$.  The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity.  This is the initial object\index{action operad!initial} in the category of action operads (see \cref{Defi:cat_aop} for the definition of morphisms in the category of action operads).
@@ -644,12 +649,12 @@ Thus we see that an action operad is either an operad in groups, or is an extens
 \end{rem}
 
 \begin{rem}
-The crossed simplicial groups\index{crossed simplicial group} of Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. There is a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$\nomenclature[C]{$\mathbf{CSGrp}$}{of crossed simplicial groups and morphisms of crossed simplicial groups} from the category of action operads just described into the category of crossed simplicial groups. This functor takes an action operad $\ML$ and defines $C(\Lambda)(n) = \Lambda_{n+1}$. The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition inherent of $\Lambda$ - the description of the maps via the operad structure can be viewed in a similar way to Construction 1.1 of \cite{Kra96}. This functor is, however, not faithful, nor is it conservative. (Recall that a functor $F \colon \mathcal{C} \rightarrow \mathcal{D}$ is conservative if when $Ff$ is an isomorphism in $\mathcal{D}$, then $f$ is an isomorphism in $\mathcal{C}$.)
+The crossed simplicial groups\index{crossed simplicial group} of Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. There is a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$\nomenclature[C]{$\mathbf{CSGrp}$}{of crossed simplicial groups and morphisms of crossed simplicial groups} from the category of action operads just described into the category of crossed simplicial groups. This functor takes an action operad $\ML$ and defines $C(\Lambda)(n) = \Lambda_{n+1}$. The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition inherent to $\Lambda$ - the description of the maps via the operad structure can be viewed in a similar way to Construction 1.1 of \cite{Kra96}. This functor is, however, not faithful, nor is it conservative. (Recall that a functor $F \colon \mathcal{C} \rightarrow \mathcal{D}$ is conservative if when $Ff$ is an isomorphism in $\mathcal{D}$, then $f$ is an isomorphism in $\mathcal{C}$.)
 \end{rem}
 %Salvatore-Wahl:  Framed disks operads...
 
 \begin{lem}\label{calclem}
-Let $\ML$ be an action operad, and write $e_{n}$ for the unit element in the group $\Lambda(n)$.
+Let $\ML$ be an action operad, and recall that $e_{n}$ is the identity element in the group $\Lambda(n)$.
 \begin{enumerate}
 \item In $\Lambda(1)$, the unit element $e_{1}$ for the group structure is equal to the identity element for the operad structure, $\textrm{id}$.
 \item The equation
@@ -702,14 +707,11 @@ For an action operad $\mb{\Lambda}$,  define
 \[
 \begin{array}{rcl}
 \beta(h_{1}, \ldots, h_{n}) &=& \mu(e; h_{1}, \ldots, h_{n}) \\
-\delta(g) &=& \mu(g; e_{1}, \ldots, e_{n}).
+\delta_{n; k_{1}, \ldots, k_{n}}(g) &=& \mu(g; e_{k_1}, \ldots, e_{k_n}).
 \end{array}
 \]
 \end{Defi}
 
-\begin{nota}
-We will denote our identity elements in groups generically as $e$. If $\{ G_{i} \}_{i \in I}$ are groups indexed by a set $I$, then $e_{i}$ is the identity element in $G_{i}$.
-\end{nota}
 
 \begin{thm}\label{thm:charAOp}
 An action operad $\mb{\Lambda}$ determines, and is determined by, the following:
@@ -3471,7 +3473,7 @@ is the quotient map of abelianization
 when $\ML$ is crossed, and the identity map $\mathrm{id}_{\mathbb{N}^{*n}}$ otherwise.
 \end{prop}
 \begin{proof}
-By QQQ Missing reference QQQ \cref{Gnmapsaction}, all morphisms in $\ELn$ can be written uniquely as $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, for some $g \in G(m)$ and $x_i \in \{z_1, ..., z_n \}$. Since maps of this form have source $x_1 \otimes ... \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}$, we see that the only pairs of object which might have a morphism between them are those that can be expanded as tensor products that differ by some permutation. 
+By \cref{hom-set-lemma}, all morphisms in $\ELn$ can be written uniquely as $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$, for some $g \in G(m)$ and $x_i \in \{z_1, ..., z_n \}$. Since maps of this form have source $x_1 \otimes ... \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes ... \otimes x_{\pi(g^{-1})(m)}$, we see that the only pairs of object which might have a morphism between them are those that can be expanded as tensor products that differ by some permutation. 
 
 
 If our action operad $\ML$ is crossed, then for any two objects like this --- say source $x_1 \otimes ... \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes ... \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \Sigma_m$ --- we can always find a map $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ between them, because by \cref{surjortriv} QQQ Missing ref QQQ the underlying permutations maps $\pi_m: G(m) \to \Sigma_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
@@ -3554,12 +3556,17 @@ Therefore, $h \cdot \mu(e_2; k^{-1}, e_1)$ is exactly the $g$ we were looking fo
 \]
 \end{proof} 
 
-Finally, \cref{Gnmapsaction} also gives a complete description of how the morphisms of $\ELn$ interact as a monoid under tensor product, though to best express this we need some new terminology.
+Finally, \cref{hom-set-lemma} also gives a complete description of how the morphisms of $\ELn$ interact as a monoid under tensor product, though to best express this we need some new terminology.
 
-\begin{Defi} Let $\ML$ be an action operad. Then we will also use the notation $\Lambda$ to denote the \emph{underlying monoid}\index{action operad!underlying monoid} of this action operad. The underlying set of $\ML$ is the disjoint union, $\coprod_n \Lambda(n)$, with tensor product as the binary operation, $g \otimes h = \mu(e_2; g, h)$.
+\begin{Defi} Let $\ML$ be an action operad. 
+\begin{enumerate}
+\item We will also use the notation $\lop$ to denote the \emph{underlying monoid}\index{action operad!underlying monoid} of this action operad. The underlying set of $\lop$ is the disjoint union, $\coprod_n \Lambda(n)$, with block sum as the binary operation, $g \oplus h = \mu(e_2; g, h)$.
 
-Also, note that this monoid comes equipped with a homomorphism $| \, \_ \, | : \Lambda \to \mathbb{N}$, sending each $g \in \Lambda$ to the natural number $m$ if and only if $g$ is an element of the group $\Lambda(m)$. We'll call this number $|g|$ the \emph{length} of $g$.
+\item This monoid comes equipped with a homomorphism $| \, \_ \, | : \Lambda \to \mathbb{N}$, sending each $g \in \Lambda$ to the natural number $m$ if and only if $g$ is an element of the group $\Lambda(m)$. We call this number $|g|$ the \emph{length} of $g$.
+\end{enumerate}
 \end{Defi}
+
+QQQ We have two different lengths which are sometimes the same, fix that. I want the free monoid length to be $\ell$ I think.
 
 \begin{Defi}\label{lengthdef} Let $S$ be a set and $F(S)$ the free monoid on $S$, the monoid whose elements are strings of elements of $S$ and whose binary operation is concatenation. Then we will denote by
 \[ | \, \_ \, | : F(S) \to \mathbb{N} \]
@@ -3567,10 +3574,10 @@ the monoid homomorphism defined by sending each element of $S \subseteq F(S)$ to
 \end{Defi}
 
 \begin{lem} \label{Gnmor} The monoid of morphisms of the algebra $\ELn$ is
-\[ \mathrm{Mor}(\ELn) \quad \cong \quad \Lambda \times_{\mathbb{N}} \mathbb{N}^{\ast n} \]
+\[ \mathrm{Mor}(\ELn) \quad \cong \quad \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n} \]
 where this is a pullback taken over the respective length homomorphisms,
 \[ \begin{tikzcd}
-\Lambda \times_{\mathbb{N}} \mathbb{N}^{\ast n} \ar[dd, shift left=4] \ar[rr] \ar[ddrr, phantom, "\lrcorner", very near start, shift left] & & \mathbb{N}^{\ast n} \ar[dd, "| \, \_ \, |"] & \\
+\lop \times_{\mathbb{N}} \mathbb{N}^{\ast n} \ar[dd, shift left=4] \ar[rr] \ar[ddrr, phantom, "\lrcorner", very near start, shift left] & & \mathbb{N}^{\ast n} \ar[dd, "| \, \_ \, |"] & \\
 & & & \\
 \quad \quad G \ar[rr, "| \, \_ \, |"] & & \mathbb{N} &
 \end{tikzcd} \]
@@ -3583,7 +3590,7 @@ An element of $\Lambda \times_{\mathbb{N}} F( \, \{z_1, ..., z_n\} \, )$ is an e
 			& : & (g;x_1, ..., x_m) & \mapsto & \alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})
 		\end{array}
 \]
-But by QQQ Missing ref QQQ \cref{Gnmapsaction}, each element of $\mathrm{Mor}(\ELn)$ can be expressed in the form $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ for a unique collection $(g;x_1, ..., x_m)$, and so this function $\alpha$ is actually a bijection of sets. Furthermore, this function preserves tensor product, since
+But by \cref{hom-set-lemma}, each element of $\mathrm{Mor}(\ELn)$ can be expressed in the form $\alpha(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m})$ for a unique collection $(g;x_1, ..., x_m)$, and so this function $\alpha$ is actually a bijection of sets. Furthermore, this function preserves tensor product, since
 \[ \begin{array}{rll}
 			\alpha\big( \, (g;f_1, ..., f_m) \otimes (g';f'_1, ..., f'_m) \, \big) & = & \alpha( \, g \otimes g' \, ; \, f_1, ..., f_m, f'_1, ..., f'_m \, ) \\
 			& = & \alpha( \, g \, ; \, f_1, ..., f_m \, ) \otimes \alpha( \, g' \, ; \, f'_1, ..., f'_m \, )
@@ -4408,18 +4415,22 @@ We will later derive results about weakly invertible objects from those about in
 The following lemmas describe the interaction between invertibility of objects and other aspects of the monoidal structure.
 
 \begin{lem} \label{tenscomp} Let $f: x \to y$ and $f': y \to z$ be morphisms in a strict monoidal category, and assume $y$ is an invertible object with inverse $y^{-1}$. Then
-\[ f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y^{-1}} \otimes f \]
+\[ f' \circ f \quad = \quad f' \otimes y^{-1} \otimes f \]
 \end{lem}
 \begin{proof}
 By the interchange law for monoidal categories,
 \[\begin{array}{rll} 
-			f' \circ f & = & (f' \otimes \mathrm{id}_I) \circ (\mathrm{id}_I \otimes f) \\
-			& = & (f' \otimes \mathrm{id}_{y^{-1}} \otimes \mathrm{id}_y) \circ (\mathrm{id}_y \otimes \mathrm{id}_{y^{-1}} \otimes f) \\
-			& = & (f' \circ \mathrm{id}_y) \otimes (\mathrm{id}_{y^{-1}} \circ \mathrm{id}_{y^{-1}}) \otimes (\mathrm{id}_y \circ f) \\
-			& = & f' \otimes \mathrm{id}_{y^{-1}} \otimes f .
+			f' \circ f & = & (f' \otimes I) \circ (I \otimes f) \\
+			& = & (f' \otimes y^{-1} \otimes y) \circ (y \otimes y^{-1} \otimes f) \\
+			& = & (f' \circ \mathrm{id}_{y}) \otimes (\mathrm{id}_{y^{-1}} \circ \mathrm{id}_{y^{-1}}) \otimes (\mathrm{id}_y \circ f) \\
+			& = & f' \otimes y^{-1} \otimes f .
 		\end{array}
 \]
 \end{proof} 
+
+\begin{rem}
+It is worth noting that all of the proofs which include a step described as ``an Eckmann-Hilton argument'' (see \cite{eh}) use methods similar to that above, and those are omitted from this point forward.
+\end{rem}
 
 \begin{lem}\label{inv_implies_invertible}
 Let $x, y$ be invertible objects in a strict monoidal category $M$ with inverses $x^{-1}, y^{-1}$. Let $f:x \to y$, $g:x^{-1} \to y^{-1}$ be morphisms such that $f \otimes g = 1_I = g \otimes f$. Then $f, g$ are isomorphisms in $M$.
@@ -4427,10 +4438,42 @@ Let $x, y$ be invertible objects in a strict monoidal category $M$ with inverses
 \begin{proof}
 The inverse of $f$ is given by 
 \[
-y = xx^{-1} y \stackrel{\mathrm{id}_x g \mathrm{id}_y}{\longrightarrow} xy^{-1}y = x
+y = xx^{-1} y \stackrel{x \otimes g \otimes y}{\longrightarrow} xy^{-1}y = x
 \]
-by a similar proof to that above.
+by an Eckmann-Hilton argument.
 \end{proof}
+
+\begin{Defi}\label{def_tensinv}
+A morphism $f: w \to v$ in a strict monoidal category $X$ is \emph{invertible under tensor product} or \emph{has an inverse under tensor product} if there is another morphism $g: w^{-1} \to v^{-1}$ such that $f \otimes g = \id_I = g \otimes f$; note that this requires $w, v$ to both be invertible with inverses $w^{-1}, v^{-1}$, respectively.
+\end{Defi}
+
+\begin{nota}\label{nota_tensinv}
+For a morphism $f:w \to v$ in a strict monoidal category $X$, we write $f^*$ for its inverse under tensor product, if it exists. Standard arguments prove that $f^*$ is unique when it exists.
+\end{nota}
+
+We have the following useful converse to \cref{inv_implies_invertible}.
+
+\begin{lem} \label{tensinv_basic} Let $f: w \to v$ be an isomorphism in a strict monoidal category $X$, and assume that both $w, v$ are invertible objects. Then the inverse under tensor product $f^*$ exists.
+\end{lem}
+\begin{proof}
+For any such $f: w \to v$, consider the map $w^{-1} \otimes f^{-1} \otimes v^{-1}$, where $f^{-1}$ is the compositional inverse of $f$. This morphism has source $w^{-1}\otimes v \otimes v^{-1} = w^{-1}$ and target $w^{-1} \otimes w \otimes v^{-1} = v^{-1}$, and a simple Eckmann-Hilton argument proves that $w^{-1} \otimes f^{-1} \otimes v^{-1}$ is the tensor inverse of $f$.
+% which allows us to apply the law of interchange to get
+%\begin{longtable}{RLL}
+%			f \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) & = & \big( \, f \circ \mathrm{id}_w \, \big) \otimes \big( \, \mathrm{id}_{v^*} \circ  (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
+%			& = & \big( \, f \otimes \mathrm{id}_{v^*} \, \big) \circ \big( \, \mathrm{id}_w \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
+%			& = & ( f \otimes \mathrm{id}_{v^*} ) \circ ( f^{-1} \otimes \mathrm{id}_{v^*}) \\
+%			& = & \mathrm{id}_I
+%\end{longtable}
+%and 
+%\begin{longtable}{RLL}
+%			(\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes f & = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \circ \mathrm{id}_{w^*} \, \big) \otimes \big( \, \mathrm{id}_v \circ f \, \big) \\
+%			& = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes \mathrm{id}_v \, \big) \circ \big( \, \mathrm{id}_{w^*} \otimes f \, \big) \\
+%			& = & (\mathrm{id}_{w^*} \otimes f^{-1}) \circ (\mathrm{id}_{w^*} \otimes f) \\
+%			& = & \mathrm{id}_I,
+%\end{longtable}
+%so $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the inverse of $f$ in the monoid $\MorLn$.
+\end{proof}
+
 
 
 \begin{Defi}\label{invdef} Given an $E\Lambda$-algebra $X$, we will denote by $X_{\mathrm{inv}}$\nomenclature[N]{$X_{\mathrm{inv}}$}{the sub-$E\Lambda$-algebra of $X$ of objects invertible under tensor product}\index{algebra!of weakly invertible objects} the sub-$E\Lambda$-algebra of $X$ containing all objects which are invertible under tensor product, and all of the isomorphisms between them. \end{Defi} 
@@ -4874,7 +4917,7 @@ Let $f: A \to C, g: B \to C$ be maps in a category with coproducts. We will writ
 Let $f, g: A \to B$ be maps in a cocomplete category with coequalizer $c: B \to C$. Then $c$ is also the coequalizer of $f;\id_B$ and $g; \id_B$, and this expresses $c$ as a reflexive coequalizer.
 \end{lem}
 \begin{proof}
-A map $h: B \to X$ coequalizes $f;\id_B$ and $g; \id_B$ if and only if $hf = hg$ and $h \id_B = h \id_B$ by the universal property of the coproduct, so $c$ is still the universal map which coequalizes. Reflexivity is easy, as the map $B \coprod B \to A \coprod B$ which is $i;i$ for $i:B \to A \coprod B$ the canonical inclusion is a common section.
+A map $h: B \to X$ coequalizes $f;\id_B$ and $g; \id_B$ if and only if $hf = hg$ and $h \id_B = h \id_B$ by the universal property of the coproduct, so $c$ is still the universal map which coequalizes. Reflexivity is easy, as the canonical inclusion map $B \to A \coprod B$ is a common section.
 
 \end{proof}
 
@@ -4986,21 +5029,11 @@ Recalling \cref{Gnobj,Gnconcomp,Zobj,crossconcomp}, we can immediately conclude 
 where the pullbacks are taken over the quotients of abelianization for $(\mathbb{N}^{\ast n})^{\mathrm{ab}} = \mathbb{N}^n$ and $(\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^n$ respectively.
 \end{cor}
 
-We want to show that the group $(s \times t)(L_n)$ we have described is in fact a submonoid of $\MorLn$.  We will accomplish this  by first proving the analogous statement for all $\ELn$.  For any pair $(w, w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ such that the images of $w$ and $w'$ in the commutative monoid $\mathbb{N}^n$ are the same, there are generators $x_1, ..., x_m$ for which 
-\[ w \quad = \quad x_1 \otimes ... \otimes x_m \]
-and there exists at least one permutation $\sigma \in \Sigma_m$ such that
-\[ w' \quad = \quad x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)}. \]
-Since the underlying permutation maps $\pi : \Lambda(m) \to \Sigma_m$ of a crossed action operad $G$ are all surjective, we can always find an element of $g \in G(m)$ for which $\pi(g) = \sigma$. 
-
-\begin{nota}\label{rho_ww'}
-Let $\rho:\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \to \bigcup \EL(m)$ be an arbitrary, but fixed, function such that $\rho(w,w')$ satisfies $\pi(\rho(w,w')) = \sigma$ as defined above.
-\end{nota}
+Before continuing further, we establish some elementary properties of the monoid $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ and the group $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$.
 
 \begin{Defi}\label{length}
 Let $S$ be a set, and consider the free monoid $\N^{*S}$ given by words in the elements of $S$. \emph{Length} $\ell:\N^{*S} \to \N$ is the monoid homomorphism which is given by the identity homomorphism on each copy of $\N$ in the coproduct $\N^{*S}$. Concretely, the length $\ell(w)$ of a word $w \in \N^{*S}$ is the total number of letters in it.
 \end{Defi}
-
-
 
 \begin{lem}\label{freemon} $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid.
 \end{lem}
@@ -5015,6 +5048,43 @@ and being an element of the pullback immediately implies $k=j$. We then define a
 \]
 then the length  of $c_1$ must be either strictly less than or strictly greater than the length of $d_1$; if they had equal length, then they would be equal. Without loss of generality assume $\ell(c_1) < \ell(d_1)$. But then the first $\ell(c_1)$ terms appearing in $d_1$ would agree with $c_1$, proving that $d_1$ is not indecomposable. Straightforward induction then finishes the proof that every element of $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ can be written as a product of indecomposables in a unique way, making $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ free on the set of indecomposables.
 \end{proof}
+
+Recall the $\ML$-monoidal functors $\delta: \ELnn \to \ELnn$ and $q:\ELnn \to L_n$. The construction $X \mapsto (s \times t)(X)$ is a functor $\lmc \to \mon$, so these induce monoid homomorphisms that we also write, by abuse of notation, as 
+\[
+\begin{array}{rcl}
+\delta: \mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n} & \to & \mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n}, \\
+q: \mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n} & \to & \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}. 
+\end{array}
+\]
+
+\begin{lem}\label{monoid_coeq}
+The monoid homomorphism $q$ exhibits $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ as the cokernel of the monoid homomorphism $\delta$.
+\end{lem}
+\begin{proof}
+QQQ I'm not sure this is correct, or if it is then it isn't obvious as claimed.
+\end{proof}
+
+\begin{lem}\label{rho_lemmas}
+If $(w,w') \in \mathbb{N}^{\ast 2n} \times_{\mathbb{N}^{2n}} \mathbb{N}^{\ast 2n}$ is indecomposable, then so is $\delta(w,w')$. For any indecomposable $(w,w')$, there exists a unique natural number $k$ and indecomposable $(v,v')$ such that
+\[
+(w,w') = \delta^k(v,v')
+\]
+but $(v,v')$ is not $\delta(u,u')$ for any indecomposable $(u,u')$.
+\end{lem}
+\begin{proof}
+The first statement follows immediately from the injectivity of $\delta$ on objects, and the second from the fact that $\delta$ doubles the length of any element.
+\end{proof}
+
+
+We now want to show that the group $(s \times t)(L_n)$ we have described is in fact a submonoid of $\MorLn$.  We will accomplish this  by first proving the analogous statement for all $\ELn$.  For any pair $(w, w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ such that the images of $w$ and $w'$ in the commutative monoid $\mathbb{N}^n$ are the same, there are generators $x_1, ..., x_m$ for which 
+\[ w \quad = \quad x_1 \otimes ... \otimes x_m \]
+and there exists at least one permutation $\sigma \in \Sigma_m$ such that
+\[ w' \quad = \quad x_{\sigma(1)} \otimes ... \otimes x_{\sigma(m)}. \]
+Since the underlying permutation maps $\pi : \Lambda(m) \to \Sigma_m$ of a crossed action operad $G$ are all surjective, we can always find an element of $g \in G(m)$ for which $\pi(g) = \sigma$. 
+
+\begin{nota}\label{rho_ww'}
+Let $\rho:\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \to \bigcup \EL(m)$ be an arbitrary, but fixed, function such that $\rho(w,w')$ satisfies $\pi(\rho(w,w')) = \sigma$ as defined above.
+\end{nota}
 
 We can now construct the desired injection using the function $\rho$ from \cref{rho_ww'}.
 \begin{prop} \label{stGnsub} $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ is a split epi of monoids, so $(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$. Furthermore, we can choose the injection $i:(s \times t)(\ELn) \to \mathrm{Mor}(\ELn)$ such that the following diagram commutes.
@@ -5031,23 +5101,23 @@ We can now construct the desired injection using the function $\rho$ from \cref{
 \end{center}		
 \end{prop}
 \begin{proof}
-First, assume that the action operad $G$ is non-crossed. Then there exists an obvious injective monoid homomorphism
+First, assume that the action operad $\ML$ is not crossed. Then there exists an obvious injective monoid homomorphism
 \[ \begin{array}{rlrll}
 			i & : & (s \times t)(\ELn) & \to & \mathrm{Mor}(\ELn) \\
-			& : & \mathbb{N}^{\ast n} & \to & G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
-			& : & w & \mapsto & ( \, e_{|w|}, w \, )
+			& : & \mathbb{N}^{\ast n} & \to & \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
+			& : & w & \mapsto & ( \, e_{|w|}, w \, ),
 		\end{array}
 \]
-The homomorphism property follows from the fact that the length $|w|$ defined in \cref{lengthdef} is itself a homomorphism, so $|w \otimes w'| = |w|+|w'|$. Thus $(s \times t)(\ELn) \subseteq \mathrm{Mor}(\ELn)$ for non-crossed $G$.
+where we have written $e_{|w|}$ for the identity in the group $\Lambda(|w|)$. The homomorphism property follows from the fact that the length $|w|$ defined in \cref{lengthdef} is itself a homomorphism, so $|w \oplus w'| = |w|+|w'|$. Thus $(s \times t)(\ELn) \subseteq \mathrm{Mor}(\ELn)$ for non-crossed $\ML$, and the splitting is obvious.
 
-Now assume that $G$ is crossed. Fix a function $\rho$ as in \cref{rho_ww'}. Because $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid  by \cref{freemon}, there is a unique monoid homomorphism
-\[ \rho \, : \, \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \longrightarrow G \]
+Now assume that $\ML$ is crossed. Fix a function $\rho$ as in \cref{rho_ww'}. Because $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid  by \cref{freemon}, there is a unique monoid homomorphism
+\[ \rho \, : \, \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \longrightarrow \lop \]
 which agrees with the original function $\rho$ on the generators in the source. By construction, we have
 \[ \pi(\rho(w, w'))(w) \quad = \quad w' \]
 for any $(w, w') \in\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, not just the generators. Using $\rho$ we define the homomorphism $i$ to be
 \[ \begin{array}{rlrll}
 			i & : & (s \times t)(\ELn) & \to & \mathrm{Mor}(\ELn) \\
-			&  & \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & \to & G \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
+			&  & \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} & \to & \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
 			&  & (w, w') & \mapsto & ( \, \rho(w, w'), w \, ).
 		\end{array}
 \]
@@ -5062,20 +5132,7 @@ and thus $i$ is injective. This injection splits $\mathrm{Mor}(\ELn) \to (s \tim
 For the final statement, note that the inclusion of $\mathrm{Ob}(\ELn)$ into $(s \times t)(\ELn)$ sends an object $w$ to the pair $(w,w)$. The only indecomposable such are $(x_i, x_i)$ if we write the generating objects of $\ELn$ as $x_1, x_2, \ldots, x_n$. Using the construction above, we can always choose $\rho(x_i, x_i) = e_1$.
 \end{proof}
 
-
-For the proof of \cref{stGnsub}, $\rho$ can be any function satisfying the criteria in \cref{rho_ww'}, with the caveat that commuting with the inclusion of objects requires $\rho(x_i, x_i) = e_1$. The analogous proof for $L_n$, though, requires more properties of $\rho$ which we establish now. Recall the functor $\delta$ from \cref{qdef}.
-
-\begin{lem}\label{rho_lemmas}
-If $(w,w') \in \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is indecomposable, then so is $\delta(w,w')$. For any indecomposable $(w,w')$, there exists a unique natural number $k$ and indecomposable $(v,v')$ such that
-\[
-(w,w') = \delta^k(v,v')
-\]
-but $(v,v')$ is not $\delta(u,u')$ for any indecomposable $(u,u')$.
-\end{lem}
-\begin{proof}
-The first statement follows immediately from the injectivity of $\delta$ on objects, and the second from the fact that $\delta$ doubles the length of any element.
-\end{proof}
-
+For the proof of \cref{stGnsub}, $\rho$ can be any function satisfying the criteria in \cref{rho_ww'}, with the caveat that commuting with the inclusion of objects requires $\rho(x_i, x_i) = e_1$. The analogous proof for $L_n$, though, requires more properties of $\rho$ which we establish now. Recall the functor $\delta$ from \cref{qdef}. Note that by construction it restricts to a monoid homomorphism on sets of objects, and we denote this restriction by $\delta$ as well in the lemma below.
 
 \begin{prop} \label{stZsub} $\MorLn \to (s \times t)(L_n)$ is a split epi of monoids, so $(s \times t)(L_n)$ is (isomorphic to) a submonoid of $\MorLn$. Furthermore, we can choose the injection $i:(s \times t)(L_n) \to \MorLn$ such that the following diagram commutes.
 \begin{center}
@@ -5104,7 +5161,7 @@ Let $i:(s \times t)(\ELnn) \to \mathrm{Mor}(\ELnn)$ be a splitting as in \cref{s
 			\draw [->] (c) to node [below] {$i$} (d);
     \end{tikzpicture}
 \end{center}
-commute. Recall that $i$ is defined by first factoring an element into decomposables, and then applying $\rho$ to each of those. Thus on an indecomposable $(w,w')$, the commutativity of this square is the claim that $\delta(\rho(w,w')) = \rho(\delta w, \delta w')$ using that $\delta(w,w') = (\delta w, \delta w')$ is also indecomposable by the first part of \cref{rho_lemmas}. By the second part of \cref{rho_lemmas}, write $(w,w') = \delta^k(v,v')$, so we need
+commute. Recall that $i$ is defined by first factoring an element into indecomposables, and then applying $\rho$ to each of those. Thus on an indecomposable $(w,w')$, the commutativity of this square is the claim that $\delta(\rho(w,w')) = \rho(\delta w, \delta w')$ using that $\delta(w,w') = (\delta w, \delta w')$ is also indecomposable by the first part of \cref{rho_lemmas}. By the second part of \cref{rho_lemmas}, write $(w,w') = \delta^k(v,v')$ for a unique $(v, v')$ which is not in the image of $\delta$, so the equation $\delta(\rho(w,w')) = \rho(\delta w, \delta w')$ is equivalent to
 \[
 \delta(\rho(\delta^k(v,v'))) = \delta^{k+1}\rho(v,v').
 \]
@@ -5118,7 +5175,7 @@ is the zero map. From the definition of $\delta$ in \cref{qdef} and the descript
 \[
 (s \times t)(\ELnn) \stackrel{(s \times t)(\delta)}{\longrightarrow}  (s \times t)(\ELnn) \stackrel{(s \times t)(q)}{\longrightarrow} (s \times t)(L_n)
 \]
-exhibits $(s \times t)(L_n)$ as the cokernel of $(s \times t)(\delta)$ which induces a unique monoid homomorphism $i: (s \times t)(L_n) \to \MorLn$ making the square below commute.
+exhibits $(s \times t)(L_n)$ as the cokernel of $(s \times t)(\delta)$ QQQ this is \cref{monoid_coeq} QQQ so induces a unique monoid homomorphism $i: (s \times t)(L_n) \to \MorLn$ making the square below commute.
 \begin{center}
     \begin{tikzpicture}[x=20mm,y=15mm]
 		\node (a) at (0,0) {$(s \times t)(\ELnn)$};
@@ -5139,52 +5196,30 @@ The final claim about commuting with the inclusion of objects follows using the 
 
 \section{Unit endomorphisms of \texorpdfstring{$L_n$}{L_n}}
 
-We now consider the monoid of unit endomorphisms, $L_n(I,I)$. This is a particularly important submonoid of the morphisms $\MorLn$, since it is the only submonoid which is also a homset of the category $L_n$. Moreover, because the maps in $L_n(I,I)$ all share the same source and target, what we have is not just a monoid under tensor product but also under composition as well. This fact leads to a series of special properties for $L_n(I,I)$, the first of which is just another instance of the classic Eckmann-Hilton argument. QQQ Reference here?
+We now consider the monoid of unit endomorphisms, $L_n(I,I)$. This is a particularly important submonoid of the morphisms $\MorLn$, since it is the only submonoid which is also a homset of the category $L_n$. Moreover, because the maps in $L_n(I,I)$ all share the same source and target, what we have is not just a monoid under tensor product but also under composition as well. This fact leads to a series of special properties for $L_n(I,I)$, the first of which is just another instance of the classic Eckmann-Hilton argument. 
 
 \begin{prop} \label{endcom} $L_n(I,I)$ is a commutative monoid under both tensor product and composition, with $f \otimes f' = f \circ f'$. Since $L_n$ is a groupoid, this commutative monoid is actually an abelian group.
 \end{prop}
 
-Indeed, by using a slightly broader argument we can extend this result to every morphism of $L_n$.
+In fact, we have the following corollary of \cref{tensinv_basic} in the case that $X = L_n$.
 
-\begin{Defi}\label{def_tensinv}
-A morphism $f: w \to v$ in a monoidal category $X$ is \emph{invertible under tensor product} or \emph{has an inverse under tensor product} if there is another morphism $g: w^{-1} \to v^{-1}$ such that $f \otimes g = \id_I = g \otimes f$; note that this requires $w, v$ to both be invertible with inverses $w^{-1}, v^{-1}$, respectively.
-\end{Defi}
+\begin{cor} \label{tensinv} Every morphism $f: w \to v$ in $L_n$ has an inverse under tensor product, $f^*: w^* \to v^*$. That is, the monoid $\MorLn$ is actually a group and $L_n(I,I)$ is a subgroup.
+\end{cor}
 
-QQQ Change $y*$ to $y^{-1}$, but keep $f*$ as the tensor inverse of $f$
-
-\begin{prop} \label{tensinv} Every morphism $f: w \to v$ in $L_n$ has an inverse under tensor product, $f^*: w^* \to v^*$. That is, the monoid $\MorLn$ is actually a group.
-\end{prop}
-\begin{proof}
-For any $f: w \to v$ in $L_n$, consider the map $\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$, where $f^{-1}$ is the compositional inverse of $f$, as in the proof of \cref{endab}. This morphism has source $w^* \otimes v \otimes v^* = w^*$ and target $w^* \otimes w \otimes v^* = v^*$, which allows us to apply the law of interchange to get
-\begin{longtable}{RLL}
-			f \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) & = & \big( \, f \circ \mathrm{id}_w \, \big) \otimes \big( \, \mathrm{id}_{v^*} \circ  (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
-			& = & \big( \, f \otimes \mathrm{id}_{v^*} \, \big) \circ \big( \, \mathrm{id}_w \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
-			& = & ( f \otimes \mathrm{id}_{v^*} ) \circ ( f^{-1} \otimes \mathrm{id}_{v^*}) \\
-			& = & \mathrm{id}_I
-\end{longtable}
-and 
-\begin{longtable}{RLL}
-			(\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes f & = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \circ \mathrm{id}_{w^*} \, \big) \otimes \big( \, \mathrm{id}_v \circ f \, \big) \\
-			& = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes \mathrm{id}_v \, \big) \circ \big( \, \mathrm{id}_{w^*} \otimes f \, \big) \\
-			& = & (\mathrm{id}_{w^*} \otimes f^{-1}) \circ (\mathrm{id}_{w^*} \otimes f) \\
-			& = & \mathrm{id}_I,
-\end{longtable}
-so $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the inverse of $f$ in the monoid $\MorLn$.
-\end{proof}
 
 
 \begin{prop} \label{endnorm} $L_n(I,I)$ is a normal subgroup of $\MorLn$. Moreover, if $\ML$ is a crossed action operad, then $L_n(I,I)$ is a subgroup of the center of $\MorLn$.
 \end{prop}
 \begin{proof}
-From \cref{endab,tensinv}, we know that $L_n(I,I)$ is a subgroup of $\MorLn$. For normality, we need to again consider both crossed and non-crossed action operads separately. 
+From \cref{tensinv}, we know that $L_n(I,I)$ is a subgroup of $\MorLn$. For normality, we need to again consider both crossed and non-crossed cases separately. 
 
-If $G$ is non-crossed, then by \cref{crossconcomp} we know that the map assigning objects of $L_n$ to their connected component is just the identity $\mathrm{id}_{\mathbb{Z}^{\ast n}}$. In other words, every object belongs to its own unique component, so that every morphism of $L_n$ is actually an endomorphism. It follows that the group $L_n(I,I)$ is the kernel of the source homomorphism $s$ from \cref{st} and thus normal.
+If $\ML$ is not crossed, then by \cref{crossconcomp} we know that the map assigning objects of $L_n$ to their connected component is just the identity $\mathrm{id}_{\mathbb{Z}^{\ast n}}$. In other words, every object belongs to its own unique component, so that every morphism of $L_n$ is actually an endomorphism. It follows that the group $L_n(I,I)$ is the kernel of the source homomorphism $s$ from \cref{st} and thus normal.
 
-For crossed $G$, recall from \cref{spacial} that all $E\Lambda$-algebras are spacial, and so in particular $L_n$ is. This means that for any $h \in L_n(I,I)$ and $w \in \mathrm{Ob}(L_n)$ we will always have $h \otimes \mathrm{id}_w = \mathrm{id}_w \otimes h$. Thus for any $f:w \to v$ in $\MorLn$, we get
+For crossed $\ML$, recall from \cref{spacial} that all $E\Lambda$-algebras are spacial, and so in particular $L_n$ is. This means that for any $h \in L_n(I,I)$ and $w \in \mathrm{Ob}(L_n)$ we will always have $h \otimes w = w \otimes h$. Thus for any $f:w \to v$ in $\MorLn$, we get
 \[ \begin{array}{rll}
 		h \otimes f & = & (\mathrm{id}_I \circ h) \otimes (f \circ \mathrm{id}_w) \\
-		& = & (\mathrm{id}_I \otimes f) \circ (h \otimes \mathrm{id}_w) \\
-		& = & (f \otimes \mathrm{id}_I) \circ (\mathrm{id}_w \otimes h) \\
+		& = & (I \otimes f) \circ (h \otimes w) \\
+		& = & (f \otimes I) \circ (w \otimes h) \\
 		& = & (f \circ \mathrm{id}_w) \otimes (\mathrm{id}_I \circ h) \\
 		& = & f \otimes h
 		\end{array}
@@ -5195,9 +5230,9 @@ and so $L_n(I,I)$ is a subgroup of the center of $\MorLn$, thus normal.
 \section{Splitting the monoid of morphisms}
 
 In this section we will collect together many of the arguments of this chapter to give the first closed form expression for the automorphism group of the unit object, $I$, in $L_n$.
-\begin{prop} \label{morprod} For any action operad $G$,
+\begin{prop} \label{morprod} For any action operad $\ML$,
 \[ \MorLn \quad \cong \quad (s \times t)(L_n) \ltimes L_n(I,I) \]
-Moreover, if $G$ is a crossed action operad, then
+Moreover, if $\ML$ is a crossed action operad, then
 \[ \MorLn \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
 \end{prop}
 \begin{proof}
@@ -5219,11 +5254,15 @@ and we have a group extension
 \[ \begin{tikzcd}
 0 \ar[r] & L_n(I,I) \ar[r, hookrightarrow] & \MorLn \ar[r, "s \times t"] & (s \times t)(L_n) \ar[r] & 0.
 \end{tikzcd} \]
-But recall from \cref{stZsub} that this extension is split, or equivalently $\MorLn$ is a semi direct product $(s \times t)(L_n) \ltimes L_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L_n(I,I)$ is a subgroup of the center of $\MorLn$, and so it will follow that $\MorLn$ is also a central extension of $(s \times t)(L_n)$. In that case $\MorLn$ is just the direct product $(s \times t)(L_n) \times L_n(I,I)$.
+But recall from \cref{stZsub} that this extension is split, or equivalently $\MorLn$ is a semi-direct product $(s \times t)(L_n) \ltimes L_n(I,I)$. However, if $G$ is crossed then we also saw in \cref{endnorm} that $L_n(I,I)$ is a subgroup of the center of $\MorLn$, and so it will follow that $\MorLn$ is also a central extension of $(s \times t)(L_n)$. In that case $\MorLn$ is just the direct product $(s \times t)(L_n) \times L_n(I,I)$.
 \end{proof}
 
+\begin{cor}\label{lnII_mormodst}
+If $\ML$ is crossed, then $L_n(I,I) \cong \MorLn / (s \times t)(L_n)$.
+\end{cor}
+
 \begin{conv}
-In what follows QQQ forward ref all the places we need this?, we fix an isomorphism $\MorLn \cong (s \times t)(L_n) \times L_n(I,I)$; we note that this isomorphism (and in particular the projection homomorphism $\MorLn \to L_n(I,I)$) depends on the choices made in the proof of \cref{stZsub}.
+In what follows (in particular, \cref{conseq_spl,full_des}), we fix an isomorphism $\MorLn \cong (s \times t)(L_n) \times L_n(I,I)$; we note that this isomorphism (and in particular the projection homomorphism $\MorLn \to L_n(I,I)$) depends on the choices made in the proof of \cref{stZsub}.
 
 \end{conv}
 
@@ -5245,7 +5284,7 @@ Let $\ML$ be an action operad, and $L_n$ the free $\ML$-monoidal category on $n$
 
 In practice, computing $x^{-1} \otimes (g^{-1} f)$ from $g^{-1} f$ is relatively simple, so we should view this theorem as affording the following strategy for resolving the potential equality of a pair of parallel morphisms $f, g:x \to y$.
 \begin{enumerate}
-\item Determine the group $L_n(I,I)$ in such a way as to make the equality of two elements decidable.
+\item Determine the group $L_n(I,I)$ in such a way as to make the equality of two elements computable in a practical fashion.
 \item Compute $x^{-1} \otimes (g^{-1} f)$ as an element of this group.
 \end{enumerate}
 The following chapters are devoted to the first step of this strategy.
@@ -5361,6 +5400,8 @@ Note that $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$ is a subgroup of $
 
 Our goal is to explicitly compute the group acting on a set of $n$ invertible objects in a $\ML$-monoidal category, so we will need an explicit description of the elements of the subgroup $\Delta$.
 
+QQQ Started rewriting with $g^{\otimes}$ notation but this needs more time than I have now.
+
 \begin{lem} $\Delta$ is the subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ whose elements are tensor products of equivalence classes
 \[ \begin{array}{c}
 			\big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, ..., e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \mathrm{id}_{x'_1}, ...,  \mathrm{id}_{x'_{m'}} \, \big) \, \big] \\
@@ -5376,16 +5417,16 @@ where $g \in G(m)$, the $x_i$ are generators of $\mathbb{N}^{\ast 4n}$, the $x'_
 \]
 \end{lem}
 \begin{proof}  
-Let $f$ be an element of $\mathrm{M}(\mathbb{G}_{4n})^{\mathrm{gp, ab}}$. By definition this means that $f$ is an equivalence class of morphisms from $\mathbb{G}_{4n}$, and so by \cref{Gnmapsaction} there must exist $g \in G(m)$ and $x_1, ..., x_m \in \{ z_1, ..., z_{4n} \}$ for which
-\[ f \quad = \quad [ \, \alpha^{\mathbb{G}_{4n}}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, ] \]
+Let $f$ be an element of $\mathrm{M}(\mathbb{G}_{4n})^{\mathrm{gp, ab}}$. By definition this means that $f$ is an equivalence class of morphisms from $\mathbb{G}_{4n}$, and so by \cref{hom-set-lemma} there must exist $g \in G(m)$ and $x_1, ..., x_m \in \{ z_1, ..., z_{4n} \}$ for which
+\[ f \quad = \quad [g^{\otimes} ] \]
 Thus
 \[ \begin{array}{rll}
-			\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) & = & \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}} \big( \, [ \, \alpha^{\mathbb{G}_{4n}}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, ] \, \big) \\
-			& = & \big[ \, \tilde{\delta}\big( \, \alpha^{\mathbb{G}_{4n}}(g; \mathrm{id}_{x_1}, ..., \mathrm{id}_{x_m}) \, \big) \, \big]  \\
-			& = & [ \, \alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)}) \, ]
+			\mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}}(f) & = & \mathrm{M}(\tilde{\delta})^{\mathrm{gp, ab}} \big( \, [ g^{\otimes} ] \, \big) \\
+			& = & \big[ \, \tilde{\delta}(g^{\otimes}) \, \big]  
 		\end{array}
 \]
-But again using \cref{Gnmapsaction}, we know it must be possible to express the action morphism $\alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)})$ as an action morphism on the identities of generators. Since the source of this map is
+which is $g^{\otimes}$ acting on the tensor product $\tilde{\delta}(x_1) \otimes \tilde{\delta}(x_2) \otimes \cdots \otimes \tilde{\delta}(x_n)$.
+By \cref{hom-set-lemma}, we can express this isomorphism as $h^{\otimes}$ for some $h \in \Lambda(p)$we know it must be possible to express the action morphism $\alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)})$ as an action morphism on the identities of generators. Since the source of this map is
 \[ \tilde{\delta}(x_1) \otimes ... \otimes \tilde{\delta}(x_m) \quad = \quad \tilde{\delta}(x_1 \otimes ... \otimes x_m) \quad =: \quad x'_1 \otimes ... \otimes x'_{m'}  \]
 clearly the $x'_i$ are the generators we want, and so by expanding the $\tilde{\delta}(x_i)$ as tensor products of these we find that
 \[ [ \, \alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, ..., \mathrm{id}_{\tilde{\delta}(x_m)})  \, ] \quad = \quad \big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, ..., e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \mathrm{id}_{x'_1}, ..., \mathrm{id}_{x'_{m'}} \, \big) \, \big] \]
@@ -5401,7 +5442,7 @@ and using these equations the lemma follows immediately from the definition of $
 
 
 
-\section{Consequences of the splitting}
+\section{Consequences of the splitting}\label{conseq_spl}
 
 In this section we will combine our splitting result (\cref{morprod}) with the quotients in the previous section.
 
@@ -5838,7 +5879,7 @@ Composition in $\ELn$ is given by group multiplication (when defined) by the for
 Therefore any generator $(g, w) \in \mathcal{G} \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ can be expressed in terms of elements of $\mathcal{G}' \times_{\mathbb{N}} \mathbb{N}^{\ast n}$ by way of tensor product and group multiplication. After making the identification $\otimes \sim \circ$ we obtain the desired isomorphism.
 \end{proof}
 
-\section{A full description of \texorpdfstring{$L_n$}{L_n}}
+\section{A full description of \texorpdfstring{$L_n$}{L_n}}\label{full_des}
 
 We now give our most complete description of the free $\ML$-monoidal category generated by $n$ invertible objects. We know that an arbitrary morphism of $L_n$ can be described using its source, target, and an element of $L_n(I,I)$. We use this knowledge, together with a chosen isomorphism $\MorLn \cong (s \times t)(L_n) \times L_n(I,I)$, to write down $L_n$ as a $\ML$-monoidal category.
 
