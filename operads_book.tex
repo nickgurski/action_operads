@@ -632,7 +632,7 @@ For $\textrm{Ker}\,\pi \hookrightarrow \Lambda$ to be a map of action operads, w
 \end{proof}
 
 
-\begin{prop}[Corollary 2.17,  \cite{zhang-grp}]\label{zero/surj}
+\begin{prop}[Corollary 2.17,  \cite{zhang-grp}]\label{surjortriv}
 The homomorphisms $\pi_n : \Lambda_n \to \Sigma_n$ are either all surjective or all the zero map.
 \end{prop}
 
@@ -2781,27 +2781,41 @@ For the tensor constraint, we will require a map
 \[
 t:(FY)^{\star n}(k) \rightarrow F\big(Y^{\star n}(k)\big)
 \]
- where $\star$ is the Day convolution product\index{Day convolution}; having constructed one, the tensor constraint is then the composite
-\[
-\begin{array}{rcl}
-(FX \circ FY)(k) & \cong & \int^{n} FX(n) \otimes (FY)^{\star n}(k) \\
-& \stackrel{ \int 1 \otimes t}{\longrightarrow}  & \int^{n} FX(n) \otimes F(Y^{\star n}(k)) \\
-& \stackrel{\int \varphi_{2}}{\longrightarrow}  & \int^{n} F(X(n) \otimes Y^{\star n}(k)) \\
-& \longrightarrow & F (\int^{n} X(n) \otimes Y^{\star n}(k)) \\
-& \cong & F(X \circ Y)(k),
-\end{array}
-\]
-where both isomorphisms are induced by universal properties (see Section \ref{section:operads_in_Cat} for more details) and the unlabeled arrow is induced by the same argument as that for coproducts above but this time using coends.  The arrow $t$ is constructed in a similar fashion, and is the composite below.
-\[
-\begin{array}{rcl}
-(FY)^{\star n}(k) & = & \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\Lambda(k, \sum k_{i}) \\
-& \rightarrow &  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\Lambda(k, \sum k_{i}) \\
-& \rightarrow & \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i}) ) \\
-& \rightarrow & F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i})  \\
-& = & F(Y^{\star n}(k))
-\end{array}
-\]
+ where $\star$ is the Day convolution product\index{Day convolution}; having constructed one, the tensor constraint is then the following composite.
+% \[
+% \begin{array}{rcl}
+% (FX \circ FY)(k) & \cong & \int^{n} FX(n) \otimes (FY)^{\star n}(k) \\
+% & \stackrel{ \int 1 \otimes t}{\longrightarrow}  & \int^{n} FX(n) \otimes F(Y^{\star n}(k)) \\
+% & \stackrel{\int \varphi_{2}}{\longrightarrow}  & \int^{n} F(X(n) \otimes Y^{\star n}(k)) \\
+% & \longrightarrow & F (\int^{n} X(n) \otimes Y^{\star n}(k)) \\
+% & \cong & F(X \circ Y)(k),
+% \end{array}
+% \]
+\begin{align*}
+(FX \circ FY)(k)  &\xrightarrow{\cong} \int^{n} FX(n) \otimes (FY)^{\star n}(k) \\
+&\xrightarrow{\int 1 \otimes t} \int^{n} FX(n) \otimes F(Y^{\star n}(k)) \\
+&\xrightarrow{\int \varphi_2} \int^{n} F(X(n) \otimes Y^{\star n}(k)) \\
+&\longrightarrow F \left(\int^{n} X(n) \otimes Y^{\star n}(k)\right) \\
+&\xrightarrow{\cong} F(X \circ Y)(k)
+\end{align*}
 
+Both isomorphisms in the composite above are induced by universal properties (see Section \ref{section:operads_in_Cat} for more details) and the unlabeled arrow is induced by the same argument as that for coproducts above but this time using coends.  The arrow $t$ is constructed in a similar fashion, and is the composite below.
+% \[
+% \begin{array}{rcl}
+% (FY)^{\star n}(k) & = & \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\Lambda(k, \sum k_{i}) \\
+% & \rightarrow &  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\Lambda(k, \sum k_{i}) \\
+% & \rightarrow & \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i}) ) \\
+% & \rightarrow & F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i})  \\
+% & = & F(Y^{\star n}(k))
+% \end{array}
+% \]
+\begin{align*}
+(FY)^{\star n}(k) & =  \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\Lambda(k, \sum k_{i}) \\
+& \rightarrow   \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\Lambda(k, \sum k_{i}) \\
+& \rightarrow  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i}) ) \\
+& \rightarrow  F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i})  \\
+& =  F(Y^{\star n}(k))
+\end{align*}
 Checking the lax monoidal functor axioms is tedious but entirely routine using the lax monoidal functor axioms for $F$ together with various universal properties of colimits, and we leave the details to the reader.
 \end{proof}
 

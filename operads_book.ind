@@ -12,11 +12,11 @@
 
   \indexspace
 
-  \item abelianization, \hyperpage{92}
+  \item abelianization, \hyperpage{93}
   \item action operad, \hyperpage{11}
     \subitem category of, \hyperpage{13}
-    \subitem crossed, \hyperpage{67}, \hyperpage{91}
-    \subitem initial, \hyperpage{11}, \hyperpage{20}
+    \subitem crossed, \hyperpage{67}, \hyperpage{92}
+    \subitem initial, \hyperpage{12}, \hyperpage{20}
     \subitem kernel, \hyperpage{13}
     \subitem limits of, \hyperpage{19}
     \subitem maps, \hyperpage{13}
@@ -24,15 +24,15 @@
     \subitem of braid groups, \hyperpage{12}
     \subitem of cactus groups, \hyperpage{12}, \hyperpage{62}, 
 		\hyperpage{64}
-    \subitem of ribbon braid groups, \hyperpage{12}
+    \subitem of ribbon braid groups, \hyperpage{12, 13}
     \subitem of symmetric groups, \hyperpage{12}
     \subitem presentation, \hyperpage{20}
     \subitem terminal, \hyperpage{12}
     \subitem underlying monoid, \hyperpage{70}
   \item algebra
     \subitem $\Lambda$-operad, \hyperpage{21}
-    \subitem of weakly invertible objects, \hyperpage{87}, 
-		\hyperpage{97}
+    \subitem of weakly invertible objects, \hyperpage{88}, 
+		\hyperpage{98}
     \subitem operad, \hyperpage{21}
     \subitem pseudoalgebra, \hyperpage{34}, \hyperpage{38}
       \subsubitem category of, \hyperpage{37}
@@ -61,8 +61,8 @@
     \subitem permutative, \hyperpage{61}
     \subitem slice category, \hyperpage{19}
     \subitem translation, \hyperpage{49}
-  \item club, \hyperpage{55}
-    \subitem generators and relations, \hyperpage{58}
+  \item club, \hyperpage{56}
+    \subitem generators and relations, \hyperpage{59}
   \item cocompletion, \hyperpage{83}
   \item coherence, \hyperpage{43}
   \item colimit
@@ -70,13 +70,13 @@
     \subitem filtered, \hyperpage{18}
     \subitem free cocompletion, \hyperpage{83}
   \item collection
-    \subitem $T$-collection, \hyperpage{55}
+    \subitem $T$-collection, \hyperpage{56}
     \subitem $\ML$-collection, \hyperpage{26}
       \subsubitem category of, \hyperpage{26}
     \subitem convolution, \hyperpage{27}
     \subitem non-symmetric, \hyperpage{9}, \hyperpage{19}
     \subitem symmetric, \hyperpage{8}, \hyperpage{19}
-  \item contractible, \hyperpage{53}
+  \item contractible, \hyperpage{55}
   \item crossed simplicial group, \hyperpage{14}
 
   \indexspace
@@ -93,7 +93,7 @@
     \subitem enhanced, \hyperpage{44}
     \subitem orthogonal, \hyperpage{43}
   \item functor
-    \subitem surjective, \hyperpage{94}
+    \subitem surjective, \hyperpage{95}
 
   \indexspace
 
@@ -108,7 +108,7 @@
     \subitem braid, \hyperpage{10}
     \subitem free, \hyperpage{45}
     \subitem symmetric, \hyperpage{7}
-  \item group completion, \hyperpage{90}
+  \item group completion, \hyperpage{91}
 
   \indexspace
 
@@ -117,10 +117,10 @@
   \indexspace
 
   \item monad, \hyperpage{22}
-    \subitem $T$-operad, \hyperpage{55}
+    \subitem $T$-operad, \hyperpage{56}
     \subitem cartesian, \hyperpage{44}
       \subsubitem transformation, \hyperpage{45}, \hyperpage{47}
-    \subitem collection, \hyperpage{55}
+    \subitem collection, \hyperpage{56}
     \subitem in a bicategory, \hyperpage{83}
     \subitem maps, \hyperpage{24}
       \subsubitem transformation, \hyperpage{25}, \hyperpage{84}
@@ -128,13 +128,13 @@
   \item monoid
     \subitem category of, \hyperpage{27}
   \item monoidal category
-    \subitem $\ML$-monoidal, \hyperpage{89}
-      \subsubitem free, \hyperpage{88}
+    \subitem $\ML$-monoidal, \hyperpage{90}
+      \subsubitem free, \hyperpage{89}
     \subitem braided strict, \hyperpage{62}, \hyperpage{79}
     \subitem coboundary category, \hyperpage{62}
       \subsubitem coboundary functor, \hyperpage{63}
     \subitem cocomplete symmetric, \hyperpage{51}
-    \subitem monoid of morphisms, \hyperpage{91}
+    \subitem monoid of morphisms, \hyperpage{92}
     \subitem ribbon braided, \hyperpage{62}
     \subitem spacial, \hyperpage{68}
     \subitem symmetric strict, \hyperpage{61}
@@ -150,10 +150,10 @@
     \subitem invertible, \hyperpage{87}
     \subitem weakly invertible, \hyperpage{87}
   \item operad
-    \subitem $T$-operad, \hyperpage{55}
+    \subitem $T$-operad, \hyperpage{56}
     \subitem $\Lambda$-operad
       \subsubitem contractible, \hyperpage{78}
-    \subitem $\Lambda_{\infty}$-operad, \hyperpage{53}
+    \subitem $\Lambda_{\infty}$-operad, \hyperpage{55}
     \subitem $\ML$-operad, \hyperpage{20}
       \subsubitem category of, \hyperpage{20}
     \subitem action operad, \hyperpage{11}
@@ -162,7 +162,7 @@
     \subitem associated monad, \hyperpage{22}
     \subitem braided, \hyperpage{10}
     \subitem endomorphism operad, \hyperpage{22}, \hyperpage{41}
-    \subitem generalized, \hyperpage{55}
+    \subitem generalized, \hyperpage{56}
     \subitem maps, \hyperpage{10}
     \subitem non-symmetric, \hyperpage{8}
     \subitem of braid groups, \hyperpage{10}, \hyperpage{20}, 
