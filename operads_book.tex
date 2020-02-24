@@ -55,7 +55,6 @@
 \newcommand{\Fref}{\Cref}
 \newcommand{\prettyref}{\cref}
 \newcommand{\newrefformat}[2]{}
-\newcommand{\cn}{\colon}
 \newcommand{\bs}{\boldsymbol}
 \newcommand{\mb}{\mathbf}
 \renewcommand{\dot}{\centerdot}
@@ -73,7 +72,7 @@
 \newcommand{\g}[1]{\ensuremath{\mathbb{#1}}}
 \newcommand{\Cat}{\ensuremath{\textrm{Cat}}}
 \newcommand{\cd}[2][]{\vcenter{\hbox{\xymatrix#1{#2}}}}
-\newcommand{\Set}{\ensuremath{\textrm{Set}}}
+\newcommand{\Set}{\mb{Set}}
 \newcommand{\twocat}{\ensuremath{\textrm{2-Cat}}}
 \newcommand{\Icon}{\ensuremath{\textrm{Icon}}}
 \newcommand{\ML}{\mathbf{\Lambda}}
@@ -96,7 +95,7 @@
 \newcommand{\ELnn}{E\Lambda(\underline{2n})}
 \newcommand{\ELnnnn}{E\Lambda(\underline{4n})}
 \newcommand{\qsn}{Q\Sigma(\underline{n})}
-\newcommand{\ob}{\textrm{Ob}}
+\newcommand{\ob}{\operatorname{Ob}}
 \newcommand{\lmc}{\Lambda\mbox{-}\mb{MonCat}}
 \newcommand{\sets}{\Set}
 \newcommand{\mon}{\ensuremath{\mb{Mon}}}
@@ -703,10 +702,10 @@ is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k
 is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.  We now use these ideas to give the following algebraic characterization of action operads via the following definition.
 
 \begin{Defi}\label{Defi:aop_bl}
-For an action operad $\mb{\Lambda}$,  define
+Let $\ML$ be an action operad. For $h_i \in \Lambda(k_i)$ and $g \in \Lambda(n)$, define
 \[
 \begin{array}{rcl}
-\beta(h_{1}, \ldots, h_{n}) &=& \mu(e; h_{1}, \ldots, h_{n}) \\
+\beta(h_{1}, \ldots, h_{n}) &=& \mu(e; h_{1}, \ldots, h_{n}), \\
 \delta_{n; k_{1}, \ldots, k_{n}}(g) &=& \mu(g; e_{k_1}, \ldots, e_{k_n}).
 \end{array}
 \]
@@ -714,7 +713,7 @@ For an action operad $\mb{\Lambda}$,  define
 
 
 \begin{thm}\label{thm:charAOp}
-An action operad $\mb{\Lambda}$ determines, and is determined by, the following \colon 
+An action operad $\mb{\Lambda}$ determines, and is determined by, the following: 
 \begin{itemize}
 \item groups $\Lambda(n)$ together with group homomorphisms $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$,
 \item a group homomorphism
@@ -752,7 +751,7 @@ Axioms:
 {\ar_{\beta} "01" ; "21"};
 \endxy
 \]
-\item\label{eq2} The homomorphism $\beta \colon\Lambda(k) \to \Lambda(k)$ is the identity.
+\item\label{eq2} The homomorphism $\beta \colon \Lambda(k) \to \Lambda(k)$ is the identity.
 \item\label{eq3} The homomorphisms $\beta$ are associative in the sense that the equation
 % \[
 % \beta(h_{11}, \ldots, h_{1j_{1}}, h_{21}, \ldots, h_{2j_{2}}, \ldots, h_{nj_{n}}) = \beta\big( \beta(h_{11}, \ldots, h_{1j_{1}}), \ldots, \beta(h_{n1}, \ldots, h_{nj_{n}}) \big)
@@ -791,7 +790,7 @@ holds, where $P_{i} = p_{i1} + \cdots + p_{im_{i}}$ and $\underline{p_i} = p_{i1
 \[
 \delta(g) \beta(h_{1}, \ldots, h_{n}) = \beta(h_{\pi(g)^{-1}(1)}, \ldots,  h_{\pi(g)^{-1}(n)}) \delta(g)
 \]
-holds, where $h_{i} \in \Lambda(k_{i})$ and $\delta \colon\Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$.
+holds, where $h_{i} \in \Lambda(k_{i})$ and $\delta \colon \Lambda(n) \rightarrow \Lambda(k_{1} + \cdots + k_{n})$.
 \item\label{eq9} The equation
 \[
 \beta(\delta_{1}(g_{1}), \ldots, \delta_{n}(g_{n})) = \delta_{c}(\beta(g_{1}, \ldots, g_{n}))
@@ -916,7 +915,7 @@ A useful method for constructing new examples of some given algebraic structure 
 A \textit{filtered category}\index{category!filtered} is a nonempty category $C$ such that
 \begin{itemize}
 \item if $a,b$ are objects of $C$, then there is another object $c \in C$ and morphisms $a \to c, b \to c$; and
-\item if $f,g \cn a \to b$ are parallel morphisms in $C$, then there exists a morphism $h \cn b \to c$ such that $hf = hg$.
+\item if $f,g \colon a \to b$ are parallel morphisms in $C$, then there exists a morphism $h \colon b \to c$ such that $hf = hg$.
 \end{itemize}
 \end{Defi}
 
@@ -1233,7 +1232,7 @@ by the universal property of the colimits involved, so as functors $\underline{P
 We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. 
 
 \begin{Defi}
-Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map}\index{monad!maps} of from $S$ to $T$ is a functor $F \colon C \to D$ together with a natural transformation $\alpha \colonTF \Rightarrow FS$ such that the following diagrams commute.
+Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map}\index{monad!maps} of from $S$ to $T$ is a functor $F \colon C \to D$ together with a natural transformation $\alpha \colon TF \Rightarrow FS$ such that the following diagrams commute.
 
  \[
     \xy
@@ -1325,7 +1324,7 @@ Let $C$ be a cocomplete symmetric monoidal category. Let $\ML$ be an action oper
 We can combine these two propositions.
 
 \begin{cor}\label{monoidaladj_cor}
-If $C, D, P, F$ are as in \cref{monoidal_to_monadmap}, and $F$ is part of a monoidal adjunction (i.e., an adjunction in which both functors are lax symmetric monoidal, and the unit and counit are monoidal transformations) $F \dashv U$, then $(F, \id)$ and $(U, \id)$ are both monad maps. The unit $\eta \colon1 \Rightarrow UF$ induces an operad map $\eta \colonP \Rightarrow UFP$, and a transformation between monad maps
+If $C, D, P, F$ are as in \cref{monoidal_to_monadmap}, and $F$ is part of a monoidal adjunction (i.e., an adjunction in which both functors are lax symmetric monoidal, and the unit and counit are monoidal transformations) $F \dashv U$, then $(F, \id)$ and $(U, \id)$ are both monad maps. The unit $\eta \colon 1 \Rightarrow UF$ induces an operad map $\eta \colon P \Rightarrow UFP$, and a transformation between monad maps
 \[
 (\id, \id) \Rightarrow (\id, \eta^*) \circ (U, \id) \circ (F, \id).
 \]
@@ -1337,8 +1336,6 @@ These constitute an adjunction $(F,\id) \dashv (\id, \eta^*) \circ (U, \id)$ in 
 \end{cor}
 
 \section{Operads as monoids}\label{sec:opasmon}
- 	QQQ chapter: operads as monoids - intro is probably fine
- 	
 In this section, we will show that $\ML$-operads are the monoids in the category of $\ML$-collections\index{collection!$\ML$-collection}\index{collection!$\ML$-collection!category of} equipped with an appropriate substitution product.  Such a result is fairly standard \cite{mss-op}, and in both the symmetric and non-symmetric cases can easily be proven directly.  Since we work with an arbitrary action operad, however, it will be more economical to take the abstract approach using coends and Day convolution.
 
 \begin{rem}
@@ -1615,7 +1612,7 @@ simply abbreviated as $\mu^P \times 1$.  Furthermore, instead of using an elemen
 We begin with the definitions of the pseudo-level cells in the operadic context, and after each specialize to the strict version.
 
 \begin{Defi}
-Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra}\index{algebra!pseudoalgebra}\index{operad!pseudoalgebra} for $P$ consists of \colon 
+Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra}\index{algebra!pseudoalgebra}\index{operad!pseudoalgebra} for $P$ consists of: 
     \begin{itemize}
         \item a category $X$,
         \item a family of functors
@@ -1729,7 +1726,7 @@ Let $P$ be a $\ML$-operad. A \textit{strict algebra}\index{algebra!strict} for $
 \end{Defi}
 
 \begin{Defi}
-Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\ML$-operad $P$. A \textit{pseudomorphism}\index{algebra!pseudomorphism} of $P$-pseudoalgebras consists of \colon 
+Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\ML$-operad $P$. A \textit{pseudomorphism}\index{algebra!pseudomorphism} of $P$-pseudoalgebras consists of: 
     \begin{itemize}
         \item a functor $f \colon X \rightarrow Y$
         \item and a family of natural isomorphisms (once again using \ref{conv_coeq})
@@ -2084,7 +2081,7 @@ Once again, the strict algebras and strict morphisms are exactly the same as alg
 \end{rem}
 
 \begin{Defi}
-Let $(f, \overline{f}), (g, \overline{g}) \colon X \rightarrow Y$ be pseudomorphisms of $T$-algebras.  A \textit{$T$-transformation}\index{algebra!pseudomorphism!transformation} consists of a 2-cell $\gamma \colonf \Rightarrow g$ such that the following equality of pasting diagrams holds.
+Let $(f, \overline{f}), (g, \overline{g}) \colon X \rightarrow Y$ be pseudomorphisms of $T$-algebras.  A \textit{$T$-transformation}\index{algebra!pseudomorphism!transformation} consists of a 2-cell $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds.
 \[
         \xy
             (0,0)*+{TX}="00";
@@ -2284,7 +2281,7 @@ We begin by showing each associated $2$-monad is finitary.
 Let $P$ be a $\ML$-operad. Then $\underline{P}$ is finitary.\index{$2$-monad!finitary}
 \end{prop}
 \begin{proof}
-To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits \ref{def \colon filtered} or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
+To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits \ref{def:filtered} or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
     \begin{align*}
         \underline{P}(\text{colim}X_{i}) &= \coprod_n P(n) \times_{\Lambda(n)} (\text{colim}X_{i})^n \\
                                                                &\cong \coprod_n P(n) \times_{\Lambda(n)} \text{colim}(X_{i}^n) \\
@@ -2345,7 +2342,7 @@ where $l \in \m{L}$ and $r \in {R}$, there exists a unique morphism $m \colon B 
     \]
 there is a unique pair $(m,\beta)$ where $m \colon B \rightarrow C$ is a $1$-cell and $\beta \colon rm \Rightarrow g$ is an invertible $2$-cell such that $ml = f$ and $\beta \ast 1_{l} = \alpha$.
 
-Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system\index{factorization system!enhanced} where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which follows simply from the fact that the set of objects functor preserves colimits, being left adjoint to the indiscrete category functor as described in Lemma \ref{symmoncor}.
+Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system\index{factorization system!enhanced} where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which follows simply from the fact that the set of objects functor, $\ob \colon \mb{Cat} \rightarrow \mb{Set}$, preserves colimits, being left adjoint to the indiscrete category functor, $E \colon \mb{Set} \rightarrow \mb{Cat}$, as described in Lemma \ref{symmoncor}.
 
 \begin{prop}
 For any $\ML$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
@@ -2372,7 +2369,7 @@ It is important to note that the  $2$-pullback of a diagram is actually the same
 \begin{lem}\label{coeq-lem}
 Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. There is then an action of $G$ on the product $A \times B$ given by
     \[
-        (a,b) \cdot g \colon= (a \cdot g, g^{-1} \cdot b).
+        (a,b) \cdot g \colon = (a \cdot g, g^{-1} \cdot b).
     \]
 If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $A \times_G B$.
 \end{lem}
@@ -2656,7 +2653,7 @@ Since the objects of $C \times_{\Lambda} \Sigma$ are equivalence classes as abov
 \end{proof}
 
 \begin{thm}\label{cart_thm}
-The 2-monad associated to a $\Lambda$-operad $P$ is 2-cartesian\index{$2$-monad!cartesian} if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
+The 2-monad associated to a $\ML$-operad $P$ is 2-cartesian\index{$2$-monad!cartesian} if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
 \end{thm}
 \begin{proof}
 Since the monad $\underline{P}$ is isomorphic to $\underline{S(P)}$, we need only verify when $\underline{S(P)}$ is 2-cartesian.  Thus the theorem is a direct consequence of Lemma \ref{kernel_lem} and Corollary \ref{cart_cor}.
@@ -2867,7 +2864,7 @@ Let $X,Y$ be strict $\EL$-algebras, and $F \colon X \to Y$ be a functor. The str
 \end{proof}
 
 \begin{prop}\label{el_2cells}
-Let $X,Y$ be strict $\EL$-algebras, and $F, G \colon X \to Y$ be strict $\EL$-algebra maps. The structure of an $\EL$-algebra 2-cell $\alpha \colonF \Rightarrow G$ determines and is determined by some stuff.
+Let $X,Y$ be strict $\EL$-algebras, and $F, G \colon X \to Y$ be strict $\EL$-algebra maps. The structure of an $\EL$-algebra 2-cell $\alpha \colon F \Rightarrow G$ determines and is determined by some stuff.
 \end{prop}
 \begin{proof}
 
@@ -2982,7 +2979,7 @@ Let $C$ be a category with finite limits.
 (3,-3)*{\lrcorner};
 \endxy
 \]
-\item The composition product, along with the unit of the adjunction $\eta \colon1 \rightarrow T1$, give $T\mbox{-}\mb{Coll}$ a monoidal structure.  A \textit{$T$-operad}\index{monad!$T$-operad}\index{operad!$T$-operad} is a monoid in $T\mbox{-}\mb{Coll}$.
+\item The composition product, along with the unit of the adjunction $\eta \colon 1 \rightarrow T1$, give $T\mbox{-}\mb{Coll}$ a monoidal structure.  A \textit{$T$-operad}\index{monad!$T$-operad}\index{operad!$T$-operad} is a monoid in $T\mbox{-}\mb{Coll}$.
 \end{enumerate}
 \end{Defi}
 
@@ -3023,7 +3020,7 @@ We will usually just refer to a club by its underlying category $K$.
 Let $\mb{\Lambda}$ be an action operad.  Then the map of operads $\pi \colon \Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ the structure of a club.
 \end{thm}
 \begin{proof}
-To give the functor $B\pi \cn B\Lambda \to B \Sigma$ the structure of a club it suffices (see \cite{leinster}) to show that
+To give the functor $B\pi \colon B\Lambda \to B \Sigma$ the structure of a club it suffices (see \cite{leinster}) to show that
 \begin{itemize}
 \item the induced monad, which we will show to be $E\Lambda$, is a cartesian monad on $\mb{Cat}$,
 \item the transformation $\tilde{\pi} \colon E\Lambda \Rightarrow E\Sigma$ induced by the functor $E\pi$ is cartesian, and
@@ -3290,7 +3287,7 @@ There is a 2-category $\mb{CobCat}$  of coboundary categories, coboundary functo
 Let $(C, \sigma)$ be a coboundary category.  Then there is a strict coboundary category $(C', \sigma')$ which is equivalent to $(C, \sigma)$ in $\mb{CobCat}$.
 \end{prop}
 \begin{proof}
-Consider the underlying monoidal category of $(C, \sigma)$, which we will just write as $C$.  We can find a strict monoidal category $C'$ by coherence for monoidal categories together with an equivalence, as monoidal categories, between $C$ and $C'$.  By standard methods, this can be improved to an adjoint equivalence between $C$ and $C'$ in the 2-category of monoidal categories, strong monoidal functors, and monoidal transformations.  Let $F \colon  C \rightarrow C', G \colon C' \rightarrow C$ be the functors in this adjoint equivalence, and $\eta \colon 1 \Rightarrow FG$ the unit (which we note for emphasis is invertible).  For objects $x,y \in C'$, we define a commutor $\sigma'$ for $C'$ as the composite
+Consider the underlying monoidal category of $(C, \sigma)$, which we will just write as $C$.  We can find a strict monoidal category $C'$ by coherence for monoidal categories together with an equivalence, as monoidal categories, between $C$ and $C'$.  By standard methods \cite{maclane-catwork}, this can be improved to an adjoint equivalence between $C$ and $C'$ in the 2-category of monoidal categories, strong monoidal functors, and monoidal transformations.  Let $F \colon  C \rightarrow C', G \colon C' \rightarrow C$ be the functors in this adjoint equivalence, and $\eta \colon 1 \Rightarrow FG$ the unit (which we note for emphasis is invertible since it the unit of an adjoint equivalence).  For objects $x,y \in C'$, we define a commutor $\sigma'$ for $C'$ as the composite
 \[
 \begin{array}{rcl}
 xy & \stackrel{\eta \otimes \eta}{\longrightarrow} & FGxFGy \\
@@ -3344,7 +3341,7 @@ It is easy to check that the elements $\hat{s}_{p,q} \in \Sigma_{n}$ satisfy the
 The collection of groups $J = \{ J_{n} \}$ form an action operad.\index{action operad!of cactus groups}
 \end{thm}
 \begin{proof}
-We will use \cref{thm:charAOp} to determine the rest of the action operad structure.  Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $\underline{k} = \sum k_{i}$, group homomorphisms $\beta \colonJ_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{\underline{k}}$ and functions $\delta \colon J_{n} \rightarrow J_{\underline{k}}$ satisfying nine axioms.    We define both of these on generators, starting with $\beta$.
+We will use \cref{thm:charAOp} to determine the rest of the action operad structure.  Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $\underline{k} = \sum k_{i}$, group homomorphisms $\beta \colon J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{\underline{k}}$ and functions $\delta \colon J_{n} \rightarrow J_{\underline{k}}$ satisfying nine axioms.    We define both of these on generators, starting with $\beta$.
 
 Let $s_{p_{i}, q_{i}} \in J_{k_{i}}$.  Let $r_{i} = k_{1} + k_{2} + \cdots + k_{i-1}$.  Define $\beta$ by
 \[
@@ -3361,7 +3358,7 @@ To define $\delta \colon J_{n} \rightarrow J_{\underline{k}}$ for natural number
 \[
 \delta(m_{n}) = m_{\underline{k}} \cdot \beta(m_{k_{1}}, m_{k_{2}}, \ldots, m_{k_{n}}).
 \]
-Note that, by the containment relation, this is equal to
+Note that, by equation \ref{eq8} of Theorem \ref{thm:charAOp}, this is equal to
 \[
 \beta(m_{k_{n}}, m_{k_{n-1}}, \ldots, m_{k_{1}}) \cdot m_{\underline{k}}.
 \]
@@ -3465,25 +3462,27 @@ The 2-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=ope
 \section{Basic properties of monoidal categories via action operads}
 QQQ Intro text to section.
 QQQ Comment on crossedness.
-\begin{Defi} 
-An action operad $\ML$ is \emph{crossed}\index{action operad!crossed} if the map $\pi \colon \ML \to \Sigma$ is surjective.
 
-QQQ If each of the maps $\pi_n \colon \Lambda(n) \rightarrow \Sigma(n)$ is surjective?QQQ
+Following the characterisation of action operads in Proposition \ref{surjortriv}, we define crossed action operads as follows.
+
+\begin{Defi} 
+An action operad $\ML$ is \emph{crossed}\index{action operad!crossed} if each of the maps $\pi_n \colon \ML(n) \to \Sigma_n$ is surjective.
 \end{Defi}
 
-\begin{lem} \label{Gnobj} $\mathrm{Ob}(\ELn)$ is the free monoid on $n$ generators, which is $\mathbb{N}^{\ast n}$, the free product of $n$ copies of $\mathbb{N}$. \end{lem}
+\begin{lem}\label{Gnobj} $\ob(\ELn)$ is the free monoid on $n$ generators, which is $\mathbb{N}^{\ast n}$, the free product of $n$ copies of $\mathbb{N}$.
+\end{lem}
 
 As an immediate consequence of this, the source and target of any given morphism in $\ELn$ must be related to one another via some permutation of the form $\pi(g)$. This gives us an easy way to calculate the \emph{connected components} of $\ELn$, which are just the equivalence classes of objects under the relation $x \sim y$ if there exists a morphism $f \colon  x \to y$ or $f \colon y \to x$.
 \begin{prop}\label{Gnconcomp} Considered as a monoid under tensor product, the connected components of $\ELn$ are
-\[ \pi_0(\ELn) \quad = \quad \begin{cases}
-							\quad \mathbb{N}^n & \text{if $\ML$ is crossed} \\
-							\quad \mathbb{N}^{\ast n} & \text{otherwise}
+\[ \pi_0(\ELn) = \begin{cases}
+							 \mathbb{N}^n & \text{if $\ML$ is crossed} \\
+							 \mathbb{N}^{\ast n} & \text{otherwise}
 							\end{cases}
  \] 
 Also, the canonical homomorphism sending objects in $\ELn$ to their connected component,
-\[ [ \, \_ \, ] \, \colon \, \mathrm{Ob}(\ELn) \to \pi_0(\ELn) \]
+\[ [ \, \_ \, ] \colon \ob(\ELn) \to \pi_0(\ELn) \]
 is the quotient map of abelianization
-\[ \mathrm{ab} \, \colon \, \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}} \, = \, \mathbb{N}^n \]
+\[ \mathrm{ab} \colon \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}} \, = \, \mathbb{N}^n \]
 when $\ML$ is crossed, and the identity map $\mathrm{id}_{\mathbb{N}^{*n}}$ otherwise.
 \end{prop}
 \begin{proof}
@@ -3491,84 +3490,131 @@ By \cref{hom-set-lemma}, all morphisms in $\ELn$ can be written uniquely as $\al
 
 
 If our action operad $\ML$ is crossed, then for any two objects like this, say source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes \ldots \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \Sigma_m$ , we can always find a map $\alpha(g; \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m})$ between them, because by \cref{surjortriv} the underlying permutations maps $\pi_m \colon  G(m) \to \Sigma_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
+\[
+  [z_i] \otimes [z_j] = [z_i \otimes z_j] = [z_j \otimes z_i] = [z_j] \otimes [z_i].
+\]
 
-\[ [z_i] \otimes [z_j] \quad = \quad [z_i \otimes z_j] \quad = \quad [z_j \otimes z_i] \quad = \quad [z_j] \otimes [z_i] \]
 Thus the canonical map $[ \, \_ \, ] \colon \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ is the one that makes the free product of $\mathbb{N}^{*n}$ commutative; that is, the quotient map for the abelianization $\mathrm{ab} \colon \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}}$. Hence $\pi_0(\ELn) = \mathbb{N}^n$.
 
 Conversely, if $\ML$ is non-crossed then its underlying permutation operad $\mathrm{im}(\pi)$ is trivial, and so the only morphisms we have in $\ELn$ will be those of the form
-\[ \alpha( \, e_m \, ; \, \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1} \otimes \ldots \otimes \mathrm{id}_{x_m} \quad = \quad \mathrm{id}_{x_1 \otimes \ldots \otimes x_m} \]
+\[
+  \alpha( \, e_m \, ; \, \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, ) = \mathrm{id}_{x_1} \otimes \ldots \otimes \mathrm{id}_{x_m} = \mathrm{id}_{x_1 \otimes \ldots \otimes x_m}.
+\]
 Therefore the map $[ \, \_ \,]$ just sends each object to its identity morphism, and since that function is one-to-one and onto it follows that
-\[ \pi_0(\ELn) \quad = \quad \mathrm{Ob}(\ELn) \quad = \quad \mathbb{N}^{\ast n}, \quad \quad \quad \quad \quad [ \, \_ \,] \quad = \quad \mathrm{id}_{\mathbb{N}^{*n}} \]
+% \[ \pi_0(\ELn) \quad = \quad \mathrm{Ob}(\ELn) \quad = \quad \mathbb{N}^{\ast n}, \quad \quad \quad \quad \quad [ \, \_ \,] \quad = \quad \mathrm{id}_{\mathbb{N}^{*n}} \]
+\[
+  \pi_0(\ELn) = \mathrm{Ob}(\ELn) = \mathbb{N}^{\ast n}, [ \, \_ \,] = \mathrm{id}_{\mathbb{N}^{*n}}
+\]
 by \cref{Gnobj}.
 \end{proof}
 
-\cref{Gnconcomp} is not the only way that the behaviour of $\ELn$ is contingent on whether $\Lambda$ is crossed. Consider the following common property of monoidal categories:
+\cref{Gnconcomp} is not the only way that the behaviour of $\ELn$ is contingent on whether $\ML$ is crossed, we will also find that the following property of monoidal categories holds.
 
 \begin{Defi} A strict monoidal category $X$ is said to be \emph{spacial}\index{monoidal category!spacial} if tensoring with endomorphisms of the unit object commutes with all objects in the sense that 
-\[ f \otimes x \, = \, x \otimes f, \quad \quad \quad x \in \mathrm{Ob}(X), f \in X(I,I) \]
-holds for all $x, f$.
+\[
+  f \otimes x \, = \, x \otimes f
+\]
+holds for all objects $x$ and morphisms $f \colon I \rightarrow I$. This amounts to requiring the commutativity of the following diagram.
+
+\[
+  \xy
+    (0,0)*+{I \otimes x}="a";
+    (20,0)*+{I \otimes x}="b";
+    (20,-10)*+{x}="c";
+    (20,-20)*+{x \otimes I}="d";
+    (0,-10)*+{x}="e";
+    (0,-20)*+{x \otimes I}="f";
+    %
+    {\ar^{f \otimes x} "a" ; "b"};
+    {\ar@{=} "b" ; "c"};
+    {\ar@{=} "c" ; "d"};
+    {\ar@{=} "a" ; "e"};
+    {\ar@{=} "e" ; "f"};
+    {\ar_{x \otimes f} "f" ; "d"};
+  \endxy
+\]
 \end{Defi}
 
-The motivation for the name `spacial' comes from the context of string diagrams \cite{sel-graphmon}. In a string diagram, the act of tensoring two strings together is represented by placing those strings side by side. Since the defining feature of the unit object is that tensoring it with other objects should have no effect, the unit object is therefore represented diagrammatically by the absence of a string. An endomorphism of the unit thus appears as an entity with no input or output strings, detached from the rest of the diagram. In a real-world version of these diagrams, made out of physical strings arranged in real space, we could use this detachedness to grab these endomorphisms and slide them over or under any strings we please, without affecting anything else in the diagram. This ability is embodied algebraically by the equation above, and hence categories which obey it are called `spacial'.
-
-It turns out that the crossedness of an action operad has a direct effect on the spaciality of algebras.
+The motivation for the name `spacial' comes from the context of string diagrams \cite{sel-graphmon}. In a string diagram, the act of tensoring two strings together is represented by placing those strings side by side. Since the defining feature of the unit object is that tensoring it with other objects should have no effect, the unit object is therefore represented diagrammatically by the absence of a string. An endomorphism of the unit thus appears as an entity with no input or output strings, detached from the rest of the diagram.
+\begin{center}
+  \begin{tikzpicture}
+    \node(a) at (-0.5,0.5)[circle, fill=white, radius=2, draw]{$f$};
+    \draw (1,2) -- (1,0) node[circle, fill=white, radius=22, draw]{$id_x$} -- (1,-2);
+    \node at (3,0) {$=$};
+    \node(b) at (6.5,0.5)[circle, fill=white, radius=2, draw]{$f$};
+    \draw (5,2) -- (5,0) node[circle, fill=white, radius=22, draw]{$id_x$} -- (5,-2);    
+  \end{tikzpicture}
+\end{center}
+In a real-world version of these diagrams, made out of physical strings arranged in real space, we could use this detachedness to grab these endomorphisms and slide them over or under any strings we please, without affecting anything else in the diagram. This ability is embodied algebraically by the equation above, and hence categories which obey it are called `spacial'.
 
 \begin{lem}\label{spacial} If $\ML$ is a crossed action operad, then all $E\Lambda$-algebras are spacial.\end{lem}
 \begin{proof}
-Let $\ML$ be a crossed action operad, let $X$ be a $E\Lambda$-algebra, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \to I \). From QQQ Missing ref QQQ \cref{surjortriv} we know that \( \pi \colon G(2) \to S_2 \) is surjective, so that the set $\pi^{-1}( \, (1 \, 2) \, )$ is non-empty, and from the rules for composition of action morphisms we see that for any such $g \in \pi^{-1}( \, (1 \, 2) \, )$,
-\[\begin{array}{rll}
-		\alpha( \, g \, ; \, \mathrm{id}_x, \, \mathrm{id}_I \, ) \circ \alpha( \, e_2 \, ; \, \mathrm{id}_x, \, f \, ) & = & \alpha( \, g \, ; \, \mathrm{id}_x, \, f \, ) \\
-		& = & \alpha( \, e_2 \, ; \, f, \, \mathrm{id}_x \, ) \circ \alpha( \, g \, ; \, \mathrm{id}_x, \, \mathrm{id}_I \, ) \\
-		\end{array}
-\]
+Let $\ML$ be a crossed action operad, let $X$ be a $E\Lambda$-algebra, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \to I \). From \cref{surjortriv} we know that \( \pi \colon G(2) \to S_2 \) is surjective, so that the set $\pi^{-1}(  (1 \, 2)  )$ is non-empty, and from the rules for composition of action morphisms we see that for any such $g \in \pi^{-1}(  (1 \, 2)  )$,
+  \begin{align*}
+    \alpha(  g  ;  \mathrm{id}_x,  \mathrm{id}_I  ) \circ \alpha(  e_2  ;  \mathrm{id}_x,  f  ) &= \alpha(  g  ;  \mathrm{id}_x, f) \\
+    &= \alpha(e_2; f, \mathrm{id}_x ) \circ \alpha(g; \mathrm{id}_x, \mathrm{id}_I). \\
+  \end{align*}
+
 Thus in order to obtain the result we're after, it will suffice to find a particular $g \in \pi^{-1}( \, (1 \, 2) \, )$ for which
-\[\alpha( \, g \, ; \, \mathrm{id}_x, \, \mathrm{id}_I \, ) = \mathrm{id}_x \]
+  \[
+    \alpha(g; \mathrm{id}_x, \mathrm{id}_I) = \mathrm{id}_x.
+  \]
 However, since
-\[\begin{array}{rll}
-		\alpha( \, g \, ; \, \mathrm{id}_x, \, \mathrm{id}_I \, ) & = & \alpha( \, g \, ; \, \mathrm{id}_x, \, \alpha( e_0; - ) \, ) \\
-		& = & \alpha( \, \mu(g; e_1, e_0) \, ; \, \mathrm{id}_x \, )
-		\end{array}
-\]
+  \begin{align*}
+  		\alpha(  g  ;  \mathrm{id}_x,  \mathrm{id}_I  ) &= \alpha(  g  ;  \mathrm{id}_x,  \alpha( e_0; - )  ) \\
+  		&= \alpha(  \mu(g; e_1, e_0)  ;  \mathrm{id}_x  )
+		\end{align*}
 all we really need is to find a $g \in \pi^{-1}( \, (1 \, 2) \, )$ for which
-\[ \mu(g; e_1, e_0) = e_1 \]
+  \[
+    \mu(g; e_1, e_0) = e_1
+  \]
 To this end, choose an arbitrary element $h \in \pi^{-1}( \, (1 \, 2) \, )$. This $h$ probably won't obey the above equation, but we can use it to construct a new element $g$ which does. Specifically, define
-\[ k \, \colon= \, \mu( \, h \ ; \, e_1, \, e_0 \, ) \]
+  \[
+    k := \mu(h; e_1, e_0 )
+  \]
 and then consider
-\[ g \, \colon= \, h \cdot \mu(e_2; k^{-1}, e_1) \] 
+  \[
+    g := h \cdot \mu(e_2; k^{-1}, e_1).
+  \] 
 To see that this is the correct choice of $g$, first note that we must have \( \pi(k) = e_1 \), since this is the only element of $S_1$. Following from that, we have 
-\[\begin{array}{rll}
-		\pi \big( \, \mu(e_2; k^{-1}, e_1) \, \big) & = & \mu \big( \, \pi(e_2) \ ; \, \pi(k^{-1}), \, \pi(e_1) \, \big) \\
-		& = & \mu \big( \, e_2  \ ; \, e_1, \, e_1 \, \big) \\
-		& = & e_2
-		\end{array}
-\]
+  \begin{align*}
+  	\pi \left(  \mu(e_2; k^{-1}, e_1)  \right) &= \mu \left(  \pi(e_2) \ ;  \pi(k^{-1}),  \pi(e_1)  \right) \\
+  	&= \mu \left(  e_2  \ ;  e_1,  e_1  \right) \\
+  	&= e_2
+  \end{align*}
 and hence
-\[\begin{array}{rll}
-		\pi(g) & = & \pi \big( h \cdot \mu(e_2; k^{-1}, e_1) \big) \\
-		& = & \pi(h) \cdot \pi \big(\mu(e_2; k^{-1}, e_1) \big) \\
-		& = & (1 \, 2) \cdot e_2 \\
-		& = & (1 \, 2)
-		.\end{array}
-\]
+  \begin{align*}
+		\pi(g) &= \pi \left(h \cdot \mu(e_2; k^{-1}, e_1) \right) \\
+		       &= \pi(h) \cdot \pi \left(\mu(e_2; k^{-1}, e_1) \right) \\
+		       &= (1 \, 2) \cdot e_2 \\
+		       &= (1 \, 2).
+  \end{align*}
 So $g$ is indeed in $\pi^{-1}( \, (1 \, 2) \, )$, and furthermore
-\[\begin{array}{rll}
-		\mu(g; e_1, e_0) & = & \mu \big( \, h \cdot \mu(e_2; k^{-1}, e_1) \ ; \, e_1, \, e_0 \, \big) \\
-		& = & \mu( \, h \ ; \, e_1, \, e_0 \, ) \cdot \mu \big( \, \mu(e_2; k^{-1}, e_1) \ ; \, e_1, \, e_0 \, \big) \\
-		& = & \mu( \, h \ ; \, e_1, \, e_0 \, ) \cdot \mu \big( \, e_2 \ ; \, \mu(k^{-1}; e_1), \, \mu(e_1; e_0) \, \big) \\
-		& = & \mu( \, h \ ; \, e_1, \, e_0 \, ) \cdot \mu( \, e_2 \ ; \, k^{-1}, e_0 \, ) \\
-		& = & k \cdot k^{-1} \\
-		& = & e_1
-		\end{array}
+  \begin{align*}
+  	\mu(g; e_1, e_0) & = \mu \left(  h \cdot \mu(e_2; k^{-1}, e_1) \ ;  e_1,  e_0  \right) \\
+                  	 &= \mu(  h \ ;  e_1,  e_0  ) \cdot \mu \left(  \mu(e_2; k^{-1}, e_1) ;  e_1,  e_0   \right) \\
+                  	 &= \mu(  h \ ;  e_1,  e_0  ) \cdot \mu \left(  e_2 \ ;  \mu(k^{-1}; e_1),  \mu(e_1;  e_0)  \right) \\
+                  	 &= \mu(  h \ ;  e_1,  e_0  ) \cdot \mu(  e_2 \ ;  k^{-1}, e_0  ) \\
+                  	 &= k \cdot k^{-1} \\
+                  	 &= e_1
+  \end{align*}
+Therefore, $h \cdot \mu(e_2; k^{-1}, e_1)$ is exactly the $g$ we were looking for, and so working backwards through the proof we obtain the required result. Since
+\[
+  \mu(g; e_1, e_0) = e_1,
 \]
-Therefore, $h \cdot \mu(e_2; k^{-1}, e_1)$ is exactly the $g$ we were looking for, and so working backwards through the proof we obtain the required result:
-\[ \begin{array}{rll}
-		\mu(g; e_1, e_0) & = & e_1 \\
-		\implies \quad \alpha( \, g \, ; \, \mathrm{id}_x, \, \mathrm{id}_I \, ) & = & \mathrm{id}_x \\
-		& & \\
-		\alpha( \, g \, ; \, \mathrm{id}_x, \, \mathrm{id}_I \, ) \circ \alpha( \, e_2 \, ; \, \mathrm{id}_x, \, f \, ) & = & \alpha( \, e_2 \, ; \, f, \, \mathrm{id}_x \, ) \circ \alpha( \, g \, ; \, \mathrm{id}_x, \, \mathrm{id}_I \, ) \\
-		\implies \quad \alpha( \, e_2 \, ; \, \mathrm{id}_x, \, f \, ) & = & \alpha( \, e_2 \, ; \, f, \, \mathrm{id}_I \, )
-		\end{array}
+then
+\[
+  \alpha(g;\mathrm{id}_x, \mathrm{id}_I) = \mathrm{id}_x.
 \]
+Similarly, we then also have
+\[
+  \alpha(g;\mathrm{id}_x, \mathrm{id}_I) \circ \alpha(e_2; \mathrm{id}_x, f) = \alpha(e_2; f, \mathrm{id}_x) \circ \alpha(g; \mathrm{id}_x, \mathrm{id}_I),
+\]
+which gives
+\[
+  \alpha(e_2; \mathrm{id}_x, f) = \alpha(e_2; f, \mathrm{id}_I).
+\]
+
 \end{proof} 
 
 Finally, \cref{hom-set-lemma} also gives a complete description of how the morphisms of $\ELn$ interact as a monoid under tensor product, though to best express this we need some new terminology.
@@ -3844,7 +3890,7 @@ Let $P$ be a $\ML$-operad. Then the following equip $\underline{P}$ with a pseud
             \]
             We write this as $\lambda_{p,q}\colon \mu(p; \underline{q}) \cdot t_{m,n} \cong \mu(q; \underline{p})$.
     \end{itemize}
-These must satisfy the following \colon 
+These must satisfy the following:  
     \begin{enumerate}
         \item For all $n \in \mathbb{N}_+$\nomenclature[N]{$\mathbb{N}_+$}{the set of positive natural numbers},
             \[
@@ -4152,7 +4198,7 @@ These calculations show, using Theorem \ref{pscomm}, that the $\mb{B}$-operad $B
 
 We will now show that neither of these pseudo-commutative structures is symmetric.  The symmetry axiom in this case reduces to the fact that, in some category which is given as a coequalizer, the morphism with first component
 \[
-f\colon\mu(p; \underline{q}) \cdot t_{n,m}t_{m,n} \rightarrow \mu(q; \underline{p}) \cdot t_{m,n} \rightarrow \mu(p; \underline{q})
+f\colon \mu(p; \underline{q}) \cdot t_{n,m}t_{m,n} \rightarrow \mu(q; \underline{p}) \cdot t_{m,n} \rightarrow \mu(p; \underline{q})
 \]
 is the identity.  Now it is clear that $t_{n,m}$ is not equal to $t_{m,n}^{-1}$ in general: taking $m=n=2$, we note that $t_{2,2} = \sigma_{2}$, and this element is certainly not of order two in $B_{4}$.  $B(4)$ is the category whose objects are the elements of $B_{4}$ with a unique isomorphism between any two pair of objects, and $B_{4}$ acts by multiplication on the right; this action is clearly free and transitive.  We recall (see Lemma \ref{coeq-lem}) that in a coequalizer of the form $A \times_{G} B$, we have that a morphism $[f_{1}, f_{2}]$ equals $[g_{1}, g_{2}]$ if and only if there exists an $x \in G$ such that
 \[
@@ -5010,7 +5056,7 @@ More intro here
 \section{Sources and targets in \texorpdfstring{$L_n$}{L_n}}   
 
 \begin{Defi}\label{st} For any $\ML$-monoidal category $X$, denote by $s \colon  \mathrm{Mor}(X) \to \mathrm{Ob}(X)$ and $t \colon  \mathrm{Mor}(X) \to \mathrm{Ob}(X)$ the monoid homomorphisms which send each morphism of $X$ to its source and target, respectively. That is,
-\[ s( \, f \colon  x \to y) \, = \, x, \quad \quad t( \, f \colon  x \to y) \, = \, y. \]
+\[ s(f \colon  x \to y) \, = \, x, \quad \quad t(f \colon  x \to y) \, = \, y. \]
 \end{Defi}
 
 \begin{Defi}\label{s_times_t}
@@ -5102,7 +5148,7 @@ Let $\rho \colon \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \
 \end{nota}
 
 We can now construct the desired injection using the function $\rho$ from \cref{rho_ww'}.
-\begin{prop} \label{stGnsub} $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ is a split epi of monoids, so $(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$. Furthermore, we can choose the injection $i \colon (s \times t)(\ELn) \to \mathrm{Mor}(\ELn)$ such that the following diagram commutes.
+\begin{prop}\label{stGnsub} $\mathrm{Mor}(\ELn) \to (s \times t)(\ELn)$ is a split epi of monoids, so $(s \times t)(\ELn)$ is (isomorphic to) a submonoid of $\mathrm{Mor}(\ELn)$. Furthermore, we can choose the injection $i \colon (s \times t)(\ELn) \to \mathrm{Mor}(\ELn)$ such that the following diagram commutes.
 \begin{center}
     \begin{tikzpicture}[x=30mm,y=15mm]
 		\node (a) at (0,0) {$\mathrm{Ob}(\ELn)$};
@@ -5117,16 +5163,20 @@ We can now construct the desired injection using the function $\rho$ from \cref{
 \end{prop}
 \begin{proof}
 First, assume that the action operad $\ML$ is not crossed. Then there exists an obvious injective monoid homomorphism
-\[ \begin{array}{rlrll}
-			i & \colon & (s \times t)(\ELn) & \to & \mathrm{Mor}(\ELn) \\
-			& \colon & \mathbb{N}^{\ast n} & \to & \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
-			& \colon & w & \mapsto & ( \, e_{|w|}, w \, ),
-		\end{array}
-\]
-where we have written $e_{|w|}$ for the identity in the group $\Lambda(|w|)$. The homomorphism property follows from the fact that the length $|w|$ defined in \cref{lengthdef} is itself a homomorphism, so $|w \oplus w'| = |w|+|w'|$. Thus $(s \times t)(\ELn) \subseteq \mathrm{Mor}(\ELn)$ for non-crossed $\ML$, and the splitting is obvious.
+% \[ \begin{array}{rlrll}
+% 			i & \colon & (s \times t)(\ELn) & \to & \mathrm{Mor}(\ELn) \\
+% 			& \colon & \mathbb{N}^{\ast n} & \to & \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n} \\
+% 			& \colon & w & \mapsto & ( \, e_{|w|}, w \, ),
+% 		\end{array}
+% \]
+\begin{align*}
+i \colon (s \times t)(\ELn) &\rightarrow \mathrm{Mor}(\ELn) \\
+w & \mapsto (e_{|w|}, w)
+\end{align*}
+which is clearly seen when considering $i$ as a homomorphism $\mathbb{N}^{\ast n} \rightarrow \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n} $ and where we have written $e_{|w|}$ for the identity in the group $\Lambda(|w|)$. The homomorphism property follows from the fact that the length $|w|$ defined in \cref{lengthdef} is itself a homomorphism, so $|w \oplus w'| = |w|+|w'|$. Thus $(s \times t)(\ELn) \subseteq \mathrm{Mor}(\ELn)$ for non-crossed $\ML$, and the splitting is obvious.
 
 Now assume that $\ML$ is crossed. Fix a function $\rho$ as in \cref{rho_ww'}. Because $\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$ is a free monoid  by \cref{freemon}, there is a unique monoid homomorphism
-\[ \rho \, \colon \, \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \longrightarrow \lop \]
+\[ \rho \colon \mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n} \longrightarrow \lop \]
 which agrees with the original function $\rho$ on the generators in the source. By construction, we have
 \[ \pi(\rho(w, w'))(w) \quad = \quad w' \]
 for any $(w, w') \in\mathbb{N}^{\ast n} \times_{\mathbb{N}^n} \mathbb{N}^{\ast n}$, not just the generators. Using $\rho$ we define the homomorphism $i$ to be

@@ -5,10 +5,10 @@
     \subitem cartesian, \hyperpage{44}, \hyperpage{49}
     \subitem costrength, \hyperpage{72}
     \subitem finitary, \hyperpage{42}
-    \subitem pseudo-commutativity, \hyperpage{72}
-      \subsubitem symmetric, \hyperpage{78}
+    \subitem pseudo-commutativity, \hyperpage{73}
+      \subsubitem symmetric, \hyperpage{79}
     \subitem pseudoalgebra, \hyperpage{38}
-    \subitem strength, \hyperpage{71}
+    \subitem strength, \hyperpage{72}
 
   \indexspace
 
@@ -48,8 +48,8 @@
   \item Borel, \hyperpage{49}
   \item braid
     \subitem block sum, \hyperpage{10}
-    \subitem minimal, \hyperpage{79}
-    \subitem positive, \hyperpage{79}
+    \subitem minimal, \hyperpage{80}
+    \subitem positive, \hyperpage{80}
 
   \indexspace
 
@@ -63,12 +63,12 @@
     \subitem translation, \hyperpage{49}
   \item club, \hyperpage{56}
     \subitem generators and relations, \hyperpage{59}
-  \item cocompletion, \hyperpage{83}
+  \item cocompletion, \hyperpage{84}
   \item coherence, \hyperpage{43}
   \item colimit
     \subitem copower, \hyperpage{31}, \hyperpage{52}
     \subitem filtered, \hyperpage{18}
-    \subitem free cocompletion, \hyperpage{83}
+    \subitem free cocompletion, \hyperpage{84}
   \item collection
     \subitem $T$-collection, \hyperpage{56}
     \subitem $\ML$-collection, \hyperpage{26}
@@ -121,16 +121,16 @@
     \subitem cartesian, \hyperpage{44}
       \subsubitem transformation, \hyperpage{45}, \hyperpage{47}
     \subitem collection, \hyperpage{56}
-    \subitem in a bicategory, \hyperpage{83}
+    \subitem in a bicategory, \hyperpage{84}
     \subitem maps, \hyperpage{24}
-      \subsubitem transformation, \hyperpage{25}, \hyperpage{84}
-    \subitem oplax map, \hyperpage{83}
+      \subsubitem transformation, \hyperpage{25}, \hyperpage{85}
+    \subitem oplax map, \hyperpage{84}
   \item monoid
     \subitem category of, \hyperpage{27}
   \item monoidal category
     \subitem $\ML$-monoidal, \hyperpage{90}
       \subsubitem free, \hyperpage{89}
-    \subitem braided strict, \hyperpage{62}, \hyperpage{79}
+    \subitem braided strict, \hyperpage{62}, \hyperpage{80}
     \subitem coboundary category, \hyperpage{62}
       \subsubitem coboundary functor, \hyperpage{63}
     \subitem cocomplete symmetric, \hyperpage{51}
@@ -138,9 +138,9 @@
     \subitem ribbon braided, \hyperpage{62}
     \subitem spacial, \hyperpage{68}
     \subitem symmetric strict, \hyperpage{61}
-  \item multicategory, \hyperpage{81}
-    \subitem $\Lambda$-multicategory, \hyperpage{81}
-    \subitem $\Lambda$-multifunctor, \hyperpage{82}
+  \item multicategory, \hyperpage{82}
+    \subitem $\Lambda$-multicategory, \hyperpage{82}
+    \subitem $\Lambda$-multifunctor, \hyperpage{83}
   \item multilinear map, \hyperpage{71}
 
   \indexspace
@@ -152,7 +152,7 @@
   \item operad
     \subitem $T$-operad, \hyperpage{56}
     \subitem $\Lambda$-operad
-      \subsubitem contractible, \hyperpage{78}
+      \subsubitem contractible, \hyperpage{79}
     \subitem $\Lambda_{\infty}$-operad, \hyperpage{55}
     \subitem $\ML$-operad, \hyperpage{20}
       \subsubitem category of, \hyperpage{20}
@@ -166,7 +166,7 @@
     \subitem maps, \hyperpage{10}
     \subitem non-symmetric, \hyperpage{8}
     \subitem of braid groups, \hyperpage{10}, \hyperpage{20}, 
-		\hyperpage{79}
+		\hyperpage{80}
     \subitem of ribbon braid groups, \hyperpage{12}
     \subitem of symmetric groups, \hyperpage{9}, \hyperpage{20}
     \subitem pseudoalgebra, \hyperpage{34}
