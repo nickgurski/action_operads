@@ -2924,7 +2924,7 @@ g^{\otimes} \colon x_1 \otimes \cdots x_n \to x_{\pi(h)^{-1}(1)} \otimes \cdots 
 \]
 for the image of the map
 \[
-(!; \mathrm{id}, \ldots, \mathrm{id}) \colon  (e; x_1, \ldots, x_n) \to (g; x_1, \ldots, x_n)
+(!; \id, \ldots, \id) \colon  (e; x_1, \ldots, x_n) \to (g; x_1, \ldots, x_n)
 \]
 in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.
 \end{nota}
@@ -3499,13 +3499,13 @@ Also, the canonical homomorphism sending objects in $\ELn$ to their connected co
 \[ [ \, \_ \, ] \colon \ob(\ELn) \to \pi_0(\ELn) \]
 is the quotient map of abelianization
 \[ \mathrm{ab} \colon \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}} \, = \, \mathbb{N}^n \]
-when $\ML$ is crossed, and the identity map $\mathrm{id}_{\mathbb{N}^{*n}}$ otherwise.
+when $\ML$ is crossed, and the identity map $\id_{\mathbb{N}^{*n}}$ otherwise.
 \end{prop}
 \begin{proof}
-By \cref{hom-set-lemma}, all morphisms in $\ELn$ can be written uniquely as $\alpha(g; \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m})$, for some $g \in G(m)$ and $x_i \in \{z_1, \ldots, z_n \}$. Since maps of this form have source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes \ldots \otimes x_{\pi(g^{-1})(m)}$, we see that the only pairs of object which might have a morphism between them are those that can be expanded as tensor products that differ by some permutation. 
+By \cref{hom-set-lemma}, all morphisms in $\ELn$ can be written uniquely as $\alpha(g; \id_{x_1}, \ldots, \id_{x_m})$, for some $g \in G(m)$ and $x_i \in \{z_1, \ldots, z_n \}$. Since maps of this form have source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes \ldots \otimes x_{\pi(g^{-1})(m)}$, we see that the only pairs of object which might have a morphism between them are those that can be expanded as tensor products that differ by some permutation. 
 
 
-If our action operad $\ML$ is crossed, then for any two objects like this, say source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes \ldots \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \Sigma_m$ , we can always find a map $\alpha(g; \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m})$ between them, because by \cref{surjortriv} the underlying permutations maps $\pi_m \colon  G(m) \to \Sigma_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
+If our action operad $\ML$ is crossed, then for any two objects like this, say source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes \ldots \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \Sigma_m$ , we can always find a map $\alpha(g; \id_{x_1}, \ldots, \id_{x_m})$ between them, because by \cref{surjortriv} the underlying permutations maps $\pi_m \colon  G(m) \to \Sigma_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
 \[
   [z_i] \otimes [z_j] = [z_i \otimes z_j] = [z_j \otimes z_i] = [z_j] \otimes [z_i].
 \]
@@ -3514,12 +3514,12 @@ Thus the canonical map $[ \, \_ \, ] \colon \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ i
 
 Conversely, if $\ML$ is non-crossed then its underlying permutation operad $\mathrm{im}(\pi)$ is trivial, and so the only morphisms we have in $\ELn$ will be those of the form
 \[
-  \alpha( \, e_m \, ; \, \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, ) = \mathrm{id}_{x_1} \otimes \ldots \otimes \mathrm{id}_{x_m} = \mathrm{id}_{x_1 \otimes \ldots \otimes x_m}.
+  \alpha( \, e_m \, ; \, \id_{x_1}, \ldots, \id_{x_m} \, ) = \id_{x_1} \otimes \ldots \otimes \id_{x_m} = \id_{x_1 \otimes \ldots \otimes x_m}.
 \]
 Therefore the map $[ \, \_ \,]$ just sends each object to its identity morphism, and since that function is one-to-one and onto it follows that
-% \[ \pi_0(\ELn) \quad = \quad \mathrm{Ob}(\ELn) \quad = \quad \mathbb{N}^{\ast n}, \quad \quad \quad \quad \quad [ \, \_ \,] \quad = \quad \mathrm{id}_{\mathbb{N}^{*n}} \]
+% \[ \pi_0(\ELn) \quad = \quad \mathrm{Ob}(\ELn) \quad = \quad \mathbb{N}^{\ast n}, \quad \quad \quad \quad \quad [ \, \_ \,] \quad = \quad \id_{\mathbb{N}^{*n}} \]
 \[
-  \pi_0(\ELn) = \mathrm{Ob}(\ELn) = \mathbb{N}^{\ast n}, [ \, \_ \,] = \mathrm{id}_{\mathbb{N}^{*n}}
+  \pi_0(\ELn) = \mathrm{Ob}(\ELn) = \mathbb{N}^{\ast n}, [ \, \_ \,] = \id_{\mathbb{N}^{*n}}
 \]
 by \cref{Gnobj}.
 \end{proof}
@@ -3558,7 +3558,9 @@ The motivation for the name `spacial' comes from the context of string diagrams 
     \draw (1,2) -- (1,0) node[circle, fill=white, radius=22, draw]{$id_x$} -- (1,-2);
     \node at (3,0) {$=$};
     \node(b) at (6.5,0.5)[circle, fill=white, radius=2, draw]{$f$};
-    \draw (5,2) -- (5,0) node[circle, fill=white, radius=22, draw]{$id_x$} -- (5,-2);    
+    \draw (5,2) -- (5,0) node[circle, fill=white, radius=22, draw]{$id_x$} -- (5,-2);
+    \draw (-1,-2) -- (-1,2) -- (2,2) -- (2,-2) -- (-1,-2);
+    \draw (4,-2) -- (4,2) -- (7,2) -- (7,-2) -- (4,-2);  
   \end{tikzpicture}
 \end{center}
 In a real-world version of these diagrams, made out of physical strings arranged in real space, we could use this detachedness to grab these endomorphisms and slide them over or under any strings we please, without affecting anything else in the diagram. This ability is embodied algebraically by the equation above, and hence categories which obey it are called `spacial'.
@@ -3567,30 +3569,32 @@ In a real-world version of these diagrams, made out of physical strings arranged
 \begin{proof}
 Let $\ML$ be a crossed action operad, let $X$ be a $E\Lambda$-algebra, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \to I \). From \cref{surjortriv} we know that \( \pi \colon G(2) \to S_2 \) is surjective, so that the set $\pi^{-1}(  (1 \, 2)  )$ is non-empty, and from the rules for composition of action morphisms we see that for any such $g \in \pi^{-1}(  (1 \, 2)  )$,
   \begin{align*}
-    \alpha(  g  ;  \mathrm{id}_x,  \mathrm{id}_I  ) \circ \alpha(  e_2  ;  \mathrm{id}_x,  f  ) &= \alpha(  g  ;  \mathrm{id}_x, f) \\
-    &= \alpha(e_2; f, \mathrm{id}_x ) \circ \alpha(g; \mathrm{id}_x, \mathrm{id}_I). \\
+    \alpha(  g  ;  \id_x,  \id_I  )\alpha(  e_2  ;  \id_x,  f  ) &= \alpha(ge_2 ; \id_x \id_x, \id_I f)\\
+    &= \alpha(  g  ;  \id_x, f) \\
+    &= \alpha(e_2 g; \id_x \id_x, f \id_I) \\
+    &= \alpha(e_2; f, \id_x )\alpha(g; \id_x, \id_I). \\
   \end{align*}
 
-Thus in order to obtain the result we're after, it will suffice to find a particular $g \in \pi^{-1}( \, (1 \, 2) \, )$ for which
+Thus in order to obtain the result, it will suffice to find a particular $g \in \pi^{-1}( \, (1 \, 2) \, )$ for which
   \[
-    \alpha(g; \mathrm{id}_x, \mathrm{id}_I) = \mathrm{id}_x.
+    \alpha(g; \id_x, \id_I) = \id_x.
   \]
 However, since
   \begin{align*}
-  		\alpha(  g  ;  \mathrm{id}_x,  \mathrm{id}_I  ) &= \alpha(  g  ;  \mathrm{id}_x,  \alpha( e_0; - )  ) \\
-  		&= \alpha(  \mu(g; e_1, e_0)  ;  \mathrm{id}_x  )
+  		\alpha(  g  ;  \id_x,  \id_I  ) &= \alpha(  g  ;  \id_x,  \alpha( e_0; - )  ) \\
+  		&= \alpha(  \mu(g; e_1, e_0)  ;  \id_x  )
 		\end{align*}
-all we really need is to find a $g \in \pi^{-1}( \, (1 \, 2) \, )$ for which
+all we need is to find a $g \in \pi^{-1}( \, (1 \, 2) \, )$ for which
   \[
-    \mu(g; e_1, e_0) = e_1
+    \mu(g; e_1, e_0) = e_1.
   \]
-To this end, choose an arbitrary element $h \in \pi^{-1}( \, (1 \, 2) \, )$. This $h$ probably won't obey the above equation, but we can use it to construct a new element $g$ which does. Specifically, define
+To this end, choose an arbitrary element $h \in \pi^{-1}( \, (1 \, 2) \, )$. This $h$ may not obey the above equation, but can be used to construct a new element, $g$, which does. Specifically, define
   \[
     k := \mu(h; e_1, e_0 )
   \]
 and then consider
   \[
-    g := h \cdot \mu(e_2; k^{-1}, e_1).
+    g := h\mu(e_2; k^{-1}, e_1).
   \] 
 To see that this is the correct choice of $g$, first note that we must have \( \pi(k) = e_1 \), since this is the only element of $S_1$. Following from that, we have 
   \begin{align*}
@@ -3600,44 +3604,44 @@ To see that this is the correct choice of $g$, first note that we must have \( \
   \end{align*}
 and hence
   \begin{align*}
-		\pi(g) &= \pi \left(h \cdot \mu(e_2; k^{-1}, e_1) \right) \\
-		       &= \pi(h) \cdot \pi \left(\mu(e_2; k^{-1}, e_1) \right) \\
-		       &= (1 \, 2) \cdot e_2 \\
+		\pi(g) &= \pi \left(h \mu(e_2; k^{-1}, e_1) \right) \\
+		       &= \pi(h) \pi \left(\mu(e_2; k^{-1}, e_1) \right) \\
+		       &= (1 \, 2) e_2 \\
 		       &= (1 \, 2).
   \end{align*}
 So $g$ is indeed in $\pi^{-1}( \, (1 \, 2) \, )$, and furthermore
   \begin{align*}
-  	\mu(g; e_1, e_0) & = \mu \left(  h \cdot \mu(e_2; k^{-1}, e_1) \ ;  e_1,  e_0  \right) \\
-                  	 &= \mu(  h \ ;  e_1,  e_0  ) \cdot \mu \left(  \mu(e_2; k^{-1}, e_1) ;  e_1,  e_0   \right) \\
-                  	 &= \mu(  h \ ;  e_1,  e_0  ) \cdot \mu \left(  e_2 \ ;  \mu(k^{-1}; e_1),  \mu(e_1;  e_0)  \right) \\
-                  	 &= \mu(  h \ ;  e_1,  e_0  ) \cdot \mu(  e_2 \ ;  k^{-1}, e_0  ) \\
-                  	 &= k \cdot k^{-1} \\
-                  	 &= e_1
+  	\mu(g; e_1, e_0) & = \mu \left(  h \mu(e_2; k^{-1}, e_1) \ ;  e_1,  e_0  \right) \\
+                  	 &= \mu(  h \ ;  e_1,  e_0  ) \mu \left(  \mu(e_2; k^{-1}, e_1) ;  e_1,  e_0   \right) \\
+                  	 &= \mu(  h \ ;  e_1,  e_0  ) \mu \left(  e_2 \ ;  \mu(k^{-1}; e_1),  \mu(e_1;  e_0)  \right) \\
+                  	 &= \mu(  h \ ;  e_1,  e_0  ) \mu(  e_2 \ ;  k^{-1}, e_0  ) \\
+                  	 &= k k^{-1} \\
+                  	 &= e_1.
   \end{align*}
-Therefore, $h \cdot \mu(e_2; k^{-1}, e_1)$ is exactly the $g$ we were looking for, and so working backwards through the proof we obtain the required result. Since
+Therefore, $h \mu(e_2; k^{-1}, e_1)$ the required element $g$, and so working backwards through the proof we obtain the result. Since
 \[
   \mu(g; e_1, e_0) = e_1,
 \]
 then
 \[
-  \alpha(g;\mathrm{id}_x, \mathrm{id}_I) = \mathrm{id}_x.
+  \alpha(g;\id_x, \id_I) = \id_x.
 \]
-Similarly, we then also have
+Similarly,
 \[
-  \alpha(g;\mathrm{id}_x, \mathrm{id}_I) \circ \alpha(e_2; \mathrm{id}_x, f) = \alpha(e_2; f, \mathrm{id}_x) \circ \alpha(g; \mathrm{id}_x, \mathrm{id}_I),
+  \alpha(g;\id_x, \id_I) \alpha(e_2; \id_x, f) = \alpha(e_2; f, \id_x) \alpha(g; \id_x, \id_I),
 \]
 which gives
 \[
-  \alpha(e_2; \mathrm{id}_x, f) = \alpha(e_2; f, \mathrm{id}_I).
+  \alpha(e_2; \id_x, f) = \alpha(e_2; f, \id_I).
 \]
 
 \end{proof} 
 
-Finally, \cref{hom-set-lemma} also gives a complete description of how the morphisms of $\ELn$ interact as a monoid under tensor product, though to best express this we need some new terminology.
+\cref{hom-set-lemma} also gives a complete description of how the morphisms of $\ELn$ interact as a monoid under tensor product, though to best express this we need some new terminology.
 
 \begin{Defi}\label{def:length} Let $\ML$ be an action operad. 
 \begin{enumerate}
-\item We will also use the notation $\lop$ to denote the \emph{underlying monoid}\index{action operad!underlying monoid} of this action operad. The underlying set of $\lop$ is the disjoint union, $\coprod_n \Lambda(n)$, with block sum as the binary operation, $g \oplus h = \mu(e_2; g, h)$.
+\item We will use the notation $\lop$ to denote the \emph{underlying monoid}\index{action operad!underlying monoid} of this action operad. The underlying set of $\lop$ is the disjoint union, $\coprod_n \Lambda(n)$, with block sum as the binary operation, $g \oplus h = \mu(e_2; g, h)$.
 
 \item This monoid comes equipped with a homomorphism $| \, \_ \, | \colon \Lambda \to \mathbb{N}$, sending each $g \in \Lambda$ to the natural number $m$ if and only if $g$ is an element of the group $\Lambda(m)$. We call this number $|g|$ the \emph{length} of $g$.
 \end{enumerate}
@@ -3656,18 +3660,22 @@ where this is a pullback taken over the respective length homomorphisms,
 \[ \begin{tikzcd}
 \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n} \ar[dd, shift left=4] \ar[rr] \ar[ddrr, phantom, "\lrcorner", very near start, shift left] & & \mathbb{N}^{\ast n} \ar[dd, "| \, \_ \, |"] & \\
 & & & \\
-\quad \quad G \ar[rr, "| \, \_ \, |"] & & \mathbb{N} &
+\quad \quad \Lambda \ar[rr, "| \, \_ \, |"] & & \mathbb{N} &
 \end{tikzcd} \]
 using the fact that $\mathbb{N}^{\ast n}$ is the free monoid $F\big( \, \{z_1, \ldots, z_n\} \, \big)$.
 \end{lem}
 \begin{proof}
 An element of $\Lambda \times_{\mathbb{N}} F( \, \{z_1, \ldots, z_n\} \, )$ is an element $g \in \Lambda(m)$ for some $m$, together with an $m$-tuple of objects $(x_1, \ldots, x_m)$ from the set of generators $\{z_1, \ldots, z_n\}$. Thus the action on $\ELn$ defines a function 
-\[ \begin{array}{rlrll}
-			\alpha & \colon & \Lambda \times_{\mathbb{N}} F\big( \, \{z_1, \ldots, z_n\} \, \big) & \to & \mathrm{Mor}(\ELn) \\
-			& \colon & (g;x_1, \ldots, x_m) & \mapsto & \alpha(g; \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m})
-		\end{array}
-\]
-But by \cref{hom-set-lemma}, each element of $\mathrm{Mor}(\ELn)$ can be expressed in the form $\alpha(g; \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m})$ for a unique collection $(g;x_1, \ldots, x_m)$, and so this function $\alpha$ is actually a bijection of sets. Furthermore, this function preserves tensor product, since
+% \[ \begin{array}{rlrll}
+% 			\alpha & \colon & \Lambda \times_{\mathbb{N}} F\big( \, \{z_1, \ldots, z_n\} \, \big) & \to & \mathrm{Mor}(\ELn) \\
+% 			& \colon & (g;x_1, \ldots, x_m) & \mapsto & \alpha(g; \id_{x_1}, \ldots, \id_{x_m})
+% 		\end{array}
+% \]
+\begin{align*}
+    \alpha \colon \Lambda \times_{\mathbb{N}} F\big( \, \{z_1, \ldots, z_n\} \, \big) &\to \mathrm{Mor}(\ELn) \\
+    (g;x_1, \ldots, x_m) &\mapsto \alpha(g; \id_{x_1}, \ldots, \id_{x_m})
+\end{align*}
+But by \cref{hom-set-lemma}, each element of $\mathrm{Mor}(\ELn)$ can be expressed in the form $\alpha(g; \id_{x_1}, \ldots, \id_{x_m})$ for a unique collection $(g;x_1, \ldots, x_m)$, and so this function $\alpha$ is actually a bijection of sets. Furthermore, this function preserves tensor product, since
 \[ \begin{array}{rll}
 			\alpha\big( \, (g;f_1, \ldots, f_m) \otimes (g';f'_1, \ldots, f'_m) \, \big) & = & \alpha( \, g \otimes g' \, ; \, f_1, \ldots, f_m, f'_1, \ldots, f'_m \, ) \\
 			& = & \alpha( \, g \, ; \, f_1, \ldots, f_m \, ) \otimes \alpha( \, g' \, ; \, f'_1, \ldots, f'_m \, )
@@ -3863,7 +3871,7 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
         \]
 \end{rem}
 
-We need some notation before stating our main theorem.  Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two lists.  Then the set $\{ (a_{i}, b_{j})\}$ has $mn$ elements, and two natural lexicographic orderings.  One of these we write as $\underline{(a, \underline{b})}$, and it has the order given by
+We need some further notation before stating our main theorem.  Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two lists.  Then the set $\{ (a_{i}, b_{j})\}$ has $mn$ elements, and two natural lexicographic orderings.  One of these we write as $\underline{(a, \underline{b})}$, and it has the order given by
 \[
 (a_{p}, b_{q}) < (a_{r}, b_{s}) \textrm{ if } \left\{ \begin{array}{l} p < r, \textrm{ or } \\ p=r \textrm{ and } q < s. \end{array} \right.
 \]
@@ -4033,20 +4041,33 @@ For the unit axioms, we must compute the components of $\gamma$ precomposed with
 
 For the multiplication axioms, first note that hypothesis 2 in the statement of the theorem is necessary in order to ensure the existence of the top horizontal equality in the diagram of hypothesis 4; the same goes for hypotheses 3 and 5. We now explain how hypotheses 2 and 4 ensure that the first multiplication axiom holds, with the same reasoning showing that hypotheses 3 and 5 imply the second multiplication axiom.
 
-We begin by studying the pasting diagram in the first multiplication axiom, but computing its values using the strength and costrength for the non-symmetric operad underlying $P$; this means that we evaluate on objects of the form $(p; a_{1}, \ldots, a_{n})$ rather than on their equivalence classes.  Let $p \in P(l), q_{i} \in P(m_{i})$ for $1 \leq i \leq l$, and $r \in P(n)$. Computing the top and right leg around the pasting diagram gives the function on objects
+We begin by studying the pasting diagram in the first multiplication axiom, but computing its values using the strength and costrength for the non-symmetric operad underlying $P$; this means that we evaluate on objects of the form $(p; a_{1}, \ldots, a_{n})$ rather than on their equivalence classes.  Let $p \in P(l), q_{i} \in P(m_{i})$ for $1 \leq i \leq l$, and $r \in P(n)$. Computing the top and right leg around the pasting diagram gives the function on objects which sends
 \[
-\Big( (p; (q_{1}; \un{a_{1}}), \ldots, (q_{l}; \un{a_{l}})), (r; \un{b}) \Big) \mapsto \Big( \mu(p; \mu(q_{1}; \un{r}), \ldots, \mu(q_{l}; \un{r})); (\un{(a_{1\bullet}, \un{b})}), \ldots, (\un{(a_{l\bullet}, \un{b})}) \Big), \]
+\left( (p; (q_{1}; \un{a_{1}}), \ldots, (q_{l}; \un{a_{l}})), (r; \un{b}) \right)
+\]
+to
+\[
+\left( \mu(p; \mu(q_{1}; \un{r}), \ldots, \mu(q_{l}; \un{r})); (\un{(a_{1\bullet}, \un{b})}), \ldots, (\un{(a_{l\bullet}, \un{b})}) \right),
+\]
 where $(\un{(a_{i\bullet}, \un{b})})$ is the list of pairs
 \[
 (a_{i1}, b_{1}), \ldots, (a_{i1}, b_{m}), (a_{i2}, b_{1}), \ldots, (a_{in_{i}}, b_{m}).
 \]
-Then $\un{P}\gamma$ is the image of the morphism which is the identity on the $(a_{ij}, b_{k})$'s, and is
+Then $\un{P}\gamma$ is the image of the morphism which is the identity on the $(a_{ij}, b_{k})$'s, and is the morphism
 \[
-\xy
-{\ar^{\scriptstyle \mu\big(1; \lambda_{q_{1}, r} t^{-1}_{n,m_{1}}, \ldots, \lambda_{q_{1}, r} t^{-1}_{n,m_{l}}\big)} (0,0)*+{\scriptstyle \mu\big(p; \mu(q_{1}; \un{r}), \ldots, \mu(q_{n}; \un{r})\big)}; (75,0)*+{\scriptstyle \mu\big(p; \mu(r; \un{q_{1}}) t^{-1}_{n,m_{1}}, \ldots, \mu(r; \un{q_{l}}) t^{-1}_{n,m_{l}} \big)} }
-\endxy
+  \mu\left(1;\lambda_{q1,r}t^{-1}_{n,m_1},\ldots,\lambda_{q1,r}t^{-1}_{n,m_l}\right)
 \]
-on the first component.  By the $\Lambda$-operad axioms, the target of this morphism is equal to
+on the first component with domain and codomain shown below.
+\[
+  \mu\left(p;\mu(q_1;\un{r}),\ldots,\mu(q_n;\un{r})\right) \longrightarrow \mu\left(p;\mu(r;\un{q_1})t^{-1}_{n,m_1},\ldots,\mu(r;\un{q_l})t^{-1}_{n,m_l}\right)
+\]
+% \[
+% \xy
+% {\ar^{\scriptstyle \mu\big(1; \lambda_{q_{1}, r} t^{-1}_{n,m_{1}}, \ldots, \lambda_{q_{1}, r} t^{-1}_{n,m_{l}}\big)} (0,0)*+{\scriptstyle \mu\big(p; \mu(q_{1}; \un{r}), \ldots, \mu(q_{n}; \un{r})\big)}; (75,0)*+{\scriptstyle \mu\big(p; \mu(r; \un{q_{1}}) t^{-1}_{n,m_{1}}, \ldots, \mu(r; \un{q_{l}}) t^{-1}_{n,m_{l}} \big)} }
+% \endxy
+% \]
+% on the first component. 
+By the $\Lambda$-operad axioms, the target of this morphism is equal to
 \[
 \mu(p; \mu(r; \un{q_{1}}), \ldots, \mu(r; \un{q_{l}}) )\mu(e_{l}; t^{-1}_{n,m_{1}}, \ldots, t^{-1}_{n,m_{l}}).
 \]
@@ -4259,23 +4280,25 @@ where $\underline{x} = x_{11}, \ldots, x_{1,n_{1}}, x_{21}, \ldots, x_{k,n_{k}}$
 These data are subject to the following axioms.
 \begin{enumerate}
 \item $\id$ is a two-sided unit:
-\[
-\begin{array}{rcl}
-\id (f) & = & f, \\
-f(\id, \ldots, \id) & = & f.
-\end{array}
-\]
+\begin{align*}
+  \id(f) &= f, \\
+  f(\id,\ldots,\id) &= f.
+\end{align*}
 \item Composition is associative:
 \[
 f\Big( g_{1}(h_{11}, \ldots, h_{1m_{1}}), \ldots, g_{n}(h_{n1}, \ldots, h_{nm_{n}}) \Big) = f(g_{1}, \ldots, g_{n})(h_{11}, \ldots, h_{nm_{n}}).
 \]
 \item Composition respects the group actions:
-\[
-\begin{array}{rcl}
-f(g_{1} \cdot \alpha_{1}, \ldots, g_{n} \cdot \alpha_{n}) & = & f(g_{1}, \ldots, g_{n}) \cdot \mu^{\Lambda}(e; \alpha_{1}, \ldots, \alpha_{n}), \\
-f\cdot \alpha (g_{1}, \ldots, g_{n}) & = & f(g_{\pi^{-1}(\alpha)(1)}, \ldots, g_{\pi^{-1}(\alpha)(n)}) \cdot \mu^{\Lambda}(\alpha; e_{1}, \ldots, e_{n}).
-\end{array}
-\]
+% \[
+% \begin{array}{rcl}
+% f(g_{1} \cdot \alpha_{1}, \ldots, g_{n} \cdot \alpha_{n}) & = & f(g_{1}, \ldots, g_{n}) \cdot \mu^{\Lambda}(e; \alpha_{1}, \ldots, \alpha_{n}), \\
+% f\cdot \alpha (g_{1}, \ldots, g_{n}) & = & f(g_{\pi^{-1}(\alpha)(1)}, \ldots, g_{\pi^{-1}(\alpha)(n)}) \cdot \mu^{\Lambda}(\alpha; e_{1}, \ldots, e_{n}).
+% \end{array}
+% \]
+\begin{align*}
+  f(g_1\alpha_1,\ldots, g_n\alpha_n) &= f(g_1,\ldots,g_n)\mu^{\Lambda}(e;\alpha_,\ldots,\alpha_n), \\
+  f\alpha(g_1,\ldots,g_n) &= f\left(g_{\pi^{-1}(\alpha)(1)},\ldots,g_{\pi^{-1}(\alpha)(n)}\right)\mu^{\Lambda}(\alpha;e_1,\ldots,e_n).
+\end{align*}
 \end{enumerate}
 \end{Defi}
 
@@ -4499,7 +4522,7 @@ By the interchange law for monoidal categories,
 \[\begin{array}{rll} 
 			f' \circ f & = & (f' \otimes I) \circ (I \otimes f) \\
 			& = & (f' \otimes y^{-1} \otimes y) \circ (y \otimes y^{-1} \otimes f) \\
-			& = & (f' \circ \mathrm{id}_{y}) \otimes (\mathrm{id}_{y^{-1}} \circ \mathrm{id}_{y^{-1}}) \otimes (\mathrm{id}_y \circ f) \\
+			& = & (f' \circ \id_{y}) \otimes (\id_{y^{-1}} \circ \id_{y^{-1}}) \otimes (\id_y \circ f) \\
 			& = & f' \otimes y^{-1} \otimes f .
 		\end{array}
 \]
@@ -4536,19 +4559,19 @@ We have the following useful converse to \cref{inv_implies_invertible}.
 For any such $f \colon  w \to v$, consider the map $w^{-1} \otimes f^{-1} \otimes v^{-1}$, where $f^{-1}$ is the compositional inverse of $f$. This morphism has source $w^{-1}\otimes v \otimes v^{-1} = w^{-1}$ and target $w^{-1} \otimes w \otimes v^{-1} = v^{-1}$, and a simple Eckmann-Hilton argument proves that $w^{-1} \otimes f^{-1} \otimes v^{-1}$ is the tensor inverse of $f$.
 % which allows us to apply the law of interchange to get
 %\begin{longtable}{RLL}
-%			f \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) & = & \big( \, f \circ \mathrm{id}_w \, \big) \otimes \big( \, \mathrm{id}_{v^*} \circ  (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
-%			& = & \big( \, f \otimes \mathrm{id}_{v^*} \, \big) \circ \big( \, \mathrm{id}_w \otimes (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \, \big) \\
-%			& = & ( f \otimes \mathrm{id}_{v^*} ) \circ ( f^{-1} \otimes \mathrm{id}_{v^*}) \\
-%			& = & \mathrm{id}_I
+%			f \otimes (\id_{w^*} \otimes f^{-1} \otimes \id_{v^*}) & = & \big( \, f \circ \id_w \, \big) \otimes \big( \, \id_{v^*} \circ  (\id_{w^*} \otimes f^{-1} \otimes \id_{v^*}) \, \big) \\
+%			& = & \big( \, f \otimes \id_{v^*} \, \big) \circ \big( \, \id_w \otimes (\id_{w^*} \otimes f^{-1} \otimes \id_{v^*}) \, \big) \\
+%			& = & ( f \otimes \id_{v^*} ) \circ ( f^{-1} \otimes \id_{v^*}) \\
+%			& = & \id_I
 %\end{longtable}
 %and 
 %\begin{longtable}{RLL}
-%			(\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes f & = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \circ \mathrm{id}_{w^*} \, \big) \otimes \big( \, \mathrm{id}_v \circ f \, \big) \\
-%			& = & \big( \, (\mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}) \otimes \mathrm{id}_v \, \big) \circ \big( \, \mathrm{id}_{w^*} \otimes f \, \big) \\
-%			& = & (\mathrm{id}_{w^*} \otimes f^{-1}) \circ (\mathrm{id}_{w^*} \otimes f) \\
-%			& = & \mathrm{id}_I,
+%			(\id_{w^*} \otimes f^{-1} \otimes \id_{v^*}) \otimes f & = & \big( \, (\id_{w^*} \otimes f^{-1} \otimes \id_{v^*}) \circ \id_{w^*} \, \big) \otimes \big( \, \id_v \circ f \, \big) \\
+%			& = & \big( \, (\id_{w^*} \otimes f^{-1} \otimes \id_{v^*}) \otimes \id_v \, \big) \circ \big( \, \id_{w^*} \otimes f \, \big) \\
+%			& = & (\id_{w^*} \otimes f^{-1}) \circ (\id_{w^*} \otimes f) \\
+%			& = & \id_I,
 %\end{longtable}
-%so $f^* := \mathrm{id}_{w^*} \otimes f^{-1} \otimes \mathrm{id}_{v^*}$ is the inverse of $f$ in the monoid $\MorLn$.
+%so $f^* := \id_{w^*} \otimes f^{-1} \otimes \id_{v^*}$ is the inverse of $f$ in the monoid $\MorLn$.
 \end{proof}
 
 
@@ -4617,7 +4640,7 @@ Let $j \colon  X_{inv} \to X$ denote the obvious inclusion functor. By construct
 		\node (c) at (0,-1) {$ E\Lambda\mbox{-}\mathrm{Alg}_S(LX , LX)$};
 		\node (d) at (1,-1) {$E\Lambda\mbox{-}\mathrm{Alg}_S(X, LX_{\mathrm{inv}})$};
 			\draw [->] (a) to node [above] {$\cong$} (b);
-			\draw [->] (b) to node [right] {$\mathrm{id}$} (d);
+			\draw [->] (b) to node [right] {$\id$} (d);
 			\draw [->] (a) to node [left] {$j \circ -$} (c);
 			\draw [->] (c) to node [below] {$\cong$} (d);
     \end{tikzpicture}
@@ -4716,7 +4739,7 @@ If instead $G$ is non-crossed, then
 \begin{itemize} \itemsep0em
 \item the connected components of $L_n$ are the monoid $\mathbb{Z}^{\ast n}$,
 \item the restriction of $\eta$ to components is the obvious inclusion $\mathbb{N}^{\ast n} \hookrightarrow \mathbb{Z}^{\ast n}$, and
-\item the assignment of objects to their component is $\mathrm{id}_{\mathbb{Z}^{\ast n}}$.
+\item the assignment of objects to their component is $\id_{\mathbb{Z}^{\ast n}}$.
 \end{itemize}
 \end{cor}
 
@@ -4893,11 +4916,11 @@ We will say that a functor $F \colon  C \to D$ is \emph{surjective}\index{functo
 Since the functor $\mathrm{Ob} \colon E\Lambda\mbox{-}\mathrm{Alg}_S \to \mon$ is a left adjoint, it preserves all colimits so the monoid homomorphism $\mathrm{Ob}(k) \colon  \mathrm{Ob}(Y) \to \mathrm{Ob}(Z)$ is the coequalizer of the parallel pair $\mathrm{Ob}(\phi), \mathrm{Ob}(\phi')$ in the category of monoids. Every coequalizer is a regular epimorphism, and in the category of monoids regular epimorphisms coincide with  surjective functions, so $k$ is surjective on objects.
 
 
-Next, let $f \colon  v \to w$ and $f' \colon w' \to v'$ be any two morphisms of the category $Y$ for which $k(f)$ and $k(f')$ are composable in $Z$. Since these maps are composable we know that $k(w)$ and $k(w')$ must be the same object of $Z$, and since $\mathrm{Ob}(Z)$ is a group we know this object has an inverse $k(w)^{-1} = k(w')^{-1}$. So by the surjectivity of $k$ we can find another object $y$ of $Y$ for which $k(y) = k(w)^{-1}$. Using this, define the morphism $h \colon  w' \otimes y \otimes v \to v' \otimes y \otimes w$ to be the tensor product $f' \otimes \mathrm{id}_y \otimes f$. Thus
+Next, let $f \colon  v \to w$ and $f' \colon w' \to v'$ be any two morphisms of the category $Y$ for which $k(f)$ and $k(f')$ are composable in $Z$. Since these maps are composable we know that $k(w)$ and $k(w')$ must be the same object of $Z$, and since $\mathrm{Ob}(Z)$ is a group we know this object has an inverse $k(w)^{-1} = k(w')^{-1}$. So by the surjectivity of $k$ we can find another object $y$ of $Y$ for which $k(y) = k(w)^{-1}$. Using this, define the morphism $h \colon  w' \otimes y \otimes v \to v' \otimes y \otimes w$ to be the tensor product $f' \otimes \id_y \otimes f$. Thus
 \[ \begin{array}{rll}
-		k(h) & = & k(f' \otimes \mathrm{id}_y \otimes f) \\
-		& = & k(f') \otimes \mathrm{id}_{k(y)} \otimes k(f) \\
-		& = & k(f') \otimes \mathrm{id}_{k(w)^{-1}} \otimes k(f)
+		k(h) & = & k(f' \otimes \id_y \otimes f) \\
+		& = & k(f') \otimes \id_{k(y)} \otimes k(f) \\
+		& = & k(f') \otimes \id_{k(w)^{-1}} \otimes k(f)
 		\end{array}
 \]
 and so by \cref{tenscomp}, this is the composite $k(f') \circ k(f)$. Therefore the set of morphisms of $Z$ which are images of morphisms of $Y$ is closed under composition. 
@@ -4995,7 +5018,7 @@ A map $h \colon  B \to X$ coequalizes $f;\id_B$ and $g; \id_B$ if and only if $h
 
 \end{proof}
 
-\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} = \mathrm{id}_{\ELnn};\delta$.
+\begin{Defi} \label{coprodmapdef} Let $\tilde{\delta} = \id_{\ELnn};\delta$.
 Explicitly, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on generators by
 \[ \begin{array}{rlrlll}
 			\tilde{\delta} & \colon & \ELnnnn & \to & \ELnn \\
@@ -5005,7 +5028,7 @@ Explicitly, $\tilde{\delta}$ is the map of $E\Lambda$-algebras which acts on gen
 			&  & z_{3n+i} & \mapsto & z_{n+i} \otimes z_i			
 		\end{array}
 \]
-for $1 \le i \le n$. Similarly, let $\tilde{I} = \mathrm{id}_{\ELnn};I$.
+for $1 \le i \le n$. Similarly, let $\tilde{I} = \id_{\ELnn};I$.
 Explicitly, $\tilde{I}$ is the map of $E\Lambda$-algebras which acts on generators by
 \[ \begin{array}{rlrlll}
 			\tilde{I} & \colon & \ELnnnn & \to & \ELnn \\
@@ -5291,14 +5314,14 @@ In fact, we have the following corollary of \cref{tensinv_basic} in the case tha
 \begin{proof}
 From \cref{tensinv}, we know that $L_n(I,I)$ is a subgroup of $\MorLn$. For normality, we need to again consider both crossed and non-crossed cases separately. 
 
-If $\ML$ is not crossed, then by \cref{crossconcomp} we know that the map assigning objects of $L_n$ to their connected component is just the identity $\mathrm{id}_{\mathbb{Z}^{\ast n}}$. In other words, every object belongs to its own unique component, so that every morphism of $L_n$ is actually an endomorphism. It follows that the group $L_n(I,I)$ is the kernel of the source homomorphism $s$ from \cref{st} and thus normal.
+If $\ML$ is not crossed, then by \cref{crossconcomp} we know that the map assigning objects of $L_n$ to their connected component is just the identity $\id_{\mathbb{Z}^{\ast n}}$. In other words, every object belongs to its own unique component, so that every morphism of $L_n$ is actually an endomorphism. It follows that the group $L_n(I,I)$ is the kernel of the source homomorphism $s$ from \cref{st} and thus normal.
 
 For crossed $\ML$, recall from \cref{spacial} that all $E\Lambda$-algebras are spacial, and so in particular $L_n$ is. This means that for any $h \in L_n(I,I)$ and $w \in \mathrm{Ob}(L_n)$ we will always have $h \otimes w = w \otimes h$. Thus for any $f \colon w \to v$ in $\MorLn$, we get
 \[ \begin{array}{rll}
-		h \otimes f & = & (\mathrm{id}_I \circ h) \otimes (f \circ \mathrm{id}_w) \\
+		h \otimes f & = & (\id_I \circ h) \otimes (f \circ \id_w) \\
 		& = & (I \otimes f) \circ (h \otimes w) \\
 		& = & (f \otimes I) \circ (w \otimes h) \\
-		& = & (f \circ \mathrm{id}_w) \otimes (\mathrm{id}_I \circ h) \\
+		& = & (f \circ \id_w) \otimes (\id_I \circ h) \\
 		& = & f \otimes h
 		\end{array}
 \]
@@ -5484,9 +5507,9 @@ QQQ Started rewriting with $g^{\otimes}$ notation but this needs more time than 
 
 \begin{lem} $\Delta$ is the subgroup of $\mathrm{M}(\ELnn)^{\mathrm{gp, ab}}$ whose elements are tensor products of equivalence classes
 \[ \begin{array}{c}
-			\big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, \ldots, e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \mathrm{id}_{x'_1}, \ldots,  \mathrm{id}_{x'_{m'}} \, \big) \, \big] \\
+			\big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, \ldots, e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \id_{x'_1}, \ldots,  \id_{x'_{m'}} \, \big) \, \big] \\
 			\, \otimes \, \\
-			\big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{I}(x_1)|}, \ldots, e_{|\tilde{I}(x_m)|} \, ) \, ; \, \mathrm{id}_{x''_1}, \ldots,  \mathrm{id}_{x''_{m''}} \, \big) \, \big]^*
+			\big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{I}(x_1)|}, \ldots, e_{|\tilde{I}(x_m)|} \, ) \, ; \, \id_{x''_1}, \ldots,  \id_{x''_{m''}} \, \big) \, \big]^*
 		\end{array}
 \] 
 where $g \in G(m)$, the $x_i$ are generators of $\mathbb{N}^{\ast 4n}$, the $x'_i, x''_i$ are generators of $\mathbb{N}^{\ast 2n}$, and
@@ -5506,14 +5529,14 @@ Thus
 		\end{array}
 \]
 which is $g^{\otimes}$ acting on the tensor product $\tilde{\delta}(x_1) \otimes \tilde{\delta}(x_2) \otimes \cdots \otimes \tilde{\delta}(x_n)$.
-By \cref{hom-set-lemma}, we can express this isomorphism as $h^{\otimes}$ for some $h \in \Lambda(p)$we know it must be possible to express the action morphism $\alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, \ldots, \mathrm{id}_{\tilde{\delta}(x_m)})$ as an action morphism on the identities of generators. Since the source of this map is
+By \cref{hom-set-lemma}, we can express this isomorphism as $h^{\otimes}$ for some $h \in \Lambda(p)$we know it must be possible to express the action morphism $\alpha^{\ELnn}(g; \id_{\tilde{\delta}(x_1)}, \ldots, \id_{\tilde{\delta}(x_m)})$ as an action morphism on the identities of generators. Since the source of this map is
 \[ \tilde{\delta}(x_1) \otimes \ldots \otimes \tilde{\delta}(x_m) \quad = \quad \tilde{\delta}(x_1 \otimes \ldots \otimes x_m) \quad =: \quad x'_1 \otimes \ldots \otimes x'_{m'}  \]
 clearly the $x'_i$ are the generators we want, and so by expanding the $\tilde{\delta}(x_i)$ as tensor products of these we find that
-\[ [ \, \alpha^{\ELnn}(g; \mathrm{id}_{\tilde{\delta}(x_1)}, \ldots, \mathrm{id}_{\tilde{\delta}(x_m)})  \, ] \quad = \quad \big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, \ldots, e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \mathrm{id}_{x'_1}, \ldots, \mathrm{id}_{x'_{m'}} \, \big) \, \big] \]
+\[ [ \, \alpha^{\ELnn}(g; \id_{\tilde{\delta}(x_1)}, \ldots, \id_{\tilde{\delta}(x_m)})  \, ] \quad = \quad \big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{\delta}(x_1)|}, \ldots, e_{|\tilde{\delta}(x_m)|} \, ) \, ; \, \id_{x'_1}, \ldots, \id_{x'_{m'}} \, \big) \, \big] \]
 For analogous reasons we also get
 \[ \begin{array}{rll}
-			\mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f) & = & [ \, \alpha^{\ELnn}(g; \mathrm{id}_{\tilde{I}(x_1)}, \ldots, \mathrm{id}_{\tilde{I}(x_m)}) \, ]  \\
-			& = &  \big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{I}(x_1)|}, \ldots, e_{|\tilde{I}(x_m)|} \, ) \, ; \, \mathrm{id}_{x''_1}, \ldots,  \mathrm{id}_{x''_{m''}} \, \big) \, \big]
+			\mathrm{M}(\tilde{I})^{\mathrm{gp, ab}}(f) & = & [ \, \alpha^{\ELnn}(g; \id_{\tilde{I}(x_1)}, \ldots, \id_{\tilde{I}(x_m)}) \, ]  \\
+			& = &  \big[ \, \alpha^{\ELnn}\big( \, \mu( \, g \, ; \, e_{|\tilde{I}(x_1)|}, \ldots, e_{|\tilde{I}(x_m)|} \, ) \, ; \, \id_{x''_1}, \ldots,  \id_{x''_{m''}} \, \big) \, \big]
 		\end{array}
 \]
 and using these equations the lemma follows immediately from the definition of $\Delta$.
@@ -5539,13 +5562,13 @@ Both statements follow from the simple fact that abelianization preserves produc
 \end{lem}
 \begin{proof}
 Note that both $\mathrm{Mor}(X)$ and $\mathrm{M}(X)$ are groups by assumption. Let  $f \colon  x \to y$, $f' \colon  y \to z$ be a composable pair of morphisms in $X$. Recall  that in any monoidal category with invertible objects,
-\[ f' \circ f \quad = \quad f' \otimes \mathrm{id}_{y^{-1}} \otimes f \]
-by \cref{tenscomp}.  But $f' \otimes f = f' \circ f$ in $\mathrm{M}(X)$ by definition, so $\mathrm{id}_y$ is the identity element $e$ in $\mathrm{M}(X)$, and hence also $\mathrm{M}(X)^{\mathrm{ab}}$, for any object $y$.
+\[ f' \circ f \quad = \quad f' \otimes \id_{y^{-1}} \otimes f \]
+by \cref{tenscomp}.  But $f' \otimes f = f' \circ f$ in $\mathrm{M}(X)$ by definition, so $\id_y$ is the identity element $e$ in $\mathrm{M}(X)$, and hence also $\mathrm{M}(X)^{\mathrm{ab}}$, for any object $y$.
 
-Now let $A$ be an abelian group and $\phi \colon  \mathrm{Mor}(X)^{\mathrm{ab}} \to A$ be any homomorphism of groups which satisfies the condition $\phi(\mathrm{ab}(\mathrm{id}_x)) = e$ for all objects $x$. Then
+Now let $A$ be an abelian group and $\phi \colon  \mathrm{Mor}(X)^{\mathrm{ab}} \to A$ be any homomorphism of groups which satisfies the condition $\phi(\mathrm{ab}(\id_x)) = e$ for all objects $x$. Then
 \[ \begin{array}{rll}
-			\phi\big( \, \mathrm{ab}(f' \circ f) \, \big)  & = & \phi\big( \, \mathrm{ab}(f' \otimes \mathrm{id}_{y^{-1}} \otimes f) \, \big) \\
-			& = & \phi\big( \, \mathrm{ab}(f') \, \big) \otimes \phi\big( \, \mathrm{ab}(\mathrm{id}_{y^{-1}}) \, \big) \otimes \phi\big( \, \mathrm{ab}(f) \, \big) \\
+			\phi\big( \, \mathrm{ab}(f' \circ f) \, \big)  & = & \phi\big( \, \mathrm{ab}(f' \otimes \id_{y^{-1}} \otimes f) \, \big) \\
+			& = & \phi\big( \, \mathrm{ab}(f') \, \big) \otimes \phi\big( \, \mathrm{ab}(\id_{y^{-1}}) \, \big) \otimes \phi\big( \, \mathrm{ab}(f) \, \big) \\
 			& = & \phi\big( \, \mathrm{ab}(f') \, \big) \otimes \phi\big( \, \mathrm{ab}(f) \, \big) \\
 			& = & \phi\big( \, \mathrm{ab}(f' \otimes f) \, \big),
 		\end{array}
@@ -5633,26 +5656,26 @@ Next, let $\mathbb{S}_{2n}$ be the free $\mathrm{E}S$-algebra on $2n$ objects, w
 			\psi & \colon & \mathbb{S}_{2n} & \to & Z \\
 			 & \colon & z_i & \mapsto & z_i \\
 			 & \colon & z_{n+i} & \mapsto & z_i^* \\
-			 & \colon & \alpha(\sigma; \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m}) & \mapsto & (x_1 \otimes \ldots \otimes x_m, x_{\sigma(1)} \otimes \ldots \otimes x_{\sigma(m)})
+			 & \colon & \alpha(\sigma; \id_{x_1}, \ldots, \id_{x_m}) & \mapsto & (x_1 \otimes \ldots \otimes x_m, x_{\sigma(1)} \otimes \ldots \otimes x_{\sigma(m)})
 		\end{array}
 \]
 A necessary condition for $(y, y')$ to be an element of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ is that there exists some sequence of generators and their inverses $x_1, \ldots, x_m \in \{z_1, \ldots, z_n, z_1^*, \ldots, z_n^*\}$ and some permutation $\sigma \in \Sigma_m$ for which
 \[ y \, = \, x_1 \otimes \ldots \otimes x_m, \quad \quad \quad y' \, = \, x_{\sigma(1)} \otimes \ldots \otimes x_{\sigma(m)} \]
 Hence the functor $\psi$ is clearly surjective. It follows from this that if we can find a collection of morphisms which generate $\mathrm{Mor}(\mathbb{S}_{2n})$ under composition and tensor product, their images under $\psi$ will also generate $\mathrm{Mor}(Z) = \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ under composition and tensor product, and hence under just tensor product. To begin, we know that any permutation $\sigma \in \Sigma_m$ can be written as a product $\sigma_{i_k} \cdot \ldots \cdot \sigma_{i_1}$ of elementary transpositions, giving
 \[ \begin{array}{rlll}
-			\alpha( \, \sigma \, ; \, \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, ) & = & \alpha( \, \sigma_{i_k} \cdot \ldots \cdot \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, ) \\
-			& = &  \alpha( \, \sigma_{i_1} \, ; \,  \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, )  \\
-			& & \circ \, \alpha( \, \sigma_{i_2} \, ; \,  \mathrm{id}_{x_{\sigma_{i_1}(1)}}, \ldots, \mathrm{id}_{x_{\sigma_{i_1}(m)}} \, ) \, \circ \ldots \\
-			& & \circ \, \alpha( \, \sigma_{i_k} \, ; \,  \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot \ldots \cdot \sigma_{i_1}(1)}}, \ldots, \mathrm{id}_{x_{\sigma_{i_{k-1}} \cdot \ldots \cdot \sigma_{i_1}(m)}} \, )
+			\alpha( \, \sigma \, ; \, \id_{x_1}, \ldots, \id_{x_m} \, ) & = & \alpha( \, \sigma_{i_k} \cdot \ldots \cdot \sigma_{i_1} \, ; \,  \id_{x_1}, \ldots, \id_{x_m} \, ) \\
+			& = &  \alpha( \, \sigma_{i_1} \, ; \,  \id_{x_1}, \ldots, \id_{x_m} \, )  \\
+			& & \circ \, \alpha( \, \sigma_{i_2} \, ; \,  \id_{x_{\sigma_{i_1}(1)}}, \ldots, \id_{x_{\sigma_{i_1}(m)}} \, ) \, \circ \ldots \\
+			& & \circ \, \alpha( \, \sigma_{i_k} \, ; \,  \id_{x_{\sigma_{i_{k-1}} \cdot \ldots \cdot \sigma_{i_1}(1)}}, \ldots, \id_{x_{\sigma_{i_{k-1}} \cdot \ldots \cdot \sigma_{i_1}(m)}} \, )
 		\end{array}
 \]
 Then if $\sigma_i = (i \, \, i+1) \in \Sigma_m$ is some elementary transposition we will have
 \[ \begin{array}{rll}
-			\alpha( \, (i \, \, i+1) \, ; \, \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, ) & = & \alpha( \, e_{i-1} \otimes (1 2) \otimes e_{m-i-1} \, ; \,  \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, ) \\
-			& = & \mathrm{id}_{x_1 \otimes \ldots \otimes x_{i-1}} \otimes \alpha( \, (1 2) \, ; \, \mathrm{id}_{x_i}, \mathrm{id}_{x_{i+1}} \, ) \otimes \mathrm{id}_{x_{i+2} \otimes \ldots \otimes x_m}
+			\alpha( \, (i \, \, i+1) \, ; \, \id_{x_1}, \ldots, \id_{x_m} \, ) & = & \alpha( \, e_{i-1} \otimes (1 2) \otimes e_{m-i-1} \, ; \,  \id_{x_1}, \ldots, \id_{x_m} \, ) \\
+			& = & \id_{x_1 \otimes \ldots \otimes x_{i-1}} \otimes \alpha( \, (1 2) \, ; \, \id_{x_i}, \id_{x_{i+1}} \, ) \otimes \id_{x_{i+2} \otimes \ldots \otimes x_m}
 		\end{array}
 \]
-Therefore all of the morphisms of $\mathbb{S}_{2n}$ are generated by just the identities and the action maps $\alpha( \, (1 2) \, ; \, \mathrm{id}_{x_1}, \mathrm{id}_{x_2} \, )$ for all pairs $x_1, x_2 \in \{z_1, \ldots, z_{2n} \}$. Passing through $\psi$, this means that elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ can always be expressed as a tensor product of elements of the form
+Therefore all of the morphisms of $\mathbb{S}_{2n}$ are generated by just the identities and the action maps $\alpha( \, (1 2) \, ; \, \id_{x_1}, \id_{x_2} \, )$ for all pairs $x_1, x_2 \in \{z_1, \ldots, z_{2n} \}$. Passing through $\psi$, this means that elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$ can always be expressed as a tensor product of elements of the form
 \[ (x, x) \quad \quad \text{or} \quad \quad (x y, y x), \quad \quad \quad x, y \in \{z_1, \ldots, z_n, z_1^*, \ldots, z_n^* \} \]
 These are exactly the $\langle x \rangle$ and $\langle xy \rangle$ given in the statement of the proposition.
 
@@ -5784,7 +5807,7 @@ From this presentation, it should be immediately obvious how to calculate the de
 \end{cor}
 \begin{proof}
 The $\mathbb{Z}^n$ term in the product of \cref{abst} represents the free abelian group generated by the morphisms
-\[ \langle x \rangle \quad := \quad (x,x) \quad = \quad \mathrm{id}_{x} \]
+\[ \langle x \rangle \quad := \quad (x,x) \quad = \quad \id_{x} \]
 But this is exactly the same $\mathbb{Z}^n$ group that appears in the denominator of our quotient, $\mathrm{Ob}(L_n)^{\mathrm{ab}}$, so they cancel.
 \end{proof}
 
@@ -5798,10 +5821,10 @@ Thus, consider the following commutative diagram, whose top-left region comes fr
 \mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dr] & & \MorLn \ar[dr] & & \frac{\displaystyle (s \times t)(L\mathbb{G}_{n})^{\mathrm{ab}}}{\displaystyle \mathrm{Ob}(L_n)^{\mathrm{ab}}} \ar[dl, hookrightarrow] \\
 & \mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}} \ar[rr, "\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}"] & & \MLn^{\mathrm{gp},\mathrm{ab}}
 \end{tikzcd} \]
-What we've just said that if we start with the element $(z_i \otimes z_j, z_j \otimes z_i)$ of $(s \times t)(\ELnn)$, moving clockwise around the diagram will send it to the generator $\langle z_i z_j \rangle$ in ${(s \times t)}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L_n)^{\mathrm{ab}} = \mathbb{Z}^{{n}\choose{2}}$. If we instead move anticlockwise, then we will first pass to our chosen representative $\alpha_{\ELnn}(\rho(z_i \otimes z_j, z_j \otimes z_i); \mathrm{id}_{z_i}, \mathrm{id}_{z_j})$ in $\mathrm{Mor}(\ELnn)$, then its equivalence class in $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$, then its equivalence class in $\MLn^{\mathrm{gp},\mathrm{ab}}$, using the fact that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is the canonical map associated with the quotient
+What we've just said that if we start with the element $(z_i \otimes z_j, z_j \otimes z_i)$ of $(s \times t)(\ELnn)$, moving clockwise around the diagram will send it to the generator $\langle z_i z_j \rangle$ in ${(s \times t)}(L\mathbb{G}_{n})^{\mathrm{ab}}/\mathrm{Ob}(L_n)^{\mathrm{ab}} = \mathbb{Z}^{{n}\choose{2}}$. If we instead move anticlockwise, then we will first pass to our chosen representative $\alpha_{\ELnn}(\rho(z_i \otimes z_j, z_j \otimes z_i); \id_{z_i}, \id_{z_j})$ in $\mathrm{Mor}(\ELnn)$, then its equivalence class in $\mathrm{M}(\ELnn)^{\mathrm{gp},\mathrm{ab}}$, then its equivalence class in $\MLn^{\mathrm{gp},\mathrm{ab}}$, using the fact that $\mathrm{M}(q)^{\mathrm{gp},\mathrm{ab}}$ is the canonical map associated with the quotient
 \[ \MLn^{\mathrm{gp, ab}} \quad = \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta} \]
 which we proved back in \cref{Zmor2}. Since the bottom-right inclusion completes this circuit, we see that the specific subgroup we are talking about in \cref{nchoose2} is
-\[ \mathbb{Z}^{{n}\choose{2}} \, = \, \big\{ \, \big[ \, \alpha_{\ELnn}\big( \, \rho(z_i \otimes z_j, z_j \otimes z_i) \, ; \,  \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) \, \big] \, : \, 1 \le i < j \le n \, \big\} \, \subseteq \, \MLn^{\mathrm{ab}}\]
+\[ \mathbb{Z}^{{n}\choose{2}} \, = \, \big\{ \, \big[ \, \alpha_{\ELnn}\big( \, \rho(z_i \otimes z_j, z_j \otimes z_i) \, ; \,  \id_{z_i}, \id_{z_j} \, \big) \, \big] \, : \, 1 \le i < j \le n \, \big\} \, \subseteq \, \MLn^{\mathrm{ab}}\]
 
 Of course, $\rho$ was an arbitrary permutation-preserving map $\mathbb{N}^{\ast n} \times_{\mathbb{N}} \mathbb{N}^{\ast n} \to G$, chosen using the freeness of its source monoid. Thus if we wanted to we could just pick the same element $\rho(2) \in \pi^{-1}((1 \, 2))$ to act as $\rho(z_i \otimes z_j, z_j \otimes z_i)$ for all $i, j$. For simplicity's sake, we will indeed be assuming this from now on.
 
@@ -5984,7 +6007,7 @@ and the $E\Lambda$-action given in \cref{crossact}:
 \[ \begin{array}{c}
 			\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), \ldots, (x_m, y_m, h_m) \, \big) \\
 			= \\
-			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, \ldots, \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
+			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \id_{q^{-1}(y_1)}, \ldots, \id_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
 		\end{array}
 \]
 \end{thm}
@@ -5993,9 +6016,9 @@ The category $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n} \tim
 \[ (y, z , h') \circ (x, y, h) \quad = \quad (x, z, h'h) \]
 We know that these objects and morphisms are correct by \cref{Zobj,Zmor1,Zmor2,nchoose2,freemor,noscalarcross}, and those results also tell us that the monoidal structure is as given above. For composition, it follows from \cref{tenscomp} that
 \[ \begin{array}{rll} 
-			(y, z , h') \circ (x, y, h) & = & (y, z , h') \otimes \mathrm{id}_{y^*} \otimes (x, y, h) \\
-			& = & (y, z , h') \otimes (y^*, y^*, \mathrm{id}_I) \otimes (x, y, h) \\
-			& = & (\, y \otimes y^* \otimes x, \,  z \otimes y^* \otimes y, \, h' \otimes \mathrm{id}_I \otimes h \, ) \\
+			(y, z , h') \circ (x, y, h) & = & (y, z , h') \otimes \id_{y^*} \otimes (x, y, h) \\
+			& = & (y, z , h') \otimes (y^*, y^*, \id_I) \otimes (x, y, h) \\
+			& = & (\, y \otimes y^* \otimes x, \,  z \otimes y^* \otimes y, \, h' \otimes \id_I \otimes h \, ) \\
 			& = & (x, z, h'h)
 		\end{array}
 \]
@@ -6095,7 +6118,7 @@ as a monoidal category.
 If we are to understand $L\mathbb{S}_n$'s role as a \emph{symmetric} monoidal category, we now just need to use the rest of \cref{freeinvalgc} to find its $\mathrm{ES}$-action. This will dictate which morphisms act as the various symmetries $\beta_{x, y}$. However, this operation too is incredibly simple.
 
 \begin{prop} The action of $L\mathbb{S}_n$ is fully determined by two pieces of data. The first is its values on pairs of generators,
-\[ \alpha\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) \quad = \, 
+\[ \alpha\big( \, (1 \, 2) \, ; \, \id_{z_i}, \id_{z_j} \, \big) \quad = \, 
 		\begin{cases}
 			\quad \big( \, z_i \otimes z_j, \, z_j \otimes z_i, \, (0, \ldots, 0) \, \big) & \text{if} \quad i \neq j \\
 			\quad \big( \, z_i \otimes z_i, \, z_i \otimes z_i, \, (0,\ldots,0, 1, 0,\ldots,0) \, \big) & \text{if} \quad i = j
@@ -6103,44 +6126,44 @@ If we are to understand $L\mathbb{S}_n$'s role as a \emph{symmetric} monoidal ca
 \]
 where here the $1$ appears in the $i$th coordinate of the group $\mathbb{Z}_2^{n}$, and the second is the following identity which relate generators to their inverses:
 \[ \begin{array}{rll} 
-			\alpha\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) & = & \alpha\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i^*}, \mathrm{id}_{z_j} \, \big) \\[\medskipamount]
-			& = & \alpha\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j^*} \, \big) \\[\medskipamount]
-			& = & \alpha\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i^*}, \mathrm{id}_{z_j^*} \, \big)
+			\alpha\big( \, (1 \, 2) \, ; \, \id_{z_i}, \id_{z_j} \, \big) & = & \alpha\big( \, (1 \, 2) \, ; \, \id_{z_i^*}, \id_{z_j} \, \big) \\[\medskipamount]
+			& = & \alpha\big( \, (1 \, 2) \, ; \, \id_{z_i}, \id_{z_j^*} \, \big) \\[\medskipamount]
+			& = & \alpha\big( \, (1 \, 2) \, ; \, \id_{z_i^*}, \id_{z_j^*} \, \big)
 		\end{array}
 \]
 \end{prop}
 \begin{proof}
 We know that all $E\Lambda$-actions obey the conditions
-\[ \alpha(g; f_1, \ldots, f_m) \quad = \quad \alpha(g; \mathrm{id}_{y_1}, \ldots, \mathrm{id}_{y_m}) \circ (f_1 \otimes \ldots \otimes f_m) \]
+\[ \alpha(g; f_1, \ldots, f_m) \quad = \quad \alpha(g; \id_{y_1}, \ldots, \id_{y_m}) \circ (f_1 \otimes \ldots \otimes f_m) \]
 for all morphisms $f_i \colon  x_i \to y_i$, and
 \[ \begin{array}{rl}
-			& \alpha( \, g \, ; \, \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_{i-1}}, \mathrm{id}_{x_i \otimes x'_{i}}, \mathrm{id}_{x_{i+1}}, \ldots \mathrm{id}_{x_m} \, ) \\
-			= & \alpha\big( \, g \, ; \, \alpha(e_1;\mathrm{id}_{x_1}), \ldots, \alpha(e_1;\mathrm{id}_{x_{i-1}}), \alpha(e_2;\mathrm{id}_{x_i}, \mathrm{id}_{x'_i}), \alpha(e_1;\mathrm{id}_{x_{i+1}}), \ldots,  \alpha(e_1;\mathrm{id}_{x_m}) \, \big) \\
-			= & \alpha\big( \, \mu(g; e_1, \ldots, e_1, e_2, e_1, \ldots, e_1) \, ; \, \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_{i-1}}, \mathrm{id}_{x_i}, \mathrm{id}_{x'_{i}}, \mathrm{id}_{x_{i+1}}, \ldots, \mathrm{id}_{x_m} \, \big)
+			& \alpha( \, g \, ; \, \id_{x_1}, \ldots, \id_{x_{i-1}}, \id_{x_i \otimes x'_{i}}, \id_{x_{i+1}}, \ldots \id_{x_m} \, ) \\
+			= & \alpha\big( \, g \, ; \, \alpha(e_1;\id_{x_1}), \ldots, \alpha(e_1;\id_{x_{i-1}}), \alpha(e_2;\id_{x_i}, \id_{x'_i}), \alpha(e_1;\id_{x_{i+1}}), \ldots,  \alpha(e_1;\id_{x_m}) \, \big) \\
+			= & \alpha\big( \, \mu(g; e_1, \ldots, e_1, e_2, e_1, \ldots, e_1) \, ; \, \id_{x_1}, \ldots, \id_{x_{i-1}}, \id_{x_i}, \id_{x'_{i}}, \id_{x_{i+1}}, \ldots, \id_{x_m} \, \big)
 		\end{array}
 \]
 for all elements $g \in G$ and objects $x_1, \ldots, x_m, x'_i$. Hence we can recover all values of $\alpha_{\mathbb{S}_{2n}}$ from those on identities morphisms, and more specifically identities of generators and their inverses. Further, the fact that we can express any $\sigma \in \Sigma$ in terms of $e_1$ and $(1 \, 2)$ via tensor product and group multiplication tells us that the action will also be determined solely by its values on $(1 \, 2)$. Thus the equations in the statement of the proposition really would suffice to fix $\alpha_{L\mathbb{S}_n}$; all we need now is prove that they hold. The sources and targets are easy enough, so we'll focus on the $\mathbb{Z}_2^{n}$ coordinate.
 
 Per \cref{freeinvalgc}, we will start by forming the action morphisms
-\[ \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{q^{-1}(z_i)}, \mathrm{id}_{q^{-1}(z_j)} \, \big) \quad = \quad \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) \]
+\[ \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \id_{q^{-1}(z_i)}, \id_{q^{-1}(z_j)} \, \big) \quad = \quad \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \id_{z_i}, \id_{z_j} \, \big) \]
 and then find their images under the map $\Psi \colon  \Sigma \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \to \mathbb{Z}_2^{n}$. However, we just saw in \cref{invsymcat} how this homomorphism is built up as a composite
 \[ \begin{tikzcd}
  \Sigma \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \ar[r] & \mathbb{Z}^{2n + (2n)^2} \ar[r] & \mathbb{Z}_2^{2n} \times \mathbb{Z}^{{2n}\choose{2}} \ar[r] & \mathbb{Z}_2^{n} \times \mathbb{Z}^{{n}\choose{2}}  \ar[r] & \mathbb{Z}_2^{n}
 \end{tikzcd} \]
-When $i \neq j$, the equivalence classes of the morphisms $\alpha((1 \, 2);\mathrm{id}_{z_i}, \mathrm{id}_{z_j})$ get sent to zero by the rightmost arrow, whereas the $\alpha((1 \, 2);\mathrm{id}_{z_i}, \mathrm{id}_{z_i})$ are each sent to a different generator of $\mathbb{Z}_2^{n}$, which is denoted by the appropriate $n$-tuple $(0,\ldots,0, 1, 0,\ldots,0)$. 
+When $i \neq j$, the equivalence classes of the morphisms $\alpha((1 \, 2);\id_{z_i}, \id_{z_j})$ get sent to zero by the rightmost arrow, whereas the $\alpha((1 \, 2);\id_{z_i}, \id_{z_i})$ are each sent to a different generator of $\mathbb{Z}_2^{n}$, which is denoted by the appropriate $n$-tuple $(0,\ldots,0, 1, 0,\ldots,0)$. 
 
 So now we just need to check the morphisms involving the inverses of generators as well. The $\mathbb{S}_{2n}$ versions of these are
 \[ \begin{array}{rll}
-			\alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{q^{-1}(z_i^*)}, \mathrm{id}_{q^{-1}(z_j)} \, \big) & = & \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_{n+i}}, \mathrm{id}_{z_j} \, \big) \\
-			\alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{q^{-1}(z_i)}, \mathrm{id}_{q^{-1}(z_j^*)} \, \big) & = & \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_{n+j}} \, \big) \\
-			\alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{q^{-1}(z_i^*)}, \mathrm{id}_{q^{-1}(z_j^*)} \, \big) & = & \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_{n+i}}, \mathrm{id}_{z_{n+j}} \, \big)
+			\alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \id_{q^{-1}(z_i^*)}, \id_{q^{-1}(z_j)} \, \big) & = & \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \id_{z_{n+i}}, \id_{z_j} \, \big) \\
+			\alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \id_{q^{-1}(z_i)}, \id_{q^{-1}(z_j^*)} \, \big) & = & \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \id_{z_i}, \id_{z_{n+j}} \, \big) \\
+			\alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \id_{q^{-1}(z_i^*)}, \id_{q^{-1}(z_j^*)} \, \big) & = & \alpha_{\mathbb{S}_{2n}}\big( \, (1 \, 2) \, ; \, \id_{z_{n+i}}, \id_{z_{n+j}} \, \big)
 		\end{array}
 \]
-But again, we saw in the proof of \cref{invsymcat} that the second-to-last arrow in the above diagram --- the one representing the quotient by $\Delta$ --- will make the equivalence class of $\alpha((1 \, 2);\mathrm{id}_{z_i}, \mathrm{id}_{z_j})$ equal to that of $\alpha((1 \, 2); \mathrm{id}_{z_{n+i}}, \mathrm{id}_{z_{n+j}})$, and inverse to the class containing both $\alpha((1 \, 2); \mathrm{id}_{z_{n+i}}, \mathrm{id}_{z_j})$ and $\alpha((1 \, 2); \mathrm{id}_{z_{n+i}}, \mathrm{id}_{z_j})$. Since every element of the group $\mathbb{Z}_2^{n}$ is self-inverse, this amounts to saying that all of these morphisms are equivalent under $\Psi$, which completes the proof. 
+But again, we saw in the proof of \cref{invsymcat} that the second-to-last arrow in the above diagram --- the one representing the quotient by $\Delta$ --- will make the equivalence class of $\alpha((1 \, 2);\id_{z_i}, \id_{z_j})$ equal to that of $\alpha((1 \, 2); \id_{z_{n+i}}, \id_{z_{n+j}})$, and inverse to the class containing both $\alpha((1 \, 2); \id_{z_{n+i}}, \id_{z_j})$ and $\alpha((1 \, 2); \id_{z_{n+i}}, \id_{z_j})$. Since every element of the group $\mathbb{Z}_2^{n}$ is self-inverse, this amounts to saying that all of these morphisms are equivalent under $\Psi$, which completes the proof. 
 \end{proof}
 
 Thus we see that in the free symmetric monoidal category on $n$ invertible objects, every morphism can be expressed as a composite of tensor products of identities and symmetries maps
-\[ \beta_{z_i, z_j} \quad = \quad \alpha\big( \, (1 \, 2) \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, \big) \]
+\[ \beta_{z_i, z_j} \quad = \quad \alpha\big( \, (1 \, 2) \, ; \, \id_{z_i}, \id_{z_j} \, \big) \]
 Moreover, two parallel morphisms in $L\mathbb{S}_n$ are equal if and only if the number of symmetries from
 \[ \big\{ \, \beta_{z_i, z_i}, \, \beta_{z_i^*, z_i}, \, \beta_{z_i, z_i^*}, \, \beta_{z_i^*, z_i^*} \, \big\} \]
 appearing in these two expressions has the same parity, for each $1 \le i \le n$.
@@ -6203,10 +6226,10 @@ and therefore
 as a monoidal category.
 \end{proof} 
 
-Just to be clear, the first $n$ generators of this group $\mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}}$ are the images under $q \colon  \mathbb{B}_{2n} \to L\mathbb{B}_n$ of the action morphisms $\alpha_{\mathbb{B}_{2n}}(b;\mathrm{id}_{z_i},\mathrm{id}_{z_i})$, and the other ${n}\choose{2}$ come from the $\alpha_{\mathbb{B}_{2n}}(b;\mathrm{id}_{z_i},\mathrm{id}_{z_j})$ for $i > j$. This seems a little strange at first --- why would $L\mathbb{B}_n$ have this kind of directionality to it, where the $i<j$ generators have been cancelled out but the $i > j$ remain? The important thing to realise is this group is representing the unit endomorphisms $L\mathbb{B}_n(I,I)$, which have the same source and target. By contrast, if $i \neq j$ then $\alpha_{\mathbb{B}_{2n}}(b;\mathrm{id}_{z_i},\mathrm{id}_{z_j})$ will have distinct source and target $z_i \otimes z_j \neq z_j \otimes z_i$, and thus the only way we can add it onto a composite without changing the source and target is to also add in the corresponding $\alpha_{\mathbb{B}_{2n}}(b;\mathrm{id}_{z_j},\mathrm{id}_{z_i})$ somewhere. Therefore we really only need to keep track of one of these two kinds of morphisms, such as all of the ones where $i > j$. This is also reflected in the action of this algebra.
+Just to be clear, the first $n$ generators of this group $\mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}}$ are the images under $q \colon  \mathbb{B}_{2n} \to L\mathbb{B}_n$ of the action morphisms $\alpha_{\mathbb{B}_{2n}}(b;\id_{z_i},\id_{z_i})$, and the other ${n}\choose{2}$ come from the $\alpha_{\mathbb{B}_{2n}}(b;\id_{z_i},\id_{z_j})$ for $i > j$. This seems a little strange at first --- why would $L\mathbb{B}_n$ have this kind of directionality to it, where the $i<j$ generators have been cancelled out but the $i > j$ remain? The important thing to realise is this group is representing the unit endomorphisms $L\mathbb{B}_n(I,I)$, which have the same source and target. By contrast, if $i \neq j$ then $\alpha_{\mathbb{B}_{2n}}(b;\id_{z_i},\id_{z_j})$ will have distinct source and target $z_i \otimes z_j \neq z_j \otimes z_i$, and thus the only way we can add it onto a composite without changing the source and target is to also add in the corresponding $\alpha_{\mathbb{B}_{2n}}(b;\id_{z_j},\id_{z_i})$ somewhere. Therefore we really only need to keep track of one of these two kinds of morphisms, such as all of the ones where $i > j$. This is also reflected in the action of this algebra.
 
 \begin{prop} \label{invbraidact} The action of $L\mathbb{B}_n$ is fully determined by the values
-\[ \alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, ) \quad = \, 
+\[ \alpha( \, b \, ; \, \id_{z_i}, \id_{z_j} \, ) \quad = \, 
 		\begin{cases}
 			\quad \big( \, z_i \otimes z_j, \, z_j \otimes z_i, \, (0, \ldots, 0) \, \big) & \text{if} \quad i < j \\
 			\quad \big( \, z_i \otimes z_j, \, z_j \otimes z_i, \, (0,\ldots,0, 1, 0,\ldots,0) \, \big) & \text{if} \quad i \ge j
@@ -6214,9 +6237,9 @@ Just to be clear, the first $n$ generators of this group $\mathbb{Z}^{n} \times 
 \]
 where the $1$ appears in the $i$th coordinate of $\mathbb{Z}^{n}$ when $i=j$, and the $(i,j)$th coordinate of $\mathbb{Z}^{{n}\choose{2}}$ when $i>j$, and also
 \[ \begin{array}{rll} 
-			\alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, ) & = & \alpha( \, b \, ; \, \mathrm{id}_{z_i^*}, \mathrm{id}_{z_j} \, )^* \\[\medskipamount]
-			& = & \alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j^*} \, )^* \\[\medskipamount]
-			& = & \alpha( \, b \, ; \, \mathrm{id}_{z_i^*}, \mathrm{id}_{z_j^*} \, )
+			\alpha( \, b \, ; \, \id_{z_i}, \id_{z_j} \, ) & = & \alpha( \, b \, ; \, \id_{z_i^*}, \id_{z_j} \, )^* \\[\medskipamount]
+			& = & \alpha( \, b \, ; \, \id_{z_i}, \id_{z_j^*} \, )^* \\[\medskipamount]
+			& = & \alpha( \, b \, ; \, \id_{z_i^*}, \id_{z_j^*} \, )
 		\end{array}
 \]
 \end{prop}
@@ -6228,16 +6251,16 @@ We saw in the proof of \cref{invbraidcat} that under the map
 B \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \ar[r] & \mathbb{Z}^{2n + (2n)^2} \ar[r] & \mathbb{Z}^{(2n)^2} \ar[r] & \mathbb{Z}^{n^2} \ar[r] & \mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}} 
 \end{tikzcd} \]
 the action morphisms
-\[ \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \mathrm{id}_{q^{-1}(z_i)}, \mathrm{id}_{q^{-1}(z_j)} \, ) \quad = \quad \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, ) \]
+\[ \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \id_{q^{-1}(z_i)}, \id_{q^{-1}(z_j)} \, ) \quad = \quad \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \id_{z_i}, \id_{z_j} \, ) \]
 are sent to one of the generators of $\mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}}$ when $i \ge j$, and are sent to zero otherwise. Moreover, we also proved that the morphisms
 \[ \begin{array}{rll} 
-			\alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \mathrm{id}_{q^{-1}(z_i^*)}, \mathrm{id}_{q^{-1}(z_j^*)} \, \big) & = & \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \mathrm{id}_{z_{n+i}}, \mathrm{id}_{z_{n+j}} \, )
+			\alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \id_{q^{-1}(z_i^*)}, \id_{q^{-1}(z_j^*)} \, \big) & = & \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \id_{z_{n+i}}, \id_{z_{n+j}} \, )
 		\end{array}
 \]
-are sent to the exact same generators as the $\alpha_{\mathbb{S}_{2n}}(b;\mathrm{id}_{z_i}, \mathrm{id}_{z_j})$, whilst the corresponding
+are sent to the exact same generators as the $\alpha_{\mathbb{S}_{2n}}(b;\id_{z_i}, \id_{z_j})$, whilst the corresponding
 \[ \begin{array}{rll}
-			\alpha_{\mathbb{S}_{2n}}( \, b\, ; \, \mathrm{id}_{q^{-1}(z_i^*)}, \mathrm{id}_{q^{-1}(z_j)} \, ) & = & \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \mathrm{id}_{z_{n+i}}, \mathrm{id}_{z_j} \, ) \\
-			\alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \mathrm{id}_{q^{-1}(z_i)}, \mathrm{id}_{q^{-1}(z_j^*)} \, ) & = & \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_{n+j}} \, ) 
+			\alpha_{\mathbb{S}_{2n}}( \, b\, ; \, \id_{q^{-1}(z_i^*)}, \id_{q^{-1}(z_j)} \, ) & = & \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \id_{z_{n+i}}, \id_{z_j} \, ) \\
+			\alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \id_{q^{-1}(z_i)}, \id_{q^{-1}(z_j^*)} \, ) & = & \alpha_{\mathbb{S}_{2n}}( \, b \, ; \, \id_{z_i}, \id_{z_{n+j}} \, ) 
 		\end{array}
 \]
 are sent to that generator's inverse. Thus by \cref{freeinvalgc}, we obtain the required relations for the action $\alpha_{L\mathbb{S}_n}$.
@@ -6245,8 +6268,8 @@ are sent to that generator's inverse. Thus by \cref{freeinvalgc}, we obtain the 
 
 To put this in a more categorical perspective, suppose that we decide to call the following kinds of braiding isomorphisms `positive',
 \[ \begin{array}{rllcrll}
-			\beta_{z_i, z_j} & = & \alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, ), & \quad \quad \quad & \beta_{z_i^*, z_j}^{-1} & = & \alpha( \, b \, ; \, \mathrm{id}_{z_i^*}, \mathrm{id}_{z_j} \, )^{-1}, \\
-			\beta_{z_i, z_j^*}^{-1} & = & \alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j^*} \, )^{-1}, & \quad \quad \quad & \beta_{z_i^*, z_j^*} & = & \alpha( \, b \, ; \, \mathrm{id}_{z_i^*}, \mathrm{id}_{z_j^*} \, ) \\
+			\beta_{z_i, z_j} & = & \alpha( \, b \, ; \, \id_{z_i}, \id_{z_j} \, ), & \quad \quad \quad & \beta_{z_i^*, z_j}^{-1} & = & \alpha( \, b \, ; \, \id_{z_i^*}, \id_{z_j} \, )^{-1}, \\
+			\beta_{z_i, z_j^*}^{-1} & = & \alpha( \, b \, ; \, \id_{z_i}, \id_{z_j^*} \, )^{-1}, & \quad \quad \quad & \beta_{z_i^*, z_j^*} & = & \alpha( \, b \, ; \, \id_{z_i^*}, \id_{z_j^*} \, ) \\
 		\end{array}
 \]
 and likewise call their inverses `negative'. Then what \cref{invbraidact} is saying is that in the free braided monoidal category on $n$ invertible objects, parallel morphisms coincide only when the number of positive braidings minus the number of negative braidings they contain is the same.
@@ -6255,7 +6278,7 @@ Something else to notice about $L\mathbb{B}_n$ is that we've actually seen its u
 \[ (s \times t)(L_n)^{\mathrm{ab}} \quad = \quad (\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n})^{\mathrm{ab}} \quad = \quad \mathbb{Z}^n \times {\mathbb{Z}}^{{n}\choose{2}} \]
 This means that in the case of the braid operad, we have the unusual identity
 \[ (s \times t)(L\mathbb{B}_n)^{\mathrm{ab}} \quad \cong \quad L\mathbb{B}_n(I,I) \]
-What is the significance of this fact? It is not entirely clear, though certainly the isomorphism involved is highly nontrivial. For example the $\mathbb{Z}^n$ subgroup of $(s \times t)(L\mathbb{B}_n)^{\mathrm{ab}}$ has generators representing maps with source and target $z_i \to z_i$, $1 \le i \le n$, while the same generators of $\mathbb{Z}^n \subseteq L\mathbb{B}_n(I,I)$ represent the braidings $\beta_{z_i, z_i} = \alpha( b;\mathrm{id}_{z_i}, \mathrm{id}_{z_i})$. Of course, it is possible that this connection between the groups that make up $\mathrm{Mor}(L\mathbb{B}_n)$ could simply be a conincidence. It would help if we could compare $B$ to another action operad which shares this property --- either another crossed $G$ whose algebra has the same underlying category as the $L\mathbb{B}_n$, or an uncrossed $G$ whose algebra has $L_n(I,I) = (\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^{n}$ --- but none of these are currently known to the author.
+What is the significance of this fact? It is not entirely clear, though certainly the isomorphism involved is highly nontrivial. For example the $\mathbb{Z}^n$ subgroup of $(s \times t)(L\mathbb{B}_n)^{\mathrm{ab}}$ has generators representing maps with source and target $z_i \to z_i$, $1 \le i \le n$, while the same generators of $\mathbb{Z}^n \subseteq L\mathbb{B}_n(I,I)$ represent the braidings $\beta_{z_i, z_i} = \alpha( b;\id_{z_i}, \id_{z_i})$. Of course, it is possible that this connection between the groups that make up $\mathrm{Mor}(L\mathbb{B}_n)$ could simply be a conincidence. It would help if we could compare $B$ to another action operad which shares this property --- either another crossed $G$ whose algebra has the same underlying category as the $L\mathbb{B}_n$, or an uncrossed $G$ whose algebra has $L_n(I,I) = (\mathbb{Z}^{\ast n})^{\mathrm{ab}} = \mathbb{Z}^{n}$ --- but none of these are currently known to the author.
 
 \section{Free ribbon braided monoidal categories on invertible objects}
 
@@ -6266,9 +6289,9 @@ The last action operad whose invertible algebras we will calculate explicitly is
 Thus by \cref{freeinvalgc}, the underlying monoidal category of the free $\mathrm{E}RB$-algebra on $n$ invertible objects is
 \[ L\mathbb{RB}_n \quad = \quad \mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}  \, \times \, \mathrm{B}(\mathbb{Z}^{n} \times \mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}}) \]
 with componentwise tensor product. Moreover, the action of $L\mathbb{RB}_n$ is determined by its restriction to the subcategory $L\mathbb{B}_n \subseteq L\mathbb{RB}_n$, plus the values
-\[ \alpha( \, t \, ; \, \mathrm{id}_{z_i} \, ) \quad = \quad \big( \, z_i, \, z_i, \, (0,\ldots,0, 1, 0,\ldots,0) \, \big) \]
+\[ \alpha( \, t \, ; \, \id_{z_i} \, ) \quad = \quad \big( \, z_i, \, z_i, \, (0,\ldots,0, 1, 0,\ldots,0) \, \big) \]
 where the $1$ appears in the $i$th coordinate of the copy of $\mathbb{Z}^{n}$ which is not shared with $L\mathbb{B}_n$, and
-\[ \alpha( \, t \, ; \, \mathrm{id}_{z_i^*} \, ) \quad = \quad \alpha( \, t \, ; \, \mathrm{id}_{z_i} \, )^* \otimes \alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_i} \, )^{\otimes 2} \]
+\[ \alpha( \, t \, ; \, \id_{z_i^*} \, ) \quad = \quad \alpha( \, t \, ; \, \id_{z_i} \, )^* \otimes \alpha( \, b \, ; \, \id_{z_i}, \id_{z_i} \, )^{\otimes 2} \]
 \end{prop}
 \begin{proof}
 The ribbon braid operad has $RB_0 = \{e_0\}$ and is generated under $\otimes$ and $\cdot$ by the set $\mathcal{RB} = \{ e_1, b, t \}$. Thus our starting point will be the group
@@ -6308,14 +6331,14 @@ and therefore
 
 Finally, the same reasoning we have used previously tells us that we can recover the whole action of $L\mathbb{RB}_n$ from just the values
 \[ \begin{array}{ccccccc}
-			\alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j} \, ), & \quad \quad & \alpha( \, b \, ; \, \mathrm{id}_{z_i^*}, \mathrm{id}_{z_j} \, ) & \quad \quad & \alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_j^*} \, ), & \quad \quad & \alpha( \, b \, ; \, \mathrm{id}_{z_i^*}, \mathrm{id}_{z_j^*} \, ) \\
-			& & \alpha( \, t \, ; \, \mathrm{id}_{z_i} \, ) & \quad \quad & \alpha( \, t \, ; \, \mathrm{id}_{z_i^*} \, ) & &
+			\alpha( \, b \, ; \, \id_{z_i}, \id_{z_j} \, ), & \quad \quad & \alpha( \, b \, ; \, \id_{z_i^*}, \id_{z_j} \, ) & \quad \quad & \alpha( \, b \, ; \, \id_{z_i}, \id_{z_j^*} \, ), & \quad \quad & \alpha( \, b \, ; \, \id_{z_i^*}, \id_{z_j^*} \, ) \\
+			& & \alpha( \, t \, ; \, \id_{z_i} \, ) & \quad \quad & \alpha( \, t \, ; \, \id_{z_i^*} \, ) & &
 		\end{array}
 \]
 The process for working out the first four is no different than before, which means that $\alpha_{L\mathbb{RB}_n}$ acts on the braids in the exact same ways that $\alpha_{L\mathbb{B}_n}$ does. Furthermore, it is not hard to see that
-\[ \alpha( \, t \, ; \, \mathrm{id}_{z_i} \, ) \quad = \quad \big( \, z_i, \, z_i, \, (0,\ldots,0, 1, 0,\ldots,0) \, \big) \]
+\[ \alpha( \, t \, ; \, \id_{z_i} \, ) \quad = \quad \big( \, z_i, \, z_i, \, (0,\ldots,0, 1, 0,\ldots,0) \, \big) \]
 where the $1$ corresponds to the $(t ; z_i)$ generator of $\mathbb{Z}^{n} \times \mathbb{Z}^{n} \times \mathbb{Z}^{{n}\choose{2}}$, and also that the process of quotienting by $\Delta$ will translate to 
-\[ \alpha( \, t \, ; \, \mathrm{id}_{z_i^*} \, ) \quad = \quad \alpha( \, t \, ; \, \mathrm{id}_{z_i} \, )^* \otimes \alpha( \, b \, ; \, \mathrm{id}_{z_i}, \mathrm{id}_{z_i} \, )^{\otimes 2} \]
+\[ \alpha( \, t \, ; \, \id_{z_i^*} \, ) \quad = \quad \alpha( \, t \, ; \, \id_{z_i} \, )^* \otimes \alpha( \, b \, ; \, \id_{z_i}, \id_{z_i} \, )^{\otimes 2} \]
 as required.
 \end{proof}  
 
@@ -6327,10 +6350,10 @@ as required.
 At this stage, there is only one part of this $E\Lambda$-algebra that we have yet to find --- its action, $\alpha_{L_n}$. When our action operad $G$ is $G(1)$-generated, everything is so simple that there is really only one thing the action could be.
 
 \begin{lem} \label{G1act} Let $G$ be a $G(1)$-generated action operad, $g$ an element of $G(m)$ for some $m \in \mathbb{N}$, and $x_1, \ldots, x_m$ elements of $\mathbb{Z}^{\ast n}$. Then the action of $L_n$ is given by
-\[ \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m} \, ) \quad = \quad \mathrm{id}_{x_1 \otimes \ldots \otimes x_m} \]
+\[ \alpha_{L_n}( \, g \, ; \, \id_{x_1}, \ldots, \id_{x_m} \, ) \quad = \quad \id_{x_1 \otimes \ldots \otimes x_m} \]
 \end{lem}
 \begin{proof}
-In order for $\alpha_{L_n}$ to be a well-defined $E\Lambda$-action, the map $\alpha_{L_n}(g; \mathrm{id}_{x_1}, \ldots, \mathrm{id}_{x_m})$ needs to have source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes \ldots \otimes x_{\pi(g^{-1})(m)}$, where by non-crossedness of $G$ the latter is also $x_1 \otimes \ldots \otimes x_m$. But we know from \cref{trivendo} that all morphisms in this $L_n$ are identities, and hence we get the result.
+In order for $\alpha_{L_n}$ to be a well-defined $E\Lambda$-action, the map $\alpha_{L_n}(g; \id_{x_1}, \ldots, \id_{x_m})$ needs to have source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes \ldots \otimes x_{\pi(g^{-1})(m)}$, where by non-crossedness of $G$ the latter is also $x_1 \otimes \ldots \otimes x_m$. But we know from \cref{trivendo} that all morphisms in this $L_n$ are identities, and hence we get the result.
 \end{proof}
 
 For crossed $G$, things are more complicated. What we need to do is employ the trick that was previously mentioned in , where 
@@ -6354,7 +6377,7 @@ Then the action of $L_n$ is given by
 \[ \begin{array}{c}
 			\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), \ldots, (x_m, y_m, h_m) \, \big) \\
 			= \\
-			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, \ldots, \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
+			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \id_{q^{-1}(y_1)}, \ldots, \id_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
 		\end{array}
 \]
 Here $q^{-1} \colon  \mathrm{Ob}(L_n) \to \mathrm{Ob}(\ELnn)$ is the function 
@@ -6376,19 +6399,19 @@ with $\bigotimes_{i=1}^{|w|} d(w, i)$ the decomposition of $w$ given in \cref{de
 Firstly, by the rules governing $E\Lambda$-actions and \cref{tenscomp}, we know that
 \[ \begin{array}{rl} 
 			& \alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), \ldots, (x_m, y_m, h_m) \, \big) \\
-			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, \ldots, \mathrm{id}_{y_m} \, ) \circ \big( \, (x_1, y_1, h_1) \otimes \ldots \otimes (x_m, y_m, h_m) \, \big) \\
-			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, \ldots, \mathrm{id}_{y_m} \, ) \circ ( \, x_1 \otimes \ldots \otimes x_m, \, y_1 \otimes \ldots \otimes y_m, \, h_1 \otimes \ldots \otimes h_m \, ) \\
-			= & \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, \ldots, \mathrm{id}_{y_m} \, ) \otimes \mathrm{id}_{y_1 \otimes \ldots \otimes y_m}^* \otimes ( \, x_1 \otimes \ldots \otimes x_m, \, y_1 \otimes \ldots \otimes y_m, \, h_1 \otimes \ldots \otimes h_m \, ) \\
+			= & \alpha_{L_n}( \, g \, ; \, \id_{y_1}, \ldots, \id_{y_m} \, ) \circ \big( \, (x_1, y_1, h_1) \otimes \ldots \otimes (x_m, y_m, h_m) \, \big) \\
+			= & \alpha_{L_n}( \, g \, ; \, \id_{y_1}, \ldots, \id_{y_m} \, ) \circ ( \, x_1 \otimes \ldots \otimes x_m, \, y_1 \otimes \ldots \otimes y_m, \, h_1 \otimes \ldots \otimes h_m \, ) \\
+			= & \alpha_{L_n}( \, g \, ; \, \id_{y_1}, \ldots, \id_{y_m} \, ) \otimes \id_{y_1 \otimes \ldots \otimes y_m}^* \otimes ( \, x_1 \otimes \ldots \otimes x_m, \, y_1 \otimes \ldots \otimes y_m, \, h_1 \otimes \ldots \otimes h_m \, ) \\
 		\end{array}
 \]
-Since we already understand tensor products of objects and unit endomorphisms, we now only need to find the action morphisms on identities. Moreover, we know that the source and target of $\alpha_{L_n}(g; \mathrm{id}_{y_1}, \ldots, \mathrm{id}_{y_m})$ have to be $y_1 \otimes \ldots \otimes y_m$ and $y_{\pi(g^{-1})(1)} \otimes \ldots \otimes y_{\pi(g^{-1})(m)}$ respectively, so to see this morphism as an element of the monoid
+Since we already understand tensor products of objects and unit endomorphisms, we now only need to find the action morphisms on identities. Moreover, we know that the source and target of $\alpha_{L_n}(g; \id_{y_1}, \ldots, \id_{y_m})$ have to be $y_1 \otimes \ldots \otimes y_m$ and $y_{\pi(g^{-1})(1)} \otimes \ldots \otimes y_{\pi(g^{-1})(m)}$ respectively, so to see this morphism as an element of the monoid
 \[ \MorLn \quad \cong \quad (s \times t)(L_n) \times L_n(I,I) \]
 all that is left to understand is its projection onto the unit endomorphisms.
 
 Now, recall that $q \colon  \ELnn \to L_n$ is a surjective map of $E\Lambda$-algebras, so that for any $f_i \in \mathrm{Mor}(L\mathbb{G}_{n})$ there exist $f'_i \in \mathrm{Mor}(\ELnn)$ with $q(f'_i) = f_i$, and hence
 \[ q\big( \, \alpha_{\ELnn}( \, g \, ; \, f'_1, \ldots, f'_m \, ) \, \big) \quad = \quad \alpha_{L_n}( \, g \, ; \, f_1, \ldots, f_m \, ) \]
-In particular, for the identities $\mathrm{id}_{y_i} \in \mathrm{Mor}(L\mathbb{G}_{n})$ we can choose $\mathrm{id}_{q^{-1}(y_i)} \in \mathrm{Mor}(\ELnn)$, as by design $q(\mathrm{id}_{q^{-1}(y_i)}) = \mathrm{id}_{qq^{-1}(y_i)} = \mathrm{id}_{y_i}$. This means that if we denote by $p_I \colon  \mathrm{Mor}(L\mathbb{G}_{n}) \to L\mathbb{G}_{n}(I,I)$ the projection onto unit endomorphisms, we will have
-\[ p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, \ldots, \mathrm{id}_{y_m} \, ) \, \big) \quad = \quad  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, \ldots, \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \]
+In particular, for the identities $\id_{y_i} \in \mathrm{Mor}(L\mathbb{G}_{n})$ we can choose $\id_{q^{-1}(y_i)} \in \mathrm{Mor}(\ELnn)$, as by design $q(\id_{q^{-1}(y_i)}) = \id_{qq^{-1}(y_i)} = \id_{y_i}$. This means that if we denote by $p_I \colon  \mathrm{Mor}(L\mathbb{G}_{n}) \to L\mathbb{G}_{n}(I,I)$ the projection onto unit endomorphisms, we will have
+\[ p_I \big( \, \alpha_{L_n}( \, g \, ; \, \id_{y_1}, \ldots, \id_{y_m} \, ) \, \big) \quad = \quad  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \id_{q^{-1}(y_1)}, \ldots, \id_{q^{-1}(y_m)} \, ) \, \big) \]
 But $p_I \circ q$ is a map that can be described in a different way. Consider the commutative diagram
 \[ \begin{tikzcd}
 \mathrm{Mor}(\ELnn) \ar[rr, "q"] \ar[dd] & & \MorLn \ar[d, "\mathrm{ab}"] \ar[rr, "p_I"] & &  L\mathbb{G}_{n}(I,I) \ar[d, equals] \\
@@ -6422,19 +6445,19 @@ Here we've used that fact that the equivalence class of a unit endomorphism unde
 
 Thus all of the regions within the diagram commute, and hence so will the outside. That is, $p_I \circ q$ is equal to the composite along the left and bottom edges, which is $\Psi$. This means that the projection onto $L_n(I,I)$ of our action on identities is
 \[ \begin{array}{rll}
-			p_I \big( \, \alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, \ldots, \mathrm{id}_{y_m} \, ) \, \big) & = &  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, \ldots, \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \\
-			& = & \Psi \big( \, \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, \ldots, \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big)
+			p_I \big( \, \alpha_{L_n}( \, g \, ; \, \id_{y_1}, \ldots, \id_{y_m} \, ) \, \big) & = &  p_I q\big( \, \alpha_{\ELnn}( \, g \, ; \, \id_{q^{-1}(y_1)}, \ldots, \id_{q^{-1}(y_m)} \, ) \, \big) \\
+			& = & \Psi \big( \, \alpha_{\ELnn}( \, g \, ; \, \id_{q^{-1}(y_1)}, \ldots, \id_{q^{-1}(y_m)} \, ) \, \big)
 		\end{array}
 \]
 and therefore the action of $L_n$ is given by
 \[ \begin{array}{c}
 			\alpha_{L_n}\big( \, g \, ; \, (x_1, y_1, h_1), \ldots, (x_m, y_m, h_m) \, \big) \\
 			= \\
-			\alpha_{L_n}( \, g \, ; \, \mathrm{id}_{y_1}, \ldots, \mathrm{id}_{y_m} \, ) \circ \, \bigotimes_i (x_i, y_i, h_i) \\
+			\alpha_{L_n}( \, g \, ; \, \id_{y_1}, \ldots, \id_{y_m} \, ) \circ \, \bigotimes_i (x_i, y_i, h_i) \\
 			= \\
-			\big( \, \bigotimes_i y_i, \, \bigotimes_i y_{\pi(g^{-1})(i)}, \, \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, \ldots, \mathrm{id}_{q^{-1}(y_m)} \, ) \, \big) \otimes \, \mathrm{id}_{\otimes_i y_i}^* \otimes ( \, \bigotimes_i x_i, \, \bigotimes_i y_i, \, \bigotimes_i h_i \, ) \\
+			\big( \, \bigotimes_i y_i, \, \bigotimes_i y_{\pi(g^{-1})(i)}, \, \Psi \alpha_{\ELnn}( \, g \, ; \, \id_{q^{-1}(y_1)}, \ldots, \id_{q^{-1}(y_m)} \, ) \, \big) \otimes \, \id_{\otimes_i y_i}^* \otimes ( \, \bigotimes_i x_i, \, \bigotimes_i y_i, \, \bigotimes_i h_i \, ) \\
 			= \\
-			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \mathrm{id}_{q^{-1}(y_1)}, \ldots, \mathrm{id}_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
+			\big( \, \, \bigotimes_i x_i, \quad \bigotimes_i y_{\pi(g^{-1})(i)}, \quad \Psi \alpha_{\ELnn}( \, g \, ; \, \id_{q^{-1}(y_1)}, \ldots, \id_{q^{-1}(y_m)} \, \, ) \, \otimes \, (\bigotimes_i h_i) \, \big) 
 		\end{array}
 \]
 as required.
