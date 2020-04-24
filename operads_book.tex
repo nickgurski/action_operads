@@ -612,7 +612,7 @@ The map $\pi \colon \ML \to \mb{\Sigma}$ is a map of action operads.
 
 
 \begin{prop}\label{Z}
-There is a functor $Z \colon  \mb{Op}(\mb{Grp}) \to \mb{AOp}$\nomenclature[C]{$\mb{Op}(\mb{Grp})$}{of operads in groups and maps of operads in groups} from the category of operads in groups (using the cartesian monoidal structure) to the category of action operads.  This functor is full, faithful, and its image is precisely the collection of action operads $\ML$ with $\pi_{n}(g) = e_{n}$ for all $n, g \in \Lambda(n)$.
+There is a functor $Z \colon  \mb{Op}(\mb{Grp}) \to \mb{AOp}$\nomenclature[C]{$\mb{Op}(\mb{Grp})$}{of operads in groups and maps of operads in groups} from the category of operads in groups (using the cartesian monoidal structure) to the category of action operads.  This functor is full, faithful, and its image is precisely the collection of action operads $\ML$ with $\pi_{n}(g) = e_{n}$ for all $n \in \mathbb{N}$, $g \in \Lambda(n)$.
 \end{prop}
 \begin{proof}
 Given an operad in groups $P$, $Z(P)$ is the action operad with the same underlying operad and each $\pi_{n}$ the zero map.  It is easy to verify that $\mu$ is a group homomorphism if and only if $\pi_{n}$ is zero for all $n$, and further that maps between such action operads are precisely the same thing as maps between the corresponding operads in the category of groups.
@@ -635,7 +635,56 @@ For $\textrm{Ker}\,\pi \hookrightarrow \Lambda$ to be a map of action operads, w
 The homomorphisms $\pi_n \colon \Lambda_n \to \Sigma_n$ are either all surjective or all the zero map.
 \end{prop}
 \begin{proof}
-Put in direct proof
+We will prove each case separately. The two cases coincide for $n = 0$ and $n = 1$ as $\pi_0$ and $\pi_1$ are both the zero map and since $\Sigma_0$ and $\Sigma_1$ are the trivial group then these maps are also surjective.
+
+Any homomorphism $G \rightarrow \Sigma_2$ must necessarily be surjective or the zero map. To begin we will show that if $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is surjective then, by induction, the rest of the maps $\pi_n$ are also surjective. If $\pi_2$ is surjective then there exists an element $g_{1,1} \in \Lambda(2)$ such that $\pi_2(g_{1,1}) = (1 \,\,\, 2)$. Now assume that for some $j \geq 2$ that $\pi_j$ is surjective. In particular, this means that for each transposition $(a \,\,\, a + k) \in \Sigma_j$, where $1 \leq a \leq j-1$ and $a + k \leq j$, there exists $g_{a,k} \in \Lambda(j)$ such that $\pi_j(g_{a,k}) = (a \,\,\, a + k)$. We will use these assumptions to show that each transposition in $\Sigma_{j+1}$ can be written as the image under $\pi_{j+1}$ of some element in $\Lambda(j+1)$, hence any permutation in $\Sigma_{j+1}$ can similarly be written.
+
+
+Let $(a \,\,\, a +k) \in \Sigma_j$, where $1 \leq a \leq j$ and $a + k \leq j+1$. If $a + k \leq j$, then $(a \,\,\, a + k) = (a \,\,\, a + k)(j + 1)$. This transposition can be written as
+  \begin{align*}
+    (a \,\,\, a + k) &= \mu^{\Sigma}(e_2 ; (a \,\,\, a + k), e_1) \\
+              &= \mu^{\Sigma}(\pi_2(e_2); \pi_j(g_{a,k}), \pi_1(e_1)) \\
+              &= \pi_{j+1}\left(\mu^{\Lambda}(e_2; g_{a,k},e_1)\right).
+  \end{align*}
+Similarly, if $a > 1$ then this transposition can be written as
+  \begin{align*}
+    (a \,\,\, a + k) &= \mu^{\Sigma}(e_2 ; e_1, (a-1 \,\,\, a + k-1)) \\
+              &= \mu^{\Sigma}(\pi_2(e_2); \pi_1(e_1), \pi_j(g_{a-1,k})) \\
+              &= \pi_{j+1}\left(\mu^{\Lambda}(e_2; e_1, g_{a-1,k})\right).
+  \end{align*}
+Finally, if $a = j$ and $k = 1$, then $(a \,\,\, a + k) = (j \,\,\, j + 1)$. This can be written as
+  \begin{align*}
+    (j \,\,\, j + 1) &= \mu^{\Sigma}(e_2 ; e_{j-1}, (1 \,\,\, 2)) \\
+              &= \mu^{\Sigma}(\pi_2(e_2); \pi_{j-1}(e_{j-1}), \pi_2(g_{1,1})) \\
+              &= \pi_{j+1}\left(\mu^{\Lambda}(e_2; e_{j-1}, g_{1,1})\right).
+  \end{align*}
+Hence $\pi_{j+1}$ is surjective and so all $\pi_n$ are surjective.
+
+Now instead suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is the zero map. Assume that $\pi_j \colon \Lambda(j) \rightarrow \Sigma_j$ is the zero map for some $j \geq 2$. Now suppose that $\sigma \in \textrm{Im}\pi_{j+1}$, so there exists $g \in \Lambda(j+1)$ such that $\pi_{j+1}(g) = \sigma$. Now consider the elements $\mu^\Sigma(\sigma; \underline{e_1}, e_o, \underline{e_1})$ where $\underline{e_1}$ means a sequence of $e_1$'s and with $e_0$ in the $k$th position. Now
+  \begin{align*}
+    \mu^\Sigma(\sigma; \underline{e_1}, e_o, \underline{e_1}) &= \mu^\Sigma(\pi_{j+1}(g); \underline{\pi_1(e_1)}, \pi_0(e_0), \underline{\pi_1(e_1)}) \\
+    &= \pi_j(\mu^\Lambda(g; \underline{e_1}, e_0, \underline{e_1})) \\
+    &= e_j.
+  \end{align*}
+We can think of this permutation as being $\sigma$ with the $k$th string removed. Now each of these is the identity $e_j$, as shown above. This means that $\sigma$ must either have been the identity $e_{j+1}$ or a transposition of the form $(a \,\,\, a + 1)$, where $1 \leq a \leq j + 1$.
+
+If $\sigma$ is the identity $e_{j+1}$, then we are done since this would give $\textrm{Im}\pi_{j+1} = \{e_{j+1}\}$. Instead suppose that $\sigma = (a \,\,\, a + 1) \in \Sigma_{j + 1}$. Then if $1 < a \leq j$ we can use this to give
+  \begin{align*}
+    (a -1 \,\,\, a) &= \mu^\Sigma((a \,\,\, a + 1); e_0, \underline{e_1}) \\
+    &= \mu^\Sigma(\pi_{j+1}(g);\pi_0(e_0), \underline{\pi_1(e_1)}) \\
+    &= \pi_j(\mu^\Lambda(g; e_0, \underline{e_1})) \\
+    &= e_j.
+  \end{align*}
+This gives a contradiction, hence $\sigma \neq (a \,\,\, a + 1)$ and must be the identity $e_{j+1}$.
+
+Similarly, if $\sigma = (1 \,\,\, 2) \in \Sigma_{j+1}$, then in $\Sigma_j$ we find that
+  \begin{align*}
+    (1 \,\,\, 2) &= \mu^\Sigma((1 \,\,\, 2) ; \underline{e_1}, e_0) \\
+    &= \mu^\Sigma(\pi_{j+1}(g); \underline{\pi_1(e_1)}, \pi_0(e_0)) \\
+    &= \pi_j(\mu^\Lambda(g ; \underline{e_1}, e_0)) \\
+    &= e_j.
+  \end{align*}
+Again, a contradiction, hence $\sigma = e_{j+1}$.
 \end{proof}
 
 \begin{cor}\label{extension}
@@ -3567,10 +3616,10 @@ In a real-world version of these diagrams, made out of physical strings arranged
 
 \begin{lem}\label{spacial} If $\ML$ is a crossed action operad, then all $E\Lambda$-algebras are spacial.\end{lem}
 \begin{proof}
-Let $\ML$ be a crossed action operad, let $X$ be a $E\Lambda$-algebra, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \to I \). From \cref{surjortriv} we know that \( \pi \colon G(2) \to S_2 \) is surjective, so that the set $\pi^{-1}(  (1 \, 2)  )$ is non-empty, and from the rules for composition of action morphisms we see that for any such $g \in \pi^{-1}(  (1 \, 2)  )$,
+Let $\ML$ be a crossed action operad, let $X$ be a $\ML$-monoidal category, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \to I \). From \cref{surjortriv} we know that \( \pi \colon \Lambda(2) \to S_2 \) is surjective, so that the set $\pi^{-1}(  (1 \, 2)  )$ is non-empty, and from the rules for composition of action morphisms we see that for any such $g \in \pi^{-1}(  (1 \, 2)  )$,
   \begin{align*}
-    \alpha(  g  ;  \id_x,  \id_I  )\alpha(  e_2  ;  \id_x,  f  ) &= \alpha(ge_2 ; \id_x \id_x, \id_I f)\\
-    &= \alpha(  g  ;  \id_x, f) \\
+    \alpha(g  ;  \id_x,  \id_I  )\alpha(  e_2  ;  \id_x,  f  ) &= \alpha(ge_2 ; \id_x \id_x, \id_I f)\\
+    &= \alpha(g  ;  \id_x, f) \\
     &= \alpha(e_2 g; \id_x \id_x, f \id_I) \\
     &= \alpha(e_2; f, \id_x )\alpha(g; \id_x, \id_I). \\
   \end{align*}
