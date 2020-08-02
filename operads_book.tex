@@ -640,7 +640,7 @@ We will prove each case separately. The two cases coincide for $n = 0$ and $n = 
 Any homomorphism $G \rightarrow \Sigma_2$ must necessarily be surjective or the zero map. To begin we will show that if $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is surjective then, by induction, the rest of the maps $\pi_n$ are also surjective. If $\pi_2$ is surjective then there exists an element $g_{1,1} \in \Lambda(2)$ such that $\pi_2(g_{1,1}) = (1 \,\,\, 2)$. Now assume that for some $j \geq 2$ that $\pi_j$ is surjective. In particular, this means that for each transposition $(a \,\,\, a + k) \in \Sigma_j$, where $1 \leq a \leq j-1$ and $a + k \leq j$, there exists $g_{a,k} \in \Lambda(j)$ such that $\pi_j(g_{a,k}) = (a \,\,\, a + k)$. We will use these assumptions to show that each transposition in $\Sigma_{j+1}$ can be written as the image under $\pi_{j+1}$ of some element in $\Lambda(j+1)$, hence any permutation in $\Sigma_{j+1}$ can similarly be written.
 
 
-Let $(a \,\,\, a +k) \in \Sigma_j$, where $1 \leq a \leq j$ and $a + k \leq j+1$. If $a + k \leq j$, then $(a \,\,\, a + k) = (a \,\,\, a + k)(j + 1)$. This transposition can be written as
+Let $(a \,\,\, a +k) \in \Sigma_j$, where $1 \leq a \leq j$ and $a + k \leq j+1$. If $a + k \leq j$, then $(a \,\,\, a + k) = (a \,\,\, a + k)(j + 1) \in \Sigma_{j+1}$. This transposition can be written as
   \begin{align*}
     (a \,\,\, a + k) &= \mu^{\Sigma}(e_2 ; (a \,\,\, a + k), e_1) \\
               &= \mu^{\Sigma}(\pi_2(e_2); \pi_j(g_{a,k}), \pi_1(e_1)) \\
@@ -660,13 +660,13 @@ Finally, if $a = j$ and $k = 1$, then $(a \,\,\, a + k) = (j \,\,\, j + 1)$. Thi
   \end{align*}
 Hence $\pi_{j+1}$ is surjective and so all $\pi_n$ are surjective.
 
-Now instead suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is the zero map. Assume that $\pi_j \colon \Lambda(j) \rightarrow \Sigma_j$ is the zero map for some $j \geq 2$. Now suppose that $\sigma \in \textrm{Im}\pi_{j+1}$, so there exists $g \in \Lambda(j+1)$ such that $\pi_{j+1}(g) = \sigma$. Now consider the elements $\mu^\Sigma(\sigma; \underline{e_1}, e_o, \underline{e_1})$ where $\underline{e_1}$ means a sequence of $e_1$'s and with $e_0$ in the $k$th position. Now
+Now instead suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is the zero map. Assume that $\pi_j \colon \Lambda(j) \rightarrow \Sigma_j$ is the zero map for some $j \geq 2$. Letting $\sigma \in \textrm{Im}\pi_{j+1}$, there exists $g \in \Lambda(j+1)$ such that $\pi_{j+1}(g) = \sigma$. We can then consider the elements $\mu^\Sigma(\sigma; \underline{e_1}, e_o, \underline{e_1})$ where $\underline{e_1}$ means a sequence of $e_1$'s and with $e_0$ in the $k$th position, with $1 \leq k \leq j + 1$. Now
   \begin{align*}
     \mu^\Sigma(\sigma; \underline{e_1}, e_o, \underline{e_1}) &= \mu^\Sigma(\pi_{j+1}(g); \underline{\pi_1(e_1)}, \pi_0(e_0), \underline{\pi_1(e_1)}) \\
     &= \pi_j(\mu^\Lambda(g; \underline{e_1}, e_0, \underline{e_1})) \\
     &= e_j.
   \end{align*}
-We can think of this permutation as being $\sigma$ with the $k$th string removed. Now each of these is the identity $e_j$, as shown above. This means that $\sigma$ must either have been the identity $e_{j+1}$ or a transposition of the form $(a \,\,\, a + 1)$, where $1 \leq a \leq j + 1$.
+We can think of this permutation as being $\sigma$ with the $k$th string removed. Now each of these is the identity $e_j$, as shown above. This means that $\sigma$ must either have been the identity $e_{j+1}$ or a transposition of the form $(a \,\,\, a + 1)$, where $1 \leq a \leq j$.
 
 If $\sigma$ is the identity $e_{j+1}$, then we are done since this would give $\textrm{Im}\pi_{j+1} = \{e_{j+1}\}$. Instead suppose that $\sigma = (a \,\,\, a + 1) \in \Sigma_{j + 1}$. Then if $1 < a \leq j$ we can use this to give
   \begin{align*}
@@ -714,7 +714,19 @@ g, h \in \Lambda(0) \mapsto \mu(e_2; g, h)
 arising from the operad structure.
 \end{lem}
 \begin{proof}
+QQQ Assume that we've shown that $gh = \mu(e_2;g,h)$.
 
+Then
+  \begin{align*}
+    \mu(e_2;g,h) &= \mu(e_2 \cdot e_2;e_0 \cdot g, h \cdot e_0) \\
+    &= \mu(e_2;e_0, h) \cdot \mu(e_2;g, e_0)
+  \end{align*}
+and
+  \begin{align*}
+    \mu(e_2;g,h) &= \mu(e_2 \cdot e_2; g \cdot e_0, e_0 \cdot h) \\
+    &= \mu(e_2;g,e_0) \cdot \mu(e_2;e_0,h).
+  \end{align*}
+Hence the operation is commutative and so $\Lambda(0)$ is abelian.
 \end{proof}
 
 \begin{lem}\label{calclem}
@@ -1294,9 +1306,9 @@ by the universal property of the colimits involved, so as functors $\underline{P
 \end{enumerate}
 \end{rem}
 
-We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. 
+We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. We will use the following standard definitions, as per \cite{street-formal}.
 
-\begin{Defi}
+\begin{Defi}\label{defi:monad_map}
 Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map}\index{monad!maps} of from $S$ to $T$ is a functor $F \colon C \to D$ together with a natural transformation $\alpha \colon TF \Rightarrow FS$ such that the following diagrams commute.
 
  \[
@@ -1375,29 +1387,98 @@ The first diagram commutes since the left hand side is the second diagram requir
 A morphism $f \colon  (X, \sigma_X) \rightarrow (Y, \sigma_Y)$ of $S$-algebras is sent to the morphism $Ff \colon  (FX, F\sigma_X \cdot \alpha_X) \rightarrow (FY, F\sigma_Y \cdot \alpha_Y$), this being a map of $T$-algebras following from the naturality of $\alpha$ and of $f$ being an $S$-algebra map. Functoriality follows from that of $F$.
 
 % Moved Definition \ref{cocom_symm_mon_cat} from here.
-
+The following three results tie in with material in the coming chapters but are of a general nature which fits the nature of this section.
 \begin{prop}\label{monoidal_to_monadmap}
-Let $C,D$ be cocomplete symmetric monoidal categories.  Let $\ML$ be an action operad, and $P$ be a $\ML$-operad in $C$. Let $F \colon C \to D$ be a lax symmetric monoidal functor. Then $FP$ is a $\ML$-operad in $D$, and the pair $(F, \id)$ is a monad map $(C,P) \to (D, FP)$.  
+Let $C,D$ be cocomplete symmetric monoidal categories.  Let $\ML$ be an action operad, and $P$ be a $\ML$-operad in $C$. Let $F \colon C \to D$ be a symmetric lax monoidal functor. Then $FP$ is a $\ML$-operad in $D$, and there is a monad map $(F,\psi) \colon (C,\underline{P}) \to (D, \underline{FP})$.
 \end{prop}
+\begin{proof}
+Theorem \ref{preserveGop} describes how the functor $F$ can be used to describe a functor
+  \[
+    \mb{\Lambda}\mbox{-}Op(C) \rightarrow \mb{\Lambda}\mbox{-}Op(),
+  \]
+from which we see that $FP$ is a $\ML$-operad in $D$.
 
-
+Now the functor $F$ constitutes the $1$-cell of the monad map, while $\psi$ is required to be a natural transformation as below.
+  \[
+    \xy
+      (0,0)*+{C}="a";
+      (20,0)*+{D}="b";
+      (0,-20)*+{C}="c";
+      (20,-20)*+{D}="d";
+      %
+      {\ar^{F} "a" ; "b"};
+      {\ar^{\underline{FP}} "b" ; "d"};
+      {\ar_{\underline{P}} "a" ; "c"};
+      {\ar_{F} "c" ; "d"};
+      %
+      {\ar@{=>}^{\psi} (12.5, -7.5) ; (7.5,-12.5)};
+    \endxy
+  \]
+We describe the components of this natural transformation at an object $X$ of $C$ below.
+  \begin{align*}
+    \underline{FP}(FX) &= \coprod_{n \in \mathbb{N}} FP(n) \otimes_{\Lambda(n)} (FX)^n \\
+    &\rightarrow \coprod_{n \in \mathbb{N}} F\left(P(n) \otimes_{\Lambda(n)} X^n\right)\\
+    &\rightarrow F\left(\coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n\right)\\
+    &=F(\underline{P}(X))
+  \end{align*}
+The first morphism is a composite of the coherence cells of the type
+  \[
+    FX \otimes FY \rightarrow F(X \otimes Y)
+  \]
+for the symmetric lax monoidal functor $F$, while the second morphism is the induced morphism out of the coproduct. Naturality follows from that of the component morphisms. It is then straightforward to see that the monad morphism diagrams commute since diagrams involved consist of instances of the coherence axioms for $F$ along with naturality of the coherence cells.
+\end{proof}
 
 \begin{prop}\label{opmap_to_monadmap}
-Let $C$ be a cocomplete symmetric monoidal category. Let $\ML$ be an action operad, and $P,Q$ be  $\ML$-operads in $C$ with a map $\sigma \colon P \to Q$ of $\ML$-operads between them. Then $\sigma$ induces a monad map $(\id, \sigma^*) \colon (C,Q) \to (C,P)$ and hence a functor on categories of algebras.
+Let $C$ be a cocomplete symmetric monoidal category. Let $\ML$ be an action operad, and $P,Q$ be  $\ML$-operads in $C$ with a map $\sigma \colon P \to Q$ of $\ML$-operads between them. Then $\sigma$ induces a monad map $(\id, \sigma^*) \colon (C,\underline{Q}) \to (C,\underline{P})$ and hence a functor on categories of algebras.
 \end{prop}
+\begin{proof}
+We will first describe the components of the natural transformation $\sigma^* \colon \underline{P} \Rightarrow \underline{Q}$. The component $\sigma^*_X$ at an object $X$ of $C$ is a morphism between the coproducts
+  \[
+    \sigma^*_X \colon \coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n \rightarrow \coprod_{n \in \mathbb{N}} Q(n) \otimes_{\Lambda(n)} X^n.
+  \]
+This is seen to be induced by the universal properties of the coequalizers and coproducts in the following diagram, where $\sigma_n$ denotes the $n$-ary component of the $\ML$-operad map $\sigma$ and $\lambda^P$, $\lambda^Q$, $\rho^P$, and $\rho^Q$ denote the usual left and right actions.
 
+The upper square which includes $\lambda^P$ and $\lambda^Q$ commutes due to $\sigma$ being a $\ML$-operad map, while the square with both $\rho$ actions commutes because the $\sigma_n$ and $\rho$ do not interact. Since $c^Q_n$ coequalizes $\lambda^Q$ and $\rho^Q$, then this commutativity shows that $c^Q_n \cdot (\sigma_n \otimes id) \cdot \lambda^P = c^Q_n \cdot (\sigma_n \otimes id) \cdot \rho^P$, hence the morphism $\sigma^*_{n,X}$ exists. The morphism $\sigma^*_X$ is then induced by the universal property of the coproduct $\underline{P}(X)$.
+  \[
+    \xy
+      (0,0)*+{P(n) \otimes \Lambda(n) \otimes X^n}="a";
+      (50,0)*+{Q(n) \otimes \Lambda(n) \otimes X^n}="b";
+      (0,-20)*+{P(n) \otimes X^n}="c";
+      (50,-20)*+{Q(n) \otimes X^n}="d";
+      (0,-40)*+{P(n) \otimes_{\Lambda(n)} X^n}="e";
+      (50,-40)*+{Q(n) \otimes_{\Lambda(n)} X^n}="f";
+      (0,-60)*+{\coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n}="g";
+      (50,-60)*+{\coprod_{n \in \mathbb{N}} Q(n) \otimes_{\Lambda(n)} X^n}="h";
+      %
+      {\ar^{\rho^P} (2,-3)*{}; (2,-17)*{} };
+      {\ar_{\lambda^P} (-2,-3)*{}; (-2,-17)*{} };
+      {\ar^{\rho^Q} (52,-3)*{}; (52,-17)*{} };
+      {\ar_{\lambda^Q} (48,-3)*{}; (48,-17)*{} };
+      {\ar_{c^P_n} "c" ; "e"};
+      {\ar^{c^Q_n} "d" ; "f"};
+      {\ar "e" ; "g"};
+      {\ar "f" ; "h"};
+      %
+      {\ar^{\sigma_n \otimes id \otimes id} "a" ; "b"};
+      {\ar^{{\sigma_n} \otimes id} "c" ; "d"};
+      {\ar_{\exists! \sigma^*_{n,X}} "e" ; "f"};
+      {\ar^{\exists! \sigma^*_X} "g" ; "h"};      
+    \endxy
+  \]
+It is then routine to check that these components are natural in $X$ and constitute a monad map. That a functor is then induced on the category of algebras follows from Lemma 6.1.1 of \cite{leinster}; the process is described above, following Definition \ref{defi:monad_map}.
+\end{proof}
 We can combine these two propositions.
 
 \begin{cor}\label{monoidaladj_cor}
-If $C, D, P, F$ are as in \cref{monoidal_to_monadmap}, and $F$ is part of a monoidal adjunction (i.e., an adjunction in which both functors are lax symmetric monoidal, and the unit and counit are monoidal transformations) $F \dashv U$, then $(F, \id)$ and $(U, \id)$ are both monad maps. The unit $\eta \colon 1 \Rightarrow UF$ induces an operad map $\eta \colon P \Rightarrow UFP$, and a transformation between monad maps
+If $C, D, P, F$ are as in \cref{monoidal_to_monadmap}, and $F$ is part of a monoidal adjunction (i.e., an adjunction in which both functors are symmetric lax monoidal, and the unit and counit are monoidal transformations) $F \dashv U$, then $(F, \id)$ and $(U, \id)$ are both monad maps. The unit $\eta \colon 1 \Rightarrow UF$ induces an operad map $\eta \colon P \Rightarrow UFP$, and a transformation between monad maps
 \[
-(\id, \id) \Rightarrow (\id, \eta^*) \circ (U, \id) \circ (F, \id).
+(\id, \id) \Rightarrow (\id, \eta^*) \circ (U, \psi^U) \circ \left(F, \psi^F\right).
 \]
 The counit $\epz \colon FU \Rightarrow 1$ induces an operad map $\epz \colon FUFP \Rightarrow FP$, and a transformation between monad maps
 \[
- (F, \id) \circ (\id, \eta^*) \circ (U,\id) \Rightarrow (\id, \id).
+ \left(F, \psi^F\right) \circ (\id, \eta^*) \circ \left(U,\psi^U\right) \Rightarrow (\id, \id).
 \]
-These constitute an adjunction $(F,\id) \dashv (\id, \eta^*) \circ (U, \id)$ in the 2-category of monads, and hence induce an adjunction between $P$-algebras in $C$ and $FP$-algebras in $D$.
+These constitute an adjunction $\left(F,\psi^F\right) \dashv (\id, \eta^*) \circ \left(U, \psi^U\right)$ in the 2-category of monads, and hence induce an adjunction between $\underline{P}$-algebras in $C$ and $\underline{FP}$-algebras in $D$.
 \end{cor}
 
 \section{Operads as monoids}\label{sec:opasmon}
@@ -1622,7 +1703,7 @@ Compatibility with the actions of the  $\Lambda(n), \Lambda(k_{1}), \ldots, \Lam
 \end{proof}
 
 \begin{rem}
-The above result can be interpreted for $\ML$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which tensor distributes over colimits in each variable.  In order to do so, the following changes must be made.  First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects.  Second, any product with a hom-set from $\mathbb{\Lambda}$ must be replaced by a copower\index{colimit!copower} with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$\nomenclature[N]{$S \odot X$}{copower of set $S$ with an object $X$}).  The same changes also allow one to interpret the results in the following chapter about algebras in such a category, unless noted otherwise.
+The above result can be interpreted for $\ML$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which the tensor product distributes over colimits in each variable. In order to do so, the following changes must be made.  First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects.  Second, any product with a hom-set from $\mathbb{\Lambda}$ must be replaced by a copower\index{colimit!copower} with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$\nomenclature[N]{$S \odot X$}{copower of set $S$ with an object $X$}).  The same changes also allow one to interpret the results in the following chapter about algebras in such a category, unless noted otherwise.
 \end{rem}
 
 
@@ -1903,7 +1984,7 @@ Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudo
 \end{Defi}
 
 \begin{rem}
-A strict algebra for a $\ML$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an QQQ (operad \textit{in} or monad \textit{on}?) operad on the \textit{category} of small categories and functors.  A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense.  We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
+A strict algebra for a $\ML$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an operad in the \textit{category} of small categories and functors. A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense. We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
 \end{rem}
 
 \begin{Defi}
@@ -2346,7 +2427,7 @@ We begin by showing each associated $2$-monad is finitary.
 Let $P$ be a $\ML$-operad. Then $\underline{P}$ is finitary.\index{$2$-monad!finitary}
 \end{prop}
 \begin{proof}
-To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits \ref{def:filtered} or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
+To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
     \begin{align*}
         \underline{P}(\text{colim}X_{i}) &= \coprod_n P(n) \times_{\Lambda(n)} (\text{colim}X_{i})^n \\
                                                                &\cong \coprod_n P(n) \times_{\Lambda(n)} \text{colim}(X_{i}^n) \\
@@ -2739,7 +2820,7 @@ The classical Borel construction\index{Borel} is a functor from $G$-spaces to sp
 \begin{Defi}
 A functor $F \colon X \to Y$ is an \emph{isofibration}\index{isofibration} if given $x \in X$ and an isomorphism $f\colon y \xrightarrow{\cong} F(x)$ in $Y$, then there is an isomorphism $g$ in $X$ such that $F(g) = f$.
 \end{Defi}
-QQQ Following functors don't typecheck. Needs rewording
+
 \begin{prop}
 There is a natural transformation $p \colon EU \Rightarrow B$, where $U$ is the underlying set of a group, which is pointwise an isofibration.  Applying the classifying space functor to the component $p_{G}$ gives a universal principal $G$-bundle.
 \end{prop}
@@ -2763,7 +2844,7 @@ The following lemma is a straightforward verification.
 The functor $E \colon \mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the set of objects functor.  Therefore $E$ preserves all limits, and in particular is a symmetric monoidal functor when both categories are equipped with their cartesian monoidal structures.
 \end{lem}
 
-We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which tensoring with a fixed object preserves colimits).  While the definition above gives the correct notion of a $\mb{\Lambda}$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms.  In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category.  This follows the standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower.  Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
+We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable).  While the definition above gives the correct notion of a $\mb{\Lambda}$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms.  In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category.  This follows the standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower.  Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
 
 \[
 \xy
@@ -2813,9 +2894,12 @@ where composition is given by group multiplication and the identity morphism is 
 \end{Defi}
 
 \begin{Defi}\label{cocom_symm_mon_cat}
-A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
+A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete.
+% and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
 
-QQQ Is this what we mean by a cocomplete symmetric monoidal category? The statement of the following theorem then requires that the tensor product preserves colimits in each variable but the definition already includes this. QQQ
+% QQQ Is this what we mean by a cocomplete symmetric monoidal category? The statement of the following theorem then requires that the tensor product preserves colimits in each variable but the definition already includes this. QQQ
+
+QQQ Definition already used in Section 2. Needs moving.
 \end{Defi}\index{category!cocomplete symmetric monoidal}\index{monoidal category!cocomplete symmetric}
 
 \begin{thm}\label{preserveGop}
@@ -2881,19 +2965,17 @@ Both isomorphisms in the composite above are induced by universal properties (se
 Checking the lax monoidal functor axioms is tedious but entirely routine using the lax monoidal functor axioms for $F$ together with various universal properties of colimits, and we leave the details to the reader.
 \end{proof}
 
-
-
 Combining Theorem \ref{preserveGop} and Proposition \ref{gisgop} with Corollary \ref{symmoncor}, we immediately obtain the following.
 
 \begin{cor}\label{cor:elambda_lambdaop}
 Let $\mb{\Lambda}$ be an action operad.  Then $E\Lambda = \{ E\big(\Lambda(n)\big) \}$ (see \cref{nota:e_b}) is a $\mb{\Lambda}$-operad in $\mb{Cat}$.
 \end{cor}
 
-Any $\mb{\Lambda}$-operad $P$ in $\mb{Cat}$ gives rise to a 2-monad on $\mb{Cat}$ which we will also denote $P$.  In our case, that 2-monad (also denoted $E\Lambda$) is given by
+Any $\mb{\Lambda}$-operad $P$ in $\mb{Cat}$ gives rise to a 2-monad on $\mb{Cat}$ which we will often also denote by $P$ or, as in Section \ref{section:operads_in_Cat}, by $\underline{P}$.  In the context of Corollary \ref{cor:elambda_lambdaop}, that 2-monad (also denoted $E\Lambda$) is given by
 \[
 X \mapsto \coprod_{n \geq 0} E\Lambda(n) \times_{\Lambda(n)} X^{n}
 \]
-where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category.  The 2-monad $E\Sigma$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
+where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The 2-monad $E\Sigma$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
 
 \begin{Defi}\label{lmc}
 A \emph{$\Lambda$-monoidal category} is a strict algebra for the 2-monad $\EL$. A \emph{$\Lambda$-monoidal functor} is a strict morphism for this 2-monad $\EL$. The 2-category $\lmc$ is the 2-category of strict algebras, strict morphisms, and algebra 2-cells for $\EL$.
@@ -3408,7 +3490,7 @@ The collection of groups $J = \{ J_{n} \}$ form an action operad.\index{action o
 \begin{proof}
 We will use \cref{thm:charAOp} to determine the rest of the action operad structure.  Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $\underline{k} = \sum k_{i}$, group homomorphisms $\beta \colon J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{\underline{k}}$ and functions $\delta \colon J_{n} \rightarrow J_{\underline{k}}$ satisfying nine axioms.    We define both of these on generators, starting with $\beta$.
 
-Let $s_{p_{i}, q_{i}} \in J_{k_{i}}$.  Let $r_{i} = k_{1} + k_{2} + \cdots + k_{i-1}$.  Define $\beta$ by
+Let $s_{p_{i}, q_{i}} \in J_{k_{i}}$.  Let $r_{i} = k_{1} + k_{2} + \cdots + k_{i-1}$ for $i > 1$.  Define $\beta$ by
 \[
 \beta(s_{p_{1}, q_{1}}, \ldots, s_{p_{n}, q_{n}}) = s_{p_{1}, q_{1}} s_{p_{2}+r_{2}, q_{2}+r_{2}} \cdots s_{p_{n}+r_{n}, q_{n}+r_{n}}.
 \]

@@ -30,20 +30,20 @@
 \end{itemize}
 \section{ Action operads}
 \begin{itemize}
-\item I put in G0abel (2.3.8) to prove
+\item I put in G0abel (2.3.8) to prove: typed in proof of abelianness but need to show that $\mu(e_2;g,h) = gh$ (suffices to show that $\mu(e_2;g, e_0) = g$). Thought it would be a straightforward Eckmann-Hilton argument but it gets stuck.
 % \item and we should put in a proof that all the $\pi$'s are surjective or trivial (2.3.4)
-\item Proof of 2.3.4 (surjective or trivial) could do with checking but it's there now
+\item Proof of 2.3.4: just needs checking
 \item I have been changing tensor product to block sum for a lot of things, we need to go through and decide how to do that consistently
 % \item Defn 2.3.9 - specify what the $h$'s and $g$'s are.
-
+\item Prop 2.5.19 follows from Theorem 3.3.8, except for the part about the monad map (it can't be $(F,id)$ so I've called it $(F,\psi^F)$ and added details to the propositions).
 \end{itemize}
 
 \section{Operads in the category of categories}
 \begin{itemize}
-\item Start of 3.1: Should the $2$-monad should have $EP(n)$? Compare with 3.3.9.
+% \item Start of 3.1: Should the $2$-monad should have $EP(n)$? Compare with 3.3.9.
 \item Defn 3.3.7 of cocomplete symmetric monoidal cat
-\item After 3.3.9 seems repetitive (essentially description of $\underline{P}$)
-\item Prop 3.3.16 The proofs need filling out
+% \item After 3.3.9 seems repetitive (essentially description of $\underline{P}$)
+\item Prop 3.3.11-4 The proofs need filling out
 \item Should we change $E\Lambda(n) \times X^n/\Lambda(n)$ to be $\left(E\Lambda(n) \times X^n\right)/\Lambda(n)$?
 \end{itemize}
 
@@ -54,7 +54,7 @@
 \item Use \begin{verbatim} \lmc \end{verbatim} for lambda monoidal categories
 % \item `By standard methods' - reference for adjoint equivalence (Mac Lane Chapter 4 Section 4 Theorem 1)
 % \item Invertible unit: follows from adjoint equivalence
-\item Theorem 4.2.11: `Define $\beta$ by' should have $s_{p_1+r_1,q_1+r_1}$ on the RHS, not $s_{p_1,q_1}$?
+% \item Theorem 4.2.11: `Define $\beta$ by' should have $s_{p_1+r_1,q_1+r_1}$ on the RHS, not $s_{p_1,q_1}$? (Fine because $r_1 = 0$. Clarified.)
 % \item `Containment relation': Reference back to wherever this is stated.
 % \item Defn 4.3.1: $\pi$ is surjective or each $\pi_n$ is surjective?
 \item Lemma 4.3.2: Needs rewording. Is the \textit{underlying set of the free monoid}?
@@ -81,12 +81,13 @@
 % \item Spacing of $\alpha$
 \item 4.3.8: extra couple of steps to show $\alpha$ is a monoid homomorphism?
 % \item Defn 4.4.3: Check spacing of the strength maps with subscripts
-\item Remark 4.4.4: It's mostly described but not directly shown about the strength axioms?
+% \item Remark 4.4.4: It's mostly described but not directly shown about the strength axioms?
 % \item Change sentence to be \textit{further} notation
 % \item Theorem 4.4.5: overfull hbox on second page of proof
 % \item Spacing of labels on arrows needs looking at
 % \item Corollary 4.4.6: Still don't like the terminology `non-symmetric'. Is `plain' operad better? (Came to the conclusion that everybody just uses non-$\Sigma$ or non-symmetric, so better to stick with that. Guessing I picked up `plain' from Tom's book.)
 \item Defn 4.5.1: Odd mix of $\alpha$ and $g$. Think something is mixed up here. ($- \cdot \alpha$). Also should the iso have $\pi(g)^{-1}$ in the target?
+\item Monad maps are defined in the specific case of the $2$-category of categories in Section 2.5 - refer back to these definitions.
 \end{itemize}
 
 
