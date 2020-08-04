@@ -629,7 +629,16 @@ form an action operad for which the inclusion $\textrm{Ker}\,\pi \hookrightarrow
 \begin{proof}
 For $\textrm{Ker}\,\pi \hookrightarrow \Lambda$ to be a map of action operads, we must define the map $\textrm{Ker}\,\pi \rightarrow \Sigma$ to be zero,  and we must check that the operadic multiplication of elements in the kernel is also in the kernel.  This last fact is a trivial consequence of $\pi$ being an operad map.
 \end{proof}
-
+\begin{cor}\label{image}
+For an action operad $\ML$, the sets
+  \[
+    \mathrm{Im}\pi_n = \{\pi_n(g)~:~g \in \Lambda(n)\}
+  \]
+form an action operad for which the inclusion $\mathrm{Im}\pi \hookrightarrow \Sigma$ is a map of action operads.
+\end{cor}
+\begin{proof}
+The operad multiplication of elements in the image is also in the image, as is the unit element in $\mathrm{Im}\pi_1$, following again as a consequence of $\pi$ being an operad map. The map $\mathrm{Im}\pi \hookrightarrow \Sigma$ is an inclusion and so is immediately seen to be a map of action operads.
+\end{proof}
 
 \begin{prop}[Corollary 2.17,  \cite{zhang-grp}]\label{surjortriv}
 The homomorphisms $\pi_n \colon \Lambda_n \to \Sigma_n$ are either all surjective or all the zero map.
@@ -1306,7 +1315,7 @@ by the universal property of the colimits involved, so as functors $\underline{P
 \end{enumerate}
 \end{rem}
 
-We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. We will use the following standard definitions, as per \cite{street-formal}.
+We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. We will use the following standard definitions of monad maps and transformations, as per \cite{street-formal}.
 
 \begin{Defi}\label{defi:monad_map}
 Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map}\index{monad!maps} of from $S$ to $T$ is a functor $F \colon C \to D$ together with a natural transformation $\alpha \colon TF \Rightarrow FS$ such that the following diagrams commute.
@@ -1348,6 +1357,7 @@ A \emph{transformation}\index{monad!maps!transformation} $\Gamma \colon (F, \alp
   \]
 \end{Defi}
 
+\begin{rem}
 Every monad map $(F,\alpha)$ induces a functor $S\Alg \rightarrow T\Alg$ on the categories of algebras. An $S$-algebra $(X,\sigma)$ is sent to the $T$-algebra $(FX,F\sigma \cdot \alpha_X)$, as we now describe. For $(FX,F\sigma \cdot \alpha_X)$ to be a $T$-algebra we require the usual diagrams to commute, shown as the outside of the diagrams below.
 
   \[
@@ -1385,9 +1395,18 @@ Every monad map $(F,\alpha)$ induces a functor $S\Alg \rightarrow T\Alg$ on the 
 The first diagram commutes since the left hand side is the second diagram required to commute for $(F,\alpha)$ to be a monad map, the square at the top right is an instance of naturality for $\alpha$, while the bottom right square commutes since $(X,\sigma)$ is an $S$-algebra. The second diagram commutes since the top triangle is again a requirement of $\alpha$ being a transformation, with the lower triangle commuting again as a result of $(X,\sigma)$ being an $S$-algebra.
 
 A morphism $f \colon  (X, \sigma_X) \rightarrow (Y, \sigma_Y)$ of $S$-algebras is sent to the morphism $Ff \colon  (FX, F\sigma_X \cdot \alpha_X) \rightarrow (FY, F\sigma_Y \cdot \alpha_Y$), this being a map of $T$-algebras following from the naturality of $\alpha$ and of $f$ being an $S$-algebra map. Functoriality follows from that of $F$.
-
-% Moved Definition \ref{cocom_symm_mon_cat} from here.
+\end{rem}
+% QQQ Moved Definition \ref{cocom_symm_mon_cat} from here.
+% Moved it back.
+Throughout the text we make reference to where results can be applied in a more general case where a symmetric monoidal category is cocomplete and for which the tensor product distributes over colimits in each variable. However, we include the following definition to be clear what is meant simply by a cocomplete symmetric monoidal category.
+\begin{Defi}\label{cocom_symm_mon_cat}
+A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete.
+% and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
+% QQQ Is this what we mean by a cocomplete symmetric monoidal category? The statement of the following theorem 3.3.7 then requires that the tensor product preserves colimits in each variable but the definition already includes this. QQQ
+\end{Defi}\index{category!cocomplete symmetric monoidal}\index{monoidal category!cocomplete symmetric}
 The following three results tie in with material in the coming chapters but are of a general nature which fits the nature of this section.
+
+
 \begin{prop}\label{monoidal_to_monadmap}
 Let $C,D$ be cocomplete symmetric monoidal categories.  Let $\ML$ be an action operad, and $P$ be a $\ML$-operad in $C$. Let $F \colon C \to D$ be a symmetric lax monoidal functor. Then $FP$ is a $\ML$-operad in $D$, and there is a monad map $(F,\psi) \colon (C,\underline{P}) \to (D, \underline{FP})$.
 \end{prop}
@@ -2893,15 +2912,6 @@ B\Lambda(m,n) = \left\{ \begin{array}{lc}
 where composition is given by group multiplication and the identity morphism is the unit element $e_n \in \Lambda(n)$.
 \end{Defi}
 
-\begin{Defi}\label{cocom_symm_mon_cat}
-A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete.
-% and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
-
-% QQQ Is this what we mean by a cocomplete symmetric monoidal category? The statement of the following theorem then requires that the tensor product preserves colimits in each variable but the definition already includes this. QQQ
-
-QQQ Definition already used in Section 2. Needs moving.
-\end{Defi}\index{category!cocomplete symmetric monoidal}\index{monoidal category!cocomplete symmetric}
-
 \begin{thm}\label{preserveGop}
 Let $M,N$ be cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable, and let $F \colon M \rightarrow N$ be a symmetric lax monoidal functor with unit constraint $\varphi_{0}$ and tensor constraint $\varphi_{2}$.  Let $\mb{\Lambda}$ be an action operad, and $P$ a $\mb{\Lambda}$-operad in $M$.  Then $FP = \{ F(P(n)) \}$ has a canonical $\mb{\Lambda}$-operad structure, giving a functor
 \[
@@ -3643,7 +3653,7 @@ If our action operad $\ML$ is crossed, then for any two objects like this, say s
 
 Thus the canonical map $[ \, \_ \, ] \colon \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ is the one that makes the free product of $\mathbb{N}^{*n}$ commutative; that is, the quotient map for the abelianization $\mathrm{ab} \colon \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}}$. Hence $\pi_0(\ELn) = \mathbb{N}^n$.
 
-Conversely, if $\ML$ is non-crossed then its underlying permutation operad $\mathrm{im}(\pi)$ is trivial, and so the only morphisms we have in $\ELn$ will be those of the form
+Conversely, if $\ML$ is non-crossed then its underlying permutation operad $\mathrm{Im}\pi$ (see Definition \ref{image}) is trivial, and so the only morphisms we have in $\ELn$ will be those of the form
 \[
   \alpha( \, e_m \, ; \, \id_{x_1}, \ldots, \id_{x_m} \, ) = \id_{x_1} \otimes \ldots \otimes \id_{x_m} = \id_{x_1 \otimes \ldots \otimes x_m}.
 \]
@@ -5618,14 +5628,14 @@ From \cref{Moradj}, we know that $\mathrm{M}(\, \_ \,)^{\mathrm{gp, ab}} \colon 
 The coequalizer of two abelian group homomorphisms is just the quotient of their common target by the image of their difference. Hence in this case we have
 \[ 
 \begin{array}{rcl}
-\mathrm{M}(L_{n})^{\mathrm{gp, ab}}  & \cong &  \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\mathrm{im}\big( \, {\mathrm{M}(\tilde{\delta})}^{\mathrm{gp, ab}} - {\mathrm{M}(\tilde{I})}^{\mathrm{gp, ab}} \, \big)} \\
+\mathrm{M}(L_{n})^{\mathrm{gp, ab}}  & \cong &  \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{Im\big( \, {\mathrm{M}(\tilde{\delta})}^{\mathrm{gp, ab}} - {\mathrm{M}(\tilde{I})}^{\mathrm{gp, ab}} \, \big)} \\
 & \cong & \quad \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta}.
 \end{array}
 \]
 \end{proof} 
 
 \begin{rem}\label{delta_neq_image}
-Note that $\mathrm{im}(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$ is a subgroup of $\Delta$ because $\delta$ factors through $\tilde{\delta}$.
+Note that $Im(\mathrm{M}(\delta)^{\mathrm{gp, ab}})$ is a subgroup of $\Delta$ because $\delta$ factors through $\tilde{\delta}$.
 \end{rem}
 
 
