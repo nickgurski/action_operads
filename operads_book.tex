@@ -3653,7 +3653,9 @@ If our action operad $\ML$ is crossed, then for any two objects like this, say s
 
 Thus the canonical map $[ \, \_ \, ] \colon \mathrm{Ob}(\ELn) \to \pi_0(\ELn)$ is the one that makes the free product of $\mathbb{N}^{*n}$ commutative; that is, the quotient map for the abelianization $\mathrm{ab} \colon \mathbb{N}^{*n} \to (\mathbb{N}^{*n})^{\mathrm{ab}}$. Hence $\pi_0(\ELn) = \mathbb{N}^n$.
 
-Conversely, if $\ML$ is non-crossed then its underlying permutation operad $\mathrm{Im}\pi$ (see Definition \ref{image}) is trivial, and so the only morphisms we have in $\ELn$ will be those of the form
+%QQQ Removed "underlying permutation operad" as this means slightly different things in other texts
+% Conversely, if $\ML$ is non-crossed then its underlying permutation operad $\mathrm{Im}\pi$ (see Definition \ref{image}) is trivial, and so the only morphisms we have in $\ELn$ will be those of the form
+Conversely, if $\ML$ is non-crossed then its image operad $\mathrm{Im}\pi$ (see Definition \ref{image}) is trivial, and so the only morphisms we have in $\ELn$ will be those of the form
 \[
   \alpha( \, e_m \, ; \, \id_{x_1}, \ldots, \id_{x_m} \, ) = \id_{x_1} \otimes \ldots \otimes \id_{x_m} = \id_{x_1 \otimes \ldots \otimes x_m}.
 \]
@@ -3706,6 +3708,21 @@ The motivation for the name `spacial' comes from the context of string diagrams 
 \end{center}
 In a real-world version of these diagrams, made out of physical strings arranged in real space, we could use this detachedness to grab these endomorphisms and slide them over or under any strings we please, without affecting anything else in the diagram. This ability is embodied algebraically by the equation above, and hence categories which obey it are called `spacial'.
 
+\begin{rem}
+Beginning with the following lemma, the term \textit{action morphism}\index{action morphism} is used. This refers to the image of a morphism such as
+  \[
+    \alpha(g;f_1,\ldots,f_n)
+  \]
+where
+  \[
+    \alpha \colon \coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n \rightarrow X
+  \]
+is the action of a $\ML$-operad algebra for some $\ML$-operad $P$. Most often these action morphisms will be of the form
+  \[
+    \alpha(g;id_{x_1},\ldots,id_{x_{n}}).
+  \]
+Since we are most often in the setting of $\mb{Cat}$, then $\alpha$ will be a functor.
+\end{rem}
 \begin{lem}\label{spacial} If $\ML$ is a crossed action operad, then all $E\Lambda$-algebras are spacial.\end{lem}
 \begin{proof}
 Let $\ML$ be a crossed action operad, let $X$ be a $\ML$-monoidal category, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \to I \). From \cref{surjortriv} we know that \( \pi \colon \Lambda(2) \to S_2 \) is surjective, so that the set $\pi^{-1}(  (1 \, 2)  )$ is non-empty, and from the rules for composition of action morphisms we see that for any such $g \in \pi^{-1}(  (1 \, 2)  )$,
