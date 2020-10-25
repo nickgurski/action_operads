@@ -3061,7 +3061,7 @@ and therefore is a morphism $[e; x_1, \ldots, x_n] \to [e; y_1, \ldots, y_n]$ pr
 \begin{nota}\label{tensor_notation}
 For $g \in \ML(n)$ and objects $x_1, \ldots, x_n$ of a $\ML$-monoidal category $X$, we write 
 \[
-g^{\otimes} \colon x_1 \otimes \cdots x_n \to x_{\pi(h)^{-1}(1)} \otimes \cdots x_{\pi(h)^{-1}(n)}
+g^{\otimes} \colon x_1 \otimes \cdots x_n \to x_{\pi(g)^{-1}(1)} \otimes \cdots x_{\pi(g)^{-1}(n)}
 \]
 for the image of the map
 \[
@@ -3073,7 +3073,7 @@ in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.
 \begin{Defi}\label{action_map}
 We call the map 
 \[
-g^{\otimes} \colon x_1 \otimes \cdots x_n \to x_{\pi(h)^{-1}(1)} \otimes \cdots x_{\pi(h)^{-1}(n)}
+g^{\otimes} \colon x_1 \otimes \cdots x_n \to x_{\pi(g)^{-1}(1)} \otimes \cdots x_{\pi(g)^{-1}(n)}
 \]
 the \emph{action} of $g$ on $x_1 \otimes \cdots x_n$.
 \end{Defi}
@@ -3646,7 +3646,7 @@ when $\ML$ is crossed, and the identity map $\id_{\mathbb{N}^{*n}}$ otherwise.
 By \cref{hom-set-lemma}, all morphisms in $\ELn$ can be written uniquely as $\alpha(g; \id_{x_1}, \ldots, \id_{x_m})$, for some $g \in G(m)$ and $x_i \in \{z_1, \ldots, z_n \}$. Since maps of this form have source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\pi(g^{-1})(1)} \otimes \ldots \otimes x_{\pi(g^{-1})(m)}$, we see that the only pairs of object which might have a morphism between them are those that can be expanded as tensor products that differ by some permutation. 
 
 
-If our action operad $\ML$ is crossed, then for any two objects like this, say source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes \ldots \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \Sigma_m$ , we can always find a map $\alpha(g; \id_{x_1}, \ldots, \id_{x_m})$ between them, because by \cref{surjortriv} the underlying permutations maps $\pi_m \colon  G(m) \to \Sigma_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
+If our action operad $\ML$ is crossed, then for any two objects like this, say source $x_1 \otimes \ldots \otimes x_m$ and target $x_{\sigma^{-1}(1)} \otimes \ldots \otimes x_{\sigma^{-1}(m)}$ for an arbitrary $\sigma \in \Sigma_m$ , we can always find a map $\alpha(g; \id_{x_1}, \ldots, \id_{x_m})$ between them, because by \cref{surjortriv} the underlying permutation maps $\pi_m \colon  G(m) \to \Sigma_m$ are all surjective and so there must exist at least one $g$ with $\pi(g) = \sigma$. In particular, for any two generating objects $z_i$ and $z_j$ of $\ELn$ there must exist at least morphism between $z_i \otimes z_j$ and $z_j \otimes z_i$, and therefore
 \[
   [z_i] \otimes [z_j] = [z_i \otimes z_j] = [z_j \otimes z_i] = [z_j] \otimes [z_i].
 \]
@@ -3725,11 +3725,13 @@ Since we are most often in the setting of $\mb{Cat}$, then $\alpha$ will be a fu
 \end{rem}
 \begin{lem}\label{spacial} If $\ML$ is a crossed action operad, then all $E\Lambda$-algebras are spacial.\end{lem}
 \begin{proof}
-Let $\ML$ be a crossed action operad, let $X$ be a $\ML$-monoidal category, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \to I \). From \cref{surjortriv} we know that \( \pi \colon \Lambda(2) \to S_2 \) is surjective, so that the set $\pi^{-1}(  (1 \, 2)  )$ is non-empty, and from the rules for composition of action morphisms we see that for any such $g \in \pi^{-1}(  (1 \, 2)  )$,
+Let $\ML$ be a crossed action operad, let $X$ be a $\ML$-monoidal category, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \to I \). From \cref{surjortriv} we know that \( \pi \colon \Lambda(2) \to S_2 \) is surjective, so that the set $\pi^{-1}(  (1 \, 2)  )$ is non-empty,
+% and from the uniqueness of action morphism composites (Lemma \ref{hom-set-lemma})
+and from the rules for composition of action morphisms we see that for any such $g \in \pi^{-1}(  (1 \, 2)  )$,
   \begin{align*}
     \alpha(g  ;  \id_x,  \id_I  )\alpha(  e_2  ;  \id_x,  f  ) &= \alpha(ge_2 ; \id_x \id_x, \id_I f)\\
     &= \alpha(g  ;  \id_x, f) \\
-    &= \alpha(e_2 g; \id_x \id_x, f \id_I) \\
+    % &= \alpha(e_2 g; \id_x \id_x, f \id_I) \\
     &= \alpha(e_2; f, \id_x )\alpha(g; \id_x, \id_I). \\
   \end{align*}
 
@@ -4423,16 +4425,19 @@ M(x_{1}, \ldots, x_{n}; y)
 of multi-arrows (or just arrows) from $x_{1}, \ldots, x_{n}$ to $y$;
 \item for each $\alpha \in \Lambda(n)$, an isomorphism
 \[
--\cdot \alpha \colon M(x_{1}, \ldots, x_{n}; y) \rightarrow M(x_{\pi(g)(1)}, \ldots, x_{\pi(g)(n)}; y);
+-\cdot \alpha \colon M(x_{1}, \ldots, x_{n}; y) \rightarrow M(x_{\pi(\alpha)(1)}, \ldots, x_{\pi(\alpha)(n)}; y);
 \]
 \item for each object $x$, an arrow $\id_{x} \in M(x;x)$; and
 \item a composition function
+% \[
+% M(y_{1}, \ldots, y_{k}; z) \times M(x_{11}, \ldots, x_{1,n_{1}}; y_{1}) \times \cdots \times M(x_{k1}, \ldots, x_{k,n_{k}}; y_{k}) \rightarrow M(\underline{x}; z)
+% \]
 \[
-M(y_{1}, \ldots, y_{k}; z) \times M(x_{11}, \ldots, x_{1,n_{1}}; y_{1}) \times \cdots \times M(x_{k1}, \ldots, x_{k,n_{k}}; y_{k}) \rightarrow M(\underline{x}; z)
+  M(y_1,\ldots,y_k;z) \times \prod_{i=1}^k M(x_{i1},\ldots,x_{in_i};y_i) \rightarrow M(\underline{x};z)
 \]
 where $\underline{x} = x_{11}, \ldots, x_{1,n_{1}}, x_{21}, \ldots, x_{k,n_{k}}$, and which we write as
 \[
-(g; f_{1}, \ldots, f_{n}) \mapsto g(f_{1}, \ldots, f_{n}).
+(g; f_{1}, \ldots, f_{k}) \mapsto g(f_{1}, \ldots, f_{k}).
 \]
 \end{itemize}
 These data are subject to the following axioms.
@@ -4454,8 +4459,8 @@ f\Big( g_{1}(h_{11}, \ldots, h_{1m_{1}}), \ldots, g_{n}(h_{n1}, \ldots, h_{nm_{n
 % \end{array}
 % \]
 \begin{align*}
-  f(g_1\alpha_1,\ldots, g_n\alpha_n) &= f(g_1,\ldots,g_n)\mu^{\Lambda}(e;\alpha_,\ldots,\alpha_n), \\
-  f\alpha(g_1,\ldots,g_n) &= f\left(g_{\pi^{-1}(\alpha)(1)},\ldots,g_{\pi^{-1}(\alpha)(n)}\right)\mu^{\Lambda}(\alpha;e_1,\ldots,e_n).
+  f(g_1 \cdot \alpha_1,\ldots, g_n \cdot \alpha_n) &= f(g_1,\ldots,g_n) \cdot \mu^{\Lambda}(e;\alpha_1,\ldots,\alpha_n), \\
+  (f \cdot \alpha)(g_1,\ldots,g_n) &= f\left(g_{\pi^{-1}(\alpha)(1)},\ldots,g_{\pi^{-1}(\alpha)(n)}\right) \cdot \mu^{\Lambda}(\alpha;e_1,\ldots,e_n).
 \end{align*}
 \end{enumerate}
 \end{Defi}
@@ -4555,6 +4560,7 @@ These data are subject to the following axioms.
 \]
 \end{Defi}
 
+We have already defined monad maps in the particular case that $B = \textbf{Cat}$ (see Definition \ref{defi:monad_map}), but we now recall a more general definition.
 \begin{Defi}
 Let $(x,t,\mu,\eta), (x',t',\mu',\eta')$ be monads in $B$.  An \emph{oplax monad map}\index{monad!oplax map} $(F, \alpha)$ from $t$ to $t'$ consists of the following data:
 \begin{itemize}
