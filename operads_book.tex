@@ -723,19 +723,6 @@ g, h \in \Lambda(0) \mapsto \mu(e_2; g, h)
 arising from the operad structure.
 \end{lem}
 \begin{proof}
-QQQ Assume that we've shown that $gh = \mu(e_2;g,h)$.
-
-Then
-  \begin{align*}
-    \mu(e_2;g,h) &= \mu(e_2 \cdot e_2;e_0 \cdot g, h \cdot e_0) \\
-    &= \mu(e_2;e_0, h) \cdot \mu(e_2;g, e_0)
-  \end{align*}
-and
-  \begin{align*}
-    \mu(e_2;g,h) &= \mu(e_2 \cdot e_2; g \cdot e_0, e_0 \cdot h) \\
-    &= \mu(e_2;g,e_0) \cdot \mu(e_2;e_0,h).
-  \end{align*}
-Hence the operation is commutative and so $\Lambda(0)$ is abelian.
 \end{proof}
 
 \begin{lem}\label{calclem}
@@ -1413,11 +1400,11 @@ Let $C,D$ be cocomplete symmetric monoidal categories.  Let $\ML$ be an action o
 \begin{proof}
 Theorem \ref{preserveGop} describes how the functor $F$ can be used to describe a functor
   \[
-    \mb{\Lambda}\mbox{-}Op(C) \rightarrow \mb{\Lambda}\mbox{-}Op(),
+    \mb{\Lambda}\mbox{-}Op(C) \rightarrow \mb{\Lambda}\mbox{-}Op(D),
   \]
 from which we see that $FP$ is a $\ML$-operad in $D$.
 
-Now the functor $F$ constitutes the $1$-cell of the monad map, while $\psi$ is required to be a natural transformation as below.
+The functor $F$ constitutes the $1$-cell of the monad map, while $\psi$ is required to be a natural transformation as below.
   \[
     \xy
       (0,0)*+{C}="a";
@@ -1444,7 +1431,7 @@ The first morphism is a composite of the coherence cells of the type
   \[
     FX \otimes FY \rightarrow F(X \otimes Y)
   \]
-for the symmetric lax monoidal functor $F$, while the second morphism is the induced morphism out of the coproduct. Naturality follows from that of the component morphisms. It is then straightforward to see that the monad morphism diagrams commute since diagrams involved consist of instances of the coherence axioms for $F$ along with naturality of the coherence cells.
+for the symmetric lax monoidal functor $F$, while the second morphism is the induced morphism out of the coproduct. Naturality follows from that of the component morphisms. It is then straightforward to see that the monad morphism diagrams commute since the diagrams involved consist of instances of the coherence axioms for $F$ along with naturality of the coherence cells.
 \end{proof}
 
 \begin{prop}\label{opmap_to_monadmap}
@@ -5561,7 +5548,7 @@ Now we turn to the matter of computing the group $L_n(I,I)$. This group complete
 \section{Nullary operations}
 We will begin our computational investigations by first studying the nullary operations, the elements $g \in \Lambda(0)$.
 
-\begin{lem} \label{noscalar} For any element $g \in \Lambda(m), m \in \mathbb{N}$ of an action operad $\ML$, the morphism
+\begin{lem} \label{noscalar} Let $m \in \mathbb{N}$ and let $\ML$ be an action operad. For any element $g \in \Lambda(m)$, the morphism
 \[
 g^{\otimes} \colon  I^m \to I^m
 \]
@@ -5581,15 +5568,15 @@ This is a curious result. The morphisms $I \to I$ in $\ELn$ are exactly the elem
 For any elements $g \in \Lambda(m)$ and $h \in \Lambda(0)$, their block sum $h \oplus g := \mu(e_2; h, g)$ is also an element of $\Lambda(m)$. Thus block sum defines a map $\Lambda(0) \times \Lambda(m) \to \Lambda(m)$, which is a group action by operad associativity and \cref{calclem}, and a group homomorphism by \cref{spacial}. This produces a homomorphism $\Lambda(0) \to \Lambda(m)$ for all $m$ which lies in the center of $\Lambda(m)$, hence the image is normal for all $m$. Furthermore, the induced map $\Lambda(0) \to \Lambda(m) \to \Sigma_m$ is the zero map, so we have an induced homomorphism $\Lambda(m)/\Lambda(0) \to \Sigma_m$. All that remains to be shown is that the operadic multiplication for $\Lambda$ induces one for the groups $\Lambda(n)/\Lambda(0)$, and that this multiplication satisfies the axioms for an action operad.
 
 Let $h, h_1, \ldots, h_m \in \Lambda(0)$ and $k_1, \ldots, k_m \in \mathbb{N}$. We have the following calculation using the action operad axioms for $\Lambda$ and the fact that $\EL(\underline{1})$ is spacial so the $e_k$ commute with all elements of $\Lambda(0)$.
-\[ \begin{array}{rll}
-		\mu^{\Lambda}( \, h \oplus e_m \, ; \, h_1 \oplus e_{k_1}, \ldots, h_m \oplus e_{k_m} \, ) & = & \mu^{\Lambda}\big( \, \mu^{\Lambda}(e_2; h, e_m) \, ; \, h_1 \oplus e_{k_1}, \ldots, h_m \oplus e_{k_m} \, \big) \\
-		& = & \mu^{\Lambda}\big( \, e_2 \, ; \, \mu^{\Lambda}(h;-), \mu^{\Lambda}(e_m; h_1 \oplus e_{k_1}, \ldots, h_m \oplus e_{k_m}) \, \big) \\
-		& = & \mu^{\Lambda}(h;-)\oplus \mu^{\Lambda}(e_m; h_1 \oplus e_{k_1}, \ldots, h_m \oplus e_{k_m})  \\
-		& = & h \oplus h_1 \oplus e_{k_1} \oplus \cdots \oplus h_m \oplus e_{k_m} \\
-		& = & e_{k_1} \oplus \cdots \oplus e_{k_m} \oplus h \oplus h_1 \cdots \oplus h_m \\
-		& = & e_{k_1+\cdots+k_m} \oplus h \oplus h_1 \cdots \oplus h_m
-		\end{array}
-\]
+\begin{align*}
+		\mu^{\Lambda}\left( \, h \oplus e_m \, ; \, \underline{h_i \oplus e_{k_i}}\right) &= \mu^{\Lambda}\left( \, \mu^{\Lambda}(e_2; h, e_m) \, ; \, \underline{h_i \oplus e_{k_i}} \right) \\
+		&= \mu^{\Lambda}\left( \, e_2 \, ; \, \mu^{\Lambda}(h;-), \mu^{\Lambda}(e_m; \underline{h_i \oplus e_{k_i}}) \right) \\
+		&= \mu^{\Lambda}(h;-)\oplus \mu^{\Lambda}\left(e_m; \underline{h_i \oplus e_{k_i}}\right) \\
+		&= h \oplus h_1 \oplus e_{k_1} \oplus \cdots \oplus h_m \oplus e_{k_m} \\
+		&= e_{k_1} \oplus \cdots \oplus e_{k_m} \oplus h \oplus h_1 \cdots \oplus h_m \\
+		&= e_{k_1+\cdots+k_m} \oplus h \oplus h_1 \cdots \oplus h_m
+\end{align*}
+
 The above shows that the following square commutes.
 \begin{center}
     \begin{tikzpicture}[x=50mm,y=15mm]
@@ -5610,16 +5597,16 @@ We write the image of $g \in \Lambda(m)$ under the quotient $\Lambda(m) \to \Lam
 \]
 given by 
 \[
-\mu^{\Lambda'}\Big( [g]; [g_1], \ldots , [g_m] \Big) = [\mu^{\Lambda}\Big(g; g_1, \ldots, g_m \Big)]
+\mu^{\Lambda'}\left( [g]; [g_1], \ldots , [g_m] \right) = \left[\mu^{\Lambda}\left(g; g_1, \ldots, g_m \right)\right]
 \]
 is well-defined. With $h, h_1, \ldots, h_m \in \Lambda(0)$ as above, we have
 \[
-\mu^{\Lambda}\Big(g \cdot h \otimes e_m; g_1\cdot h_1 \otimes e_{k_1}, \ldots, g_m\cdot h_m \otimes e_{k_m} \Big) \]
+\mu^{\Lambda}\left(g \cdot h \otimes e_m; g_1\cdot h_1 \otimes e_{k_1}, \ldots, g_m\cdot h_m \otimes e_{k_m} \right) \]
 equals
 \[
-\mu^{\Lambda}(g; g_1, \ldots, g_m) \cdot \mu^{\Lambda}(h \otimes e_m; \cdot h_1 \otimes e_{k_1}, \ldots, \cdot h_m \otimes e_{k_m})
+\mu^{\Lambda}(g; g_1, \ldots, g_m) \cdot \mu^{\Lambda}(h \otimes e_m; h_1 \otimes e_{k_1}, \ldots, h_m \otimes e_{k_m})
 \]
-using the fact that $\pi(h \otimes e_m)$ is the identity permutation. By the commutative square above, $\mu^{\Lambda}(h \otimes e_m; \cdot h_1 \otimes e_{k_1}, \ldots, \cdot h_m \otimes e_{k_m})$ is in the image of $\Lambda(0) \to \Lambda(k_1 + \cdots + k_m)$, so $\mu^{\Lambda'}$ is well-defined. It is now straightforward to check the rest of the action operad axioms for $\Lambda'$ using those of $\Lambda$.
+using the fact that $\pi(h \otimes e_m)$ is the identity permutation. By the commutative square above, $\mu^{\Lambda}(h \otimes e_m; h_1 \otimes e_{k_1}, \ldots, h_m \otimes e_{k_m})$ is in the image of $\Lambda(0) \to \Lambda(k_1 + \cdots + k_m)$, so $\mu^{\Lambda'}$ is well-defined. It is now straightforward to check the rest of the action operad axioms for $\Lambda'$ using those of $\Lambda$.
 \end{proof}
 
 We end this section by proving that the quotient action operad $\Lambda'$ removes the unnecessary nullary operations without changing the invertible objects.
