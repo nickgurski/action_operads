@@ -5,6 +5,7 @@
 \usepackage{amscd}
 \usepackage{eucal}
 \usepackage{amsthm}
+\usepackage{hyperref}
 \usepackage[all]{xy}
 \usepackage{pstricks}
 \newcommand{\bs}{\boldsymbol}
@@ -23,13 +24,14 @@
 \end{center}
 \vskip1cm
 
-\section{ Introduction}
+\section{Introduction}
 \begin{itemize}
-\item
+\item add references to works that cite the original papers: \href{https://scholar.google.com/scholar?oi=bibs\&hl=en\&cites=3135675589124701435}{Google Scholar link 1}, \href{https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13749645182111219012&as_sdt=5}{Google Scholar link 2}
 
 \end{itemize}
-\section{ Action operads}
+\section{Action operads}
 \begin{itemize}
+\item The comments below can be got rid of if `$0$-ary multiplication' $\mu \colon \Lambda(0) \rightarrow \Lambda(0)$ satisfies $\mu(g; ) = g$. This is what is done in Ed's thesis (Lemma 1.13) but seems odd and I can't find any other places this is done. (It doesn't help that nearly everywhere uses reduced operads where $P(0) = \ast$.)
 \item I put in G0abel (2.3.8) to prove: need to show that $g \oplus h = \mu(e_2;g,h) = gh$ (suffices to show that $g \oplus e_0 = \mu(e_2;g, e_0) = g$). Thought it would be a straightforward Eckmann-Hilton argument but it gets stuck. I'm quite sure this doesn't work, as in block sum does \textit{not} agree with the group operation. It does in many of the examples we use, since the $\Lambda(0)$ is often trivial. But it doesn't seem to work in general. When it \textit{does}, then it is the case that $\Lambda(0)$ is abelian (and it's always true that block sum on its own for $\Lambda(0)$ is commutative because of a later result about $E\Lambda$-algebras being spacial.)
 \item The previous comment has a big knock-on effect for results at the start of Section 7.
 % \item and we should put in a proof that all the $\pi$'s are surjective or trivial (2.3.4)
@@ -113,6 +115,7 @@
 \item New notation: added earlier (line 905, search beta\_to\_oplus), just need to implement, search for action maps or superscript tensors
 \item Fix weakly invertible section
 \item Lemma 5.3.10ish: Needs sorting
+\item Corollary 5.3.13ish: What is it actually saying?
 \end{itemize}
 
 Leftover fixes that I'm not sure about:
@@ -124,7 +127,7 @@ Leftover fixes that I'm not sure about:
 
 
 
-\section{ Invertibility and group actions}
+\section{Invertibility and group actions}
 
 \begin{itemize}
 \item I want to write $\Lambda^{\oplus}$ for the underlying monoid maybe??
@@ -134,16 +137,17 @@ Leftover fixes that I'm not sure about:
 
 
 
-\section{ Computing automorphisms of the unit}
+\section{Computing automorphisms of the unit}
 
 \begin{itemize}
+\item Lemma 7.1.1: Mentions the morphism $g^\otimes$ in the statement but the morphisms in the proof are all just labelled $g$.
 
 
 
-
-\item 4.1.3/7.1.2 check 2.3.10: need to make sure this is in an earlier section, and ref'ed (actually seems to rely on the lemma previous to the one referenced: `G0abel' (AC is stuck on this), not `calclem')
+\item 4.1.3/7.1.2 check 2.3.10: need to make sure this is in an earlier section, and ref'ed (group action actually seems to rely on the lemma previous to the one referenced: `G0abel' (AC is stuck on this), not `calclem' (which gives the group hom.))
+\item Do we actually need $\Lambda(0) \times \Lambda(m) \rightarrow \Lambda(m)$ to be a group action? If not, then we don't need to know that $g \oplus h = g \cdot h$ for elements $g, h \in \Lambda(0)$. I.e., Lemma 2.3.9.
 \item 7.1.2: Switches between $\oplus$ and $\otimes$ a few times. Is this fine?
-
+\item Is the induced homomorphism $\Lambda(0) \rightarrow \Lambda(m)$ given by $- \oplus e_m$?
 
 \item explain purpose
 \item improve proof 4.2.3
@@ -183,7 +187,7 @@ Leftover fixes that I'm not sure about:
 
 
 
-\section{ Examples}
+\section{Examples}
 
 \begin{itemize}
 \item Actually read this section, fix anything
@@ -198,7 +202,7 @@ Leftover fixes that I'm not sure about:
 \vskip1cm
 
 
-\section{ Invertible objects}
+\section{Invertible objects}
 \begin{itemize}
 \item Include notation for $\eta$ as the unit here
 \item Change to equalizers
@@ -218,7 +222,7 @@ Leftover fixes that I'm not sure about:
 \item include forward ref to where we use cref{epi}: I can't find it
 \item Get better Eckmann-Hilton ref: don't care anymore
 \end{itemize}
-\section{ Invertibility and group actions}
+\section{Invertibility and group actions}
 \begin{itemize}
 \item Forward ref
 \item definition env
@@ -242,7 +246,7 @@ Leftover fixes that I'm not sure about:
 \item practical?
 \end{itemize}
 
-\section{ Computing automorphisms of the unit}
+\section{Computing automorphisms of the unit}
 \begin{itemize}
 \item in the next two results
 \item 4.1.2 two boxes
@@ -283,7 +287,7 @@ Leftover fixes that I'm not sure about:
 
 \item 
 \end{itemize}
-\section{ Examples}
+\section{Examples}
 \begin{itemize}
 \item 
 \end{itemize}

@@ -6,8 +6,8 @@
 \nomenclatureentry{N$\Sigma$@[{$\Sigma$}]\begingroup the symmetric operad\nomeqref {0}|nompageref}{9}
 \nomenclatureentry{N$\tau_{1} \oplus \cdots \oplus \tau_{n}$@[{$\tau_{1} \oplus \cdots \oplus \tau_{n}$}]\begingroup block sum of braids\nomeqref {0}|nompageref}{10}
 \nomenclatureentry{N$\mb{\Lambda}$@[{$\mb{\Lambda}$}]\begingroup action operad\nomeqref {0}|nompageref}{11}
-\nomenclatureentry{N$T$@[{$T$}]\begingroup terminal operad\nomeqref {1}|nompageref}{11}
-\nomenclatureentry{N$\mathbf{T}$@[{$\mathbf{T}$}]\begingroup terminal operad as an action operad\nomeqref {1}|nompageref}{11}
+\nomenclatureentry{N$T$@[{$T$}]\begingroup terminal operad\nomeqref {1}|nompageref}{12}
+\nomenclatureentry{N$\mathbf{T}$@[{$\mathbf{T}$}]\begingroup terminal operad as an action operad\nomeqref {1}|nompageref}{12}
 \nomenclatureentry{N$\mb{B}$@[{$\mb{B}$}]\begingroup action operad of braid groups\nomeqref {1}|nompageref}{12}
 \nomenclatureentry{N$\mb{RB}$@[{$\mb{RB}$}]\begingroup action operad of ribbon braid groups\nomeqref {1}|nompageref}{12}
 \nomenclatureentry{N$\mathbb{N}$@[{$\mathbb{N}$}]\begingroup the set of natural numbers\nomeqref {1}|nompageref}{12}
@@ -15,23 +15,23 @@
 \nomenclatureentry{N$A^{\bullet}$@[{$A^{\bullet}$}]\begingroup action operad of an abelian group $A$\nomeqref {1}|nompageref}{13}
 \nomenclatureentry{C$\mb{AOp}$@[{$\mb{AOp}$}]\begingroup of action operads and maps of action operads\nomeqref {1}|nompageref}{13}
 \nomenclatureentry{C$\mb{Op}(\mb{Grp})$@[{$\mb{Op}(\mb{Grp})$}]\begingroup of operads in groups and maps of operads in groups\nomeqref {1}|nompageref}{13}
-\nomenclatureentry{C$\mathbf{CSGrp}$@[{$\mathbf{CSGrp}$}]\begingroup of crossed simplicial groups and morphisms of crossed simplicial groups\nomeqref {1}|nompageref}{15}
+\nomenclatureentry{C$\mathbf{CSGrp}$@[{$\mathbf{CSGrp}$}]\begingroup of crossed simplicial groups and morphisms of crossed simplicial groups\nomeqref {1}|nompageref}{16}
 \nomenclatureentry{N$\beta$@[{$\beta$}]\begingroup block sum of permutations\nomeqref {1}|nompageref}{17}
 \nomenclatureentry{N$\delta$@[{$\delta$}]\begingroup diagonal map permuting in a block\nomeqref {1}|nompageref}{17}
 \nomenclatureentry{C$C_{fp}$@[{$C_{fp}$}]\begingroup the subcategory of finitely presentable objects in $C$\nomeqref {3}|nompageref}{20}
-\nomenclatureentry{C$\mb{Op}^{g}$@[{$\mb{Op}^{g}$}]\begingroup of operads $P$ for which each $P(n)$ has a group structure and operad maps\nomeqref {3}|nompageref}{20}
+\nomenclatureentry{C$\mb{Op}^{g}$@[{$\mb{Op}^{g}$}]\begingroup of operads $P$ for which each $P(n)$ has a group structure and operad maps\nomeqref {3}|nompageref}{21}
 \nomenclatureentry{C$C/c$@[{$C/c$}]\begingroup the slice category of $C$ over an object $c$ in $C$\nomeqref {3}|nompageref}{21}
-\nomenclatureentry{C$[A,B]$@[{$[A,B]$}]\begingroup of functors between categories $A$ and $B$ and natural transformations\nomeqref {3}|nompageref}{21}
+\nomenclatureentry{C$[A,B]$@[{$[A,B]$}]\begingroup of functors between categories $A$ and $B$ and natural transformations\nomeqref {3}|nompageref}{22}
 \nomenclatureentry{C$\ML\mbox{-}\mb{Op}$@[{$\ML\mbox{-}\mb{Op}$}]\begingroup of $\ML$-operads and maps of operads which are levelwise equivariant with respect to the $\Lambda(n)$-actions\nomeqref {3}|nompageref}{22}
-\nomenclatureentry{C$P\mbox{-}\mb{Alg}$@[{$P\mbox{-}\mb{Alg}$}]\begingroup of $P$-algebras and morphisms for an operad (or monad) $P$\nomeqref {3}|nompageref}{23}
-\nomenclatureentry{N$\mathcal{E}_{X}$@[{$\mathcal{E}_{X}$}]\begingroup the endomorphism operad of a set $X$\nomeqref {3}|nompageref}{23}
+\nomenclatureentry{C$P\mbox{-}\mb{Alg}$@[{$P\mbox{-}\mb{Alg}$}]\begingroup of $P$-algebras and morphisms for an operad (or monad) $P$\nomeqref {3}|nompageref}{24}
+\nomenclatureentry{N$\mathcal{E}_{X}$@[{$\mathcal{E}_{X}$}]\begingroup the endomorphism operad of a set $X$\nomeqref {3}|nompageref}{24}
 \nomenclatureentry{N$\underline{P}$@[{$\underline{P}$}]\begingroup the monad induced by an operad $P$\nomeqref {3}|nompageref}{24}
 \nomenclatureentry{C$\mb{Cat}$@[{$\mb{Cat}$}]\begingroup of categories and functors\nomeqref {3}|nompageref}{30}
 \nomenclatureentry{C$\Lambda\mb{\mbox{-}Coll}$@[{$\Lambda\mb{\mbox{-}Coll}$}]\begingroup of $\ML$-collections and $\Lambda(n)$-equivariant maps\nomeqref {3}|nompageref}{30}
 \nomenclatureentry{C$\mathbb{\Lambda}$@[{$\mathbb{\Lambda}$}]\begingroup of natural numbers and hom-sets $\Lambda(n)$\nomeqref {3}|nompageref}{30}
 \nomenclatureentry{C$\mb{Mon}(C)$@[{$\mb{Mon}(C)$}]\begingroup of monoids in $C$ and morphisms preserving the monoid structure\nomeqref {3}|nompageref}{31}
 \nomenclatureentry{N$X \star Y$@[{$X \star Y$}]\begingroup convolution product of collections $X$ and $Y$\nomeqref {3}|nompageref}{32}
-\nomenclatureentry{N$S \odot X$@[{$S \odot X$}]\begingroup copower of set $S$ with an object $X$\nomeqref {3}|nompageref}{34}
+\nomenclatureentry{N$S \odot X$@[{$S \odot X$}]\begingroup copower of set $S$ with an object $X$\nomeqref {3}|nompageref}{36}
 \nomenclatureentry{C$P\mbox{-}\mb{Alg}_{s}$@[{$P\mbox{-}\mb{Alg}_{s}$}]\begingroup the $2$-category of strict $P$-algebras, strict morphisms, and $P$-transformations for an operad (or ($2$-monad) $P$\nomeqref {3}|nompageref}{41}
 \nomenclatureentry{C$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$@[{$\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$}]\begingroup the $2$-category of strict $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations for an operad (or $2$-)monad) $P$\nomeqref {3}|nompageref}{41}
 \nomenclatureentry{N$A \times_{G} B$@[{$A \times_{G} B$}]\begingroup coequalizer of right $G$-action on $A$ and left $G$-action on $B$\nomeqref {3}|nompageref}{48}
