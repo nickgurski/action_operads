@@ -26,14 +26,17 @@
 
 \section{Introduction}
 \begin{itemize}
-\item add references to works that cite the original papers: \href{https://scholar.google.com/scholar?oi=bibs\&hl=en\&cites=3135675589124701435}{Google Scholar link 1}, \href{https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13749645182111219012&as_sdt=5}{Google Scholar link 2}
+\item add references to works that cite the original preprints: \href{https://scholar.google.com/scholar?oi=bibs\&hl=en\&cites=3135675589124701435}{Google Scholar link 1}, \href{https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13749645182111219012&as_sdt=5}{Google Scholar link 2}
+\item add reference to Ed's thesis
+\item should we reference the original preprints as well?
 
 \end{itemize}
 \section{Action operads}
 \begin{itemize}
 \item The comments below can be got rid of if `$0$-ary multiplication' $\mu \colon \Lambda(0) \rightarrow \Lambda(0)$ satisfies $\mu(g; ) = g$. This is what is done in Ed's thesis (Lemma 1.13) but seems odd and I can't find any other places this is done. (It doesn't help that nearly everywhere uses reduced operads where $P(0) = \ast$.)
-\item I put in G0abel (2.3.8) to prove: need to show that $g \oplus h = \mu(e_2;g,h) = gh$ (suffices to show that $g \oplus e_0 = \mu(e_2;g, e_0) = g$). Thought it would be a straightforward Eckmann-Hilton argument but it gets stuck. I'm quite sure this doesn't work, as in block sum does \textit{not} agree with the group operation. It does in many of the examples we use, since the $\Lambda(0)$ is often trivial. But it doesn't seem to work in general. When it \textit{does}, then it is the case that $\Lambda(0)$ is abelian (and it's always true that block sum on its own for $\Lambda(0)$ is commutative because of a later result about $E\Lambda$-algebras being spacial.)
-\item The previous comment has a big knock-on effect for results at the start of Section 7.
+\item I put in G0abel (2.3.9) to prove: need to show that $g \oplus h = \mu(e_2;g,h) = gh$ (suffices to show that $g \oplus e_0 = \mu(e_2;g, e_0) = g$). Thought it would be a straightforward Eckmann-Hilton argument but it gets stuck. I'm quite sure this doesn't work, as in block sum does \textit{not} agree with the group operation. It does in many of the examples we use, since the $\Lambda(0)$ is often trivial. But it doesn't seem to work in general. When it \textit{does}, then it is the case that $\Lambda(0)$ is abelian (and it's always true that block sum on its own for $\Lambda(0)$ is commutative because of a later result about $E\Lambda$-algebras being spacial - noticed that this also uses the claim that $\alpha(e_0;-) = id_I$)
+\item The previous comment has a big knock-on effect for results at the start of Section 7. Especially Prop 7.5.4 and what follows really just requires that $e_0 \otimes g = g$. Many of the results here go on to assume that $\Lambda(0)$ is trivial, which could mean that we can just make this an assumption from the off and forget about all of this.
+\item If making the $\Lambda(0) = \ast$ assumption, then should change Convention 7.6.1 to say this.
 % \item and we should put in a proof that all the $\pi$'s are surjective or trivial (2.3.4)
 % \item Proof of 2.3.4: just needs checking
 \item I have been changing tensor product to block sum for a lot of things, we need to go through and decide how to do that consistently
@@ -53,14 +56,14 @@
 % \item Defn 3.3.7 of cocomplete symmetric monoidal cat
 % \item After 3.3.9 seems repetitive (essentially description of $\underline{P}$)
 \item Prop 3.3.11-4 The proofs need filling out: Seems to correspond to stuff in Yau's book around Theorem 18.3.1 and rest of Section 18/19
-\item Should we change $E\Lambda(n) \times X^n/\Lambda(n)$ to be $\left(E\Lambda(n) \times X^n\right)/\Lambda(n)$?
+% \item Should we change $E\Lambda(n) \times X^n/\Lambda(n)$ to be $\left(E\Lambda(n) \times X^n\right)/\Lambda(n)$?
 \end{itemize}
 
 \section{Monoidal structures and multicategories}
 
 \begin{itemize}
 \item Intro
-\item Use \begin{verbatim} \lmc \end{verbatim} for lambda monoidal categories
+% \item Use \begin{verbatim} \lmc \end{verbatim} for lambda monoidal categories
 % \item `By standard methods' - reference for adjoint equivalence (Mac Lane Chapter 4 Section 4 Theorem 1)
 % \item Invertible unit: follows from adjoint equivalence
 % \item Theorem 4.2.11: `Define $\beta$ by' should have $s_{p_1+r_1,q_1+r_1}$ on the RHS, not $s_{p_1,q_1}$? (Fine because $r_1 = 0$. Clarified.)
@@ -111,7 +114,7 @@
 \begin{itemize}
 \item The notation in the very first sentence needs to be explained somewhere!
 \item Rewrite intro: Need to explain that the goal is to understand some group actions
-\item Decide on ELambda algebras or Lambda monoidal categories throughout (we decided the second!)
+% \item Decide on ELambda algebras or Lambda monoidal categories throughout (we decided the second!)
 \item New notation: added earlier (line 905, search beta\_to\_oplus), just need to implement, search for action maps or superscript tensors
 \item Fix weakly invertible section
 \item Lemma 5.3.10ish: Needs sorting
@@ -146,6 +149,7 @@ Leftover fixes that I'm not sure about:
 
 \item 4.1.3/7.1.2 check 2.3.10: need to make sure this is in an earlier section, and ref'ed (group action actually seems to rely on the lemma previous to the one referenced: `G0abel' (AC is stuck on this), not `calclem' (which gives the group hom.))
 \item Do we actually need $\Lambda(0) \times \Lambda(m) \rightarrow \Lambda(m)$ to be a group action? If not, then we don't need to know that $g \oplus h = g \cdot h$ for elements $g, h \in \Lambda(0)$. I.e., Lemma 2.3.9.
+\item No examples seen have non-trivial $\Lambda(0)$ - we could keep the results around here and remark that `if' it can be shown (Lemma 2.3.9) that $g \oplus h = g \cdot h$, then the proofs will still go through.
 \item 7.1.2: Switches between $\oplus$ and $\otimes$ a few times. Is this fine?
 \item Is the induced homomorphism $\Lambda(0) \rightarrow \Lambda(m)$ given by $- \oplus e_m$?
 

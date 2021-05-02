@@ -1,0 +1,470 @@
+% % https://q.uiver.app/?q=WzAsNSxbMCwwLCJPKG4pXFx0aW1lc1xcbGVmdChcXHByb2Rfe2k9MX1ee259IE8oa197aX0pXFxyaWdodClcXHRpbWVzXFxsZWZ0KFxccHJvZF97aT0xfV57bn0gXFxwcm9kX3tqPTF9XntrX3tpfX0gTyhsX3tpLGp9KVxccmlnaHQpIl0sWzIsMCwiTyhuKSBcXHRpbWVzIFxccHJvZF97aT0xfV57bn1cXGxlZnQoTyhrX3tpfVxcdGltZXNcXHByb2Rfe2o9MX1ee2tfaX1PKGxfe2ksan0pXFxyaWdodCkiXSxbMiwxLCJPKG4pIFxcdGltZXNcXHByb2Rfe2k9MX1ebiBPXFxsZWZ0KFxcc3VtX3tqPTF9XntrX3tpfX0gbF97aSxqfVxccmlnaHQpIl0sWzIsMiwiT1xcbGVmdChcXHN1bV97aT0xfV57bn0gXFxzdW1fe2o9MX1ee2tfe2l9fSBsX3tpLGp9XFxyaWdodCkiXSxbMCwyLCJPXFxsZWZ0KFxcc3VtX3tpPTF9XntufSBrX3tpfVxccmlnaHQpIFxcdGltZXMgXFxwcm9kX3tpPTF9XntufSBcXHByb2Rfe2o9MX1ee2tfe2l9fU8oa197aSxqfSkiXSxbMCwxLCJcXGNvbmciXSxbMSwyLCJcXGlkIFxcdGltZXMgXFxwcm9kXFxtdSJdLFsyLDMsIlxcbXUiXSxbNCwzLCJcXG11IiwyXSxbMCw0LCJcXG11IFxcdGltZXMgXFxpZCIsMl1d
+% % https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXHNjcmlwdHN0eWxlIE8obilcXHRpbWVzXFxsZWZ0KFxccHJvZF97aT0xfV57bn0gTyhrX3tpfSlcXHJpZ2h0KVxcdGltZXNcXGxlZnQoXFxwcm9kX3tpPTF9XntufSBcXHByb2Rfe2o9MX1ee2tfe2l9fSBPKGxfe2ksan0pXFxyaWdodCkiXSxbMiwwLCJcXHNjcmlwdHN0eWxlIE8obikgXFx0aW1lcyBcXHByb2Rfe2k9MX1ee259XFxsZWZ0KE8oa197aX1cXHRpbWVzXFxwcm9kX3tqPTF9XntrX2l9TyhsX3tpLGp9KVxccmlnaHQpIl0sWzIsMSwiXFxzY3JpcHRzdHlsZSBPKG4pIFxcdGltZXNcXHByb2Rfe2k9MX1ebiBPXFxsZWZ0KFxcc3VtX3tqPTF9XntrX3tpfX0gbF97aSxqfVxccmlnaHQpIl0sWzIsMiwiXFxzY3JpcHRzdHlsZSBPXFxsZWZ0KFxcc3VtX3tpPTF9XntufSBcXHN1bV97aj0xfV57a197aX19IGxfe2ksan1cXHJpZ2h0KSJdLFswLDIsIlxcc2NyaXB0c3R5bGUgT1xcbGVmdChcXHN1bV97aT0xfV57bn0ga197aX1cXHJpZ2h0KSBcXHRpbWVzIFxccHJvZF97aT0xfV57bn0gXFxwcm9kX3tqPTF9XntrX3tpfX1PKGtfe2ksan0pIl0sWzAsMSwiXFxjb25nIl0sWzEsMiwiXFxpZCBcXHRpbWVzIFxccHJvZFxcbXUiXSxbMiwzLCJcXG11Il0sWzQsMywiXFxtdSIsMl0sWzAsNCwiXFxtdSBcXHRpbWVzIFxcaWQiLDJdXQ==
+\[\begin{tikzcd}
+  {\scriptstyle O(n)\times\left(\prod_{i=1}^{n} O(k_{i})\right)\times\left(\prod_{i=1}^{n} \prod_{j=1}^{k_{i}} O(l_{i,j})\right)} && {\scriptstyle O(n) \times \prod_{i=1}^{n}\left(O(k_{i}\times\prod_{j=1}^{k_i}O(l_{i,j})\right)} \\
+  && {\scriptstyle O(n) \times\prod_{i=1}^n O\left(\sum_{j=1}^{k_{i}} l_{i,j}\right)} \\
+  {\scriptstyle O\left(\sum_{i=1}^{n} k_{i}\right) \times \prod_{i=1}^{n} \prod_{j=1}^{k_{i}}O(k_{i,j})} && {\scriptstyle O\left(\sum_{i=1}^{n} \sum_{j=1}^{k_{i}} l_{i,j}\right)}
+  \arrow["{\cong}", from=1-1, to=1-3]
+  \arrow["{\id \times \prod\mu}", from=1-3, to=2-3]
+  \arrow["{\mu}", from=2-3, to=3-3]
+  \arrow["{\mu}"', from=3-1, to=3-3]
+  \arrow["{\mu \times \id}"', from=1-1, to=3-1]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXExhbWJkYShrXzEpIFxcdGltZXMgXFxjZG90cyBcXHRpbWVzIFxcTGFtYmRhKGtfbikiXSxbMSwwLCJcXExhbWJkYShcXHVuZGVybGluZXtrfSkiXSxbMCwxLCJcXFNpZ21hX3trXzF9IFxcdGltZXMgXFxjZG90cyBcXFNpZ21hX3trX259Il0sWzEsMSwiXFxTaWdtYV97XFx1bmRlcmxpbmV7a319Il0sWzAsMSwiXFxiZXRhIl0sWzAsMiwiXFxwaV8xIFxcdGltZXMgXFxjZG90cyBcXHRpbWVzIFxccGlfbiIsMl0sWzEsMywiXFxwaSJdLFsyLDMsIlxcYmV0YSIsMl1d
+\[\begin{tikzcd}
+  {\Lambda(k_1) \times \cdots \times \Lambda(k_n)} & {\Lambda(\underline{k})} \\
+  {\Sigma_{k_1} \times \cdots \Sigma_{k_n}} & {\Sigma_{\underline{k}}}
+  \arrow["{\beta}", from=1-1, to=1-2]
+  \arrow["{\pi_1 \times \cdots \times \pi_n}"', from=1-1, to=2-1]
+  \arrow["{\pi}", from=1-2, to=2-2]
+  \arrow["{\beta}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXExhbWJkYShuKSJdLFsxLDAsIlxcTGFtYmRhKFxcdW5kZXJsaW5le2t9KSJdLFswLDEsIlxcU2lnbWFfbiJdLFsxLDEsIlxcU2lnbWFfe1xcdW5kZXJsaW5le2t9fSJdLFswLDEsIlxcZGVsdGEiXSxbMCwyLCJcXHBpIiwyXSxbMSwzLCJcXHBpIl0sWzIsMywiXFxkZWx0YSIsMl1d
+\[\begin{tikzcd}
+  {\Lambda(n)} & {\Lambda(\underline{k})} \\
+  {\Sigma_n} & {\Sigma_{\underline{k}}}
+  \arrow["{\delta}", from=1-1, to=1-2]
+  \arrow["{\pi}"', from=1-1, to=2-1]
+  \arrow["{\pi}", from=1-2, to=2-2]
+  \arrow["{\delta}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJPKG4pIFxcdGltZXMgXFxwcm9kX3tpPTF9XntufSBcXGxlZnQoTyhrX2kpIFxcdGltZXMgWF57a19pfVxccmlnaHQpIl0sWzIsMCwiTyhuKSBcXHRpbWVzIFhebiJdLFswLDEsIlxcbGVmdChPKG4pIFxcdGltZXMgXFxwcm9kX3tpPTF9Xm4gTyhrX2kpXFxyaWdodCkgXFx0aW1lcyBcXHByb2Rfe2k9MX1ebiBYXntrX2l9Il0sWzAsMiwiT1xcbGVmdChcXFNpZ21hX3tpPTF9XntufSBrX2kgXFxyaWdodClcXHRpbWVzIFhee1xcU2lnbWFfe2k9MX1ee259IGtfaX0iXSxbMiwyLCJYIl0sWzAsMSwiXFxpZCBcXHRpbWVzIFxccHJvZF97aT0xfV5uIFxcYWxwaGFfe2tfaX0iXSxbMCwyLCJcXGNvbmciLDJdLFsyLDMsIlxcbXUgXFx0aW1lcyBcXGlkIiwyXSxbMyw0LCJcXGFscGhhX3tcXFNpZ21hX3tpPTF9XntufSBrX2l9IiwyXSxbMSw0LCJcXGFscGhhX24iXV0=
+\[\begin{tikzcd}
+  {O(n) \times \prod_{i=1}^{n} \left(O(k_i) \times X^{k_i}\right)} && {O(n) \times X^n} \\
+  {\left(O(n) \times \prod_{i=1}^n O(k_i)\right) \times \prod_{i=1}^n X^{k_i}} \\
+  {O\left(\Sigma_{i=1}^{n} k_i \right)\times X^{\Sigma_{i=1}^{n} k_i}} && {X}
+  \arrow["{\id \times \prod_{i=1}^n \alpha_{k_i}}", from=1-1, to=1-3]
+  \arrow["{\cong}"', from=1-1, to=2-1]
+  \arrow["{\mu \times \id}"', from=2-1, to=3-1]
+  \arrow["{\alpha_{\Sigma_{i=1}^{n} k_i}}"', from=3-1, to=3-3]
+  \arrow["{\alpha_n}", from=1-3, to=3-3]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsNCxbMCwwLCJQKG4pIFxcdGltZXMgWF5uIl0sWzEsMCwiUChuKSBcXHRpbWVzIFlebiJdLFswLDEsIlgiXSxbMSwxLCJZIl0sWzAsMSwiXFxpZCBcXHRpbWVzIGZebiJdLFswLDIsIlxcdGlsZGV7XFxhbHBoYX1fbiIsMl0sWzIsMywiZiIsMl0sWzEsMywiXFx0aWxkZXtcXGJldGF9X24iXV0=
+\[\begin{tikzcd}
+  {P(n) \times X^n} & {P(n) \times Y^n} \\
+  {X} & {Y}
+  \arrow["{\id \times f^n}", from=1-1, to=1-2]
+  \arrow["{\tilde{\alpha}_n}"', from=1-1, to=2-1]
+  \arrow["{f}"', from=2-1, to=2-2]
+  \arrow["{\tilde{\beta}_n}", from=1-2, to=2-2]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsOCxbMCwxLCJGWCJdLFsxLDAsIlRGWCJdLFsxLDIsIkZTWCJdLFszLDEsIlReMkZYIl0sWzQsMCwiVEZTWCJdLFs0LDIsIlRGWCJdLFs1LDAsIkZTXjJYIl0sWzUsMiwiRlNYIl0sWzAsMSwiXFxldGFeVF97Rlh9Il0sWzEsMiwiXFxhbHBoYV9YIl0sWzAsMiwiRlxcZXRhXlNfWCIsMl0sWzMsNCwiVFxcYWxwaGFfWCJdLFs0LDYsIlxcYWxwaGFfe1NYfSJdLFs2LDcsIkZcXG11XlNfWCJdLFszLDUsIlxcbXVeVF97Rlh9IiwyXSxbNSw3LCJcXGFscGhhX1giLDJdXQ==
+\[\begin{tikzcd}
+  & {TFX} &&& {TFSX} & {FS^2X} \\
+  {FX} &&& {T^2FX} \\
+  & {FSX} &&& {TFX} & {FSX}
+  \arrow["{\eta^T_{FX}}", from=2-1, to=1-2]
+  \arrow["{\alpha_X}", from=1-2, to=3-2]
+  \arrow["{F\eta^S_X}"', from=2-1, to=3-2]
+  \arrow["{T\alpha_X}", from=2-4, to=1-5]
+  \arrow["{\alpha_{SX}}", from=1-5, to=1-6]
+  \arrow["{F\mu^S_X}", from=1-6, to=3-6]
+  \arrow["{\mu^T_{FX}}"', from=2-4, to=3-5]
+  \arrow["{\alpha_X}"', from=3-5, to=3-6]
+\end{tikzcd}\]
+
+  % \[
+  %   \xy
+  %     (0,0)*+{TFX}="a";
+  %     (20,0)*+{TGX}="b";
+  %     (0,-20)*+{FSX}="c";
+  %     (20,-20)*+{GSX}="d";
+  %     {\ar_{\alpha_X} "a" ; "c"};
+  %     {\ar_{\Gamma_{SX}} "c" ; "d"};
+  %     {\ar^{T\Gamma_X} "a" ; "b"};
+  %     {\ar^{\beta_X} "b" ; "d"};
+  %   \endxy
+  % \]
+% % https://q.uiver.app/?q=WzAsNCxbMCwwLCJURlgiXSxbMSwwLCJUR1giXSxbMCwxLCJGU1giXSxbMSwxLCJHU1giXSxbMCwxLCJUXFxHYW1tYV9YIl0sWzEsMywiXFxiZXRhX1giXSxbMCwyLCJcXGFscGhhX1giLDJdLFsyLDMsIlxcR2FtbWFfe1NYfSIsMl1d
+\[\begin{tikzcd}
+  {TFX} & {TGX} \\
+  {FSX} & {GSX}
+  \arrow["{T\Gamma_X}", from=1-1, to=1-2]
+  \arrow["{\beta_X}", from=1-2, to=2-2]
+  \arrow["{\alpha_X}"', from=1-1, to=2-1]
+  \arrow["{\Gamma_{SX}}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsMTIsWzAsMCwiVF4yRlgiXSxbMSwwLCJURlNYIl0sWzIsMCwiVEZYIl0sWzEsMSwiRlNeMlgiXSxbMiwxLCJGU1giXSxbMCwyLCJURlgiXSxbMSwyLCJGU1giXSxbMiwyLCJGWCJdLFs0LDAsIkZYIl0sWzUsMCwiVEZYIl0sWzUsMSwiRlNYIl0sWzUsMiwiRlgiXSxbMCwxLCJUXFxhbHBoYV9YIl0sWzEsMiwiVEZcXHNpZ21hIl0sWzEsMywiXFxhbHBoYV97U1h9IiwyXSxbMyw0LCJGU1xcc2lnbWEiXSxbMiw0LCJcXGFscGhhX1giXSxbMCw1LCJcXG11XlRfe0ZYfSIsMl0sWzUsNiwiXFxhbHBoYV9YIiwyXSxbMyw2LCJGXFxtdV5TX1giLDJdLFs2LDcsIkZcXHNpZ21hIiwyXSxbNCw3LCJGXFxzaWdtYSJdLFs4LDksIlxcZXRhXlRfe0ZYfSJdLFs5LDEwLCJcXGFscGhhX1giXSxbOCwxMCwiRlxcZXRhXlNfWCJdLFsxMCwxMSwiRlxcc2lnbWEiXSxbOCwxMSwiXFxpZCIsMl1d
+\[\begin{tikzcd}
+  {T^2FX} & {TFSX} & {TFX} && {FX} & {TFX} \\
+  & {FS^2X} & {FSX} &&& {FSX} \\
+  {TFX} & {FSX} & {FX} &&& {FX}
+  \arrow["{T\alpha_X}", from=1-1, to=1-2]
+  \arrow["{TF\sigma}", from=1-2, to=1-3]
+  \arrow["{\alpha_{SX}}"', from=1-2, to=2-2]
+  \arrow["{FS\sigma}", from=2-2, to=2-3]
+  \arrow["{\alpha_X}", from=1-3, to=2-3]
+  \arrow["{\mu^T_{FX}}"', from=1-1, to=3-1]
+  \arrow["{\alpha_X}"', from=3-1, to=3-2]
+  \arrow["{F\mu^S_X}"', from=2-2, to=3-2]
+  \arrow["{F\sigma}"', from=3-2, to=3-3]
+  \arrow["{F\sigma}", from=2-3, to=3-3]
+  \arrow["{\eta^T_{FX}}", from=1-5, to=1-6]
+  \arrow["{\alpha_X}", from=1-6, to=2-6]
+  \arrow["{F\eta^S_X}", from=1-5, to=2-6]
+  \arrow["{F\sigma}", from=2-6, to=3-6]
+  \arrow["{\id}"', from=1-5, to=3-6]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsNCxbMCwwLCJDIl0sWzEsMCwiRCJdLFswLDEsIkMiXSxbMSwxLCJEIl0sWzAsMSwiRiJdLFsxLDMsIlxcdW5kZXJsaW5le0ZQfSJdLFswLDIsIlxcdW5kZXJsaW5le1B9IiwyXSxbMiwzLCJGIiwyXSxbMSwyLCJcXHBzaSIsMCx7Imxlbmd0aCI6NTAsImxldmVsIjoyfV1d
+\[\begin{tikzcd}
+  {C} & {D} \\
+  {C} & {D}
+  \arrow["{F}", from=1-1, to=1-2]
+  \arrow["{\underline{FP}}", from=1-2, to=2-2]
+  \arrow["{\underline{P}}"', from=1-1, to=2-1]
+  \arrow["{F}"', from=2-1, to=2-2]
+  \arrow[Rightarrow, "{\psi}", from=1-2, to=2-1, shorten <=5pt, shorten >=5pt]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsOCxbMCwwLCJQKG4pIFxcb3RpbWVzIFxcTGFtYmRhKG4pIFxcb3RpbWVzIFhebiJdLFsxLDAsIlEobikgXFxvdGltZXMgXFxMYW1iZGEobikgXFxvdGltZXMgWF5uIl0sWzAsMSwiUChuKSBcXG90aW1lcyBYXm4iXSxbMCwyLCJQKG4pIFxcb3RpbWVzX3tcXExhbWJkYShuKX0gWF5uIl0sWzAsMywiXFxjb3Byb2Rfe24gXFxpbiBcXG1hdGhiYntOfX0gUChuKSBcXG90aW1lc197XFxMYW1iZGEobil9IFhebiJdLFsxLDMsIlxcY29wcm9kX3tuIFxcaW4gXFxtYXRoYmJ7Tn19IFEobikgXFxvdGltZXNfe1xcTGFtYmRhKG4pfSBYXm4iXSxbMSwyLCJRKG4pIFxcb3RpbWVzX3tcXExhbWJkYShuKX0gWF5uIl0sWzEsMSwiUShuKSBcXG90aW1lcyBYXm4iXSxbMCwxLCJcXHNpZ21hX24gXFxvdGltZXMgXFxpZCBcXG90aW1lcyBcXGlkIl0sWzAsMiwiXFxsYW1iZGFeUCIsMix7Im9mZnNldCI6Mn1dLFswLDIsIlxccmhvXlAiLDAseyJvZmZzZXQiOi0yfV0sWzEsNywiXFxyaG9eUSIsMCx7Im9mZnNldCI6LTJ9XSxbMSw3LCJcXGxhbWJkYV5RIiwyLHsib2Zmc2V0IjoyfV0sWzIsNywiXFxzaWdtYV9uIFxcb3RpbWVzIFxcaWQiXSxbMiwzLCJjXlBfbiIsMl0sWzcsNiwiY15RX24iXSxbMyw2LCJcXGV4aXN0cyFcXHNpZ21hXntcXGFzdH1fe24sWH0iLDJdLFszLDRdLFs2LDVdLFs0LDUsIlxcZXhpc3RzIVxcc2lnbWFee1xcYXN0fV9YIiwyXV0=
+\[\begin{tikzcd}
+  {P(n) \otimes \Lambda(n) \otimes X^n} & {Q(n) \otimes \Lambda(n) \otimes X^n} \\
+  {P(n) \otimes X^n} & {Q(n) \otimes X^n} \\
+  {P(n) \otimes_{\Lambda(n)} X^n} & {Q(n) \otimes_{\Lambda(n)} X^n} \\
+  {\coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n} & {\coprod_{n \in \mathbb{N}} Q(n) \otimes_{\Lambda(n)} X^n}
+  \arrow["{\sigma_n \otimes \id \otimes \id}", from=1-1, to=1-2]
+  \arrow["{\lambda^P}"', from=1-1, to=2-1, shift right=2]
+  \arrow["{\rho^P}", from=1-1, to=2-1, shift left=2]
+  \arrow["{\rho^Q}", from=1-2, to=2-2, shift left=2]
+  \arrow["{\lambda^Q}"', from=1-2, to=2-2, shift right=2]
+  \arrow["{\sigma_n \otimes \id}", from=2-1, to=2-2]
+  \arrow["{c^P_n}"', from=2-1, to=3-1]
+  \arrow["{c^Q_n}", from=2-2, to=3-2]
+  \arrow["{\exists!\sigma^{\ast}_{n,X}}"', from=3-1, to=3-2]
+  \arrow[from=3-1, to=4-1]
+  \arrow[from=3-2, to=4-2]
+  \arrow["{\exists!\sigma^{\ast}_X}"', from=4-1, to=4-2]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsNCxbMCwxLCJcXGxlZnQoXFxwcm9kX3tpPTF9Xm5ZKGtfaSlcXHJpZ2h0KSBcXHRpbWVzIFxcbWF0aGJie1xcTGFtYmRhfVxcbGVmdChrLFxcdW5kZXJsaW5le2t9XFxyaWdodCkiXSxbMSwwLCJcXGxlZnQoXFxwcm9kX3tpPTF9Xm5ZKGtfaSlcXHJpZ2h0KSBcXHRpbWVzIFxcbWF0aGJie1xcTGFtYmRhfVxcbGVmdChrLFxcdW5kZXJsaW5le2t9XFxyaWdodCkiXSxbMiwxLCJZXntcXHN0YXIgbn0oaykiXSxbMSwyLCJcXGxlZnQoXFxwcm9kX3tpPTF9Xm5ZKGtfaSlcXHJpZ2h0KSBcXHRpbWVzIFxcbWF0aGJie1xcTGFtYmRhfVxcbGVmdChrLFxcdW5kZXJsaW5le2t9XFxyaWdodCkiXSxbMCwxLCIoLSBcXGNkb3QgZ18xLFxcbGRvdHMsIC0gXFxjZG90IGdfbikgXFx0aW1lcyBcXGlkIiwxXSxbMSwyXSxbMCwzLCJcXGlkIFxcdGltZXMgKChnXzEgKyBcXGNkb3RzICsgZ19uKVxcY2RvdCAtKSIsMV0sWzMsMl1d
+\[\begin{tikzcd}
+  & {\left(\prod_{i=1}^nY(k_i)\right) \times \mathbb{\Lambda}\left(k,\underline{k}\right)} \\
+  {\left(\prod_{i=1}^nY(k_i)\right) \times \mathbb{\Lambda}\left(k,\underline{k}\right)} && {Y^{\star n}(k)} \\
+  & {\left(\prod_{i=1}^nY(k_i)\right) \times \mathbb{\Lambda}\left(k,\underline{k}\right)}
+  \arrow["{(- \cdot g_1,\ldots, - \cdot g_n) \times \id}" description, from=2-1, to=1-2]
+  \arrow[from=1-2, to=2-3]
+  \arrow["{\id \times ((g_1 + \cdots + g_n)\cdot -)}" description, from=2-1, to=3-2]
+  \arrow[from=3-2, to=2-3]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsNSxbMCwwLCJQX24gXFx0aW1lcyBcXHByb2Rfe2k9MX1ebiBcXGxlZnQoUF97a19pfSBcXHRpbWVzIFhee2tfaX1cXHJpZ2h0KSJdLFswLDEsIlBfbiBcXHRpbWVzIFxccHJvZF97aT0xfV5uIFBfe2tfaX0gXFx0aW1lcyBYXntcXFNpZ21hIGtfaX0iXSxbMCwyLCJQX3tcXFNpZ21hIGtfaX0gXFx0aW1lcyBYXntcXFNpZ21hIGtfaX0iXSxbMiwyLCJYIl0sWzIsMCwiUF9uIFxcdGltZXMgWF5uIl0sWzAsNCwiXFxpZCBcXHRpbWVzIFxccHJvZCBcXHRpbGRle1xcYWxwaGF9X3trX2l9Il0sWzQsMywiXFx0aWxkZXtcXGFscGhhfV9uIl0sWzAsMSwiXFxjb25nIiwyXSxbMSwyLCJcXG11XlAgXFx0aW1lcyBcXGlkIiwyXSxbMiwzLCJcXHRpbGRle1xcYWxwaGF9X3tcXFNpZ21hIGtfaX0iLDJdLFs0LDIsIlxcdGlsZGV7XFxwaGl9X3trXzEsXFxjZG90cyxrX259IiwwLHsibGVuZ3RoIjoyMCwibGV2ZWwiOjJ9XV0=
+\[\begin{tikzcd}
+  {P_n \times \prod_{i=1}^n \left(P_{k_i} \times X^{k_i}\right)} && {P_n \times X^n} \\
+  {P_n \times \prod_{i=1}^n P_{k_i} \times X^{\Sigma k_i}} \\
+  {P_{\Sigma k_i} \times X^{\Sigma k_i}} && {X}
+  \arrow["{\id \times \prod \tilde{\alpha}_{k_i}}", from=1-1, to=1-3]
+  \arrow["{\tilde{\alpha}_n}", from=1-3, to=3-3]
+  \arrow["{\cong}"', from=1-1, to=2-1]
+  \arrow["{\mu^P \times \id}"', from=2-1, to=3-1]
+  \arrow["{\tilde{\alpha}_{\Sigma k_i}}"', from=3-1, to=3-3]
+  \arrow[Rightarrow, "{\tilde{\phi}_{k_1,\cdots,k_n}}", from=1-3, to=3-1, shorten <=50pt, shorten >=50pt]
+\end{tikzcd}\]
+
+% % https://q.uiver.app/?q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiMSBcXHRpbWVzIFgiXSxbMCwyLCJQKDEpIFxcdGltZXMgWCJdLFsxLDIsIlgiXSxbMCwxLCJcXGNvbmciLDJdLFsxLDIsIlxcZXRhXlAgXFx0aW1lcyBcXGlkIiwyXSxbMiwzLCJcXHRpbGRle1xcYWxwaGF9XzEiLDJdLFswLDMsIlxcaWQiXSxbNywyLCJcXHRpbGRle1xccGhpfV9cXGV0YSIsMCx7Imxlbmd0aCI6MzB9XV0=
+\[\begin{tikzcd}
+  {X} \\
+  {1 \times X} \\
+  {P(1) \times X} & {X}
+  \arrow["{\cong}"', from=1-1, to=2-1]
+  \arrow["{\eta^P \times \id}"', from=2-1, to=3-1]
+  \arrow["{\tilde{\alpha}_1}"', from=3-1, to=3-2]
+  \arrow["{\id}"{name=0}, from=1-1, to=3-2]
+  \arrow[Rightarrow, "{\tilde{\phi}_\eta}", from=0, to=3-1, shorten <=10pt, shorten >=10pt]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsMTgsWzAsMCwiXFxzY3JpcHRzdHlsZSBQX24gXFx0aW1lcyBcXHByb2RfaSBcXGxlZnQoUF97a19pfSBcXHRpbWVzIFxccHJvZF9qIFxcbGVmdChQX3ttX2lqfSBcXHRpbWVzIFhee21fe2lqfX1cXHJpZ2h0KVxccmlnaHQpIl0sWzEsMiwiXFxzY3JpcHRzdHlsZSBQX24gXFx0aW1lc1xccHJvZF9pXFxsZWZ0KFBfe1xcc3VtIG1fe2lqfX0gXFx0aW1lcyBYXntcXHN1bSBtX3tpan19XFxyaWdodCkiXSxbNCwyLCJcXHNjcmlwdHN0eWxlIFBfbiBcXHRpbWVzIFhebiJdLFsyLDAsIlxcc2NyaXB0c3R5bGUgUF9uIFxcdGltZXMgXFxwcm9kX2kgXFxsZWZ0KFBfe2tfaX0gXFx0aW1lcyBYXntrX2l9XFxyaWdodCkiXSxbMCwzLCJcXHNjcmlwdHN0eWxlIFBfe1xcc3VtIGtfaX1cXHRpbWVzIFxccHJvZF9pXFxwcm9kX2ogXFxsZWZ0KFBfe21fe2lqfX0gXFx0aW1lcyBYXnttX3tpan19XFxyaWdodCkiXSxbMSw1LCJcXHNjcmlwdHN0eWxlIFBfe1xcc3VtIFxcc3VtIG1fe2lqfX0gXFx0aW1lcyBYXntcXHN1bSBcXHN1bSBtX3tpan19Il0sWzQsNSwiWCJdLFsyLDZdLFswLDcsIlxcc2NyaXB0c3R5bGUgUF9uIFxcdGltZXMgXFxwcm9kX2kgXFxsZWZ0KFBfe2tfaX0gXFx0aW1lcyBcXHByb2RfaiBcXGxlZnQoUF97bV9pan0gXFx0aW1lcyBYXnttX3tpan19XFxyaWdodClcXHJpZ2h0KSJdLFsyLDcsIlxcc2NyaXB0c3R5bGUgUF9uIFxcdGltZXMgXFxwcm9kX2kgXFxsZWZ0KFBfe2tfaX0gXFx0aW1lcyBYXntrX2l9XFxyaWdodCkiXSxbMCwxMCwiXFxzY3JpcHRzdHlsZSBQX3tcXHN1bSBrX2l9XFx0aW1lcyBcXHByb2RfaVxccHJvZF9qIFxcbGVmdChQX3ttX3tpan19IFxcdGltZXMgWF57bV97aWp9fVxccmlnaHQpIl0sWzQsOSwiXFxzY3JpcHRzdHlsZSBQX24gXFx0aW1lcyBYXm4iXSxbNCwxMiwiWCJdLFsxLDEyLCJcXHNjcmlwdHN0eWxlIFBfe1xcc3VtIFxcc3VtIG1fe2lqfX0gXFx0aW1lcyBYXntcXHN1bSBcXHN1bSBtX3tpan19Il0sWzIsMTAsIlBfe1xcU2lnbWEga19pfSBcXHRpbWVzIFhee1xcU2lnbWEga19pfSJdLFsxLDhdLFszLDEwXSxbMyw4XSxbMSwyLCJcXGlkIFxcdGltZXMgXFxwcm9kIFxcdGlsZGV7XFxhbHBoYX1fe1xcU2lnbWEgbV97aWp9fSJdLFswLDEsIlxcbXVeUCBcXHRpbWVzIFxcaWQiLDJdLFswLDMsIlxcaWQgXFx0aW1lcyBcXHByb2RcXGxlZnQoXFxpZCBcXHRpbWVzIFxccHJvZCBcXHRpbGRle1xcYWxwaGF9X3ttX2lqfVxccmlnaHQpIl0sWzMsMiwiXFxpZCBcXHRpbWVzIFxccHJvZCBcXHRpbGRle1xcYWxwaGF9X3trX2l9IiwwLHsibGFiZWxfcG9zaXRpb24iOjYwfV0sWzAsNCwiXFxtdV5QIFxcdGltZXMgXFxpZCIsMl0sWzQsNSwiXFxtdV5QIFxcdGltZXMgXFxpZCIsMl0sWzgsOSwiXFxpZCBcXHRpbWVzIFxccHJvZFxcbGVmdChcXGlkIFxcdGltZXMgXFxwcm9kIFxcdGlsZGV7XFxhbHBoYX1fe21faWp9XFxyaWdodCkiXSxbOSwxMSwiXFxpZCBcXHRpbWVzIFxccHJvZCBcXHRpbGRle1xcYWxwaGF9X3trX2l9Il0sWzExLDEyLCJcXHRpbGRle1xcYWxwaGF9X24iXSxbOCwxMCwiXFxtdV5QIFxcdGltZXMgXFxpZCIsMl0sWzEwLDEzLCJcXG11XlAgXFx0aW1lcyBcXGlkIiwyXSxbMTMsMTIsIlxcbXVeUCBcXHRpbWVzIFxcaWQiLDJdLFsxMCwxNCwiXFxpZCBcXHRpbWVzIFxccHJvZCBcXHByb2RcXHRpbGRle1xcYWxwaGF9X3ttX3tpan19Il0sWzksMTQsIlxcbXVeUCBcXHRpbWVzIFxcaWQiLDJdLFsxNCwxMiwiXFx0aWxkZXtcXGFscGhhfV97XFxTaWdtYSBrX2l9IiwyLHsibGFiZWxfcG9zaXRpb24iOjIwfV0sWzEsNSwiXFxtdV5QIFxcdGltZXMgXFxpZCIsMl0sWzUsNiwiXFx0aWxkZXtcXGFscGhhfV97XFxTaWdtYVxcU2lnbWEgbV97aWp9fSIsMl0sWzIsNiwiXFx0aWxkZXtcXGFscGhhfV9uIl0sWzMsMSwiXFxpZCBcXHRpbWVzIFxccHJvZF9pIFxcdGlsZGV7XFxwaGl9X3ttX3tpMX0sXFxjZG90cyxtX3tpa19pfX0iLDAseyJvZmZzZXQiOjUsInNob3J0ZW4iOnsic291cmNlIjozMCwidGFyZ2V0IjozMH0sImxldmVsIjoyfV0sWzIsNSwiXFx0aWxkZXtcXHBoaX1fe1xcc3VtIG1fezFqfSxcXGNkb3RzLCBcXHN1bV97bV97bmp9fX0iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6NDAsInRhcmdldCI6NDB9LCJsZXZlbCI6Mn1dLFsxMSwxNCwiXFx0aWxkZXtcXHZhcnBoaX1fe2tfMSxcXGxkb3RzLGtfbn0iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6NDAsInRhcmdldCI6NDB9LCJsZXZlbCI6Mn1dLFsxNCwxMywiXFx0aWxkZXtcXHZhcnBoaX1fe21fezExfSxcXGxkb3RzLG1fe25rX259fSIsMix7InNob3J0ZW4iOnsic291cmNlIjozMCwidGFyZ2V0IjozMH0sImxldmVsIjoyfV0sWzksNSwiIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjQwfSwibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+  {\scriptstyle P_n \times \prod_i \left(P_{k_i} \times \prod_j \left(P_{m_ij} \times X^{m_{ij}}\right)\right)} && {\scriptstyle P_n \times \prod_i \left(P_{k_i} \times X^{k_i}\right)} \\
+  \\
+  & {\scriptstyle P_n \times\prod_i\left(P_{\sum m_{ij}} \times X^{\sum m_{ij}}\right)} &&& {\scriptstyle P_n \times X^n} \\
+  {\scriptstyle P_{\sum k_i}\times \prod_i\prod_j \left(P_{m_{ij}} \times X^{m_{ij}}\right)} \\
+  \\
+  & {\scriptstyle P_{\sum \sum m_{ij}} \times X^{\sum \sum m_{ij}}} &&& X \\
+  && {} \\
+  {\scriptstyle P_n \times \prod_i \left(P_{k_i} \times \prod_j \left(P_{m_ij} \times X^{m_{ij}}\right)\right)} && {\scriptstyle P_n \times \prod_i \left(P_{k_i} \times X^{k_i}\right)} \\
+  & {} && {} \\
+  &&&& {\scriptstyle P_n \times X^n} \\
+  {\scriptstyle P_{\sum k_i}\times \prod_i\prod_j \left(P_{m_{ij}} \times X^{m_{ij}}\right)} && {P_{\Sigma k_i} \times X^{\Sigma k_i}} & {} \\
+  \\
+  & {\scriptstyle P_{\sum \sum m_{ij}} \times X^{\sum \sum m_{ij}}} &&& X
+  \arrow["{\id \times \prod \tilde{\alpha}_{\Sigma m_{ij}}}", from=3-2, to=3-5]
+  \arrow["{\mu^P \times \id}"', from=1-1, to=3-2]
+  \arrow["{\id \times \prod\left(\id \times \prod \tilde{\alpha}_{m_ij}\right)}", from=1-1, to=1-3]
+  \arrow["{\id \times \prod \tilde{\alpha}_{k_i}}"{pos=0.6}, from=1-3, to=3-5]
+  \arrow["{\mu^P \times \id}"', from=1-1, to=4-1]
+  \arrow["{\mu^P \times \id}"', from=4-1, to=6-2]
+  \arrow["{\id \times \prod\left(\id \times \prod \tilde{\alpha}_{m_ij}\right)}", from=8-1, to=8-3]
+  \arrow["{\id \times \prod \tilde{\alpha}_{k_i}}", from=8-3, to=10-5]
+  \arrow["{\tilde{\alpha}_n}", from=10-5, to=13-5]
+  \arrow["{\mu^P \times \id}"', from=8-1, to=11-1]
+  \arrow["{\mu^P \times \id}"', from=11-1, to=13-2]
+  \arrow["{\mu^P \times \id}"', from=13-2, to=13-5]
+  \arrow["{\id \times \prod \prod\tilde{\alpha}_{m_{ij}}}", from=11-1, to=11-3]
+  \arrow["{\mu^P \times \id}"', from=8-3, to=11-3]
+  \arrow["{\tilde{\alpha}_{\Sigma k_i}}"'{pos=0.2}, from=11-3, to=13-5]
+  \arrow["{\mu^P \times \id}"', from=3-2, to=6-2]
+  \arrow["{\tilde{\alpha}_{\Sigma\Sigma m_{ij}}}"', from=6-2, to=6-5]
+  \arrow["{\tilde{\alpha}_n}", from=3-5, to=6-5]
+  \arrow["{\id \times \prod_i \tilde{\phi}_{m_{i1},\cdots,m_{ik_i}}}", shift right=5, shorten <=17pt, shorten >=17pt, Rightarrow, from=1-3, to=3-2]
+  \arrow["{\tilde{\phi}_{\sum m_{1j},\cdots, \sum_{m_{nj}}}}", shorten <=52pt, shorten >=52pt, Rightarrow, from=3-5, to=6-2]
+  \arrow["{\tilde{\varphi}_{k_1,\ldots,k_n}}", shorten <=20pt, shorten >=20pt, Rightarrow, from=10-5, to=11-3]
+  \arrow["{\tilde{\varphi}_{m_{11},\ldots,m_{nk_n}}}"', shorten <=17pt, shorten >=17pt, Rightarrow, from=11-3, to=13-2]
+  \arrow[shorten <=23pt, shorten >=23pt, Rightarrow, no head, from=8-3, to=6-2]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNyxbMSwxLCJQX24gXFx0aW1lcyBcXGxlZnQoMSBcXHRpbWVzIFheblxccmlnaHQpIl0sWzIsMiwiUF9uIFxcdGltZXMgXFxsZWZ0KFBfMSBcXHRpbWVzIFhcXHJpZ2h0KV5uIl0sWzMsMiwiUF9uIFxcdGltZXMgWF5uIl0sWzIsNCwiUF9uIFxcdGltZXMgWF5uIl0sWzMsNCwiWCJdLFswLDAsIlBfbiBcXHRpbWVzIFhebiJdLFsyLDMsIlBfbiBcXHRpbWVzIFBfMV5uIFxcdGltZXMgWF5uIl0sWzAsMSwiXFxpZCBcXHRpbWVzIFxcbGVmdChcXGV0YV5QIFxcdGltZXMgXFxpZFxccmlnaHQpXm4iXSxbNSwwLCJcXGNvbmciXSxbMSw2LCJcXGNvbmciLDJdLFs2LDMsIlxcbXVeUCBcXHRpbWVzIFxcaWQiLDJdLFszLDQsIlxcdGlsZGV7XFxhbHBoYX1fbiIsMl0sWzEsMiwiXFxpZCBcXHRpbWVzIFxcdGlsZGV7XFxhbHBoYX1fMV5uIl0sWzIsNCwiXFx0aWxkZXtcXGFscGhhfV9uIl0sWzUsMywiXFxpZCIsMix7ImN1cnZlIjo1fV0sWzUsMiwiXFxpZCIsMSx7ImN1cnZlIjotNX1dXQ==
+\[\begin{tikzcd}
+  {P_n \times X^n} \\
+  & {P_n \times \left(1 \times X^n\right)} \\
+  && {P_n \times \left(P_1 \times X\right)^n} & {P_n \times X^n} \\
+  && {P_n \times P_1^n \times X^n} \\
+  && {P_n \times X^n} & X
+  \arrow["{\id \times \left(\eta^P \times \id\right)^n}", from=2-2, to=3-3]
+  \arrow["\cong", from=1-1, to=2-2]
+  \arrow["\cong"', from=3-3, to=4-3]
+  \arrow["{\mu^P \times \id}"', from=4-3, to=5-3]
+  \arrow["{\tilde{\alpha}_n}"', from=5-3, to=5-4]
+  \arrow["{\id \times \tilde{\alpha}_1^n}", from=3-3, to=3-4]
+  \arrow["{\tilde{\alpha}_n}", from=3-4, to=5-4]
+  \arrow["\id"', curve={height=30pt}, from=1-1, to=5-3]
+  \arrow["\id"{description}, curve={height=-30pt}, from=1-1, to=3-4]
+\end{tikzcd}\]
+%Redraw in tikzpicture
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJQX24gXFx0aW1lcyBYXm4iXSxbMSwwLCJYIl0sWzAsMSwiUF9uIFxcdGltZXMgWV5uIl0sWzEsMSwiWSJdLFswLDEsIlxcdGlsZGV7XFxhbHBoYX1fbiJdLFswLDIsIlxcaWQgXFx0aW1lcyBmXm4iLDJdLFsyLDMsIlxcdGlsZGV7XFxiZXRhfV9uIiwyXSxbMSwzLCJmIl0sWzEsMiwiXFxvdmVybGluZXtmfV9uIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwibGV2ZWwiOjJ9XV0=
+\[\begin{tikzcd}
+  {P_n \times X^n} & X \\
+  {P_n \times Y^n} & Y
+  \arrow["{\tilde{\alpha}_n}", from=1-1, to=1-2]
+  \arrow["{\id \times f^n}"', from=1-1, to=2-1]
+  \arrow["{\tilde{\beta}_n}"', from=2-1, to=2-2]
+  \arrow["f", from=1-2, to=2-2]
+  \arrow["{\overline{f}_n}", shorten <=5pt, shorten >=5pt, Rightarrow, from=1-2, to=2-1]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsMTUsWzAsMCwiWCJdLFswLDEsIjEgXFx0aW1lcyBYIl0sWzAsMiwiUF8xIFxcdGltZXMgWCJdLFsxLDAsIlkiXSxbMSwxLCIxIFxcdGltZXMgWSJdLFsxLDIsIlBfMSBcXHRpbWVzIFkiXSxbMSwzLCJYIl0sWzIsMywiWSJdLFs0LDAsIlgiXSxbNSwwLCJZIl0sWzQsMSwiMSBcXHRpbWVzIFgiXSxbNCwyLCJQXzEgXFx0aW1lcyBYIl0sWzUsMywiWCJdLFs2LDMsIlkiXSxbMiwxXSxbMCwxLCJcXGNvbmciLDJdLFszLDQsIlxcY29uZyIsMl0sWzAsMywiZiJdLFsxLDQsIlxcaWQgXFx0aW1lcyBmIl0sWzEsMiwiXFxldGFeUCBcXHRpbWVzIFxcaWQiLDJdLFs0LDUsIlxcZXRhXlAgXFx0aW1lcyBcXGlkIiwyXSxbMiw1LCJcXGlkIFxcdGltZXMgZiJdLFsyLDYsIlxcdGlsZGV7XFxhbHBoYX1fMSIsMl0sWzYsNywiZiIsMl0sWzUsNywiXFx0aWxkZXtcXGJldGF9XzEiXSxbMyw3LCJcXGlkIiwwLHsiY3VydmUiOi0zfV0sWzUsNiwiXFxvdmVybGluZXtmfV8xIiwwLHsibGV2ZWwiOjJ9XSxbOCw5LCJmIl0sWzgsMTAsIlxcY29uZyIsMl0sWzEwLDExLCJcXGV0YV5QIFxcdGltZXMgXFxpZCIsMl0sWzExLDEyLCJcXHRpbGRle1xcYWxwaGF9XzEiLDJdLFsxMiwxMywiZiIsMl0sWzgsMTIsIlxcaWQiLDAseyJjdXJ2ZSI6LTN9XSxbOSwxMywiXFxpZCIsMCx7ImN1cnZlIjotM31dLFsxNCwxMCwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjQwfSwibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMjUsNSwiXFx0aWxkZXtcXHBzaX1fXFxldGEiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzMyLDExLCJcXHRpbGRle1xcdmFycGhpfV9cXGV0YSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMH19XV0=
+\[\begin{tikzcd}
+  X & Y &&& X & Y \\
+  {1 \times X} & {1 \times Y} & {} && {1 \times X} \\
+  {P_1 \times X} & {P_1 \times Y} &&& {P_1 \times X} \\
+  & X & Y &&& X & Y
+  \arrow["\cong"', from=1-1, to=2-1]
+  \arrow["\cong"', from=1-2, to=2-2]
+  \arrow["f", from=1-1, to=1-2]
+  \arrow["{\id \times f}", from=2-1, to=2-2]
+  \arrow["{\eta^P \times \id}"', from=2-1, to=3-1]
+  \arrow["{\eta^P \times \id}"', from=2-2, to=3-2]
+  \arrow["{\id \times f}", from=3-1, to=3-2]
+  \arrow["{\tilde{\alpha}_1}"', from=3-1, to=4-2]
+  \arrow["f"', from=4-2, to=4-3]
+  \arrow["{\tilde{\beta}_1}", from=3-2, to=4-3]
+  \arrow[""{name=0, anchor=center, inner sep=0}, "\id", curve={height=-18pt}, from=1-2, to=4-3]
+  \arrow["{\overline{f}_1}", Rightarrow, from=3-2, to=4-2]
+  \arrow["f", from=1-5, to=1-6]
+  \arrow["\cong"', from=1-5, to=2-5]
+  \arrow["{\eta^P \times \id}"', from=2-5, to=3-5]
+  \arrow["{\tilde{\alpha}_1}"', from=3-5, to=4-6]
+  \arrow["f"', from=4-6, to=4-7]
+  \arrow[""{name=1, anchor=center, inner sep=0}, "\id", curve={height=-18pt}, from=1-5, to=4-6]
+  \arrow["\id", curve={height=-18pt}, from=1-6, to=4-7]
+  \arrow[shorten <=19pt, shorten >=19pt, Rightarrow, no head, from=2-3, to=2-5]
+  \arrow["{\tilde{\psi}_\eta}", shorten <=5pt, Rightarrow, from=0, to=3-2]
+  \arrow["{\tilde{\varphi}_\eta}", shorten <=5pt, Rightarrow, from=1, to=3-5]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJQX24gXFx0aW1lcyBYXm4iXSxbMCwyLCJYIl0sWzIsMiwiWSJdLFsyLDAsIlBfbiBcXHRpbWVzIFlebiJdLFs0LDAsIlBfbiBcXHRpbWVzIFhebiJdLFs2LDAsIlBfbiBcXHRpbWVzIFlebiJdLFs0LDIsIlgiXSxbNiwyLCJZIl0sWzAsMSwiXFx0aWxkZXtcXGFscGhhfV9uIiwyXSxbMSwyLCJnIiwyXSxbMCwzLCJcXGlkIFxcdGltZXMgZ15uIiwyXSxbMywyLCJcXHRpbGRle1xcYmV0YX1fbiJdLFswLDMsIlxcaWQgXFx0aW1lcyBmXm4iLDAseyJjdXJ2ZSI6LTN9XSxbMywxLCJcXG92ZXJsaW5le2d9X24iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6NDAsInRhcmdldCI6NDB9LCJsZXZlbCI6Mn1dLFs0LDYsIlxcdGlsZGV7XFxhbHBoYX1fbiIsMl0sWzQsNSwiXFxpZCBcXHRpbWVzIGZebiJdLFs1LDcsIlxcdGlsZGV7XFxiZXRhfV9uIl0sWzYsNywiZiJdLFs2LDcsImciLDIseyJjdXJ2ZSI6M31dLFszLDQsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjo0MCwidGFyZ2V0Ijo0MH0sImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNiwiXFxvdmVybGluZXtmfV9uIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjQwfSwibGV2ZWwiOjJ9XSxbMTIsMTAsIlxcaWQgXFx0aW1lcyBcXGdhbW1hXm4iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzE3LDE4LCJcXGdhbW1hIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+\[\begin{tikzcd}
+  {P_n \times X^n} && {P_n \times Y^n} && {P_n \times X^n} && {P_n \times Y^n} \\
+  \\
+  X && Y && X && Y
+  \arrow["{\tilde{\alpha}_n}"', from=1-1, to=3-1]
+  \arrow["g"', from=3-1, to=3-3]
+  \arrow[""{name=0, anchor=center, inner sep=0}, "{\id \times g^n}"', from=1-1, to=1-3]
+  \arrow["{\tilde{\beta}_n}", from=1-3, to=3-3]
+  \arrow[""{name=1, anchor=center, inner sep=0}, "{\id \times f^n}", curve={height=-18pt}, from=1-1, to=1-3]
+  \arrow["{\overline{g}_n}", shorten <=25pt, shorten >=25pt, Rightarrow, from=1-3, to=3-1]
+  \arrow["{\tilde{\alpha}_n}"', from=1-5, to=3-5]
+  \arrow["{\id \times f^n}", from=1-5, to=1-7]
+  \arrow["{\tilde{\beta}_n}", from=1-7, to=3-7]
+  \arrow[""{name=2, anchor=center, inner sep=0}, "f", from=3-5, to=3-7]
+  \arrow[""{name=3, anchor=center, inner sep=0}, "g"', curve={height=18pt}, from=3-5, to=3-7]
+  \arrow[shorten <=18pt, shorten >=18pt, Rightarrow, no head, from=1-3, to=1-5]
+  \arrow["{\overline{f}_n}"', shorten <=25pt, shorten >=25pt, Rightarrow, from=1-7, to=3-5]
+  \arrow["{\id \times \gamma^n}", shorten <=2pt, shorten >=2pt, Rightarrow, from=1, to=0]
+  \arrow["\gamma", shorten <=2pt, shorten >=2pt, Rightarrow, from=2, to=3]
+\end{tikzcd}\]
+
+    % https://q.uiver.app/?q=WzAsNyxbMCwwLCJUXjJYIl0sWzEsMCwiVFgiXSxbMCwxLCJUWCJdLFsxLDEsIlgiXSxbMywwLCJYIl0sWzMsMSwiVFgiXSxbNCwxLCJYIl0sWzAsMSwiVFxcYWxwaGEiXSxbMCwyLCJcXG11X1giLDJdLFsyLDMsIlxcYWxwaGEiLDJdLFsxLDMsIlxcYWxwaGEiXSxbMSwyLCJcXFBoaSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sImxldmVsIjoyfV0sWzQsNSwiXFxldGFfWCIsMl0sWzUsNiwiXFxhbHBoYSIsMl0sWzQsNiwiIiwwLHsiY3VydmUiOi0yfV0sWzE0LDUsIlxcUGhpX1xcZXRhIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjEwfX1dXQ==
+\[\begin{tikzcd}
+  {T^2X} & TX && X \\
+  TX & X && TX & X
+  \arrow["T\alpha", from=1-1, to=1-2]
+  \arrow["{\mu_X}"', from=1-1, to=2-1]
+  \arrow["\alpha"', from=2-1, to=2-2]
+  \arrow["\alpha", from=1-2, to=2-2]
+  \arrow["\Phi", shorten <=4pt, shorten >=4pt, Rightarrow, from=1-2, to=2-1]
+  \arrow["{\eta_X}"', from=1-4, to=2-4]
+  \arrow["\alpha"', from=2-4, to=2-5]
+  \arrow[""{name=0, anchor=center, inner sep=0}, curve={height=-12pt}, from=1-4, to=2-5]
+  \arrow["{\Phi_\eta}", shorten <=4pt, shorten >=2pt, Rightarrow, from=0, to=2-4]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsMTQsWzAsMCwiVF4zWCJdLFsxLDAsIlReMlgiXSxbMCwyLCJUXjJYIl0sWzEsMiwiVF4yWCJdLFsyLDIsIlRYIl0sWzEsNCwiVFgiXSxbMiw0LCJYIl0sWzQsMCwiVF4zWCJdLFs1LDAsIlReMlgiXSxbNCwyLCJUXjJYIl0sWzUsMiwiVFgiXSxbNiwyLCJUWCJdLFs1LDQsIlRYIl0sWzYsNCwiWCJdLFswLDEsIlReMlxcYWxwaGEiXSxbMCwyLCJcXG11X3tUWH0iLDJdLFsyLDUsIlxcbXVfWCIsMl0sWzUsNiwiXFxhbHBoYSIsMl0sWzEsNCwiVFxcYWxwaGEiXSxbNCw2LCJcXGFscGhhIl0sWzAsMywiVFxcbXVfWCIsMl0sWzMsNCwiVFxcYWxwaGEiLDJdLFszLDUsIlxcbXVfWCIsMl0sWzEsMywiVFxcUGhpIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwibGV2ZWwiOjJ9XSxbNyw5LCJcXG11X3tUWH0iLDJdLFs5LDEyLCJcXG11X1giLDJdLFsxMiwxMywiXFxhbHBoYSIsMl0sWzcsOCwiVF4yXFxhbHBoYSJdLFs4LDExLCJUXFxhbHBoYSJdLFsxMSwxMywiXFxhbHBoYSJdLFs5LDEwLCJUXFxhbHBoYSJdLFs4LDEwLCJcXG11X1giLDJdLFsxMCwxMywiXFxhbHBoYSIsMl0sWzEwLDEyLCJcXFBoaSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sImxldmVsIjoyfV0sWzQsOSwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjMwfSwibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMjgsMzIsIlxcUGhpIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjMwfX1dLFsyMSwxNywiXFxQaGkiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MzB9fV1d
+\[\begin{tikzcd}
+  {T^3X} & {T^2X} &&& {T^3X} & {T^2X} \\
+  \\
+  {T^2X} & {T^2X} & TX && {T^2X} & TX & TX \\
+  \\
+  & TX & X &&& TX & X
+  \arrow["{T^2\alpha}", from=1-1, to=1-2]
+  \arrow["{\mu_{TX}}"', from=1-1, to=3-1]
+  \arrow["{\mu_X}"', from=3-1, to=5-2]
+  \arrow[""{name=0, anchor=center, inner sep=0}, "\alpha"', from=5-2, to=5-3]
+  \arrow["T\alpha", from=1-2, to=3-3]
+  \arrow["\alpha", from=3-3, to=5-3]
+  \arrow["{T\mu_X}"', from=1-1, to=3-2]
+  \arrow[""{name=1, anchor=center, inner sep=0}, "T\alpha"', from=3-2, to=3-3]
+  \arrow["{\mu_X}"', from=3-2, to=5-2]
+  \arrow["T\Phi", shorten <=6pt, shorten >=6pt, Rightarrow, from=1-2, to=3-2]
+  \arrow["{\mu_{TX}}"', from=1-5, to=3-5]
+  \arrow["{\mu_X}"', from=3-5, to=5-6]
+  \arrow["\alpha"', from=5-6, to=5-7]
+  \arrow["{T^2\alpha}", from=1-5, to=1-6]
+  \arrow[""{name=2, anchor=center, inner sep=0}, "T\alpha", from=1-6, to=3-7]
+  \arrow["\alpha", from=3-7, to=5-7]
+  \arrow["T\alpha", from=3-5, to=3-6]
+  \arrow["{\mu_X}"', from=1-6, to=3-6]
+  \arrow[""{name=3, anchor=center, inner sep=0}, "\alpha"', from=3-6, to=5-7]
+  \arrow["\Phi", shorten <=6pt, shorten >=6pt, Rightarrow, from=3-6, to=5-6]
+  \arrow[shorten <=18pt, shorten >=14pt, Rightarrow, no head, from=3-3, to=3-5]
+  \arrow["\Phi", shorten <=13pt, shorten >=13pt, Rightarrow, from=2, to=3]
+  \arrow["\Phi", shorten <=13pt, shorten >=13pt, Rightarrow, from=1, to=0]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJUWCJdLFsxLDEsIlReMlgiXSxbMiwxLCJUWCJdLFsxLDIsIlRYIl0sWzIsMiwiWCJdLFswLDEsIlRcXGV0YV9YIiwyXSxbMSwzLCJcXG11X1giLDJdLFszLDQsIlxcYWxwaGEiLDJdLFsxLDIsIlRcXGFscGhhIl0sWzIsNCwiXFxhbHBoYSJdLFsyLDMsIlxcUGhpIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfSwibGV2ZWwiOjJ9XSxbMCwyLCJcXGlkIiwwLHsiY3VydmUiOi0yfV0sWzAsMywiXFxpZCIsMix7ImN1cnZlIjozfV0sWzExLDEsIlRcXFBoaV9cXGV0YSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMH19XV0=
+\[\begin{tikzcd}
+  TX \\
+  & {T^2X} & TX \\
+  & TX & X
+  \arrow["{T\eta_X}"', from=1-1, to=2-2]
+  \arrow["{\mu_X}"', from=2-2, to=3-2]
+  \arrow["\alpha"', from=3-2, to=3-3]
+  \arrow["T\alpha", from=2-2, to=2-3]
+  \arrow["\alpha", from=2-3, to=3-3]
+  \arrow["\Phi", shorten <=4pt, shorten >=4pt, Rightarrow, from=2-3, to=3-2]
+  \arrow[""{name=0, anchor=center, inner sep=0}, "\id", curve={height=-12pt}, from=1-1, to=2-3]
+  \arrow["\id"', curve={height=18pt}, from=1-1, to=3-2]
+  \arrow["{T\Phi_\eta}"', shorten <=3pt, Rightarrow, from=0, to=2-2]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJUWCJdLFsxLDAsIlRZIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMCwxLCJUZiJdLFswLDIsIlxcYWxwaGEiLDJdLFsyLDMsImYiLDJdLFsxLDMsIlxcYmV0YSJdLFs0LDYsIlxcb3ZlcmxpbmV7Zn0iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}
+  TX & TY \\
+  X & Y
+  \arrow[""{name=0, anchor=center, inner sep=0}, "Tf", from=1-1, to=1-2]
+  \arrow["\alpha"', from=1-1, to=2-1]
+  \arrow[""{name=1, anchor=center, inner sep=0}, "f"', from=2-1, to=2-2]
+  \arrow["\beta", from=1-2, to=2-2]
+  \arrow["{\overline{f}}", shorten <=4pt, shorten >=4pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsMTMsWzAsMCwiXFxzY3JpcHRzdHlsZSBQX24gXFx0aW1lcyBcXHByb2Rfe2k9MX1eblxcbGVmdChQX3trX2l9IFxcdGltZXMgWF57a19pfVxccmlnaHQpIl0sWzEsMCwiXFxzY3JpcHRzdHlsZSBQX24gXFx0aW1lcyBcXHByb2RfaSBcXGxlZnQoUF97a19pfSBcXHRpbWVzX3tcXExhbWJkYV97a19pfX0gWF57a19pfVxccmlnaHQpIl0sWzIsMCwiXFxzY3JpcHRzdHlsZSBQX24gXFx0aW1lcyBcXHVuZGVybGluZXtQfShYKV5uIl0sWzMsMCwiXFxzY3JpcHRzdHlsZSBQX24gXFx0aW1lcyBYXm4iXSxbMCwyLCJcXHNjcmlwdHN0eWxlIFBfbiBcXHRpbWVzIFxccHJvZF9pIFBfe2tfaX0gXFx0aW1lcyBYXntcXFNpZ21hIGtfaX0iXSxbMCw0LCJcXHNjcmlwdHN0eWxlIFBfe1xcU2lnbWEga19pfVxcdGltZXMgWF57XFxTaWdtYSBrX2l9Il0sWzEsNCwiXFxzY3JpcHRzdHlsZSBQX3tcXFNpZ21hIGtfaX0gXFx0aW1lc197XFxMYW1iZGFfe1xcU2lnbWEga19pfX0gWF57XFxTaWdtYSBrX2l9Il0sWzIsNCwiXFxzY3JpcHRzdHlsZSBcXHVuZGVybGluZXtQfShYKSJdLFsyLDEsIlxcc2NyaXB0c3R5bGUgUF9uIFxcdGltZXNfe1xcTGFtYmRhX259IFxcdW5kZXJsaW5le1B9KFgpXm4iXSxbMywxLCJcXHNjcmlwdHN0eWxlIFBfbiBcXHRpbWVzX3tcXExhbWJkYV9ufSBYXm4iXSxbMiwyLCJcXHNjcmlwdHN0eWxlIFxcdW5kZXJsaW5le1B9XjIoWCkiXSxbMywyLCJcXHNjcmlwdHN0eWxlIFxcdW5kZXJsaW5le1B9KFgpIl0sWzMsNCwiWCJdLFswLDFdLFswLDRdLFs0LDUsIlxcbXVeUCBcXHRpbWVzIFxcaWQiLDJdLFs1LDZdLFs2LDcsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzEsMiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwzLCJcXGlkIFxcdGltZXMgXFxhbHBoYV5uIl0sWzIsOF0sWzgsMTAsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsOV0sWzksMTEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzEwLDExLCJcXHVuZGVybGluZXtQfVxcYWxwaGEiXSxbMTAsNywiXFxtdV9YIiwyXSxbMTEsMTIsIlxcYWxwaGEiXSxbNywxMiwiXFxhbHBoYSIsMl0sWzI0LDI3LCJcXFBoaSIsMCx7InNob3J0ZW4iOnsic291cmNlIjozMCwidGFyZ2V0IjozMH19XV0=
+\[\begin{tikzcd}
+  {\scriptstyle P_n \times \prod_{i=1}^n\left(P_{k_i} \times X^{k_i}\right)} & {\scriptstyle P_n \times \prod_i \left(P_{k_i} \times_{\Lambda_{k_i}} X^{k_i}\right)} & {\scriptstyle P_n \times \underline{P}(X)^n} & {\scriptstyle P_n \times X^n} \\
+  && {\scriptstyle P_n \times_{\Lambda_n} \underline{P}(X)^n} & {\scriptstyle P_n \times_{\Lambda_n} X^n} \\
+  {\scriptstyle P_n \times \prod_i P_{k_i} \times X^{\Sigma k_i}} && {\scriptstyle \underline{P}^2(X)} & {\scriptstyle \underline{P}(X)} \\
+  \\
+  {\scriptstyle P_{\Sigma k_i}\times X^{\Sigma k_i}} & {\scriptstyle P_{\Sigma k_i} \times_{\Lambda_{\Sigma k_i}} X^{\Sigma k_i}} & {\scriptstyle \underline{P}(X)} & X
+  \arrow[from=1-1, to=1-2]
+  \arrow[from=1-1, to=3-1]
+  \arrow["{\mu^P \times \id}"', from=3-1, to=5-1]
+  \arrow[from=5-1, to=5-2]
+  \arrow[hook, from=5-2, to=5-3]
+  \arrow[hook, from=1-2, to=1-3]
+  \arrow["{\id \times \alpha^n}", from=1-3, to=1-4]
+  \arrow[from=1-3, to=2-3]
+  \arrow[hook, from=2-3, to=3-3]
+  \arrow[from=1-4, to=2-4]
+  \arrow[hook, from=2-4, to=3-4]
+  \arrow[""{name=0, anchor=center, inner sep=0}, "{\underline{P}\alpha}", from=3-3, to=3-4]
+  \arrow["{\mu_X}"', from=3-3, to=5-3]
+  \arrow["\alpha", from=3-4, to=5-4]
+  \arrow[""{name=1, anchor=center, inner sep=0}, "\alpha"', from=5-3, to=5-4]
+  \arrow["\Phi", shorten <=13pt, shorten >=13pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJQKG4pIFxcdGltZXMgWF5uIl0sWzEsMCwiUChuKSBcXHRpbWVzX3tcXExhbWJkYShuKX0gWF5uIl0sWzIsMCwiXFx1bmRlcmxpbmV7UH0oWCkiXSxbMywwLCJYIl0sWzAsMSwiUChuKSBcXHRpbWVzIFlebiJdLFsxLDEsIlAobikgXFx0aW1lc197XFxMYW1iZGEobil9IFlebiJdLFsyLDEsIlxcdW5kZXJsaW5le1B9KFkpIl0sWzMsMSwiWSJdLFswLDFdLFsxLDIsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsMywiXFxhbHBoYSJdLFswLDQsIlxcaWQgXFx0aW1lcyBmXm4iLDJdLFsxLDUsIlxcaWQgXFx0aW1lcyBmXm4iLDJdLFsyLDYsIlxcdW5kZXJsaW5le1B9ZiIsMl0sWzMsNywiZiJdLFs0LDVdLFs1LDYsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzYsNywiXFxiZXRhIiwyXSxbMTAsMTcsIlxcb3ZlcmxpbmV7Zn0iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MzB9fV1d
+\[\begin{tikzcd}
+  {P(n) \times X^n} & {P(n) \times_{\Lambda(n)} X^n} & {\underline{P}(X)} & X \\
+  {P(n) \times Y^n} & {P(n) \times_{\Lambda(n)} Y^n} & {\underline{P}(Y)} & Y
+  \arrow[from=1-1, to=1-2]
+  \arrow[hook, from=1-2, to=1-3]
+  \arrow[""{name=0, anchor=center, inner sep=0}, "\alpha", from=1-3, to=1-4]
+  \arrow["{\id \times f^n}"', from=1-1, to=2-1]
+  \arrow["{\id \times f^n}"', from=1-2, to=2-2]
+  \arrow["{\underline{P}f}"', from=1-3, to=2-3]
+  \arrow["f", from=1-4, to=2-4]
+  \arrow[from=2-1, to=2-2]
+  \arrow[hook, from=2-2, to=2-3]
+  \arrow[""{name=1, anchor=center, inner sep=0}, "\beta"', from=2-3, to=2-4]
+  \arrow["{\overline{f}}", shorten <=6pt, shorten >=6pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJQKG4pIFxcdGltZXMgWF5uIl0sWzEsMCwiUChuKSBcXHRpbWVzX3tcXExhbWJkYShuKX0gWF5uIl0sWzIsMCwiXFx1bmRlcmxpbmV7UH0oWCkiXSxbMiwxLCJYIl0sWzAsMV0sWzEsMiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwzLCJcXGV4aXN0cyFcXGFscGhhIl0sWzEsMywiXFxhbHBoYV9uIl0sWzAsMywiXFx0aWxkZXtcXGFscGhhfV9uIiwyXV0=
+\[\begin{tikzcd}
+  {P(n) \times X^n} & {P(n) \times_{\Lambda(n)} X^n} & {\underline{P}(X)} \\
+  && X
+  \arrow[from=1-1, to=1-2]
+  \arrow[hook, from=1-2, to=1-3]
+  \arrow["{\exists!\alpha}", from=1-3, to=2-3]
+  \arrow["{\alpha_n}", from=1-2, to=2-3]
+  \arrow["{\tilde{\alpha}_n}"', from=1-1, to=2-3]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJQX24gXFx0aW1lcyBcXHByb2RfaSBQKGtfaSkiXSxbMiwwLCJRKG4pIFxcdGltZXMgXFxwcm9kX2kgUShrX2kpIl0sWzAsMiwiUChcXFNpZ21hIGtfaSkiXSxbMiwyLCJRKFxcU2lnbWEga19pKSJdLFswLDEsIkZfbiBcXHRpbWVzIFxccHJvZF9pIEZfe2tfaX0iXSxbMCwyLCJcXG11XlAiLDJdLFsyLDMsIkZfe1xcU2lnbWEga19pfSIsMl0sWzEsMywiXFxtdV5RIl0sWzEsMiwiXFxwc2lfe2tfMSxcXGxkb3RzLGtfbn0iLDAseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjo0MCwidGFyZ2V0Ijo0MH0sImxldmVsIjoyfV1d
+\[\begin{tikzcd}
+  {P_n \times \prod_i P(k_i)} && {Q(n) \times \prod_i Q(k_i)} \\
+  \\
+  {P(\Sigma k_i)} && {Q(\Sigma k_i)}
+  \arrow["{F_n \times \prod_i F_{k_i}}", from=1-1, to=1-3]
+  \arrow["{\mu^P}"', from=1-1, to=3-1]
+  \arrow["{F_{\Sigma k_i}}"', from=3-1, to=3-3]
+  \arrow["{\mu^Q}", from=1-3, to=3-3]
+  \arrow["{\psi_{k_1,\ldots,k_n}}"{pos=0.4}, shorten <=31pt, shorten >=31pt, Rightarrow, from=1-3, to=3-1]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQyJdLFswLDEsIkIiXSxbMSwxLCJEIl0sWzAsMSwiZiJdLFswLDIsImwiLDJdLFsxLDMsInIiXSxbMiwzLCJnIiwyXV0=
+\[\begin{tikzcd}
+  A & C \\
+  B & D
+  \arrow["f", from=1-1, to=1-2]
+  \arrow["l"', from=1-1, to=2-1]
+  \arrow["r", from=1-2, to=2-2]
+  \arrow["g"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJBIl0sWzIsMCwiQyJdLFswLDIsIkIiXSxbMiwyLCJEIl0sWzQsMCwiQSJdLFs2LDAsIkMiXSxbNCwyLCJCIl0sWzYsMiwiRCJdLFswLDEsImYiXSxbNCw1LCJmIl0sWzIsMywiZyJdLFs2LDcsImciXSxbMCwyLCJsIiwyXSxbNCw2LCJsIiwyXSxbMSwzLCJyIl0sWzUsNywiciJdLFsxLDIsIlxcYWxwaGEiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MzB9LCJsZXZlbCI6Mn1dLFs2LDUsIm0iXSxbNSwxMSwiXFxiZXRhIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjMwfX1dLFsxNCwxMywiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjQwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+  A && C && A && C \\
+  \\
+  B && D && B && D
+  \arrow["f", from=1-1, to=1-3]
+  \arrow["f", from=1-5, to=1-7]
+  \arrow["g", from=3-1, to=3-3]
+  \arrow[""{name=0, anchor=center, inner sep=0}, "g", from=3-5, to=3-7]
+  \arrow["l"', from=1-1, to=3-1]
+  \arrow[""{name=1, anchor=center, inner sep=0}, "l"', from=1-5, to=3-5]
+  \arrow[""{name=2, anchor=center, inner sep=0}, "r", from=1-3, to=3-3]
+  \arrow["r", from=1-7, to=3-7]
+  \arrow["\alpha", shorten <=17pt, shorten >=17pt, Rightarrow, from=1-3, to=3-1]
+  \arrow["m", from=3-5, to=1-7]
+  \arrow["\beta", shorten <=18pt, shorten >=13pt, Rightarrow, from=1-7, to=0]
+  \arrow[shorten <=26pt, shorten >=26pt, Rightarrow, no head, from=2, to=1]
+\end{tikzcd}\]
