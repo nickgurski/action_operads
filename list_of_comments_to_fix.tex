@@ -38,7 +38,7 @@
 \item The previous comment has a big knock-on effect for results at the start of Section 7. Especially Prop 7.5.4 and what follows really just requires that $e_0 \otimes g = g$. Many of the results here go on to assume that $\Lambda(0)$ is trivial, which could mean that we can just make this an assumption from the off and forget about all of this.
 \item If making the $\Lambda(0) = \ast$ assumption, then should change Convention 7.6.1 to say this.
 % \item and we should put in a proof that all the $\pi$'s are surjective or trivial (2.3.4)
-% \item Proof of 2.3.4: just needs checking
+\item Proof of 2.3.4: just needs checking - there's probably a simpler proof which doesn't use induction. (I usually avoid induction, if possible, but here it does actually seems to help see what's going on.) Ed's thesis has a short proof but I think it doesn't quite cover everything.
 \item I have been changing tensor product to block sum for a lot of things, we need to go through and decide how to do that consistently
 % \item Defn 2.3.9 - specify what the $h$'s and $g$'s are.
 % \item Prop 2.5.21ish follows from Theorem 3.3.7ish, except for the part about the monad map (it can't be $(F,id)$ as it needs to use the coherence cells of $F$, so I've called it $(F,\psi^F)$ and added details to the propositions).
@@ -55,7 +55,8 @@
 % \item Start of 3.1: Should the $2$-monad should have $EP(n)$? Compare with 3.3.9.
 % \item Defn 3.3.7 of cocomplete symmetric monoidal cat
 % \item After 3.3.9 seems repetitive (essentially description of $\underline{P}$)
-\item Prop 3.3.11-4 The proofs need filling out: Seems to correspond to stuff in Yau's book around Theorem 18.3.1 and rest of Section 18/19
+\item Prop 3.3.11-4 The proofs need filling out: Seems to correspond to stuff in Yau's book around Theorem 18.3.1 and Chapter 19. (Possibly worth some remarks still but may be easier to just reference Yau here.) 
+\item I'd like to have an example around here though, such as how the hexagon identities for symmetric/braided monoidal categories pop out of these generic algebra axioms - there's an example of the symmetry axiom in Ed's thesis. This is kind of covered in the Borel construction section when talking about clubs, but not quite as explicitly.
 % \item Should we change $E\Lambda(n) \times X^n/\Lambda(n)$ to be $\left(E\Lambda(n) \times X^n\right)/\Lambda(n)$?
 \end{itemize}
 
@@ -92,7 +93,7 @@
 % \item Change `a bit of new terminology'
 \item Do we want another notation to emphasise the underlying monoid? (Think we settled on $\Lambda^{\oplus}$?)
 % \item `Then we will also \textit{use}'
-\item Lemma 4.3.8: Should be a $\Lambda^{\oplus}$, not just $\Lambda$?
+% \item Lemma 4.3.9: Should be a $\Lambda^{\oplus}$, not just $\Lambda$?
 % \item $\Lambda$ not $G$
 % \item Spacing of $\alpha$
 % \item 4.3.8: extra couple of steps to show $\alpha$ is a monoid homomorphism? (Not needed. It's a functor so this follows straight off.)

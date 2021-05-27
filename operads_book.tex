@@ -1972,6 +1972,8 @@ Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudo
 
 \begin{rem}
 A strict algebra for a $\ML$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an operad in the \textit{category} of small categories and functors. A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense. We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
+
+A closely related definition of pseudomorphism which requires extra care to be paid to equivariance conditions has since been given in the thesis of Rubin \cite{rubin-thesis}.
 \end{rem}
 
 \begin{Defi}
@@ -2975,24 +2977,109 @@ where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multip
 \begin{Defi}\label{lmc}
 A \emph{$\ML$-monoidal category} is a strict algebra for the 2-monad $\EL$. A \emph{$\ML$-monoidal functor} is a strict morphism for this 2-monad $\EL$. The 2-category $\lmc$ is the 2-category of strict algebras, strict morphisms, and algebra 2-cells for $\EL$.
 \end{Defi}
-QQQ $\ML$-monoidal $2$-cell name?
+QQQ $\ML$-monoidal $2$-cell name? Is an algebra $2$-cell a $\Lambda$-monoidal transformation?
 % QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
 QQQ Insert explicit descriptions of cells
 
 \begin{prop}\label{el_via_moncats}
 A strict $\ML$-monoidal category structure on $X$ determines and is determined by
 \begin{itemize}
-\item a strict monoidal structure,
-\item some iso's from the $\Lambda(n)$'s
-\item plus axioms.
+\item a strict monoidal category structure on $X$: $(X, \otimes, I)$,
+\item for each $\sigma \in \Lambda(n)$ and $x_1$, $\ldots$, $x_n \in X$, an isomorphism
+  \[
+    \sigma_{x_1,\ldots,x_n} \colon x_1 \otimes \ldots x_n \rightarrow x_{\pi(\sigma)^{-1}(1)} \otimes \ldots \otimes x_{\pi(\sigma)^{-1}(n)}
+  \]
+which is natural in each $x_i$,
+\item such that for any $\tau_i \in \Lambda(k_i)$ and $\sigma \in \Lambda(n)$, where $1 \leq i \leq n$, the following diagram commutes
+\[
+  \xy
+    (0,0)*+{\bigotimes_{i=1}^n \bigotimes_{j=1}^{k_i} x_{i,j}}="a";
+    (50,0)*+{\bigotimes_{i=1}^n \bigotimes_{j=1}^{k_i} x_{i,\pi(\sigma)^{-1}(j)}}="b";
+    (25,-20)*+{\bigotimes_{i=1}^n \bigotimes_{j=1}^{k_i} x_{\pi(\tau)^{-1}(i),\pi\left(\sigma_{\pi(\tau)^{-1}(i)}\right)^{-1}(j)}}="c";
+    %
+    {\ar^(.4){\tau_1 \otimes \cdots \otimes \tau_n} "a" ; "b"};
+    {\ar^{\sigma^{+}} "b" ; "c"};
+    {\ar_{\mu^{\Lambda}(\sigma;\tau_1,\ldots,\tau_n)} "a" ; "c"};
+  \endxy
+\]
+\item QQQ needs to be some equivariance condition in here, otherwise appropriate axioms (e.g., hexagon identities) don't come out of this 
 \end{itemize}
 \end{prop}
 \begin{proof}
+%QQQ Missing something about equivariance.
 
+% First we shall show an $\EL$-algebra structure on $X$ can be used to specify the monoidal structure described above. If $X$ is an $\EL$-algebra then we also have the family of morphisms $\alpha_n \colon E\Lambda(n) \times X^n \rightarrow X$ satisfying the usual axioms. We define the monoidal product of two objects $x$, $y \in X$ to be
+%   \[
+%     x \otimes y = \alpha_2(e_2;x,y)
+%   \]
+% and the unit object to be
+%   \[
+%     I = \alpha_0(e_0;).
+%   \]
+% Strict associativity follows from the the $\EL$-algebra axioms and Lemma \ref{calclem} as follows.
+%   \begin{align*}
+%     (x_1 \otimes x_2) \otimes x_3 &= \alpha_2(e_2;\alpha_2(e_2;x_1,x_2),x_3)\\
+%     &= \alpha_2(e_2;\alpha_2(e_2;x_1,x_2),\alpha_1(e_1;x_3))\\
+%     &= \alpha_3(\mu(e_2;e_2,e_1);x_1,x_2,x_3)\\
+%     &= \alpha_3(e_3;x_1,x_2,x_3)\\
+%     &= \alpha_3(\mu(e_2;e_1,e_2);x_1,x_2,x_3)\\
+%     &= \alpha_2(e_2;\alpha(e_1;x_1),\alpha(e_2;x_2,x_3))\\
+%     &= \alpha_2(e_2;x_1,\alpha_2(e_2;x_2,x_3))\\
+%     &= x_1 \otimes (x_2 \otimes x_3)
+%   \end{align*}
+% Due to this we can then write $n$-fold monoidal products as
+%   \[
+%     x_1 \otimes \ldots \otimes x_n = \alpha_n(e_n;x_1,\ldots,x_n)
+%   \]
+% and for any $\sigma \in \Lambda(n)$ we now define
+%   \[
+%     x_{\pi(\sigma)^{-1}(1)} \otimes \ldots \otimes x_{\pi(\sigma)^{-1}(n)} = \alpha_n(\sigma;x_1,\ldots,x_n).
+%   \]
+% For the unit object we have
+%   \begin{align*}
+%     I \otimes x &= \alpha_2(e_2;I,x)\\
+%     &= \alpha_2(e_2;\alpha_0(e_0;),\alpha_1(e_1;x))\\
+%     &= \alpha_1(\mu^\Lambda(e_2;e_0,e_1);x)\\
+%     &= \alpha_1(e_1;x)\\
+%     &= x,
+%   \end{align*}
+% with similar working to show that $x \otimes I = x$.
+
+% Next we specify the permutation isomorphisms. Given $\sigma \in \Lambda(n)$, there is a unique isomorphism
+%   \[
+%     ! \colon e_n \rightarrow \sigma
+%   \]
+% in $E\Lambda(n)$, which we use to define the isomorphism
+%   \[
+%     \tilde{\sigma} = \alpha_n(!;\underline{\id}) \colon \alpha_n(e_n;x_1,\ldots,x_n) \rightarrow \alpha_n(\sigma;x_1,\ldots,x_n).
+%   \]
+% That these are natural follows simply from the functoriality of each $\alpha_n$, giving
+%   \[
+%   \alpha_n(!;\underline{\id})\alpha(\id;f_1,\ldots,f_n) = \alpha_n(!;f_1,\ldots,f_n) = \alpha_n(\id;f_1,\ldots,f_n)\alpha_n(!;\underline{\id})
+%   \]
+% for $f_i \colon x_i \rightarrow x_i'$. The isomorphisms also satisfy the axioms specified in the diagram above as a direct result of the $\EL$-algebra axioms.
+
+% Conversely, we begin with a strict monoidal category $(X,\otimes,I)$, along with isomorphisms
+%   \[
+%     \tilde{\sigma} \colon x_1 \otimes \ldots \otimes x_n \rightarrow x_{\pi(\sigma)^{-1}(1)} \otimes \ldots \otimes \pi(\sigma)^{-1}(n)
+%   \]
+% satisfying the axioms specified above. We need to describe morphisms
+%   \[
+%     \alpha_n \colon E\Lambda(n) \times X^n \rightarrow X
+%   \]
+% which satisfy the axioms of an $\EL$-algebra. To begin with we first define
+%   \[
+%     \alpha_0(e_0;) = I.
+%   \]
+% To define each $\alpha_n$ we then put
+%   \[
+%     \alpha_n(\sigma;x_1,\ldots,x_n) = x_{\pi(\sigma)^{-1}(1)} \otimes \ldots \otimes x_{\pi(\sigma)^{-1}(n)}.
+%   \]
+% The unit axiom is satisfied immediately since we then have $\alpha_1(e_1;x) = x$. The other $\EL$-algebra axiom is then essentially the axiom described in the diagram above.
 \end{proof}
 
 \begin{prop}\label{el_strictmap}
-Let $X,Y$ be strict $\ML$-monoidal categories, and $F \colon X \rightarrow Y$ be a functor. $F$ is a strict $\ML$-monoidal functor if and only if something.
+Let $X,Y$ be strict $\ML$-monoidal categories, and $F \colon X \rightarrow Y$ be a functor. $F$ is a strict $\ML$-monoidal functor if and only if
 \end{prop}
 \begin{proof}
 
@@ -3374,7 +3461,7 @@ $[0,1] \times [-\varepsilon, \varepsilon] \rightarrow \mathbb{R}^{3}$.  This int
 We now turn to an example which is not as widely known in the categorical literature, that of coboundary categories \cite{drin-quasihopf}.  These arise in the representation theory of quantum groups and in the theory of crystals \cite{hk-cobound, hk-quantum}.  Our goal here is to refine the relationship between coboundary categories and the operad of $n$-fruit cactus\index{action operad!of cactus groups}\index{group!cactus} groups in \cite{hk-cobound} by using the theory of action operads and our Borel construction.  We begin by recalling the definition of a coboundary category.
 
 
-\begin{Defi}
+\begin{Defi}\label{def:cobcat}
 A \textit{coboundary category}\index{category!coboundary}\index{monoidal category!coboundary category} is a monoidal category $C$ equipped with a natural isomorphism $\sigma_{x,y} \colon x \otimes y \rightarrow y \otimes x$ (called the \textit{commutor}) such that
 \begin{itemize}
 \item $\sigma_{y,x} \circ \sigma_{x,y} = 1_{x \otimes y}$ and
@@ -3399,10 +3486,9 @@ commutes (in which the unlabeled morphisms are an associator and an inverse asso
 \end{itemize}
 \end{Defi}
 
-
-\begin{example}
+\begin{example}\label{ex:cobcats}
 \begin{enumerate}
-\item From the definition above, it is clear that any symmetric monoidal category is also a coboundary category.
+\item As noted by Savage \cite{savage-braidcob}, any braiding automatically satisfies the cactus relation (the diagram in Definition \ref{def:cobcat}). However, since braidings need not be involutions this does not mean that any braided monoidal category is a coboundary category. However, it should then be clear that any symmetric monoidal category is also a coboundary category.
 \item The name coboundary category comes from the original work of Drinfeld \cite{drin-quasihopf} in which he shows that the category of representations of a coboundary Hopf algebra has the structure of coboundary category.
 \item Henriques and Kamnitzer \cite{hk-cobound} show that the category of crystals for a finite dimensional complex reductive Lie algebra has the structure of a coboundary category. 
 \end{enumerate}
@@ -3806,7 +3892,7 @@ the monoid homomorphism defined by sending each element of $S \subseteq F(S)$ to
 
 \begin{lem} \label{Gnmor} The monoid of morphisms of the algebra $\ELn$ is
   \[
-    \mathrm{Mor}(\ELn) \quad \cong \quad \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n}
+    \mathrm{Mor}(\ELn) \cong \lop \times_{\mathbb{N}} \mathbb{N}^{\ast n}
   \]
 where this is a pullback taken over the respective length homomorphisms,
   % \[
