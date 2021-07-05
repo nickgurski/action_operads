@@ -727,16 +727,6 @@ The crossed simplicial groups\index{crossed simplicial group} of Fiedoriwicz and
 
 We now study some of the structure on the groups $\Lambda(n)$ for small values of $n$. Recall that $e_{n}$ is the identity element in the group $\Lambda(n)$.
 
-\begin{lem}\label{G0abel}
-Let $\ML$ be an action operad. The group $\Lambda(0)$ is abelian, and its group operation coincides with the operation 
-  \[
-    g, h \in \Lambda(0) \mapsto \mu(e_2; g, h)
-  \]
-arising from the operad structure.
-\end{lem}
-\begin{proof}
-\end{proof}
-
 \begin{lem}\label{calclem}
 Let $\ML$ be an action operad.
 \begin{enumerate}
@@ -768,6 +758,40 @@ For the second claim, write the operadic product as $\mu(e; \underline{e})$, and
 where the first equality follows from the last action operad axiom together with the fact that $e$ gets mapped to the identity permutation; here $\underline{e} \cdot \underline{e}$ is the sequence $e_{i_{1}} \cdot e_{i_{1}}, \ldots, e_{i_{n}} \cdot e_{i_{n}}$.  Thus $\mu(e; \underline{e})$ is an idempotent element of the group $\Lambda(I)$, so must be the identity element $e_{I}$.
 
 For the final claim, note that the specific operadic multiplication map $\mu \colon \Lambda(1) \times \Lambda(1) \rightarrow \Lambda(1)$ is a group homomorphism following from the action operad axioms, and $\id = e_{1}$ is a two-sided unit, so the Eckmann-Hilton argument shows that $\mu$ is actually group multiplication and that $\Lambda(1)$ is abelian.
+\end{proof}
+
+\begin{lem}\label{G0abel}
+Let $\ML$ be an action operad. The group operation of $\Lambda(0)$ coincides with the operation 
+  \[
+    g, h \in \Lambda(0) \mapsto \mu(e_2; g, h)
+  \]
+arising from the operad structure. Furthermore, $\Lambda(0)$ is abelian.
+\end{lem}
+\begin{proof}
+  Note first that
+    \begin{align*}
+      \mu(e_2; g, h) &= \mu(e_2 \cdot e_2; g \cdot e_0, e_0 \cdot h) \\
+      &= \mu(e_2; g, e_0) \cdot \mu(e_2; e_0, h),
+    \end{align*}
+  so for the first claim that $\mu(e_2; g, h) = g \cdot h$ it will suffice to show that $\mu(e_2; g, e_0) = g$ and $\mu(e_2; e_0, h) = h$ for all $g, h \in \Lambda(0)$. We will use the fact that $\mu(e_0; ) = e_0$, which follows below from a similar argument found in the second part of Lemma \ref{calclem}.
+    \begin{align*}
+      \mu(e_0;)\mu(e_0;) &= \mu\left(e_0^2;\right) \\
+      &= \mu(e_0;).
+    \end{align*}
+  Since $\mu(e_0;)$ is an idempotent element of $\Lambda(0)$, then it must be the identity $e_0$. Now we have this, the following sequence of calculations shows that $\mu(e_2; g, e_0) = g$, while a similar calculation would show that $\mu(e_2; e_0, h) = h$. Using Lemma \ref{calclem},
+    \begin{align*}
+      g &= \mu(e_1; g) \\
+      &= \mu(\mu(e_2; e_0, e_1); g) \\
+      &= \mu(e_2; \mu(e_0;), \mu(e_1; g)) \\
+      &= \mu(e_2; e_0, g).
+    \end{align*}
+  It remains to show that $\Lambda(0)$ is abelian, which relies on the coincidence of the operad multiplication and the group operation in $\Lambda(0)$, in an Eckmann-Hilton style argument.
+    \begin{align*}
+      g \cdot h &= \mu(e_2; g, h) \\
+      &= \mu(e_2 \cdot e_2; e_0 \cdot g, h \cdot e_0) \\
+      &= \mu(e_2; e_0, h) \cdot \mu(e_2; g, e_0) \\
+      &= h \cdot g.
+    \end{align*}
 \end{proof}
 
 Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations.  The first is the block sum of permutations which we denote by
@@ -1739,7 +1763,7 @@ simply abbreviated as $\mu^P \times 1$.  Furthermore, instead of using an elemen
 
 We begin with the definitions of the pseudo-level cells in the operadic context, and after each specialize to the strict version.
 
-\begin{Defi}
+\begin{Defi}\label{def:ps-alg}
 Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra}\index{algebra!pseudoalgebra}\index{operad!pseudoalgebra} for $P$ consists of: 
     \begin{itemize}
         \item a category $X$,
@@ -1764,7 +1788,7 @@ Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra}\index{algebra!pseudoalgebra}
                 \endxy
             \]
 
-               \item and a natural isomorphism $\phi_{\eta}$ corresponding to an isomorphism
+               \item and a natural isomorphism $\phi_{\eta}$ corresponding to a natural isomorphism
             \[
                 \xy
                     (0,0)*+{X}="00";
@@ -1853,15 +1877,47 @@ satisfying the following axioms.
 
 \end{Defi}
 
+\begin{rem}
+  The requirement in Definition \ref{def:ps-alg} of a natural isomorphism $\varphi_\eta$ is to induce a natural isomorphism $\tilde{\varphi}_\eta$. This requirement is really of a natural isomorphism
+    \[
+      \xy
+        (0,0)*+{1 \times_{\Lambda(1)} X}="a";
+        (0,-20)*+{P(1) \times_{\Lambda(1)} X}="b";
+        (25,-20)*+{X}="c";
+        %
+        {\ar_{\eta^P \times_{\Lambda(1)} \id} "a" ; "b"};
+        {\ar_<<<<<{\alpha_1} "b" ; "c"};
+        {\ar "a" ; "c"};
+        %
+        {\ar@{=>}^{\varphi_\eta} (10,-11) ; (7,-14)};
+      \endxy
+    \]
+  where $1 \times_{\Lambda(1)} X$ is the coequalizer of the trivial right action of $\Lambda(1)$ on $1$ and the usual left action of $\Lambda(1)$ on $X$. This induces a natural isomorphism
+    \[
+      \xy
+        (0,0)*+{1 \times X}="a";
+        (0,-20)*+{P(1) \times X}="b";
+        (25,-20)*+{X}="c";
+        %
+        {\ar_{\eta^P \times \id} "a" ; "b"};
+        {\ar_<<<<<<{\tilde{\alpha}_1} "b" ; "c"};
+        {\ar "a" ; "c"};
+        %
+        {\ar@{=>}^{\tilde{\varphi}_\eta} (10,-11) ; (7,-14)};
+      \endxy
+    \]
+  which can be whiskered with the isomorphism $X \rightarrow 1 \times X$. We make the convention of referring to this whiskered natural isomorphism as $\tilde{\varphi}_\eta$, since no confusion will arise in practice.
+\end{rem}
+
 \begin{Defi}
 Let $P$ be a $\ML$-operad. A \textit{strict algebra}\index{algebra!strict} for $P$ consists of a pseudoalgebra in which all of the isomorphisms $\phi$ are identities.
 \end{Defi}
 
-\begin{Defi}
+\begin{Defi}\label{def:ps-morph}
 Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\ML$-operad $P$. A \textit{pseudomorphism}\index{algebra!pseudomorphism} of $P$-pseudoalgebras consists of: 
     \begin{itemize}
         \item a functor $f \colon X \rightarrow Y$
-        \item and a family of natural isomorphisms (once again using \ref{conv_coeq})
+        \item for each $n \in \mathbb{N}$, a natural isomorphism $f_n$ (corresponding, via Conventions \ref{conv_coeq}) to a natural isomorphism
             \[
                 \xy
                     (0,0)*+{P_n \times X^n}="00";
@@ -1973,7 +2029,10 @@ Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudo
 \begin{rem}
 A strict algebra for a $\ML$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an operad in the \textit{category} of small categories and functors. A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense. We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
 
-A closely related definition of pseudomorphism which requires extra care to be paid to equivariance conditions has since been given in the thesis of Rubin \cite{rubin-thesis}.
+In Definition \ref{def:ps-morph} of a pseudomorphism we did not originally make it clear that the isomorphisms $\overline{f}_n$ should satisfy an equivariance condition. This was highlighted in remarks on Definition 2.21 in the thesis of Rubin \cite{rubin-thesis}. Similarly, this is also explicity stated as Definition 2.23 of \cite{guillou_symmetric}, as mentioned in \cite{guillou_multiplicative}. That we don't include an explicit equivariance axiom is due to Conventions \ref{conv_coeq}. In Definition \ref{def:ps-morph} we require the existence of natural isomorphisms $f_n$ in order to induce corresponding natural isomorphisms $\overline{f}_n$. That the $\overline{f}_n$ are induced by the $f_n$ corresponds to the fact that the $\overline{f}_n$ satisfy an equivariance condition, namely that for $(\sigma, g, x_1, \ldots, x_n) \in P(n) \times \Lambda(n) \times X^n$, we have
+  \[
+    \left(\overline{f}_n\right)_{\left(\sigma \cdot g, x_1, \ldots, x_n\right)} = \left(\overline{f}_n\right)_{\left(\sigma,x_{\pi(g)^{-1}(1)},\ldots,x_{\pi(g)^{-1}(n)}\right)}.
+  \]
 \end{rem}
 
 \begin{Defi}
@@ -2005,7 +2064,6 @@ Let $P$ be a $\ML$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) \rig
             {\ar@{=} (42.75,-10) ; (46.75,-10)};
         \endxy
     \]
-
 \end{Defi}
 
 We can form various 2-categories using these cells.
@@ -3782,22 +3840,28 @@ The motivation for the name `spacial' comes from the context of string diagrams 
 \end{center}
 In a real-world version of these diagrams, we could use this detachedness to grab these endomorphisms and slide them over or under any strings we please, without affecting anything else in the diagram. This ability is embodied algebraically by the equation above, and hence categories which obey it are called `spacial'.
 
+\begin{Defi}\label{def:actionmorphism}
+  Let
+    \[
+      \alpha \colon \coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n \rightarrow X
+    \]
+  be the action of a $\ML$-operad, for some $\ML$-operad $P$. Let $g \in P(n)$ and let
+    \[
+      (f_1, \ldots, f_n) \colon (x_1, \ldots, x_n) \rightarrow (x_1', \ldots, x_n')
+    \]
+  be a morphism in $X^n$. An \emph{action morphism} is a morphism of the form $\alpha(g; f_1, \ldots, f_n)$ in $X$.
+\end{Defi}
+
 \begin{rem}
-Beginning with the following lemma, the term \textit{action morphism}\index{action morphism} is used. This refers to the image of a morphism such as
-  \[
-    \alpha(g;f_1,\ldots,f_n)
-  \]
-where
-  \[
-    \alpha \colon \coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n \rightarrow X
-  \]
-is the action of a $\ML$-operad algebra for some $\ML$-operad $P$. Most often these action morphisms will be of the form
-  \[
-    \alpha(g;id_{x_1},\ldots,id_{x_{n}}).
-  \]
-Since we are most often in the setting of $\mb{Cat}$, then $\alpha$ will be a functor.
+  Most often we will consider action morphisms as in Definition \ref{def:actionmorphism} where each of the $f_i$ is an identity, in which case we will use a shorthand notation
+    \[
+      g^\otimes = \alpha(g;\id_{x_1}, \ldots, \id_{x_n}).
+    \]
 \end{rem}
-\begin{lem}\label{spacial} If $\ML$ is a crossed action operad, then all $\ML$-monoidal categories are spacial.\end{lem}
+
+\begin{lem}\label{spacial}
+  If $\ML$ is a crossed action operad, then all $\ML$-monoidal categories are spacial.
+\end{lem}
 \begin{proof}
 Let $\ML$ be a crossed action operad, let $X$ be a $\ML$-monoidal category, and fix $x \in \mathrm{Ob}(X)$ and \( f\colon I \rightarrow I \). From \cref{surjortriv} we know that \( \pi \colon \Lambda(2) \rightarrow S_2 \) is surjective, so that the set $\pi^{-1}(  \trans{1}{2}  )$ is non-empty,
 % and from the uniqueness of action morphism composites (Lemma \ref{hom-set-lemma})
@@ -5181,9 +5245,9 @@ Since the functor $\mathrm{Ob} \colon E\Lambda\mbox{-}\mathrm{Alg}_S \rightarrow
 
 Next, let $f \colon  v \rightarrow w$ and $f' \colon w' \rightarrow v'$ be any two morphisms of the category $Y$ for which $k(f)$ and $k(f')$ are composable in $Z$. Since these maps are composable we know that $k(w)$ and $k(w')$ must be the same object of $Z$, and since $\mathrm{Ob}(Z)$ is a group we know this object has an inverse $k(w)^{-1} = k(w')^{-1}$. So by the surjectivity of $k$ we can find another object $y$ of $Y$ for which $k(y) = k(w)^{-1}$. Using this, define the morphism $h \colon  w' \otimes y \otimes v \rightarrow v' \otimes y \otimes w$ to be the tensor product $f' \otimes \id_y \otimes f$. Thus
   \begin{align*}
-  	k(h) & = & k(f' \otimes \id_y \otimes f) \\
-  	& = & k(f') \otimes \id_{k(y)} \otimes k(f) \\
-  	& = & k(f') \otimes \id_{k(w)^{-1}} \otimes k(f)
+  	k(h) &= k(f' \otimes \id_y \otimes f) \\
+  	&= k(f') \otimes \id_{k(y)} \otimes k(f) \\
+  	&= k(f') \otimes \id_{k(w)^{-1}} \otimes k(f)
   \end{align*}
 and so by \cref{tenscomp}, this is the composite $k(f') \circ k(f)$. Therefore the set of morphisms of $Z$ which are images of morphisms of $Y$ is closed under composition. 
 
@@ -5208,6 +5272,7 @@ One important consequence of the surjectivity of $q$ is that it will allow us to
 
 In that same vein, one might ask if we can take \cref{hom-set-lemma}, a statement about the morphisms in free $\ML$-monoidal categories, and extend it to an analagous result on $L_n$, using surjectivity of $q$ on morphisms instead. 
 
+QQQ
 \begin{nota}\label{newaction}
 Let's think about $g^{\otimes}$ for the iso induced by $g$.
 \end{nota}
@@ -6602,7 +6667,7 @@ for all elements $g \in G$ and objects $x_1, \ldots, x_m, x'_i$. Hence we can re
 
 Per \cref{freeinvalgc}, we will start by forming the action morphisms
   \[
-    \alpha_{\mathbb{S}_{2n}}\left(  \trans{1}{2}  ;  \id_{q^{-1}(z_i)}, \id_{q^{-1}(z_j)}  \right) \quad = \quad \alpha_{\mathbb{S}_{2n}}\left( \trans{1}{2}  ; \id_{z_i}, \id_{z_j} \right)
+    \alpha_{\mathbb{S}_{2n}}\left(  \trans{1}{2}  ;  \id_{q^{-1}(z_i)}, \id_{q^{-1}(z_j)}  \right) = \alpha_{\mathbb{S}_{2n}}\left( \trans{1}{2}  ; \id_{z_i}, \id_{z_j} \right)
   \]
 and then find their images under the map $\Psi \colon  \Sigma \times_{\mathbb{N}} \mathbb{N}^{\ast 2n} \rightarrow \mathbb{Z}_2^{n}$. However, we just saw in \cref{invsymcat} how this homomorphism is built up as the following composite.
   \[
