@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{eucal}
 \usepackage{multicol}
+% QQQ Uncomment later up to line 24
 \usepackage[refpage, notintoc]{nomencl}
 % \renewcommand{\nomname}{}
 \renewcommand*{\pagedeclaration}[1]{\,\,\,\hyperpage{#1}}
@@ -82,7 +83,7 @@
 \newcommand{\Cat}{\ensuremath{\textrm{Cat}}}
 \newcommand{\cd}[2][]{\vcenter{\hbox{\xymatrix#1{#2}}}}
 \newcommand{\Set}{\mb{Set}}
-\newcommand{\twocat}{\ensuremath{\textrm{2-Cat}}}
+\newcommand{\twocat}{\ensuremath{$2$\textrm{-Cat}}}
 \newcommand{\Icon}{\ensuremath{\textrm{Icon}}}
 \newcommand{\ML}{\mathbf{\Lambda}}
 \newcommand{\MLn}{\mathbf{\Lambda}_n}
@@ -1750,7 +1751,7 @@ The material in this section can be given a rather more abstract interpretation,
 
 First we will set out some conventions and definitions.
 \begin{conv}\label{conv_coeq}
-We will identify maps $\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow X$ with maps $\tilde{\alpha}_n \colon P(n) \times X^n \rightarrow X$ which are equivariant with respect to the $\Lambda$-actions via the universal property of the coequalizer. The coequalizer in $\mb{Cat}$ also has a $2$dimensional aspect to its universal property, so that a natural transformation $\Gamma \colon \alpha_{n} \Rightarrow \beta_{n}$ between functors as above determines and is determined by a transformation $\tilde{\Gamma} \colon \tilde{\alpha}_{n} \Rightarrow \tilde{\beta}_{n}$ with the property that the two possible whiskerings of $\tilde{\Gamma}$ with the two functors $P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times X^{n}$ are equal.
+We will identify maps $\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow X$ with maps $\tilde{\alpha}_n \colon P(n) \times X^n \rightarrow X$ which are equivariant with respect to the $\Lambda$-actions via the universal property of the coequalizer. The coequalizer in $\mb{Cat}$ also has a $2$-dimensional aspect to its universal property, so that a natural transformation $\Gamma \colon \alpha_{n} \Rightarrow \beta_{n}$ between functors as above determines and is determined by a transformation $\tilde{\Gamma} \colon \tilde{\alpha}_{n} \Rightarrow \tilde{\beta}_{n}$ with the property that the two possible whiskerings of $\tilde{\Gamma}$ with the two functors $P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times X^{n}$ are equal.
 
 Note also that in the following definitions we will often write the composite
     \[
@@ -2475,7 +2476,7 @@ These isomorphisms are then required to satisfy their own axioms, and these ensu
 
 This section will be concerned with characterizing various properties of those $2$-monads induced by $\ML$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary. Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\ML$-operad $P$). Both of these results are simple extensions of well-known results about operads. Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
 
- For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these $2$-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary. In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables. If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}. There are additional results of a purely $2$dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
+ For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these $2$-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary. In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables. If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}. There are additional results of a purely $2$-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
     \[
         \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg} \rightarrow T\mbox{-}\mb{Alg}_s
     \]
@@ -2860,10 +2861,10 @@ Since the objects of $C \times_{\Lambda} \Sigma$ are equivalence classes as abov
 \end{proof}
 
 \begin{thm}\label{cart_thm}
-The $2$-monad associated to a $\ML$-operad $P$ is $2$cartesian\index{$2$-monad!cartesian} if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
+The $2$-monad associated to a $\ML$-operad $P$ is $2$-cartesian\index{$2$-monad!cartesian} if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
 \end{thm}
 \begin{proof}
-Since the monad $\underline{P}$ is isomorphic to $\underline{S(P)}$, we need only verify when $\underline{S(P)}$ is $2$cartesian. Thus the theorem is a direct consequence of \cref{kernel_lem} and \cref{cart_cor}.
+Since the monad $\underline{P}$ is isomorphic to $\underline{S(P)}$, we need only verify when $\underline{S(P)}$ is $2$-cartesian. Thus the theorem is a direct consequence of \cref{kernel_lem} and \cref{cart_cor}.
 \end{proof}
 
 \section{The Borel construction for action operads}
@@ -3268,7 +3269,7 @@ Let $C$ be a category with finite limits.
 \end{Defi}
 
 \begin{rem}
-Everything in the above definition can be $\mb{Cat}$-enriched without any substantial modifications. Thus we require our ground $2$-category to have finite limits in the enriched sense, and the slice and pullbacks are the $2$-categorical (and not bicategorical) versions. If we take this $2$-category to be $\mb{Cat}$, then in each case the underlying category of the $2$-categorical construction is given by the corresponding $1$-categorical version. From this point, we will not distinguish between the $1$-dimensional and $2$dimensional theory. Our interest, of course, is in the $2$dimensional version.
+Everything in the above definition can be $\mb{Cat}$-enriched without any substantial modifications. Thus we require our ground $2$-category to have finite limits in the enriched sense, and the slice and pullbacks are the $2$-categorical (and not bicategorical) versions. If we take this $2$-category to be $\mb{Cat}$, then in each case the underlying category of the $2$-categorical construction is given by the corresponding $1$-categorical version. From this point, we will not distinguish between the $1$-dimensional and $2$-dimensional theory. Our interest, of course, is in the $2$-dimensional version.
 \end{rem}
 
 Let $\Sigma$ be the operad of symmetric groups. This is the terminal object of the category of action operads, with each $\pi_{n}$ the identity map. Then $E\Sigma$ is a $2$-monad on $\mb{Cat}$, and by results in \cref{sec:propofopsincat} it is cartesian.
@@ -3757,8 +3758,8 @@ As an immediate consequence of this, the source and target of any given morphism
 \begin{prop}\label{Gnconcomp} Considered as a monoid under tensor product, the connected components of $\ELn$ are
   \[
     \pi_0(\ELn) = \begin{cases}
-    							 \mathbb{N}^n & \text{if $\ML$ is crossed} \\
-    							 \mathbb{N}^{\ast n} & \text{otherwise}
+    							 \mathbb{N}^n & \text{if $\ML$ is crossed}, \\
+    							 \mathbb{N}^{\ast n} & \text{otherwise}.
     							\end{cases}
   \] 
 Also, the canonical homomorphism sending objects in $\ELn$ to their connected component,
@@ -4984,10 +4985,10 @@ For any such $f \colon  w \rightarrow v$, consider the map $w^{-1} \otimes f^{-1
 
 First note that this is indeed a well-defined $\ML$-monoidal category since the tensor product of invertible objects is again invertible, the tensor product of isomorphisms is again an isomorphism, and all of the morphisms giving the group actions are isomorphisms. The following proposition is then easily verified.
 
-\begin{prop} \label{invprop} The assignment $X \mapsto X_{\mathrm{inv}}$ can be extended to a $2$functor $(\_)_{\mathrm{inv}} \colon  \lmc \rightarrow \lmc$.
+\begin{prop} \label{invprop} The assignment $X \mapsto X_{\mathrm{inv}}$ can be extended to a $2$-functor $(\_)_{\mathrm{inv}} \colon  \lmc \rightarrow \lmc$.
 \end{prop}
 
-\begin{prop} \label{invadj} The $2$functor $(\_)_{\mathrm{inv}} \colon  \lmc \rightarrow \lmc$ has a left $2$adjoint, $L \colon  \lmc \rightarrow \lmc$.
+\begin{prop} \label{invadj} The $2$-functor $(\_)_{\mathrm{inv}} \colon  \lmc \rightarrow \lmc$ has a left $2$-adjoint, $L \colon  \lmc \rightarrow \lmc$.
 \end{prop}
 \begin{proof} Since we already know that $\lmc$ is locally finitely presentable as an ordinary category, the conditions of the Adjoint Functor Theorem given as Theorem 1.66 in \cite{ar} amount to showing that $(\_)_{\mathrm{inv}}$ preserves both limits and filtered colimits.
 \begin{itemize}
@@ -4997,7 +4998,7 @@ First note that this is indeed a well-defined $\ML$-monoidal category since the 
 \end{itemize}
 Thus the underlying functor of $(\_)_{\mathrm{inv}}$ has a left adjoint $L$.
 
-To upgrade this into a $2$adjunction, we require that $(\_)_{\mathrm{inv}}$ preserves cotensors (see \cite{borceux2} Theorem 6.7.6) over $\cat$. Let $A$ be a category and $X$ a $\ML$-monoidal category. It is straightforward to check that the cotensor $[A, X]$ is the functor category equipped with the pointwise $E\Lambda$-action. The unit object is the constant functor at $I$, the unit object of $X$;  we write this $c_I$. The cotensor $[A, X_{\mathrm{inv}}]$ consists has
+To upgrade this into a $2$-adjunction, we require that $(\_)_{\mathrm{inv}}$ preserves cotensors (see \cite{borceux2} Theorem 6.7.6) over $\cat$. Let $A$ be a category and $X$ a $\ML$-monoidal category. It is straightforward to check that the cotensor $[A, X]$ is the functor category equipped with the pointwise $E\Lambda$-action. The unit object is the constant functor at $I$, the unit object of $X$;  we write this $c_I$. The cotensor $[A, X_{\mathrm{inv}}]$ consists has
 \begin{itemize}
 \item objects all functors $F \colon A \rightarrow X$ with the property that $Fa$ is invertible under tensor product or composition, respectively, in $X$ for all objects or morphisms, respectively, in $A$; and
 \item morphisms all natural isomorphisms between them.
@@ -5006,7 +5007,7 @@ It is clear that $[A, X_{\mathrm{inv}}]$ is a full sub-$\ML$-monoidal category o
 \end{proof}
 
 \begin{nota}\label{eta}
-From this point forward, we reserve $\eta$ for the unit of the $2$adjunction in \cref{invadj}.
+From this point forward, we reserve $\eta$ for the unit of the $2$-adjunction in \cref{invadj}.
 \end{nota}
 
 
@@ -5019,17 +5020,16 @@ Let $L_n = L\left(E\Lambda(\underline{n}) \right)$\nomenclature[C]{$L_n$}{the fr
   \[
     \lmc(L_n, X) \cong (X_{\mathrm{inv}})^n,
   \]
-$2$natural in $X$.
+$2$-natural in $X$.
 \end{thm}
-The following $2$natural isomorphisms arise from the adjunctions for $L$ and the free $\ML$-monoidal category monad.
+The following $2$-natural isomorphisms arise from the adjunctions for $L$ and the free $\ML$-monoidal category monad.
 \begin{align*}
 		 \lmc\left( L\left(E\Lambda(\underline{n}) \right), X\right) & \cong \lmc( E\Lambda(\underline{n}), X_{\mathrm{inv}}) \\
 		&\cong \cat( \underline{n}, X_{\mathrm{inv}}) \\
 		&\cong X_{\mathrm{inv}}^n
 \end{align*}
 
-
-\end{proof}
+% QQQ Proof?
 
 \begin{prop} \label{linveql} Let $X$ be a $\ML$-monoidal category. Then $(LX)_{\mathrm{inv}} = LX$.
 \end{prop}
@@ -5467,10 +5467,10 @@ Given a $\ML$-monoidal category $X$, we will denote by $X_{\mathrm{winv}}$\nomen
 
 We have analogues of the following propositions, the proofs of which are, \textit{mutatis mutandis}, the same as for invertible objects.
 
-\begin{prop} \label{winvprop} The assignment $X \mapsto X_{\mathrm{winv}}$ can be extended to a $2$functor $(\_)_{\mathrm{winv}} \colon  \lmc \rightarrow \lmc$.
+\begin{prop} \label{winvprop} The assignment $X \mapsto X_{\mathrm{winv}}$ can be extended to a $2$-functor $(\_)_{\mathrm{winv}} \colon  \lmc \rightarrow \lmc$.
 \end{prop}
 
-\begin{prop} \label{winvadj} The $2$functor $(\_)_{\mathrm{inv}} \colon  \lmc \rightarrow \lmc$ has a left adjoint, $K \colon  \lmc \rightarrow \lmc$.
+\begin{prop} \label{winvadj} The $2$-functor $(\_)_{\mathrm{inv}} \colon  \lmc \rightarrow \lmc$ has a left adjoint, $K \colon  \lmc \rightarrow \lmc$.
 \end{prop}
 
 \begin{Defi}\label{kn}
@@ -5894,7 +5894,7 @@ in $L_n$ is the identity.
 Equivalently, for any element $h \in \Lambda(0)$, $h$ induces the identity morphism $I \rightarrow I$.
 \end{lem}
 \begin{proof}
-First, let $g \in \Lambda(m)$. Then $g \colon  I^m \rightarrow I^m$ is equal to $q(g) \colon q(I^m) \rightarrow q(I^m)$ which is equal to $q\delta(g) \colon  q\delta(I^m) \rightarrow q\delta(I^m)$. Since $q$ is the coequalizer of $\delta$ and the zero map, $q\delta(g) = \id$ for all $g \in \Lambda(m)$. This implies that every $h \in \Lambda(0)$ induces the identity map $I \rightarrow I$, but note that the morphism $g \colon I^m \rightarrow I^m$ is also the morphism induced by $\mu(g; e_0, \ldots, e_0) \in \Lambda(0)$, so these two claims are equivalent.
+First, let $g \in \Lambda(m)$. Then $g \colon  I^m \rightarrow I^m$ is equal to $q(g) \colon q(I^m) \rightarrow q(I^m)$ which is equal to $q\delta(g) \colon  q\delta(I^m) \rightarrow q\delta(I^m)$. Since $q$ is the coequalizer of $\delta$ and the zero map, $q\delta(g) = \id$ for all $g \in \Lambda(m)$. This implies that every $h \in \Lambda(0)$ induces the identity map $I \rightarrow I$, but note that the morphism $g^\otimes \colon I^m \rightarrow I^m$ is also the morphism induced by $\mu(g; e_0, \ldots, e_0) \in \Lambda(0)$, so these two claims are equivalent.
 \end{proof}
 
 This is a curious result. The morphisms $I \rightarrow I$ in $\ELn$ are exactly the elements of the group $\Lambda(0)$, but all of these become the identity in $L_n$. In other words, $L_n$ cannot detect any morphisms in $\Lambda(0)$, an idea we make precise in the next two results. 
@@ -5903,9 +5903,9 @@ This is a curious result. The morphisms $I \rightarrow I$ in $\ELn$ are exactly 
 \begin{prop} \label{G0quot} Let $\Lambda$ be a crossed action operad. Then there exists another crossed action operad $\Lambda'$ given by $\Lambda'(m) = \Lambda(m)/\Lambda(0)$ for all $m \in \mathbb{N}$.
 \end{prop}
 \begin{proof}
-For any elements $g \in \Lambda(m)$ and $h \in \Lambda(0)$, their block sum $h \oplus g := \mu(e_2; h, g)$ is also an element of $\Lambda(m)$. Thus block sum defines a map $\Lambda(0) \times \Lambda(m) \rightarrow \Lambda(m)$, which is a group action by operad associativity and (QQQ previous lemma?) \cref{calclem}, and a group homomorphism by the action operad axioms and \cref{calclem}. This produces a homomorphism $\Lambda(0) \rightarrow \Lambda(m)$ for all $m$, which lies in the center of $\Lambda(m)$ by \cref{spacial}. Hence the image is normal for all $m$. Furthermore, the induced map $\Lambda(0) \rightarrow \Lambda(m) \rightarrow \Sigma_m$ is the zero map, so there is an induced homomorphism $\Lambda(m)/\Lambda(0) \rightarrow \Sigma_m$. All that remains to be shown is that the operadic multiplication for $\Lambda$ induces one for the groups $\Lambda(n)/\Lambda(0)$, and that this multiplication satisfies the axioms for an action operad.
+For any elements $g \in \Lambda(m)$ and $h \in \Lambda(0)$, their block sum $h \oplus g := \mu(e_2; h, g)$ is also an element of $\Lambda(m)$. Thus block sum defines a map $\Lambda(0) \times \Lambda(m) \rightarrow \Lambda(m)$, which is a group action by operad associativity and \cref{G0abel}, and a group homomorphism by the action operad axioms and \cref{calclem}. This produces a homomorphism $- \oplus e_m \colon \Lambda(0) \rightarrow \Lambda(m)$ for all $m$, the image of which lies in the center of $\Lambda(m)$ by the action operad axioms and \cref{calclem}. Hence the image is normal for all $m$. Furthermore, the induced map $\Lambda(0) \rightarrow \Lambda(m) \rightarrow \Sigma_m$ is the zero map, so there is an induced homomorphism $\Lambda(m)/\Lambda(0) \rightarrow \Sigma_m$. All that remains to be shown is that the operadic multiplication for $\Lambda$ induces one for the groups $\Lambda(n)/\Lambda(0)$, and that this multiplication satisfies the axioms for an action operad.
 
-Let $h, h_1, \ldots, h_m \in \Lambda(0)$ and $k_1, \ldots, k_m \in \mathbb{N}$. The following calculatino uses the action operad axioms for $\Lambda$ and the fact that $\EL(\underline{1})$ is spacial so the $e_k$ commute with all elements of $\Lambda(0)$.
+Let $h, h_1, \ldots, h_m \in \Lambda(0)$ and $k_1, \ldots, k_m \in \mathbb{N}$. The following calculation uses the action operad axioms for $\Lambda$ and the fact that $\EL(\underline{1})$ is spacial so the $e_k$ commute with all elements of $\Lambda(0)$.
 \begin{align*}
 		\mu^{\Lambda}\left( \, h \oplus e_m \, ; \, \underline{h_i \oplus e_{k_i}}\right) &= \mu^{\Lambda}\left( \, \mu^{\Lambda}(e_2; h, e_m) \, ; \, \underline{h_i \oplus e_{k_i}} \right) \\
 		&= \mu^{\Lambda}\left( \, e_2 \, ; \, \mu^{\Lambda}(h;-), \mu^{\Lambda}(e_m; \underline{h_i \oplus e_{k_i}}) \right) \\
@@ -6156,20 +6156,28 @@ where $x,y \in \{z_1, \ldots, z_n, z_1^*, \ldots, z_n^*\}$ are generators of the
 			\\
 			\langle xy \rangle \langle x^* \rangle \langle y^* \rangle \langle yx \rangle  =  \langle x \rangle \langle y \rangle   =  \langle yx \rangle \langle x^* \rangle \langle y^* \rangle \langle xy \rangle \\
 			\\
-			\langle xy \rangle \langle x^* \rangle \langle xz \rangle \langle x^* \rangle \langle z^* \rangle \langle y^* \rangle \langle yz \rangle \langle y^* \rangle \langle yx \rangle \langle y \rangle \langle x^* \rangle \langle z^* \rangle^{-1} \langle zx \rangle \langle z^* \rangle \langle zy \rangle  =  \langle x \rangle\langle y \rangle\langle z \rangle 
+			\langle xy \rangle \langle x^* \rangle \langle xz \rangle \langle x^* \rangle \langle z^* \rangle \langle y^* \rangle \langle yz \rangle \langle y^* \rangle \langle yx \rangle \langle y^* \rangle \langle x^* \rangle \langle z^* \rangle \langle zx \rangle \langle z^* \rangle \langle zy \rangle  =  \langle x \rangle\langle y \rangle\langle z \rangle 
   	\end{array}
   \]
+% Original, likely incorrect:
+%       \langle xy \rangle \langle x^* \rangle \langle xz \rangle \langle x^* \rangle \langle z^* \rangle \langle y^* \rangle \langle yz \rangle \langle y^* \rangle \langle yx \rangle \langle y \rangle \langle x^* \rangle \langle z^* \rangle^{-1} \langle zx \rangle \langle z^* \rangle \langle zy \rangle  =  \langle x \rangle\langle y \rangle\langle z \rangle 
 \end{prop}
 \begin{proof}
-We'll begin by constructing a certain monoidal category, which we will call $Z$. 
 \begin{itemize}
-\item The objects of $Z$ are the elements of the group $\mathbb{Z}^{\ast n}$, with the usual multiplication as the tensor product.
-\item There exists a unique morphism between any two objects $x$ and $y$ for which $\ab(x) = \ab(y)$, where $\ab \colon  \mathbb{Z}^{\ast n} \rightarrow \mathbb{Z}^n$ is the quotient map of abelianization. In other words, the morphisms of $Z$ are the elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, with multiplication as the tensor product and composition given by
+  \item QQQ Plan of the proof
+  \item Describe a monoidal category: $Z$
+  \item Give a `surjection' from the free $ES$-algebra on $2n$ objects, to $Z$
+  \item So if we can generate the morphisms of the domain, then we can generate the morphisms of $Z$, and $Mor(Z)$ is the group we are interested in
+  \item Morphisms of $S_{2n}$ are generated by identities and $\alpha((1 \, \, 2); 1,\ldots,1)$, so $Mor(Z)$ is generated by the angle-bracket generators (does the pullback being over the connected components force the pairs to be of equal length, avoiding some of the inverse issues - or even just pushing all the rewriting together at the end which would be easier, at least?)
+  \item Then what relations does $Mor(Z)$ have? The ones inherited from $S_{2n}$, plus some others - how do we know we have the right ones?
+\end{itemize}
+
+We will begin by constructing a monoidal category, which we will call $Z$. The objects of $Z$ are the elements of the group $\mathbb{Z}^{\ast n}$, with the usual multiplication as the tensor product. Considering morphisms, there exists a unique morphism between any two objects $x$ and $y$ for which $\ab(x) = \ab(y)$, where $\ab \colon  \mathbb{Z}^{\ast n} \rightarrow \mathbb{Z}^n$ is the quotient map of abelianization. In other words, the morphisms of $Z$ are the elements of $\mathbb{Z}^{\ast n} \times_{\mathbb{Z}^n} \mathbb{Z}^{\ast n}$, with multiplication as the tensor product and composition given by
   \[
     (x,y) \circ (y,z)  =  (x, z).
   \]
-\item The identity map on an object $x$ is then the unique map $(x,x) \colon x \rightarrow x$.
-\end{itemize}
+The identity map on an object $x$ is then the unique map $(x,x) \colon x \rightarrow x$.
+
 $Z$ is almost the subcategory of $L_n$ whose morphisms are the subgroup isomorphic to $(s \times t)(L_n)$ that we chose in \cref{stZsub}. However, we never required those representatives to be closed under composition, so $Z$ is a strictly formal version of the subcategory on $(s \times t)(L_n)$, one that doesn't involve any specific choice of the map $\rho$. It is a well-defined monoidal category; the only thing that might not be immediately clear is the law of interchange, which is just given by
   \begin{align*}
   	\left((x,y) \circ (y,z) \right) \otimes \left(  (x',y') \circ (y',z')  \right) &= (x,z) \otimes (x',z') \\
@@ -6177,7 +6185,7 @@ $Z$ is almost the subcategory of $L_n$ whose morphisms are the subgroup isomorph
   	&= (xx',yy') \circ (yy',zz') \\
   	&= \left(  (x,y) \otimes (x',y')  \right) \circ \left(  (y,z) \otimes (y',z')  \right).
   \end{align*}
-But now recall from \cref{tenscomp} that in any monoidal category the composition of morphisms along an intertible object can be rewritten in terms of only the tensor product. In the case of $Z$, where all of the objects have inverses, we will have
+But now recall from \cref{tenscomp} that in any monoidal category the composition of morphisms along an invertible object can be rewritten in terms of only the tensor product. In the case of $Z$, where all of the objects have inverses, we will have
   \[
     (x,y) \circ (y, z)  =  (x, y) \otimes (y^*, y^*) \otimes (y, z).
   \]
@@ -6389,7 +6397,7 @@ Thus, consider the following commutative diagram, whose top-left region comes fr
       {\ar@{^{(}->} "e" ; "g"};
     \endxy
   \]
-What we've just said is that if we start with the element $(z_i \otimes z_j, z_j \otimes z_i)$ of $(s \times t)(\ELnn)$, moving clockwise around the diagram will send it to the generator $\langle z_i z_j \rangle$ in ${(s \times t)}(L\mathbb{G}_{n})^{\ab}/\mathrm{Ob}(L_n)^{\ab} = \mathbb{Z}^{\binom{n}{2}}$. If we instead move anticlockwise, then we will first pass to our chosen representative $\alpha_{\ELnn}(\rho(z_i \otimes z_j, z_j \otimes z_i); \id_{z_i}, \id_{z_j})$ in $\mathrm{Mor}(\ELnn)$, then its equivalence class in $\mathrm{M}(\ELnn)^{\gp,\ab}$, then its equivalence class in $\MLn^{\gp,\ab}$, using the fact that $\mathrm{M}(q)^{\gp,\ab}$ is the canonical map associated with the quotient
+What we have just said is that if we start with the element $(z_i \otimes z_j, z_j \otimes z_i)$ of $(s \times t)(\ELnn)$, moving clockwise around the diagram will send it to the generator $\langle z_i z_j \rangle$ in ${(s \times t)}(L\mathbb{G}_{n})^{\ab}/\mathrm{Ob}(L_n)^{\ab} = \mathbb{Z}^{\binom{n}{2}}$. If we instead move anticlockwise, then we will first pass to our chosen representative $\alpha_{\ELnn}(\rho(z_i \otimes z_j, z_j \otimes z_i); \id_{z_i}, \id_{z_j})$ in $\mathrm{Mor}(\ELnn)$, then its equivalence class in $\mathrm{M}(\ELnn)^{\gp,\ab}$, then its equivalence class in $\MLn^{\gp,\ab}$, using the fact that $\mathrm{M}(q)^{\gp,\ab}$ is the canonical map associated with the quotient
   \[
     \MLn^{\mathrm{gp, ab}} = \bigquotient{{\mathrm{M}(\ELnn)}^{\mathrm{gp, ab}}}{\Delta}
   \]
