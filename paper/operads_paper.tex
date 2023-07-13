@@ -1,0 +1,245 @@
+\documentclass{article} % default font size is 10pt
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage[bbgreekl]{mathbbol}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{eucal}
+\usepackage[
+backend=biber,
+style=numeric,
+% citestyle=alphabetic,
+doi=false,
+isbn=false,
+url=false,
+% language=false
+maxcitenames=4, mincitenames=4,
+maxbibnames=99, minbibnames=99
+]{biblatex}
+\addbibresource{action_op_ref.bib}
+\usepackage{geometry}
+\geometry{margin=1.5in}
+\usepackage{multicol}
+% QQQ Uncomment later up to line 24
+% \usepackage[refpage, notintoc]{nomencl}
+% \renewcommand{\nomname}{}
+% \renewcommand*{\pagedeclaration}[1]{\,\,\,\hyperpage{#1}}
+% \makenomenclature
+% \makeindex
+\usepackage{etoolbox}
+% \renewcommand\nomgroup[1]{%
+%   \item[\bfseries
+%   \ifstrequal{#1}{C}{\addcontentsline{toc}{section}{Catalogue of Categories}  \rule[2pt]{0.45\linewidth}{1pt} Catalogue of Categories  \rule[2pt]{0.45\linewidth}{1pt}}{%
+%   \ifstrequal{#1}{N}{\addcontentsline{toc}{section}{Glossary of Notation} \rule[2pt]{0.45\linewidth}{1pt} Glossary of Notation  \rule[2pt]{0.45\linewidth}{1pt}}{}}%
+% ]}
+\usepackage[all]{xy}
+\SelectTips{cm}{11}
+\UseTips
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing, arrows, calc}
+\usepackage{tikz-cd}
+% \usepackage{quiver}
+%\tikzset{/tikz/commutative diagrams/arrow style=math font} % matching arrowheads
+% \tikzset{/tikz/commutative diagrams/arrow style=tikz,>=stealth} %almost matching arrowheads; look better in pdf
+\tikzset{mm/.style={execute at begin node=$\displaystyle, execute at end node=$}}
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    .. (\tikztotarget)\tikztonodes}},
+    settings/.code={\tikzset{quiver/.cd,#1}
+        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+    quiver/.cd,pos/.initial=0.35,height/.initial=0}
+\tikzset{tikzob/.style={commutative diagrams/every diagram, every cell}}
+\tikzset{tikzar/.style={commutative diagrams/.cd, every arrow, every label, font={\small}}}
+\tikzset{tikzsquiggle/.style={decorate, decoration={
+    snake,
+    segment length=8pt,
+    amplitude=.9pt,post=lineto,
+    post length=2pt}}}
+\tikzset{cross line/.style={preaction={draw=white, -, line width=6pt}}}
+\usepackage{pdfsync}
+\usepackage{relsize}
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,
+ breaklinks=false,
+ backref=false,
+ colorlinks=true,
+ %linkcolor=blue!70!black,
+ citecolor=black,
+ urlcolor=blue!78!red,
+ final
+]{hyperref}
+\usepackage[capitalise]{cleveref}
+\newcommand{\fref}{\cref}
+\newcommand{\Fref}{\Cref}
+\newcommand{\prettyref}{\cref}
+\newcommand{\newrefformat}[2]{}
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\mb}{\mathbf}
+\renewcommand{\dot}{\centerdot}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\m}[1]{\mathcal{#1}}
+\newcommand{\id}{\textrm{id}}
+\newcommand{\un}{\underline}
+% \usepackage{natbib}
+\renewcommand{\SS}{\mathcal{S}}
+\newcommand{\colim}{\textrm{colim }}
+\newcommand{\und}[1]{\ensuremath{\underline{#1}}}
+\newcommand{\f}[1]{\ensuremath{\mathcal{#1}}}
+\newcommand{\g}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand{\Cat}{\ensuremath{\textrm{Cat}}}
+\newcommand{\cd}[2][]{\vcenter{\hbox{\xymatrix#1{#2}}}}
+\newcommand{\Set}{\mb{Set}}
+\newcommand{\twocat}{\ensuremath{$2$\textrm{-Cat}}}
+\newcommand{\Icon}{\ensuremath{\textrm{Icon}}}
+\newcommand{\ML}{\mathbf{\Lambda}}
+\newcommand{\MLn}{\mathbf{\Lambda}_n}
+\newcommand{\lop}{\Lambda^{\oplus}}
+\newcommand{\MorLn}{\mathrm{Mor}(L_n)}
+\newcommand{\LL}{\Lambda}
+%\newcommand{\to}{\rightarrow}
+\def\srarrow{\relbar\joinrel\mapstochar\joinrel\rightarrow}
+%\newcommand{\id}{\ensuremath{\textnormal{id}}\xspace}
+%\pdfshift
+\newcommand{\quotient}[2]{ \raisebox{0.5\height}{$#1$} \mkern-5mu\diagup\mkern-4mu \raisebox{-0.5\height}{$#2$} }
+\newcommand{\bigquotient}[2]{ \raisebox{0.75\height}{$#1$} \mkern-12mu\scalebox{2}{$\diagup$}\mkern-10mu \raisebox{-0.5\height}{$#2$} }
+\newcommand{\pullback}{\mathbin{\text{\rotatebox{45}{$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\llcorner}}}}$}}}}
+\newcommand{\pushout}{\mathbin{\text{\rotatebox{225}{$\mathlarger{\mathlarger{\mathlarger{\mathlarger{\llcorner}}}}$}}}}
+\newcommand{\downsim}{\rotatebox{90}{$\sim$}}
+\newcommand{\EL}{E\Lambda}
+\newcommand{\ELn}{E\Lambda(\underline{n})}
+\newcommand{\ELnn}{E\Lambda(\underline{2n})}
+\newcommand{\ELnnnn}{E\Lambda(\underline{4n})}
+\newcommand{\qsn}{Q\Sigma(\underline{n})}
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\lmc}{\Lambda\mbox{-}\mb{MonCat}}
+\newcommand{\sets}{\Set}
+\newcommand{\mon}{\ensuremath{\mb{Mon}}}
+\newcommand{\cmon}{\ensuremath{\mb{CommMon}}}
+\newcommand{\moncat}{\ensuremath{\mb{MonCat}}}
+\newcommand{\cat}{\ensuremath{\mb{Cat}}}
+\newcommand{\epz}{\varepsilon}
+\newcommand{\Alg}{\mbox{-}\mb{Alg}}
+\newcolumntype{L}{>{$}l<{$}}
+\newcolumntype{C}{>{$}c<{$}}
+\newcolumntype{R}{>{$}r<{$}}
+\newcommand{\ab}{\mathrm{ab}}
+\newcommand{\gp}{\mathrm{gp}}
+\newcommand{\trans}[2]{( #1 \, \, #2 )}
+\crefname{lem}{Lemma}{Lemmas}
+\crefname{thm}{Theorem}{Theorems}
+\crefname{Defi}{Definition}{Definitions}
+\crefname{nota}{Notation}{Notations}
+\crefname{construction}{Construction}{Constructions}
+\crefname{prop}{Proposition}{Propositions}
+\crefname{rem}{Remark}{Remarks}
+\crefname{remark}{Remark}{Remarks}
+\crefname{cor}{Corollary}{Corollaries}
+\crefname{scholium}{Scholium}{Scholia}
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{Equation}{Equations}
+\crefname{eq}{Equation}{Equations}
+\crefname{eqn}{Equation}{Equations}
+
+\newenvironment{eq}{\begin{equation}}{\end{equation}}
+\newenvironment{eqn}{\begin{equation}}{\end{equation}}
+\newenvironment{eq*}{\begin{equation*}}{\end{equation*}}
+\newenvironment{eqn*}{\begin{equation*}}{\end{equation*}}
+\tikzset{->-/.style={decoration={markings,mark=at position #1 with {\arrow{>}}},postaction={decorate}}} 
+
+\pgfdeclarelayer{bg}
+\pgfsetlayers{bg,main}
+
+% \numberwithin{section}{chapter}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+% \newtheorem{conv}[thm]
+
+\newtheoremstyle{example}{\topsep}{\topsep}%
+     {}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% Thm head font
+     {.}%        Punctuation after thm head
+     {2pt}%     Space after thm head (\newline = linebreak)
+     {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}%         Thm head spec
+  \theoremstyle{example}
+  \newtheorem{conv}[thm]{Conventions}
+  \newtheorem{nota}[thm]{Notation}
+  \newtheorem{example}[thm]{Example}
+  \newtheorem{Defi}[thm]{Definition}
+  \newtheorem{rem}[thm]{Remark}
+  \newtheorem{remark}[thm]{Remark}   
+    
+
+
+
+   \title{Operads and equivariance}
+
+% \author{Alexander S. Corner}
+% % \address{}
+% % \email{alex.corner@shu.ac.uk}
+% \author{Nick Gurski}
+% % \address{}
+% % \email{nick.gurski@case.edu}
+% \author{Edward Prior}
+% \address{}
+% \email{}
+% \keywords{}
+% \subjclass{}
+\author{
+  Alexander S. Corner\\
+  \texttt{alex.corner@shu.ac.uk}
+  \and
+  Nick Gurski\\
+  \texttt{nick.gurski@case.edu}
+  \and
+  Edward Prior
+}
+\date{}
+\begin{document}
+
+
+\maketitle
+
+% \tableofcontents
+
+\abstract
+
+
+\include{1-introduction/1-intro}
+
+\include{2-action_operads/2-action_operads}
+
+\include{3-operads_in_cat/3-operads_in_cat}
+
+\include{4-monoidal_structures/4-monoidal_structures_multicategories}
+
+% \include{5-invertible_objects/5-invertible_objects}
+
+% \include{6-invertibility/6-invertibility}
+
+% \include{7-automorphisms/7-automorphisms}
+
+% \include{8-examples/8-examples}
+
+
+
+%\printnomenclature[2cm]
+
+%\printindex
+
+% \bibliographystyle{plain}
+% \bibliography{action_op_ref}  
+
+\printbibliography
+\end{document}

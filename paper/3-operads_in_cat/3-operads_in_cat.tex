@@ -1,0 +1,1791 @@
+%!TEX root = ../operads_paper.tex
+\section{Operads in the category of categories}
+ % QQQ chapter title okay?
+ % 	\begin{itemize}
+ % 		\item operads in $\bf{Cat}$
+ % 		\item $2$-categorical properties
+ % 		\item Borel construction and properties
+ % 	\end{itemize}
+
+% QQQ Maybe rewrite.
+% This section will study those $\ML$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ is in $\mb{Cat}$. The extra structure that this $2$-categorical setting provides allows us to consider notions of pseudoalgebras for an operad, as well as pseudomorphisms of operads. We investigate the properties of the associated $2$-monads and the $2$-categorical properties of operads in $\mathbf{Cat}$, before describing the Borel construction for action operads. We later describe free $\ML$-monoidal categories along with abstract properties of the Borel construction.
+
+In this section we will study those $\ML$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ will be in $\mb{Cat}$. The extra structure of this $2$-categorical setting allows us to define pseudoalgebras and pseudomorphisms of operads, weakening the usual definitions of algebras and morphisms, respectively. Similarly, rather that associating a monad with an operad, we will consider associated $2$-monads, with their corresponding notions of pseudoalgebras. After investigating further $2$-categorical aspects of operads in $\mathbf{Cat}$, we describe the Borel construction for action operad, abstract properties of this construction, and free $\ML$-monoidal categories.
+
+
+\subsection{Operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{section:operads_in_Cat}
+We have seen (\cref{op=monad1}) that given any $\ML$-operad $P$ there is an induced monad $\underline{P} \colon \m{C} \rightarrow \m{C}$ and that the category of algebras for the operad $P$ is isomorphic to the category of algebras for the monad $\underline{P}$, following \cite{maygeom}. Now we are considering $\ML$-operads in $\mathbf{Cat}$, the induced monad associated to an operad of this sort can be shown to be a $2$-monad (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated $2$-monad correspond precisely, i.e., there is an isomorphism of $2$-categories between the $2$-category with either strict or pseudo-level cells defined operadically and the $2$-category with either strict or pseudo-level cells defined $2$-monadically.
+
+
+
+The associated monad $\underline{P}$ acquires the structure of a $2$-functor as follows. We define $\underline{P}$ on categories much like before as  the coproduct
+	\[
+		\underline{P}(X) = \coprod_n P(n) \times_{\Lambda(n)} X^n,
+	\]
+whose objects will be written as equivalence classes $[p;x_1,\ldots,x_n]$ where $p \in P(n)$ and each $x_i \in X$, sometimes written as $[p;\underline{x}]$ when there is no confusion. On functors we define $\underline{P}$ in a similar way, exactly as with functions of sets. Given a natural transformation $\alpha \colon f \Rightarrow g$ we define a new natural transformation $\underline{P}(\alpha)$ as follows. The component of $\underline{P}(\alpha)$ at the object
+	\[
+		[p;x_1,\ldots,x_n]
+	\]
+is given by the morphism
+	\[
+		[1_p;\alpha_{x_1},\ldots,\alpha_{x_n}]
+	\]
+in $\underline{P}(X)$.
+It is a simple observation that this constitutes a $2$-functor, and that the components of the unit and multiplication are functors and are $2$-natural.
+
+\begin{rem}
+The material in this section can be given a rather more abstract interpretation, in the sense of \cite{KL97}. The idea here is that the category of $\ML$-collections acts on the category $\mathbf{Cat}$ via a functor $\diamond \colon \ML\text{-}\mathbf{Coll} \times \mathbf{Cat} \rightarrow \mathbf{Cat}$ which sends $(P,X)$ to $\underline{P}(X)$ as described above. Fixing a $\ML$-collection $P$ produces an endofunctor $\underline{P} \colon \mathbf{Cat} \rightarrow \mathbf{Cat}$ which is then a monad when $P$ is a $\ML$-operad, just as monoids in $\ML\text{-}\mathbf{Coll}$ are precisely $\ML$-operads.
+\end{rem}
+
+
+First we will set out some conventions and definitions.
+\begin{conv}\label{conv_coeq}
+We will identify maps $\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow X$ with maps $\tilde{\alpha}_n \colon P(n) \times X^n \rightarrow X$ which are equivariant with respect to the $\Lambda$-actions via the universal property of the coequalizer. The coequalizer in $\mb{Cat}$ also has a $2$-dimensional aspect to its universal property, so that a natural transformation $\Gamma \colon \alpha_{n} \Rightarrow \beta_{n}$ between functors as above determines and is determined by a transformation $\tilde{\Gamma} \colon \tilde{\alpha}_{n} \Rightarrow \tilde{\beta}_{n}$ with the property that the two possible whiskerings of $\tilde{\Gamma}$ with the two functors $P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times X^{n}$ are equal.
+
+Note also that in the following definitions we will often write the composite
+    \[
+        P(n) \times \prod_{i=1}^n \left(P(k_i) \times X^{k_i}\right) \rightarrow P(n) \times \prod_{i=1}^n P(k_i) \times X^{\Sigma k_i} \xrightarrow{\mu^P \times 1} P(\Sigma_{k_i}) \times X^{\Sigma k_i}
+    \]
+simply abbreviated as $\mu^P \times 1$. Furthermore, instead of using an element $\id \in P(1)$ as the operadic unit, we will now denote this as $\eta^{P} \colon 1 \rightarrow P(1)$.
+\end{conv}
+
+We begin with the definitions of the pseudo-level cells in the operadic context, and after each specialize to the strict version.
+
+\begin{Defi}\label{def:ps-alg}
+Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra} for $P$ consists of: 
+    \begin{itemize}
+        \item a category $X$,
+        \item a family of functors
+            \[
+                \left(\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow X \right)_{n \in \mathbb{N}},
+            \]
+        \item for each $n, k_1, \ldots, k_n \in \mathbb{N}$, a natural isomorphism $\phi_{k_1, \ldots, k_n}$ (corresponding, via Conventions \ref{conv_coeq}) to a natural isomorphism
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P_n \times \prod_{i=1}^n \left(P_{k_i} \times X^{k_i}\right)}="00";
+                    (0,-10)*+{\scriptstyle P_n \times \prod_{i=1}^n P_{k_i} \times X^{\Sigma k_i}}="01";
+                    (0,-20)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="02";
+                    (60,-20)*+{\scriptstyle X}="12";
+                    (60,0)*+{\scriptstyle P_n \times X^n}="11";
+                    {\ar_{} "00" ; "01"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "00" ; "11"};
+                    {\ar^{\tilde{\alpha}_n} "11" ; "12"};
+                    {\ar_{\mu^P \times 1} "01" ; "02"};
+                    {\ar_>>>>>>>>>>>>>>>>>>>{\tilde{\alpha}_{\Sigma k_i}} "02" ; "12"};
+                    {\ar@{=>}^{\tilde{\phi}_{k_1, \ldots, k_n}} (30,-8) ; (30,-12)};
+                \endxy
+            \]
+
+               \item and a natural isomorphism $\phi_{\eta}$ corresponding to a natural isomorphism
+            \[
+                \xy
+                    (0,0)*+{X}="00";
+                    (0,-15)*+{1 \times X}="x10";
+                    (0,-30)*+{P(1) \times X}="10";
+                    (30,-30)*+{X}="11";
+                    {\ar_{\eta^P \times 1} "x10" ; "10"};
+                    {\ar_{\tilde{\alpha}_1} "10" ; "11"};
+                    {\ar^{1} "00" ; "11"};
+                    {\ar_{\cong} "00" ; "x10"};
+                    {\ar@{=>}^{\tilde{\phi}_\eta} (10,-18) ; (10,-22)};
+                \endxy
+            \]
+
+    \end{itemize}
+satisfying the following axioms.
+    \begin{itemize}
+        \item For all $n, k_i, m_{ij} \in \mathbb{N}$, the following equality of pasting diagrams holds.
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P_n \times \prod_i\left(P_{k_i} \times \prod_j \left(P_{m_{ij}} \times X^{m_{ij}}\right)\right)}="00";
+                    (60,0)*+{\scriptstyle P_n \times \prod_i \left(P_{k_i} \times X^{k_i}\right)}="10";
+                    (0,-30)*+{\scriptstyle P_{\Sigma k_i} \times \prod_i\prod_j\left(P_{m_{ij}} \times X^{m_{ij}}\right)}="02";
+                    (30,-50)*+{\scriptstyle P_{\Sigma\Sigma m_{ij}} \times X^{\Sigma \Sigma m_{ij}}}="04";
+                    (80,-20)*+{\scriptstyle P_n \times X^n}="12";
+                    (80,-50)*+{\scriptstyle X}="14";
+                    {\ar^>>>>>>>>>>>>>>{1 \times \prod\left(1 \times \prod \tilde{\alpha}_{m_ij}\right)} "00" ; "10"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "10" ; "12"};
+                    {\ar^{\tilde{\alpha}_n} "12" ; "14"};
+                    {\ar_{\mu^P \times 1} "00" ; "02"};
+                    {\ar_{\mu^P \times 1} "02" ; "04"};
+                    {\ar_{\tilde{\alpha}_{\Sigma\Sigma m_{ij}}} "04" ; "14"};
+                    (30,-20)*+{\scriptstyle P_n \times \prod_i\left(P_{\Sigma m_{ij}} \times X^{\Sigma m_{ij}}\right)}="22";
+                    {\ar^{\mu^P \times 1} "00" ; "22"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{\Sigma m_{ij}}} "22" ; "12"};
+                    {\ar^{\mu^P \times 1} "22" ; "04"};
+                    (0,-70)*+{\scriptstyle P_n \times \prod_i\left(P_{k_i} \times \prod_j \left(P_{m_{ij}} \times X^{m_{ij}}\right)\right)}="b00";
+                    (50,-70)*+{\scriptstyle P_n \times \prod_i \left(P_{k_i} \times X^{k_i}\right)}="b10";
+                    (0,-100)*+{\scriptstyle P_{\Sigma k_i} \times \prod_i\prod_j\left(P_{m_{ij}} \times X^{m_{ij}}\right)}="b02";
+                    (20,-120)*+{\scriptstyle P_{\Sigma\Sigma m_{ij}} \times X^{\Sigma \Sigma m_{ij}}}="b04";
+                    (80,-90)*+{\scriptstyle P_n \times X^n}="b12";
+                    (80,-120)*+{\scriptstyle X}="b14";
+                    {\ar^>>>>>>>>>{1 \times \prod\left(1 \times \prod \tilde{\alpha}_{m_ij}\right)} "b00" ; "b10"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "b10" ; "b12"};
+                    {\ar^{\tilde{\alpha}_n} "b12" ; "b14"};
+                    {\ar_{\mu^P \times 1} "b00" ; "b02"};
+                    {\ar_{\mu^P \times 1} "b02" ; "b04"};
+                    {\ar_{\tilde{\alpha}_{\Sigma\Sigma m_{ij}}} "b04" ; "b14"};
+                    (50,-100)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="b22";
+                    {\ar_{\mu^P \times 1} "b10" ; "b22"};
+                    {\ar^>>>>>>>>>>>>>>>>{1 \times \prod\prod \tilde{\alpha}_{m_{ij}}} "b02" ; "b22"};
+                    {\ar^{\tilde{\alpha}_{\Sigma k_i}} "b22" ; "b14"};
+                    {\ar@{=>}^{1 \times \prod_i \tilde{\phi}_{m_{i1}, \ldots, m_{ik_{i}}}} (35,-8) ; (35,-12)};
+                    {\ar@{=>}^{\tilde{\phi}_{\Sigma m_{1j}, \ldots, \Sigma m_{nj}}} (50,-33) ; (50,-37)};
+                    {\ar@{=>}^{\tilde{\phi}_{k_1,\ldots,k_n}} (60,-92) ; (60,-96)};
+                    {\ar@{=>}^{\tilde{\phi}_{m_{11}, \ldots, m_{nk_n}}} (30,-108) ; (30,-112)};
+                    {\ar@{=} (45,-58) ; (45,-62)};
+                \endxy
+            \]
+
+%Redraw in tikzpicture
+        \item Each pasting diagram of the following form is an identity.
+            \[
+                \xy
+                    (0,0)*+{P_n \times X^n}="00";
+                    (12,-12)*+{P_n \times (1 \times X)^n}="11";
+                    (24,-24)*+{P_n \times (P_1 \times X)^n}="22";
+                    (60,-24)*+{P_n \times X^n}="32";
+                    (60,-48)*+{X}="34";
+                    (24,-36)*+{P_n \times P_1^n \times X^n}="23";
+                    (24,-48)*+{P_n \times X^n}="24";
+                    {\ar@/^2.5pc/^{1} "00" ; "32"};
+                    {\ar^{\tilde{\alpha}_n} "32" ; "34"};
+                    {\ar^{\cong} "00" ; "11"};
+                    {\ar^>>>{1 \times \left(\eta^P \times 1\right)^n} "11" ; "22"};
+                    {\ar^>>>>>>{1 \times \tilde{\alpha}_1^n} "22" ; "32"};
+                    {\ar@/_3pc/_{1} "00" ; "24"};
+                    {\ar_{\cong} "22" ; "23"};
+                    {\ar_{\mu^P \times 1} "23" ; "24"};
+                    {\ar_{\tilde{\alpha}_n} "24" ; "34"};
+                    {\ar@{=>}^{1 \times \tilde{\phi}_\eta^n} (32,-8) ; (32,-12)};
+                    {\ar@{=>}^{\tilde{\phi}_{1,\ldots,1}} (40,-34) ; (40,-38)};
+                \endxy
+            \]
+    \end{itemize}
+
+\end{Defi}
+
+\begin{rem}
+  The requirement in \cref{def:ps-alg} of a natural isomorphism $\varphi_\eta$ is to induce a natural isomorphism $\tilde{\varphi}_\eta$. This requirement is really of a natural isomorphism
+    \[
+      \xy
+        (0,0)*+{1 \times_{\Lambda(1)} X}="a";
+        (0,-20)*+{P(1) \times_{\Lambda(1)} X}="b";
+        (25,-20)*+{X}="c";
+        %
+        {\ar_{\eta^P \times_{\Lambda(1)} \id} "a" ; "b"};
+        {\ar_<<<<<{\alpha_1} "b" ; "c"};
+        {\ar "a" ; "c"};
+        %
+        {\ar@{=>}^{\varphi_\eta} (10,-11) ; (7,-14)};
+      \endxy
+    \]
+  where $1 \times_{\Lambda(1)} X$ is the coequalizer of the trivial right action of $\Lambda(1)$ on $1$ and the usual left action of $\Lambda(1)$ on $X$. This induces a natural isomorphism
+    \[
+      \xy
+        (0,0)*+{1 \times X}="a";
+        (0,-20)*+{P(1) \times X}="b";
+        (25,-20)*+{X}="c";
+        %
+        {\ar_{\eta^P \times \id} "a" ; "b"};
+        {\ar_<<<<<<{\tilde{\alpha}_1} "b" ; "c"};
+        {\ar "a" ; "c"};
+        %
+        {\ar@{=>}^{\tilde{\varphi}_\eta} (10,-11) ; (7,-14)};
+      \endxy
+    \]
+  which can be whiskered with the isomorphism $X \rightarrow 1 \times X$. We make the convention of referring to this whiskered natural isomorphism as $\tilde{\varphi}_\eta$, since no confusion will arise in practice.
+\end{rem}
+
+\begin{Defi}
+Let $P$ be a $\ML$-operad. A \textit{strict algebra} for $P$ consists of a pseudoalgebra in which all of the isomorphisms $\phi$ are identities.
+\end{Defi}
+
+\begin{Defi}\label{def:ps-morph}
+Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\ML$-operad $P$. A \textit{pseudomorphism} of $P$-pseudoalgebras consists of: 
+    \begin{itemize}
+        \item a functor $f \colon X \rightarrow Y$
+        \item for each $n \in \mathbb{N}$, a natural isomorphism $f_n$ (corresponding, via Conventions \ref{conv_coeq}) to a natural isomorphism
+            \[
+                \xy
+                    (0,0)*+{P_n \times X^n}="00";
+                    (20,0)*+{X}="10";
+                    (0,-15)*+{P_n \times Y^n}="01";
+                    (20,-15)*+{Y}="11";
+                    {\ar^>>>>>{\tilde{\alpha}_n} "00" ; "10"};
+                    {\ar^{f} "10" ; "11"};
+                    {\ar_{1 \times f^n} "00" ; "01"};
+                    {\ar_>>>>>{\tilde{\beta}_n} "01" ; "11"};
+                    {\ar@{=>}^{\overline{f}_n} (10,-5.5) ; (10,-9.5)};
+                \endxy
+            \]
+
+        \end{itemize}
+satisfying the following axioms.
+    \begin{itemize}
+        \item The following equality of pasting diagrams holds.
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times X^{k_i})}="00";
+                    (50,0)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times Y^{k_i})}="10";
+                    (0,-25)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="01";
+                    (50,-25)*+{\scriptstyle P_{\Sigma k_i} \times Y^{\Sigma k_i}}="11";
+                    (75,-15)*{\scriptstyle P_n \times Y^n}="21";
+                    (75,-40)*+{\scriptstyle Y}="22";
+                    (25,-40)*+{\scriptstyle X}="02";
+                    {\ar^{1 \times \prod(1 \times f^{k_i})} "00" ; "10"};
+                    {\ar^{1 \times \prod \tilde{\beta}_{k_i}} "10" ; "21"};
+                    {\ar_{\mu^P \times 1} "00" ; "01"};
+                    {\ar_{\tilde{\alpha}_{\Sigma k_i}} "01" ; "02"};
+                    {\ar_{f} "02" ; "22"};
+                    {\ar^{1 \times f^{\Sigma k_i}} "01" ; "11"};
+                    {\ar_{\tilde{\beta}_{\Sigma k_i}} "11" ; "22"};
+                    {\ar_{\mu^P \times 1} "10" ; "11"};
+                    {\ar^{\tilde{\beta}_n} "21" ; "22"};
+                    {\ar@{=>}^{\overline{f}_n} (37.5,-30.5) ; (37.5,-34.5)};
+                    {\ar@{=>}^{\tilde{\psi}_{k_1,\ldots,k_n}} (57.5,-16.5) ; (57.5,-20.5)};
+                    (0,-55)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times X^{k_i})}="b00";
+                    (50,-55)*+{\scriptstyle P_n \times \prod_i (P_{k_i} \times Y^{k_i})}="b10";
+                    (0,-80)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_i}}="b01";
+                    (25,-70)*+{\scriptstyle P_n \times X^n}="b11";
+                    (75,-70)*{\scriptstyle P_n \times Y^n}="b21";
+                    (75,-95)*+{\scriptstyle Y}="b22";
+                    (25,-95)*+{\scriptstyle X}="b02";
+                    {\ar^{1 \times \prod(1 \times f^{k_i})} "b00" ; "b10"};
+                    {\ar^{1 \times \prod \tilde{\beta}_{k_i}} "b10" ; "b21"};
+                    {\ar_{\mu^P \times 1} "b00" ; "b01"};
+                    {\ar_{\tilde{\alpha}_{\Sigma k_i}} "b01" ; "b02"};
+                    {\ar_{f} "b02" ; "b22"};
+                    {\ar^{\tilde{\beta}_n} "b21" ; "b22"};
+                    {\ar^{1 \times \prod \tilde{\alpha}_{k_i}} "b00" ; "b11"};
+                    {\ar^{1 \times f^n} "b11" ; "b21"};
+                    {\ar_{\tilde{\alpha}_n} "b11" ; "b02"};
+                    {\ar@{=>}^{\overline{f}_n} (50,-80.5) ; (50,-84.5)};
+                    {\ar@{=>}^{1 \times \prod\overline{f}_{k_i}} (37.5,-60.5) ; (37.5,-64.5)};
+                    {\ar@{=>}^{\tilde{\phi}_{k_1,\ldots,k_n}} (9,-72) ; (9,-76)};
+                    {\ar@{=} (37.5,-45.5) ; (37.5,-49.5)};
+                \endxy
+            \]
+            \item The following equality of pasting diagrams holds.
+                \[
+                    \xy
+                        (0,0)*+{X}="00";
+                        (20,0)*+{Y}="10";
+                        (0,-15)*+{1 \times X}="01";
+                        (20,-15)*+{1 \times Y}="11";
+                        (0,-30)*+{P_1 \times X}="02";
+                        (20,-30)*+{P_1 \times Y}="12";
+                        (20,-45)*+{X}="r02";
+                        (40,-45)*+{Y}="r12";
+                        {\ar^{f} "00" ; "10"};
+                        {\ar@/^2pc/^{1} "10" ; "r12"};
+                        {\ar_{\cong} "00" ; "01"};
+                        {\ar_{\eta^P \times 1} "01" ; "02"};
+                        {\ar_{\tilde{\alpha}_1} "02" ; "r02"};
+                        {\ar^{1 \times f} "01" ; "11"};
+                        {\ar^{1 \times f} "02" ; "12"};
+                        {\ar^{\tilde{\beta}_1} "12" ; "r12"};
+                        {\ar_{\cong} "10" ; "11"};
+                        {\ar_{\eta^P \times 1} "11" ; "12"};
+                        {\ar_{f} "r02" ; "r12"};
+                        {\ar@{=>}^{\overline{f}_1} (20,-35.5) ; (20,-39.5)};
+                        {\ar@{=>}^{\tilde{\psi}_{\eta}} (30,-20) ; (30,-24)};
+                        (60,0)*+{X}="x00";
+                        (80,0)*+{Y}="x10";
+                        (60,-15)*+{1 \times X}="x01";
+                        (60,-30)*+{P_1 \times X}="x02";
+                        (80,-45)*+{X}="xr02";
+                        (100,-45)*+{Y}="xr12";
+                        {\ar^{f} "x00" ; "x10"};
+                        {\ar@/^2pc/^{1} "x10" ; "xr12"};
+                        {\ar_{\cong} "x00" ; "x01"};
+                        {\ar_{\eta^P \times 1} "x01" ; "x02"};
+                        {\ar_{\tilde{\alpha}_1} "x02" ; "xr02"};
+                        {\ar_{f} "xr02" ; "xr12"};
+                        {\ar@/^2pc/^{1} "x00" ; "xr02"};
+                        {\ar@{=>}^{\tilde{\phi}_\eta} (70,-20) ; (70,-24)};
+                        {\ar@{=} (45,-22.5) ; (49,-22.5)};
+                    \endxy
+                \]
+    \end{itemize}
+\end{Defi}
+
+\begin{Defi}
+Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\ML$-operad $P$. A \textit{strict morphism} of $P$-pseudoalgebras consists of a pseudomorphism in which all of the isomorphisms $\overline{f}_{n}$ are identities.
+\end{Defi}
+
+\begin{rem}
+A strict algebra for a $\ML$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an operad in the \textit{category} of small categories and functors. A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense. We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
+
+In \cref{def:ps-morph} of a pseudomorphism we did not originally make it clear that the isomorphisms $\overline{f}_n$ should satisfy an equivariance condition. This was highlighted in Remark 2.22 of Rubin's thesis \cite{rubin-thesis}. Similarly, this is also explicity stated as Definition 2.23 of \cite{guillou_symmetric}, as mentioned in \cite{guillou_multiplicative}. That we don't include an explicit equivariance axiom is due to Conventions \ref{conv_coeq}. In \cref{def:ps-morph} we require the existence of natural isomorphisms $f_n$ in order to induce corresponding natural isomorphisms $\overline{f}_n$. That the $\overline{f}_n$ are induced by the $f_n$ corresponds to the fact that the $\overline{f}_n$ satisfy an equivariance condition, namely that for $(\sigma, g, x_1, \ldots, x_n) \in P(n) \times \Lambda(n) \times X^n$, we have
+  \[
+    \left(\overline{f}_n\right)_{\left(\sigma \cdot g, x_1, \ldots, x_n\right)} = \left(\overline{f}_n\right)_{\left(\sigma,x_{\pi(g)^{-1}(1)},\ldots,x_{\pi(g)^{-1}(n)}\right)}.
+  \]
+\end{rem}
+
+\begin{Defi}
+Let $P$ be a $\ML$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) \rightarrow (Y, \beta, \psi, \psi_\eta)$ be pseudomorphisms of $P$-pseudoalgebras. A \textit{$P$-transformation} is then a natural transformation $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds, for all $n$.
+    \[
+        \xy
+            (0,0)*+{P_n \times X^n}="00";
+            (30,0)*+{P_n \times Y^n}="10";
+            (0,-20)*+{X}="01";
+            (30,-20)*+{Y}="11";
+            {\ar@/^1.5pc/^{1 \times f^n} "00" ; "10"};
+            {\ar_{1 \times g^n} "00" ; "10"};
+            {\ar^{\tilde{\beta}_n} "10" ; "11"};
+            {\ar_{\tilde{\alpha}_n} "00" ; "01"};
+            {\ar_{g} "01" ; "11"};
+            {\ar@{=>}^{1 \times \gamma^n} (13.5,5.5) ; (13.5,1.5)};
+            {\ar@{=>}^{\overline{g}_n} (13.5,-8) ; (13.5,-12)};
+            (60,0)*+{P_n \times X^n}="x00";
+            (90,0)*+{P_n \times Y^n}="x10";
+            (60,-20)*+{X}="x01";
+            (90,-20)*+{Y}="x11";
+            {\ar^{1 \times f^n} "x00" ; "x10"};
+            {\ar^{\tilde{\beta}_n} "x10" ; "x11"};
+            {\ar_{\tilde{\alpha}_n} "x00" ; "x01"};
+            {\ar^{f} "x01" ; "x11"};
+            {\ar@/_1.5pc/_{g} "x01" ; "x11"};
+            {\ar@{=>}^{\gamma} (75,-21.5) ; (75,-25.5)};
+            {\ar@{=>}^{\overline{f}_n} (75,-8) ; (75,-12)};
+            {\ar@{=} (42.75,-10) ; (46.75,-10)};
+        \endxy
+    \]
+\end{Defi}
+
+We can form various $2$-categories using these cells.
+
+\begin{Defi}
+Let $P$ be a $\ML$-operad.
+\begin{itemize}
+\item The $2$-category $P\mbox{-}\mb{Alg}_{s}$ consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
+\item The $2$-category $\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$ consists of $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations.
+\end{itemize}
+\end{Defi}
+
+We also have the corresponding $2$-monadic definitions, which we give for completeness. We state these for any $2$-category $\m{K}$, as specializing to $\mb{Cat}$ does not simplify them in any way.
+
+\begin{Defi}
+Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A $T$-\textit{pseudoalgebra} consists of an object $X$, a $1$-cell $\alpha \colon TX \rightarrow X$, and invertible $2$-cells
+    \[
+        \xy
+            (0,0)*+{T^2X}="00";
+            (20,0)*+{TX}="10";
+            (0,-15)*+{TX}="01";
+            (20,-15)*+{X}="11";
+            {\ar^{T\alpha} "00" ; "10"};
+            {\ar^{\alpha} "10" ; "11"};
+            {\ar_{\mu_X} "00" ;  "01"};
+            {\ar_{\alpha} "01" ; "11"};
+            {\ar@{=>}^{\Phi} (10,-5.5) ; (10,-9.5)};
+            (40,0)*+{X}="20";
+            (52.5,-15)*+{TX}="31";
+            (72.5,-15)*+{X}="41";
+            {\ar_{\eta_X} "20" ; "31"};
+            {\ar_{\alpha} "31" ; "41"};
+            {\ar@/^1.5pc/^{1_X} "20" ; "41"};
+            {\ar@{=>}^{\Phi_{\eta}} (54.5,-5.5) ; (54.5,-9.5)};
+        \endxy
+    \]
+
+satisfying the following axioms.
+    \begin{itemize}
+        \item The following equality of pasting diagrams holds.
+    \[
+        \xy
+            (5,0)*+{T^3X}="t3xl";
+            (29,0)*+{T^2X}="t2xl1";
+            (5,-17.5)*+{T^2X}="t2xl2";
+            (24,-35)*+{TX}="txl1";
+            (48,-17.5)*+{TX}="txl2";
+            (48,-35)*+{X}="xl";
+            (24,-17.5)*+{T^2X}="t2xl3";
+            {\ar^{T^2\alpha} "t3xl" ; "t2xl1"};
+            {\ar^{T\alpha} "t2xl1" ; "txl2"};
+            {\ar^{\alpha} "txl2" ; "xl"};
+            {\ar_{\mu_{TX}} "t3xl" ; "t2xl2"};
+            {\ar_{\mu_X} "t2xl2" ; "txl1"};
+            {\ar_{\alpha} "txl1" ; "xl"};
+            {\ar_{T\mu_X} "t3xl" ; "t2xl3"};
+            {\ar^{T\alpha} "t2xl3" ; "txl2"};
+            {\ar_{\mu_X} "t2xl3" ; "txl1"};
+            {\ar@{=>}_{T\Phi} (26,-6) ; (26,-10)};
+            {\ar@{=>}^{\Phi} (36,-24) ; (36,-28)};
+            (64,0)*+{T^3X}="t3xr";
+            (88,0)*+{T^2X}="t2xr1";
+            (64,-17.5)*+{T^2X}="t2xr2";
+            (83,-35)*+{TX}="txr1";
+            (107,-17.5)*+{TX}="txr2";
+            (107,-35)*+{X}="xr";
+            (88,-17.5)*+{TX}="txr3";
+            {\ar^{T^2\alpha} "t3xr" ; "t2xr1"};
+            {\ar^{T\alpha} "t2xr1" ; "txr2"};
+            {\ar^{\alpha} "txr2" ; "xr"};
+            {\ar_{\mu_{TX}} "t3xr" ; "t2xr2"};
+            {\ar_{\mu_X} "t2xr2" ; "txr1"};
+            {\ar_{\alpha} "txr1" ; "xr"};
+            {\ar_{T\alpha} "t2xr2" ; "txr3"};
+            {\ar_{\alpha} "txr3" ; "xr"};
+            {\ar_{\mu_X} "t2xr1" ; "txr3"};
+            {\ar@{=>}_{\Phi} (98,-15) ; (98,-19)};
+            {\ar@{=>}^{\Phi} (85,-24) ; (85,-28)};
+            {\ar@{=} (54,-20) ; (56,-20)};
+        \endxy
+    \]
+
+    \item The following pasting diagram is an identity.
+    \[
+        \xy
+            (0,0)*+{TX}="txl1";
+            (15,-15)*+{T^2X}="t2x";
+            (15,-30)*+{TX}="txl2";
+            (35,-15)*+{TX}="txl3";
+            (35,-30)*+{X}="xl";
+            {\ar@/^1.7pc/^{1_{TX}} "txl1" ; "txl3"};
+            {\ar@/_1.7pc/_{1_{TX}} "txl1" ; "txl2"};
+            {\ar_{T\eta_X} "txl1" ; "t2x"};
+            {\ar^{T\alpha} "t2x" ; "txl3"};
+            {\ar_{\mu_X} "t2x" ; "txl2"};
+            {\ar_{\alpha} "txl2" ; "xl"};
+            {\ar^{\alpha} "txl3" ; "xl"};
+            {\ar@{=>}^{T\Phi_\eta} (17,-5.5) ; (17,-9.5)};
+            {\ar@{=>}^{\Phi} (25,-20.5) ; (25,-24.5)};
+        \endxy
+    \]
+
+    \end{itemize}
+\end{Defi}
+
+\begin{Defi}
+Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A \textit{strict $T$-algebra} consists of a pseudoalgebra in which all of the isomorphisms $\Phi$ are identities.
+\end{Defi}
+
+\begin{Defi}
+Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$, $(Y,\beta,\Psi,\Psi_\eta)$ be $T$-pseudoalgebras. A \textit{pseudomorphism} $(f, \bar{f})$ between these pseudoalgebras consists of a $1$-cell $f \colon X \rightarrow Y$ along with an invertible $2$-cell
+    \[
+        \xy
+            (0,0)*+{TX}="00";
+            (20,0)*+{TY}="10";
+            (0,-15)*+{X}="01";
+            (20,-15)*+{Y}="11";
+            {\ar^{Tf} "00" ; "10"};
+            {\ar^{\beta} "10" ; "11"};
+            {\ar_{\alpha} "00" ; "01"};
+            {\ar_{f} "01" ; "11"};
+            {\ar@{=>}^{\bar{f}} (10,-5.5) ; (10,-9.5)};
+        \endxy
+    \]
+
+satisfying the following axioms.
+    \begin{itemize}
+        \item The following equality of pasting diagrams holds.
+                \[
+        \xy
+            (5,0)*+{T^2X}="t3xl";
+            (29,0)*+{T^2Y}="t2xl1";
+            (5,-17.5)*+{TX}="t2xl2";
+            (24,-35)*+{TX}="txl1";
+            (48,-17.5)*+{TY}="txl2";
+            (48,-35)*+{Y}="xl";
+            (24,-17.5)*+{TX}="t2xl3";
+            {\ar^{T^2f} "t3xl" ; "t2xl1"};
+            {\ar^{T\beta} "t2xl1" ; "txl2"};
+            {\ar^{\beta} "txl2" ; "xl"};
+            {\ar_{\mu_X} "t3xl" ; "t2xl2"};
+            {\ar_{\alpha} "t2xl2" ; "txl1"};
+            {\ar_{f} "txl1" ; "xl"};
+            {\ar^{T\alpha} "t3xl" ; "t2xl3"};
+            {\ar^{Tf} "t2xl3" ; "txl2"};
+            {\ar_{\alpha} "t2xl3" ; "txl1"};
+            {\ar@{=>}^{T\bar{f}} (24,-6) ; (24,-10)};
+            {\ar@{=>}^{\bar{f}} (36,-24) ; (36,-28)};
+            {\ar@{=>}^{\Phi} (13.5,-15.5) ; (13.5,-19.5)};
+            (64,0)*+{T^2X}="t3xr";
+            (88,0)*+{T^2Y}="t2xr1";
+            (64,-17.5)*+{TX}="t2xr2";
+            (83,-35)*+{TX}="txr1";
+            (107,-17.5)*+{TY}="txr2";
+            (107,-35)*+{Y}="xr";
+            (88,-17.5)*+{TX}="txr3";
+            {\ar^{T^2f} "t3xr" ; "t2xr1"};
+            {\ar^{T\beta} "t2xr1" ; "txr2"};
+            {\ar^{\beta} "txr2" ; "xr"};
+            {\ar_{\mu_{X}} "t3xr" ; "t2xr2"};
+            {\ar_{\alpha} "t2xr2" ; "txr1"};
+            {\ar_{f} "txr1" ; "xr"};
+            {\ar_{Tf} "t2xr2" ; "txr3"};
+            {\ar_{\beta} "txr3" ; "xr"};
+            {\ar_{\mu_Y} "t2xr1" ; "txr3"};
+            {\ar@{=>}_{\Psi} (98,-15) ; (98,-19)};
+            {\ar@{=>}^{\bar{f}} (85,-24) ; (85,-28)};
+            {\ar@{=} (54,-20) ; (56,-20)};
+        \endxy
+    \]
+    %redraw with tikzpicture
+    \item The following equality of pasting diagrams holds.
+            \[
+                        \xy
+            (0,0)*+{X}="00";
+            (20,0)*+{Y}="10";
+            (0,-20)*+{TX}="01";
+            (20,-20)*+{TY}="11";
+            (10,-35)*+{X}="02";
+            (30,-35)*+{Y}="12";
+            {\ar^{f} "00" ; "10"};
+            {\ar@/^1.5pc/^{1_Y} "10" ; "12"};
+            {\ar_{\eta_X} "00" ; "01"};
+            {\ar_{\eta_Y} "10" ; "11"};
+            {\ar_{Tf} "01" ; "11"};
+            {\ar_{\alpha} "01" ; "02"};
+            {\ar_{f} "02" ; "12"};
+            {\ar^{\beta} "11" ; "12"};
+            {\ar@{=>}^{\bar{f}} (15,-25.5) ; (15,-29.5)};
+            {\ar@{=>}^{\Psi_{\eta}} (25,-17) ; (25,-21)};
+            (50,0)*+{X}="30";
+            (70,0)*+{Y}="40";
+            (50,-20)*+{TX}="31";
+            (60,-35)*+{X}="32";
+            (80,-35)*+{Y}="42";
+            {\ar^{f} "30" ; "40"};
+            {\ar_{\eta_X} "30" ; "31"};
+            {\ar_{\alpha} "31" ; "32"};
+            {\ar_{f} "32" ; "42"};
+            {\ar@/^1.5pc/^{1_X} "30" ; "32"};
+            {\ar@/^1.5pc/^{1_Y} "40" ; "42"};
+            {\ar@{=>}^{\Phi_{\eta}} (55,-17) ; (55,-21)};
+        \endxy
+        \]
+        %redraw with tikzpicture
+
+\end{itemize}
+\end{Defi}
+
+\begin{Defi}
+Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$, $(Y,\beta,\Psi,\Psi_\eta)$ be $T$-pseudoalgebras. A \textit{strict morphism} $(f, \bar{f})$ consists of a pseudomorphism in which $\bar{f}$ is an identity.
+\end{Defi}
+
+\begin{rem}
+Once again, the strict algebras and strict morphisms are exactly the same as algebras and morphisms for the underlying monad on the underlying category of $\m{K}$.
+\end{rem}
+
+\begin{Defi}
+Let $(f, \overline{f}), (g, \overline{g}) \colon X \rightarrow Y$ be pseudomorphisms of $T$-algebras. A \textit{$T$-transformation} consists of a $2$-cell $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds.
+    \[
+        \xy
+            (0,0)*+{TX}="00";
+            (30,0)*+{TY}="10";
+            (0,-20)*+{X}="01";
+            (30,-20)*+{Y}="11";
+            {\ar@/^1.5pc/^{Tf} "00" ; "10"};
+            {\ar_{Tg} "00" ; "10"};
+            {\ar^{\beta} "10" ; "11"};
+            {\ar_{\alpha} "00" ; "01"};
+            {\ar_{g} "01" ; "11"};
+            {\ar@{=>}^{T \gamma} (13.5,5.5) ; (13.5,1.5)};
+            {\ar@{=>}^{\overline{g}} (13.5,-8) ; (13.5,-12)};
+            (60,0)*+{TX}="x00";
+            (90,0)*+{TY}="x10";
+            (60,-20)*+{X}="x01";
+            (90,-20)*+{Y}="x11";
+            {\ar^{Tf} "x00" ; "x10"};
+            {\ar^{\beta} "x10" ; "x11"};
+            {\ar_{\alpha} "x00" ; "x01"};
+            {\ar^{f} "x01" ; "x11"};
+            {\ar@/_1.5pc/_{g} "x01" ; "x11"};
+            {\ar@{=>}^{\gamma} (75,-21.5) ; (75,-25.5)};
+            {\ar@{=>}^{\overline{f}} (75,-8) ; (75,-12)};
+            {\ar@{=} (42.75,-10) ; (46.75,-10)};
+        \endxy
+    \]
+    %redraw with tikzpicture
+
+\end{Defi}
+
+Once again, we have $2$-categories defined using the different kinds of cells.
+
+\begin{Defi}
+Let $T$ be a $2$-monad.
+\begin{itemize}
+\item The $2$-category $T\mbox{-}\mb{Alg}_{s}$ consists of strict $T$-algebras, strict morphisms, and $T$-transformations.
+\item The $2$-category $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ consists of $T$-pseudoalgebras, pseudomorphisms, and $T$-transformations.
+\end{itemize}
+\end{Defi}
+
+Our main result in this section is the following, showing that one can consider algebras and higher cells, in either strict or pseudo strength, using either the operadic or $2$-monadic incarnation of a $\ML$-operad $P$. This extends \cref{op=monad1}.
+
+\begin{thm}
+Let $P$ be a $\ML$-operad in $\mb{Cat}$.
+\begin{itemize}
+\item There is an isomorphism of $2$-categories
+    \[
+        P\mbox{-}\mb{Alg}_{s} \cong \underline{P}\mbox{-}\mb{Alg}_{s}.
+    \]
+\item There is an isomorphism of $2$-categories
+    \[
+        \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg} \cong \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}
+    \]
+    extending the one above.
+\end{itemize}
+\end{thm}
+\begin{proof}
+We begin by noting that we suppress the difference between $2$-cells $\Gamma$ and those $\tilde{\Gamma}$ as in Conventions \ref{conv_coeq}, implicitly always using $2$-cells defined on a coequalizer which are appropriately equivariant with respect to the group actions involved.
+
+A proof of the first statement follows from our proof of the second by inserting identities where appropriate. Thus we begin by constructing a $2$-functor $R \colon \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg} \rightarrow \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$. We map a $\underline{P}$-pseudoalgebra $(X,\alpha,\Phi,\Phi_\eta)$ to the following $P$-pseudoalgebra on the same category $X$. First we define the functor $\alpha_n$ to be the composite
+    \[
+        \xy
+            (0,0)*+{\alpha_n \colon P(n) \times_{\Lambda(n)} X^n}="00";
+            (35,0)*+{\underline{P}(X)}="10";
+            (55,0)*+{X.}="20";
+            {\ar@{^{(}->} "00" ; "10"};
+            {\ar^{\alpha} "10" ; "20"};
+        \endxy
+    \]
+The isomorphisms $\phi_{k_1,\ldots,k_n}$ are defined using $\Phi$ as in the following diagram
+
+	\[
+		\xy
+			(-10,0)*+{\scriptstyle P_n \times \prod_{i=1}^n\left(P_{k_i} \times X^{k_i}\right)}="00";
+           	(30,0)*+{\scriptstyle P_n \times \prod_i \left( P_{k_i} \times_{\Lambda_{k_i}} X^{k_i} \right)}="10";
+            (60,0)*+{\scriptstyle P_n \times \underline{P}(X)^n}="20";
+            (90,0)*+{\scriptstyle P_n \times X^n}="30";
+            (-10,-20)*+{\scriptstyle P_n \times \prod_{i} P_{k_i} \times X^{\Sigma k_I}}="01";
+            (-10,-40)*+{\scriptstyle P_{\Sigma k_i} \times X^{\Sigma k_{i}}}="02";
+            (60,-10)*+{\scriptstyle P_n \times_{\Lambda_n} \underline{P}(X)^n}="21";
+            (60,-20)*+{\scriptstyle \underline{P}^2(X)}="22";
+            (90,-10)*+{\scriptstyle P_n \times_{\Lambda_n} X^n}="31";
+            (90,-20)*+{\scriptstyle \underline{P}(X)}="32";
+            (30,-40)*+{\scriptstyle P_{\Sigma k_i} \times_{\Lambda_{\Sigma k_i}} X^{\Sigma k_i}}="12";
+            (60,-40)*+{\scriptstyle \underline{P}(X)}="23";
+            (90,-40)*+{\scriptstyle X}="33";
+            {\ar "00" ; "10"};
+            {\ar "00" ; "01"};
+            {\ar_{\mu^P \times 1} "01" ; "02"};
+            {\ar@{^{(}->} "10" ; "20"};
+            {\ar "20" ; "21"};
+            {\ar^{1 \times \alpha^n} "20" ; "30"};
+            {\ar "30" ; "31"};
+            {\ar@{^{(}->} "21" ; "22"};
+            {\ar^{\underline{P}\alpha} "22" ; "32"};
+            {\ar@{^{(}->} "31" ; "32"};
+            {\ar_{\mu_X} "22" ; "23"};
+            {\ar_{\alpha} "23" ; "33"};
+            {\ar^{\alpha} "32" ; "33"};
+            {\ar "02" ; "12"};
+            {\ar@{^{(}->} "12" ; "23"};
+            {\ar@{=>}^{\Phi} (75,-28) ; (75,-32)};
+        \endxy
+    \]
+
+whilst $\Phi_\eta$ is simply sent to itself, since the composition of $\alpha$ with the composite of the coequalizer and inclusion map from $P(1) \times X$ into $\underline{P}(X)$ is just $\tilde{\alpha_1}$. Checking the axioms here is most easily done on components and it can easily seen that the axioms required of this data to be a $P$-pseudoalgebra are precisely those that they satisfy by virtue of $X$ being a $\underline{P}$-pseudoalgebra.
+
+For a $1$-cell $(f,\overline{f}) \colon (X, \alpha) \rightarrow (Y, \beta)$, we send $f$ to itself whilst sending $\overline{f}$ to the obvious family of isomorphisms, as follows.
+    \[
+        \xy
+            (-30,0)*+{P(n) \times X^n}="-10";
+            (-30,-15)*+{P(n) \times Y^n}="-11";
+            (0,0)*+{P(n) \times_{\Lambda(n)} X^n}="00";
+            (30,0)*+{\underline{P}(X)}="10";
+            (60,0)*+{X}="20";
+            (0,-15)*+{P(n) \times_{\Lambda(n)} Y^n}="01";
+            (30,-15)*+{\underline{P}(Y)}="11";
+            (60,-15)*+{Y}="21";
+            {\ar@{^{(}->} "00" ; "10"};
+            {\ar^{\alpha} "10" ; "20"};
+            {\ar_{1 \times f^n} "00" ; "01"};
+            {\ar_{\underline{P}f} "10" ; "11"};
+            {\ar^{f} "20" ; "21"};
+            {\ar@{^{(}->} "01" ; "11"};
+            {\ar_{\beta} "11" ; "21"};
+            {\ar "-10" ; "00"};
+            {\ar "-11" ; "01"};
+            {\ar_{1 \times f^n} "-10" ; "-11"};
+            {\ar@{=>}^{\overline{f}} (45,-5.5) ; (45,-9.5)};
+        \endxy
+    \]
+
+It is easy to check that the above data satisfy the axioms for being a pseudomorphism of $P$-pseudoalgebras, following from the axioms for $(f,\overline{f})$ being a pseudomorphism of $\underline{P}$-pseudoalgebras. A $\underline{P}$-transformation $\gamma \colon (f, \bar{f}) \Rightarrow (g, \bar{g})$ immediately gives a $P$-transformation $\bar{\gamma}$ between the families of isomorphisms we previously defined, with the components of $\bar{\gamma}$ being precisely those of $\gamma$. It is then easily shown that $R$ is a $2$-functor.
+
+For there to be an isomorphism of $2$-categories, we require an inverse to $R$, namely a $2$-functor $S \colon \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg} \rightarrow \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$. Now assume that $(X, \alpha_n, \phi_{\underline{k}_i}, \phi_\eta)$ is a $P$-pseudoalgebra. We will give the same object $X$ a $\underline{P}$-pseudoalgebra structure. We can induce a functor $\alpha \colon \underline{P}(X) \rightarrow X$ by using the universal property of the coproduct.
+    \[
+        \xy
+            (-30,0)*+{P(n) \times X^n}="-10";
+            (0,0)*+{P(n) \times_{\Lambda(n)} X^n}="00";
+            (30,0)*+{\underline{P}(X)}="10";
+            (30,-15)*+{X}="11";
+            {\ar "-10" ; "00"};
+            {\ar^{\alpha_n} "00" ; "11"};
+            {\ar@{^{(}->} "00" ; "10"};
+            {\ar^{\exists ! \alpha} "10" ; "11"};
+            {\ar_{\tilde{\alpha}_n} "-10" ; "11"};
+        \endxy
+    \]
+
+Of course, this can be induced using either $\alpha_n$ or $\tilde{\alpha}_n$, each giving the same functor $\alpha$ by uniqueness. The components of the isomorphism $\Phi \colon \alpha \circ \underline{P}(\alpha) \Rightarrow \alpha \circ \mu_X$ can be given as follows. Let $\left|\underline{x}_i\right|$ denote the number of objects in the list $\underline{x}_i$. Then define the component of $\Phi$ at the object
+    \[
+        \left[p;\left[q_1;\underline{x}_1\right],\ldots,\left[q_n;\underline{x}_n\right]\right]
+    \]
+to be the component of $\phi_{\left|\underline{x}_1\right|, \ldots, |\underline{x}_n|}$ at the same object. To make this clearer, consider the object $[p;[q_1;x_{11}],[q_2;x_{21},x_{22}],[q_3;x_{31}]]$. The component of $\Phi$ at this object is given by the component of $\phi_{1,2,1}$ at the same object. The isomorphism $\phi_\eta$ is again sent to itself.
+
+Now given a $1$-cell $f$ with structure $2$-cells $\overline{f}_n$ we define a $1$-cell $(F,\overline{F})$ with underlying $1$-cell $f$ and structure $2$-cell $\overline{F}$ with components
+    \[
+        \overline{F}_{[p;x_1, \ldots, x_n]} := \left(\overline{f}_{n}\right)_{(p;x_1,\ldots,x_n)}.
+    \]
+For example, the component of $\overline{F}$ at the object $[p;x_1,x_2,x_3]$ would be the component of $f_3$ at the object $(p;x_1,x_2,x_3)$.
+
+The mapping for $2$-cells is just the identity as before. These mappings again constitute a $2$-functor in the obvious way and from how they are defined it is also clear that this is an inverse to $R$.
+\end{proof}
+
+\begin{rem}
+Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad (\cref{endoalg}). We can similarly define pseudomorphisms for a $\mathbf{Cat}$-enriched $\ML$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
+
+If $P$, $Q$ are $\ML$-operads then a \textit{pseudomorphism} of $\ML$-operads $F \colon P \rightarrow Q$ consists of a family of $\ML$-equivariant functors
+            \[
+                \left(F_n \colon P(n) \rightarrow Q(n)\right)_{n \in \mathbb{N}}
+            \]
+together with isomorphisms instead of the standard algebra axioms. For example, the associativity isomorphism has the following form.
+            \[
+                \xy
+                    (0,0)*+{\scriptstyle P(n) \times \prod_i P(k_i)}="00";
+                    (35,0)*+{\scriptstyle Q(n) \times \prod_i Q(k_i)}="10";
+                    (0,-15)*+{\scriptstyle P(\Sigma k_i)}="01";
+                    (35,-15)*+{\scriptstyle Q(\Sigma k_i)}="11";
+                    {\ar^{F_n \times \prod_i F_{k_i}} "00" ; "10"};
+                    {\ar^{\mu^Q} "10" ; "11"};
+                    {\ar_{\mu^P} "00" ; "01"};
+                    {\ar_{F_{\Sigma k_i}} "01" ; "11"};
+                    {\ar@{=>}^{\psi_{k_1,\ldots,k_n}} (15,-5.5) ; (15,-9.5)};
+                \endxy
+            \]
+
+These isomorphisms are then required to satisfy their own axioms, and these ensure that we have a weak map of $2$-monads $\underline{P} \Rightarrow \underline{Q}$. In particular, one can show that a pseudomorphism from $P$ into the endomorphism operad $\mathcal{E}_X$ produces pseudoalgebras for the operad $P$ using the closed structure on $\mb{Cat}$. While abstractly pleasing, we do not pursue this argument any further here.
+\end{rem}
+
+\subsection{$2$-categorical properties of operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{sec:propofopsincat}
+
+This section will be concerned with characterizing various properties of those $2$-monads induced by $\ML$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary. Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\ML$-operad $P$). Both of these results are simple extensions of well-known results about operads. Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
+
+ For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these $2$-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary. In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables. If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}. There are additional results of a purely $2$-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
+    \[
+        \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg} \rightarrow T\mbox{-}\mb{Alg}_s
+    \]
+to the forgetful $2$-functor which regards a strict algebra as a pseudoalgebra with identity structure isomorphisms.
+
+We begin by showing each associated $2$-monad is finitary.
+\begin{prop}
+Let $P$ be a $\ML$-operad. Then $\underline{P}$ is finitary.
+\end{prop}
+\begin{proof}
+To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
+    \begin{align*}
+      \underline{P}(\text{colim}X_{i}) &= \coprod_n P(n) \times_{\Lambda(n)} (\text{colim}X_{i})^n \\
+      &\cong \coprod_n P(n) \times_{\Lambda(n)} \text{colim}(X_{i}^n) \\
+      &\cong \coprod_n \text{colim}(P(n) \times_{\Lambda(n)} X_{i}^n) \\
+      &\cong \text{colim}\coprod_n P(n) \times_{\Lambda(n)} X_{i}^n \\
+      &= \text{colim}\underline{P}(X_{i}).
+    \end{align*}
+Since $\mathbf{Cat}$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
+\end{proof}
+
+The next part of this section is motivated by the issue of coherence. At its most basic, a coherence theorem is a way of describing when a notion of weaker structure is in some way equivalent to a stricter structure. The prototypical case here is the coherence theorem for monoidal categories. In a monoidal category we require associator isomorphisms
+    \[
+        \left( A \otimes B \right) \otimes C \cong A \otimes \left( B \otimes C \right)
+    \]
+for all objects in the category. The coherence theorem tells us that, for any monoidal category $M$, there exists a strict monoidal category which is equivalent to $M$. In other words, we can treat the associators in $M$ as identities, and similarly for the unit isomorphisms.
+
+The abstract approach to coherence considers when the pseudoalgebras for a $2$-monad $T$ are equivalent to strict $T$-algebras, with the most comprehensive account appearing in \cite{lack-cod}. Lack gives a general theorem which provides sufficient conditions for the existence of a left adjoint to the forgetful $2$-functor
+    \[
+        U \colon T\mbox{-}\mb{Alg}_s \rightarrow \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}
+    \]
+for which the components of the unit of the adjunction are equivalences. We focus on one version of this general result which has hypotheses that are quite easy to check in practice. First we require that the base $2$-category $\mathcal{K}$ has an enhanced factorization system. This is much like an orthogonal factorization system on a $2$-category, consisting of two classes of maps $(\mathcal{L},\mathcal{R})$, satisfying the lifting properties on $1$-cells and $2$-cells as follows. Given a commutative square
+     \[
+        \xy
+            (0,0)*+{A}="00";
+            (15,0)*+{C}="10";
+            (0,-15)*+{B}="01";
+            (15,-15)*+{D}="11";
+            {\ar^{f} "00" ; "10"};
+            {\ar^{r} "10" ; "11"};
+            {\ar_{l} "00" ; "01"};
+            {\ar_{g} "01" ; "11"};
+        \endxy
+     \]
+
+where $l \in \m{L}$ and $r \in {R}$, there exists a unique morphism $m \colon B \rightarrow C$ such that $rm = g$ and $ml = f$. Similarly, given two commuting squares for which $rf = gl$ and $rf' = f'l$, along with $2$-cells $\delta \colon f \Rightarrow f'$ and $\gamma \colon g \Rightarrow g'$ for which $\gamma \ast 1_l = 1_r \ast \delta$, there exists a unique $2$-cell $\mu \colon m \Rightarrow m'$, where $m$ and $m'$ are induced by the $1$-cell lifting property, satisfying $\mu \ast 1_l = \delta$ and $1_r \ast \mu = \gamma$. However, there is an additional $2$-dimensional property of the factorization system which says that given maps $l \in \m{L}$, $r \in \m{R}$ and an invertible $2$-cell $\alpha \colon rf \Rightarrow gl$
+    \[
+        \xy
+            (0,0)*+{A}="00";
+            (15,0)*+{C}="10";
+            (0,-15)*+{B}="01";
+            (15,-15)*+{D}="11";
+            {\ar^{f} "00" ; "10"};
+            {\ar^{r} "10" ; "11"};
+            {\ar_{l} "00" ; "01"};
+            {\ar_{g} "01" ; "11"};
+            {\ar@{=>}^{\alpha} (9.375,-5.625) ; (5.625,-9.375)};
+            (22.5,-7.5)*+{=};
+            (30,0)*+{A}="20";
+            (45,0)*+{C}="30";
+            (30,-15)*+{B}="21";
+            (45,-15)*+{D}="31";
+            {\ar^{f} "20" ; "30"};
+            {\ar^{r} "30" ; "31"};
+            {\ar_{l} "20" ; "21"};
+            {\ar_{g} "21" ; "31"};
+            {\ar^{m} "21" ; "30"};
+            {\ar@{=>}^{\beta} (41,-8) ; (38,-12)};
+        \endxy
+    \]
+
+there exists a unique pair $(m,\beta)$ where $m \colon B \rightarrow C$ is a $1$-cell and $\beta \colon rm \Rightarrow g$ is an invertible $2$-cell such that $ml = f$ and $\beta \ast 1_{l} = \alpha$.
+
+Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which follows simply from the fact that the set of objects functor, $\ob \colon \mb{Cat} \rightarrow \mb{Set}$, preserves colimits, being left adjoint to the indiscrete category functor, $E \colon \mb{Set} \rightarrow \mb{Cat}$, as described in \cref{symmoncor}.
+
+\begin{prop}
+For any $\ML$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
+\end{prop}
+\begin{cor}
+Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra.
+\end{cor}
+
+
+
+We finally turn to a discussion of the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and so it is useful to be able to characterize exactly when they are. An example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\ML$-operad is $2$-cartesian, as we now describe.
+
+\begin{Defi}
+A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit{$2$-cartesian} if
+    \begin{itemize}
+        \item the $2$-category $\mathcal{K}$ has $2$-pullbacks,
+        \item the functor $T$ preserves $2$-pullbacks, and
+        \item the naturality squares for the unit and multiplication of the $2$-monad are $2$-pullbacks.
+    \end{itemize}
+\end{Defi}
+
+It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. Since we will be computing with coequalizers of the form $A \times_{\Lambda} B$ repeatedly, we give the following useful lemma.
+
+\begin{lem}\label{coeq-lem}
+Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. An action of $G$ on the product $A \times B$ can then be defined by
+    \[
+        (a,b) \cdot g \colon = \left(a \cdot g, g^{-1} \cdot b\right).
+    \]
+If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $A \times_G B$.
+\end{lem}
+\begin{proof}
+The category $A \times_G B$ is defined as the coequalizer
+    \[
+        \xy
+            (0,0)*+{A \times G \times B}="00";
+            (30,0)*+{A \times B}="10";
+            (60,0)*+{A \times_G B}="20";
+            {\ar@<1ex>^{\lambda} "00" ; "10"};
+            {\ar@<-1ex>_{\rho} "00" ; "10"};
+            {\ar^{\varepsilon} "10" ; "20"};
+        \endxy
+    \]
+where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow (A \times B)/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
+    \[
+        [a \cdot g, b] = \left[(a \cdot g) \cdot g^{-1}, g \cdot b\right] = [a, g \cdot b].
+    \]
+
+Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we define a functor $\phi \colon (A \times B)/G \rightarrow X$ by $\phi[a,b] = \chi(a,b)$. That this is well-defined is clear, since
+    \[
+        \phi\left[a \cdot g, g^{-1} \cdot b\right] = \chi\left(a \cdot g, g^{-1} \cdot b\right) = \chi\left(a \cdot \left(gg^{-1}\right), b\right) = \chi(a, b) = \phi[a,b].
+    \]
+This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
+\end{proof}
+
+We begin our study of the cartesian property in the context of symmetric operads.
+
+\begin{prop}\label{cart_unit}
+Let $P$ be a symmetric operad. Then the unit $\eta \colon \id \Rightarrow \underline{P}$ for the associated monad is a cartesian transformation.
+\end{prop}
+\begin{proof}
+In order to show that $\eta$ is cartesian, we must prove that for a functor $f \colon X \rightarrow Y$, the pullback of the following diagram is the category $X$.
+	\[
+		\xy
+			(40,0)*+{Y}="10";
+			(0,-15)*+{\coprod P(n) \times_{\Sigma_n} X^n}="01";
+			(40,-15)*+{\coprod P(n) \times_{\Sigma_n} Y^n}="11";
+			{\ar^{\eta_Y} "10" ; "11"};
+			{\ar_{\underline{P}(f)} "01" ; "11"};
+		\endxy
+	\]
+The pullback of this diagram is isomorphic to the coproduct of the pullbacks of diagrams of the following form.
+\[
+		\xy
+			(30,0)*+{Y}="10";
+			(0,-15)*+{P(1) \times X}="01";
+			(30,-15)*+{P(1) \times Y}="11";
+			{\ar^{} "10" ; "11"};
+			{\ar_{1 \times f} "01" ; "11"};
+			% (45,-7.5)*{};
+			(90,0)*+{\emptyset}="60";
+			(60,-15)*+{P(n) \times_{\Sigma_{n}} X^n}="51";
+			(90,-15)*+{P(n) \times_{\Sigma_{n}} Y^n}="61";
+			{\ar^{} "60" ; "61"};
+			{\ar_{1 \times f^n} "51" ; "61"};
+			(75,-21)*{n \neq 1}
+		\endxy
+	\]
+It is easy then to see that $X$ is the coproduct of the $n=1$ cospan, and that the empty category is the pullback of each of the other cospans, making $X$ the pullback of the original diagram and verifying that $\eta$ is cartesian.
+\end{proof}
+
+
+\begin{prop}
+Let $P$ be a symmetric operad. Then the $2$-monad $\underline{P}$ preserves pullbacks if and only if $\Sigma_{n}$ acts freely on $P(n)$ for all $n$.
+\end{prop}
+\begin{proof}
+Consider the following pullback of discrete categories.
+    \[
+        \xy
+            (0,0)*+{\lbrace (x,y), (x,y'), (x',y), (x',y') \rbrace}="00";
+            (40,0)*+{\lbrace y,y' \rbrace}="10";
+            (0,-15)*+{\lbrace x, x' \rbrace}="01";
+            (40,-15)*+{\lbrace z \rbrace}="11";
+            {\ar "00" ; "10"};
+            {\ar "10" ; "11"};
+            {\ar "00" ; "01"};
+            {\ar "01" ; "11"};
+        \endxy
+    \]
+Letting $\mathbf{4}$ denote the pullback and similarly writing $\mathbf{2}_X = \{ x, x' \}$ and $\mathbf{2}_Y = \{y, y'\}$, the following diagram results as the image of this pullback square under $\underline{P}$.
+    \[
+        \xy
+            (0,0)*+{\coprod P(n) \times_{\Sigma_n} \mathbf{4}^n}="00";
+            (40,0)*+{\coprod P(n) \times_{\Sigma_n} \mathbf{2}_Y^n}="10";
+            (0,-15)*+{\coprod P(n) \times_{\Sigma_n} \mathbf{2}_X^n}="01";
+            (40,-15)*+{\coprod P(n)/\Sigma_n}="11";
+            {\ar "00" ; "10"};
+            {\ar "10" ; "11"};
+            {\ar "00" ; "01"};
+            {\ar "01" ; "11"}:
+        \endxy
+    \]
+The projection map $\underline{P}(\mb{4}) \rightarrow \underline{P}(\mb{2}_Y)$ maps an element
+    \[
+        [p;(x_1,y_1), \ldots, (x_n,y_n)]
+    \]
+to the element
+    \[
+        [p;y_1,\ldots,y_n]
+    \]
+and likewise for the projection to $\underline{P}(\mb{2}_X)$.
+
+Now assume that, for some $n$, the action of $\Sigma_n$ on $P(n)$ is not free. Then find some $p \in P(n)$ along with a nonidentity element $g \in \Sigma_n$ such that $p \cdot g = p$. We will show that the existence of $g$ proves that $\underline{P}$ is not cartesian.
+
+Now $g \neq e$, so there exists an $i$ such that $g(i) \neq i$; without loss of generality, we may take $i=1$. Using this $g$ we can find two distinct elements
+    \[
+        \left[p;(x',y),(x,y),\ldots,(x,y),(x,y'),(x,y),\ldots,(x,y)\right]
+    \]
+and
+    \[
+        \left[p;(x,y),\ldots,(x,y),(x',y'),(x,y),\ldots,(x,y)\right]
+    \]
+in $\underline{P}(\mb{4})$. In the first element we put $(x',y)$ in the first position and $(x,y')$ in position $g(1)$, whilst in the second element we put $(x',y')$ in position $g(1)$. Both of these elements, however, are mapped to the same elements in $\underline{P}(\mb{2}_X)$, since
+    \begin{align*}
+           \left[p; x', x, \ldots, x\right]&= \left[p \cdot g; (x', x, \ldots, x)\right]\\
+          &= \left[p;g\cdot (x', x, \ldots, x)\right]\\
+          &= \left[p;x,x,\ldots,x',\ldots,x\right].
+    \end{align*}
+Similarly, both of the elements are mapped to the same element in $\underline{P}(\mathbf{2}_Y)$, simply
+    \[
+        \left[p;y,\ldots,y', \ldots, y\right].
+    \]
+The pullback of this diagram, however, has a unique element which is projected to the ones we have considered, so $\underline{P}(\mb{4})$ is not a pullback. Hence $\underline{P}$ does not preserve pullbacks if for some $n$ the action of $\Sigma_n$ on $P(n)$ is not free.
+
+Now assume that each $\Sigma_n$ acts freely on $P(n)$. Given a pullback
+    \[
+        \xy
+            (0,0)*+{A}="00";
+            (15,0)*+{B}="10";
+            (0,-15)*+{C}="01";
+            (15,-15)*+{D}="11";
+            {\ar^{F} "00" ; "10"};
+            {\ar^{S} "10" ; "11"};
+            {\ar_{R} "00" ; "01"};
+            {\ar_{H} "01" ; "11"};
+        \endxy
+    \]
+we must show that the image of the diagram under $\underline{P}$ is also a pullback. Now this will be true if and only if each individual diagram
+        \[
+            \xy
+                (0,0)*+{P(n) \times_{\Sigma_n} A^n}="00";
+                (30,0)*+{P(n) \times_{\Sigma_n} B^n}="10";
+                (0,-15)*+{P(n) \times_{\Sigma_n} C^n}="01";
+                (30,-15)*+{P(n) \times_{\Sigma_n} D^n}="11";
+                {\ar^{1 \times F^n} "00" ; "10"};
+                {\ar^{1 \times S^n} "10" ; "11"};
+                {\ar_{1 \times R^n} "00" ; "01"};
+                {\ar_{1 \times H^n} "01" ; "11"}:
+            \endxy
+    \]
+is also a pullback. The pullback of the functors $1 \times H^n$ and $1 \times S^n$ is a category consisting of pairs of objects $[p;\underline{c}]$ and $[q;\underline{b}]$, where $\underline{b}$ and $\underline{c}$ represent lists of elements in $B$ and $C$, respectively. These pairs are then required to satisfy the property that
+    \[
+        \left[p;\underline{H(c)}\right] = \left[q; \underline{S(b)}\right].
+    \]
+Using the previous lemma, we know that a pair
+    \[
+        \left(\left[p;\underline{c}\right], \left[q;\underline{b}\right]\right)
+    \]
+is in the pullback if and only if there exists an element $g \in \Sigma_n$ such that $p \cdot g = q$ and $Hc_i = (Sb_{\pi(g)^{-1}(i)})$. Using this we can define mutual inverses between $P(n) \times_{\Sigma_n} A^n$ and the pullback $Q'$. Considering the category $A$ as the pullback of the diagram we started with, we can consider objects of $P(n) \times_{\Sigma_n} A^n$ as being equivalence classes
+    \[
+        [p;(b_1,c_1),\ldots,(b_n,c_n)]
+    \]
+where $p \in P(n)$ and $Hc_i = Sb_i$ for all $i$.
+
+Taking such an object, we send it to the pair
+    \[
+        \left(\left[p;c_1,\ldots,c_n\right],[p;b_1,\ldots,b_n]\right)
+    \]
+which lies in the pullback since the identity in $\Sigma_n$ satisfies the condition given earlier. An inverse to this sends a pair of equivalence classes in $Q'$ to the single equivalence class
+    \[
+        \left[p;\left(c_1,b_{\pi(g)^{-1}(1)}\right),\ldots,\left(c_n,b_{\pi(g)^{-1}(n)}\right)\right]
+    \]
+in $P(n) \times_{\Sigma_n} A^n$. If we apply the map into $Q'$ we get the pair
+    \[
+        \left(\left[p;c_1,\ldots,c_n\right],\left[p;b_{\pi(g)^{-1}(1)},\ldots,b_{\pi(g)^{-1}(n)}\right]\right)
+    \]
+which is equal to the original pair since $p \cdot g = q$; the other composite is trivially an identity. A similar calculation on morphisms finishes the proof that $P(n) \times_{\Sigma_n} A^{n}$ is the pullback as required.
+\end{proof}
+
+\begin{prop}
+Let $P$ be a symmetric operad. If the $\Sigma_n$-actions are all free, then the multiplication $\mu \colon  \underline{P}^{2} \Rightarrow \underline{P}$ of the associated monad is a cartesian transformation.
+\end{prop}
+\begin{proof}
+Note that if all of the diagrams
+    \[
+        \xy
+            (0,0)*+{\underline{P}^2(X)}="00";
+            (20,0)*+{\underline{P}^2(1)}="10";
+            (0,-15)*+{\underline{P}(X)}="01";
+            (20,-15)*+{\underline{P}(1)}="11";
+            {\ar^{\underline{P}^2(!)} "00" ; "10"};
+            {\ar^{\mu_1} "10" ; "11"};
+            {\ar_{\mu_X} "00" ; "01"};
+            {\ar_{\underline{P}(!)} "01" ; "11"};
+        \endxy
+    \]
+are pullbacks then the outside of the diagram
+    \[
+        \xy
+            (0,0)*+{\underline{P}^2(X)}="00";
+            (20,0)*+{\underline{P}^2(Y)}="10";
+            (40,0)*+{\underline{P}^2(1)}="20";
+            (0,-15)*+{\underline{P}(X)}="01";
+            (20,-15)*+{\underline{P}(Y)}="11";
+            (40,-15)*+{\underline{P}(1)}="21";
+            {\ar^{\underline{P}^2(f)} "00" ; "10"};
+            {\ar^{\underline{P}^2(!)} "10" ; "20"};
+            {\ar^{\mu_{1}} "20" ; "21"};
+            {\ar_{\mu_X} "00" ; "01"};
+            {\ar_{\underline{P}(f)} "01" ; "11"};
+            {\ar_{\underline{P}(!)} "11" ; "21"};
+            {\ar_{\mu_Y} "10" ; "11"};
+        \endxy
+    \]
+is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares below is a pullback.
+    \[
+        \xy
+            (0,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(P(k_i) \times_{\Sigma_{k_i}} X^{k_i}\right)}="00";
+            (60,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(P(k_i) / \Sigma_{k_i}\right)}="10";
+            (0,-20)*+{P(n) \times_{\Sigma_{n}} X^n}="01";
+            (60,-20)*+{P(n) / \Sigma_{n}}="11";
+            {\ar "00" ; "10"};
+            {\ar "00" ; "01"};
+            {\ar "01" ; "11"};
+            {\ar "10" ; "11"};
+        \endxy
+    \]
+The map along the bottom is the obvious one, sending $[p; x_1, \ldots, x_n]$ simply to the equivalence class $[p]$. Along the right hand side the map is the one corresponding to operadic composition, sending $[q;[p_1],\ldots,[p_m]]$ to $[\mu^P(q;p_1,\ldots,p_n)]$. The pullback of these maps would be the category consisting of pairs
+    \[
+        \left([p;x_1,\ldots,x_{\Sigma k_i}],[q;[p_1],\ldots,[p_n]]\right),
+    \]
+where $q \in P(n)$, $p_i \in P(k_i)$, $p \in P(\Sigma k_i)$, and for which $[p] = [\mu^P(q;p_1,\ldots,p_n)]$. The upper left category in the diagram, which we will refer to here as $Q$, has objects
+    \[
+        \left[q;\left[p_1;\underline{x}_1\right],\ldots,\left[p_n;\underline{x}_n\right]\right].
+    \]
+
+% QQQ (Describe these.)
+There are obvious maps out of $Q$ making the diagram commute and as such inducing a functor from $Q$ into the pullback via the universal property. This functor sends an object such as the one just described to the pair
+    \[
+        \left(\left[\mu^P(q;p_1,\ldots,p_n);\underline{x}\right], [q;[p_1],\ldots,[p_n]]\right).
+    \]
+Given an object in the pullback, we then have a pair, as described above, which has $[p] = [\mu^P(q;p_1,\ldots,p_n)]$ meaning that we can find an element $g \in \Sigma_{\Sigma k_i}$ such that $p  = \mu^P(q;p_1,\ldots,p_n) \cdot g$. Thus we can describe an inverse to the induced functor by sending a pair in the pullback to the object
+    \[
+        [q;[p_1;\pi(g)(\underline{x})_1],\ldots,[p_n;\pi(g)(\underline{x})_n]],
+    \]
+where $\pi(g)(\underline{x})_i$ denotes the $i$th block of $\underline{x}$ after applying the permutation $\pi(g)$. For example, if $\underline{x} = (x_{11}, x_{12}, x_{21}, x_{22}, x_{23}, x_{31})$ and $\pi(g) = (1\, \, 3 \, \, 5)$, then
+    \[
+        \pi(g)(\underline{x}) = (x_{23}, x_{12}, x_{11}, x_{22}, x_{21}, x_{31}).
+    \]
+Thus $\pi(g)(\underline{x})_1 = (x_{23}, x_{12})$, $\pi(g)(\underline{x})_2 = (x_{11}, x_{22}, x_{21})$ and $\pi(g)(\underline{x})_3 = (x_{31})$.
+
+Now applying the induced functor we find that we get back an object in the pullback for which the first entry is $[q;[p_1],\ldots,[p_n]]$ and whose second entry is
+    \[
+       \left[\mu^P(q;p_1,\ldots,p_n);\pi(g)(\underline{x})\right] = \left[\mu^P(q;p_1,\ldots,p_n) \cdot g;\underline{x}\right] = [p;\underline{x}],
+    \]
+which is what we started with. Showing the other composite is an identity is similar, here using the fact that the identity acts trivially on $\mu^P(q;p_1,\ldots,p_n)$. Taking the coproduct of these squares then gives us the original diagram that we wanted to show was a pullback and, since each individual square is a pullback, so is the original.
+\end{proof}
+
+Collecting these results together gives the following corollary.
+
+\begin{cor}\label{cart_cor}
+The $2$-monad associated to a symmetric operad $P$ is $2$-cartesian if and only if the action of $\Sigma_n$ is free on each $P(n)$.
+\end{cor}
+
+We require one simple technical lemma before giving a complete characterization of $\ML$-operads which induce cartesian $2$-monads.
+
+\begin{lem}\label{kernel_lem}
+Let $C$ be a category with a right action of some group $\Lambda$, and let $\pi \colon  \Lambda \rightarrow \Sigma$ be a group homomorphism to any other group $\Sigma$. Then the right $\Sigma$-action on $C \times_{\Lambda} \Sigma$ is free if and only if the only elements of $\Lambda$ which fix an object of $C$ lie in the kernel of $\pi$.
+\end{lem}
+\begin{proof}
+First, note that a group action on a category is free if and only if it is free on objects as fixing a morphism requires fixing its source and target. Thus our arguments need only concern the objects involved.
+
+Since the set of objects functor preserves colimits, the objects of $C \times_{\Lambda} \Sigma$ are equivalence classes $[c;g]$ where $c \in C$ and $g \in \Sigma$, with $[c\cdot r;g] = [c; \pi(r)g]$. First assume the $\Sigma$-action is free. Then noting that $[c;e]\cdot g =[c;g]$, we have if $[c;g] = [c;e]$ then $g=e$. Let $r \in \Lambda$ be an element such that $c\cdot r = c$. Then
+  \[
+    [c;e] = [c\cdot r; e] = [c; \pi(r)],
+  \]
+so $\pi(r) = e$.
+
+Now assume that every element of $\Lambda$ fixing an object lies in the kernel of $\pi$. Let $\tau \in \Sigma$, and assume it fixes $[p; \sigma]$. Without loss of generality, we can take $\sigma = e$, so that
+  \[
+    [p; \tau] = [p;e]\cdot \tau = [p;e].
+  \]
+Since the objects of $C \times_{\Lambda} \Sigma$ are equivalence classes as above, there exists an element $r \in \Lambda$ such that $p\cdot r^{-1} = p$ and $\tau = \pi(r)$. But by assumption, we must have $r^{-1}$, and hence $r$, in the kernel, so $\tau = e$ and the $\Sigma$-action is free.
+\end{proof}
+
+\begin{thm}\label{cart_thm}
+The $2$-monad associated to a $\ML$-operad $P$ is $2$-cartesian if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
+\end{thm}
+\begin{proof}
+Since the monad $\underline{P}$ is isomorphic to $\underline{S(P)}$, we need only verify when $\underline{S(P)}$ is $2$-cartesian. Thus the theorem is a direct consequence of \cref{kernel_lem} and \cref{cart_cor}.
+\end{proof}
+
+\subsection{The Borel construction for action operads}
+
+
+The classical Borel construction is a functor from $G$-spaces to spaces, sending a $G$-space $X$ to $EG \times_{G} X$. Our goal in this section is to use the formal description of the Borel construction to construct some special operads in $\mb{Cat}$.  We start by reviewing the analogues of the functors $E, B \colon \mb{Grp} \rightarrow \mb{Top}$ now taking values in $\mb{Cat}$.
+
+\begin{Defi}\label{Defi:e_b}
+  \begin{enumerate}
+    \item Let $X$ be a set. We define the \textit{translation category} $EX$ to have objects the elements of $X$ and morphisms consisting of a unique isomorphism between any two objects.
+    \item Let $G$ be a group. The category $BG$ has a single object $*$, and hom-set $BG(*,*) = G$ with composition and identity given by multiplication and the unit element in the group, respectively.
+  \end{enumerate}
+\end{Defi}
+
+\begin{Defi}
+A functor $F \colon X \rightarrow Y$ is an \emph{isofibration} if given $x \in X$ and an isomorphism $f\colon y \xrightarrow{\cong} F(x)$ in $Y$, then there exists an isomorphism $g$ in $X$ such that $F(g) = f$.
+\end{Defi}
+
+\begin{prop}
+There exists a natural transformation $p \colon EU \Rightarrow B$, where $U$ is the underlying set of a group, which is pointwise an isofibration. Applying the classifying space functor to the component $p_{G}$ gives a universal principal $G$-bundle.
+\end{prop}
+\begin{proof}
+Given a group $G$, $p_{G} \colon EUG \rightarrow BG$ sends every object of $EUG$ to the unique object of $BG$. The unique isomorphism $g \rightarrow  h$ in $EUG$ is mapped to $hg^{-1} \colon * \rightarrow *$. It is easy to directly check that this is an isofibration, as well as to see that the classifying spaces of $EUG$ and $BG$ are the spaces classically known as $EG,BG$, with $|p_{G}|$ being the standard universal principal $G$-bundle.
+\end{proof}
+
+We will also need the functors $E, B$ defined for more than just a single set or group, in particular for the sets or groups which make up an operad and are indexed by the natural numbers.
+
+\begin{nota}\label{nota:e_b}
+Let $S$ be a set which we view as a discrete category.
+  \begin{enumerate}
+    \item For any functor $F \colon S \rightarrow \mb{Sets}$, let $EF$ denote the composite $E \circ F \colon S \rightarrow \mb{Cat}$; we often view $F$ as an indexed set $\{ F(s) \}$, in which case $EF$ is the indexed category $\{ EF(s) \}$.
+    \item For any functor $F \colon S \rightarrow \mb{Grp}$, let $BF$ denote the composite $B \circ F \colon S \rightarrow \mb{Cat}$; we often view $F$ as an indexed group $\{ F(s) \}$, in which case $BF$ is the indexed category $\{ BF(s) \}$.
+  \end{enumerate}
+\end{nota}
+
+The following lemma is a straightforward verification.
+
+\begin{lem}\label{symmoncor}
+The functor $E \colon \mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the set of objects functor. Therefore $E$ preserves all limits, and in particular is a symmetric monoidal functor when both categories are equipped with their cartesian monoidal structures.
+\end{lem}
+
+We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable). While the definition above gives the correct notion of a $\mb{\Lambda}$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms. In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category. This follows the standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower. Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
+    %% Expanded diagram
+  % \[
+  %   \xy
+  %     (0,0)*+{\scriptstyle P(n) \times P(k_{1}) \times \cdots \times P(k_{n}) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) } ="00";
+  %     (0,-15)*+{\scriptstyle P(\underline{k}) \times \Lambda(\underline{k}) } ="01";
+  %     (60,0)*+{\scriptstyle P(n) \times P(k_{1}) \times \Lambda(k_{1}) \times \cdots \times P(k_{n}) \times  \Lambda(k_{n}) } ="20";
+  %     (60,-15)*+{\scriptstyle P(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="21";
+  %     (30, -25)*+{\scriptstyle P(\underline{k}) } ="12";% diagram
+  %     {\ar^{\cong} "00" ; "20"};
+  %     {\ar^{1 \times \alpha_{k_1} \times \cdots \times \alpha_{k_n}} "20" ; "21"};
+  %     {\ar^{\mu^P} "21" ; "12"};
+  %     {\ar_{\mu^P \times \mu^\Lambda(e;-)} "00" ; "01"};
+  %     {\ar_{\alpha_{\underline{k}}} "01" ; "12"};
+  %   \endxy
+  % \]
+  \[
+    \xy
+      (0,0)*+{\scriptstyle P(n) \times \left(\prod_{i=1}^n P(k_i)\right) \times \left(\prod_{i=1}^n \Lambda(k_i)\right)} ="00";
+      (0,-15)*+{\scriptstyle P(\underline{k}) \times \Lambda(\underline{k}) } ="01";
+      (60,0)*+{\scriptstyle P(n) \times \left(\prod_{i=1}^n \left(P(k_{i}) \times \Lambda(k_{i})\right)\right)} ="20";
+      (60,-15)*+{\scriptstyle P(n) \times \left(\prod_{i=1}^n P(k_i)\right) } ="21";
+      (30, -25)*+{\scriptstyle P(\underline{k}) } ="12";% diagram
+      {\ar^{\cong} "00" ; "20"};
+      {\ar^{1 \times \prod_{i=1}^n \alpha_i} "20" ; "21"};
+      {\ar^{\mu^P} "21" ; "12"};
+      {\ar_{\mu^P \times \mu^\Lambda(e;-)} "00" ; "01"};
+      {\ar_{\alpha_{\underline{k}}} "01" ; "12"};
+    \endxy
+  \]
+    %% Expanded diagram
+  % \[
+  %   \xy
+  %     (0,0)*+{\scriptstyle P(n) \times \Lambda(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="00";
+  %     (0,-10)*+{\scriptstyle P(n) \times \Lambda(n) \times \Lambda(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="01";
+  %     (0,-20)*+{\scriptstyle P(n) \times \Lambda(n) \times P(k_{1}) \times \cdots \times P(k_{n}) \times \Lambda(n) } ="02";
+  %     (0,-30)*+{\scriptstyle P(n) \times \Sigma_{n} \times P(k_{1}) \times \cdots \times P(k_{n}) \times \Lambda(n) } ="03";
+  %     (55,-30)*+{\scriptstyle P(\underline{k}) \times \Lambda(\underline{k}) } ="13";
+  %     (70,0)*+{\scriptstyle P(n) \times P(k_{1}) \times \cdots \times P(k_{n}) } ="20";
+  %     (70,-18)*+{\scriptstyle P(\underline{k}) } ="21";
+  %     {\ar_{1 \times \Delta \times 1} "00" ; "01"};
+  %     {\ar^{\cong} "01" ; "02"};
+  %     {\ar_{1 \times \pi_{n} \times 1} "02" ; "03"};
+  %     {\ar^{} "03" ; "13"};
+  %     (35,-33)*{\scriptstyle \tilde{\mu}^P \times \mu^\Lambda(-;\underline{e})};
+  %     {\ar_{\alpha_{\underline{k}}} "13" ; "21"};
+  %     {\ar^{\alpha_{n} \times 1} "00" ; "20"};
+  %     {\ar^{\mu^P} "20" ; "21"};
+  %   \endxy
+  % \]
+  \[
+    \xy
+      (0,0)*+{\scriptstyle P(n) \times \Lambda(n) \times \prod_{i=1}^n P(k_i) } ="00";
+      (0,-10)*+{\scriptstyle P(n) \times \Lambda(n) \times \Lambda(n) \times \prod_{i=1}^n P(k_i) } ="01";
+      (0,-20)*+{\scriptstyle P(n) \times \Lambda(n) \times \prod_{i=1}^n P(k_i) \times \Lambda(n) } ="02";
+      (0,-30)*+{\scriptstyle P(n) \times \Sigma_{n} \times \prod_{i=1}^n P(k_i) \times \Lambda(n) } ="03";
+      (55,-30)*+{\scriptstyle P(\underline{k}) \times \Lambda(\underline{k}) } ="13";
+      (70,0)*+{\scriptstyle P(n) \times \prod_{i=1}^n P(k_i) } ="20";
+      (70,-18)*+{\scriptstyle P(\underline{k}) } ="21";
+      {\ar_{1 \times \Delta \times 1} "00" ; "01"};
+      {\ar_{\cong} "01" ; "02"};
+      {\ar_{1 \times \pi_{n} \times 1} "02" ; "03"};
+      {\ar^{} "03" ; "13"};
+      (35,-33)*{\scriptstyle \tilde{\mu}^P \times \mu^\Lambda(-;\underline{e})};
+      {\ar_{\alpha_{\underline{k}}} "13" ; "21"};
+      {\ar^{\alpha_{n} \times 1} "00" ; "20"};
+      {\ar^{\mu^P} "20" ; "21"};
+    \endxy
+  \]
+In the second diagram, the morphism
+    \[
+        \tilde{\mu}^P \colon P(n) \times \Sigma_n \times \prod_{i=1}^n P(k_i) \rightarrow P(\underline{k} \times \Lambda(\underline{k}))
+    \]
+is first the left action of $\Sigma_n$ on the product followed by the operad multiplication, and $\underline{e}$ is $e_{k_{1}}, \ldots, e_{k_{n}}$.
+
+\begin{Defi}\label{Defi:actop_to_cat}
+Let $\mb{\Lambda}$ be an action operad. Then $B\Lambda$ (see \cref{nota:e_b}) is the category with objects the natural numbers and
+  \[
+    B\Lambda(m,n) = \left\{ \begin{array}{lc}
+    \Lambda(n), & m = n \\
+    \emptyset, & m \neq n,
+    \end{array} \right.
+  \]
+where composition is given by group multiplication and the identity morphism is the unit element $e_n \in \Lambda(n)$.
+\end{Defi}
+
+\begin{thm}\label{preserveGop}
+Let $M,N$ be cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable, and let $F \colon M \rightarrow N$ be a symmetric lax monoidal functor with unit constraint $\varphi_{0}$ and tensor constraint $\varphi_{2}$. Let $\mb{\Lambda}$ be an action operad, and $P$ a $\mb{\Lambda}$-operad in $M$. Then $FP = \{ F(P(n)) \}$ has a canonical $\mb{\Lambda}$-operad structure, giving a functor
+  \[
+    F_{*} \colon \mb{\Lambda}\mbox{-}Op(M) \rightarrow \mb{\Lambda}\mbox{-}Op(N)
+  \]
+from the category of $\mb{\Lambda}$-operads in $M$ to the category of $\mb{\Lambda}$-operads in $N$.
+\end{thm}
+\begin{proof}
+The category of $\mb{\Lambda}$-operads in $M$ is the category of monoids for the composition product $\circ_{M}$ on $[B\Lambda^{\textrm{op}}, M]$ constructed in \cref{sec:opasmon}. Composition with $F$ gives a functor
+  \[
+    F_{*} \colon  [B\Lambda^{\textrm{op}}, M] \rightarrow [B\Lambda^{\textrm{op}}, N],
+  \]
+  and to show that it gives a functor between the categories of monoids we need only prove that $F_{*}$ is lax monoidal with respect to $\circ_{M}$ and $\circ_{N}$. In other words, we must construct natural transformations with components $F_{*}X \circ_{N} F_{*}Y \rightarrow F_{*}(X \circ_{M} Y)$ and $I_{Op(N)} \rightarrow F_{*}(I_{Op(M)})$ and then verify the lax monoidal functor axioms. We note that in the calculations below, we often write $F$ instead of $F_{*}$, but it should be clear from context when we are applying $F$ to objects and morphisms in $M$ and when we are applying $F_{*}$ to a functor $ B\Lambda^{\textrm{op}} \rightarrow M$.
+
+We first remind the reader about copowers in cocomplete categories. For an object $X$ and set $S$, the copower $X \odot S$ is the coproduct $\coprod_{s \in S} X$. We have natural isomorphisms $(X \odot S) \odot T \cong X \odot (S \times T)$ and $X \odot 1 \cong X$, and using these we can define an action of a group $G$ on an object $X$ using a map $X \odot G \rightarrow X$. Any functor $F$ between categories with coproducts is lax monoidal with respect to those coproducts:  the natural map $FA \coprod FB \rightarrow F(A \coprod B)$ is just the map induced by the universal property of the coproduct using $F$ applied to the coproduct inclusions $A \hookrightarrow A \coprod B, B \hookrightarrow A \coprod B$. In particular, for any functor $F$ there exists an induced map $FX \odot S \rightarrow F(X \odot S)$.
+
+The unit object in $[B\Lambda^{\textrm{op}}, M]$ for $\circ_{M}$ is the copower $I_{M} \odot B\Lambda(-,1)$. Thus the unit constraint for $F_{*}$ is the composite
+  \[
+    I_{N} \odot B\Lambda(-,1) \stackrel{\varphi_{0} \odot 1}{\longrightarrow} FI_{M} \odot B\Lambda(-,1) \rightarrow F(I_{M} \odot B\Lambda(-,1) ).
+  \]
+
+For the tensor constraint, we will require a map
+  \[
+    t \colon (FY)^{\star n}(k) \rightarrow F\left(Y^{\star n}(k)\right)
+  \]
+ where $\star$ is the Day convolution product; having constructed one, the tensor constraint is then the following composite.
+% \[
+% \begin{array}{rcl}
+% (FX \circ FY)(k) & \cong & \int^{n} FX(n) \otimes (FY)^{\star n}(k) \\
+% & \stackrel{ \int 1 \otimes t}{\longrightarrow}  & \int^{n} FX(n) \otimes F(Y^{\star n}(k)) \\
+% & \stackrel{\int \varphi_{2}}{\longrightarrow}  & \int^{n} F(X(n) \otimes Y^{\star n}(k)) \\
+% & \longrightarrow & F (\int^{n} X(n) \otimes Y^{\star n}(k)) \\
+% & \cong & F(X \circ Y)(k),
+% \end{array}
+% \]
+  \begin{align*}
+    (FX \circ FY)(k)  &\xrightarrow{\cong} \int^{n} FX(n) \otimes (FY)^{\star n}(k) \\
+    &\xrightarrow{\int 1 \otimes t} \int^{n} FX(n) \otimes F(Y^{\star n}(k)) \\
+    &\xrightarrow{\int \varphi_2} \int^{n} F(X(n) \otimes Y^{\star n}(k)) \\
+    &\longrightarrow F \left(\int^{n} X(n) \otimes Y^{\star n}(k)\right) \\
+    &\xrightarrow{\cong} F(X \circ Y)(k)
+  \end{align*}
+
+Both isomorphisms in the composite above are induced by universal properties (see \cref{section:operads_in_Cat} for more details) and the unlabeled arrow is induced by the same argument as that for coproducts above but this time using coends. The arrow $t$ is constructed in a similar fashion, and is the composite below.
+% \[
+% \begin{array}{rcl}
+% (FY)^{\star n}(k) & = & \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\Lambda(k, \sum k_{i}) \\
+% & \rightarrow &  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\Lambda(k, \sum k_{i}) \\
+% & \rightarrow & \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i}) ) \\
+% & \rightarrow & F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i})  \\
+% & = & F(Y^{\star n}(k))
+% \end{array}
+% \]
+  \begin{align*}
+    (FY)^{\star n}(k) & =  \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\Lambda(k, \sum k_{i}) \\
+    & \rightarrow   \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\Lambda(k, \sum k_{i}) \\
+    & \rightarrow  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i}) ) \\
+    & \rightarrow  F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i})  \\
+    & =  F(Y^{\star n}(k))
+  \end{align*}
+Checking the lax monoidal functor axioms is tedious but entirely routine using the lax monoidal functor axioms for $F$ together with various universal properties of colimits, and we leave the details to the reader.
+\end{proof}
+
+Combining \cref{preserveGop} and \cref{gisgop} with \cref{symmoncor}, we immediately obtain the following.
+
+\begin{cor}\label{cor:elambda_lambdaop}
+Let $\mb{\Lambda}$ be an action operad. Then $E\Lambda = \{ E\left(\Lambda(n)\right) \}$ (see \cref{nota:e_b}) is a $\mb{\Lambda}$-operad in $\mb{Cat}$.
+\end{cor}
+
+Any $\mb{\Lambda}$-operad $P$ in $\mb{Cat}$ gives rise to a $2$-monad on $\mb{Cat}$ which we will often also denote by $P$ or, as in \cref{section:operads_in_Cat}, by $\underline{P}$. In the context of \cref{cor:elambda_lambdaop}, that $2$-monad (also denoted $E\Lambda$) is given by
+  \[
+    X \mapsto \coprod_{n \geq 0} E\Lambda(n) \times_{\Lambda(n)} X^{n}
+  \]
+where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $E\Sigma$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
+
+\begin{Defi}\label{lmc}
+A \emph{$\ML$-monoidal category} is a strict algebra for the $2$-monad $\EL$. A \emph{$\ML$-monoidal functor} is a strict morphism for this $2$-monad $\EL$. The $2$-category $\lmc$ is the $2$-category $\EL\mbox{-}\mb{Alg}_{s}$ of strict algebras, strict morphisms, and algebra $2$-cells for $\EL$.
+\end{Defi}
+
+% QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
+% QQQ We came to the conclusion just to cite Yau's results in Chapter 19. `A strict $G$-monoidal category is..., etc.'
+
+Strict $\ML$-monoidal categories, in the sense of being strict algebras for the monad $E\Lambda$, can be characterised in more familiar terms by specifying a monoidal structure with appropriate equivariant interaction with the $\Lambda(n)$-actions. Explicit proofs of such can be found in Chapter 19 of \cite{yau_infinity_2021}, along with similar characterisations for strict $\ML$-monoidal functors and $\ML$-monoidal categories whose underlying monoidal structure is weak.
+
+% \begin{prop}\label{el_via_moncats}
+% A strict $\ML$-monoidal category structure on $X$ determines and is determined by
+% \begin{itemize}
+% \item a strict monoidal category structure on $X$: $(X, \otimes, I)$,
+% \item for each $\sigma \in \Lambda(n)$ and $x_1$, $\ldots$, $x_n \in X$, an isomorphism
+%   \[
+%     \sigma_{x_1,\ldots,x_n} \colon x_1 \otimes \ldots x_n \rightarrow x_{\pi(\sigma)^{-1}(1)} \otimes \ldots \otimes x_{\pi(\sigma)^{-1}(n)}
+%   \]
+% which is natural in each $x_i$,
+% \item such that for any $\tau_i \in \Lambda(k_i)$ and $\sigma \in \Lambda(n)$, where $1 \leq i \leq n$, the following diagram commutes
+% \[
+%   \xy
+%     (0,0)*+{\bigotimes_{i=1}^n \bigotimes_{j=1}^{k_i} x_{i,j}}="a";
+%     (50,0)*+{\bigotimes_{i=1}^n \bigotimes_{j=1}^{k_i} x_{i,\pi(\tau_i)^{-1}(j)}}="b";
+%     (25,-20)*+{\bigotimes_{i=1}^n \bigotimes_{j=1}^{k_i} x_{\pi(\sigma)^{-1}(i),\pi\left(\tau_{\pi(\sigma)^{-1}(i)}\right)^{-1}(j)}}="c";
+%     %
+%     {\ar^(.4){\tau_1 \otimes \cdots \otimes \tau_n} "a" ; "b"};
+%     {\ar^{\sigma^{+}} "b" ; "c"};
+%     {\ar_{\mu^{\Lambda}(\sigma;\tau_1,\ldots,\tau_n)} "a" ; "c"};
+%   \endxy
+% \]
+% \item QQQ needs to be some equivariance condition in here, otherwise appropriate axioms (e.g., hexagon identities) don't come out of this (can't remember why I came to this conclusion...)
+% \end{itemize}
+% \end{prop}
+% \begin{proof}
+
+
+% First we shall show an $\EL$-algebra structure on $X$ can be used to specify the monoidal structure described above. If $X$ is an $\EL$-algebra then we also have the family of morphisms $\alpha_n \colon E\Lambda(n) \times X^n \rightarrow X$ satisfying the usual axioms. We define the monoidal product of two objects $x$, $y \in X$ to be
+%   \[
+%     x \otimes y = \alpha_2(e_2;x,y)
+%   \]
+% and the unit object to be
+%   \[
+%     I = \alpha_0(e_0;).
+%   \]
+% Strict associativity follows from the the $\EL$-algebra axioms and \cref{calclem} as follows:
+%   \begin{align*}
+%     (x_1 \otimes x_2) \otimes x_3 &= \alpha_2(e_2;\alpha_2(e_2;x_1,x_2),x_3)\\
+%     &= \alpha_2(e_2;\alpha_2(e_2;x_1,x_2),\alpha_1(e_1;x_3))\\
+%     &= \alpha_3(\mu(e_2;e_2,e_1);x_1,x_2,x_3)\\
+%     &= \alpha_3(e_3;x_1,x_2,x_3)\\
+%     &= \alpha_3(\mu(e_2;e_1,e_2);x_1,x_2,x_3)\\
+%     &= \alpha_2(e_2;\alpha(e_1;x_1),\alpha(e_2;x_2,x_3))\\
+%     &= \alpha_2(e_2;x_1,\alpha_2(e_2;x_2,x_3))\\
+%     &= x_1 \otimes (x_2 \otimes x_3).
+%   \end{align*}
+% Due to this we can then write $n$-fold monoidal products as
+%   \[
+%     x_1 \otimes \ldots \otimes x_n = \alpha_n(e_n;x_1,\ldots,x_n)
+%   \]
+% and for any $\sigma \in \Lambda(n)$ we now define
+%   \[
+%     x_{\pi(\sigma)^{-1}(1)} \otimes \ldots \otimes x_{\pi(\sigma)^{-1}(n)} = \alpha_n(\sigma;x_1,\ldots,x_n).
+%   \]
+% For the unit object we have
+%   \begin{align*}
+%     I \otimes x &= \alpha_2(e_2;I,x)\\
+%     &= \alpha_2(e_2;\alpha_0(e_0;),\alpha_1(e_1;x))\\
+%     &= \alpha_1(\mu^\Lambda(e_2;e_0,e_1);x)\\
+%     &= \alpha_1(e_1;x)\\
+%     &= x,
+%   \end{align*}
+% with similar working to show that $x \otimes I = x$.
+
+% Next we specify the permutation isomorphisms. Given $\sigma \in \Lambda(n)$, there exists a unique isomorphism
+%   \[
+%     ! \colon e_n \rightarrow \sigma
+%   \]
+% in $E\Lambda(n)$, which we use to define the isomorphism
+%   \[
+%     \tilde{\sigma} = \alpha_n(!;\underline{\id}) \colon \alpha_n(e_n;x_1,\ldots,x_n) \rightarrow \alpha_n(\sigma;x_1,\ldots,x_n).
+%   \]
+% That these are natural follows simply from the functoriality of each $\alpha_n$, giving
+%   \[
+%   \alpha_n(!;\underline{\id})\alpha(\id;f_1,\ldots,f_n) = \alpha_n(!;f_1,\ldots,f_n) = \alpha_n(\id;f_1,\ldots,f_n)\alpha_n(!;\underline{\id})
+%   \]
+% for $f_i \colon x_i \rightarrow x_i'$. The isomorphisms also satisfy the axioms specified in the diagram above as a direct result of the $\EL$-algebra axioms.
+
+% Conversely, we begin with a strict monoidal category $(X,\otimes,I)$, along with isomorphisms
+%   \[
+%     \tilde{\sigma} \colon x_1 \otimes \ldots \otimes x_n \rightarrow x_{\pi(\sigma)^{-1}(1)} \otimes \ldots \otimes \pi(\sigma)^{-1}(n)
+%   \]
+% satisfying the axioms specified above. We need to describe morphisms
+%   \[
+%     \alpha_n \colon E\Lambda(n) \times X^n \rightarrow X
+%   \]
+% which satisfy the axioms of an $\EL$-algebra. To begin with we first define
+%   \[
+%     \alpha_0(e_0;) = I.
+%   \]
+% To define each $\alpha_n$ on objects, we then put
+%   \[
+%     \alpha_n(\sigma;x_1,\ldots,x_n) = x_{\pi(\sigma)^{-1}(1)} \otimes \ldots \otimes x_{\pi(\sigma)^{-1}(n)}.
+%   \]
+% This is easily checked to be well-defined.
+
+% A morphism in $E\Lambda(n) \times_{\Lambda(n)} X^n$ from $[\sigma;x_1,\ldots,x_n]$ to $[\tau;y_1,\ldots,y_n]$ consists of a unique isomorphism $! \colon \sigma \cong \tau$ along with morphisms $f_i \colon x_i \rightarrow y_i$ in $X$. We define $\alpha_n(!;f_1,\ldots,f_n)$ to be the following composite.
+%     \[
+%         \alpha_n(\sigma;x_1,\ldots,x_n) \xrightarrow{\tilde{\sigma}^{-1}} \alpha_n(e_n;x_1,\ldots,x_n) \xrightarrow{\otimes f_i} \alpha_n(e_n;y_1,\ldots,y_n) \xrightarrow{\tilde{\tau}} \alpha_n(\tau;y_1,\ldots,y_n)
+%     \]
+% Again, well-definedness and functoriality conditions are easily checked.
+
+% The unit axiom is satisfied immediately since we then have $\alpha_1(e_1;x) = x$. The other $\EL$-algebra axiom then follows, with some careful consideration of indices, from two applications of the diagram described in the statement of the proposition.
+% \end{proof}
+
+% \begin{prop}\label{el_strictmap}
+% Let $X,Y$ be strict $\ML$-monoidal categories, and $F \colon X \rightarrow Y$ be a functor. $F$ is a strict $\ML$-monoidal functor if and only if
+% \end{prop}
+% \begin{proof}
+
+% \end{proof}
+
+% \begin{prop}\label{el_weakmap}
+% Let $X,Y$ be strict $\ML$-monoidal categories, and $F \colon X \rightarrow Y$ be a functor. The structure of a weak $\ML$-monoidal functor determines and is determined by some stuff.
+% \end{prop}
+% \begin{proof}
+
+% \end{proof}
+
+% \begin{prop}\label{el_2cells}
+% Let $X,Y$ be strict $\ML$-monoidal categories, and $F, G \colon X \rightarrow Y$ be strict $\ML$-monoidal functors. The structure of an $\EL$-algebra $2$-cell $\alpha \colon F \Rightarrow G$ determines and is determined by some stuff.
+% \end{prop}
+% \begin{proof}
+
+% \end{proof}
+
+\subsection{Free $\ML$-monoidal categories}
+
+
+It will be useful for our calculations later to give an explicit description of the categories $E\Lambda(n) \times_{\Lambda(n)} X^{n}$. Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
+  \[
+    (gh; x_1, \ldots, x_n) \sim \left(g; x_{\pi(h)^{-1}(1)}, \ldots, x_{\pi(h)^{-1}(n)}\right);
+  \]
+  we write these classes as $[g; x_1, \ldots, x_n]$. Morphisms are then equivalence classes of morphisms
+  \[
+    (!; f_1, \ldots, f_n) \colon  (g; x_1, \ldots, x_n) \rightarrow \left(h; x_1', \ldots, x_n'\right).
+  \]
+We have two distinguished classes of morphisms, one for which the map $! \colon  g \rightarrow h$ is the identity and one for which all the $f_{i}$'s are the identity. Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type. Now $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is in the image of the quotient map. Using this fact, we can prove the following useful lemma.
+
+\begin{lem}\label{hom-set-lemma}
+For an action operad $\mb{\Lambda}$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is
+  \[
+    \coprod_{g \in \Lambda(n)} \prod_{i=1}^{n} X\left(x_i, y_{\pi(g)(i)}\right).
+  \]
+\end{lem}
+\begin{proof}
+A morphism with source $(e; x_1, \ldots, x_n)$ in $E\Lambda(n) \times X^{n}$ is uniquely a composite
+  \[
+    (e; x_1, \ldots, x_n) \stackrel{(\id; f_{1}, \ldots, f_{n})}{\longrightarrow} \left(e; x_1', \ldots, x_n'\right) \stackrel{(!; \id, \ldots, \id)}{\longrightarrow} \left(g; x_1', \ldots, x_n'\right).
+  \]
+Descending to the quotient, this becomes a morphism
+  \[
+    [e; x_1, \ldots, x_n] \rightarrow \left[g; x_1', \ldots, x_n'\right] = \left[e; x_{\pi(g)^{-1}(1)}', \ldots, x_{\pi(g)^{-1}(n)}'\right],
+  \]
+and therefore is a morphism $[e; x_1, \ldots, x_n] \rightarrow [e; y_1, \ldots, y_n]$ precisely when $y_i = x_{\pi(g)^{-1}(i)}'$, and so $f_i \in   X(x_i, y_{\pi(g)(i)})$.
+\end{proof}
+
+\begin{nota}\label{tensor_notation}
+For $g \in \ML(n)$ and objects $x_1, \ldots, x_n$ of a $\ML$-monoidal category $X$, we write 
+  \[
+    g^{\otimes} \colon x_1 \otimes \cdots x_n \rightarrow x_{\pi(g)^{-1}(1)} \otimes \cdots \otimes x_{\pi(g)^{-1}(n)}
+  \]
+for the image of the map
+  \[
+    (!; \id, \ldots, \id) \colon  (e; x_1, \ldots, x_n) \rightarrow (g; x_1, \ldots, x_n)
+  \]
+in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.
+\end{nota}
+
+\begin{Defi}\label{action_map}
+We call the map 
+  \[
+    g^{\otimes} \colon x_1 \otimes \cdots \otimes x_n \rightarrow x_{\pi(g)^{-1}(1)} \otimes \cdots x_{\pi(g)^{-1}(n)}
+  \]
+the \emph{action} of $g$ on $x_1 \otimes \cdots x_n$.
+\end{Defi}
+
+\begin{rem}
+It is obvious that $g^{\otimes} \otimes h^{\otimes} = \mu(e_2; g, h)^{\otimes}$. The latter can also be written $\beta(g, h)^{\otimes}$ (using \cref{thm:charAOp}) or $(g \oplus h)^{\otimes}$  (using \cref{beta_to_oplus}).
+\end{rem}
+
+The $2$-monad $E\Lambda$ is both finitary and cartesian (see \cref{sec:propofopsincat}). In fact we can characterize this operad uniquely (up to equivalence) using a standard argument.
+
+\begin{Defi}
+Let $\mb{\Lambda}$ be an action operad. A \textit{$\mb{\Lambda}_{\infty}$ operad} $P$ is a $\mb{\Lambda}$-operad in which each action $P(n) \times \Lambda(n) \rightarrow P(n)$ is free and each $P(n)$ is contractible.
+\end{Defi}
+
+\begin{rem}
+One should also note that by \cref{cor:elambda_lambdaop} there exists a canonical $\mb{\Lambda}_{\infty}$ operad in $\mb{Cat}$, namely $E\Lambda$ itself, and thus also in the category of simplicial sets by taking the nerve (the nerve functor is represented by a cosimplicial category, namely $\Delta \subseteq \mb{Cat}$, so preserves products) and in suitable categories of topological spaces by taking the geometric realization (once again, product-preserving with the correct category of spaces). Thus we have something like a Barratt-Eccles $\mb{\Lambda}_{\infty}$ operad for any action operad $\mb{\Lambda}$.
+\end{rem}
+
+\begin{rem}
+The above definition makes sense in a wide context, but needs interpretation. We can interpret the freeness condition in any complete category, as completeness allows one to compute fixed points using equalizers. Contractibility then requires a notion of equivalence or weak equivalence, such as in an $(\infty, 1)$-category or Quillen model category, and a terminal object. Our interest is in the above definition interpreted in $\mb{Cat}$, in which case both conditions (free action and contractible $P(n)$'s) mean the obvious thing.
+\end{rem}
+
+\begin{prop}
+For any two $\mb{\Lambda}_{\infty}$ operads $P,Q$ in $\mb{Cat}$, there exists a span $P \leftarrow R \rightarrow Q$ of pointwise equivalences of $\mb{\Lambda}$-operads.
+\end{prop}
+\begin{proof}
+Given $\mb{\Lambda}_{\infty}$ operads $P$, $Q$ in $\mb{Cat}$, the product $P \times Q$ with the diagonal action is also $\mb{\Lambda}_{\infty}$. Each of the projection maps is a pointwise equivalence of $\mb{\Lambda}$-operads.
+\end{proof}
+\begin{rem}
+Once again, this proof holds in a wide context. We required that the product of free actions is again free, true in any complete category. We also required that the product of contractible objects is contractible; this condition will hold, for example, in any Quillen model category in which all objects are fibrant or in which the product of weak equivalences is again a weak equivalence.
+\end{rem}
+
+
+\subsection{Abstract properties of the Borel construction}
+
+Kelly's theory of clubs \cite{kelly_club1, kelly_club0, kelly_club2} was designed to simplify and explain certain aspects of coherence results, namely the fact that many coherence results rely on extrapolating information about general free objects for a $2$-monad $T$ from information about the specific free object $T1$ where $1$ denotes the terminal category. This occurs, for example, in the study of the many different flavors of monoidal category:  plain monoidal category, braided monoidal category, symmetric monoidal category, and so on. This section will explain how every action operad gives rise to a club, as well as compute the clubs which arise as the image of this procedure.
+
+We begin by reminding the reader of the notion of a club, or more specifically what Kelly \cite{kelly_club1,kelly_club2} calls a club over $\mb{P}$. We will only be interested in clubs over $\mb{P}$, and thusly shorten the terminology to club from this point onward. Defining clubs is accomplished most succinctly using Leinster's terminology of generalized operads \cite{leinster}.
+
+\begin{Defi}
+Let $C$ be a category with finite limits.
+\begin{enumerate}
+\item A monad $T \colon C \rightarrow C$ is \textit{cartesian} if the functor $T$ preserves pullbacks, and the naturality squares for the unit $\eta$ and the multiplication $\mu$ for $T$ are all pullbacks.
+\item The category of \textit{$T$-collections}, $T\mbox{-}\mb{Coll}$, is the slice category $C/T1$, where $1$ denotes the terminal object.
+\item Given a pair of $T$-collections $X \stackrel{x}{\rightarrow} T1, Y \stackrel{y}{\rightarrow} T1$, their \textit{composition product} $X \circ Y$ is given by the pullback below together with the morphism along the top.
+  \[
+    \xy
+      (0,0)*+{X \circ Y} ="00";
+      (15,0)*+{TY} ="10";
+      (30,0)*+{T^{2}1} ="20";
+      (45,0)*+{T1} ="30";
+      (0,-10)*+{X} ="01";
+      (15,-10)*+{T1} ="11";
+      {\ar^{} "00" ; "10"};
+      {\ar^{Ty} "10" ; "20"};
+      {\ar^{\mu} "20" ; "30"};
+      {\ar^{T!} "10" ; "11"};
+      {\ar_{x} "01" ; "11"};
+      {\ar^{} "00" ; "01"};
+      (3,-3)*{\lrcorner};
+    \endxy
+  \]
+\item The composition product, along with the unit of the adjunction $\eta \colon 1 \rightarrow T1$, give $T\mbox{-}\mb{Coll}$ a monoidal structure. A \textit{$T$-operad} is a monoid in $T\mbox{-}\mb{Coll}$.
+\end{enumerate}
+\end{Defi}
+
+\begin{rem}
+Everything in the above definition can be $\mb{Cat}$-enriched without any substantial modifications. Thus we require our ground $2$-category to have finite limits in the enriched sense, and the slice and pullbacks are the $2$-categorical (and not bicategorical) versions. If we take this $2$-category to be $\mb{Cat}$, then in each case the underlying category of the $2$-categorical construction is given by the corresponding $1$-categorical version. From this point, we will not distinguish between the $1$-dimensional and $2$-dimensional theory. Our interest, of course, is in the $2$-dimensional version.
+\end{rem}
+
+Let $\Sigma$ be the operad of symmetric groups. This is the terminal object of the category of action operads, with each $\pi_{n}$ the identity map. Then $E\Sigma$ is a $2$-monad on $\mb{Cat}$, and by results in \cref{sec:propofopsincat} it is cartesian.
+
+\begin{Defi}
+A \textit{club} is a $T$-operad in $\mb{Cat}$ for $T = E\Sigma$.
+\end{Defi}
+
+\begin{rem}
+The category $\mb{P}$ in Kelly's terminology is the result of applying $E\Sigma$ to $1$, and can be identified with $B\Sigma = \coprod B\Sigma_{n}$.
+\end{rem}
+
+It is useful to break down the definition of a club. A club consists of
+\begin{enumerate}
+\item a category $K$ together with a functor $K \rightarrow B \Sigma$,
+\item a multiplication map $K \circ K \rightarrow K$, and
+\item a unit map $1 \rightarrow K$
+\end{enumerate}
+satisfying the axioms to be a monoid in the monoidal category of $E\Sigma$-collections. By the definition of $K \circ K$ as a pullback, objects are tuples of objects of $K$ $(x; y_{1}, \ldots, y_{n})$ where $\pi(x) = n$. A morphism
+  \[
+    (x; y_{1}, \ldots, y_{n}) \rightarrow (z; w_{1}, \ldots, w_{m})
+  \]
+exists only when $n=m$ (since $B\Sigma$ only has endomorphisms) and then consists of a morphism $f \colon x \rightarrow z$ in $K$ together with morphisms $g_{i} \colon y_{i} \rightarrow z_{\pi(x)(i)}$ in $K$.
+
+\begin{nota}\label{nota:clubmult}
+For a club $K$ and a morphism $(f; g_{1}, \ldots, g_{n})$ in $K \circ K$, we write $f(g_{1}, \ldots, g_{n})$ for the image of the morphism under the functor $K \circ K \rightarrow K$.
+\end{nota}
+
+We will usually just refer to a club by its underlying category $K$.
+
+
+\begin{thm}
+Let $\mb{\Lambda}$ be an action operad. Then the map of operads $\pi \colon \Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ the structure of a club.
+\end{thm}
+\begin{proof}
+To give the functor $B\pi \colon B\Lambda \rightarrow B \Sigma$ the structure of a club it suffices (see \cite{leinster}) to show that
+\begin{itemize}
+\item the induced monad, which we will show to be $E\Lambda$, is a cartesian monad on $\mb{Cat}$,
+\item the transformation $\tilde{\pi} \colon E\Lambda \Rightarrow E\Sigma$ induced by the functor $E\pi$ is cartesian, and
+\item $\tilde{\pi}$ commutes with the monad structures.
+\end{itemize}
+The monad $E\Lambda$ is always cartesian by results of \cref{sec:propofopsincat}. The transformation $\tilde{\pi}$ is the coproduct of the maps $\tilde{\pi}_{n}$ which are induced by the universal property of the coequalizer as shown below.
+  \[
+    \xy
+      (0,0)*+{\scriptstyle E\Lambda(n) \times \Lambda(n) \times X^n} ="00";
+      (0,-10)*+{\scriptstyle E\Sigma_{n} \times \Sigma_{n} \times X^n} ="01";
+      (30,0)*+{\scriptstyle E\Lambda(n) \times X^n} ="10";
+      (30,-10)*+{\scriptstyle E\Sigma_{n} \times X^n} ="11";
+      (60,0)*+{\scriptstyle E\Lambda(n) \times_{\Lambda(n)} X^n} ="20";
+      (60,-10)*+{\scriptstyle E\Sigma_{n} \times_{\Sigma_{n}}  X^n} ="21";
+      {\ar (12,1)*{}; (22,1)*{} };
+      {\ar (12,-1)*{}; (22,-1)*{} };
+      {\ar_{E\pi \times \pi \times 1} "00" ; "01"};
+      {\ar (12,-9)*{}; (22,-9)*{} };
+      {\ar (12,-11)*{}; (22,-11)*{} };
+      {\ar_{E\pi \times 1} "10" ; "11"};
+      {\ar@{.>}^{\tilde{\pi}_{n}} "20" ; "21"};
+      {\ar "10" ; "20"};
+      {\ar "11" ; "21"};
+    \endxy
+  \]
+Naturality is immediate, and since $\pi$ is a map of operads $\tilde{\pi}$ also commutes with the monad structures.
+
+It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $E\Lambda$. Since the monads $E\Lambda$ and $E\Sigma$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
+  \[
+    \xy
+      (0,0)*+{E\Lambda(n) \times_{\Lambda(n)} X^n} ="00";
+      (0,-10)*+{B\Lambda(n)} ="01";
+      (35,0)*+{E\Sigma_{n} \times_{\Sigma_{n}} X^n} ="10";
+      (35,-10)*+{B\Sigma_{n}} ="11";
+      {\ar^{} "00" ; "10"};
+      {\ar^{} "10" ; "11"};
+      {\ar^{} "00" ; "01"};
+      {\ar^{} "01" ; "11"};
+    \endxy
+  \]
+By \cref{coeq-lem}
+%(QQQ happy with this reference? QQQ Seems like the right thing?)
+, this amounts to showing that the square below is a pullback.
+  \[
+    \xy
+      (0,0)*+{E\Lambda(n) \times X^n/\Lambda(n)} ="00";
+      (0,-10)*+{B\Lambda(n)} ="01";
+      (35,0)*+{E\Sigma_{n} \times X^n/\Sigma_{n}} ="10";
+      (35,-10)*+{B\Sigma_{n}} ="11";
+      {\ar^{} "00" ; "10"};
+      {\ar^{} "10" ; "11"};
+      {\ar^{} "00" ; "01"};
+      {\ar^{} "01" ; "11"};
+    \endxy
+  \]
+Here, $(A \times B)/G$ is the category whose objects are equivalence classes of pairs $(a,b)$ where $(a,b) \sim (ag, g^{-1}b)$, and similarly for morphisms. Now the bottom map is clearly bijective on objects since these categories only have one object. An object in the top right is an equivalence class
+  \[
+    [\sigma; x_{1}, \ldots, x_{n}] = \left[e; x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}\right].
+  \]
+A similar description holds for objects in the top left, with $g \in \Lambda(n)$ replacing $\sigma$ and $\pi(g)^{-1}$ replacing $\sigma^{-1}$ in the subscripts. The map along the top sends $[g; x_{1}, \ldots, x_{n}]$ to $[\pi(g); x_{1}, \ldots, x_{n}]$, and thus sends $[e; x_{1}, \ldots, x_{n}]$ to $[e; x_{1}, \ldots, x_{n}]$, giving a bijection on objects.
+
+Now a morphism in $(E\Lambda(n) \times X^{n})/\Lambda(n)$ can be given as
+  \[
+    [e; x_{1}, \ldots, x_{n}] \stackrel{[!; f_{i}]}{\longrightarrow} [g; y_{1}, \ldots, y_{n}].
+  \]
+Mapping down to $B\Lambda(n)$ gives $ge^{-1} = g$, while mapping over to $(E\Sigma_{n} \times X^{n})/\Sigma_{n}$ gives $[!; f_{i}]$ where $! \colon e \rightarrow \pi(g)$ is now a morphism in $E\Sigma_{n}$. In other words, a morphism in the upper left corner of our putative pullback square is determined completely by its images along the top and lefthand functors. Furthermore, given $g \in \Lambda(n)$, $\tau = \pi(g)$, and morphisms $f_{i} \colon x_{i} \rightarrow y_{i}$ in $X$, the morphism $[! \colon e \rightarrow g; f_{i}]$ maps to the pair $(g, [! \colon e \rightarrow \tau; f_{i}])$, completing the proof that this square is indeed a pullback.
+\end{proof}
+
+The club, which we now denote $K_{\mb{\Lambda}}$, associated to $E\Lambda$ has the following properties. First, the functor $K_{\mb{\Lambda}} \rightarrow B\Sigma$ is a functor between groupoids. Second, the functor $K_{\mb{\Lambda}} \rightarrow B\Sigma$ is  bijective-on-objects. We claim that these properties characterize those clubs which arise from action operads. Thus the clubs arising from action operads are very similar to PROPs \cite{mac_prop, markl_prop}.
+
+\begin{thm}\label{thm:club=operad}
+Let $K$ be a club such that
+\begin{itemize}
+\item the map $K \rightarrow B\Sigma$ is bijective on objects and
+\item $K$ is a groupoid.
+\end{itemize}
+Then $K \cong K_{\mb{\Lambda}}$ for some action operad $\mb{\Lambda}$. The assignment $\mb{\Lambda} \mapsto K_{\mb{\Lambda}}$ is a full and faithful embedding of the category of action operads $\mb{AOp}$ into the category of clubs.
+\end{thm}
+\begin{proof}
+Let $K$ be such a club. Our hypotheses immediately imply that $K$ is a groupoid with objects in bijection with the natural numbers; we will now assume the functor $K \rightarrow B\Sigma$ is the identity on objects. Let $\Lambda(n) = K(n,n)$. Now $K$ comes equipped with a functor to $B\Sigma$, in other words group homomorphisms $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$. We claim that the club structure on $K$ makes the collection of groups $\{ \Lambda(n) \}$ an action operad. In order to do so, we will employ \cref{thm:charAOp}.
+
+First, we give the group homomorphism $\beta$ using \cref{nota:clubmult}. Define
+  \[
+    \beta(g_{1}, \ldots, g_{n}) = e_{n}(g_{1}, \ldots, g_{n})
+  \]
+ (see \ref{nota:clubmult}) where $e_{n}$ is the identity morphism $n \rightarrow n$ in $K(n,n)$. Functoriality of the club multiplication map immediately implies that this is a group homomorphism. Second, we define the function $\delta$ in a similar fashion:
+  \[
+    \delta_{n; k_{1}, \ldots, k_{n}}(f) = f(e_{1}, \ldots, e_{n}),
+  \]
+where here $e_{i}$ is the identity morphism of $k_{i}$ in $K$.
+
+There are now nine axioms to verify in \cref{thm:charAOp}. The club multiplication functor is a map of collections, so a map over $B\Sigma$; this fact immediately implies that axioms \eqref{eq1} (using morphisms in $K \circ K$ with only $g_{i}$ parts) and \eqref{eq4} (using morphisms in $K \circ K$ with only $f$ parts) hold. The mere fact that multiplication is a functor also implies axioms \eqref{eq6} (once again using morphisms with only $f$ parts) and \eqref{eq8} (by considering the composite of a morphism with only an $f$ with a morphism with only $g_{i}$'s). Axiom \eqref{eq2} is the equation $e_{1}(g) = g$ which is a direct consequence of the unit axiom for the club $K$; the same is true of axiom \eqref{eq5}. Axioms \eqref{eq3}, \eqref{eq7},  and \eqref{eq9} all follow from the associativity of the club multiplication.
+
+Finally, we would like to show that this gives a full and faithful embedding $K_{-} \colon \mb{AOp} \rightarrow \mb{Club}$ of the category of action operads into the category of clubs. Let $f, f' \colon \mb{\Lambda} \rightarrow \mb{\Lambda'}$ be maps between action operads. Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$. But these functors are nothing more than the coproducts of the functors
+  \[
+    B(f_{n}), B(f_{n}') \colon B\Lambda(n) \rightarrow B\Lambda'(n),
+  \]
+and the functor $B$ from groups to categories is faithful, so $K_{-}$ is also faithful. Now let $f \colon K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$ be a maps of clubs. We clearly get group homomorphisms $f_{n} \colon \Lambda(n) \rightarrow \Lambda'(n)$ such that $\pi^{\Lambda}_{n} = \pi^{\Lambda'}_{n} f_{n}$, so we must only show that the $f_{n}$ also constitute an operad map. Using the description of the club structure above in terms of the maps $\beta, \delta$, we are able to see that commuting with the club multiplication implies commuting with both of these, which in turn is equivalent to commuting with operad multiplication. Thus $K_{-}$ is full as well.
+\end{proof}
+
+\begin{rem}
+First, one should note that being a club over $B\Sigma$ means that every $K$-algebra has an underlying strict monoidal structure. Second, requiring that $K \rightarrow B\Sigma$ be bijective on objects ensures that $K$ does not have  operations other than $\otimes$, such as duals or internal hom-objects, from which to build new types of objects. Finally, $K$ being a groupoid ensures that all of the ``constraint morphisms'' that exist in algebras for $K$ are invertible.
+
+These hypotheses could be relaxed somewhat. Instead of having a club over $B\Sigma$, we could have a club over the free symmetric monoidal category on one object (note that the free symmetric monoidal category monad on $\mb{Cat}$ is still cartesian). This would produce $K$-algebras with underlying monoidal structures which are not necessarily strict. This change should have relatively little impact on how the theory is developed. Changing $K$ to be a category instead of a groupoid would likely have a larger impact, as the resulting action operads would have monoids instead of groups at each level. We have made repeated use of inverses throughout the proofs in the basic theory of action operads, and these would have to be revisited if groups were replaced by monoids in the definition of action operads.
+\end{rem}
+
+In \cite{kelly_club1}, Kelly discusses clubs given by generators and relations. His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible. In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $E\Lambda$ are always strict monoidal categories with additional structure. Tracing through his discussion of generators and relations for a club gives the following theorem.
+
+\begin{thm}\label{pres1}
+Let $\mb{\Lambda}$ be an action operad with presentation given by $(\mathbf{g},\mathbf{r}, s_{i}, p)$. Then the club $E\Lambda$ is generated by
+\begin{itemize}
+  \item functors giving the unit object and tensor product, and
+  \item natural transformations given by the collection $\mathbf{g}$:  each element $x$ of $\mathbf{g}$ with $\pi(x) = \sigma_{x} \in \Sigma_{|x|}$ gives a natural transformation from the $n$th tensor power functor to itself,
+\end{itemize}
+subject to relations such that the following axioms hold.
+\begin{itemize}
+  \item The monoidal structure given by the unit and tensor product is strict.
+  \item The transformations given by the elements of $\mathbf{g}$ are all natural isomorphisms.
+  \item For each element $y \in \mathbf{r}$, the equation $s_{1}(y) = s_{2}(y)$ holds.
+\end{itemize}
+\end{thm}
+
+Bringing this down to a concrete level we have the following corollary.
+
+\begin{cor}\label{pres2}
+Assume we have a notion $\mathcal{M}$ of strict monoidal category which is given by  a set natural isomorphisms
+  \[
+    \mathcal{G} = \left\{ (f, \pi_{f}) \, | \,  x_{1} \otimes \cdots \otimes x_{n} \stackrel{f}{\longrightarrow} x_{\pi_{f}^{-1}(1)} \otimes \cdots \otimes x_{\pi_{f}^{-1}(n)} \right\}
+  \]
+subject to a set $\mathcal{R}$ of axioms. Each such axiom is given by the data
+\begin{itemize}
+  \item two finite sets $f_{1}, \ldots, f_{n}$ and $f_{1}', \ldots, f_{m}'$ of elements of $\mathcal{G}$; and
+  \item two formal composites $F,F'$ using only composition and tensor product operations and the $f_{i}$, respectively $f_{i}'$, 
+\end{itemize}
+such that the underlying permutation of $F$ equals the underlying permutation of $F'$ (we compute the underlying permutations using the functions $\beta, \delta$ of \cref{thm:charAOp}). The element $\left(\underline{f}, \underline{f}', F, F'\right)$ of the set $\mathcal{R}$ of axioms corresponds to the requirement that the composite of the morphisms $f_{i}$ using $F$ equals the composite of the morphisms $f_{j}'$ using $F'$ in any strict monoidal category of type $\mathcal{M}$. Then strict monoidal categories of type $\mathcal{M}$ are given as the algebras for the club $E\Lambda$ where $\mb{\Lambda}$ is the action operad with
+\begin{itemize}
+  \item $\mathbf{g} = \mathcal{G}$,
+  \item $\mathbf{r} = \mathcal{R}$,
+  \item $s_{1}$ given by mapping the generator $\left(\underline{f}, \underline{f}', F, F'\right)$ to the operadic composition of the $f_{i}$ using $F$ via $\beta, \delta$, and
+  \item $s_{2}$ given by mapping the generator $\left(\underline{f}, \underline{f}', F, F'\right)$ to the operadic composition of the $f_{i}'$ using $F'$ via $\beta, \delta$.
+\end{itemize}
+\end{cor}

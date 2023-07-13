@@ -24,22 +24,29 @@
 \end{center}
 \vskip1cm
 
+\begin{itemize}
+	\item Structure might need tweaking. Some comments in relevant sections below.
+	\item The `Free $\Lambda$-monoidal categories' section is tiny now, since we decided to appeal to Yau's book for characterising $\Lambda$-monoidal categories. Some possibly useful remarks and lemmas in here, but might need stripping down and chucking elsewhere.
+\end{itemize}
+
 \section{Introduction}
 \begin{itemize}
 \item add references to works that cite the original preprints: \href{https://scholar.google.com/scholar?oi=bibs\&hl=en\&cites=3135675589124701435}{Google Scholar link 1}, \href{https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13749645182111219012&as_sdt=5}{Google Scholar link 2}
 \item add reference to Ed's thesis
 \item should we reference the original preprints as well?
+\item I've added the original intros from the preprints with some other minor comments. Should hopefully be able to tidy this up into a coherent introduction now.
 
 \end{itemize}
 \section{Action operads}
 \begin{itemize}
+	\item Think we could split this into `Action operads' and `Operads with general group actions'? Probably after `Presentations of action operads'.
 % \item The comments below can be got rid of if `$0$-ary multiplication' $\mu \colon \Lambda(0) \rightarrow \Lambda(0)$ satisfies $\mu(g; ) = g$. This is what is done in Ed's thesis (Lemma 1.13) but seems odd and I can't find any other places this is done. (It doesn't help that nearly everywhere uses reduced operads where $P(0) = \ast$.)
 % \item I put in G0abel (2.3.9) to prove: need to show that $g \oplus h = \mu(e_2;g,h) = gh$ (suffices to show that $g \oplus e_0 = \mu(e_2;g, e_0) = g$). Thought it would be a straightforward Eckmann-Hilton argument but it gets stuck. I'm quite sure this doesn't work, as in block sum does \textit{not} agree with the group operation. It does in many of the examples we use, since the $\Lambda(0)$ is often trivial. But it doesn't seem to work in general. When it \textit{does}, then it is the case that $\Lambda(0)$ is abelian (and it's always true that block sum on its own for $\Lambda(0)$ is commutative because of a later result about $E\Lambda$-algebras being spacial - noticed that this also uses the claim that $\alpha(e_0;-) = id_I$)
 % \item The previous comment has a big knock-on effect for results at the start of Section 7. Especially Prop 7.5.4 and what follows really just requires that $e_0 \otimes g = g$. Many of the results here go on to assume that $\Lambda(0)$ is trivial, which could mean that we can just make this an assumption from the off and forget about all of this.
 % \item If making the $\Lambda(0) = \ast$ assumption, then should change Convention 7.6.1 to say this.
 % \item and we should put in a proof that all the $\pi$'s are surjective or trivial (2.3.4)
-\item Proof of 2.3.4: just needs checking - there's probably a simpler proof which doesn't use induction. (I usually avoid induction, if possible, but here it does actually seems to help see what's going on.) Ed's thesis has a short proof but I think it doesn't quite cover everything.
-\item I have been changing tensor product to block sum for a lot of things, we need to go through and decide how to do that consistently
+\item Proof of 2.3.4: just needs checking - there's probably a simpler proof which doesn't use induction. (I often avoid induction since it can hide what's going on, but here it does actually seem to help see what's going on.) Ed's thesis has a short proof but I think it doesn't quite cover everything.
+\item I have been changing tensor product to block sum for a lot of things, we need to go through and decide how to do that consistently (Alex: Need to a general read through for consistency. I've tried to match a few things up along the way, but it's all been a bit ad-hoc so far.)
 % \item Defn 2.3.9 - specify what the $h$'s and $g$'s are.
 % \item Prop 2.5.21ish follows from Theorem 3.3.7ish, except for the part about the monad map (it can't be $(F,id)$ as it needs to use the coherence cells of $F$, so I've called it $(F,\psi^F)$ and added details to the propositions).
 % \item Ex 2.2.6: Action operad formed by an abelian group $A$: $A^\bullet$. How does this multiplication work with $A^\bullet(0)$ which is the trivial group? E.g., do we treat the single element of $A^\bullet(0)$ as the empty list? So it has no effect in the operad multiplication:
@@ -53,31 +60,33 @@
 \section{Operads in the category of categories}
 \begin{itemize}
 % \item Start of 3.1: Should the $2$-monad should have $EP(n)$? Compare with 3.3.9.
+\item `Operads in the category of categories' could be split into a section with that title, followed by one about the `Borel construction'.
+\item Remark below was from ages ago. I think we might make it explicitly clear that Conventions 3.2 is in play.
 \item Definition of pseudomorphism and the remark following it discuss other's alternatives which include an equivariance axiom. I need to think this through to see whether our definitions actually differ or whether they're the same because of the equivariance from the coequalizer.
 	\begin{itemize}
 		\item Thinking about it, we do need the equivariance axiom in our definition. Since we're using the non-equivariant maps as the basis of the definition, in order to be able to induce the equivariant maps from them we need the $\alpha_n$ to coequalize the actions.
 	\end{itemize}
 % \item Defn 3.3.7 of cocomplete symmetric monoidal cat
 % \item After 3.3.9 seems repetitive (essentially description of $\underline{P}$)
-\item Prop 3.3.11-4 The proofs need filling out: Seems to correspond to stuff in Yau's book around Theorem 18.3.1 and Chapter 19. (Possibly worth some remarks still but may be easier to just reference Yau here.)
-	\begin{itemize}
-		\item We decided to just reference Yau's book here since it goes into it in more detail there and this doesn't have much of a bearing on the rest of what we do.
-	\end{itemize}
-\item I'd maybe like to have an example around here though, such as how the hexagon identities for symmetric/braided monoidal categories pop out of these generic algebra axioms - there's an example of the symmetry axiom in Ed's thesis. This is kind of covered in the Borel construction section when talking about clubs, but not quite as explicitly.
+% \item Prop 3.3.11-4 The proofs need filling out: Seems to correspond to stuff in Yau's book around Theorem 18.3.1 and Chapter 19. (Possibly worth some remarks still but may be easier to just reference Yau here.)
+% 	\begin{itemize}
+% 		\item We decided to just reference Yau's book here since it goes into it in more detail there and this doesn't have much of a bearing on the rest of what we do.
+% 	\end{itemize}
+% \item I'd maybe like to have an example around here though, such as how the hexagon identities for symmetric/braided monoidal categories pop out of these generic algebra axioms - there's an example of the symmetry axiom in Ed's thesis. This is kind of covered in the Borel construction section when talking about clubs, but not quite as explicitly.
 % \item Should we change $E\Lambda(n) \times X^n/\Lambda(n)$ to be $\left(E\Lambda(n) \times X^n\right)/\Lambda(n)$?
 \end{itemize}
 
 \section{Monoidal structures and multicategories}
 
 \begin{itemize}
-\item Intro
+\item Intro needs filling out.
 % \item Use \begin{verbatim} \lmc \end{verbatim} for lambda monoidal categories
 % \item `By standard methods' - reference for adjoint equivalence (Mac Lane Chapter 4 Section 4 Theorem 1)
 % \item Invertible unit: follows from adjoint equivalence
 % \item Theorem 4.2.11: `Define $\beta$ by' should have $s_{p_1+r_1,q_1+r_1}$ on the RHS, not $s_{p_1,q_1}$? (Fine because $r_1 = 0$. Clarified.)
 % \item `Containment relation': Reference back to wherever this is stated.
 % \item Defn 4.3.1: $\pi$ is surjective or each $\pi_n$ is surjective?
-\item Lemma 4.3.2: Needs rewording. Is the \textit{underlying set of the free monoid}?
+% \item Lemma 4.3.2: Needs rewording. Is the \textit{underlying set of the free monoid}?
 % \item Prop 4.3.3: Is $im(\pi)$ defined? It is now.
 % \item Prop 4.3.3: What is the underlying permutation operad? Does this mean the symmetrized operad?
 % \item Odd sentence before definition of \text{spatial}
@@ -89,8 +98,8 @@
 % \item $\Lambda(2)$ not $G(2)$
 % \item What is an action morphism? Update: Been through Ed's thesis. From what I can gather, they are morphisms which look like $\alpha(g; id_{x_1}, \ldots, id_{x_n})$.
 % \item Re: What is an action morphism? Added a remark (4.3.5 or near) to give some reference. (Not happy with this remark. Really needs clarifying. Think it relates to the things called $g^\otimes$ in Section 3?)
-\item Related: Notation 3.4.2 - `'we write $g^\otimes$ for the image of the map $(!;id,\ldots,id)$ in $E\Lambda(n)_{\Lambda(n)}X^n$'. Is the map in there or is the image of the map in there?
-\item Also related: Definition 3.4.3
+% \item Related: Notation 3.4.2 - `'we write $g^\otimes$ for the image of the map $(!;id,\ldots,id)$ in $E\Lambda(n)_{\Lambda(n)}X^n$'. Is the map in there or is the image of the map in there?
+% \item Also related: Definition 3.4.3
 % \item Include the extra steps in the first equations and finish with a period.
 % \item Get rid of \textit{we're}
 % \item Make sure sentences around here are finished with a period.
@@ -98,7 +107,7 @@
 % \item Rewrite equations at the end of the proof (spacing and add some words)
 % \item Change the word `finally'
 % \item Change `a bit of new terminology'
-\item Do we want another notation to emphasise the underlying monoid? (Think we settled on $\Lambda^{\oplus}$?)
+% \item Do we want another notation to emphasise the underlying monoid? (Think we settled on $\Lambda^{\oplus}$?)
 % \item `Then we will also \textit{use}'
 % \item Lemma 4.3.9: Should be a $\Lambda^{\oplus}$, not just $\Lambda$?
 % \item $\Lambda$ not $G$
@@ -109,203 +118,207 @@
 % \item Change sentence to be \textit{further} notation
 % \item Theorem 4.4.5: overfull hbox on second page of proof
 \item Theorem 4.4.5 about pseudo-commutativity - shift these requirements into a definition of a pseudo-commutative operad, then restate the theorem in simpler terms (like the Guillou paper)
+	\begin{itemize}
+		\item This is mostly done - but there's still the thing with the equivariance axiom. I still can't tell where it gets used, or if it's just another case of something like Conventions 3.2 meaning that it's all fine and with those conventions we don't need these extra equivariance axioms that have been hanging around. In which case, we can just mention the conventions and be done, possibly describing what the axiom would be if we \emph{were} to include it.
+		\item It's currently axiom 2 in the definition, so the proof would need rewording if we take this out.
+	\end{itemize}
 % \item Spacing of labels on arrows needs looking at
 % \item Corollary 4.4.6: Still don't like the terminology `non-symmetric'. Is `plain' operad better? (Came to the conclusion that everybody just uses non-$\Sigma$ or non-symmetric, so better to stick with that. Guessing I picked up `plain' from Tom's book.)
 % \item Defn 4.5.1: Odd mix of $\alpha$ and $g$. Think something is mixed up here. ($- \cdot \alpha$). Also should the iso have $\pi(g)^{-1}$ in the target?
-\item Defn of $\mathbf{\Lambda}$-multicategory: check all the specifics. Lots of notation was inconsistent round here.
+\item Defn of $\mathbf{\Lambda}$-multicategory: check all the specifics. Lots of notation was inconsistent round here after merging with the other stuff.
 % \item Monad maps are defined in the specific case of the $2$-category of categories in Section 2.5 - refer back to these definitions.
 \end{itemize}
 
 
 
-\section{Invertible objects}
+% \section{Invertible objects}
 
-\begin{itemize}
-\item The notation in the very first sentence needs to be explained somewhere!
-\item Rewrite intro: Need to explain that the goal is to understand some group actions
-% \item Decide on ELambda algebras or Lambda monoidal categories throughout (we decided the second!)
-\item New notation: added earlier (line 905, search beta\_to\_oplus), just need to implement, search for action maps or superscript tensors
-\item Fix weakly invertible section
-\item Lemma 5.3.10ish: Needs sorting
-\item Corollary 5.3.13ish: What is it actually saying?
-\end{itemize}
+% \begin{itemize}
+% \item The notation in the very first sentence needs to be explained somewhere!
+% \item Rewrite intro: Need to explain that the goal is to understand some group actions
+% % \item Decide on ELambda algebras or Lambda monoidal categories throughout (we decided the second!)
+% \item New notation: added earlier (line 905, search beta\_to\_oplus), just need to implement, search for action maps or superscript tensors
+% \item Fix weakly invertible section
+% \item Lemma 5.3.10ish: Needs sorting
+% \item Corollary 5.3.13ish: What is it actually saying?
+% \end{itemize}
 
-Leftover fixes that I'm not sure about:
-\begin{itemize}
-\item Move comment (QQQ)
-\item Fix paragraph; make clear we are determining composition
-\item Explain M strategy, include forward refs
-\end{itemize}
-
-
-
-\section{Invertibility and group actions}
-
-\begin{itemize}
-\item Something that has come up here: need to go through and be consistent with the style of notation we use to represent various things such as morphisms and objects. In earlier chapters I think we use upper case a lot for objects, $X$, $Y$, etc., but in Ed's chapters there is more of a tendency to use lower case, $x$, $y$, etc. This may just be because we were often working with objects which were categories, hence upper case, whereas Ed's stuff is working in a category, hence lower case. Still worth a check though.
-\item Another thing that comes up here a lot: We need to have more exposition than `following from this bunch of results we get...' type statements.
-\item I want to write $\Lambda^{\oplus}$ for the underlying monoid maybe??
-\item \textbf{why? This one involves real math}
-\item not happy with last section
-\end{itemize}
+% Leftover fixes that I'm not sure about:
+% \begin{itemize}
+% \item Move comment (QQQ)
+% \item Fix paragraph; make clear we are determining composition
+% \item Explain M strategy, include forward refs
+% \end{itemize}
 
 
 
-\section{Computing automorphisms of the unit}
+% \section{Invertibility and group actions}
 
-\begin{itemize}
-\item Lemma 7.1.1: Mentions the morphism $g^\otimes$ in the statement but the morphisms in the proof are all just labelled $g$.
+% \begin{itemize}
+% \item Something that has come up here: need to go through and be consistent with the style of notation we use to represent various things such as morphisms and objects. In earlier chapters I think we use upper case a lot for objects, $X$, $Y$, etc., but in Ed's chapters there is more of a tendency to use lower case, $x$, $y$, etc. This may just be because we were often working with objects which were categories, hence upper case, whereas Ed's stuff is working in a category, hence lower case. Still worth a check though.
+% \item Another thing that comes up here a lot: We need to have more exposition than `following from this bunch of results we get...' type statements.
+% \item I want to write $\Lambda^{\oplus}$ for the underlying monoid maybe??
+% \item \textbf{why? This one involves real math}
+% \item not happy with last section
+% \end{itemize}
+
+
+
+% \section{Computing automorphisms of the unit}
+
+% \begin{itemize}
+% \item Lemma 7.1.1: Mentions the morphism $g^\otimes$ in the statement but the morphisms in the proof are all just labelled $g$.
 
 
 
 % \item 4.1.3/7.1.2 check 2.3.10: need to make sure this is in an earlier section, and ref'ed (group action actually seems to rely on the lemma previous to the one referenced: `G0abel' (AC is stuck on this), not `calclem' (which gives the group hom.))
 % \item Do we actually need $\Lambda(0) \times \Lambda(m) \rightarrow \Lambda(m)$ to be a group action? If not, then we don't need to know that $g \oplus h = g \cdot h$ for elements $g, h \in \Lambda(0)$. I.e., Lemma 2.3.9.
 % \item No examples seen have non-trivial $\Lambda(0)$ - we could keep the results around here and remark that `if' it can be shown (Lemma 2.3.9) that $g \oplus h = g \cdot h$, then the proofs will still go through.
-\item 7.1.2: Switches between $\oplus$ and $\otimes$ a few times. Is this fine?
-\item Is the induced homomorphism $\Lambda(0) \rightarrow \Lambda(m)$ given by $- \oplus e_m$?
+% \item 7.1.2: Switches between $\oplus$ and $\otimes$ a few times. Is this fine?
+% \item Is the induced homomorphism $\Lambda(0) \rightarrow \Lambda(m)$ given by $- \oplus e_m$?
 
-\item explain purpose
-\item improve proof 4.2.3
+% \item explain purpose
+% \item improve proof 4.2.3
 
-\item check commutative Square
+% \item check commutative Square
 
-\item redo 4.4
-\item insert diagram
+% \item redo 4.4
+% \item insert diagram
 
-\item consistent text after 4.5.3
-\item move something to earlier
-
-
-\item highlight that star means the inverse under tensor product for morphisms
+% \item consistent text after 4.5.3
+% \item move something to earlier
 
 
-
-
-\item check the note
-
-
-\end{itemize}
+% \item highlight that star means the inverse under tensor product for morphisms
 
 
 
-\section{a full description of $L_n $}
 
-\begin{itemize}
+% \item check the note
 
 
-\item Think about n vs 2n in {AGndef}
-\item check reference
-\item rewrite calculation
-\item check universal property
-\item insert for a simple example
-\end{itemize}
+% \end{itemize}
 
 
 
-\section{Examples}
+% \section{a full description of $L_n $}
 
-\begin{itemize}
-\item Actually read this section, fix anything
-\end{itemize}
-\newpage
-
-\begin{center}
-\begin{Large}
-\textbf{Comments addressed}
-\end{Large}
-\end{center}
-\vskip1cm
+% \begin{itemize}
 
 
-\section{Invertible objects}
-\begin{itemize}
-\item Include notation for $\eta$ as the unit here
-\item Change to equalizers
-\item Change to $(LX)_{inv} = LX$
-\item Fix ()s
-\item Include triangle NO
-\item Uniform gp superscripts
-\item Remove actually
-\item Ref $\eta$
-\item Replace with is, remove parts
-\item Remove proof
-\item Fix ab superscripts, same as gp
-\item qi
-\item Under red line: move? make remark? delete some?
-\item Where do we say this?
-\item Need 2-adjunction: this should follow from Thm 8.6 in the enriched\_sketches paper I saved
-\item include forward ref to where we use cref{epi}: I can't find it
-\item Get better Eckmann-Hilton ref: don't care anymore
-\end{itemize}
-\section{Invertibility and group actions}
-\begin{itemize}
-\item Forward ref
-\item definition env
-\item little wording fixes
-\item change G to Lambda
-\item S vs Sigma for symmetric groups: I picked Sigma
-\item Think about free monoid lem again
-\item Fix triangle
-\item lots of notation issues (e, G, length bars)
-\item why splitting
-\item missing ref?
-\item splits by construction: hmm
-\item ref?
-\item for v, v' not delta of something
-\item inverses for morphisms under comp vs tensor
-\item more G's (x2)
-\item another missing ref
-\item another G
-\item include corollary? 
-\item forward refs
-\item practical?
-\end{itemize}
-
-\section{Computing automorphisms of the unit}
-\begin{itemize}
-\item in the next two results
-\item 4.1.2 two boxes
-\item the above following square
-\item insert =
-\item check 4n or 2n (it is correct in 7.2.1)
-\item mentioned Delta, I
-\item fixed proof 4.3.2
-\item remove functor
+% \item Think about n vs 2n in {AGndef}
+% \item check reference
+% \item rewrite calculation
+% \item check universal property
+% \item insert for a simple example
+% \end{itemize}
 
 
-\item isomorphism symbol
-\item clarify this
-\item make sure length and size notation is introduced earlier
-\item bad line break at the beginning of 4.5
-\item change prove to shows
-\item bad line break
-\item insert the proof from Ed's email
-\item put a short proof
 
-\item change express to describe
+% \section{Examples}
 
-\item isomorphism symbol
-\item change make sure to ensures
-\item remove calculation
-\item change we want to do
-\end{itemize}
+% \begin{itemize}
+% \item Actually read this section, fix anything
+% \end{itemize}
+% \newpage
 
-\section{a full description of $L_n $}
-\begin{itemize}
-\item bad line break
-\item remove exposition
-\item fix fancy G
-\item change G to lambda
-\item isomorphism symbol
-\item tensor product given component wise
+% \begin{center}
+% \begin{Large}
+% \textbf{Comments addressed}
+% \end{Large}
+% \end{center}
+% \vskip1cm
 
 
-\item 
-\end{itemize}
-\section{Examples}
-\begin{itemize}
-\item 
-\end{itemize}
+% \section{Invertible objects}
+% \begin{itemize}
+% \item Include notation for $\eta$ as the unit here
+% \item Change to equalizers
+% \item Change to $(LX)_{inv} = LX$
+% \item Fix ()s
+% \item Include triangle NO
+% \item Uniform gp superscripts
+% \item Remove actually
+% \item Ref $\eta$
+% \item Replace with is, remove parts
+% \item Remove proof
+% \item Fix ab superscripts, same as gp
+% \item qi
+% \item Under red line: move? make remark? delete some?
+% \item Where do we say this?
+% \item Need 2-adjunction: this should follow from Thm 8.6 in the enriched\_sketches paper I saved
+% \item include forward ref to where we use cref{epi}: I can't find it
+% \item Get better Eckmann-Hilton ref: don't care anymore
+% \end{itemize}
+% \section{Invertibility and group actions}
+% \begin{itemize}
+% \item Forward ref
+% \item definition env
+% \item little wording fixes
+% \item change G to Lambda
+% \item S vs Sigma for symmetric groups: I picked Sigma
+% \item Think about free monoid lem again
+% \item Fix triangle
+% \item lots of notation issues (e, G, length bars)
+% \item why splitting
+% \item missing ref?
+% \item splits by construction: hmm
+% \item ref?
+% \item for v, v' not delta of something
+% \item inverses for morphisms under comp vs tensor
+% \item more G's (x2)
+% \item another missing ref
+% \item another G
+% \item include corollary? 
+% \item forward refs
+% \item practical?
+% \end{itemize}
+
+% \section{Computing automorphisms of the unit}
+% \begin{itemize}
+% \item in the next two results
+% \item 4.1.2 two boxes
+% \item the above following square
+% \item insert =
+% \item check 4n or 2n (it is correct in 7.2.1)
+% \item mentioned Delta, I
+% \item fixed proof 4.3.2
+% \item remove functor
+
+
+% \item isomorphism symbol
+% \item clarify this
+% \item make sure length and size notation is introduced earlier
+% \item bad line break at the beginning of 4.5
+% \item change prove to shows
+% \item bad line break
+% \item insert the proof from Ed's email
+% \item put a short proof
+
+% \item change express to describe
+
+% \item isomorphism symbol
+% \item change make sure to ensures
+% \item remove calculation
+% \item change we want to do
+% \end{itemize}
+
+% \section{a full description of $L_n $}
+% \begin{itemize}
+% \item bad line break
+% \item remove exposition
+% \item fix fancy G
+% \item change G to lambda
+% \item isomorphism symbol
+% \item tensor product given component wise
+
+
+% \item 
+% \end{itemize}
+% \section{Examples}
+% \begin{itemize}
+% \item 
+% \end{itemize}
 
 
 \end{document} 
