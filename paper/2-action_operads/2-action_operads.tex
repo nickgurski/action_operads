@@ -9,7 +9,7 @@ We adopt the following conventions throughout.
 \begin{itemize}
 \item $\Sigma_{n}$ is the symmetric group on $n$ letters, and $B_{n}$ is the braid group on $n$ strands.
 \item For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$. We will use both $\cdot$ and concatenation to represent multiplication in a group.
-\item The symbol $e$ will generically represent an identity element in a group. If we are considering a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$.
+\item The symbol $e$ will generically represent an identity element in a group. If we are considering a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$. We will often drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand. Occasionally we will write $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams.
 \item We will often be interested in elements of a product of the form
 \[
 A \times B_{1} \times \cdots \times B_{n} \times C
@@ -17,6 +17,7 @@ A \times B_{1} \times \cdots \times B_{n} \times C
 (or similar, for example without $C$). We will write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, and in the case that we need equivalence classes of such elements they will be written as $[a; b_{1}, \ldots, b_{n}; c]$.
 \end{itemize}
 \end{conv}
+
 
 We begin with the basic definitions. The diagrams for the axioms in some operadic definitions can look quite involved and we recommend that readers expand the products depicted, or write out a small example case, to better see what the axioms are describing.
 
@@ -201,7 +202,7 @@ A \textit{braided operad} consists of
 satisfying the following axioms.
   \begin{align*}
     \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot(\tau_1 \oplus \ldots \oplus \tau_n)\\
-    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma_{-1}(n)}\right)\cdot \sigma^+
+    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma^{-1}(n)}\right)\cdot \sigma^+
   \end{align*}
 For the above equations to make sense, we must have
   \begin{itemize}
@@ -212,7 +213,7 @@ For the above equations to make sense, we must have
   \end{itemize}
 \end{Defi}
 
-In order to make sense of this definition, we must define $\tau_{1} \oplus \cdots \oplus \tau_{n}$ and $\sigma^{+}$ in the context of braids. The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$. The braid $\sigma^{+}$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$. Finally, the notation $\sigma^{-1}(i)$ should be read as $\pi(\sigma)^{-1}(i)$, where $\pi \colon B_{n} \rightarrow \Sigma_{n}$ is the underlying permutation map.
+In order to make sense of this definition, we must define $\tau_{1} \oplus \cdots \oplus \tau_{n}$ and $\sigma^{+}$ in the context of braids. The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$. The braid $\sigma^{+}$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$. Finally, the notation $\sigma^{-1}(i)$ should be read as $\pi(\sigma)^{-1}(i)$, where $\pi \colon B_{n} \rightarrow \Sigma_{n}$ is the underlying permutation map. QQQ Move this to the first instance of it occurring.
 
 We require one final preparatory definition.
 
@@ -318,18 +319,14 @@ in the group $\Lambda(k_{1} + \cdots + k_{n})$.
       {\ar@{-} (64,-15)*{}; (52,-20)*{} };
       {\ar@{-} (69,-15)*{}; (57,-20)*{} };
       (34.5,-10)*+{=};
-      (4.5,-25)*{\scriptstyle \mu\left((23);(12),(12), \id\right) \cdot \mu\left((132); (12), \id, (12)\right) };
-      (64.5,-25)*{\scriptstyle \mu\left((23)\cdot (132); \id \cdot (12), (12) \cdot \id, (12) \cdot (12)\right)} ;
+      (4.5,-25)*{\scriptstyle \mu\left((23);(12),(12), e_2\right) \cdot \mu\left((132); (12), e_2, (12)\right) };
+      (64.5,-25)*{\scriptstyle \mu\left((23)\cdot (132); e_2 \cdot (12), (12) \cdot e_2, (12) \cdot (12)\right)} ;
     \endxy
   \]
 \item Our definition of an action operad is the same as that appearing in Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective. It is also the same as that appearing in work of Zhang \cite{zhang-grp}, although we prove later (see \cref{calclem}) that Zhang's condition of $e_{1} \in \Lambda(1)$ being the identity element follows from the rest of the axioms.
 \item Yau \cite{yau_infinity_2021} collects together a large number of results on the topic of action operads while also investigating the setting of infinity group operads. 
 \end{itemize}
 \end{rem}
-
-\begin{nota}\label{en_units}
-For an action operad $\ML$, we write $e_n$ for the identity element for the group $\Lambda(n)$. We drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand. Occasionally we will write $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams.
-\end{nota}
 
 \begin{example}
 \begin{enumerate}
@@ -446,7 +443,7 @@ We have the following corollary.
 \begin{cor}\label{corZ}
 For an action operad $\ML$, the sets
   \[
-    \mathrm{Ker}\,\pi_n = \{g \in \Lambda(n)  \colon  \pi_{n}(g) = e_{n} \}
+    \mathrm{Ker}\,\pi_n = \{g \in \Lambda(n)~\colon~\pi_{n}(g) = e_{n} \}
   \]
 form an action operad for which the inclusion $\mathrm{Ker}\,\pi \hookrightarrow \Lambda$ is a map of action operads.
 \end{cor}
@@ -456,12 +453,12 @@ For $\textrm{Ker}\,\pi \hookrightarrow \Lambda$ to be a map of action operads, w
 \begin{cor}\label{image}
 For an action operad $\ML$, the sets
   \[
-    \mathrm{Im}\pi_n = \{\pi_n(g)~:~g \in \Lambda(n)\}
+    \mathrm{Im}\,\pi_n = \{\pi_n(g)~\colon~g \in \Lambda(n)\}
   \]
-form an action operad for which the inclusion $\mathrm{Im}\pi \hookrightarrow \Sigma$ is a map of action operads.
+form an action operad for which the inclusion $\mathrm{Im}\,\pi \hookrightarrow \Sigma$ is a map of action operads.
 \end{cor}
 \begin{proof}
-The operad multiplication of elements in the image is also in the image, as is the unit element in $\mathrm{Im}\pi_1$, following again as a consequence of $\pi$ being an operad map. The map $\mathrm{Im}\pi \hookrightarrow \Sigma$ is an inclusion and so is immediately seen to be a map of action operads.
+The operad multiplication of elements in the image is also in the image, as is the unit element in $\mathrm{Im}\,\pi_1$, following again as a consequence of $\pi$ being an operad map. The map $\mathrm{Im}\,\pi \hookrightarrow \Sigma$ is an inclusion and so is immediately seen to be a map of action operads.
 \end{proof}
 
 \begin{prop}[Corollary 2.17,  \cite{zhang-grp}]\label{surjortriv}
@@ -493,7 +490,7 @@ Finally, if $a = j$ and $k = 1$, then $\trans{a}{a+k} = \trans{j}{j+1}$. This ca
   \end{align*}
 Hence $\pi_{j+1}$ is surjective and so all $\pi_n$ are surjective.
 
-Now instead suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is the zero map. Assume that $\pi_j \colon \Lambda(j) \rightarrow \Sigma_j$ is the zero map for some $j \geq 2$. Letting $\sigma \in \textrm{Im}\pi_{j+1}$, there exists $g \in \Lambda(j+1)$ such that $\pi_{j+1}(g) = \sigma$. We can then consider the elements $\mu^\Sigma(\sigma; \underline{e_1}, e_o, \underline{e_1})$ where $\underline{e_1}$ means a sequence of $e_1$'s and with $e_0$ in the $k$th position, with $1 \leq k \leq j + 1$. Now
+Now instead suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is the zero map. Assume that $\pi_j \colon \Lambda(j) \rightarrow \Sigma_j$ is the zero map for some $j \geq 2$. Letting $\sigma \in \textrm{Im}\,\pi_{j+1}$, there exists $g \in \Lambda(j+1)$ such that $\pi_{j+1}(g) = \sigma$. We can then consider the elements $\mu^\Sigma(\sigma; \underline{e_1}, e_o, \underline{e_1})$ where $\underline{e_1}$ means a sequence of $e_1$'s and with $e_0$ in the $k$th position, with $1 \leq k \leq j + 1$. Now
   \begin{align*}
     \mu^\Sigma(\sigma; \underline{e_1}, e_o, \underline{e_1}) &= \mu^\Sigma(\pi_{j+1}(g); \underline{\pi_1(e_1)}, \pi_0(e_0), \underline{\pi_1(e_1)}) \\
     &= \pi_j(\mu^\Lambda(g; \underline{e_1}, e_0, \underline{e_1})) \\
@@ -501,7 +498,7 @@ Now instead suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is the z
   \end{align*}
 We can think of this permutation as being $\sigma$ with the $k$th string removed - in Remark \ref{rem:crossed} we comment on such `face' and `degeneracy' maps as used here, and see \cite{ber-simplicial} for a more careful treatment of this idea. Now each of these is the identity $e_j$, as shown above. This means that $\sigma$ must either have been the identity $e_{j+1}$ or a transposition of the form $\trans{a}{a+1}$, where $1 \leq a \leq j$.
 
-If $\sigma$ is the identity $e_{j+1}$, then we are done since this would give $\textrm{Im}\pi_{j+1} = \{e_{j+1}\}$. Instead suppose that $\sigma = \trans{a}{a+1} \in \Sigma_{j + 1}$. Then if $1 < a \leq j$ we can use this to give
+If $\sigma$ is the identity $e_{j+1}$, then we are done since this would give $\textrm{Im}\,\pi_{j+1} = \{e_{j+1}\}$. Instead suppose that $\sigma = \trans{a}{a+1} \in \Sigma_{j + 1}$. Then if $1 < a \leq j$ we can use this to give
   \begin{align*}
     \trans{a-1}{a} &= \mu^\Sigma(\trans{a}{a+1}; e_0, \underline{e_1}) \\
     &= \mu^\Sigma(\pi_{j+1}(g);\pi_0(e_0), \underline{\pi_1(e_1)}) \\
@@ -523,7 +520,7 @@ Again, a contradiction, hence $\sigma = e_{j+1}$.
 \begin{cor}\label{extension}
 Every action operad $\ML$ with nontrivial $\pi$ fits into a short exact sequence
   \[
-    T \rightarrow \textrm{Ker}\,\pi \hookrightarrow \Lambda \stackrel{\pi}{\longrightarrow} \Sigma \rightarrow T,
+    T \rightarrow \mathrm{Ker}\,\pi \hookrightarrow \Lambda \stackrel{\pi}{\longrightarrow} \Sigma \rightarrow T,
   \]
 by which we mean this is a sequence of action operad maps which is an exact sequence of groups at each $n$.
 \end{cor}
@@ -547,7 +544,7 @@ Let $\ML$ be an action operad.
   \[
     \mu(e_{n}; e_{i_{1}}, \ldots, e_{i_{n}}) = e_{I}
   \]
-holds for any natural numbers $n, i_{j}, I = \sum i_{j}$.
+holds for any natural numbers $n, i_{j}, I = \sum_{j=1}^n i_{j}$.
 \item The group $\Lambda(1)$ is abelian.
 \end{enumerate}
 \end{lem}
@@ -1500,13 +1497,13 @@ there is a corresponding result for $F \colon \mathbb{\Lambda}^{\textrm{op}} \ri
 \begin{proof}[Proof of \cref{operad=monoid}]
 First we must show that $\ML\mbox{-}\mb{Coll}$ has a monoidal structure using $\circ$. To prove this, we must give the unit and associativity isomorphisms and then check the monoidal category axioms. First, note that the unit object is given as $I = \mathbb{\Lambda}(-,1)$. Then for the left unit isomorphism, we find that
   \begin{align*}
-    I \circ Y (k) &\cong \int^{n} \mathbb{\Lambda}(n,1) \times Y^{\star n}(k) \\
+    I \circ Y (k) &\= \int^{n} \mathbb{\Lambda}(n,1) \times Y^{\star n}(k) \\
     &\cong Y^{\star 1}(k) \\
     &\cong Y(k)
   \end{align*}
 using only the properties of the coend. For the right unit isomorphism, we have that
   \begin{align*}
-    X \circ I (k) &\cong \int^{n} X(n) \times I^{\star n}(k) \\
+    X \circ I (k) &\= \int^{n} X(n) \times I^{\star n}(k) \\
     &\cong \int^{n} X(n) \times \int^{k_{1}, \ldots, k_{n}} \mathbb{\Lambda}(k_{1},1) \times \cdots \times \mathbb{\Lambda}(k_{n},1) \times \mathbb{\Lambda}(\underline{k}) \\
     &\cong \int^{n} X(n) \times \mathbb{\Lambda}(k,1+ \cdots +1) \\
     &= \int^{n} X(n) \times \mathbb{\Lambda}(k,n) \\

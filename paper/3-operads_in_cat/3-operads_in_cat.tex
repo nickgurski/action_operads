@@ -927,7 +927,7 @@ The pullback of this diagram is isomorphic to the coproduct of the pullbacks of 
 			(75,-21)*{n \neq 1}
 		\endxy
 	\]
-It is easy then to see that $X$ is the coproduct of the $n=1$ cospan, and that the empty category is the pullback of each of the other cospans, making $X$ the pullback of the original diagram and verifying that $\eta$ is cartesian.
+It is easy then to see that $X$ is the pullback of the $n=1$ cospan, and that the empty category is the pullback of each of the other cospans, making $X$ the pullback of the original diagram and verifying that $\eta$ is cartesian.
 \end{proof}
 
 
@@ -1023,7 +1023,7 @@ is also a pullback. The pullback of the functors $1 \times H^n$ and $1 \times S^
     \[
         \left[p;\underline{H(c)}\right] = \left[q; \underline{S(b)}\right].
     \]
-Using the previous lemma, we know that a pair
+Using Lemma \ref{coeq-lem}, we know that a pair
     \[
         \left(\left[p;\underline{c}\right], \left[q;\underline{b}\right]\right)
     \]
@@ -1174,7 +1174,7 @@ The classical Borel construction is a functor from $G$-spaces to spaces, sending
 \end{Defi}
 
 \begin{Defi}
-A functor $F \colon X \rightarrow Y$ is an \emph{isofibration} if given $x \in X$ and an isomorphism $f\colon y \xrightarrow{\cong} F(x)$ in $Y$, then there exists an isomorphism $g$ in $X$ such that $F(g) = f$.
+A functor $F \colon X \rightarrow Y$ is an \emph{isofibration} if given $x \in X$ and an isomorphism $f\colon y \xrightarrow{\cong} F(x)$ in $Y$, then there exists an isomorphism $g \colon y \cong x$ in $X$ such that $F(g) = f$.
 \end{Defi}
 
 \begin{prop}
@@ -1542,9 +1542,9 @@ in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.
 \begin{Defi}\label{action_map}
 We call the map 
   \[
-    g^{\otimes} \colon x_1 \otimes \cdots \otimes x_n \rightarrow x_{\pi(g)^{-1}(1)} \otimes \cdots x_{\pi(g)^{-1}(n)}
+    g^{\otimes} \colon x_1 \otimes \cdots \otimes x_n \rightarrow \otimes x_{\pi(g)^{-1}(1)} \otimes \cdots \otimes x_{\pi(g)^{-1}(n)}
   \]
-the \emph{action} of $g$ on $x_1 \otimes \cdots x_n$.
+the \emph{action} of $g$ on $x_1 \otimes \cdots \otimes x_n$.
 \end{Defi}
 
 \begin{rem}
