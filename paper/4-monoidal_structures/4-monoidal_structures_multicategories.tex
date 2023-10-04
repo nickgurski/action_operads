@@ -2,13 +2,13 @@
 \section{Monoidal structures and multicategories}
  \subsection{Introduction to monoidal structures}
 QQQ
-	\begin{itemize}
-		\item need to start off by talking about monoidal structures and what this chapter will lead to
-		\item starts off with Examples section
-		\item monoidal categories via action operads
-		\item pseudo-commutativity
-		\item profunctors and multicategories
-	\end{itemize}
+  \begin{itemize}
+    \item need to start off by talking about monoidal structures and what this chapter will lead to
+    \item starts off with Examples section
+    \item monoidal categories via action operads
+    \item pseudo-commutativity
+    \item profunctors and multicategories
+  \end{itemize}
 \subsection{Examples}\label{sec:examples}
 
 In this section we will discuss examples of the preceding theory. We have seen that there are three equivalent incarnations of the same algebraic structure:
@@ -23,9 +23,9 @@ In practice, something like the third of these is the most likely to arise from 
 \begin{example}
 The $2$-monad for symmetric strict monoidal categories (or permutative categories, as they are known in the topological literature) is given by $E \mb{\Sigma}$, so the notion of symmetric strict monoidal categories corresponds to the symmetric operad. While this example is well-known, we go into further detail to set the stage for less common examples.
 
-The $2$-monad $E\Sigma$ on $\mb{Cat}$ is given by
+The $2$-monad $\underline{E\Sigma}$ on $\mb{Cat}$ is given by
   \[
-    E\Sigma (X) = \coprod E\Sigma_{n} \times_{\Sigma_{n}} X^{n}.
+    \underline{E\Sigma} (X) = \coprod E\Sigma_{n} \times_{\Sigma_{n}} X^{n}.
   \]
 An object of $E\Sigma_{n} \times_{\Sigma_{n}} X^{n}$ is an equivalence class of the form $[\sigma; x_{1}, \ldots, x_{n}]$ where $\sigma \in \Sigma_{n}$ and $x_{i} \in X$. The equivalence relation gives
   \[
@@ -263,7 +263,7 @@ Axiom \eqref{eq9} is straightforward to check when only a single $g_{i}$ is a ge
   \[
     \delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{m}}}\left( \delta_{n; m_{1}, \ldots, m_{n}}(f) \right) = \delta_{n; P_{1}, \ldots, P_{n}}(f),
   \]
-and we do so on $m_{n}$. By definition, we have
+and we do so on $m_{n}$. (QQQ oddly worded) By definition, we have
   \[
     \delta \left( \delta(m_{n}) \right) = \delta \left( m_{\underline{k}} \beta(m_{k_{1}}, \ldots, m_{k_{n}}) \right),
   \]
@@ -337,9 +337,9 @@ The $2$-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=o
 % \begin{prop}\label{Gnconcomp} Considered as a monoid under tensor product, the connected components of $\ELn$ are
 %   \[
 %     \pi_0(\ELn) = \begin{cases}
-%     							 \mathbb{N}^n & \text{if $\ML$ is crossed}, \\
-%     							 \mathbb{N}^{\ast n} & \text{otherwise}.
-%     							\end{cases}
+%                    \mathbb{N}^n & \text{if $\ML$ is crossed}, \\
+%                    \mathbb{N}^{\ast n} & \text{otherwise}.
+%                   \end{cases}
 %   \] 
 % Also, the canonical homomorphism sending objects in $\ELn$ to their connected component,
 %   \[
@@ -456,9 +456,9 @@ The $2$-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=o
 %   \]
 % However, since
 %   \begin{align*}
-%   		\alpha(  g  ;  \id_x,  \id_I  ) &= \alpha(  g  ;  \id_x,  \alpha( e_0; - )  ) \\
-%   		&= \alpha(  \mu(g; e_1, e_0)  ;  \id_x  )
-% 		\end{align*}
+%       \alpha(  g  ;  \id_x,  \id_I  ) &= \alpha(  g  ;  \id_x,  \alpha( e_0; - )  ) \\
+%       &= \alpha(  \mu(g; e_1, e_0)  ;  \id_x  )
+%     \end{align*}
 % all we need is to find a $g \in \pi^{-1}(\trans{1}{2})$ for which
 %   \[
 %     \mu(g; e_1, e_0) = e_1.
@@ -473,25 +473,25 @@ The $2$-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=o
 %   \] 
 % To see that this is the correct choice of $g$, first note that we must have \( \pi(k) = e_1 \), since this is the only element of $S_1$. Following from that, we have 
 %   \begin{align*}
-%   	\pi \left(  \mu(e_2; k^{-1}, e_1)  \right) &= \mu \left(  \pi(e_2) \ ;  \pi\left(k^{-1}\right),  \pi(e_1)  \right) \\
-%   	&= \mu \left(  e_2  \ ;  e_1,  e_1  \right) \\
-%   	&= e_2
+%     \pi \left(  \mu(e_2; k^{-1}, e_1)  \right) &= \mu \left(  \pi(e_2) \ ;  \pi\left(k^{-1}\right),  \pi(e_1)  \right) \\
+%     &= \mu \left(  e_2  \ ;  e_1,  e_1  \right) \\
+%     &= e_2
 %   \end{align*}
 % and hence
 %   \begin{align*}
-% 		\pi(g) &= \pi \left(h \mu\left(e_2; k^{-1}, e_1\right) \right) \\
-% 		       &= \pi(h) \pi \left(\mu\left(e_2; k^{-1}, e_1\right) \right) \\
-% 		       &= \trans{1}{2} e_2 \\
-% 		       &= \trans{1}{2}.
+%     \pi(g) &= \pi \left(h \mu\left(e_2; k^{-1}, e_1\right) \right) \\
+%            &= \pi(h) \pi \left(\mu\left(e_2; k^{-1}, e_1\right) \right) \\
+%            &= \trans{1}{2} e_2 \\
+%            &= \trans{1}{2}.
 %   \end{align*}
 % So $g$ is indeed in $\pi^{-1}(\trans{1}{2})$, and furthermore
 %   \begin{align*}
-%   	\mu(g; e_1, e_0) & = \mu \left(  h \mu\left(e_2; k^{-1}, e_1\right) \ ;  e_1,  e_0  \right) \\
-%                   	 &= \mu(  h \ ;  e_1,  e_0  ) \mu \left(  \mu\left(e_2; k^{-1}, e_1\right) ;  e_1,  e_0   \right) \\
-%                   	 &= \mu(  h \ ;  e_1,  e_0  ) \mu \left(  e_2 \ ;  \mu\left(k^{-1}; e_1\right),  \mu(e_1;  e_0)  \right) \\
-%                   	 &= \mu(  h \ ;  e_1,  e_0  ) \mu\left(  e_2 \ ;  k^{-1}, e_0  \right) \\
-%                   	 &= k k^{-1} \\
-%                   	 &= e_1.
+%     \mu(g; e_1, e_0) & = \mu \left(  h \mu\left(e_2; k^{-1}, e_1\right) \ ;  e_1,  e_0  \right) \\
+%                      &= \mu(  h \ ;  e_1,  e_0  ) \mu \left(  \mu\left(e_2; k^{-1}, e_1\right) ;  e_1,  e_0   \right) \\
+%                      &= \mu(  h \ ;  e_1,  e_0  ) \mu \left(  e_2 \ ;  \mu\left(k^{-1}; e_1\right),  \mu(e_1;  e_0)  \right) \\
+%                      &= \mu(  h \ ;  e_1,  e_0  ) \mu\left(  e_2 \ ;  k^{-1}, e_0  \right) \\
+%                      &= k k^{-1} \\
+%                      &= e_1.
 %   \end{align*}
 % Therefore, $h \mu\left(e_2; k^{-1}, e_1\right)$ the required element $g$, and so working backwards through the proof we obtain the result. Since
 %   \[
@@ -564,9 +564,9 @@ The $2$-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=o
 % \begin{proof}
 % An element of $\Lambda^{\oplus} \times_{\mathbb{N}} F( \, \{z_1, \ldots, z_n\} \, )$ is an element $g \in \Lambda(m)$ for some $m$, together with an $m$-tuple of objects $(x_1, \ldots, x_m)$ from the set of generators $\{z_1, \ldots, z_n\}$. Thus the action on $\ELn$ defines a function 
 % % \[ \begin{array}{rlrll}
-% % 			\alpha & \colon & \Lambda \times_{\mathbb{N}} F\left( \, \{z_1, \ldots, z_n\} \, \right) & \rightarrow & \mathrm{Mor}(\ELn) \\
-% % 			& \colon & (g;x_1, \ldots, x_m) & \mapsto & \alpha(g; \id_{x_1}, \ldots, \id_{x_m})
-% % 		\end{array}
+% %       \alpha & \colon & \Lambda \times_{\mathbb{N}} F\left( \, \{z_1, \ldots, z_n\} \, \right) & \rightarrow & \mathrm{Mor}(\ELn) \\
+% %       & \colon & (g;x_1, \ldots, x_m) & \mapsto & \alpha(g; \id_{x_1}, \ldots, \id_{x_m})
+% %     \end{array}
 % % \]
 % \begin{align*}
 %     \alpha \colon \Lambda^{\oplus} \times_{\mathbb{N}} F\left( \, \{z_1, \ldots, z_n\} \, \right) &\rightarrow \mathrm{Mor}(\ELn) \\
@@ -574,8 +574,8 @@ The $2$-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=o
 % \end{align*}
 % But by \cref{hom-set-lemma}, each element of $\mathrm{Mor}(\ELn)$ can be expressed in the form $\alpha(g; \id_{x_1}, \ldots, \id_{x_m})$ for a unique collection $(g;x_1, \ldots, x_m)$, and so this function $\alpha$ is actually a bijection of sets. Furthermore, this function preserves tensor product, since
 %   \begin{align*}
-%   		\alpha\left((g;f_1, \ldots, f_m) \otimes (g';f'_1, \ldots, f'_m)\right) &= \alpha\left(g \otimes g';f_1, \ldots, f_m, f'_1, \ldots, f'_m \, \right) \\
-%   		&= \alpha\left(g ; f_1, \ldots, f_m \right) \otimes \alpha\left(g' ; f'_1, \ldots, f'_m \right)
+%       \alpha\left((g;f_1, \ldots, f_m) \otimes (g';f'_1, \ldots, f'_m)\right) &= \alpha\left(g \otimes g';f_1, \ldots, f_m, f'_1, \ldots, f'_m \, \right) \\
+%       &= \alpha\left(g ; f_1, \ldots, f_m \right) \otimes \alpha\left(g' ; f'_1, \ldots, f'_m \right)
 %   \end{align*}
 % and hence it is a monoid isomorphism, as required.
 % \end{proof}
@@ -1248,7 +1248,7 @@ The pseudo-commutativities given above are not necessarily the only ones that ex
 \end{rem}
 
 \subsection{Profunctors and multicategories}
-In this section we generalize from operads to multicategories (or colored operads). The notions of plain and symmetric multicategories are standard \cite{bd_hda3}, but in fact there is a corresponding notion of $\mb{\Lambda}$-multicategory for any action operad $\mb{\Lambda}$. We will give the basic definition and then show that it arises abstractly from a lifting of $E\Lambda$ as a $2$-monad  on $\mb{Cat}$ to a pseudomonad on $\mb{Prof}$, the bicategory of categories, profunctors, and transformations. A quick treatment of similar material but restricted to the symmetric case can be found in \cite{garner_poly}.
+In this section we generalize from operads to multicategories (or colored operads). The notions of plain and symmetric multicategories are standard \cite{bd_hda3}, but in fact there is a corresponding notion of $\mb{\Lambda}$-multicategory for any action operad $\mb{\Lambda}$. We will give the basic definition and then show that it arises abstractly from a lifting of $\underline{E\Lambda}$ as a $2$-monad  on $\mb{Cat}$ to a pseudomonad on $\mb{Prof}$, the bicategory of categories, profunctors, and transformations. A quick treatment of similar material but restricted to the symmetric case can be found in \cite{garner_poly}.
 
 \begin{Defi}\label{lambda_multicat}
 Let $\mb{\Lambda}$ be an action operad. A \emph{$\mb{\Lambda}$-multicategory} $M$ consists of the following data:
@@ -1328,12 +1328,12 @@ and hence is only unital and associative up to coherent isomorphism. There exist
 
 
 \begin{thm}
-The $2$-monad $E\Lambda$ on the $2$-category $\mb{Cat}$ lifts to a pseudomonad $\widetilde{E\Lambda}$ on the bicategory $\mb{Prof}$.
+The $2$-monad $\underline{E\Lambda}$ on the $2$-category $\mb{Cat}$ lifts to a pseudomonad $\widetilde{\underline{E\Lambda}}$ on the bicategory $\mb{Prof}$.
 \end{thm}
 \begin{proof}
-On objects, we have $\widetilde{E\Lambda}(X) = E\Lambda(X)$. Let $F \colon  X \srarrow Y$ be a profunctor given by the functor $F \colon Y^{\textrm{op}} \times X \rightarrow \mb{Sets}$. We define $\widetilde{E\Lambda}F$ to be the functor
+On objects, we have $\widetilde{\underline{E\Lambda}}(X) = \underline{E\Lambda}(X)$. Let $F \colon  X \srarrow Y$ be a profunctor given by the functor $F \colon Y^{\textrm{op}} \times X \rightarrow \mb{Sets}$. We define $\widetilde{\underline{E\Lambda}}F$ to be the functor
   \[
-    ( E\Lambda(Y) )^{\textrm{op}} \times E\Lambda(X) \rightarrow \mb{Sets}
+    ( \underline{E\Lambda}(Y) )^{\textrm{op}} \times \underline{E\Lambda}(X) \rightarrow \mb{Sets}
   \]
 which is defined by the formulas
   \[
@@ -1346,16 +1346,16 @@ which is defined by the formulas
   \]
 For a functor $G \colon X \rightarrow Y$, it is easy to check that
   \[
-    \widetilde{E\Lambda}\left(G^{+}\right) = \left( E\Lambda G \right)^{+}
+    \widetilde{\underline{E\Lambda}}\left(G^{+}\right) = \left( \underline{E\Lambda} G \right)^{+}
   \]
-using \cref{hom-set-lemma}. The same formulas define the action of  $\widetilde{E\Lambda}$ on $2$-cells as well. The multiplication and unit of $\widetilde{E\Lambda}$ are just $\mu^{+}$ and $\eta^{+}$, where $\mu, \eta$ are the multiplication and unit, respectively, of $E\Lambda$. The remainder of the pseudomonad data comes from the pseudofunctoriality of $(-)^{+}$, and the axioms follow from the $2$-monad axioms for $E\Lambda$ and the pseudofunctor axioms for $(-)^{+}$.
+using \cref{hom-set-lemma}. The same formulas define the action of  $\widetilde{\underline{E\Lambda}}$ on $2$-cells as well. The multiplication and unit of $\widetilde{\underline{E\Lambda}}$ are just $\mu^{+}$ and $\eta^{+}$, where $\mu, \eta$ are the multiplication and unit, respectively, of $\underline{E\Lambda}$. The remainder of the pseudomonad data comes from the pseudofunctoriality of $(-)^{+}$, and the axioms follow from the $2$-monad axioms for $\underline{E\Lambda}$ and the pseudofunctor axioms for $(-)^{+}$.
 \end{proof}
 
 \begin{rem}
-Since $\mb{Prof}$ is essentially the Kleisli bicategory for the free cocompletion pseudomonad, this lift corresponds to a pseudo-distributive law between $E\Lambda$ and the free cocompletion pseudomonad, but we do not pursue this perspective here.
+Since $\mb{Prof}$ is essentially the Kleisli bicategory for the free cocompletion pseudomonad, this lift corresponds to a pseudo-distributive law between $\underline{E\Lambda}$ and the free cocompletion pseudomonad, but we do not pursue this perspective here.
 \end{rem}
 
-Given a bicategory $B$ and a pseudomonad $T$ on $B$, we can form the Kleisli bicategory of $T$, $\mb{Kl}_{T}$. It has the same objects as $B$, but a $1$-cell from $a$ to $b$ in  $\mb{Kl}_{T}$ is a $1$-cell $f \colon a \rightarrow Tb$ in $B$. In the case $B = \mb{Prof}, T = \widetilde{E\Lambda}$, the objects of $\mb{Kl}_{T}$ are categories, the $1$-cells $X \srarrow Y$ are profunctors from $X$ to $E\Lambda Y$, or alternatively a functor $(E\Lambda Y)^{op} \times X \rightarrow \mb{Sets}$, and the $2$-cells are natural transformation between such.
+Given a bicategory $B$ and a pseudomonad $T$ on $B$, we can form the Kleisli bicategory of $T$, $\mb{Kl}_{T}$. It has the same objects as $B$, but a $1$-cell from $a$ to $b$ in  $\mb{Kl}_{T}$ is a $1$-cell $f \colon a \rightarrow Tb$ in $B$. In the case $B = \mb{Prof}, T = \widetilde{\underline{E\Lambda}}$, the objects of $\mb{Kl}_{T}$ are categories, the $1$-cells $X \srarrow Y$ are profunctors from $X$ to $\underline{E\Lambda}(Y$), or alternatively a functor $(\underline{E\Lambda}(Y))^{op} \times X \rightarrow \mb{Sets}$, and the $2$-cells are natural transformation between such.
 
 We now recall some standard definitions \cite{ben-bicats}.
 
@@ -1452,24 +1452,24 @@ The category $\mb{\Lambda}\mbox{-}\mb{Multicat}$ of
 \item $\mb{\Lambda}$-multicategories and
 \item $\mb{\Lambda}$-multifunctors
 \end{itemize}
-and the bicategory $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{E\Lambda}})$ of
+and the bicategory $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ of
 \begin{itemize}
-\item monads on sets (viewed as discrete categories) in $\mb{Kl}_{\widetilde{E\Lambda}}$,
+\item monads on sets (viewed as discrete categories) in $\mb{Kl}_{\widetilde{\underline{E\Lambda}}}$,
 \item oplax monad maps $(F, \alpha)$ between them which are isomorphic to one of the form $(f^{+}, \alpha)$ for $f \colon S \rightarrow T$ for some function of the underlying sets, and
 \item transformations of monad maps
 \end{itemize}
 are biequivalent.
 
-Under this biequivalence, the category of $\mb{\Lambda}$-operads is equivalent to the bicategory of monads on the terminal set in $\mb{Kl}_{\widetilde{E\Lambda}}$.
+Under this biequivalence, the category of $\mb{\Lambda}$-operads is equivalent to the bicategory of monads on the terminal set in $\mb{Kl}_{\widetilde{\underline{E\Lambda}}}$.
 \end{thm}
 \begin{proof}
-First, we note that $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{E\Lambda}})$ is a locally essentially discrete bicategory, by which we mean the hom-categories are all equivalent to discrete categories. We will show there is a unique isomorphism or no $2$-cell at all between oplax monad maps of the form $(f^{+}, \alpha)$, from which the claim follows in general. A $2$-cell between such has as its data a natural transformation $\gamma \colon f^{+} \Rightarrow g^{+}$ which has components
+First, we note that $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ is a locally essentially discrete bicategory, by which we mean the hom-categories are all equivalent to discrete categories. We will show there is a unique isomorphism or no $2$-cell at all between oplax monad maps of the form $(f^{+}, \alpha)$, from which the claim follows in general. A $2$-cell between such has as its data a natural transformation $\gamma \colon f^{+} \Rightarrow g^{+}$ which has components
   \[
     \gamma_{[e; t_1, \ldots, t_n], s} \colon f^{+}([e; t_1, \ldots, t_n], s) \rightarrow g^{+}([e; t_1, \ldots, t_n], s).
   \]
-Both of these sets are empty unless $n=1$, and then the source is nonempty when $f(s) = t$ and the target is nonempty when $g(s)=t$; when nonempty, both of these sets are singletons. If both are nonempty for some $s$, then the functions $f,g$ agree on $s$. Assume the target is nonempty for some $([e;t], s)$ but that the source is empty, in other words that $g(s)=t$ but $f(s) \neq t$. Then consider $\gamma_{[e;f(s)], s}$. Its source is $f^{+}([e;f(s)], s)$ which is nonempty by construction, but its target is $g^{+}([e;f(s)], s)$. We know that $g(s) = t \neq f(s)$, so $g^{+}([e;f(s)], s)$ must be empty, giving a map from a nonempty set to an empty one, a contradiction. Thus there is a at most one $2$-cell from an oplax monad map $(f^{+}, \alpha)$ to another $(g^{+}, \beta)$, such a map can only exist if $f = g$, and if it does exist then it is invertible. Thus the hom-categories of $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{E\Lambda}})$ are essentially discrete, and this bicategory is equivalent to a category.
+Both of these sets are empty unless $n=1$, and then the source is nonempty when $f(s) = t$ and the target is nonempty when $g(s)=t$; when nonempty, both of these sets are singletons. If both are nonempty for some $s$, then the functions $f,g$ agree on $s$. Assume the target is nonempty for some $([e;t], s)$ but that the source is empty, in other words that $g(s)=t$ but $f(s) \neq t$. Then consider $\gamma_{[e;f(s)], s}$. Its source is $f^{+}([e;f(s)], s)$ which is nonempty by construction, but its target is $g^{+}([e;f(s)], s)$. We know that $g(s) = t \neq f(s)$, so $g^{+}([e;f(s)], s)$ must be empty, giving a map from a nonempty set to an empty one, a contradiction. Thus there is a at most one $2$-cell from an oplax monad map $(f^{+}, \alpha)$ to another $(g^{+}, \beta)$, such a map can only exist if $f = g$, and if it does exist then it is invertible. Thus the hom-categories of $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ are essentially discrete, and this bicategory is equivalent to a category.
 
-We begin by describing an object of $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{E\Lambda}})$ which is a monad in $\mb{Kl}_{\widetilde{E\Lambda}}$ whose underlying category is a set $S$. A $1$-cell $M \colon S \srarrow S$ is then a functor $(E\Lambda S)^{op} \times S \rightarrow \mb{Sets}$ which amounts to sets $M(s_1, \ldots, s_n; s)$ for $s_1, \ldots, s_n, s \in S$ together with a right action of $\Lambda(n)$ as in \ref{lambda_multicat}. A $2$-cell $1_{S} \Rightarrow M$ consists of a $\Lambda(1)$-equivariant function $\Lambda(1) \rightarrow M(s;s)$ for each $s \in S$, in other words an element $\id_{s} \in M(s;s)$. A $2$-cell $M \circ M \Rightarrow M$ then consists of a multicategorical composition function, as in \ref{lambda_multicat}, with appropriate equivariance built in by the coend used for composition of profunctors. Associativity and unit conditions are then seen to be the same as for $\mb{\Lambda}$-multicategories.
+We begin by describing an object of $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ which is a monad in $\mb{Kl}_{\widetilde{\underline{E\Lambda}}}$ whose underlying category is a set $S$. A $1$-cell $M \colon S \srarrow S$ is then a functor $(\underline{E\Lambda}(S)^{op} \times S \rightarrow \mb{Sets}$ which amounts to sets $M(s_1, \ldots, s_n; s)$ for $s_1, \ldots, s_n, s \in S$ together with a right action of $\Lambda(n)$ as in \ref{lambda_multicat}. A $2$-cell $1_{S} \Rightarrow M$ consists of a $\Lambda(1)$-equivariant function $\Lambda(1) \rightarrow M(s;s)$ for each $s \in S$, in other words an element $\id_{s} \in M(s;s)$. A $2$-cell $M \circ M \Rightarrow M$ then consists of a multicategorical composition function, as in \ref{lambda_multicat}, with appropriate equivariance built in by the coend used for composition of profunctors. Associativity and unit conditions are then seen to be the same as for $\mb{\Lambda}$-multicategories.
 
 By definition, an oplax monad map $(f^{+}, \alpha) \colon  (S,M) \rightarrow (S', M')$ consists of a function $f \colon S \rightarrow S'$ and a transformation $\alpha \colon M \circ f^{+} \Rightarrow f^{+} \circ M'$ satisfying two axioms. The transformation $\alpha$ amounts to giving $\Lambda(n)$-equivariant functions
   \[
@@ -1477,7 +1477,7 @@ By definition, an oplax monad map $(f^{+}, \alpha) \colon  (S,M) \rightarrow (S'
   \]
 and the two axioms correspond to the unit and composition axioms for a $\mb{\Lambda}$-multifunctor.
 
-These descriptions give the action on objects and morphisms of a pseudofunctor $\mb{\Lambda}\mbox{-}\mb{Multicat} \rightarrow \mb{Mnd}_{d}(\mb{Kl}_{\widetilde{E\Lambda}})$ with local contractibility providing the pseudofunctoriality constraints as well as showing that the axioms for a pseudofunctor hold. It is also clear that this pseudofunctor is biessentially surjective and locally essentially surjective, so it is a biequivalence once again using local contractibility.
+These descriptions give the action on objects and morphisms of a pseudofunctor $\mb{\Lambda}\mbox{-}\mb{Multicat} \rightarrow \mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ with local contractibility providing the pseudofunctoriality constraints as well as showing that the axioms for a pseudofunctor hold. It is also clear that this pseudofunctor is biessentially surjective and locally essentially surjective, so it is a biequivalence once again using local contractibility.
 
 The final claim is then an immediate consequence of the definitions of $\mb{\Lambda}$-operad and $\mb{\Lambda}$-multicategory.
 \end{proof}

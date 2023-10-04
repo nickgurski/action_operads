@@ -1,11 +1,11 @@
 %!TEX root = ../operads_paper.tex
 \section{Operads in the category of categories}
  % QQQ chapter title okay?
- % 	\begin{itemize}
- % 		\item operads in $\bf{Cat}$
- % 		\item $2$-categorical properties
- % 		\item Borel construction and properties
- % 	\end{itemize}
+ %  \begin{itemize}
+ %      \item operads in $\bf{Cat}$
+ %      \item $2$-categorical properties
+ %      \item Borel construction and properties
+ %  \end{itemize}
 
 % QQQ Maybe rewrite.
 % This section will study those $\ML$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ is in $\mb{Cat}$. The extra structure that this $2$-categorical setting provides allows us to consider notions of pseudoalgebras for an operad, as well as pseudomorphisms of operads. We investigate the properties of the associated $2$-monads and the $2$-categorical properties of operads in $\mathbf{Cat}$, before describing the Borel construction for action operads. We later describe free $\ML$-monoidal categories along with abstract properties of the Borel construction.
@@ -19,17 +19,17 @@ We have seen (\cref{op=monad1}) that given any $\ML$-operad $P$ there is an indu
 
 
 The associated monad $\underline{P}$ acquires the structure of a $2$-functor as follows. We define $\underline{P}$ on categories much like before as  the coproduct
-	\[
-		\underline{P}(X) = \coprod_n P(n) \times_{\Lambda(n)} X^n,
-	\]
+    \[
+        \underline{P}(X) = \coprod_n P(n) \times_{\Lambda(n)} X^n,
+    \]
 whose objects will be written as equivalence classes $[p;x_1,\ldots,x_n]$ where $p \in P(n)$ and each $x_i \in X$, sometimes written as $[p;\underline{x}]$ when there is no confusion. On functors we define $\underline{P}$ in a similar way, exactly as with functions of sets. Given a natural transformation $\alpha \colon f \Rightarrow g$ we define a new natural transformation $\underline{P}(\alpha)$ as follows. The component of $\underline{P}(\alpha)$ at the object
-	\[
-		[p;x_1,\ldots,x_n]
-	\]
+    \[
+        [p;x_1,\ldots,x_n]
+    \]
 is given by the morphism
-	\[
-		[1_p;\alpha_{x_1},\ldots,\alpha_{x_n}]
-	\]
+    \[
+        [1_p;\alpha_{x_1},\ldots,\alpha_{x_n}]
+    \]
 in $\underline{P}(X)$.
 It is a simple observation that this constitutes a $2$-functor, and that the components of the unit and multiplication are functors and are $2$-natural.
 
@@ -173,7 +173,7 @@ satisfying the following axioms.
         (0,-20)*+{P(1) \times_{\Lambda(1)} X}="b";
         (25,-20)*+{X}="c";
         %
-        {\ar_{\eta^P \times_{\Lambda(1)} \id} "a" ; "b"};
+        {\ar_{\eta^P \times_{\Lambda(1)} 1} "a" ; "b"};
         {\ar_<<<<<{\alpha_1} "b" ; "c"};
         {\ar "a" ; "c"};
         %
@@ -187,7 +187,7 @@ satisfying the following axioms.
         (0,-20)*+{P(1) \times X}="b";
         (25,-20)*+{X}="c";
         %
-        {\ar_{\eta^P \times \id} "a" ; "b"};
+        {\ar_{\eta^P \times 1} "a" ; "b"};
         {\ar_<<<<<<{\tilde{\alpha}_1} "b" ; "c"};
         {\ar "a" ; "c"};
         %
@@ -562,7 +562,7 @@ satisfying the following axioms.
 \end{Defi}
 
 \begin{Defi}
-Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$, $(Y,\beta,\Psi,\Psi_\eta)$ be $T$-pseudoalgebras. A \textit{strict morphism} $(f, \bar{f})$ consists of a pseudomorphism in which $\bar{f}$ is an identity.
+Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$ and $(Y,\beta,\Psi,\Psi_\eta)$ be $T$-pseudoalgebras. A \textit{strict morphism} $(f, \bar{f})$ consists of a pseudomorphism in which $\bar{f}$ is an identity.
 \end{Defi}
 
 \begin{rem}
@@ -643,10 +643,10 @@ A proof of the first statement follows from our proof of the second by inserting
     \]
 The isomorphisms $\phi_{k_1,\ldots,k_n}$ are defined using $\Phi$ as in the following diagram
 
-	\[
-		\xy
-			(-10,0)*+{\scriptstyle P_n \times \prod_{i=1}^n\left(P_{k_i} \times X^{k_i}\right)}="00";
-           	(30,0)*+{\scriptstyle P_n \times \prod_i \left( P_{k_i} \times_{\Lambda_{k_i}} X^{k_i} \right)}="10";
+    \[
+        \xy
+            (-10,0)*+{\scriptstyle P_n \times \prod_{i=1}^n\left(P_{k_i} \times X^{k_i}\right)}="00";
+            (30,0)*+{\scriptstyle P_n \times \prod_i \left( P_{k_i} \times_{\Lambda_{k_i}} X^{k_i} \right)}="10";
             (60,0)*+{\scriptstyle P_n \times \underline{P}(X)^n}="20";
             (90,0)*+{\scriptstyle P_n \times X^n}="30";
             (-10,-20)*+{\scriptstyle P_n \times \prod_{i} P_{k_i} \times X^{\Sigma k_I}}="01";
@@ -901,32 +901,32 @@ Let $P$ be a symmetric operad. Then the unit $\eta \colon \id \Rightarrow \under
 \end{prop}
 \begin{proof}
 In order to show that $\eta$ is cartesian, we must prove that for a functor $f \colon X \rightarrow Y$, the pullback of the following diagram is the category $X$.
-	\[
-		\xy
-			(40,0)*+{Y}="10";
-			(0,-15)*+{\coprod P(n) \times_{\Sigma_n} X^n}="01";
-			(40,-15)*+{\coprod P(n) \times_{\Sigma_n} Y^n}="11";
-			{\ar^{\eta_Y} "10" ; "11"};
-			{\ar_{\underline{P}(f)} "01" ; "11"};
-		\endxy
-	\]
+    \[
+        \xy
+            (40,0)*+{Y}="10";
+            (0,-15)*+{\coprod P(n) \times_{\Sigma_n} X^n}="01";
+            (40,-15)*+{\coprod P(n) \times_{\Sigma_n} Y^n}="11";
+            {\ar^{\eta_Y} "10" ; "11"};
+            {\ar_{\underline{P}(f)} "01" ; "11"};
+        \endxy
+    \]
 The pullback of this diagram is isomorphic to the coproduct of the pullbacks of diagrams of the following form.
 \[
-		\xy
-			(30,0)*+{Y}="10";
-			(0,-15)*+{P(1) \times X}="01";
-			(30,-15)*+{P(1) \times Y}="11";
-			{\ar^{} "10" ; "11"};
-			{\ar_{1 \times f} "01" ; "11"};
-			% (45,-7.5)*{};
-			(90,0)*+{\emptyset}="60";
-			(60,-15)*+{P(n) \times_{\Sigma_{n}} X^n}="51";
-			(90,-15)*+{P(n) \times_{\Sigma_{n}} Y^n}="61";
-			{\ar^{} "60" ; "61"};
-			{\ar_{1 \times f^n} "51" ; "61"};
-			(75,-21)*{n \neq 1}
-		\endxy
-	\]
+        \xy
+            (30,0)*+{Y}="10";
+            (0,-15)*+{P(1) \times X}="01";
+            (30,-15)*+{P(1) \times Y}="11";
+            {\ar^{} "10" ; "11"};
+            {\ar_{1 \times f} "01" ; "11"};
+            % (45,-7.5)*{};
+            (90,0)*+{\emptyset}="60";
+            (60,-15)*+{P(n) \times_{\Sigma_{n}} X^n}="51";
+            (90,-15)*+{P(n) \times_{\Sigma_{n}} Y^n}="61";
+            {\ar^{} "60" ; "61"};
+            {\ar_{1 \times f^n} "51" ; "61"};
+            (75,-21)*{n \neq 1}
+        \endxy
+    \]
 It is easy then to see that $X$ is the pullback of the $n=1$ cospan, and that the empty category is the pullback of each of the other cospans, making $X$ the pullback of the original diagram and verifying that $\eta$ is cartesian.
 \end{proof}
 
@@ -1355,11 +1355,11 @@ Combining \cref{preserveGop} and \cref{gisgop} with \cref{symmoncor}, we immedia
 Let $\mb{\Lambda}$ be an action operad. Then $E\Lambda = \{ E\left(\Lambda(n)\right) \}$ (see \cref{nota:e_b}) is a $\mb{\Lambda}$-operad in $\mb{Cat}$.
 \end{cor}
 
-Any $\mb{\Lambda}$-operad $P$ in $\mb{Cat}$ gives rise to a $2$-monad on $\mb{Cat}$ which we will often also denote by $P$ or, as in \cref{section:operads_in_Cat}, by $\underline{P}$. In the context of \cref{cor:elambda_lambdaop}, that $2$-monad (also denoted $E\Lambda$) is given by
+Any $\mb{\Lambda}$-operad $P$ in $\mb{Cat}$ gives rise to a $2$-monad on $\mb{Cat}$ which we will often also denote by $P$ or, as in \cref{section:operads_in_Cat}, by $\underline{P}$. In the context of \cref{cor:elambda_lambdaop}, that $2$-monad $\underline{E\Lambda}$ is given by
   \[
     X \mapsto \coprod_{n \geq 0} E\Lambda(n) \times_{\Lambda(n)} X^{n}
   \]
-where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $E\Sigma$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
+where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $\underline{E\Sigma}$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
 
 \begin{Defi}\label{lmc}
 A \emph{$\ML$-monoidal category} is a strict algebra for the $2$-monad $\EL$. A \emph{$\ML$-monoidal functor} is a strict morphism for this $2$-monad $\EL$. The $2$-category $\lmc$ is the $2$-category $\EL\mbox{-}\mb{Alg}_{s}$ of strict algebras, strict morphisms, and algebra $2$-cells for $\EL$.
@@ -1368,7 +1368,7 @@ A \emph{$\ML$-monoidal category} is a strict algebra for the $2$-monad $\EL$. A 
 % QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
 % QQQ We came to the conclusion just to cite Yau's results in Chapter 19. `A strict $G$-monoidal category is..., etc.'
 
-Strict $\ML$-monoidal categories, in the sense of being strict algebras for the monad $E\Lambda$, can be characterised in more familiar terms by specifying a monoidal structure with appropriate equivariant interaction with the $\Lambda(n)$-actions. Explicit proofs of such can be found in Chapter 19 of \cite{yau_infinity_2021}, along with similar characterisations for strict $\ML$-monoidal functors and $\ML$-monoidal categories whose underlying monoidal structure is weak.
+Strict $\ML$-monoidal categories, in the sense of being strict algebras for the monad $\underline{E\Lambda}$, can be characterised in more familiar terms by specifying a monoidal structure with appropriate equivariant interaction with the $\Lambda(n)$-actions. Explicit proofs of such can be found in Chapter 19 of \cite{yau_infinity_2021}, along with similar characterisations for strict $\ML$-monoidal functors and $\ML$-monoidal categories whose underlying monoidal structure is weak.
 
 % \begin{prop}\label{el_via_moncats}
 % A strict $\ML$-monoidal category structure on $X$ determines and is determined by
@@ -1551,7 +1551,7 @@ the \emph{action} of $g$ on $x_1 \otimes \cdots \otimes x_n$.
 It is obvious that $g^{\otimes} \otimes h^{\otimes} = \mu(e_2; g, h)^{\otimes}$. The latter can also be written $\beta(g, h)^{\otimes}$ (using \cref{thm:charAOp}) or $(g \oplus h)^{\otimes}$  (using \cref{beta_to_oplus}).
 \end{rem}
 
-The $2$-monad $E\Lambda$ is both finitary and cartesian (see \cref{sec:propofopsincat}). In fact we can characterize this operad uniquely (up to equivalence) using a standard argument.
+The $2$-monad $\underline{E\Lambda}$ is both finitary and cartesian (see \cref{sec:propofopsincat}). In fact we can characterize this operad uniquely (up to equivalence) using a standard argument.
 
 \begin{Defi}
 Let $\mb{\Lambda}$ be an action operad. A \textit{$\mb{\Lambda}_{\infty}$ operad} $P$ is a $\mb{\Lambda}$-operad in which each action $P(n) \times \Lambda(n) \rightarrow P(n)$ is free and each $P(n)$ is contractible.
@@ -1613,14 +1613,14 @@ Let $C$ be a category with finite limits.
 Everything in the above definition can be $\mb{Cat}$-enriched without any substantial modifications. Thus we require our ground $2$-category to have finite limits in the enriched sense, and the slice and pullbacks are the $2$-categorical (and not bicategorical) versions. If we take this $2$-category to be $\mb{Cat}$, then in each case the underlying category of the $2$-categorical construction is given by the corresponding $1$-categorical version. From this point, we will not distinguish between the $1$-dimensional and $2$-dimensional theory. Our interest, of course, is in the $2$-dimensional version.
 \end{rem}
 
-Let $\Sigma$ be the operad of symmetric groups. This is the terminal object of the category of action operads, with each $\pi_{n}$ the identity map. Then $E\Sigma$ is a $2$-monad on $\mb{Cat}$, and by results in \cref{sec:propofopsincat} it is cartesian.
+Let $\Sigma$ be the operad of symmetric groups. This is the terminal object of the category of action operads, with each $\pi_{n}$ the identity map. Then $\underline{E\Sigma}$ is a $2$-monad on $\mb{Cat}$, and by results in \cref{sec:propofopsincat} it is cartesian.
 
 \begin{Defi}
-A \textit{club} is a $T$-operad in $\mb{Cat}$ for $T = E\Sigma$.
+A \textit{club} is a $T$-operad in $\mb{Cat}$ for $T = \underline{E\Sigma}$.
 \end{Defi}
 
 \begin{rem}
-The category $\mb{P}$ in Kelly's terminology is the result of applying $E\Sigma$ to $1$, and can be identified with $B\Sigma = \coprod B\Sigma_{n}$.
+The category $\mb{P}$ in Kelly's terminology is the result of applying $\underline{E\Sigma}$ to $1$, and can be identified with $B\Sigma = \coprod B\Sigma_{n}$.
 \end{rem}
 
 It is useful to break down the definition of a club. A club consists of
@@ -1648,11 +1648,11 @@ Let $\mb{\Lambda}$ be an action operad. Then the map of operads $\pi \colon \Lam
 \begin{proof}
 To give the functor $B\pi \colon B\Lambda \rightarrow B \Sigma$ the structure of a club it suffices (see \cite{leinster}) to show that
 \begin{itemize}
-\item the induced monad, which we will show to be $E\Lambda$, is a cartesian monad on $\mb{Cat}$,
-\item the transformation $\tilde{\pi} \colon E\Lambda \Rightarrow E\Sigma$ induced by the functor $E\pi$ is cartesian, and
+\item the induced monad, which we will show to be $\underline{E\Lambda}$, is a cartesian monad on $\mb{Cat}$,
+\item the transformation $\tilde{\pi} \colon \underline{E\Lambda} \Rightarrow \underline{E\Sigma}$ induced by the functor $E\pi$ is cartesian, and
 \item $\tilde{\pi}$ commutes with the monad structures.
 \end{itemize}
-The monad $E\Lambda$ is always cartesian by results of \cref{sec:propofopsincat}. The transformation $\tilde{\pi}$ is the coproduct of the maps $\tilde{\pi}_{n}$ which are induced by the universal property of the coequalizer as shown below.
+The monad $\underline{E\Lambda}$ is always cartesian by results of \cref{sec:propofopsincat}. The transformation $\tilde{\pi}$ is the coproduct of the maps $\tilde{\pi}_{n}$ which are induced by the universal property of the coequalizer as shown below.
   \[
     \xy
       (0,0)*+{\scriptstyle E\Lambda(n) \times \Lambda(n) \times X^n} ="00";
@@ -1674,7 +1674,7 @@ The monad $E\Lambda$ is always cartesian by results of \cref{sec:propofopsincat}
   \]
 Naturality is immediate, and since $\pi$ is a map of operads $\tilde{\pi}$ also commutes with the monad structures.
 
-It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $E\Lambda$. Since the monads $E\Lambda$ and $E\Sigma$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
+It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $\underline{E\Lambda}$. Since the monads $\underline{E\Lambda}$ and $\underline{E\Sigma}$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
   \[
     \xy
       (0,0)*+{E\Lambda(n) \times_{\Lambda(n)} X^n} ="00";
@@ -1740,7 +1740,11 @@ where here $e_{i}$ is the identity morphism of $k_{i}$ in $K$.
 
 There are now nine axioms to verify in \cref{thm:charAOp}. The club multiplication functor is a map of collections, so a map over $B\Sigma$; this fact immediately implies that axioms \eqref{eq1} (using morphisms in $K \circ K$ with only $g_{i}$ parts) and \eqref{eq4} (using morphisms in $K \circ K$ with only $f$ parts) hold. The mere fact that multiplication is a functor also implies axioms \eqref{eq6} (once again using morphisms with only $f$ parts) and \eqref{eq8} (by considering the composite of a morphism with only an $f$ with a morphism with only $g_{i}$'s). Axiom \eqref{eq2} is the equation $e_{1}(g) = g$ which is a direct consequence of the unit axiom for the club $K$; the same is true of axiom \eqref{eq5}. Axioms \eqref{eq3}, \eqref{eq7},  and \eqref{eq9} all follow from the associativity of the club multiplication.
 
-Finally, we would like to show that this gives a full and faithful embedding $K_{-} \colon \mb{AOp} \rightarrow \mb{Club}$ of the category of action operads into the category of clubs. Let $f, f' \colon \mb{\Lambda} \rightarrow \mb{\Lambda'}$ be maps between action operads. Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$. But these functors are nothing more than the coproducts of the functors
+Finally, we would like to show that this gives a full and faithful embedding
+    \[
+        K_{-} \colon \mb{AOp} \rightarrow \mb{Club}
+    \]
+of the category of action operads into the category of clubs. Let $f, f' \colon \mb{\Lambda} \rightarrow \mb{\Lambda'}$ be maps between action operads. Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$. But these functors are nothing more than the coproducts of the functors
   \[
     B(f_{n}), B(f_{n}') \colon B\Lambda(n) \rightarrow B\Lambda'(n),
   \]
