@@ -8,13 +8,13 @@
  %  \end{itemize}
 
 % QQQ Maybe rewrite.
-% This section will study those $\Lambda$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ is in $\mb{Cat}$. The extra structure that this $2$-categorical setting provides allows us to consider notions of pseudoalgebras for an operad, as well as pseudomorphisms of operads. We investigate the properties of the associated $2$-monads and the $2$-categorical properties of operads in $\mathbf{Cat}$, before describing the Borel construction for action operads. We later describe free $\Lambda$-monoidal categories along with abstract properties of the Borel construction.
+% This section will study those $\ML$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ is in $\mb{Cat}$. The extra structure that this $2$-categorical setting provides allows us to consider notions of pseudoalgebras for an operad, as well as pseudomorphisms of operads. We investigate the properties of the associated $2$-monads and the $2$-categorical properties of operads in $\mathbf{Cat}$, before describing the Borel construction for action operads. We later describe free $\ML$-monoidal categories along with abstract properties of the Borel construction.
 
-In this section we will study those $\Lambda$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ will be in $\mb{Cat}$. The extra structure of this $2$-categorical setting allows us to define pseudoalgebras and pseudomorphisms of operads, weakening the usual definitions of algebras and morphisms, respectively. Similarly, rather that associating a monad with an operad, we will consider associated $2$-monads, with their corresponding notions of pseudoalgebras. After investigating further $2$-categorical aspects of operads in $\mathbf{Cat}$, we describe the Borel construction for action operad, abstract properties of this construction, and free $\Lambda$-monoidal categories.
+In this section we will study those $\ML$-operads for which each $P(n)$ is a category, and from here onwards any operad denoted $P$ will be in $\mb{Cat}$. The extra structure of this $2$-categorical setting allows us to define pseudoalgebras and pseudomorphisms of operads, weakening the usual definitions of algebras and morphisms, respectively. Similarly, rather that associating a monad with an operad, we will consider associated $2$-monads, with their corresponding notions of pseudoalgebras. After investigating further $2$-categorical aspects of operads in $\mathbf{Cat}$, we describe the Borel construction for action operad, abstract properties of this construction, and free $\ML$-monoidal categories.
 
 
 \subsection{Operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{section:operads_in_Cat}
-We have seen (\cref{op=monad1}) that given any $\Lambda$-operad $P$ there is an induced monad $\underline{P} \colon \m{C} \rightarrow \m{C}$ and that the category of algebras for the operad $P$ is isomorphic to the category of algebras for the monad $\underline{P}$, following \cite{maygeom}. Now we are considering $\Lambda$-operads in $\mathbf{Cat}$, the induced monad associated to an operad of this sort can be shown to be a $2$-monad (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated $2$-monad correspond precisely, i.e., there is an isomorphism of $2$-categories between the $2$-category with either strict or pseudo-level cells defined operadically and the $2$-category with either strict or pseudo-level cells defined $2$-monadically.
+We have seen (\cref{op=monad1}) that given any $\ML$-operad $P$ there is an induced monad $\underline{P} \colon \m{C} \rightarrow \m{C}$ and that the category of algebras for the operad $P$ is isomorphic to the category of algebras for the monad $\underline{P}$, following \cite{maygeom}. Now we are considering $\ML$-operads in $\mathbf{Cat}$, the induced monad associated to an operad of this sort can be shown to be a $2$-monad (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated $2$-monad correspond precisely, i.e., there is an isomorphism of $2$-categories between the $2$-category with either strict or pseudo-level cells defined operadically and the $2$-category with either strict or pseudo-level cells defined $2$-monadically.
 
 
 
@@ -34,7 +34,7 @@ in $\underline{P}(X)$.
 It is a simple observation that this constitutes a $2$-functor, and that the components of the unit and multiplication are functors and are $2$-natural.
 
 \begin{rem}
-The material in this section can be given a rather more abstract interpretation, in the sense of \cite{KL97}. The idea here is that the category of $\Lambda$-collections acts on the category $\mathbf{Cat}$ via a functor $\diamond \colon \Lambda\text{-}\mathbf{Coll} \times \mathbf{Cat} \rightarrow \mathbf{Cat}$ which sends $(P,X)$ to $\underline{P}(X)$ as described above. Fixing a $\Lambda$-collection $P$ produces an endofunctor $\underline{P} \colon \mathbf{Cat} \rightarrow \mathbf{Cat}$ which is then a monad when $P$ is a $\Lambda$-operad, just as monoids in $\Lambda\text{-}\mathbf{Coll}$ are precisely $\Lambda$-operads.
+The material in this section can be given a rather more abstract interpretation, in the sense of \cite{KL97}. The idea here is that the category of $\ML$-collections acts on the category $\mathbf{Cat}$ via a functor $\diamond \colon \ML\text{-}\mathbf{Coll} \times \mathbf{Cat} \rightarrow \mathbf{Cat}$ which sends $(P,X)$ to $\underline{P}(X)$ as described above. Fixing a $\ML$-collection $P$ produces an endofunctor $\underline{P} \colon \mathbf{Cat} \rightarrow \mathbf{Cat}$ which is then a monad when $P$ is a $\ML$-operad, just as monoids in $\ML\text{-}\mathbf{Coll}$ are precisely $\ML$-operads.
 \end{rem}
 
 
@@ -52,7 +52,7 @@ simply abbreviated as $\mu^P \times 1$. Furthermore, instead of using an element
 We begin with the definitions of the pseudo-level cells in the operadic context, and after each specialize to the strict version.
 
 \begin{Defi}\label{def:ps-alg}
-Let $P$ be a $\Lambda$-operad. A \textit{pseudoalgebra} for $P$ consists of: 
+Let $P$ be a $\ML$-operad. A \textit{pseudoalgebra} for $P$ consists of: 
     \begin{itemize}
         \item a category $X$,
         \item a family of functors
@@ -198,11 +198,11 @@ satisfying the following axioms.
 \end{rem}
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad. A \textit{strict algebra} for $P$ consists of a pseudoalgebra in which all of the isomorphisms $\phi$ are identities.
+Let $P$ be a $\ML$-operad. A \textit{strict algebra} for $P$ consists of a pseudoalgebra in which all of the isomorphisms $\phi$ are identities.
 \end{Defi}
 
 \begin{Defi}\label{def:ps-morph}
-Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\Lambda$-operad $P$. A \textit{pseudomorphism} of $P$-pseudoalgebras consists of: 
+Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\ML$-operad $P$. A \textit{pseudomorphism} of $P$-pseudoalgebras consists of: 
     \begin{itemize}
         \item a functor $f \colon X \rightarrow Y$
         \item for each $n \in \mathbb{N}$, a natural isomorphism $f_n$ (corresponding, via Conventions \ref{conv_coeq}) to a natural isomorphism
@@ -311,11 +311,11 @@ satisfying the following axioms.
 \end{Defi}
 
 \begin{Defi}
-Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\Lambda$-operad $P$. A \textit{strict morphism} of $P$-pseudoalgebras consists of a pseudomorphism in which all of the isomorphisms $\overline{f}_{n}$ are identities.
+Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\ML$-operad $P$. A \textit{strict morphism} of $P$-pseudoalgebras consists of a pseudomorphism in which all of the isomorphisms $\overline{f}_{n}$ are identities.
 \end{Defi}
 
 \begin{rem}
-A strict algebra for a $\Lambda$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an operad in the \textit{category} of small categories and functors. A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense. We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
+A strict algebra for a $\ML$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an operad in the \textit{category} of small categories and functors. A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense. We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
 
 In \cref{def:ps-morph} of a pseudomorphism we did not originally make it clear that the isomorphisms $\overline{f}_n$ should satisfy an equivariance condition. This was highlighted in Remark 2.22 of Rubin's thesis \cite{rubin-thesis}. Similarly, this is also explicity stated as Definition 2.23 of \cite{guillou_symmetric}, as mentioned in \cite{guillou_multiplicative}. That we don't include an explicit equivariance axiom is due to Conventions \ref{conv_coeq}. In \cref{def:ps-morph} we require the existence of natural isomorphisms $f_n$ in order to induce corresponding natural isomorphisms $\overline{f}_n$. That the $\overline{f}_n$ are induced by the $f_n$ corresponds to the fact that the $\overline{f}_n$ satisfy an equivariance condition, namely that for $(\sigma, g, x_1, \ldots, x_n) \in P(n) \times \Lambda(n) \times X^n$, we have
   \[
@@ -324,7 +324,7 @@ In \cref{def:ps-morph} of a pseudomorphism we did not originally make it clear t
 \end{rem}
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) \rightarrow (Y, \beta, \psi, \psi_\eta)$ be pseudomorphisms of $P$-pseudoalgebras. A \textit{$P$-transformation} is then a natural transformation $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds, for all $n$.
+Let $P$ be a $\ML$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) \rightarrow (Y, \beta, \psi, \psi_\eta)$ be pseudomorphisms of $P$-pseudoalgebras. A \textit{$P$-transformation} is then a natural transformation $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds, for all $n$.
     \[
         \xy
             (0,0)*+{P_n \times X^n}="00";
@@ -357,7 +357,7 @@ Let $P$ be a $\Lambda$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) 
 We can form various $2$-categories using these cells.
 
 \begin{Defi}
-Let $P$ be a $\Lambda$-operad.
+Let $P$ be a $\ML$-operad.
 \begin{itemize}
 \item The $2$-category $P\mbox{-}\mb{Alg}_{s}$ consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
 \item The $2$-category $\mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$ consists of $P$-pseudoalgebras, pseudomorphisms, and $P$-transformations.
@@ -612,10 +612,10 @@ Let $T$ be a $2$-monad.
 \end{itemize}
 \end{Defi}
 
-Our main result in this section is the following, showing that one can consider algebras and higher cells, in either strict or pseudo strength, using either the operadic or $2$-monadic incarnation of a $\Lambda$-operad $P$. This extends \cref{op=monad1}.
+Our main result in this section is the following, showing that one can consider algebras and higher cells, in either strict or pseudo strength, using either the operadic or $2$-monadic incarnation of a $\ML$-operad $P$. This extends \cref{op=monad1}.
 
 \begin{thm}
-Let $P$ be a $\Lambda$-operad in $\mb{Cat}$.
+Let $P$ be a $\ML$-operad in $\mb{Cat}$.
 \begin{itemize}
 \item There is an isomorphism of $2$-categories
     \[
@@ -737,9 +737,9 @@ The mapping for $2$-cells is just the identity as before. These mappings again c
 \end{proof}
 
 \begin{rem}
-Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad (\cref{endoalg}). We can similarly define pseudomorphisms for a $\mathbf{Cat}$-enriched $\Lambda$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
+Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad (\cref{endoalg}). We can similarly define pseudomorphisms for a $\mathbf{Cat}$-enriched $\ML$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
 
-If $P$, $Q$ are $\Lambda$-operads then a \textit{pseudomorphism} of $\Lambda$-operads $F \colon P \rightarrow Q$ consists of a family of $\Lambda$-equivariant functors
+If $P$, $Q$ are $\ML$-operads then a \textit{pseudomorphism} of $\ML$-operads $F \colon P \rightarrow Q$ consists of a family of $\ML$-equivariant functors
             \[
                 \left(F_n \colon P(n) \rightarrow Q(n)\right)_{n \in \mathbb{N}}
             \]
@@ -763,7 +763,7 @@ These isomorphisms are then required to satisfy their own axioms, and these ensu
 
 \subsection{$2$-categorical properties of operads in \texorpdfstring{$\mb{Cat}$}{\textbf{Cat}}}\label{sec:propofopsincat}
 
-This section will be concerned with characterizing various properties of those $2$-monads induced by $\Lambda$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary. Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\Lambda$-operad $P$). Both of these results are simple extensions of well-known results about operads. Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
+This section will be concerned with characterizing various properties of those $2$-monads induced by $\ML$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary. Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\ML$-operad $P$). Both of these results are simple extensions of well-known results about operads. Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
 
  For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these $2$-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary. In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables. If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}. There are additional results of a purely $2$-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
     \[
@@ -773,7 +773,7 @@ to the forgetful $2$-functor which regards a strict algebra as a pseudoalgebra w
 
 We begin by showing each associated $2$-monad is finitary.
 \begin{prop}
-Let $P$ be a $\Lambda$-operad. Then $\underline{P}$ is finitary.
+Let $P$ be a $\ML$-operad. Then $\underline{P}$ is finitary.
 \end{prop}
 \begin{proof}
 To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
@@ -842,7 +842,7 @@ there exists a unique pair $(m,\beta)$ where $m \colon B \rightarrow C$ is a $1$
 Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which follows simply from the fact that the set of objects functor, $\ob \colon \mb{Cat} \rightarrow \mb{Set}$, preserves colimits, being left adjoint to the indiscrete category functor, $E \colon \mb{Set} \rightarrow \mb{Cat}$, as described in \cref{symmoncor}.
 
 \begin{prop}
-For any $\Lambda$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
+For any $\ML$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
 \end{prop}
 \begin{cor}
 Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra.
@@ -850,7 +850,7 @@ Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-a
 
 
 
-We finally turn to a discussion of the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and so it is useful to be able to characterize exactly when they are. An example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian, as we now describe.
+We finally turn to a discussion of the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and so it is useful to be able to characterize exactly when they are. An example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\ML$-operad is $2$-cartesian, as we now describe.
 
 \begin{Defi}
 A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit{$2$-cartesian} if
@@ -1133,7 +1133,7 @@ Collecting these results together gives the following corollary.
 The $2$-monad associated to a symmetric operad $P$ is $2$-cartesian if and only if the action of $\Sigma_n$ is free on each $P(n)$.
 \end{cor}
 
-We require one simple technical lemma before giving a complete characterization of $\Lambda$-operads which induce cartesian $2$-monads.
+We require one simple technical lemma before giving a complete characterization of $\ML$-operads which induce cartesian $2$-monads.
 
 \begin{lem}\label{kernel_lem}
 Let $C$ be a category with a right action of some group $\Lambda$, and let $\pi \colon  \Lambda \rightarrow \Sigma$ be a group homomorphism to any other group $\Sigma$. Then the right $\Sigma$-action on $C \times_{\Lambda} \Sigma$ is free if and only if the only elements of $\Lambda$ which fix an object of $C$ lie in the kernel of $\pi$.
@@ -1155,7 +1155,7 @@ Since the objects of $C \times_{\Lambda} \Sigma$ are equivalence classes as abov
 \end{proof}
 
 \begin{thm}\label{cart_thm}
-The $2$-monad associated to a $\Lambda$-operad $P$ is $2$-cartesian if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
+The $2$-monad associated to a $\ML$-operad $P$ is $2$-cartesian if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
 \end{thm}
 \begin{proof}
 Since the monad $\underline{P}$ is isomorphic to $\underline{S(P)}$, we need only verify when $\underline{S(P)}$ is $2$-cartesian. Thus the theorem is a direct consequence of \cref{kernel_lem} and \cref{cart_cor}.
@@ -1200,7 +1200,7 @@ The following lemma is a straightforward verification.
 The functor $E \colon \mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the set of objects functor. Therefore $E$ preserves all limits, and in particular is a symmetric monoidal functor when both categories are equipped with their cartesian monoidal structures.
 \end{lem}
 
-We are additionally interested in $\Lambda$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable). While the definition above gives the correct notion of a $\Lambda$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms. In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category. This follows the standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower. Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
+We are additionally interested in $\mb{\Lambda}$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable). While the definition above gives the correct notion of a $\mb{\Lambda}$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms. In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category. This follows the standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower. Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
     %% Expanded diagram
   % \[
   %   \xy
@@ -1276,7 +1276,7 @@ In the second diagram, the morphism
 is first the left action of $\Sigma_n$ on the product followed by the operad multiplication, and $\underline{e}$ is $e_{k_{1}}, \ldots, e_{k_{n}}$.
 
 \begin{Defi}\label{Defi:actop_to_cat}
-Let $\Lambda$ be an action operad. Then $B\Lambda$ (see \cref{nota:e_b}) is the category with objects the natural numbers and
+Let $\mb{\Lambda}$ be an action operad. Then $B\Lambda$ (see \cref{nota:e_b}) is the category with objects the natural numbers and
   \[
     B\Lambda(m,n) = \left\{ \begin{array}{lc}
     \Lambda(n), & m = n \\
@@ -1287,14 +1287,14 @@ where composition is given by group multiplication and the identity morphism is 
 \end{Defi}
 
 \begin{thm}\label{preserveGop}
-Let $M,N$ be cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable, and let $F \colon M \rightarrow N$ be a symmetric lax monoidal functor with unit constraint $\varphi_{0}$ and tensor constraint $\varphi_{2}$. Let $\Lambda$ be an action operad, and $P$ a $\Lambda$-operad in $M$. Then $FP = \{ F(P(n)) \}$ has a canonical $\Lambda$-operad structure, giving a functor
+Let $M,N$ be cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable, and let $F \colon M \rightarrow N$ be a symmetric lax monoidal functor with unit constraint $\varphi_{0}$ and tensor constraint $\varphi_{2}$. Let $\mb{\Lambda}$ be an action operad, and $P$ a $\mb{\Lambda}$-operad in $M$. Then $FP = \{ F(P(n)) \}$ has a canonical $\mb{\Lambda}$-operad structure, giving a functor
   \[
-    F_{*} \colon \Lambda\mbox{-}Op(M) \rightarrow \Lambda\mbox{-}Op(N)
+    F_{*} \colon \mb{\Lambda}\mbox{-}Op(M) \rightarrow \mb{\Lambda}\mbox{-}Op(N)
   \]
-from the category of $\Lambda$-operads in $M$ to the category of $\Lambda$-operads in $N$.
+from the category of $\mb{\Lambda}$-operads in $M$ to the category of $\mb{\Lambda}$-operads in $N$.
 \end{thm}
 \begin{proof}
-The category of $\Lambda$-operads in $M$ is the category of monoids for the composition product $\circ_{M}$ on $[B\Lambda^{\textrm{op}}, M]$ constructed in \cref{sec:opasmon}. Composition with $F$ gives a functor
+The category of $\mb{\Lambda}$-operads in $M$ is the category of monoids for the composition product $\circ_{M}$ on $[B\Lambda^{\textrm{op}}, M]$ constructed in \cref{sec:opasmon}. Composition with $F$ gives a functor
   \[
     F_{*} \colon  [B\Lambda^{\textrm{op}}, M] \rightarrow [B\Lambda^{\textrm{op}}, N],
   \]
@@ -1352,26 +1352,26 @@ Checking the lax monoidal functor axioms is tedious but entirely routine using t
 Combining \cref{preserveGop} and \cref{gisgop} with \cref{symmoncor}, we immediately obtain the following.
 
 \begin{cor}\label{cor:elambda_lambdaop}
-Let $\Lambda$ be an action operad. Then $E\Lambda = \{ E\left(\Lambda(n)\right) \}$ (see \cref{nota:e_b}) is a $\Lambda$-operad in $\mb{Cat}$.
+Let $\mb{\Lambda}$ be an action operad. Then $E\Lambda = \{ E\left(\Lambda(n)\right) \}$ (see \cref{nota:e_b}) is a $\mb{\Lambda}$-operad in $\mb{Cat}$.
 \end{cor}
 
-Any $\Lambda$-operad $P$ in $\mb{Cat}$ gives rise to a $2$-monad on $\mb{Cat}$ which we will often also denote by $P$ or, as in \cref{section:operads_in_Cat}, by $\underline{P}$. In the context of \cref{cor:elambda_lambdaop}, that $2$-monad $\underline{E\Lambda}$ is given by
+Any $\mb{\Lambda}$-operad $P$ in $\mb{Cat}$ gives rise to a $2$-monad on $\mb{Cat}$ which we will often also denote by $P$ or, as in \cref{section:operads_in_Cat}, by $\underline{P}$. In the context of \cref{cor:elambda_lambdaop}, that $2$-monad $\underline{E\Lambda}$ is given by
   \[
     X \mapsto \coprod_{n \geq 0} E\Lambda(n) \times_{\Lambda(n)} X^{n}
   \]
 where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $\underline{E\Sigma}$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
 
 \begin{Defi}\label{lmc}
-A \emph{$\Lambda$-monoidal category} is a strict algebra for the $2$-monad $\EL$. A \emph{$\Lambda$-monoidal functor} is a strict morphism for this $2$-monad $\EL$. The $2$-category $\lmc$ is the $2$-category $\EL\mbox{-}\mb{Alg}_{s}$ of strict algebras, strict morphisms, and algebra $2$-cells for $\EL$.
+A \emph{$\ML$-monoidal category} is a strict algebra for the $2$-monad $\EL$. A \emph{$\ML$-monoidal functor} is a strict morphism for this $2$-monad $\EL$. The $2$-category $\lmc$ is the $2$-category $\EL\mbox{-}\mb{Alg}_{s}$ of strict algebras, strict morphisms, and algebra $2$-cells for $\EL$.
 \end{Defi}
 
 % QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
 % QQQ We came to the conclusion just to cite Yau's results in Chapter 19. `A strict $G$-monoidal category is..., etc.'
 
-Strict $\Lambda$-monoidal categories, in the sense of being strict algebras for the monad $\underline{E\Lambda}$, can be characterised in more familiar terms by specifying a monoidal structure with appropriate equivariant interaction with the $\Lambda(n)$-actions. Explicit proofs of such can be found in Chapter 19 of \cite{yau_infinity_2021}, along with similar characterisations for strict $\Lambda$-monoidal functors and $\Lambda$-monoidal categories whose underlying monoidal structure is weak.
+Strict $\ML$-monoidal categories, in the sense of being strict algebras for the monad $\underline{E\Lambda}$, can be characterised in more familiar terms by specifying a monoidal structure with appropriate equivariant interaction with the $\Lambda(n)$-actions. Explicit proofs of such can be found in Chapter 19 of \cite{yau_infinity_2021}, along with similar characterisations for strict $\ML$-monoidal functors and $\ML$-monoidal categories whose underlying monoidal structure is weak.
 
 % \begin{prop}\label{el_via_moncats}
-% A strict $\Lambda$-monoidal category structure on $X$ determines and is determined by
+% A strict $\ML$-monoidal category structure on $X$ determines and is determined by
 % \begin{itemize}
 % \item a strict monoidal category structure on $X$: $(X, \otimes, I)$,
 % \item for each $\sigma \in \Lambda(n)$ and $x_1$, $\ldots$, $x_n \in X$, an isomorphism
@@ -1476,27 +1476,27 @@ Strict $\Lambda$-monoidal categories, in the sense of being strict algebras for 
 % \end{proof}
 
 % \begin{prop}\label{el_strictmap}
-% Let $X,Y$ be strict $\Lambda$-monoidal categories, and $F \colon X \rightarrow Y$ be a functor. $F$ is a strict $\Lambda$-monoidal functor if and only if
+% Let $X,Y$ be strict $\ML$-monoidal categories, and $F \colon X \rightarrow Y$ be a functor. $F$ is a strict $\ML$-monoidal functor if and only if
 % \end{prop}
 % \begin{proof}
 
 % \end{proof}
 
 % \begin{prop}\label{el_weakmap}
-% Let $X,Y$ be strict $\Lambda$-monoidal categories, and $F \colon X \rightarrow Y$ be a functor. The structure of a weak $\Lambda$-monoidal functor determines and is determined by some stuff.
+% Let $X,Y$ be strict $\ML$-monoidal categories, and $F \colon X \rightarrow Y$ be a functor. The structure of a weak $\ML$-monoidal functor determines and is determined by some stuff.
 % \end{prop}
 % \begin{proof}
 
 % \end{proof}
 
 % \begin{prop}\label{el_2cells}
-% Let $X,Y$ be strict $\Lambda$-monoidal categories, and $F, G \colon X \rightarrow Y$ be strict $\Lambda$-monoidal functors. The structure of an $\EL$-algebra $2$-cell $\alpha \colon F \Rightarrow G$ determines and is determined by some stuff.
+% Let $X,Y$ be strict $\ML$-monoidal categories, and $F, G \colon X \rightarrow Y$ be strict $\ML$-monoidal functors. The structure of an $\EL$-algebra $2$-cell $\alpha \colon F \Rightarrow G$ determines and is determined by some stuff.
 % \end{prop}
 % \begin{proof}
 
 % \end{proof}
 
-\subsection{Free $\Lambda$-monoidal categories}
+\subsection{Free $\ML$-monoidal categories}
 
 
 It will be useful for our calculations later to give an explicit description of the categories $E\Lambda(n) \times_{\Lambda(n)} X^{n}$. Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
@@ -1510,7 +1510,7 @@ It will be useful for our calculations later to give an explicit description of 
 We have two distinguished classes of morphisms, one for which the map $! \colon  g \rightarrow h$ is the identity and one for which all the $f_{i}$'s are the identity. Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type. Now $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is in the image of the quotient map. Using this fact, we can prove the following useful lemma.
 
 \begin{lem}\label{hom-set-lemma}
-For an action operad $\Lambda$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is
+For an action operad $\mb{\Lambda}$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is
   \[
     \coprod_{g \in \Lambda(n)} \prod_{i=1}^{n} X\left(x_i, y_{g(i)}\right).
   \]
@@ -1528,7 +1528,7 @@ and therefore is a morphism $[e; x_1, \ldots, x_n] \rightarrow [e; y_1, \ldots, 
 \end{proof}
 
 \begin{nota}\label{tensor_notation}
-For $g \in \Lambda(n)$ and objects $x_1, \ldots, x_n$ of a $\Lambda$-monoidal category $X$, we write 
+For $g \in \ML(n)$ and objects $x_1, \ldots, x_n$ of a $\ML$-monoidal category $X$, we write 
   \[
     g^{\otimes} \colon x_1 \otimes \cdots x_n \rightarrow x_{g^{-1}(1)} \otimes \cdots \otimes x_{g^{-1}(n)}
   \]
@@ -1554,11 +1554,11 @@ It is obvious that $g^{\otimes} \otimes h^{\otimes} = \mu(e_2; g, h)^{\otimes}$.
 The $2$-monad $\underline{E\Lambda}$ is both finitary and cartesian (see \cref{sec:propofopsincat}). In fact we can characterize this operad uniquely (up to equivalence) using a standard argument.
 
 \begin{Defi}
-Let $\Lambda$ be an action operad. A \textit{$\Lambda_{\infty}$ operad} $P$ is a $\Lambda$-operad in which each action $P(n) \times \Lambda(n) \rightarrow P(n)$ is free and each $P(n)$ is contractible.
+Let $\mb{\Lambda}$ be an action operad. A \textit{$\mb{\Lambda}_{\infty}$ operad} $P$ is a $\mb{\Lambda}$-operad in which each action $P(n) \times \Lambda(n) \rightarrow P(n)$ is free and each $P(n)$ is contractible.
 \end{Defi}
 
 \begin{rem}
-One should also note that by \cref{cor:elambda_lambdaop} there exists a canonical $\Lambda_{\infty}$ operad in $\mb{Cat}$, namely $E\Lambda$ itself, and thus also in the category of simplicial sets by taking the nerve (the nerve functor is represented by a cosimplicial category, namely $\Delta \subseteq \mb{Cat}$, so preserves products) and in suitable categories of topological spaces by taking the geometric realization (once again, product-preserving with the correct category of spaces). Thus we have something like a Barratt-Eccles $\Lambda_{\infty}$ operad for any action operad $\Lambda$.
+One should also note that by \cref{cor:elambda_lambdaop} there exists a canonical $\mb{\Lambda}_{\infty}$ operad in $\mb{Cat}$, namely $E\Lambda$ itself, and thus also in the category of simplicial sets by taking the nerve (the nerve functor is represented by a cosimplicial category, namely $\Delta \subseteq \mb{Cat}$, so preserves products) and in suitable categories of topological spaces by taking the geometric realization (once again, product-preserving with the correct category of spaces). Thus we have something like a Barratt-Eccles $\mb{\Lambda}_{\infty}$ operad for any action operad $\mb{\Lambda}$.
 \end{rem}
 
 \begin{rem}
@@ -1566,10 +1566,10 @@ The above definition makes sense in a wide context, but needs interpretation. We
 \end{rem}
 
 \begin{prop}
-For any two $\Lambda_{\infty}$ operads $P,Q$ in $\mb{Cat}$, there exists a span $P \leftarrow R \rightarrow Q$ of pointwise equivalences of $\Lambda$-operads.
+For any two $\mb{\Lambda}_{\infty}$ operads $P,Q$ in $\mb{Cat}$, there exists a span $P \leftarrow R \rightarrow Q$ of pointwise equivalences of $\mb{\Lambda}$-operads.
 \end{prop}
 \begin{proof}
-Given $\Lambda_{\infty}$ operads $P$, $Q$ in $\mb{Cat}$, the product $P \times Q$ with the diagonal action is also $\Lambda_{\infty}$. Each of the projection maps is a pointwise equivalence of $\Lambda$-operads.
+Given $\mb{\Lambda}_{\infty}$ operads $P$, $Q$ in $\mb{Cat}$, the product $P \times Q$ with the diagonal action is also $\mb{\Lambda}_{\infty}$. Each of the projection maps is a pointwise equivalence of $\mb{\Lambda}$-operads.
 \end{proof}
 \begin{rem}
 Once again, this proof holds in a wide context. We required that the product of free actions is again free, true in any complete category. We also required that the product of contractible objects is contractible; this condition will hold, for example, in any Quillen model category in which all objects are fibrant or in which the product of weak equivalences is again a weak equivalence.
@@ -1643,7 +1643,7 @@ We will usually just refer to a club by its underlying category $K$.
 
 
 \begin{thm}
-Let $\Lambda$ be an action operad. Then the map of operads $\pi \colon \Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ the structure of a club.
+Let $\mb{\Lambda}$ be an action operad. Then the map of operads $\pi \colon \Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ the structure of a club.
 \end{thm}
 \begin{proof}
 To give the functor $B\pi \colon B\Lambda \rightarrow B \Sigma$ the structure of a club it suffices (see \cite{leinster}) to show that
@@ -1656,16 +1656,16 @@ The monad $\underline{E\Lambda}$ is always cartesian by results of \cref{sec:pro
   \[
     \xy
       (0,0)*+{\scriptstyle E\Lambda(n) \times \Lambda(n) \times X^n} ="00";
-      (0,-15)*+{\scriptstyle E\Sigma_{n} \times \Sigma_{n} \times X^n} ="01";
+      (0,-10)*+{\scriptstyle E\Sigma_{n} \times \Sigma_{n} \times X^n} ="01";
       (30,0)*+{\scriptstyle E\Lambda(n) \times X^n} ="10";
-      (30,-15)*+{\scriptstyle E\Sigma_{n} \times X^n} ="11";
+      (30,-10)*+{\scriptstyle E\Sigma_{n} \times X^n} ="11";
       (60,0)*+{\scriptstyle E\Lambda(n) \times_{\Lambda(n)} X^n} ="20";
-      (60,-15)*+{\scriptstyle E\Sigma_{n} \times_{\Sigma_{n}}  X^n} ="21";
-      {\ar (11,1)*{}; (22,1)*{} };
-      {\ar (11,-1)*{}; (22,-1)*{} };
+      (60,-10)*+{\scriptstyle E\Sigma_{n} \times_{\Sigma_{n}}  X^n} ="21";
+      {\ar (12,1)*{}; (22,1)*{} };
+      {\ar (12,-1)*{}; (22,-1)*{} };
       {\ar_{E\pi \times \pi \times 1} "00" ; "01"};
-      {\ar (10,-14)*{}; (23,-14)*{} };
-      {\ar (10,-16)*{}; (23,-16)*{} };
+      {\ar (12,-9)*{}; (22,-9)*{} };
+      {\ar (12,-11)*{}; (22,-11)*{} };
       {\ar_{E\pi \times 1} "10" ; "11"};
       {\ar@{.>}^{\tilde{\pi}_{n}} "20" ; "21"};
       {\ar "10" ; "20"};
@@ -1715,7 +1715,7 @@ Now a morphism in $(E\Lambda(n) \times X^{n})/\Lambda(n)$ can be given as
 Mapping down to $B\Lambda(n)$ gives $ge^{-1} = g$, while mapping over to $(E\Sigma_{n} \times X^{n})/\Sigma_{n}$ gives $[!; f_{i}]$ where $! \colon e \rightarrow \pi(g)$ is now a morphism in $E\Sigma_{n}$. In other words, a morphism in the upper left corner of our putative pullback square is determined completely by its images along the top and lefthand functors. Furthermore, given $g \in \Lambda(n)$, $\tau = \pi(g)$, and morphisms $f_{i} \colon x_{i} \rightarrow y_{i}$ in $X$, the morphism $[! \colon e \rightarrow g; f_{i}]$ maps to the pair $(g, [! \colon e \rightarrow \tau; f_{i}])$, completing the proof that this square is indeed a pullback.
 \end{proof}
 
-The club, which we now denote $K_{\Lambda}$, associated to $E\Lambda$ has the following properties. First, the functor $K_{\Lambda} \rightarrow B\Sigma$ is a functor between groupoids. Second, the functor $K_{\Lambda} \rightarrow B\Sigma$ is  bijective-on-objects. We claim that these properties characterize those clubs which arise from action operads. Thus the clubs arising from action operads are very similar to PROPs \cite{mac_prop, markl_prop}.
+The club, which we now denote $K_{\mb{\Lambda}}$, associated to $E\Lambda$ has the following properties. First, the functor $K_{\mb{\Lambda}} \rightarrow B\Sigma$ is a functor between groupoids. Second, the functor $K_{\mb{\Lambda}} \rightarrow B\Sigma$ is  bijective-on-objects. We claim that these properties characterize those clubs which arise from action operads. Thus the clubs arising from action operads are very similar to PROPs \cite{mac_prop, markl_prop}.
 
 \begin{thm}\label{thm:club=operad}
 Let $K$ be a club such that
@@ -1723,7 +1723,7 @@ Let $K$ be a club such that
 \item the map $K \rightarrow B\Sigma$ is bijective on objects and
 \item $K$ is a groupoid.
 \end{itemize}
-Then $K \cong K_{\Lambda}$ for some action operad $\Lambda$. The assignment $\Lambda \mapsto K_{\Lambda}$ is a full and faithful embedding of the category of action operads $\mb{AOp}$ into the category of clubs.
+Then $K \cong K_{\mb{\Lambda}}$ for some action operad $\mb{\Lambda}$. The assignment $\mb{\Lambda} \mapsto K_{\mb{\Lambda}}$ is a full and faithful embedding of the category of action operads $\mb{AOp}$ into the category of clubs.
 \end{thm}
 \begin{proof}
 Let $K$ be such a club. Our hypotheses immediately imply that $K$ is a groupoid with objects in bijection with the natural numbers; we will now assume the functor $K \rightarrow B\Sigma$ is the identity on objects. Let $\Lambda(n) = K(n,n)$. Now $K$ comes equipped with a functor to $B\Sigma$, in other words group homomorphisms $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$. We claim that the club structure on $K$ makes the collection of groups $\{ \Lambda(n) \}$ an action operad. In order to do so, we will employ \cref{thm:charAOp}.
@@ -1744,11 +1744,11 @@ Finally, we would like to show that this gives a full and faithful embedding
     \[
         K_{-} \colon \mb{AOp} \rightarrow \mb{Club}
     \]
-of the category of action operads into the category of clubs. Let $f, f' \colon \Lambda \rightarrow \Lambda'$ be maps between action operads. Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\Lambda} \rightarrow K_{\Lambda'}$. But these functors are nothing more than the coproducts of the functors
+of the category of action operads into the category of clubs. Let $f, f' \colon \mb{\Lambda} \rightarrow \mb{\Lambda'}$ be maps between action operads. Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$. But these functors are nothing more than the coproducts of the functors
   \[
     B(f_{n}), B(f_{n}') \colon B\Lambda(n) \rightarrow B\Lambda'(n),
   \]
-and the functor $B$ from groups to categories is faithful, so $K_{-}$ is also faithful. Now let $f \colon K_{\Lambda} \rightarrow K_{\Lambda'}$ be a maps of clubs. We clearly get group homomorphisms $f_{n} \colon \Lambda(n) \rightarrow \Lambda'(n)$ such that $\pi^{\Lambda}_{n} = \pi^{\Lambda'}_{n} f_{n}$, so we must only show that the $f_{n}$ also constitute an operad map. Using the description of the club structure above in terms of the maps $\beta, \delta$, we are able to see that commuting with the club multiplication implies commuting with both of these, which in turn is equivalent to commuting with operad multiplication. Thus $K_{-}$ is full as well.
+and the functor $B$ from groups to categories is faithful, so $K_{-}$ is also faithful. Now let $f \colon K_{\mb{\Lambda}} \rightarrow K_{\mb{\Lambda'}}$ be a maps of clubs. We clearly get group homomorphisms $f_{n} \colon \Lambda(n) \rightarrow \Lambda'(n)$ such that $\pi^{\Lambda}_{n} = \pi^{\Lambda'}_{n} f_{n}$, so we must only show that the $f_{n}$ also constitute an operad map. Using the description of the club structure above in terms of the maps $\beta, \delta$, we are able to see that commuting with the club multiplication implies commuting with both of these, which in turn is equivalent to commuting with operad multiplication. Thus $K_{-}$ is full as well.
 \end{proof}
 
 \begin{rem}
@@ -1760,7 +1760,7 @@ These hypotheses could be relaxed somewhat. Instead of having a club over $B\Sig
 In \cite{kelly_club1}, Kelly discusses clubs given by generators and relations. His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible. In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $E\Lambda$ are always strict monoidal categories with additional structure. Tracing through his discussion of generators and relations for a club gives the following theorem.
 
 \begin{thm}\label{pres1}
-Let $\Lambda$ be an action operad with presentation given by $(\mathbf{g},\mathbf{r}, s_{i}, p)$. Then the club $E\Lambda$ is generated by
+Let $\mb{\Lambda}$ be an action operad with presentation given by $(\mathbf{g},\mathbf{r}, s_{i}, p)$. Then the club $E\Lambda$ is generated by
 \begin{itemize}
   \item functors giving the unit object and tensor product, and
   \item natural transformations given by the collection $\mathbf{g}$:  each element $x$ of $\mathbf{g}$ with $\pi(x) = \sigma_{x} \in \Sigma_{|x|}$ gives a natural transformation from the $n$th tensor power functor to itself,
@@ -1785,7 +1785,7 @@ subject to a set $\mathcal{R}$ of axioms. Each such axiom is given by the data
   \item two finite sets $f_{1}, \ldots, f_{n}$ and $f_{1}', \ldots, f_{m}'$ of elements of $\mathcal{G}$; and
   \item two formal composites $F,F'$ using only composition and tensor product operations and the $f_{i}$, respectively $f_{i}'$, 
 \end{itemize}
-such that the underlying permutation of $F$ equals the underlying permutation of $F'$ (we compute the underlying permutations using the functions $\beta, \delta$ of \cref{thm:charAOp}). The element $\left(\underline{f}, \underline{f}', F, F'\right)$ of the set $\mathcal{R}$ of axioms corresponds to the requirement that the composite of the morphisms $f_{i}$ using $F$ equals the composite of the morphisms $f_{j}'$ using $F'$ in any strict monoidal category of type $\mathcal{M}$. Then strict monoidal categories of type $\mathcal{M}$ are given as the algebras for the club $E\Lambda$ where $\Lambda$ is the action operad with
+such that the underlying permutation of $F$ equals the underlying permutation of $F'$ (we compute the underlying permutations using the functions $\beta, \delta$ of \cref{thm:charAOp}). The element $\left(\underline{f}, \underline{f}', F, F'\right)$ of the set $\mathcal{R}$ of axioms corresponds to the requirement that the composite of the morphisms $f_{i}$ using $F$ equals the composite of the morphisms $f_{j}'$ using $F'$ in any strict monoidal category of type $\mathcal{M}$. Then strict monoidal categories of type $\mathcal{M}$ are given as the algebras for the club $E\Lambda$ where $\mb{\Lambda}$ is the action operad with
 \begin{itemize}
   \item $\mathbf{g} = \mathcal{G}$,
   \item $\mathbf{r} = \mathcal{R}$,
