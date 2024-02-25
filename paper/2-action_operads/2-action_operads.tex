@@ -4,7 +4,7 @@ In this chapter, we will explore the general definition of an operad, $P$ ,which
 \subsection{Introduction to operads}
 This section will provide an introduction to operads, including a general overview of the definitions of plain, symmetric, and braided operads. Remarks and examples are provided throughout and the section begins with conventions around notation.
 
-\begin{conv}
+\begin{conv}\label{conv1}
 We adopt the following conventions throughout.
 \begin{itemize}
 \item $\Sigma_{n}$ is the symmetric group on $n$ letters, and $B_{n}$ is the braid group on $n$ strands.
@@ -15,6 +15,28 @@ We adopt the following conventions throughout.
 A \times B_{1} \times \cdots \times B_{n} \times C
 \]
 (or similar, for example without $C$). We will write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, and in the case that we need equivalence classes of such elements they will be written as $[a; b_{1}, \ldots, b_{n}; c]$.
+\item In the following definitions of operads, we define operad multiplication as a function
+  \[
+    \mu \colon O(n) \times O(k_1) \times \ldots O(k_n) \rightarrow O(k_1 + \ldots + k_n
+  \]
+for each $n$, $k_1$, $\ldots$, $k_n$, and we use the following two functions as a shorthand for two commonly occuring instances of such. First we define a function
+  \[
+    \beta \colon O(k_1) \times \ldots \times O(k_n) \rightarrow O(k_1 + \ldots + k_n)
+  \]
+for each $n$, $k_1$, $\ldots$, $k_n$, which takes elements $\tau_1 \in O(k_1)$, $\ldots$, $\tau_n \in O(k_n)$ and produces the element
+  \[
+    \beta(\tau_1, \ldots, \tau_n) = \mu(e_n; \tau_1, \ldots, \tau_n).
+  \]
+We think of this element as the block sum of the elements $\tau_1$, $\ldots$, $\tau_n$. We also define a function
+  \[
+    \delta \colon O(n) \rightarrow O(k_1 + \ldots + k_n)
+  \]
+for each $n$, $k_1$, $\ldots$, $k_n$, which takes an element $\sigma \in O(n)$ and produces the element
+  \[
+    \delta(\sigma) = \mu(\sigma;e_{k_1}, \ldots, e_{k_n}).
+  \]
+This notation is elaborated on in \cref{exSigma} below in the case of the symmetric operad $\Sigma$, but will be used generally throughout.
+\item Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the object of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements. The map $\pi_n$ in each case will represent a form of `underlying permutation' of each element, which we will then use to act on operad multiplication. As the notation starts to become cumbersome, we will often write $\sigma^{-1}(i)$ which should be read as $\pi_n(\sigma)^{-1}(i)$, where $\sigma \in O(n)$.
 \end{itemize}
 \end{conv}
 
@@ -75,9 +97,13 @@ for any $x \in O(n)$.
 
 \item The functions $\mu$ are equivariant with respect to the symmetric group actions, and so satisfies the following two equations.
   \begin{align*}
-    \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot(\tau_1 \oplus \ldots \oplus \tau_n)\\
-    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma_{-1}(n)}\right)\cdot \sigma^+
+    \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot \beta(\tau_1,\ldots,\tau_n)\\
+    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma_{-1}(n)}\right)\cdot \delta(\sigma)
   \end{align*}
+  % \begin{align*}
+  %   \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot(\tau_1 \oplus \ldots \oplus \tau_n)\\
+  %   \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma_{-1}(n)}\right)\cdot \sigma^+
+  % \end{align*}
 \end{enumerate}
 \end{Defi}
 
@@ -88,7 +114,7 @@ It is useful to write out in full what the sets in the diagram of the second axi
 \item $y_{i} \in O(k_{i})$ for $i=1, \ldots, n$,
 \item $\tau_{i} \in \Sigma_{k_{i}}$,
 \item $\sigma \in \Sigma_{n}$, and
-\item $\tau_1 \oplus \ldots \oplus \tau_n , \sigma^{+} \in \Sigma_{k_1 + \ldots + k_n}$ as in Example \ref{exSigma} below.
+\item $\beta(\tau_1,\ldots,\tau_n), \delta(\sigma) \in \Sigma_{k_1 + \ldots + k_n}$ as described in \cref{conv1} and in \cref{exSigma} below.
 \end{itemize}
 
 \end{rem}
@@ -104,81 +130,143 @@ A \emph{non-symmetric operad} $O$ consists of the same data as above but without
 \end{rem}
 
 One is intended to think that $x \in O(n)$ is a function with $n$ inputs and a single output, as below.
-  \[
-    \xy
-      {\ar@{-} (0,0)*{}; (25,-10)*{} };
-      {\ar@{-} (0,-20)*{}; (25,-10)*{} };
-      {\ar@{-} (0,0)*{}; (0,-20)*{} };
-      {\ar@{-} (25,-10)*{}; (35,-10)*{} };
-      {\ar@{-} (0,0)*{}; (-10,0)*{} };
-      {\ar@{-} (0,-3)*{}; (-10,-3)*{} };
-      {\ar@{-} (0,-17)*{}; (-10,-17)*{} };
-      {\ar@{-} (0,-20)*{}; (-10,-20)*{} };
-      (11,-10)*{x}; (-5,-10)*{\vdots}
-    \endxy
-  \]
+  \begin{center}
+  \begin{tikzpicture}
+    \draw (0,0.9) -- (1,0.9);
+    \draw (0,0.5) -- (1,0.5);
+    %
+    \node [anchor=center] () at (0.5,0) {$\vdots$\strut};
+    %
+    \draw (0,-0.5) -- (1,-0.5);
+    \draw (0,-0.9) -- (1,-0.9);
+    %
+    \draw (1,1) -- (1,-1) -- (3,0) -- cycle;
+    %
+    \draw (3,0) -- (4,0);
+    %
+    \node [anchor=center] () at (1.75,0) {$x$\strut};
+  \end{tikzpicture}
+  \end{center}
+  % \[
+  %   \xy
+  %     {\ar@{-} (0,0)*{}; (25,-10)*{} };
+  %     {\ar@{-} (0,-20)*{}; (25,-10)*{} };
+  %     {\ar@{-} (0,0)*{}; (0,-20)*{} };
+  %     {\ar@{-} (25,-10)*{}; (35,-10)*{} };
+  %     {\ar@{-} (0,0)*{}; (-10,0)*{} };
+  %     {\ar@{-} (0,-3)*{}; (-10,-3)*{} };
+  %     {\ar@{-} (0,-17)*{}; (-10,-17)*{} };
+  %     {\ar@{-} (0,-20)*{}; (-10,-20)*{} };
+  %     (11,-10)*{x}; (-5,-10)*{\vdots}
+  %   \endxy
+  % \]
 Operadic composition is then a generalization of function composition, with the pictorial representation below being $\mu(x; y_{1}, y_{2})$ for $\mu \colon O(2) \times O(2) \times O(3) \rightarrow O(5)$.
-  \[
-    \xy
-      {\ar@{-} (0,0)*{}; (25,-10)*{} };
-      {\ar@{-} (0,-20)*{}; (25,-10)*{} };
-      {\ar@{-} (0,0)*{}; (0,-20)*{} };
-      {\ar@{-} (25,-10)*{}; (35,-10)*{} };
-      {\ar@{-} (0,-3)*{}; (-10,-3)*{} };
-      {\ar@{-} (0,-17)*{}; (-10,-17)*{} };
-      (11,-10)*{x};
-      {\ar@{-} (-25,2)*{}; (-10,-3)*{} };
-      {\ar@{-} (-25,-8)*{}; (-10,-3)*{} };
-      {\ar@{-} (-25,2)*{}; (-25,-8)*{} };
-      {\ar@{-} (-25,1)*{}; (-30,1)*{} };
-      {\ar@{-} (-30,-7)*{}; (-25,-7)*{} };
-      (-19,-3)*{y_{1}};
-      {\ar@{-} (-25,-12)*{}; (-10,-17)*{} };
-      {\ar@{-} (-25,-22)*{}; (-10,-17)*{} };
-      {\ar@{-} (-25,-12)*{}; (-25,-22)*{} };
-      {\ar@{-} (-25,-13)*{}; (-30,-13)*{} };
-      {\ar@{-} (-25,-17)*{}; (-30,-17)*{} };
-      {\ar@{-} (-25,-21)*{}; (-30,-21)*{} };
-      (-19,-17)*{y_{2}};
-    \endxy
-  \]
+  \begin{center}
+  \begin{tikzpicture}
+    % upper triangle
+    \draw (-2,0.8) -- (-1,0.8);
+    %
+    \draw (-2,0.4) -- (-1,0.4);
+    %
+    \draw (-1,1) -- (-1,0.2) -- (0,0.6) -- cycle;
+    %
+    \node [anchor=center] () at (-0.7,0.6) {$y_1$\strut};    
+    % lower triangle
+    \draw (-2,-0.9) -- (-1,-0.9);
+    %
+    \draw (-2,-0.3) -- (-1,-0.3);
+    %
+    \draw (-1,-1) -- (-1,-0.2) -- (0,-0.6) -- cycle;
+    %
+    \draw (-2,-0.6) -- (-1,-0.6);
+    %
+    \node [anchor=center] () at (-0.7,-0.6) {$y_2$\strut};
+    % big triangle
+    \draw (0,0.6) -- (1,0.6);
+    %    
+    \draw (0,-0.6) -- (1,-0.6);
+    %
+    \draw (1,1) -- (1,-1) -- (3,0) -- cycle;
+    %
+    \draw (3,0) -- (4,0);
+    %
+    \node [anchor=center] () at (1.75,0) {$x$\strut};
+  \end{tikzpicture}
+  \end{center}
+  % \[
+  %   \xy
+  %     {\ar@{-} (0,0)*{}; (25,-10)*{} };
+  %     {\ar@{-} (0,-20)*{}; (25,-10)*{} };
+  %     {\ar@{-} (0,0)*{}; (0,-20)*{} };
+  %     {\ar@{-} (25,-10)*{}; (35,-10)*{} };
+  %     {\ar@{-} (0,-3)*{}; (-10,-3)*{} };
+  %     {\ar@{-} (0,-17)*{}; (-10,-17)*{} };
+  %     (11,-10)*{x};
+  %     {\ar@{-} (-25,2)*{}; (-10,-3)*{} };
+  %     {\ar@{-} (-25,-8)*{}; (-10,-3)*{} };
+  %     {\ar@{-} (-25,2)*{}; (-25,-8)*{} };
+  %     {\ar@{-} (-25,1)*{}; (-30,1)*{} };
+  %     {\ar@{-} (-30,-7)*{}; (-25,-7)*{} };
+  %     (-19,-3)*{y_{1}};
+  %     {\ar@{-} (-25,-12)*{}; (-10,-17)*{} };
+  %     {\ar@{-} (-25,-22)*{}; (-10,-17)*{} };
+  %     {\ar@{-} (-25,-12)*{}; (-25,-22)*{} };
+  %     {\ar@{-} (-25,-13)*{}; (-30,-13)*{} };
+  %     {\ar@{-} (-25,-17)*{}; (-30,-17)*{} };
+  %     {\ar@{-} (-25,-21)*{}; (-30,-21)*{} };
+  %     (-19,-17)*{y_{2}};
+  %   \endxy
+  % \]
 
 \begin{example}\label{exSigma}
 The canonical example of an operad is the symmetric operad which we write as $\Sigma$. The set $\Sigma(n)$ is the set of elements of the symmetric group $\Sigma_{n}$, and the group action is just multiplication on the right. The identity element $\id \in \Sigma(1)$ is just the identity permutation on a one-element set. Operadic composition in $\Sigma$ will then be given by a function
   \[
     \Sigma(n) \times \Sigma(k_{1}) \times \cdots \times \Sigma(k_{n}) \rightarrow \Sigma(k_{1} + \cdots + k_{n})
   \]
-which takes permutations $\sigma \in \Sigma_{n}, \tau_{i} \in \Sigma_{k_{i}}$ and produces the following permutation in $\Sigma_{k_{1} + \cdots + k_{n}}$. First we form the block sum permutation $\tau_{1} \oplus \cdots \oplus \tau_{n}$ which permutes the first $k_{1}$ elements according to $\tau_{1}$, the next $k_{2}$ elements according to $\tau_{2}$ and so on; this is an element of $\Sigma_{k_{1} + \cdots + k_{n}}$. Then we take the permutation $\sigma^+ \in \Sigma_{k_{1} + \cdots + k_{n}}$ which permutes the $n$ different blocks $1$ through $k_{1}$, $k_{1}+1$ through $k_{1} + k_{2}$, and so on, according to the permutation $\sigma \in \Sigma_{n}$. Operadic composition in $\Sigma$ is then given by the formula
+which takes permutations $\sigma \in \Sigma_{n}, \tau_{i} \in \Sigma_{k_{i}}$ and produces the following permutation in $\Sigma_{k_{1} + \cdots + k_{n}}$. First we form the block sum permutation $\beta(\tau_1,\ldots,\tau_n)$ which permutes the first $k_{1}$ elements according to $\tau_{1}$, the next $k_{2}$ elements according to $\tau_{2}$ and so on; this is an element of $\Sigma_{k_{1} + \cdots + k_{n}}$. Then we take the permutation $\delta(\sigma) \in \Sigma_{k_{1} + \cdots + k_{n}}$ which permutes the $n$ different blocks $1$ through $k_{1}$, $k_{1}+1$ through $k_{1} + k_{2}$, and so on, according to the permutation $\sigma \in \Sigma_{n}$. Operadic composition in $\Sigma$ is then given by the formula
   \[
-    \mu(\sigma; \tau_{1}, \ldots, \tau_{n}) = \sigma^+ \cdot (\tau_{1} \oplus \cdots \oplus \tau_{n}).
+    \mu(\sigma; \tau_{1}, \ldots, \tau_{n}) = \delta(\sigma) \cdot \beta(\tau_1,\ldots,\tau_n).
   \]
 Below we have drawn the permutation for the composition
   \[
     \mu \colon \Sigma(3) \times \Sigma(2) \times \Sigma(4) \times \Sigma(3) \rightarrow \Sigma(9)
   \]
 evaluated on the element $\left( (123); (12), (12)(34), (13) \right)$.
-  \[
-    \xy
-      {\ar@{-} (0,0)*{}; (5,-5)*{} };
-      {\ar@{-} (5,0)*{}; (0,-5)*{} };
-      {\ar@{-} (12,0)*{}; (17,-5)*{} };
-      {\ar@{-} (17,0)*{}; (12,-5)*{} };
-      {\ar@{-} (22,0)*{}; (27,-5)*{} };
-      {\ar@{-} (27,0)*{}; (22,-5)*{} };
-      {\ar@{-} (34,0)*{}; (44,-5)*{} };
-      {\ar@{-} (39,0)*{}; (39,-5)*{} };
-      {\ar@{-} (44,0)*{}; (34,-5)*{} };
-      {\ar@{-} (0,-5)*{}; (17,-13)*{} };
-      {\ar@{-} (5,-5)*{}; (22,-13)*{} };
-      {\ar@{-} (12,-5)*{}; (29,-13)*{} };
-      {\ar@{-} (17,-5)*{}; (34,-13)*{} };
-      {\ar@{-} (22,-5)*{}; (39,-13)*{} };
-      {\ar@{-} (27,-5)*{}; (44,-13)*{} };
-      {\ar@{-} (34,-5)*{}; (0,-13)*{} };
-      {\ar@{-} (39,-5)*{}; (5,-13)*{} };
-      {\ar@{-} (44,-5)*{}; (10,-13)*{} };
-    \endxy
-  \]
+  \begin{center}
+  \begin{tikzpicture}
+  \draw (1,0) -- (2,-1) -- (6.11,-2.5);
+  \draw (2,0) -- (1,-1) -- (4.888,-2.5);
+  \draw (4,0) -- (5,-1) -- (8.554,-2.5);
+  \draw (5,0) -- (4,-1) -- (7.332,-2.5);
+  \draw (6,0) -- (7,-1) -- (10.998,-2.5);
+  \draw (7,0) -- (6,-1) -- (9.776,-2.5);
+  \draw (9,0) -- (11,-1) -- (3.666,-2.5);
+  \draw (10,0) -- (10,-1) -- (2.444,-2.5);
+  \draw(11,0) -- (9,-1) -- (1.222,-2.5);
+  \end{tikzpicture}
+  \end{center}
+  % \[
+  %   \xy
+  %     {\ar@{-} (0,0)*{}; (5,-5)*{} };
+  %     {\ar@{-} (5,0)*{}; (0,-5)*{} };
+  %     {\ar@{-} (12,0)*{}; (17,-5)*{} };
+  %     {\ar@{-} (17,0)*{}; (12,-5)*{} };
+  %     {\ar@{-} (22,0)*{}; (27,-5)*{} };
+  %     {\ar@{-} (27,0)*{}; (22,-5)*{} };
+  %     {\ar@{-} (34,0)*{}; (44,-5)*{} };
+  %     {\ar@{-} (39,0)*{}; (39,-5)*{} };
+  %     {\ar@{-} (44,0)*{}; (34,-5)*{} };
+  %     {\ar@{-} (0,-5)*{}; (17,-13)*{} };
+  %     {\ar@{-} (5,-5)*{}; (22,-13)*{} };
+  %     {\ar@{-} (12,-5)*{}; (29,-13)*{} };
+  %     {\ar@{-} (17,-5)*{}; (34,-13)*{} };
+  %     {\ar@{-} (22,-5)*{}; (39,-13)*{} };
+  %     {\ar@{-} (27,-5)*{}; (44,-13)*{} };
+  %     {\ar@{-} (34,-5)*{}; (0,-13)*{} };
+  %     {\ar@{-} (39,-5)*{}; (5,-13)*{} };
+  %     {\ar@{-} (44,-5)*{}; (10,-13)*{} };
+  %   \endxy
+  % \]
 Note that $(12)(34) \in \Sigma(4)$ is actually $\mu(e_{2}; (12), (12))$, where $e_{2} \in \Sigma_{2}$ is the identity permutation. Using this and operad associativity, one can easily check that
   \[
     \mu \left( (123); (12), (12)(34), (13) \right) = \mu \left( (1234); (12), (12), (12), (13) \right),
@@ -201,8 +289,8 @@ A \textit{braided operad} consists of
   \end{itemize}
 satisfying the following axioms.
   \begin{align*}
-    \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot(\tau_1 \oplus \ldots \oplus \tau_n)\\
-    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma^{-1}(n)}\right)\cdot \sigma^+
+    \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot\beta(\tau_1,\ldots,\tau_n)\\
+    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma^{-1}(n)}\right)\cdot \delta(\sigma)
   \end{align*}
 For the above equations to make sense, we must have
   \begin{itemize}
@@ -213,7 +301,7 @@ For the above equations to make sense, we must have
   \end{itemize}
 \end{Defi}
 
-In order to make sense of this definition, we must define $\tau_{1} \oplus \cdots \oplus \tau_{n}$ and $\sigma^{+}$ in the context of braids. The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$. The braid $\sigma^{+}$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$. Finally, the notation $\sigma^{-1}(i)$ should be read as $\sigma^{-1}(i)$, where $\pi \colon B_{n} \rightarrow \Sigma_{n}$ is the underlying permutation map.
+In order to make sense of this definition, we must define $\beta(\tau_1,\ldots,\tau_n)$ and $\delta(\sigma)$ in the context of braids. The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$. The braid $\delta(\sigma)$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$.
 
 We require one final preparatory definition.
 
@@ -267,8 +355,8 @@ in the group $\Lambda(k_{1} + \cdots + k_{n})$.
 
 \begin{rem}
 \begin{itemize}
-\item As for braided operads, we write $g(i)$ to mean $\pi(g)(i)$ and $g^{-1}(i)$ to mean $\pi(g)^{-1}(i)$, where this is obvious from context.  
-\item The final axiom is best explained using the operad $\Sigma$ of symmetric groups. Reading symmetric group elements as permutations from top to bottom, below is a pictorial representation of the final axiom for the map $\mu \colon \Sigma_{3} \times \Sigma_{2} \times \Sigma_{2} \times \Sigma_{2} \rightarrow \Sigma_{6}.$
+\item As per  \cref{conv1}, we write $g(i)$ to mean $\pi(g)(i)$ and $g^{-1}(i)$ to mean $\pi(g)^{-1}(i)$, where this is obvious from context.  
+\item QQQ Improve Diagrams. The final axiom is best explained using the operad $\Sigma$ of symmetric groups. Reading symmetric group elements as permutations from top to bottom, below is a pictorial representation of the final axiom for the map $\mu \colon \Sigma_{3} \times \Sigma_{2} \times \Sigma_{2} \times \Sigma_{2} \rightarrow \Sigma_{6}.$
   \[
     \xy
       {\ar@{-} (0,0)*{}; (5,-5)*{} };
@@ -497,7 +585,7 @@ Now instead suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is the z
     &= \pi_j(\mu^\Lambda(g; \underline{e_1}, e_0, \underline{e_1})) \\
     &= e_j.
   \end{align*}
-We can think of this permutation as being $\sigma$ with the $k$th string removed - in Remark \ref{rem:crossed} we comment on such `face' and `degeneracy' maps as used here, and see \cite{ber-simplicial} for a more careful treatment of this idea. Now each of these is the identity $e_j$, as shown above. This means that $\sigma$ must either have been the identity $e_{j+1}$ or a transposition of the form $\trans{a}{a+1}$, where $1 \leq a \leq j$.
+We can think of this permutation as being $\sigma$ with the $k$th string removed - in \cref{rem:crossed} we comment on such `face' and `degeneracy' maps as used here, and see \cite{ber-simplicial} for a more careful treatment of this idea. Now each of these is the identity $e_j$, as shown above. This means that $\sigma$ must either have been the identity $e_{j+1}$ or a transposition of the form $\trans{a}{a+1}$, where $1 \leq a \leq j$.
 
 If $\sigma$ is the identity $e_{j+1}$, then we are done since this would give $\textrm{Im}\,\pi_{j+1} = \{e_{j+1}\}$. Instead suppose that $\sigma = \trans{a}{a+1} \in \Sigma_{j + 1}$. Then if $1 < a \leq j$ we can use this to give
   \begin{align*}
@@ -604,23 +692,23 @@ arising from the operad structure. Furthermore, $\Lambda(0)$ is abelian.
     \end{align*}
 \end{proof}
 
-Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations. The first is the block sum of permutations which we denote by
+Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations, which we have previously used to describe particular types of operadic composition as described in \cref{conv1} and \cref{exSigma}. Rather than simply being convenient notation for common occurences of operadic composition, we will use these ideas to give a characterisation of action operads. First we recall these notions in more detail in the case of the symmetric operad $\Sigma$. The first operation is the block sum of permutations which we denote by
   \[
     \beta \colon \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{K},
   \]
 where $K = \sum k_{i}$. The second is a kind of diagonal map which is defined for any natural number $n$ together with natural numbers $k_{1}, \ldots, k_{n}$. Then
   \[
-    \delta = \delta_{n; k_{1}, \ldots, k_{n}} \colon \Sigma_{n} \rightarrow \Sigma_{\underline{k}},
+    \delta = \delta_{n; k_{1}, \ldots, k_{n}} \colon \Sigma_{n} \rightarrow \Sigma_{K},
   \]
-is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on. The first of these, $\beta$, is a group homomorphism, while $\delta$ is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$. We now use these ideas to give the following algebraic characterization of action operads via the following definition.
+is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on. The first of these, $\beta$, is a group homomorphism, while $\delta$ is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.
 
-\begin{Defi}\label{Defi:aop_bl}
-Let $\Lambda$ be an action operad. For $h_i \in \Lambda(k_i)$ and $g \in \Lambda(n)$, define
-  \begin{align*}
-    \beta(h_{1}, \ldots, h_{n}) &= \mu(e_n; h_{1}, \ldots, h_{n}), \\
-    \delta_{n; k_{1}, \ldots, k_{n}}(g) &= \mu(g; e_{k_1}, \ldots, e_{k_n}).
-  \end{align*}
-\end{Defi}
+% \begin{Defi}\label{Defi:aop_bl}
+% Let $\Lambda$ be an action operad. For $h_i \in \Lambda(k_i)$ and $g \in \Lambda(n)$, define
+%   \begin{align*}
+%     \beta(h_{1}, \ldots, h_{n}) &= \mu(e_n; h_{1}, \ldots, h_{n}), \\
+%     \delta_{n; k_{1}, \ldots, k_{n}}(g) &= \mu(g; e_{k_1}, \ldots, e_{k_n}).
+%   \end{align*}
+% \end{Defi}
 
 
 \begin{thm}\label{thm:charAOp}
@@ -645,13 +733,13 @@ subject to the axioms below. In what we write below, we use the following notati
 \end{itemize}
 Axioms:
 \begin{enumerate}
-\item\label{eq1} The homomorphisms $\beta$ are natural with respect to the maps $\pi_{n}$, where $\underline{k} = k_{1} + \cdots + k_{n}$.
+\item\label{eq1} The homomorphisms $\beta$ are natural with respect to the maps $\pi_{n}$, where $K = k_{1} + \cdots + k_{n}$.
   \[
     \xy
       (0,0)*+{\Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) } ="00";
       (0,-15)*+{\Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}}  } ="01";
-      (40,0)*+{\Lambda(\underline{k}) } ="20";
-      (40,-15)*+{\Sigma_{\underline{k}} } ="21";
+      (40,0)*+{\Lambda(K) } ="20";
+      (40,-15)*+{\Sigma_{K} } ="21";
       {\ar^{\beta} "00" ; "20"};
       {\ar^{\pi} "20" ; "21"};
       {\ar_{\pi_1 \times \cdots \times \pi_n} "00" ; "01"};
@@ -668,7 +756,7 @@ Axioms:
   \beta(\underline{h_1},\ldots,\underline{h_n}) = \beta(\beta(\underline{h_1},\ldots,\beta(\underline{h_n}))
 \]
 holds, where $\underline{h_i} = h_{i1},\ldots,h_{ij_i}$.
-\item\label{eq4} The functions $\delta_{n; k_{1}, \ldots, k_{n}}$ are natural with respect to the maps $\pi_{n}$, where $\underline{k} = k_1 + \cdots + k_n$.
+\item\label{eq4} The functions $\delta_{n; k_{1}, \ldots, k_{n}}$ are natural with respect to the maps $\pi_{n}$, where $K = k_1 + \cdots + k_n$.
   \[
     \xy
       (0,0)*+{\Lambda(n)} ="00";
@@ -712,7 +800,7 @@ holds, where $\delta_{i}(g_{i})$ is shorthand for $\delta_{k_{i}; m_{i1}, \ldots
 \end{thm}
 
 \begin{proof}
-Let $\Lambda$ be an action operad, and define $\beta, \delta$ as in \cref{Defi:aop_bl}. Since $\pi \colon \Lambda \rightarrow \Sigma$ is an operad map, axioms \eqref{eq1} and \eqref{eq4} hold. Since $\Lambda$ is an operad of sets, axioms \eqref{eq2} and \eqref{eq5} follow from the operad unit axioms, and axioms \eqref{eq3}, \eqref{eq7}, and \eqref{eq9} follow from the operad associativity axiom. Axioms \eqref{eq6} and \eqref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
+Let $\Lambda$ be an action operad, and define $\beta, \delta$ as in \cref{conv1}. Since $\pi \colon \Lambda \rightarrow \Sigma$ is an operad map, axioms \eqref{eq1} and \eqref{eq4} hold. Since $\Lambda$ is an operad of sets, axioms \eqref{eq2} and \eqref{eq5} follow from the operad unit axioms, and axioms \eqref{eq3}, \eqref{eq7}, and \eqref{eq9} follow from the operad associativity axiom. Axioms \eqref{eq6} and \eqref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
 
 Conversely, given the data above, we need only define the operad multiplication, verify the operad unit and multiplication axioms,  and finally check the action operad axiom. Multiplication is given by
   \[
@@ -804,10 +892,10 @@ Writing $\mu(g;\underline{h}) = \mu\left(g; h_{1}, \ldots, h_{n}\right)= $ and $
 \end{small}
 \end{proof}
 
-\begin{nota}\label{beta_to_oplus}
-Leaning more heavily into the interpretation that the operations denoted $\beta$ above are block sums, we also write $g_1 \oplus g_2 \oplus \cdots \oplus g_n$ for
-$\beta(g_1, g_2, \ldots, g_n)$.
-\end{nota}
+% \begin{nota}\label{beta_to_oplus}
+% Leaning more heavily into the interpretation that the operations denoted $\beta$ above are block sums, we also write $g_1 \oplus g_2 \oplus \cdots \oplus g_n$ for
+% $\beta(g_1, g_2, \ldots, g_n)$.
+% \end{nota}
 
 \subsection{Presentations of action operads}\label{sec:presofacops}
 A useful method for constructing new examples of some given algebraic structure is through the use of presentations. A presentation consists of generating data together with relations between generators using the operations of the algebra involved. In categorical terms, the generators and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer. This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and $2$-monad. The most direct route to the desired results uses the theory of locally finitely presentable categories. We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
@@ -1009,7 +1097,7 @@ using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the canon
 \end{Defi}
 
 \begin{rem}
-It is worth noting that the equivariance required for a $P$-algebra is built into the definition above by requiring the existence of the maps $\alpha_{n}$ to be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying plain operad (see \ref{pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
+It is worth noting that the equivariance required for a $P$-algebra is built into the definition above by requiring the existence of the maps $\alpha_{n}$ to be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying plain operad (see \cref{pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
 \end{rem}
 
 \begin{Defi}
@@ -1341,7 +1429,7 @@ Let $\Lambda$ be an action operad. The category $\Lambda\mb{\mbox{-}Coll}$ of $\
 %QQQ First instance of B\Lambda - replacing with B\Lambda
 The definition of $\Lambda\mb{\mbox{-}Coll}$ does not require that $\Lambda$ be an action operad, only that one has a natural number-indexed set of groups. Given any such collection of groups $\{ \Lambda(n) \}_{n \in \N}$, we can form the category $B\Lambda$ whose objects are natural numbers and whose hom-sets are given by $B\Lambda(m,n) = \emptyset$ if $m \neq n$ and $B\Lambda(n,n) = \Lambda(n)$ (where composition and units are given by group multiplication and identity elements, respectively). Then $\Lambda\mb{\mbox{-}Coll}$ is the presheaf category
   \[
-    \hat{B\Lambda} = [B\Lambda^{\textrm{op}}, \mb{Sets}],
+    \widehat{B\Lambda} = [B\Lambda^{\textrm{op}}, \mb{Sets}],
   \]
 with the opposite category arising from our choice of right actions. A key step in explaining how $\Lambda$-operads arise as monoids in the category of $\Lambda$-collections is to show that being an action operad endows $B\Lambda$ with a monoidal structure.
 \end{rem}
@@ -1438,7 +1526,7 @@ Since the convolution product is given by a coend, it is the universal object wi
   \[
     Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n}) \rightarrow Y^{\star n}(k)
   \]
-such that the following diagram commutes for every $g_{1} \in \Lambda(k_{1}), \ldots, g_{n} \in \Lambda(k_{n})$, where $\underline{k} = k_1 + \cdots + k_n$.
+such that the following diagram commutes for every $g_{1} \in \Lambda(k_{1}), \ldots, g_{n} \in \Lambda(k_{n})$, where $K = k_1 + \cdots + k_n$.
   %%Expanded diagram
   % \[
   %   \xy
@@ -1452,10 +1540,10 @@ such that the following diagram commutes for every $g_{1} \in \Lambda(k_{1}), \l
   % \]
   \[
     \xy
-      (0,0)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,\underline{k})}="a";
-      (60,0)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,\underline{k})}="b";
+      (0,0)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,K)}="a";
+      (60,0)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,K)}="b";
       (60,-20)*+{Y^{\star n}(k)}="c";
-      (0,-20)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,\underline{k})}="d";
+      (0,-20)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,K)}="d";
       %
       {\ar^{(-\cdot g_1, \cdots, -\cdot g_n) \times 1} "a" ; "b"};
       {\ar_{1 \times ((g_1 + \cdots + g_n)\cdot -)} "a" ; "d"};
@@ -1499,19 +1587,19 @@ there is a corresponding result for $F \colon B\Lambda^{\textrm{op}} \rightarrow
 \begin{proof}[Proof of \cref{operad=monoid}]
 First we must show that $\Lambda\mbox{-}\mb{Coll}$ has a monoidal structure using $\circ$. To prove this, we must give the unit and associativity isomorphisms and then check the monoidal category axioms. First, note that the unit object is given as $I = B\Lambda(-,1)$. Then for the left unit isomorphism, we find that
   \begin{align*}
-    I \circ Y (k) &\= \int^{n} B\Lambda(n,1) \times Y^{\star n}(k) \\
+    I \circ Y (k) &= \int^{n} B\Lambda(n,1) \times Y^{\star n}(k) \\
     &\cong Y^{\star 1}(k) \\
     &\cong Y(k)
   \end{align*}
 using only the properties of the coend. For the right unit isomorphism, we have that
   \begin{align*}
-    X \circ I (k) &\= \int^{n} X(n) \times I^{\star n}(k) \\
-    &\cong \int^{n} X(n) \times \int^{k_{1}, \ldots, k_{n}} B\Lambda(k_{1},1) \times \cdots \times B\Lambda(k_{n},1) \times B\Lambda(\underline{k}) \\
+    X \circ I (k) &= \int^{n} X(n) \times I^{\star n}(k) \\
+    &\cong \int^{n} X(n) \times \int^{k_{1}, \ldots, k_{n}} B\Lambda(k_{1},1) \times \cdots \times B\Lambda(k_{n},1) \times B\Lambda(K) \\
     &\cong \int^{n} X(n) \times B\Lambda(k,1+ \cdots +1) \\
     &= \int^{n} X(n) \times B\Lambda(k,n) \\
     &\cong X(k)
   \end{align*}
-using the same methods and where $\underline{k} = k_1 + \cdots + k_n$.
+using the same methods and where $K = k_1 + \cdots + k_n$.
 
 For associativity, we compute $(X \circ Y) \circ Z$ and $X \circ (Y \circ Z)$.
   \begin{align*}
@@ -1541,11 +1629,11 @@ For the monoidal category axioms on $\hat{B\Lambda}$, we only need to note that 
 
 Now we must show that monoids in $(\hat{B\Lambda}, \circ)$ are operads. By the Yoneda lemma, a map of $\Lambda$-collections $\eta \colon I \rightarrow X$ corresponds to an element $\id \in X(1)$ since $I = B\Lambda(-,1)$. A map $\mu \colon (X \circ X) \rightarrow X$ is given by a collection of $\Lambda(k)$-equivariant maps $X \circ X (k) \rightarrow X(k)$. By the universal property of the coend, this is equivalent to giving maps
   \[
-    \mu_{n, \underline{k}} \colon X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times B\Lambda(k, k_{1}+\cdots +k_{n}) \rightarrow X(k)
+    \mu_{n, K} \colon X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times B\Lambda(k, k_{1}+\cdots +k_{n}) \rightarrow X(k)
   \]
 which are compatible with the actions of $\Lambda(k)$ (using the hom-set in the source, and the standard right action in the target) as well as each of $\Lambda(n), \Lambda(k_{1}), \ldots, \Lambda(k_{n})$. The hom-set in $B\Lambda$ is nonempty precisely when $k=k_{1} + \cdots + k_{n}$, so we define the operad multiplication $\mu$ for $X$ to be
   \[
-    \mu (x; y_{1}, \ldots, y_{n}) = \mu_{n, \underline{k}}(x; y_{1}, \ldots, y_{n}; e_{k}).
+    \mu (x; y_{1}, \ldots, y_{n}) = \mu_{n, K}(x; y_{1}, \ldots, y_{n}; e_{k}).
   \]
 Compatibility with the actions of the  $\Lambda(n), \Lambda(k_{1}), \ldots, \Lambda(k_{n})$ give the equivariance axioms, and the unit and associativity for the monoid structure give the unit and associativity axioms for the operad structure. Finally, it is easy to check that a map of monoids is nothing more than an operad map which is appropriately equivariant for each $n$.
 \end{proof}

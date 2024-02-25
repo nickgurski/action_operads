@@ -1200,7 +1200,7 @@ The following lemma is a straightforward verification.
 The functor $E \colon \mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the set of objects functor. Therefore $E$ preserves all limits, and in particular is a symmetric monoidal functor when both categories are equipped with their cartesian monoidal structures.
 \end{lem}
 
-We are additionally interested in $\Lambda$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable). While the definition above gives the correct notion of a $\Lambda$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms. In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category. This follows the standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower. Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically.
+We are additionally interested in $\Lambda$-operads in $\mb{Cat}$ (or other cocomplete symmetric monoidal categories in which the tensor product preserves colimits in each variable). While the definition above gives the correct notion of a $\Lambda$-operad in $\mb{Cat}$ if we interpret the two equivariance axioms to hold for both objects and morphisms, it is useful to give a purely diagrammatic expression of these axioms. In the diagrams below, expressions of the form $G \times C$ for a group $G$ and category $C$ mean that the group $G$ is to be treated as a discrete category. This follows the standard method of how one expresses group actions in categories other than $\mb{Sets}$ using a copower. Thus the diagrams below are the two equivariance axioms given in \cref{Defi:lamop} expressed diagrammatically, where $K = k_1 + \ldots + k_n$.
     %% Expanded diagram
   % \[
   %   \xy
@@ -1219,15 +1219,15 @@ We are additionally interested in $\Lambda$-operads in $\mb{Cat}$ (or other coco
   \[
     \xy
       (0,0)*+{\scriptstyle P(n) \times \left(\prod_{i=1}^n P(k_i)\right) \times \left(\prod_{i=1}^n \Lambda(k_i)\right)} ="00";
-      (0,-15)*+{\scriptstyle P(\underline{k}) \times \Lambda(\underline{k}) } ="01";
+      (0,-15)*+{\scriptstyle P(K) \times \Lambda(K) } ="01";
       (60,0)*+{\scriptstyle P(n) \times \left(\prod_{i=1}^n \left(P(k_{i}) \times \Lambda(k_{i})\right)\right)} ="20";
       (60,-15)*+{\scriptstyle P(n) \times \left(\prod_{i=1}^n P(k_i)\right) } ="21";
-      (30, -25)*+{\scriptstyle P(\underline{k}) } ="12";% diagram
+      (30, -25)*+{\scriptstyle P(K) } ="12";% diagram
       {\ar^{\cong} "00" ; "20"};
       {\ar^{1 \times \prod_{i=1}^n \alpha_i} "20" ; "21"};
       {\ar^{\mu^P} "21" ; "12"};
       {\ar_{\mu^P \times \mu^\Lambda(e;-)} "00" ; "01"};
-      {\ar_{\alpha_{\underline{k}}} "01" ; "12"};
+      {\ar_{\alpha_{K}} "01" ; "12"};
     \endxy
   \]
     %% Expanded diagram
@@ -1256,22 +1256,22 @@ We are additionally interested in $\Lambda$-operads in $\mb{Cat}$ (or other coco
       (0,-10)*+{\scriptstyle P(n) \times \Lambda(n) \times \Lambda(n) \times \prod_{i=1}^n P(k_i) } ="01";
       (0,-20)*+{\scriptstyle P(n) \times \Lambda(n) \times \prod_{i=1}^n P(k_i) \times \Lambda(n) } ="02";
       (0,-30)*+{\scriptstyle P(n) \times \Sigma_{n} \times \prod_{i=1}^n P(k_i) \times \Lambda(n) } ="03";
-      (55,-30)*+{\scriptstyle P(\underline{k}) \times \Lambda(\underline{k}) } ="13";
+      (55,-30)*+{\scriptstyle P(K) \times \Lambda(K) } ="13";
       (70,0)*+{\scriptstyle P(n) \times \prod_{i=1}^n P(k_i) } ="20";
-      (70,-18)*+{\scriptstyle P(\underline{k}) } ="21";
+      (70,-18)*+{\scriptstyle P(K) } ="21";
       {\ar_{1 \times \Delta \times 1} "00" ; "01"};
       {\ar_{\cong} "01" ; "02"};
       {\ar_{1 \times \pi_{n} \times 1} "02" ; "03"};
       {\ar^{} "03" ; "13"};
       (35,-33)*{\scriptstyle \tilde{\mu}^P \times \mu^\Lambda(-;\underline{e})};
-      {\ar_{\alpha_{\underline{k}}} "13" ; "21"};
+      {\ar_{\alpha_{K}} "13" ; "21"};
       {\ar^{\alpha_{n} \times 1} "00" ; "20"};
       {\ar^{\mu^P} "20" ; "21"};
     \endxy
   \]
 In the second diagram, the morphism
     \[
-        \tilde{\mu}^P \colon P(n) \times \Sigma_n \times \prod_{i=1}^n P(k_i) \rightarrow P(\underline{k} \times \Lambda(\underline{k}))
+        \tilde{\mu}^P \colon P(n) \times \Sigma_n \times \prod_{i=1}^n P(k_i) \rightarrow P(K) \times \Lambda(K)
     \]
 is first the left action of $\Sigma_n$ on the product followed by the operad multiplication, and $\underline{e}$ is $e_{k_{1}}, \ldots, e_{k_{n}}$.
 
@@ -1527,29 +1527,33 @@ Descending to the quotient, this becomes a morphism
 and therefore is a morphism $[e; x_1, \ldots, x_n] \rightarrow [e; y_1, \ldots, y_n]$ precisely when $y_i = x_{g^{-1}(i)}'$, and so $f_i \in   X(x_i, y_{g(i)})$.
 \end{proof}
 
-\begin{nota}\label{tensor_notation}
-For $g \in \Lambda(n)$ and objects $x_1, \ldots, x_n$ of a $\Lambda$-monoidal category $X$, we write 
-  \[
-    g^{\otimes} \colon x_1 \otimes \cdots x_n \rightarrow x_{g^{-1}(1)} \otimes \cdots \otimes x_{g^{-1}(n)}
-  \]
-for the image of the map
-  \[
-    (!; \id, \ldots, \id) \colon  (e; x_1, \ldots, x_n) \rightarrow (g; x_1, \ldots, x_n)
-  \]
-in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.
-\end{nota}
+% QQQ -------------------------------
+% Not needed any more.
+% \begin{nota}\label{tensor_notation}
+% For $g \in \Lambda(n)$ and objects $x_1, \ldots, x_n$ of a $\Lambda$-monoidal category $X$, we write 
+%   \[
+%     g^{\otimes} \colon x_1 \otimes \cdots x_n \rightarrow x_{g^{-1}(1)} \otimes \cdots \otimes x_{g^{-1}(n)}
+%   \]
+% for the image of the map
+%   \[
+%     (!; \id, \ldots, \id) \colon  (e; x_1, \ldots, x_n) \rightarrow (g; x_1, \ldots, x_n)
+%   \]
+% in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$.
+% \end{nota}
 
-\begin{Defi}\label{action_map}
-We call the map 
-  \[
-    g^{\otimes} \colon x_1 \otimes \cdots \otimes x_n \rightarrow \otimes x_{g^{-1}(1)} \otimes \cdots \otimes x_{g^{-1}(n)}
-  \]
-the \emph{action} of $g$ on $x_1 \otimes \cdots \otimes x_n$.
-\end{Defi}
-
-\begin{rem}
-It is obvious that $g^{\otimes} \otimes h^{\otimes} = \mu(e_2; g, h)^{\otimes}$. The latter can also be written $\beta(g, h)^{\otimes}$ (using \cref{thm:charAOp}) or $(g \oplus h)^{\otimes}$  (using \cref{beta_to_oplus}).
-\end{rem}
+% \begin{Defi}\label{action_map}
+% We call the map 
+%   \[
+%     g^{\otimes} \colon x_1 \otimes \cdots x_n \rightarrow \otimes x_{g^{-1}(1)} \otimes \cdots \otimes x_{g^{-1}(n)}
+%   \]
+% the \emph{action} of $g$ on $x_1 \otimes \cdots \otimes x_n$.
+% \end{Defi}
+% 
+% \begin{rem}
+% It is obvious that $g^{\otimes} \otimes h^{\otimes} = \mu(e_2; g, h)^{\otimes}$. The latter can also be written $\beta(g, h)^{\otimes}$ (using \cref{thm:charAOp}).
+% % or $(g \oplus h)^{\otimes}$  (using \cref{beta_to_oplus}).
+% \end{rem}
+% ------------------------
 
 The $2$-monad $\underline{E\Lambda}$ is both finitary and cartesian (see \cref{sec:propofopsincat}). In fact we can characterize this operad uniquely (up to equivalence) using a standard argument.
 

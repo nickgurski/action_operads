@@ -187,7 +187,7 @@ It is easy to check that the elements $\hat{s}_{p,q} \in \Sigma_{n}$ satisfy the
 The collection of groups $J = \{ J_{n} \}$ form an action operad.
 \end{thm}
 \begin{proof}
-We will use \cref{thm:charAOp} to determine the rest of the action operad structure. Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $\underline{k} = \sum k_{i}$, group homomorphisms $\beta \colon J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{\underline{k}}$ and functions $\delta \colon J_{n} \rightarrow J_{\underline{k}}$ satisfying nine axioms. We define both of these on generators, starting with $\beta$.
+We will use \cref{thm:charAOp} to determine the rest of the action operad structure. Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, group homomorphisms $\beta \colon J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}$ and functions $\delta \colon J_{n} \rightarrow J_{K}$ satisfying nine axioms. We define both of these on generators, starting with $\beta$.
 
 Let $s_{p_{i}, q_{i}} \in J_{k_{i}}$. Let $r_{i} = k_{1} + k_{2} + \cdots + k_{i-1}$ for $i > 1$. Define $\beta$ by
   \[
@@ -197,16 +197,16 @@ Note that $s_{p_{i}+r_{i}, q_{i}+r_{i}}$ and $s_{p_{j}+r_{j}, q_{j}+r_{j}}$ are 
 
 It is easy to check that this disjointness property ensures that $\beta$ gives a well-defined group homomorphism
   \[
-    J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{\underline{k}}.
+    J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}.
   \]
 
-To define $\delta \colon J_{n} \rightarrow J_{\underline{k}}$ for natural numbers $n, k_{1}, \ldots, k_{n}$ and $\underline{k} = \sum k_{i}$, let $m_{k} = s_{1,k} \in J_{k}$. Then we start by defining
+To define $\delta \colon J_{n} \rightarrow J_{K}$ for natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, let $m_{k} = s_{1,k} \in J_{k}$. Then we start by defining
   \[
-    \delta(m_{n}) = m_{\underline{k}} \cdot \beta(m_{k_{1}}, m_{k_{2}}, \ldots, m_{k_{n}}).
+    \delta(m_{n}) = m_{K} \cdot \beta(m_{k_{1}}, m_{k_{2}}, \ldots, m_{k_{n}}).
   \]
 Note that, by equation \ref{eq8} of \cref{thm:charAOp}, this is equal to
   \[
-    \beta(m_{k_{n}}, m_{k_{n-1}}, \ldots, m_{k_{1}}) \cdot m_{\underline{k}}.
+    \beta(m_{k_{n}}, m_{k_{n-1}}, \ldots, m_{k_{1}}) \cdot m_{K}.
   \]
 Now $s_{p,q} \in J_{n}$ is equal to $\beta(e_{p-1}, m_{q-p+1}, e_{n-q})$ (here $e_{i}$ is the identity element in $J_{i}$) by definition of the $m_{i}$ and $\beta$, so we can define $\delta$ on any generator $s_{p,q}$ by
   \[
@@ -265,7 +265,7 @@ Axiom \eqref{eq9} is straightforward to check when only a single $g_{i}$ is a ge
   \]
 and we do so on $m_{n}$. (QQQ oddly worded) By definition, we have
   \[
-    \delta \left( \delta(m_{n}) \right) = \delta \left( m_{\underline{k}} \beta(m_{k_{1}}, \ldots, m_{k_{n}}) \right),
+    \delta \left( \delta(m_{n}) \right) = \delta \left( m_{K} \beta(m_{k_{1}}, \ldots, m_{k_{n}}) \right),
   \]
 which by axiom \eqref{eq6} is equal to
   \[
