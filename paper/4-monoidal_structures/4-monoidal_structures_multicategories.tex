@@ -103,11 +103,23 @@ commutes (in which the unlabeled morphisms are an associator and an inverse asso
 Our interest is in strict coboundary categories by which we mean coboundary categories with strict underlying monoidal category. Under the assumption of strictness, the second axiom above does not include associations for the tensor product and reduces to a square. To show that every coboundary category is equivalent to a strict coboundary category, we must introduce the $2$-category $\mb{CobCat}$ of coboundary categories.
 
 \begin{Defi}
-Let $(C,\sigma), (C', \sigma')$ be coboundary categories. A \emph{coboundary functor} $F \colon C \rightarrow C'$ is a strong monoidal functor (with invertible constraints $\varphi_{0}$ for the unit and $\varphi_{x,y}$ for the tensor product) such that
+Let $(C,\sigma), (C', \sigma')$ be coboundary categories. A \emph{coboundary functor} $F \colon C \rightarrow C'$ is a strong monoidal functor (with invertible constraints $\varphi_{0}$ for the unit and $\varphi_{x,y}$ for the tensor product) such that the following diagram commutes for all objects $x$, $y \in \m{C}$.
   \[
-    F\sigma_{x,y} \circ \varphi_{x,y} = \varphi_{y,x} \circ \sigma_{Fx,Fy}'
+    \xy
+      (0,0)*+{Fx \otimes Fy}="00";
+      (25,0)*+{F(x \otimes y)}="10";
+      (0,-20)*+{Fy \otimes Fx}="01";
+      (25,-20)*+{F(y \otimes x)}="11";
+      %
+      {\ar^{\varphi_{x,y}} "00";"10"};
+      {\ar^{F\sigma_{x,y}} "10";"11"};
+      {\ar_{\sigma_{Fx,Fy}} "00";"01"};
+      {\ar_{\varphi_{y,x}} "01";"11"};
+    \endxy
   \]
-holds.
+  % \[
+  %   F\sigma_{x,y} \circ \varphi_{x,y} = \varphi_{y,x} \circ \sigma_{Fx,Fy}'
+  % \]
 \end{Defi}
 
 Coboundary functors are composed just as strong monoidal functors are, giving the following.

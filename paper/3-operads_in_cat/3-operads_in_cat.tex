@@ -1340,10 +1340,10 @@ Both isomorphisms in the composite above are induced by universal properties (se
 % \end{array}
 % \]
   \begin{align*}
-    (FY)^{\star n}(k) & =  \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\Lambda(k, \sum k_{i}) \\
-    & \rightarrow   \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\Lambda(k, \sum k_{i}) \\
-    & \rightarrow  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i}) ) \\
-    & \rightarrow  F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \sum k_{i})  \\
+    (FY)^{\star n}(k) & =  \int^{k_{1}, \ldots, k_{n}} FY(k_{1}) \otimes \cdots \otimes FY(k_{n}) \odot B\Lambda(k, \Sigma k_{i}) \\
+    & \rightarrow   \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n})) \odot B\Lambda(k, \Sigma k_{i}) \\
+    & \rightarrow  \int^{k_{1}, \ldots, k_{n}} F(Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \Sigma k_{i}) ) \\
+    & \rightarrow  F\int^{k_{1}, \ldots, k_{n}} Y(k_{1}) \otimes \cdots \otimes Y(k_{n}) \odot B\Lambda(k, \Sigma k_{i})  \\
     & =  F(Y^{\star n}(k))
   \end{align*}
 Checking the lax monoidal functor axioms is tedious but entirely routine using the lax monoidal functor axioms for $F$ together with various universal properties of colimits, and we leave the details to the reader.
@@ -1696,9 +1696,9 @@ By \cref{coeq-lem}
 , this amounts to showing that the square below is a pullback.
   \[
     \xy
-      (0,0)*+{E\Lambda(n) \times X^n/\Lambda(n)} ="00";
+      (0,0)*+{\left(E\Lambda(n) \times X^n\right)/\Lambda(n)} ="00";
       (0,-10)*+{B\Lambda(n)} ="01";
-      (35,0)*+{E\Sigma_{n} \times X^n/\Sigma_{n}} ="10";
+      (35,0)*+{\left(E\Sigma_{n} \times X^n\right)/\Sigma_{n}} ="10";
       (35,-10)*+{B\Sigma_{n}} ="11";
       {\ar^{} "00" ; "10"};
       {\ar^{} "10" ; "11"};
