@@ -461,7 +461,7 @@ Much as the symmetric groups can be represented by crossings of a collection of 
 			\end{tikzpicture} \\
 			$b$ & & $t$ 
 \end{tabular} \end{center}
-This operad $RB$ is also clearly an action operad, since we can just define $\pi^{RB} \colon RB_{n} \rightarrow \Sigma_n$ to act like $\pi^B$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
+This operad $RB$ is also clearly an action operad, since we can just define $\pi^{RB}_n \colon RB_{n} \rightarrow \Sigma_n$ to act like $\pi^B_n$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
 
 \begin{example}
 Every abelian group $A$ gives rise to action operad $A^{\bullet}$ as follows. The group $A^{\bullet}(n)$ is the direct sum of $n$ copies of $A$, $A^{n}$. The identity element is required to be $e \in A^{1}$, and the multiplication is defined by
@@ -738,7 +738,7 @@ Axioms:
 % \beta(h_{11}, \ldots, h_{1j_{1}}, h_{21}, \ldots, h_{2j_{2}}, \ldots, h_{nj_{n}}) = \beta\left( \beta(h_{11}, \ldots, h_{1j_{1}}), \ldots, \beta(h_{n1}, \ldots, h_{nj_{n}}) \right)
 % \]
 \[
-  \beta(\underline{h_1},\ldots,\underline{h_n}) = \beta(\beta(\underline{h_1},\ldots,\beta(\underline{h_n}))
+  \beta(\underline{h_1},\ldots,\underline{h_n}) = \beta(\beta(\underline{h_1}),\ldots,\beta(\underline{h_n}))
 \]
 holds, where $\underline{h_i} = h_{i1},\ldots,h_{ij_i}$.
 \item\label{eq4} The functions $\delta_{n; k_{1}, \ldots, k_{n}}$ are natural with respect to the maps $\pi_{n}$, where $K = k_1 + \cdots + k_n$.
