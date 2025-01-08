@@ -991,6 +991,7 @@
       \strng{authorbibnamehash}{fd40778e9f0fb6ecf8b350740616d23e}
       \strng{authornamehash}{fd40778e9f0fb6ecf8b350740616d23e}
       \strng{authorfullhash}{fd40778e9f0fb6ecf8b350740616d23e}
+      \field{extraname}{1}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -1002,6 +1003,51 @@
       \field{year}{1996}
       \field{pages}{263\bibrangedash 281}
       \range{pages}{19}
+    \endentry
+    \entry{Kra87}{article}{}
+      \name{author}{1}{}{%
+        {{hash=fd40778e9f0fb6ecf8b350740616d23e}{%
+           family={Krasauskas},
+           familyi={K\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{fd40778e9f0fb6ecf8b350740616d23e}
+      \strng{fullhash}{fd40778e9f0fb6ecf8b350740616d23e}
+      \strng{bibnamehash}{fd40778e9f0fb6ecf8b350740616d23e}
+      \strng{authorbibnamehash}{fd40778e9f0fb6ecf8b350740616d23e}
+      \strng{authornamehash}{fd40778e9f0fb6ecf8b350740616d23e}
+      \strng{authorfullhash}{fd40778e9f0fb6ecf8b350740616d23e}
+      \field{extraname}{2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1573-8825}
+      \field{journaltitle}{Lithuanian Mathematical Journal}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Skew-simplicial groups}
+      \field{urlday}{18}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{volume}{27}
+      \field{year}{1987}
+      \field{urldateera}{ce}
+      \field{pages}{47\bibrangedash 54}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1007/BF00972021
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF00972021
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF00972021
+      \endverb
     \endentry
     \entry{lack-cod}{article}{}
       \name{author}{1}{}{%
