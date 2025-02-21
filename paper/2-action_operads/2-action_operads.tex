@@ -423,11 +423,11 @@ QQQ Non-examples: Hyperoctahedral, and check the other skew-simplicial groups in
     &\neq c_4^n
   \end{align*}
 for any $n \in \{1,2,3,4\}$.
-\item Order-reversing permutations/reflexive(?) groups: Here we would like to take $\Lambda(n) = C_2 = \{e, \tau_n\}$ with $\pi_n$ giving either the identity, or the order-reversing permutation on $n$ elements when applied to $\tau$. With these groups and the underlying permutations as described, we find that Axiom 1 is not satisfied:
+\item Order-reversing permutations/reflexive(?) groups: Here we would like to take $\Lambda(n) = C_2 = \{e, \tau_n\}$ with $\pi_n$ giving either the identity, or the order-reversing permutation on $n$ elements when applied to $\tau$. With these groups and the underlying permutations as described, we find that Axiom 1 of \ref{thm:charAOp} is not satisfied:
   \[
     \pi_4(\beta(\tau_2,\tau)) = \tau = \trans{1}{4}\trans{2}{3} \neq \trans{1}{2}\trans{3}{4} = \beta(\trans{1}{2},\trans{1}{2}) = \beta(\pi_2(\tau_2),\pi_2(\tau_2)).
   \]
-\item Hyperoctahedral groups: Can't remember what this fails to satisfy... Dan Graves came up with a counterexample, using the main action operad equivariance axiom, which was clearer than Zhang's description \cite{zhang-grp} - Example 2.28.
+\item Hyperoctahedral groups: Can't remember what this fails to satisfy... Dan Graves came up with a counterexample, using the main action operad equivariance axiom, which was clearer than Zhang's description \cite{zhang-grp} - Example 2.28. Can show now that this is really saying that it fails Axiom 8 of \ref{thm:charAOp} when taking $\delta_{1;n}(-1)$ to be the order-reversing permutation. Can also show that taking $\delta_{1;n}(-1)$ to be the negative identity matrix makes it fail on Axiom 6 of \ref{thm:charAOp} instead - though it does then satisfy Axiom 8.
 \item Alternating groups: The image of the obvious map for $\delta$ does not lie in $A_n$: $\delta_{4;,0,0,1,1}(\trans{1}{2}\trans{3}{4})=\trans{1}{2} \notin A_2$.
 \end{enumerate}
 \end{example}
