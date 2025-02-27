@@ -275,7 +275,7 @@ Axiom \eqref{eq9} is straightforward to check when only a single $g_{i}$ is a ge
   \[
     \delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{m}}}\left( \delta_{n; m_{1}, \ldots, m_{n}}(f) \right) = \delta_{n; P_{1}, \ldots, P_{n}}(f),
   \]
-and we do so on $m_{n}$. (QQQ oddly worded) By definition, we have
+and we do so on $m_{n}$. (QQQ oddly worded - there's $m_n$'s for the twists and for natural numbers here) By definition, we have
   \[
     \delta \left( \delta(m_{n}) \right) = \delta \left( m_{K} \beta(m_{k_{1}}, \ldots, m_{k_{n}}) \right),
   \]
@@ -808,17 +808,37 @@ The notation $(a, \underline{b})$ is meant to indicate that there is a single $a
             (62.5,-13)*{\tau_{4,2}}
         \endxy
     \]
-Note then that $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$.
 
+Note then that $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$. This has the effect of rearranging $m$ groups of $n$ things into $n$ groups of $m$ things. E.g., the permutation represented below is $\tau_{5,3}$ and corresponds to taking the transpose of the matrix shown.
+  \[
+      \begin{bmatrix}
+        \textcolor{myorange}{(a_1,b_1)} & \textcolor{myorange}{(a_1,b_2)} & \textcolor{myorange}{(a_1,b_3)} \\
+        \textcolor{mygreen}{(a_2,b_1)} & \textcolor{mygreen}{(a_2,b_2)} & \textcolor{mygreen}{(a_2,b_3)} \\
+        \textcolor{myviolet}{(a_3,b_1)} & \textcolor{myviolet}{(a_3,b_2)} & \textcolor{myviolet}{(a_3,b_3)} \\
+        \textcolor{myred}{(a_4,b_1)} & \textcolor{myred}{(a_4,b_2)} & \textcolor{myred}{(a_4,b_3)} \\
+        \textcolor{myblue}{(a_5,b_1)} & \textcolor{myblue}{(a_5,b_2)} & \textcolor{myblue}{(a_5,b_3)}                               
+      \end{bmatrix}^T
+      =
+      \begin{bmatrix}
+        \textcolor{myorange}{(a_1,b_1)} & \textcolor{mygreen}{(a_2,b_1)} & \textcolor{myviolet}{(a_3,b_1)} & \textcolor{myred}{(a_4,b_1)} & \textcolor{myblue}{(a_5,b_1)} \\ 
+        \textcolor{myorange}{(a_1,b_2)} & \textcolor{mygreen}{(a_2,b_2)} & \textcolor{myviolet}{(a_3,b_2)} & \textcolor{myred}{(a_4,b_2)} & \textcolor{myblue}{(a_5,b_2)} \\  
+        \textcolor{myorange}{(a_1,b_3)} & \textcolor{mygreen}{(a_2,b_3)} & \textcolor{myviolet}{(a_3,b_3)} & \textcolor{myred}{(a_4,b_3)} & \textcolor{myblue}{(a_5,b_3)}
+      \end{bmatrix}
+  \]
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\columnwidth]{4-monoidal_structures/t-5-3.pdf}
+\end{figure}
 % We now give sufficient conditions for equipping the $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ with a pseudo-commutative structure. Let $\mathbb{N}_{+}$ denote the set of positive natural numbers.
 
 We now define what it means for a $\Lambda$-operad to be pseudo-commuative, before then showing that such an operad yields a pseudo-commutative structure on the corresponding $2$-monad $\underline{P}$. Let $\mathbb{N}_{+}$ denote the set of positive integers.
 
+QQQ Rewrite all this using the beta and delta operations, so it's consistent with before.
 \begin{Defi}\label{def:ps-comm_operad}
 Let $P$ be a $\Lambda$-operad. A pseudo-commutative structure on $P$ consists of:
     \begin{itemize}
         \item For each pair $(m,n) \in \mathbb{N}_{+}^2$, an element $t_{m,n} \in \Lambda(mn)$ such that $\pi(t_{m,n}) = \tau_{m,n}$.
-        \item For each $p \in P(n)$, $q \in P(m)$,  a natural isomorphism
+        \item For each $p \in P(n)$, $q \in P(m)$, a natural isomorphism
             \[
                 \lambda_{p,q} \colon \mu(p;q,\ldots,q) \cdot t_{m,n} \cong \mu(q;p,\ldots,p).
             \]
@@ -853,10 +873,18 @@ These are required to satisfy the following axioms:
             \[
                 \mu^{\Lambda}\left(e_l; t_{m_1,n}, \ldots, t_{m_l,n}\right) \cdot \mu^{\Lambda}\left(t_{l,n};\underline{e_{m_1},\ldots,e_{m_l}}\right) = t_{n,M}.
             \]
+            QQQ New version:
+            \[
+              \beta(t_{n,m_1},\ldots,t_{n,m_l}) \cdot \delta_{\underline{m_i},\ldots,\underline{m_i}}(t_{n,l}) = t_{n,M}.
+            \]
             Here $\underline{e_{m_1},\ldots,e_{m_l}}$ is the list $e_{m_{1}}, \ldots, e_{m_{l}}$ repeated $n$ times.
         \item For all $l, m, n_1,\ldots, n_m \in \mathbb{N}_+$, with $N = \Sigma n_i$,
             \[
                 \mu^{\Lambda}\left(t_{m,l};\underline{e_{n_1}},\ldots,\underline{e_{n_m}}\right) \cdot \mu^{\Lambda}\left(e_m;t_{n_1,l},\ldots,t_{n_m,l}\right) = t_{N,l}.
+            \]
+            QQQ New version
+            \[
+              \delta_{\underline{n_1},\ldots,\underline{n_m}}(t_{m,l}) \cdot \beta(t_{n_1,l},\ldots,t_{n_m,l}) = t_{N,l}.
             \]
             Here $\underline{e_{n_{i}}}$ indicates that each $e_{n_{i}}$ is repeated $l$ times.
         \item For any $l, m_i, n \in \mathbb{N}_+$, with $1 \leq i \leq n$, and $p \in P(l)$, $q_i \in P(m_i)$ and $r \in P(n)$, the following diagram commutes. (Note that we maintain the convention that anything underlined indicates a list, and double underlining indicates a list of lists. Each instance should have an obvious meaning from context and the equations appearing above.)
@@ -870,7 +898,7 @@ These are required to satisfy the following axioms:
                 (60,-40)*+{\mu\left(\mu(p;q_1,\ldots,q_n);\underline{\underline{r}}\right)}="12";
                 (0,-45)*+{\mu\left(\mu(p;\underline{r}) \cdot t_{n,l} ; \underline{q_1,\ldots,q_n}\right)}="03";
                 (60,-60)*+{\mu\left(r;\underline{\mu(p;q_1,\ldots,q_n)}\right)}="13";
-                (0,-60)*+{\mu\left(\mu(r,\underline{p});\underline{q_1,\ldots,q_n}\right)}="04";
+                (0,-60)*+{\mu\left(\mu(r;\underline{p});\underline{q_1,\ldots,q_n}\right)}="04";
                 {\ar@{=} "00" ; "10"};
                 {\ar@{=} "00" ; "01"};
                 {\ar@{=} "10" ; "11"};
@@ -909,7 +937,7 @@ These are required to satisfy the following axioms:
 \end{Defi}
 
 \begin{remark}
-Originally the definition presented above did not include the equivariance axiom (Axiom 2). That this axiom is required was identified by the authors of \cite{guillou_symmetric}, with the detail described in Remark 11.2 of \cite{guillou_multiplicative}.
+QQQ Reword this whole thing as it's just naturality. QQQ Originally the definition presented above did not include the equivariance axiom (Axiom 2). That this axiom is required was identified by the authors of \cite{guillou_symmetric}, with the detail described in Remark 11.2 of \cite{guillou_multiplicative}.
 \end{remark}
 
 \begin{thm}\label{pscomm}
@@ -1259,6 +1287,26 @@ For the coequalizer in question, for $f$ to be the first component of an identit
 The pseudo-commutativities given above are not necessarily the only ones that exist for the $B$-operad $B$, but we do not know a general strategy for producing others.
 \end{rem}
 
+\begin{example}
+Non-Example: Cactus operad.
+
+Begin by defining $t_{2,2} = s_{2,3}$, which has underlying permutation $\pi_4(t_{2,2}) = \trans{2}{3} = \tau_{2,3}$, as required. This seems to be a sensible choice to then demonstrate that we can describe all other $t_{m,n}$ required for a pseudo-commutativity on $J$. In particular, we should be able to describe $t_{2,4}$ which would have underlying permutation $\tau_{2,4} = (2 \,\, 3 \,\, 5)(4 \,\, 7 \,\, 6)$. If the required elements $t_{m,m}$ existed for the cactus operad $J$, then we would be able to apply the axioms from Definition \ref{def:ps-comm_operad} to the element $t_{2,4}$ in order to see how it is constructed from $t_{2,2} = s_{2,3}$.
+
+Now
+  \begin{align*}
+    t_{2,4} &= t_{2,2+2} \\
+    &= \beta(t_{2,2},t_{2,2}) \cdot \delta_{2,2,2,2}(t_{2,2}) \\
+    &= s_{2,3} \cdot s_{5,7} \cdot \delta_{2,2,2,2}(s_{2,3}) \\
+    &= s_{2,3} \cdot s_{5,7} \cdot s_{2,6} \cdot \beta(e_2,s_{1,2},s_{1,2},e_2) \\
+    &= s_{2,3} \cdot s_{5,7} \cdot s_{2,6} \cdot s_{3,4} \cdot s_{5,6}.
+  \end{align*}
+Here we have used $\delta$ as defined for generators $s_{p,q}$ in Theorem \ref{J_aop}.
+This element has underlying permutation
+  \[
+      \trans{2}{3}\trans{5}{7}\trans{2}{6}\trans{3}{5}\trans{3}{4}\trans{5}{6} = \trans{2}{6}(3 \,\, 4 \,\, 7 \,\,5)
+  \]
+which is not equal to $\tau_{2,4} = (2 \,\, 3 \,\, 5)(4 \,\, 7 \,\, 6)$. Hence if $J$ were to have a pseudo-commutative structure, then it cannot arise in this way having $t_{2,2} = s_{2,3}$.
+\end{example}
 \subsection{Profunctors and multicategories}
 In this section we generalize from operads to multicategories (or colored operads). The notions of plain and symmetric multicategories are standard \cite{bd_hda3}, but in fact there is a corresponding notion of $\Lambda$-multicategory for any action operad $\Lambda$. We will give the basic definition and then show that it arises abstractly from a lifting of $\underline{E\Lambda}$ as a $2$-monad  on $\mb{Cat}$ to a pseudomonad on $\mb{Prof}$, the bicategory of categories, profunctors, and transformations. A quick treatment of similar material but restricted to the symmetric case can be found in \cite{garner_poly}.
 
