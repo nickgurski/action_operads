@@ -212,22 +212,22 @@ It is easy to check that this disjointness property ensures that $\beta$ gives a
     J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}.
   \]
 
-To define $\delta \colon J_{n} \rightarrow J_{K}$ for natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, let $m_{k} = s_{1,k} \in J_{k}$. Then we start by defining
+To define $\delta \colon J_{n} \rightarrow J_{K}$ for natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, let $t_{k} = s_{1,k} \in J_{k}$. Then we start by defining
   \[
-    \delta(m_{n}) = m_{K} \cdot \beta(m_{k_{1}}, m_{k_{2}}, \ldots, m_{k_{n}}).
+    \delta(t_{n}) = t_{K} \cdot \beta(t_{k_{1}}, t_{k_{2}}, \ldots, t_{k_{n}}).
   \]
-Note that, by equation \ref{eq8} of \cref{thm:charAOp}, this is equal to
+Note that, by Axiom \ref{eq8} of \cref{thm:charAOp}, this is equal to
   \[
-    \beta(m_{k_{n}}, m_{k_{n-1}}, \ldots, m_{k_{1}}) \cdot m_{K}.
+    \beta(t_{k_{n}}, t_{k_{n-1}}, \ldots, t_{k_{1}}) \cdot t_{K}.
   \]
-Now $s_{p,q} \in J_{n}$ is equal to $\beta(e_{p-1}, m_{q-p+1}, e_{n-q})$ (here $e_{i}$ is the identity element in $J_{i}$) by definition of the $m_{i}$ and $\beta$, so we can define $\delta$ on any generator $s_{p,q}$ by
+Now $s_{p,q} \in J_{n}$ is equal to $\beta(e_{p-1}, t_{q-p+1}, e_{n-q})$ (here $e_{i}$ is the identity element in $J_{i}$) by definition of the $t_{i}$ and $\beta$, so we can define $\delta$ on any generator $s_{p,q}$ by
   \[
     \delta(s_{p,q}) = \beta ( e_{A}, M, e_{B} )
   \]
 with
   \begin{itemize}
     \item $A = k_{1} + k_{2} + \cdots + k_{p-1}$,
-    \item $M = m_{k_{p}+ \cdots +k_{q}} \cdot \beta(m_{k_{p}}, m_{k_{p+1}}, \ldots, m_{k_{q}})$, and
+    \item $M = t_{k_{p}+ \cdots +k_{q}} \cdot \beta(t_{k_{p}}, t_{k_{p+1}}, \ldots, t_{k_{q}})$, and
     \item $B = k_{q+1} + k_{q+2} + \cdots + k_{n}$.
   \end{itemize}
 Unpacking this yields the following formula:
@@ -235,7 +235,7 @@ Unpacking this yields the following formula:
   %   \resizebox{\textwidth}{!}{$\delta(s_{p,q}) = s_{k_{1}+\cdots+k_{p-1}+1, k_{1}+\cdots+k_{q}} \cdot \beta(e_{k_{1}+\cdots+k_{p-1}}, m_{k_{p}}, \ldots, m_{k_{q}}, e_{k_{q+1}+\cdots+k_{n}}).$}
   % \]
   \[
-  \delta(s_{p,q}) = s_{k_{1}+\cdots+k_{p-1}+1, k_{1}+\cdots+k_{q}} \cdot \beta(e_{k_{1}+\cdots+k_{p-1}}, m_{k_{p}}, \ldots, m_{k_{q}}, e_{k_{q+1}+\cdots+k_{n}}).
+  \delta(s_{p,q}) = s_{k_{1}+\cdots+k_{p-1}+1, k_{1}+\cdots+k_{q}} \cdot \beta(e_{k_{1}+\cdots+k_{p-1}}, t_{k_{p}}, \ldots, t_{k_{q}}, e_{k_{q+1}+\cdots+k_{n}}).
   \]
 
 We extend $\delta$ to products of generators using axiom 6 of \cref{thm:charAOp}. As before, we must check that this gives a well-defined function on products of two generators in each of the relations of the cactus groups, and we must also check that this is well-defined on products of three or more generators. Thus we define
@@ -250,7 +250,7 @@ where $k_{i} = j_{\pi(h)^{-1}(i)}$. There are three relations we must verify for
   \]
 which is
   \[
-    m_{\underline{j}}\beta(m_{j_{n}}, \ldots, m_{j_{1}}) m_{\underline{j}} \beta(m_{j_{1}}, \ldots, m_{j_{n}}).
+    t_{\underline{j}}\beta(t_{j_{n}}, \ldots, t_{j_{1}}) t_{\underline{j}} \beta(t_{j_{1}}, \ldots, t_{j_{n}}).
   \]
 By the remarks above in the definition of $\delta$ and the fact that $s_{p,q}^{2}=e$, the element above is easily seen to be the identity.
 \item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{k,l}s_{p,q})$ when $(p,q)$ is disjoint from $(k,l)$. This is another simple calculation using the definition of $\delta$ and the disjointness of the terms involved.
@@ -259,35 +259,35 @@ By the remarks above in the definition of $\delta$ and the fact that $s_{p,q}^{2
   %   \resizebox{\textwidth}{!}{$\beta\left(e_{j_{1}}, \ldots, e_{j_{p-1}}, m_{j_{p}+\cdots + j_{q}} \cdot \beta \left(m_{j_{p}}, \ldots m_{j_{k-1}}, m_{j_{k}+ \cdots j_{l}}, m_{j_{l+1}}, \cdots, m_{j_{q}}\right), m_{j_{q+1}}, \ldots, m_{j_{n}}\right).$}
   % \]
   \[
-    \beta\left(\underline{e}, m_{j_{p}+\cdots + j_{q}} \cdot \beta \left(m_{j_{p}}, \ldots m_{j_{k-1}}, m_{j_{k}+ \cdots +j_{l}}, m_{j_{l+1}}, \cdots, m_{j_{q}}\right), m_{j_{q+1}}, \ldots, m_{j_{n}}\right)
+    \beta\left(\underline{e}, t_{j_{p}+\cdots + j_{q}} \cdot \beta \left(t_{j_{p}}, \ldots t_{j_{k-1}}, t_{j_{k}+ \cdots +j_{l}}, t_{j_{l+1}}, \cdots, t_{j_{q}}\right), t_{j_{q+1}}, \ldots, t_{j_{n}}\right)
   \]
 where $\underline{e} = e_{j_{1}}, \ldots, e_{j_{p-1}}$.
 \end{itemize}
 In order to show that this gives a well-defined function on products of three or more generators, one proceeds inductively to show that $\delta\left((fg)h\right) = \delta\left(f(gh)\right)$ using the formula above. This is simply a matter of keeping track of the permutations used to define the subscripts for the different $\delta$'s and we leave it to the reader, should they desire to see the details. This concludes the definition of the family of functions $\delta_{n; j_{i}}$.
 
-There are now nine axioms to check in \cref{thm:charAOp}. Axioms \eqref{eq1} - \eqref{eq3} all concern $\beta$, and are immediate from the defining formula. Axiom \eqref{eq4} is obvious for the elements $m_{k}$, from which it follows in general by the formulas defining $\delta$. For axiom \eqref{eq5}, one can check easily that
+There are now nine axioms to check in \cref{thm:charAOp}. Axioms \ref{eq1} - \ref{eq3} all concern $\beta$, and are immediate from the defining formula. Axiom \ref{eq4} is obvious for the elements $t_{k}$, from which it follows in general by the formulas defining $\delta$. For Axiom \ref{eq5}, one can check easily that
   \[
-    \delta_{n; 1, \ldots, 1}(m_{n}) = m_{n}, \quad \delta_{1;n}(m_{n}) = m_{n}
+    \delta_{n; 1, \ldots, 1}(t_{n}) = t_{n}, \quad \delta_{1;n}(t_{n}) = t_{n}
   \]
-and once again the general case follows from these. Axiom \eqref{eq6} holds by the construction of $\delta$. Axiom \eqref{eq8} can be verified with only one $h_{i}$ nontrivial at a time, and then it is a simple consequence of the second and third relations for $J_{n}$.
+and once again the general case follows from these. Axiom \ref{eq6} holds by the construction of $\delta$. Axiom \ref{eq8} can be verified with only one $h_{i}$ nontrivial at a time, and then it is a simple consequence of the second and third relations for $J_{n}$.
 
-Axiom \eqref{eq9} is straightforward to check when only a single $g_{i}$ is a generator and the rest are identities using the defining formulas, and the general case then follows using axiom \eqref{eq6}. Using \eqref{eq9}, we can then prove axiom \eqref{eq7} as follows; we suppress the subscripts on different $\delta$'s for clarity. We must show
+Axiom \ref{eq9} is straightforward to check when only a single $g_{i}$ is a generator and the rest are identities using the defining formulas, and the general case then follows using Axiom \ref{eq6}. Using Axiom \ref{eq9}, we can then prove Axiom \ref{eq7} as follows; we suppress the subscripts on different $\delta$'s for clarity. We must show
   \[
     \delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{m}}}\left( \delta_{n; m_{1}, \ldots, m_{n}}(f) \right) = \delta_{n; P_{1}, \ldots, P_{n}}(f),
   \]
-and we do so on $m_{n}$. (QQQ oddly worded - there's $m_n$'s for the twists and for natural numbers here) By definition, we have
+and we do so on $t_{n}$. By definition, we have
   \[
-    \delta \left( \delta(m_{n}) \right) = \delta \left( m_{K} \beta(m_{k_{1}}, \ldots, m_{k_{n}}) \right),
+    \delta \left( \delta(t_{n}) \right) = \delta \left( t_{K} \beta(t_{k_{1}}, \ldots, t_{k_{n}}) \right),
   \]
-which by axiom \eqref{eq6} is equal to
+which by Axiom \ref{eq6} is equal to
   \[
-    m_{P_{1} + \cdots + P_{n}} \cdot \beta(m_{p_{11}}, \ldots, m_{p_{n,m_{n}}}) \cdot \delta\left( \beta(m_{k_{1}}, \ldots, m_{k_{n}}) \right).
+    t_{P_{1} + \cdots + P_{n}} \cdot \beta(t_{p_{11}}, \ldots, t_{p_{n,m_{n}}}) \cdot \delta\left( \beta(t_{k_{1}}, \ldots, t_{k_{n}}) \right).
   \]
-Now this last term is equal to $\beta \left( \delta(m_{k_{1}}), \ldots, \delta(m_{k_{n}}) \right)$ by axiom \eqref{eq9}, which is then equal to
+Now this last term is equal to $\beta \left( \delta(t_{k_{1}}), \ldots, \delta(t_{k_{n}}) \right)$ by Axiom \ref{eq9}, which is then equal to
   \[
-    \beta \left( m_{P_{1}}\cdot \beta(m_{p_{11}}, \ldots, m_{p_{1,m_{1}}}), \ldots,  m_{P_{n}}\cdot \beta(m_{p_{n1}}, \ldots, m_{p_{1,m_{n}}}) \right).
+    \beta \left( t_{P_{1}}\cdot \beta(t_{p_{11}}, \ldots, t_{p_{1,m_{1}}}), \ldots,  t_{P_{n}}\cdot \beta(t_{p_{n1}}, \ldots, t_{p_{1,m_{n}}}) \right).
   \]
-Taken all together, the left hand side of axiom \eqref{eq9} is then
+Taken all together, the left hand side of Axiom \ref{eq9} is then
   % \[
   %   \resizebox{\textwidth}{!}{$m_{P_{1} + \cdots + P_{n}} \cdot \beta(m_{p_{11}}, \ldots, m_{p_{n,m_{n}}}) \cdot \beta \left( m_{P_{1}}\cdot \beta(m_{p_{11}}, \ldots, m_{p_{1,m_{1}}}), \ldots,  m_{P_{n}}\cdot \beta(m_{p_{n1}}, \ldots, m_{p_{1,m_{n}}}) \right).$}
   % \]
@@ -295,14 +295,14 @@ Taken all together, the left hand side of axiom \eqref{eq9} is then
   %   m_{P_{1} + \cdots + P_{n}} \cdot \beta(m_{p_{11}}, \ldots, m_{p_{n,m_{n}}}) \cdot \beta \left( m_{P_{1}}\cdot \beta(m_{p_{11}}, \ldots, m_{p_{1,m_{1}}}), \ldots,  m_{P_{n}}\cdot \beta(m_{p_{n1}}, \ldots, m_{p_{1,m_{n}}}) \right).
   % \]
   \[
-    m_{P_{1} + \cdots + P_{n}} \cdot \beta(m_{p_{11}}, \ldots, m_{p_{n,m_{n}}}) \cdot \beta \left( m_{P_{1}}\cdot \beta(\underline{m_{p_{1}}}), \ldots,  m_{P_{n}}\cdot \beta(\underline{m_{p_{n}}}) \right).
+    t_{P_{1} + \cdots + P_{n}} \cdot \beta(t_{p_{11}}, \ldots, t_{p_{n,m_{n}}}) \cdot \beta \left( t_{P_{1}}\cdot \beta(\underline{t_{p_{1}}}), \ldots,  t_{P_{n}}\cdot \beta(\underline{t_{p_{n}}}) \right).
   \]
-where $\underline{m_{p_{i}}} = m_{p_{i,1}}, \cdots, m_{i,m_{i}}$
-All of the terms coming from an $m_{p_{ij}}$ can be collected together, and since $s_{p,q}^{2} = e$ for all $p,q$, these cancel. This leaves
+where $\underline{t_{p_{i}}} = t_{p_{i,1}}, \cdots, t_{i,m_{i}}$
+All of the terms coming from an $t_{p_{ij}}$ can be collected together, and since $s_{p,q}^{2} = e$ for all $p,q$, these cancel. This leaves
   \[
-    m_{P_{1} + \cdots + P_{n}} \cdot \beta \left( m_{P_{1}}, \ldots,  m_{P_{n}} \right)
+    t_{P_{1} + \cdots + P_{n}} \cdot \beta \left( t_{P_{1}}, \ldots,  t_{P_{n}} \right)
   \]
-which is the right hand side of axiom \eqref{eq9} as desired.
+which is the right hand side of Axiom \ref{eq9} as desired.
 \end{proof}
 
 \begin{lem}
@@ -697,12 +697,12 @@ The strength for the $\Lambda$-equivariant $P$ is just the induced functor betwe
       \]
 satisfying the following three strength axioms, two unit (or $\eta$) axioms, and two multiplication (or $\mu$) axioms for all $A$, $B$, and $C$.
     \begin{enumerate}
-        \item $\gamma_{A \times B,C} * (d_{A,B} \times 1_{TC}) = d_{A,B \times C} * (1_A \times \gamma_{B,C})$.
-        \item $\gamma_{A,B \times C} * (1_{TA} \times d_{B,C}) = \gamma_{A \times B, C} * (d^{\ast}_{A,B} \times 1_{TC})$.
-        \item $\gamma_{A,B \times C} * (1_{TA} \times d^{\ast}_{B,C}) = d^{\ast}_{A \times B,C} * (\gamma_{A,B} \times 1_{C})$.
-        \item $\gamma_{A,B} * (\eta_A \times 1_{TB})$  is the identity on $d$.
-        \item $\gamma_{A,B} * (1_{TA} \times \eta_B)$ is the identity on $d^{*}$.
-        \item $\gamma_{A,B} * (\mu_A \times 1_{TB})$ is equal to the pasting below.
+        \item\label{axiom:ps_comm_str_1} $\gamma_{A \times B,C} * (d_{A,B} \times 1_{TC}) = d_{A,B \times C} * (1_A \times \gamma_{B,C})$.
+        \item\label{axiom:ps_comm_str_2} $\gamma_{A,B \times C} * (1_{TA} \times d_{B,C}) = \gamma_{A \times B, C} * (d^{\ast}_{A,B} \times 1_{TC})$.
+        \item\label{axiom:ps_comm_str_3} $\gamma_{A,B \times C} * (1_{TA} \times d^{\ast}_{B,C}) = d^{\ast}_{A \times B,C} * (\gamma_{A,B} \times 1_{C})$.
+        \item\label{axiom:ps_comm_unit_1} $\gamma_{A,B} * (\eta_A \times 1_{TB})$  is the identity on $d$.
+        \item\label{axiom:ps_comm_unit_2} $\gamma_{A,B} * (1_{TA} \times \eta_B)$ is the identity on $d^{*}$.
+        \item\label{axiom:ps_comm_mult_1} $\gamma_{A,B} * (\mu_A \times 1_{TB})$ is equal to the pasting below.
           \[
             \xy
                 (0,0)*+{\scriptstyle T^2A \times TB}="00";
@@ -736,7 +736,7 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
                 {\ar@{=>}^{\gamma_{TA,B}} (12.5,-13) ; (12.5,-17)};
             \endxy
           \]
-        \item $\gamma_{A,B} * (1_{TA} \times \mu_B)$ is equal to the pasting below.
+        \item\label{axiom:ps_comm_mult_2} $\gamma_{A,B} * (1_{TA} \times \mu_B)$ is equal to the pasting below.
           \[
             \xy
                 (0,0)*+{\scriptstyle TA \times T^2B}="00";
@@ -846,30 +846,30 @@ Let $P$ be a $\Lambda$-operad. A pseudo-commutative structure on $P$ consists of
     \end{itemize}
 These are required to satisfy the following axioms:  
     \begin{enumerate}
-        \item For all $n \in \mathbb{N}_+$,
+        \item\label{axiom:t_id} For all $n \in \mathbb{N}_+$,
             \[
                 t_{1,n} = e_n = t_{n,1}
             \]
              and for all $p \in P(n)$, the isomorphism $\lambda_{p, \id}\colon p \cdot e_n \cong p$ is the identity map.
-        \item QQQ Equivariance axiom - we decided this was just naturality in the end! (See Remark 11.2 in \cite{guillou_multiplicative}.) QQQ It's basically `compose, act, switch' is the same as `compose, switch, act', but can't actually see where it's used in the proof:
-          \[
-            \lambda_{p \cdot g, q \cdot h} \circ \mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
-          \]
-        For each $p \in P(n)$, $q \in P(m)$, $g \in \Lambda(n)$, and $h \in \Lambda(m)$, the following diagram commutes:
-          \[
-            \xy
-              (-20,10)*+{\mu^P\left(p;\underline{q}\right) \cdot t_{m,n}}="a";
-              (20,10)*+{\mu^P\left(q;\underline{p}\right)}="b";
-              (-20,-10)*+{\mu^P\left(p \cdot g; \underline{q \cdot h}\right) \cdot t_{m,n}}="c";
-              (20,-10)*+{\mu^P\left(q \cdot h; \underline{p \cdot g}\right)}="d";
-              %
-              {\ar^{\lambda_{p,q}} "a" ; "b"};
-              {\ar^{\mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right)} "b" ; "d"};
-              {\ar_{\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right)} "a" ; "c"};
-              {\ar_{\lambda_{p \cdot g, q \cdot h}} "c" ; "d"};
-            \endxy
-          \]
-        \item For all $l, m_1, \ldots, m_l, n \in \mathbb{N}_+$, with $M = \Sigma m_i$,
+        % \item\label{axiom:t_equiv} QQQ Equivariance axiom - we decided this was just naturality in the end! (See Remark 11.2 in \cite{guillou_multiplicative}.) QQQ It's basically `compose, act, switch' is the same as `compose, switch, act', but can't actually see where it's used in the proof:
+        %   \[
+        %     \lambda_{p \cdot g, q \cdot h} \circ \mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
+        %   \]
+        % For each $p \in P(n)$, $q \in P(m)$, $g \in \Lambda(n)$, and $h \in \Lambda(m)$, the following diagram commutes:
+        %   \[
+        %     \xy
+        %       (-20,10)*+{\mu^P\left(p;\underline{q}\right) \cdot t_{m,n}}="a";
+        %       (20,10)*+{\mu^P\left(q;\underline{p}\right)}="b";
+        %       (-20,-10)*+{\mu^P\left(p \cdot g; \underline{q \cdot h}\right) \cdot t_{m,n}}="c";
+        %       (20,-10)*+{\mu^P\left(q \cdot h; \underline{p \cdot g}\right)}="d";
+        %       %
+        %       {\ar^{\lambda_{p,q}} "a" ; "b"};
+        %       {\ar^{\mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right)} "b" ; "d"};
+        %       {\ar_{\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}} "a" ; "c"};
+        %       {\ar_{\lambda_{p \cdot g, q \cdot h}} "c" ; "d"};
+        %     \endxy
+        %   \]
+        \item\label{axiom:t_sumR} For all $l, m_1, \ldots, m_l, n \in \mathbb{N}_+$, with $M = \Sigma m_i$,
             \[
                 \mu^{\Lambda}\left(e_l; t_{m_1,n}, \ldots, t_{m_l,n}\right) \cdot \mu^{\Lambda}\left(t_{l,n};\underline{e_{m_1},\ldots,e_{m_l}}\right) = t_{n,M}.
             \]
@@ -878,7 +878,7 @@ These are required to satisfy the following axioms:
               \beta(t_{n,m_1},\ldots,t_{n,m_l}) \cdot \delta_{\underline{m_i},\ldots,\underline{m_i}}(t_{n,l}) = t_{n,M}.
             \]
             Here $\underline{e_{m_1},\ldots,e_{m_l}}$ is the list $e_{m_{1}}, \ldots, e_{m_{l}}$ repeated $n$ times.
-        \item For all $l, m, n_1,\ldots, n_m \in \mathbb{N}_+$, with $N = \Sigma n_i$,
+        \item\label{axiom:t_sumL} For all $l, m, n_1,\ldots, n_m \in \mathbb{N}_+$, with $N = \Sigma n_i$,
             \[
                 \mu^{\Lambda}\left(t_{m,l};\underline{e_{n_1}},\ldots,\underline{e_{n_m}}\right) \cdot \mu^{\Lambda}\left(e_m;t_{n_1,l},\ldots,t_{n_m,l}\right) = t_{N,l}.
             \]
@@ -887,7 +887,7 @@ These are required to satisfy the following axioms:
               \delta_{\underline{n_1},\ldots,\underline{n_m}}(t_{m,l}) \cdot \beta(t_{n_1,l},\ldots,t_{n_m,l}) = t_{N,l}.
             \]
             Here $\underline{e_{n_{i}}}$ indicates that each $e_{n_{i}}$ is repeated $l$ times.
-        \item For any $l, m_i, n \in \mathbb{N}_+$, with $1 \leq i \leq n$, and $p \in P(l)$, $q_i \in P(m_i)$ and $r \in P(n)$, the following diagram commutes. (Note that we maintain the convention that anything underlined indicates a list, and double underlining indicates a list of lists. Each instance should have an obvious meaning from context and the equations appearing above.)
+        \item\label{axiom:t_diagR} For any $l, m_i, n \in \mathbb{N}_+$, with $1 \leq i \leq n$, and $p \in P(l)$, $q_i \in P(m_i)$ and $r \in P(n)$, the following diagram commutes. (Note that we maintain the convention that anything underlined indicates a list, and double underlining indicates a list of lists. Each instance should have an obvious meaning from context and the equations appearing above.)
           \[
             \xy
                 (0,0)*+{\mu\left(p;\underline{\mu(q_i;\underline{r})}\right) \cdot \mu(e_l;\underline{t_{n,m_i}})\mu(t_{n,l};\underline{\underline{e_{m_i}}})}="00";
@@ -910,7 +910,7 @@ These are required to satisfy the following axioms:
                 {\ar@{=} "12" ; "13"};
             \endxy
           \]
-        \item For any $l,m, n_i \in \mathbb{N}_+$, with $1 \leq i \leq m$, and $p \in P(l)$, $q \in P(m)$ and $r_i \in P(n_i)$, the following diagram commutes.
+        \item\label{axiom:t_diagL} For any $l,m, n_i \in \mathbb{N}_+$, with $1 \leq i \leq m$, and $p \in P(l)$, $q \in P(m)$ and $r_i \in P(n_i)$, the following diagram commutes.
           \[
             \xy
                 (0,0)*+{\mu\left(\mu(p;\underline{q}) \cdot t_{m,l} ; \underline{\underline{r_i}}\right) \cdot \mu(e_m;\underline{t_{n_i,l}})}="00";
@@ -937,7 +937,25 @@ These are required to satisfy the following axioms:
 \end{Defi}
 
 \begin{remark}
-QQQ Reword this whole thing as it's just naturality. QQQ Originally the definition presented above did not include the equivariance axiom (Axiom 2). That this axiom is required was identified by the authors of \cite{guillou_symmetric}, with the detail described in Remark 11.2 of \cite{guillou_multiplicative}.
+% QQQ Reword this whole thing as it's just naturality. QQQ Originally the definition presented above did not include the equivariance axiom (Axiom 2). That this axiom is required was identified by the authors of \cite{guillou_symmetric}, with the detail described in Remark 11.2 of \cite{guillou_multiplicative}. 
+The authors of \cite{guillou_symmetric} remark that an extra equivariance axiom is required, the detail of which is further described in Remark 11.2 of \cite{guillou_multiplicative}. We also believed this to be true until a realisation that the equivariance axiom of \cite{guillou_symmetric} (QQQ check which paper) becomes the following requirement:
+          \[
+            \lambda_{p \cdot g, q \cdot h} \circ \left(\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
+          \]
+On closer inspection, this turns out to be an instance of naturality for the natural isomorphisms $\lambda$, as shown in the naturality square below:
+          \[
+            \xy
+              (-20,10)*+{\mu^P\left(p;\underline{q}\right) \cdot t_{m,n}}="a";
+              (20,10)*+{\mu^P\left(q;\underline{p}\right)}="b";
+              (-20,-10)*+{\mu^P\left(p \cdot g; \underline{q \cdot h}\right) \cdot t_{m,n}}="c";
+              (20,-10)*+{\mu^P\left(q \cdot h; \underline{p \cdot g}\right)}="d";
+              %
+              {\ar^{\lambda_{p,q}} "a" ; "b"};
+              {\ar^{\mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right)} "b" ; "d"};
+              {\ar_{\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}} "a" ; "c"};
+              {\ar_{\lambda_{p \cdot g, q \cdot h}} "c" ; "d"};
+            \endxy
+          \]
 \end{remark}
 
 \begin{thm}\label{pscomm}
@@ -1021,7 +1039,7 @@ Let $P$ be a $\Lambda$-operad equipped with a pseudo-commutative structure. Then
 % \end{thm}
 
 \begin{proof}
-We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$. Such a transformation $\gamma_{A,B}$ has components with source
+We refer to the Axioms in Definition \ref{def:ps-comm_operad} throughout. We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$. Such a transformation $\gamma_{A,B}$ has components with source
   \[
     \left[\mu\left(p; \underline{q}\right); \underline{(a, \underline{b})}\right]
   \]
@@ -1037,7 +1055,7 @@ so we define $(\gamma_{A,B})_{[p;a_1,\ldots,a_n],[q;b_1,\ldots,b_m]}$ to be the 
   \[
     \coprod P(n) \times (A \times B)^{n} \rightarrow \coprod P(n) \times_{\Lambda(n)} (A \times B)^{n}.
   \]
-Naturality of $\gamma_{A,B}$ follows from that of each $\lambda_{p,q}$. We will write this morphism as $[\lambda_{p,q}t_{m,n}^{-1}, 1]$. In the case that either $p$ or $q$ is an identity then we choose the component of $\gamma$ to be the isomorphism involving the appropriate identity element using axiom 1 above.
+Naturality of $\gamma_{A,B}$ follows from that of each $\lambda_{p,q}$. We will write this morphism as $[\lambda_{p,q}t_{m,n}^{-1}, 1]$. In the case that either $p$ or $q$ is an identity then we choose the component of $\gamma$ to be the isomorphism involving the appropriate identity element using Axiom \ref{axiom:t_id} above.
 
 There are two things to note about the definition above before we continue. First, it is easy to check that
   \[
@@ -1076,9 +1094,9 @@ It is straightforward to compute that each of these maps is the image of $\left(
 The other two strength axioms follow by analogous calculations for other whiskerings of $\gamma$ with $d$ or $d^{*}$.
 
 
-For the unit axioms, we must compute the components of $\gamma$ precomposed with $\eta \times 1$ for the first axiom and $1 \times \eta$ for the second. Thus for the first unit axiom, we must compute the component of $\gamma$ at $\left( [e;a], [p; b_{1}, \ldots, b_{m}] \right)$. By definition, this is the image of $(\lambda_{e,p}\cdot t^{-1}_{m,1}, 1)$ under the map to the coequalizer, and by the first pseudo-commutative structure axiom we know that $t^{-1}_{m,1}$ is the identity element and this isomorphism is the identity as well, so this component of $\gamma$ is also the identity. The second unit axiom follows similarly, using that $t^{-1}_{1,n}$ is the identity.
+For the unit axioms, we must compute the components of $\gamma$ precomposed with $\eta \times 1$ for the first axiom and $1 \times \eta$ for the second. Thus for the first unit axiom, we must compute the component of $\gamma$ at $\left( [e;a], [p; b_{1}, \ldots, b_{m}] \right)$. By definition, this is the image of $(\lambda_{e,p}\cdot t^{-1}_{m,1}, 1)$ under the map to the coequalizer, and by Axiom \ref{axiom:t_id} of \ref{def:ps-comm_operad} know that $t^{-1}_{m,1}$ is the identity element and this isomorphism is the identity as well, so this component of $\gamma$ is also the identity. The second unit axiom follows similarly, using that $t^{-1}_{1,n}$ is the identity.
 
-For the multiplication axioms, first note that the third pseudo-commutative structure axiom is necessary in order to ensure the existence of the top horizontal equality in the diagram of axiom 5 for the pseudo-commutative structure; the same goes for axioms 4 and 6. We now explain how axioms 3 and 5 for the pseudo-commutative structure ensure that the first multiplication axiom holds, with the same reasoning showing that axioms 4 and 6 imply the second multiplication axiom.
+For the multiplication axioms, first note that Axiom \ref{axiom:t_sumR} is necessary in order to ensure the existence of the top horizontal equality in the diagram of \ref{axiom:t_diagR} for the pseudo-commutative structure; the same goes for Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL}. We now explain how Axioms \ref{axiom:t_sumR} and \ref{axiom:t_diagR} for the pseudo-commutative structure ensure that the first multiplication axiom holds, with the same reasoning showing that Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL} imply the second multiplication axiom.
 
 We begin by studying the pasting diagram in the first multiplication axiom, but computing its values using the strength and costrength for the non-symmetric operad underlying $P$; this means that we evaluate on objects of the form $(p; a_{1}, \ldots, a_{n})$ rather than on their equivalence classes. Let $p \in P(l), q_{i} \in P(m_{i})$ for $1 \leq i \leq l$, and $r \in P(n)$. Computing the top and right leg around the pasting diagram gives the function on objects which sends
   \[
@@ -1110,7 +1128,7 @@ By the $\Lambda$-operad axioms, the target of this morphism is equal to
   \[
     \mu\left(p; \mu\left(r; \un{q_{1}}\right), \ldots, \mu\left(r; \un{q_{l}}\right) \right)\mu\left(e_{l}; t^{-1}_{n,m_{1}}, \ldots, t^{-1}_{n,m_{l}}\right).
   \]
-Note that this is not the same object as one obtains by computing $T\mu \circ T^{2}d^{*} \circ Td \circ d^{*}$ using the underlying non-symmetric operad of $P$ as we are required to use the $\Lambda$-equivariance to ensure that the target of $\gamma$ is the correct one. QQQ Does this use Axiom 2 - think we might need to clear things up around our use of equivariance here.
+Note that this is not the same object as one obtains by computing $T\mu \circ T^{2}d^{*} \circ Td \circ d^{*}$ using the underlying non-symmetric operad of $P$ as we are required to use the $\Lambda$-equivariance to ensure that the target of $\gamma$ is the correct one.
 
 Next we compute the source of $(\mu \circ Td^{*})*\gamma$, the other $2$-cell in the pasting appearing in the first multiplication axiom. We compute this once again using the strength and costrength for the underlying non-symmetric operad, and note once again that this will not match our previous calculations precisely, but only up to an application of $\Lambda$-equivariance. This functor has its map on objects given by
   \[
@@ -1138,7 +1156,7 @@ is equal to
   \[
     \mu\left(\mu(r; \un{p}); \un{q_{1}, \ldots, q_{l}}\right) \cdot \mu(t^{-1}_{n,l}; \un{e}) \cdot \mu(e_{l}; t^{-1}_{n,m_{1}}, \ldots, t^{-1}_{n,m_{l}}).
   \]
-This composite of two morphisms, together with the necessary identities coming from operad axioms, is precisely the left and bottom leg of the diagram in the fifth pseudo-commutative structure axiom. Using the same method, one then verifies that $\gamma * (\mu \times 1)$ has its first component the image of the morphism appearing along the top and right leg of the diagram in axiom 5. The second component of these morphisms are all identities arising from $\Lambda$-equivariance, so the first multiplication axiom is a consequence of axioms 3 and 5 for the pseudo-commutative structure. We leave the calculations for the second multiplication axiom to the reader as they are of the same nature.
+This composite of two morphisms, together with the necessary identities coming from operad axioms, is precisely the left and bottom leg of the diagram in Axiom \ref{axiom:t_diagR}. Using the same method, one then verifies that $\gamma * (\mu \times 1)$ has its first component the image of the morphism appearing along the top and right leg of the diagram in \ref{axiom:t_diagR}. The second component of these morphisms are all identities arising from $\Lambda$-equivariance, so the first multiplication axiom is a consequence of Axioms \ref{axiom:t_sumR} and \ref{axiom:t_diagR} for the pseudo-commutative structure. We leave the calculations for the second multiplication axiom to the reader as they are of the same nature, using Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL}.
 \end{proof}
 
 \begin{cor}
@@ -1251,23 +1269,36 @@ It is worth noting that this bijection is not an isomorphism of groups, since $P
 \end{rem}
 
 \begin{proof}[Proof of \cref{braidpscomm}]
-In order to use \cref{pscomm} with the action operad being the braid operad $B$, we must first construct elements $t_{m,n} \in B_{mn}$ satisfying certain properties. Using \cref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$. Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in B_{n}$ is positive and minimal, we find that $t_{1,n} = e_{n} = t_{n,1}$ in $B_{n}$. Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
+We refer to the Axioms of Definition \ref{def:ps-comm_operad} throughout the proof. In order to use \cref{pscomm} with the action operad being the braid operad $B$, we must first construct elements $t_{m,n} \in B_{mn}$ satisfying certain properties. Using \cref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$. Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in B_{n}$ is positive and minimal, we find that $t_{1,n} = e_{n} = t_{n,1}$ in $B_{n}$, satisfying Axiom \ref{axiom:t_id}. Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
 
-% QQQ The capital M in the following sentence isn't used anywhere. Is it capital N?
-
-Let $l, m_{1}, \ldots, m_{l}, n$ be natural numbers, and let $N = \sum m_{i}$. We must check that
+Let $l, m_{1}, \ldots, m_{l}, n$ be natural numbers, and let $N = \sum m_{i}$. We must check Axiom \ref{axiom:t_sumL} is satisfied, i.e., that
+  \[
+    \beta(t_{n, m_{1}}, \ldots, t_{n, m_{l}}) \cdot \delta(t_{n,l}) = t_{N, l}
+  \]
   \[
     \mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}}) \mu\left(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}}\right) = t_{N, l}
   \]
-in $B_{lN}$. These braids have the same underlying permutations by construction, and both are positive since each operadic composition on the left is positive. The braid on the right is minimal by definition, so if we prove that the braid on the left is also minimal, they are necessarily equal. Now $\mu\left(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}}\right)$ is given by the braid for $t_{n,l}$ but with the first strand replaced by $m_{1}$ strands, the second strand replaced by $m_{2}$ strands, and so on for the first $l$ strands of $t_{n,l}$, and then repeating for each group of $l$ strands. In particular, since strands $i, i+l, i+2l, \ldots, i + (n-1)l$ never cross in $t_{n,l}$, none of the $m_{i}$ strands that each of these is replaced with cross. The braid $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ consists of the disjoint union of the braids for each $t_{n,m_{i}}$, so if two strands cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ then they must both cross in some $t_{n,m_{i}}$. The strands in $t_{n,m_{i}}$ are those numbered from $n(m_{1} + \cdots + m_{i-1}) + 1$ to $n(m_{1} + \cdots + m_{i-1} + m_{i})$. This is a consecutive collection of $nm_{i}$ strands, and it is simple to check that these strands are precisely those connected (via the group operation in $B_{Nl}$, concatenation) to the duplicated copies of strands $i, i+l, i+2l, \ldots, i + (n-1)l$ in $t_{n,l}$. Thus if a pair of strands were to cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$, that pair cannot also have crossed in $\mu\left(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}}\right)$, showing that the resulting product braid
+in $B_{lN}$. These braids have the same underlying permutations by construction, and both are positive since each operadic composition on the left is positive. The braid on the right is minimal by definition, so if we prove that the braid on the left is also minimal, they are necessarily equal. Now $\mu\left(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}}\right)$ is given by the braid for $t_{n,l}$ but with the first strand replaced by $m_{1}$ strands, the second strand replaced by $m_{2}$ strands, and so on for the first $l$ strands of $t_{n,l}$, and then repeating for each group of $l$ strands. In particular, since strands $i, i+l, i+2l, \ldots, i + (n-1)l$ never cross in $t_{n,l}$, none of the $m_{i}$ strands that each of these is replaced with cross. The braid $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ consists of the disjoint union of the braids for each $t_{n,m_{i}}$, so if two strands cross in $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$ then they must both cross in some $t_{n,m_{i}}$. The strands in $t_{n,m_{i}}$ are those numbered from $n(m_{1} + \cdots + m_{i-1}) + 1$ to $n(m_{1} + \cdots + m_{i-1} + m_{i})$. This is a consecutive collection of $nm_{i}$ strands, and it is simple to check that these strands are precisely those connected (via the group operation in $B_{Nl}$, concatenation) to the duplicated copies of strands $i, i+l, i+2l, \ldots, i + (n-1)l$ in $t_{n,l}$. Thus if a pair of strands were to cross in
+% $\mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}})$
+$\beta(t_{n, m_{1}}, \ldots, t_{n, m_{l}})$, that pair cannot also have crossed in
+% $\mu\left(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}}\right)$
+$\delta(t_{n,l})$, showing that the resulting product braid
+  \[
+    \beta(t_{n, m_{1}}, \ldots, t_{n, m_{l}}) \cdot \delta(t_{n,l})
+  \]
   \[
     \mu(e_{l}; t_{n, m_{1}}, \ldots, t_{n, m_{l}}) \mu\left(t_{n,l}; \underline{e_{m_{1}}, \ldots, e_{m_{l}}}\right)
   \]
-is minimal. The calculation showing that
+is minimal. The calculation for Axiom \ref{axiom:t_sumR}, showing that
+  \[
+    \delta(t_{m,l}) \cdot \beta(t_{n_{1}, l}, \ldots, t_{n_{m}, l})
+  \]
   \[
     \mu\left(t_{m,l}; \underline{e_{1}}, \ldots, \underline{e_{n_{m}}}\right) \mu\left(e_{m}; t_{n_{1}, l}, \ldots, t_{n_{m}, l}\right)
   \]
-is also minimal follows from the same argument, showing that it is equal to $t_{N, l}$ (here $N$ is the sum of the $n_{i}$, where once again $i$ ranges from 1 to $l$).
+is also minimal, follows from the same argument, showing that it is equal to $t_{N, l}$ (here $N$ is the sum of the $n_{i}$, where once again $i$ ranges from 1 to $l$).
+
+QQQ Where are Axioms \ref{axiom:t_diagR} and \ref{axiom:t_diagL} checked?
 
 These calculations show, using \cref{pscomm}, that the $B$-operad $B$ induces a $2$-monad which has a pseudo-commutative structure. As noted before, $B$-algebras are precisely braided strict monoidal categories. The second pseudo-commutative structure arises by using negative, minimal braids instead of positive ones, and proceeds using the same arguments. This finishes the first part of the proof of \cref{braidpscomm}.
 
@@ -1292,7 +1323,7 @@ Non-Example: Cactus operad.
 
 Begin by defining $t_{2,2} = s_{2,3}$, which has underlying permutation $\pi_4(t_{2,2}) = \trans{2}{3} = \tau_{2,3}$, as required. This seems to be a sensible choice to then demonstrate that we can describe all other $t_{m,n}$ required for a pseudo-commutativity on $J$. In particular, we should be able to describe $t_{2,4}$ which would have underlying permutation $\tau_{2,4} = (2 \,\, 3 \,\, 5)(4 \,\, 7 \,\, 6)$. If the required elements $t_{m,m}$ existed for the cactus operad $J$, then we would be able to apply the axioms from Definition \ref{def:ps-comm_operad} to the element $t_{2,4}$ in order to see how it is constructed from $t_{2,2} = s_{2,3}$.
 
-Now
+By Axiom \ref{axiom:t_sumR} of Definition \ref{def:ps-comm_operad} we should be able to split the element $t_{2,4}$ up as follows.
   \begin{align*}
     t_{2,4} &= t_{2,2+2} \\
     &= \beta(t_{2,2},t_{2,2}) \cdot \delta_{2,2,2,2}(t_{2,2}) \\
@@ -1300,12 +1331,11 @@ Now
     &= s_{2,3} \cdot s_{5,7} \cdot s_{2,6} \cdot \beta(e_2,s_{1,2},s_{1,2},e_2) \\
     &= s_{2,3} \cdot s_{5,7} \cdot s_{2,6} \cdot s_{3,4} \cdot s_{5,6}.
   \end{align*}
-Here we have used $\delta$ as defined for generators $s_{p,q}$ in Theorem \ref{J_aop}.
-This element has underlying permutation
+Here we have used $\delta$ as defined for generators $s_{p,q}$ in Theorem \ref{J_aop}. This element has underlying permutation
   \[
       \trans{2}{3}\trans{5}{7}\trans{2}{6}\trans{3}{5}\trans{3}{4}\trans{5}{6} = \trans{2}{6}(3 \,\, 4 \,\, 7 \,\,5)
   \]
-which is not equal to $\tau_{2,4} = (2 \,\, 3 \,\, 5)(4 \,\, 7 \,\, 6)$. Hence if $J$ were to have a pseudo-commutative structure, then it cannot arise in this way having $t_{2,2} = s_{2,3}$.
+which is not equal to $\tau_{2,4} = (2 \,\, 3 \,\, 5)(4 \,\, 7 \,\, 6)$. Hence if $J$ were to have a pseudo-commutative structure, then it cannot arise in this way.
 \end{example}
 \subsection{Profunctors and multicategories}
 In this section we generalize from operads to multicategories (or colored operads). The notions of plain and symmetric multicategories are standard \cite{bd_hda3}, but in fact there is a corresponding notion of $\Lambda$-multicategory for any action operad $\Lambda$. We will give the basic definition and then show that it arises abstractly from a lifting of $\underline{E\Lambda}$ as a $2$-monad  on $\mb{Cat}$ to a pseudomonad on $\mb{Prof}$, the bicategory of categories, profunctors, and transformations. A quick treatment of similar material but restricted to the symmetric case can be found in \cite{garner_poly}.
