@@ -77,7 +77,7 @@ It is useful to write out in full what the sets in the diagram of the second axi
 \item $y_{i} \in O(k_{i})$ for $i=1, \ldots, n$,
 \item $\tau_{i} \in \Sigma_{k_{i}}$,
 \item $\sigma \in \Sigma_{n}$, and
-\item $\beta(\tau_1,\ldots,\tau_n), \delta(\sigma) \in \Sigma_{k_1 + \ldots + k_n}$ as described in \cref{conv1} and in \cref{exSigma} below.
+\item $\beta(\tau_1,\ldots,\tau_n), \delta(\sigma) \in \Sigma_{k_1 + \ldots + k_n}$ as described in \cref{conv1} \eqref{conv:beta_delta} and in \cref{exSigma} below.
 \end{itemize}
 
 \end{rem}
@@ -278,7 +278,7 @@ Let $O,O'$ be operads. Then an \textit{operad map} $f \colon O \rightarrow O'$ c
 The maps $f_{n}$ are required to be equivariant with respect to the symmetric group actions if $f$ is to be a map of symmetric operads, or braid actions if $f$ is to be a map of braided operads.
 \end{Defi}
 
-\begin{conv}
+\begin{conv}\label{conv:op_superscript}
 In the above definition and below, we adopt the convention that if an equation requires using operadic composition in more than one operad, we will indicate this by a superscript on each instance of $\mu$ unless it is entirely clear from context.
 \end{conv}
 
@@ -318,7 +318,7 @@ in the group $\Lambda(k_{1} + \cdots + k_{n})$.
 
 \begin{rem}
 \begin{itemize}
-\item As per  \cref{conv1}, we write $g(i)$ to mean $\pi(g)(i)$ and $g^{-1}(i)$ to mean $\pi(g)^{-1}(i)$, where this is obvious from context.  
+\item As per \cref{conv1} \eqref{conv:perm_shorthand}, we write $g(i)$ to mean $\pi(g)(i)$ and $g^{-1}(i)$ to mean $\pi(g)^{-1}(i)$, where this is obvious from context.  
 \item The final axiom is best explained using the operad $\Sigma$ of symmetric groups. Reading symmetric group elements as permutations from top to bottom, below is a pictorial representation of the final axiom for the map $\mu \colon \Sigma_{3} \times \Sigma_{2} \times \Sigma_{2} \times \Sigma_{2} \rightarrow \Sigma_{6}.$
   % \[
   %   \xy
@@ -423,12 +423,12 @@ QQQ Non-examples: Hyperoctahedral, and check the other skew-simplicial groups in
     &\neq c_4^n
   \end{align*}
 for any $n \in \{1,2,3,4\}$.
-\item Order-reversing permutations/reflexive(?) groups: Here we would like to take $\Lambda(n) = C_2 = \{e, t_n\}$ with $\pi_n$ giving either the identity, or the order-reversing permutation on $n$ elements when applied to $t_n$. With these groups and the underlying permutations as described, we find that Axiom \ref{eq1} of \ref{thm:charAOp} is not satisfied:
+\item Order-reversing permutations/reflexive(?) groups: Here we would like to take $\Lambda(n) = C_2 = \{e, t_n\}$ with $\pi_n$ giving either the identity, or the order-reversing permutation on $n$ elements when applied to $t_n$. With these groups and the underlying permutations as described, we find that Axiom \ref{eq1} of \cref{thm:charAOp} is not satisfied:
   \[
     \pi_4(\beta(t_2,t_2)) = t_4 = \trans{1}{4}\trans{2}{3} \neq \trans{1}{2}\trans{3}{4} = \beta(\trans{1}{2},\trans{1}{2}) = \beta(\pi_2(t_2),\pi_2(t_2)).
   \]
 QQQ Needs clarifying.
-\item Hyperoctahedral groups: Can't remember what this fails to satisfy... Dan Graves came up with a counterexample, using the main action operad equivariance axiom, which was clearer than Zhang's description \cite{zhang-grp} - Example 2.28. Can show now that this is really saying that it fails Axiom \ref{eq8} of \ref{thm:charAOp} when taking $\delta_{1;n}(-1)$ to be the order-reversing permutation. Can also show that taking $\delta_{1;n}(-1)$ to be the negative identity matrix makes it fail on Axiom \ref{eq6} of \ref{thm:charAOp} instead - though it does then satisfy Axiom \ref{eq8}.
+\item Hyperoctahedral groups: Can't remember what this fails to satisfy... Dan Graves came up with a counterexample, using the main action operad equivariance axiom, which was clearer than Zhang's description \cite{zhang-grp} - Example 2.28. Can show now that this is really saying that it fails Axiom \ref{eq8} of \cref{thm:charAOp} when taking $\delta_{1;n}(-1)$ to be the order-reversing permutation. If considering elements of the hyperoctahedral groups to be signed permutation matrices, then can also show that taking $\delta_{1;n}(-1)$ to be the negative identity matrix makes it fail on Axiom \ref{eq6} of \cref{thm:charAOp} instead - though it does then satisfy Axiom \ref{eq8}.
 \item Alternating groups: The image of the obvious map for $\delta$ does not lie in $A_n$: $\delta_{4;,0,0,1,1}(\trans{1}{2}\trans{3}{4})=\trans{1}{2} \notin A_2$.
 \end{enumerate}
 \end{example}
@@ -736,7 +736,7 @@ arising from the operad structure. Furthermore, $\Lambda(0)$ is abelian.
     \end{align*}
 \end{proof}
 
-Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations, which we have previously used to describe particular types of operadic composition as described in \cref{conv1} and \cref{exSigma}. Rather than simply being convenient notation for common occurences of operadic composition, we will use these ideas to give a characterisation of action operads. First we recall these notions in more detail in the case of the symmetric operad $\Sigma$. The first operation is the block sum of permutations which we denote by
+Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations, which we have previously used to describe particular types of operadic composition as described in \cref{conv1} \eqref{conv:beta_delta} and \cref{exSigma}. Rather than simply being convenient notation for common occurences of operadic composition, we will use these ideas to give a characterisation of action operads. First we recall these notions in more detail in the case of the symmetric operad $\Sigma$. The first operation is the block sum of permutations which we denote by
   \[
     \beta \colon \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{K},
   \]

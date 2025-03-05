@@ -55,11 +55,11 @@ Alex needs to thank the LMS for a Research Reboot grant. Anybody else we've talk
 
 \begin{conv}\label{conv1}
 We adopt the following conventions throughout.
-\begin{itemize}
-\item $\Sigma_{n}$ is the symmetric group on $n$ letters, and $B_{n}$ is the braid group on $n$ strands.
-\item For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$. We will use both $\cdot$ and concatenation to represent multiplication in a group.
-\item The symbol $e$ will generically represent an identity element in a group. If we are considering a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$. We will often drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand. Occasionally we will write $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams.
-\item We will often be interested in elements of a product of the form
+\begin{enumerate}
+\item\label{conv:symm_sigma} $\Sigma_{n}$ is the symmetric group on $n$ letters, and $B_{n}$ is the braid group on $n$ strands.
+\item\label{conv:g-action} For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$. We will use both $\cdot$ and concatenation to represent multiplication in a group.
+\item\label{conv:e_identity} The symbol $e$ will generically represent an identity element in a group. If we are considering a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$. We will often drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand. Occasionally we will write $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams.
+\item\label{conv:coeq} We will often be interested in elements of a product of the form
 \[
 A \times B_{1} \times \cdots \times B_{n} \times C
 \]
@@ -75,7 +75,7 @@ A \times B_{1} \times \cdots \times B_{n} \times C
         \endxy
     \]
 will be written as $A \times_G B$, where $\rho$ represents a right action of $G$ on $A$, and $\lambda$ a left action of $G$ on $B$. This is similar to the notation often used to denote pullbacks, however we find in this work that no confusion arises from using notation in this way.
-\item In the following definitions of operads, we define operad multiplication as a function
+\item\label{conv:beta_delta} In the following definitions of operads, we define operad multiplication as a function
   \[
     \mu \colon O(n) \times O(k_1) \times \ldots O(k_n) \rightarrow O(k_1 + \ldots + k_n)
   \]
@@ -89,13 +89,13 @@ for each $n$, $k_1$, $\ldots$, $k_n$, which takes elements $\tau_1 \in O(k_1)$, 
   \]
 We think of this element as the block sum of the elements $\tau_1$, $\ldots$, $\tau_n$. We also define a function
   \[
-    \delta \colon O(n) \rightarrow O(k_1 + \ldots + k_n)
+    \delta_{n;k_1,\ldots,k_n} \colon O(n) \rightarrow O(k_1 + \ldots + k_n)
   \]
 for each $n$, $k_1$, $\ldots$, $k_n$, which takes an element $\sigma \in O(n)$ and produces the element
   \[
     \delta(\sigma) = \mu(\sigma;e_{k_1}, \ldots, e_{k_n}).
   \]
 This notation is elaborated on in \cref{exSigma} below in the case of the symmetric operad $\Sigma$, but will be used generally throughout.
-\item Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the object of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements. The map $\pi_n$ in each case will represent a form of `underlying permutation' of each element, which we will then use to act on operad multiplication. As the notation starts to become cumbersome, we will often write $\sigma^{-1}(i)$ which should be read as $\pi_n(\sigma)^{-1}(i)$, where $\sigma \in O(n)$.
-\end{itemize}
+\item\label{conv:perm_shorthand} Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the object of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements. The map $\pi_n$ in each case will represent a form of `underlying permutation' of each element, which we will then use to act on operad multiplication. As the notation starts to become cumbersome, we will often write $\sigma^{-1}(i)$ which should be read as $\pi_n(\sigma)^{-1}(i)$, where $\sigma \in O(n)$.
+\end{enumerate}
 \end{conv}

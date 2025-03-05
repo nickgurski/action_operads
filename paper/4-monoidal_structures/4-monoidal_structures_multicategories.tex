@@ -309,7 +309,7 @@ which is the right hand side of Axiom \ref{eq9} as desired.
 The $2$-monad $C$ for strict coboundary categories is a club.
 \end{lem}
 \begin{proof}
-This is obvious by \ref{pres2}.
+This is obvious by \cref{pres2}.
 \end{proof}
 
 \begin{thm}
@@ -318,7 +318,7 @@ The free coboundary category on one element, $C1$, is isomorphic to $BJ = \copro
 \begin{proof}
 The universal property we desire is with respect to strict coboundary functors (i.e., coboundary functors whose underlying monoidal functor is strict), so we must give $BJ$ the structure of a strict coboundary category and then check that to give a strict coboundary functor $BJ \rightarrow X$ to any other strict coboundary category is the same as giving an object of $X$.
 
-The category $BJ$ has natural numbers as objects, and addition as its tensor product. The tensor product of two morphisms is given by $\beta$ as in \ref{J_aop}, and it is simple to check that this is a strict monoidal structure. The commutor $\sigma_{m,n}$ is $s_{1, m+n}s_{1,m}s_{m+1,m+n}$. Using the relations in $J_{n}$, it is clear that $\sigma_{m,n}\sigma_{n,m}$ is the identity, so we only have one more axiom to verify in order to give a coboundary structure. By definition, this axiom is equivalent to the equation
+The category $BJ$ has natural numbers as objects, and addition as its tensor product. The tensor product of two morphisms is given by $\beta$ as in \cref{J_aop}, and it is simple to check that this is a strict monoidal structure. The commutor $\sigma_{m,n}$ is $s_{1, m+n}s_{1,m}s_{m+1,m+n}$. Using the relations in $J_{n}$, it is clear that $\sigma_{m,n}\sigma_{n,m}$ is the identity, so we only have one more axiom to verify in order to give a coboundary structure. By definition, this axiom is equivalent to the equation
   \[
     \sigma_{m, p+n}\cdot \beta(e_{m}, \sigma_{n,p}) = \sigma_{n+m,p}\cdot \beta(\sigma_{m,n},e_{p})
   \]
@@ -937,12 +937,11 @@ These are required to satisfy the following axioms:
 \end{Defi}
 
 \begin{remark}
-% QQQ Reword this whole thing as it's just naturality. QQQ Originally the definition presented above did not include the equivariance axiom (Axiom 2). That this axiom is required was identified by the authors of \cite{guillou_symmetric}, with the detail described in Remark 11.2 of \cite{guillou_multiplicative}. 
-The authors of \cite{guillou_symmetric} remark that an extra equivariance axiom is required, the detail of which is further described in Remark 11.2 of \cite{guillou_multiplicative}. We also believed this to be true until a realisation that the equivariance axiom of \cite{guillou_symmetric} (QQQ check which paper) becomes the following requirement:
+Remark 11.2 of \cite{guillou_multiplicative} describes the need for an extra equivariance axiom in the pseudo-commutative structure definition, some detail of which is also described in \cite{guillou_symmetric}. We also believed this to be true until a realisation that the equivariance axiom of \cite{guillou_multiplicative}[11.1, Axiom (iii)] becomes the following requirement:
           \[
             \lambda_{p \cdot g, q \cdot h} \circ \left(\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
           \]
-On closer inspection, this turns out to be an instance of naturality for the natural isomorphisms $\lambda$, as shown in the naturality square below:
+On closer inspection, this appears to be an instance of naturality for the natural isomorphisms $\lambda$, as shown in the naturality square below.
           \[
             \xy
               (-20,10)*+{\mu^P\left(p;\underline{q}\right) \cdot t_{m,n}}="a";
@@ -1039,7 +1038,7 @@ Let $P$ be a $\Lambda$-operad equipped with a pseudo-commutative structure. Then
 % \end{thm}
 
 \begin{proof}
-We refer to the Axioms in Definition \ref{def:ps-comm_operad} throughout. We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$. Such a transformation $\gamma_{A,B}$ has components with source
+We refer to the Axioms in \cref{def:ps-comm_operad} throughout. We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$. Such a transformation $\gamma_{A,B}$ has components with source
   \[
     \left[\mu\left(p; \underline{q}\right); \underline{(a, \underline{b})}\right]
   \]
@@ -1093,10 +1092,9 @@ It is straightforward to compute that each of these maps is the image of $\left(
   \]
 The other two strength axioms follow by analogous calculations for other whiskerings of $\gamma$ with $d$ or $d^{*}$.
 
-
 For the unit axioms, we must compute the components of $\gamma$ precomposed with $\eta \times 1$ for the first axiom and $1 \times \eta$ for the second. Thus for the first unit axiom, we must compute the component of $\gamma$ at $\left( [e;a], [p; b_{1}, \ldots, b_{m}] \right)$. By definition, this is the image of $(\lambda_{e,p}\cdot t^{-1}_{m,1}, 1)$ under the map to the coequalizer, and by Axiom \ref{axiom:t_id} of \ref{def:ps-comm_operad} know that $t^{-1}_{m,1}$ is the identity element and this isomorphism is the identity as well, so this component of $\gamma$ is also the identity. The second unit axiom follows similarly, using that $t^{-1}_{1,n}$ is the identity.
 
-For the multiplication axioms, first note that Axiom \ref{axiom:t_sumR} is necessary in order to ensure the existence of the top horizontal equality in the diagram of \ref{axiom:t_diagR} for the pseudo-commutative structure; the same goes for Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL}. We now explain how Axioms \ref{axiom:t_sumR} and \ref{axiom:t_diagR} for the pseudo-commutative structure ensure that the first multiplication axiom holds, with the same reasoning showing that Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL} imply the second multiplication axiom.
+For the multiplication axioms, first note that Axiom \ref{axiom:t_sumR} is necessary in order to ensure the existence of the top horizontal equality in the diagram of Axiom \ref{axiom:t_diagR} for the pseudo-commutative structure; the same goes for Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL}. We now explain how Axioms \ref{axiom:t_sumR} and \ref{axiom:t_diagR} for the pseudo-commutative structure ensure that the first multiplication axiom holds, with the same reasoning showing that Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL} imply the second multiplication axiom.
 
 We begin by studying the pasting diagram in the first multiplication axiom, but computing its values using the strength and costrength for the non-symmetric operad underlying $P$; this means that we evaluate on objects of the form $(p; a_{1}, \ldots, a_{n})$ rather than on their equivalence classes. Let $p \in P(l), q_{i} \in P(m_{i})$ for $1 \leq i \leq l$, and $r \in P(n)$. Computing the top and right leg around the pasting diagram gives the function on objects which sends
   \[
@@ -1269,7 +1267,7 @@ It is worth noting that this bijection is not an isomorphism of groups, since $P
 \end{rem}
 
 \begin{proof}[Proof of \cref{braidpscomm}]
-We refer to the Axioms of Definition \ref{def:ps-comm_operad} throughout the proof. In order to use \cref{pscomm} with the action operad being the braid operad $B$, we must first construct elements $t_{m,n} \in B_{mn}$ satisfying certain properties. Using \cref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$. Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in B_{n}$ is positive and minimal, we find that $t_{1,n} = e_{n} = t_{n,1}$ in $B_{n}$, satisfying Axiom \ref{axiom:t_id}. Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
+We refer to the Axioms of \cref{def:ps-comm_operad} throughout the proof. In order to use \cref{pscomm} with the action operad being the braid operad $B$, we must first construct elements $t_{m,n} \in B_{mn}$ satisfying certain properties. Using \cref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$. Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in B_{n}$ is positive and minimal, we find that $t_{1,n} = e_{n} = t_{n,1}$ in $B_{n}$, satisfying Axiom \ref{axiom:t_id}. Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
 
 Let $l, m_{1}, \ldots, m_{l}, n$ be natural numbers, and let $N = \sum m_{i}$. We must check Axiom \ref{axiom:t_sumL} is satisfied, i.e., that
   \[
@@ -1321,9 +1319,9 @@ The pseudo-commutativities given above are not necessarily the only ones that ex
 \begin{example}
 Non-Example: Cactus operad.
 
-Begin by defining $t_{2,2} = s_{2,3}$, which has underlying permutation $\pi_4(t_{2,2}) = \trans{2}{3} = \tau_{2,3}$, as required. This seems to be a sensible choice to then demonstrate that we can describe all other $t_{m,n}$ required for a pseudo-commutativity on $J$. In particular, we should be able to describe $t_{2,4}$ which would have underlying permutation $\tau_{2,4} = (2 \,\, 3 \,\, 5)(4 \,\, 7 \,\, 6)$. If the required elements $t_{m,m}$ existed for the cactus operad $J$, then we would be able to apply the axioms from Definition \ref{def:ps-comm_operad} to the element $t_{2,4}$ in order to see how it is constructed from $t_{2,2} = s_{2,3}$.
+Begin by defining $t_{2,2} = s_{2,3}$, which has underlying permutation $\pi_4(t_{2,2}) = \trans{2}{3} = \tau_{2,3}$, as required. This seems to be a sensible choice to then demonstrate that we can describe all other $t_{m,n}$ required for a pseudo-commutativity on $J$. In particular, we should be able to describe $t_{2,4}$ which would have underlying permutation $\tau_{2,4} = (2 \,\, 3 \,\, 5)(4 \,\, 7 \,\, 6)$. If the required elements $t_{m,m}$ existed for the cactus operad $J$, then we would be able to apply the axioms from \cref{def:ps-comm_operad} to the element $t_{2,4}$ in order to see how it is constructed from $t_{2,2} = s_{2,3}$.
 
-By Axiom \ref{axiom:t_sumR} of Definition \ref{def:ps-comm_operad} we should be able to split the element $t_{2,4}$ up as follows.
+By Axiom \ref{axiom:t_sumR} of \cref{def:ps-comm_operad} we should be able to split the element $t_{2,4}$ up as follows.
   \begin{align*}
     t_{2,4} &= t_{2,2+2} \\
     &= \beta(t_{2,2},t_{2,2}) \cdot \delta_{2,2,2,2}(t_{2,2}) \\
@@ -1331,7 +1329,7 @@ By Axiom \ref{axiom:t_sumR} of Definition \ref{def:ps-comm_operad} we should be 
     &= s_{2,3} \cdot s_{5,7} \cdot s_{2,6} \cdot \beta(e_2,s_{1,2},s_{1,2},e_2) \\
     &= s_{2,3} \cdot s_{5,7} \cdot s_{2,6} \cdot s_{3,4} \cdot s_{5,6}.
   \end{align*}
-Here we have used $\delta$ as defined for generators $s_{p,q}$ in Theorem \ref{J_aop}. This element has underlying permutation
+Here we have used $\delta$ as defined for generators $s_{p,q}$ in \cref{J_aop}. This element has underlying permutation
   \[
       \trans{2}{3}\trans{5}{7}\trans{2}{6}\trans{3}{5}\trans{3}{4}\trans{5}{6} = \trans{2}{6}(3 \,\, 4 \,\, 7 \,\,5)
   \]
