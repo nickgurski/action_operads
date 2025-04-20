@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+
+\usepackage{url}
+\usepackage{amssymb}
+\usepackage{pdfsync}
+\usepackage{bbm}
+\usepackage{natbib}
+\usepackage[all]{xy}
+\xyoption{tips}\SelectTips{cm}{10}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{pdflscape}
+
+\title{Cauchy completeness of computadic $P$-algebras}
+
+\date{}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}[definition]{Example}
+\newtheorem{construction}[definition]{Construction}
+\newtheorem{remark}[definition]{Remark}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{conjecture}[definition]{Conjecture}
+
+
+\newcommand{\m}[1]{\mathcal{#1}}
+\newcommand{\amalgc}{\amalg{C_0^n}}
+\newcommand{\alphast}{\alpha_{st}}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\lb}{\left[}
+\newcommand{\rb}{\right]}
+\newcommand{\ps}[1]{\text{Ps-}{#1}\text{-}\mathbf{Alg}}
+\newcommand{\st}[1]{{#1}\text{-}\mathbf{Alg}_s}
+\newcommand{\alg}[1]{{#1}\text{-}\mathbf{Alg}}
+\newcommand{\mbn[1]}{\mathbb{#1}_n}
+\newcommand{\mbg}{\mathbb{G}_n}
+\newcommand{\ngset}{n\text{-}\mathbf{GSet}}
+\newcommand{\cptd}{\text{-}\mathbf{Cptd}}
+\newcommand{\gset}{\text{-}\mathbf{GSet}}
+\newcommand{\sli}[2]{{#2}^{(#1)}}
+\newcommand{\gray}{\mathbf{Gray}\text{-}\mathbf{Cat}}
+\newcommand{\tricat}{\mathbf{Tricat}}
+\newcommand{\bicats}{\mathbf{Bicat}_s\text{-}\mathbf{Cat}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\fnc}{F_{n+1}}
+
+\makeatletter
+\def\slashedarrowfill@#1#2#3#4#5{%
+  $\m@th\thickmuskip0mu\medmuskip\thickmuskip\thinmuskip\thickmuskip
+   \relax#5#1\mkern-7mu%
+   \cleaders\hbox{$#5\mkern-2mu#2\mkern-2mu$}\hfill
+   \mathclap{#3}\mathclap{#2}%
+   \cleaders\hbox{$#5\mkern-2mu#2\mkern-2mu$}\hfill
+   \mkern-7mu#4$%
+}
+\def\rightslashedarrowfill@{%
+  \slashedarrowfill@\relbar\relbar\mapstochar\rightarrow}
+\newcommand\xslashedrightarrow[2][]{%
+  \ext@arrow 0055{\rightslashedarrowfill@}{#1}{#2}}
+\makeatother
+
+\def\slashedrightarrow{\xslashedrightarrow{}}
+\begin{document}
+\begin{theorem}
+There is a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$.
+\end{theorem}
+\begin{proof}
+    Let $\Lambda$ be an action operad. Put $C(\Lambda)(n) = \Lambda_{n+1}$. We will show that this collection of groups constitutes a crossed simplicial group by following Proposition 1.6 of \cite{FL91}. The group homomorphisms into the symmetric groups are given by $\pi$ of the action operad. We define $s_i \colon \Lambda_{n} \rightarrow \Lambda_{n+1}$ by
+        \[
+            s_i(g) = \mu(g; e_1, \ldots, e_1, e_2, e_1, \ldots, e_1),
+        \]
+    where $e_2$ is in the $\pi(g)^{-1}(i)^{th}$ input. Similarly for $d_i \colon \Lambda_{n} \rightarrow \Lambda_{n-1}$, using $e_0$ rather than $e_2$.
+    
+    We will describe how to think of the elements $s_i(g)$ and $d_i(g)$ in terms of the diagrams that represent their permutations under $\pi$. For example, the permutation $(0 \, 2)(1 \, 3) \in \Sigma_{3}$ can be drawn as follows.
+        \[
+            \xy
+                {\ar@{-} (0,0) ; (10,-10)};
+                {\ar@{-} (5,0) ; (15,-10)};
+                {\ar@{-} (10,0) ; (0,-10)};
+                {\ar@{-} (15,0) ; (5,-10)};
+            \endxy
+        \]
+    The diagram representing the permutation $s_i(g)$ is given by drawing the permutation for $g$ and adding a new string running parallel and to the right of the $i^{th}$ output string. E.g., $s_1((0 \, 2)(1 \, 3)) = (0 \, 3 \, 1 \, 4 \, 2)$ is represented by the following diagram.
+        \[
+             \xy
+                {\ar@{-} (0,0) ; (10,-10)};
+                {\ar@{-} (5,0) ; (15,-10)};
+                {\ar@{-} (10,0) ; (0,-10)};
+                {\ar@{-} (15,0) ; (5,-10)};
+                %
+                {\ar@{|->}^{s_1} (17.5,-5) ; (27.5,-5)};
+                %
+                {\ar@{-} (30,0) ; (40,-10)};
+                {\ar@{-} (35,0) ; (45,-10)};
+                {\ar@{-} (40,0) ; (30,-10)};
+                {\ar@{-} (45,0) ; (35,-10)};
+                {\ar@{--} (47.5,0) ; (37.5,-10)};
+            \endxy
+        \]
+    Similarly the diagram representing the permutation $d_i(g)$ is given by drawing the permutation $g$ and deleting the $i^{th}$ output string. E.g., $d_2((0 \, 2)(1 \, 3)) = (0 \, 2 \, 1)$ is represented by the following diagram.
+        \[
+             \xy
+                {\ar@{-} (0,0) ; (10,-10)};
+                {\ar@{-} (5,0) ; (15,-10)};
+                {\ar@{-} (10,0) ; (0,-10)};
+                {\ar@{-} (15,0) ; (5,-10)};
+                %
+                {\ar@{|->}^{d_2} (17.5,-5) ; (27.5,-5)};
+                %
+                {\ar@{.} (30,0) ; (40,-10)};
+                {\ar@{-} (35,0) ; (45,-10)};
+                {\ar@{-} (40,0) ; (30,-10)};
+                {\ar@{-} (45,0) ; (35,-10)};
+            \endxy
+        \]
+    It is then simple to check that the simplicial identities hold for these maps. For example when $i < j$ we require that $d_i \cdot d_j = d_{j-1} \cdot d_i$. Following the method above we see that $d_i(d_j(g))$ is obtained by first writing out the diagram representing $g$, deleting the $j^{th}$ output string, and renumbering the strings above this. We then follow this by deleting the $i^{th}$ output string and renumbering the strings above this. If instead we consider $d_{j-1}(d_i(g))$ we see that the permutation is obtained by first writing out the diagram representing $g$, deleting the ${i}^{th}$ output string, and renumbering the strings above this. Since we have renumbered the strings above the $i^{th}$ output, the removal the ${j-1}^{th}$ output string in the resulting diagram is the same as removing the $j^{th}$ output string as we did before. The identity follows.
+    
+    We now require that these maps satisfy two further conditions as detailed in \cite{FL91}. The first is that $s_i (gh) = s_i(g) s_{\pi(g)^{-1}(i)}(h)$ and similarly for the $d_i$. Now
+        \[
+            s_i(gh) = \mu(gh; e_1, \ldots, e_1, e_2, e_1, \ldots, e_1)
+        \]
+    with the $e_2$ in the $\pi(h^{-1}g^{-1})(i)^{th}$ position. Compare this with
+        \[
+            s_i(g)s_{\pi(g)^{-1}(i)}(h) = \mu(g; e_1, \ldots, e_1, e_2, e_1, \ldots, e_2) \mu(h; e_1, \ldots, e_1, e_2, e_1, \ldots, e_1)
+        \]
+    where the first composite has $e_2$ in the $\pi(g)^{-1}(i)^{th}$ position and the second has $e_2$ in the $\pi(h)^{-1}(\pi(g)^{-1}(i))^{th}$ position. The action operad axiom tells us that we can combine the two composites, where the element from the left composite that is multiplied with $e_2$ in the right composite is that which is in the $\pi(h)(\pi(h^{-1}g^{-1})(i))^{th}$ position, i.e., the $e_2$ from the left composite. Hence the identity is satisfied. Since it did not matter what the elements were we can repeat the argument for the $d_i$ with $e_0$ in place of $e_2$.
+    
+    The final condition of the proposition is that the following two diagrams commute.
+        \[
+            \xymatrix{
+                [n + 1] \ar[rr]^{\sigma_{\pi(g)^{-1}(i)}} \ar[d]_{\pi(s_i(g))} & & [n] \ar[d]^{\pi(g)} & & [n - 1] \ar[rr]^{\delta_{\pi(g)^{-1}(i)}} \ar[d]_{\pi(d_i(g))} & & [n] \ar[d]^{\pi(g)} \\
+                [n+1] \ar[rr]_{\sigma_i} && [n] & & [n-1] \ar[rr]_{\delta_i} & & [n]
+            }
+        \]
+    This can easily be seen as a consequence of how $s_i(g)$ and $d_i(g)$ are described in terms of the diagrams that represent their underlying permutations. Following the bottom path of the first diagram, the elements $1$ to $g^{-1}(i)$ and $g^{-1}(i)+2$ to $n+1$ are permuted according to $g$, while $g^{-1}(i) + 1$ is sent to $i +1$. This is followed by every $k \leq i$ being mapped to $k$, $i +1$ also being mapped to $i$, and every $k \geq i + 1$ being mapped to $k-1$. The top path of the diagram maps each $k \leq g^{-1}(i)$ to $k$, maps $g^{-1}(i)+1$ to $g^{-1}(i)$ as well, and every $k \geq g^{-1}(i) + 2$ to $k-1$. This is followed by permuting the elements according to $g$. A similar argument shows that the second diagram commutes as well.
+    
+    On morphisms we simply send a map $F \colon \Lambda \rightarrow \Gamma$ of action operads to the collection of morphisms $F_n \colon \Lambda_n \rightarrow \Gamma_n$. That these interact appropriately with the face and degeneracy maps follows immediately from fact that $F$ is a map of operads. To be a map of crossed simplicial groups we also require that $\pi^{\Gamma} \cdot F_n = \pi^{\Lambda}$ for all $n \in \mathbb{N}$ but this is simply part of the requirement of $F$ being a map of action operads.
+\end{proof}
+\bibliographystyle{alpha}
+\bibliography{biblio}
+\end{document} 
