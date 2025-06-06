@@ -199,7 +199,7 @@ It is easy to check that the elements $\hat{s}_{p,q} \in \Sigma_{n}$ satisfy the
 The collection of groups $J = \{ J_{n} \}$ form an action operad.
 \end{thm}
 \begin{proof}
-\textbf{There is an issue with the corrected version of Axiom 5 and the $t$'s that needs some fixing}
+\textbf{There is an issue with the corrected version of Axiom 5 and the $t$'s that needs some fixing. AC: It needs to be that $\delta_{1;n}(e_1) = e_n$, but $\delta$ is only defined on the symbols $s_{p,q}$. Could just define $\delta_{1;n}(e_1) = e_n$ and then check that this doesn't cause any problems with the other characterisation?}
 
 We will use \cref{thm:charAOp} to determine the rest of the action operad structure. Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, group homomorphisms $\beta \colon J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}$ and functions $\delta \colon J_{n} \rightarrow J_{K}$ satisfying nine axioms. We define both of these on generators, starting with $\beta$.
 
@@ -240,20 +240,21 @@ Unpacking this yields the following formula:
   \delta(s_{p,q}) = s_{k_{1}+\cdots+k_{p-1}+1, k_{1}+\cdots+k_{q}} \cdot \beta(e_{k_{1}+\cdots+k_{p-1}}, t_{k_{p}}, \ldots, t_{k_{q}}, e_{k_{q+1}+\cdots+k_{n}}).
   \]
 
-We extend $\delta$ to products of generators using axiom 6 of \cref{thm:charAOp}. As before, we must check that this gives a well-defined function on products of two generators in each of the relations of the cactus groups, and we must also check that this is well-defined on products of three or more generators. Thus we define
+We extend $\delta$ to products of generators using Axiom \ref{eq6} of \cref{thm:charAOp}. As before, we must check that this gives a well-defined function on products of two generators in each of the relations of the cactus groups, and we must also check that this is well-defined on products of three or more generators. Thus we define
   \[
-    \delta_{n; j_{i}}(gh) = \delta_{n; k_{i}}(g)\delta_{n; j_{i}}(h)
+    \delta_{n; j_1,\ldots,j_n}(gh) = \delta_{n; k_1,\ldots,k_n}(g)\delta_{n; j_1,\ldots,j_n}(h)
   \]
 where $k_{i} = j_{\pi(h)^{-1}(i)}$. There are three relations we must verify for compatibility.
 \begin{itemize}
-\item We must show that $\delta_{n; j_{i}}\left(s_{p,q}^{2}\right) = e$. By definition, we have
+\item We must show that $\delta_{n; j_1,\ldots,j_n}\left(s_{p,q}^{2}\right) = e$. By definition, we have
   \[
-    \delta_{n; j_{i}}\left(s_{p,q}^{2}\right) = \delta_{n; k_{i}}\left(s_{p,q}\right)\delta_{n; j_{i}}\left(s_{p,q}\right)
+    \delta_{n; j_1,\ldots,j_n}\left(s_{p,q}^{2}\right) = \delta_{n; k_1,\ldots,k_n}\left(s_{p,q}\right)\delta_{n; j_1,\ldots,j_n}\left(s_{p,q}\right)
   \]
 which is
   \[
     t_{\underline{j}}\beta(t_{j_{n}}, \ldots, t_{j_{1}}) t_{\underline{j}} \beta(t_{j_{1}}, \ldots, t_{j_{n}}).
   \]
+(QQQ What is $t_{\underline{j}}$?)
 By the remarks above in the definition of $\delta$ and the fact that $s_{p,q}^{2}=e$, the element above is easily seen to be the identity.
 \item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{k,l}s_{p,q})$ when $(p,q)$ is disjoint from $(k,l)$. This is another simple calculation using the definition of $\delta$ and the disjointness of the terms involved.
 \item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{a,b}s_{p,q})$,  where $a = \hat{s}_{p,q}(l), b = \hat{s}_{p,q}(k)$, if $p < k < l < q$. In this case, we use all of the relations in the cactus groups to show that each side is equal to
@@ -269,7 +270,7 @@ In order to show that this gives a well-defined function on products of three or
 
 There are now nine axioms to check in \cref{thm:charAOp}. Axioms \ref{eq1} - \ref{eq3} all concern $\beta$, and are immediate from the defining formula. Axiom \ref{eq4} is obvious for the elements $t_{k}$, from which it follows in general by the formulas defining $\delta$. For Axiom \ref{eq5}, one can check easily that
   \[
-    \delta_{n; 1, \ldots, 1}(t_{n}) = t_{n}, \quad \delta_{1;n}(t_{n}) = t_{n}
+    \delta_{n; 1, \ldots, 1}(t_{n}) = t_{n}, \quad \delta_{1;n}(e_1) = t_{n}
   \]
 and once again the general case follows from these. Axiom \ref{eq6} holds by the construction of $\delta$. Axiom \ref{eq8} can be verified with only one $h_{i}$ nontrivial at a time, and then it is a simple consequence of the second and third relations for $J_{n}$.
 
