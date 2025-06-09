@@ -2,7 +2,7 @@
 \section{Action operads}
 This chapter will give an introduction to the basic theory of operads (cite MAY), before introducing the notion of an action operad (\ref{Defi:aop}) and exploring some of the consequences of this definition. QQQ WRITE MORE
 \subsection{Introduction to operads}
-This section will provide an introduction to operads, including a general overview of the definitions of plain, symmetric, and braided operads. Remarks and examples are provided throughout and the section begins with conventions around notation.
+This section will provide a brief introduction to operads, including a general overview of the definitions of plain, symmetric, and braided operads. Remarks and examples are provided throughout and the section begins with conventions around notation.
 
 We begin with the basic definitions. The diagrams for the axioms in some operadic definitions can look quite involved and we recommend that readers expand the products depicted, or write out a small example case, to better see what the axioms are describing.
 
@@ -21,7 +21,7 @@ satisfying the following three axioms.
 \begin{enumerate}
 \item The element $\id \in O(1)$ is a two-sided unit for $\mu$ in the sense that
   \begin{align*}
-    \mu(\id;x) &= x\\
+    \mu(\id;x) &= x,\\
     \mu(x;\id,\ldots,\id) &= x
   \end{align*}
 for any $x \in O(n)$.
@@ -196,9 +196,9 @@ Below we have drawn the permutation for the composition
   \[
     \mu \colon \Sigma(3) \times \Sigma(2) \times \Sigma(4) \times \Sigma(3) \rightarrow \Sigma(9)
   \]
-evaluated on the element $\left( (123); (12), (12)(34), (13) \right)$.
+evaluated on the element $\left( (1 \,\, 2 \,\, 3); \trans{1}{2},\trans{1}{2}\trans{3}{4},\trans{1}{3} \right)$, in terms of $\beta$ and $\delta$. We expand on this in \cref{thm:charAOp}.
   \begin{center}
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale=0.8]
   \draw (1,0) -- (2,-1) -- (6,-2.5);
   \draw (2,0) -- (1,-1) -- (5,-2.5);
   \draw (4,0) -- (5,-1) -- (8,-2.5);
@@ -208,6 +208,8 @@ evaluated on the element $\left( (123); (12), (12)(34), (13) \right)$.
   \draw (9,0) -- (11,-1) -- (4,-2.5);
   \draw (10,0) -- (10,-1) -- (3,-2.5);
   \draw (11,0) -- (9,-1) -- (2,-2.5);
+  \node at (13.3,-0.5) {$\beta(\trans{1}{2},\trans{1}{2}\trans{3}{4}, \trans{1}{3}$};
+  \node at (13.3,-2) {$\delta((1 \,\, 2 \,\, 3))$};
   \end{tikzpicture}
   \end{center}
   % \[
@@ -368,7 +370,7 @@ The maps $f_{n}$ are required to be equivariant with respect to the symmetric gr
 \end{Defi}
 
 
-\begin{example}
+\begin{example}\label{ex:braid_operad_B}
 One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$. This is done in much the same way as we did for the symmetric operad using the `cabling' operations for braids described after \cref{broperad}. The collections of maps $\pi_{n} \colon B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutation of each braid constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
 \end{example}
 
@@ -504,10 +506,9 @@ The category $\mb{AOp}$ of action operads has objects which are action operads $
 
 \begin{example}
 \begin{enumerate}
-\item The terminal operad $T$ in the category of sets has a unique action operad structure, $\mathbf{T}$. Since $T(n)$ is a singleton for each $n$, the group structure is unique, as is the map $\pi$. The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity. This is the initial object in the category of action operads (see \cref{Defi:cat_aop} for the definition of morphisms in the category of action operads).
+\item The terminal operad $T$ in the category of sets has a unique action operad structure, $\mathbf{T}$. Since $T(n)$ is a singleton for each $n$, the group structure is unique, as is the map $\pi$. The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity. This is the initial object in the category of action operads.
+% (see \cref{mapaop} for the definition of morphisms in the category of action operads).
 \item The symmetric operad $\Sigma$ has a canonical action operad structure. It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$. This is the terminal object in the category of action operads.
-\item Two less trivial examples are given by the braid groups, $\Lambda = B$, and the ribbon braid groups, $\Lambda = RB$. (A ribbon braid is given, geometrically, as a braid with strands replaced by ribbons in which we allow full twists. The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.)  In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after \cref{broperad}. We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
-\item The operad of $n$-fruit cactus groups defined by Henriques and Kamnitzer in \cite{hk-cobound} has an action operad structure that we will discuss in \cref{sec:examples}.
 \end{enumerate}
 \end{example}
 
@@ -526,9 +527,7 @@ where $t$ is the sole twist in $RB_1$, and for the `block twists' $t_{(m)}$ we a
   \]
 \end{Defi}
 
-
-
-Much as the symmetric groups can be represented by crossings of a collection of strings, and the braid groups by braidings of strings, the ribbon braid groups deal with the ways that one can braid together several flat ribbons, including the ability to twist a ribbon about its own axis by 360 degrees.
+Much as the symmetric groups can be represented by crossings of a collection of strings, and the braid groups by braidings of strings, the ribbon braid groups deal with the ways that one can braid together several flat ribbons, including the ability to twist a ribbon about its own axis by 360 degrees. The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.
 \begin{center} \begin{tabular}{ccc}
 			\begin{tikzpicture}[baseline]
 				\node(xl1) at (-0.7,1){};
@@ -563,10 +562,17 @@ Much as the symmetric groups can be represented by crossings of a collection of 
 			\end{tikzpicture} \\
 			$b$ & & $t$ 
 \end{tabular} \end{center}
-This operad $RB$ is also clearly an action operad, since we can just define $\pi^{RB}_n \colon RB_{n} \rightarrow \Sigma_n$ to act like $\pi^B_n$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
+% This operad $RB$ is also clearly an action operad, since we can just define $\pi^{RB}_n \colon RB_{n} \rightarrow \Sigma_n$ to act like $\pi^B_n$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
 
 \begin{example}
-Every abelian group $A$ gives rise to action operad $A^{\bullet}$ as follows. The group $A^{\bullet}(n)$ is the direct sum of $n$ copies of $A$, $A^{n}$. The identity element is required to be $e \in A^{1}$, and the multiplication is defined by
+\begin{enumerate}
+\item We now describe two less trivial action operads, those given by the braid groups (\cref{ex:braid_operad_B}), $\Lambda = B$, and the ribbon braid groups, $\Lambda = RB$. In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after \cref{broperad}. For $RB$, the fact that $\pi(t) \in \Sigma_1 = \{e_1\}$ automatically takes care of the twists. We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
+\item The operad of $n$-fruit cactus groups defined by Henriques and Kamnitzer in \cite{hk-cobound} has an action operad structure that we will discuss in \cref{sec:examples}.
+\end{enumerate}
+\end{example}
+
+\begin{example}
+Every abelian group $A$ gives rise to an action operad $A^{\bullet}$ as follows. The group $A^{\bullet}(n)$ is the direct sum of $n$ copies of $A$, $A^{n}$. The identity element is required to be $e \in A^{1}$, and the multiplication is defined by
   \[
     \mu((a_{1}, \ldots, a_{n}); \underline{b_1}, \ldots, \underline{b_n}) = (a_{1}+\underline{b_{1}}, a_{2} + \underline{b_{2}}, \ldots, a_{n} + \underline{b_{n}})
   \]
@@ -574,13 +580,14 @@ where $\underline{b_{i}}$ is the string $b_{i1}, \ldots, b_{ik_{i}}$, and $a_{i}
   \[
     a_{i} + b_{i1}, a_{i} + b_{i2}, \ldots, a_{i} + b_{ik_{i}}.
   \]
+The map $\pi_n \colon A^\bullet(n) \rightarrow \Sigma_n$ is the zero map. 
 \end{example}
 
 
 
 
 \subsection{Some algebra in action operads}
-Here we begin to investigate the algebra of action operads, including a discussion of the group-like properties of action operads and their maps. For example, the notions of kernels, images, and short exact sequences are defined for action operads before comparing $\textbf{Grp}$-operads and crossed simplicial groups to action operads as well. We provide some useful technical lemmas and go on to give an algebraic characterisation of action operads given by equivariant analogues of block sums of permutations and diagonal maps.
+Here we begin to investigate the algebra of action operads, including a discussion of the group-like properties of action operads and their maps. For example, the notions of kernels, images, and short exact sequences are defined for action operads. We provide some useful technical lemmas and go on to give an algebraic characterisation of action operads given by equivariant analogues of block sums of permutations and diagonal maps. We end this section with some consideration of the related notions of $\textbf{Grp}$-operads and crossed simplicial groups, as well as some counterexamples.
 
  	% QQQ chapter: some algebra in action operads
  	% \begin{itemize}
