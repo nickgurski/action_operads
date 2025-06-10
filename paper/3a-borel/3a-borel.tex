@@ -3,7 +3,7 @@
 \subsection{The Borel construction for action operads}
 
 
-The classical Borel construction is a functor from $G$-spaces to spaces, sending a $G$-space $X$ to $EG \times_{G} X$. Our goal in this section is to use the formal description of the Borel construction to construct some special operads in $\mb{Cat}$.  We start by reviewing the analogues of the functors $E, B \colon \mb{Grp} \rightarrow \mb{Top}$ now taking values in $\mb{Cat}$.
+The classical Borel construction is a functor from $G$-spaces to spaces, sending a $G$-space $X$ to $\coeqb{EG}{X}{G}$. Our goal in this section is to use the formal description of the Borel construction to construct some special operads in $\mb{Cat}$.  We start by reviewing the analogues of the functors $E, B \colon \mb{Grp} \rightarrow \mb{Top}$ now taking values in $\mb{Cat}$.
 
 \begin{Defi}\label{Defi:e_b}
   \begin{enumerate}
@@ -196,7 +196,7 @@ Let $\Lambda$ be an action operad. Then $E\Lambda = \{ E\left(\Lambda(n)\right) 
 
 Any $\Lambda$-operad $P$ in $\mb{Cat}$ gives rise to a $2$-monad on $\mb{Cat}$ which we will often also denote by $P$ or, as in \cref{section:operads_in_Cat}, by $\underline{P}$. In the context of \cref{cor:elambda_lambdaop}, that $2$-monad $\underline{E\Lambda}$ is given by
   \[
-    X \mapsto \coprod_{n \geq 0} E\Lambda(n) \times_{\Lambda(n)} X^{n}
+    X \mapsto \coprod_{n \geq 0} \coeq{E\Lambda}{X}{\Lambda}{n}
   \]
 where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $\underline{E\Sigma}$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
 
@@ -338,7 +338,7 @@ Strict $\Lambda$-monoidal categories, in the sense of being strict algebras for 
 \subsection{Free $\Lambda$-monoidal categories}
 
 
-It will be useful for our calculations later to give an explicit description of the categories $E\Lambda(n) \times_{\Lambda(n)} X^{n}$. Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
+It will be useful for our calculations later to give an explicit description of the categories $\coeq{E\Lambda}{X}{\Lambda}{n}$. Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
   \[
     (gh; x_1, \ldots, x_n) \sim \left(g; x_{h^{-1}(1)}, \ldots, x_{h^{-1}(n)}\right);
   \]
@@ -346,10 +346,10 @@ It will be useful for our calculations later to give an explicit description of 
   \[
     (!; f_1, \ldots, f_n) \colon  (g; x_1, \ldots, x_n) \rightarrow \left(h; x_1', \ldots, x_n'\right).
   \]
-We have two distinguished classes of morphisms, one for which the map $! \colon  g \rightarrow h$ is the identity and one for which all the $f_{i}$'s are the identity. Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type. Now $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is in the image of the quotient map. Using this fact, we can prove the following useful lemma.
+We have two distinguished classes of morphisms, one for which the map $! \colon  g \rightarrow h$ is the identity and one for which all the $f_{i}$'s are the identity. Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type. Now $\coeq{E\Lambda}{X}{\Lambda}{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $\coeq{E\Lambda}{X}{\Lambda}{n}$ is in the image of the quotient map. Using this fact, we can prove the following useful lemma.
 
 \begin{lem}\label{hom-set-lemma}
-For an action operad $\Lambda$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $E\Lambda(n) \times_{\Lambda(n)} X^{n}$ is
+For an action operad $\Lambda$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $\coeq{E\Lambda}{X}{\Lambda}{n}$ is
   \[
     \coprod_{g \in \Lambda(n)} \prod_{i=1}^{n} X\left(x_i, y_{g(i)}\right).
   \]
@@ -520,7 +520,7 @@ Naturality is immediate, and since $\pi$ is a map of operads $\tilde{\pi}$ also 
 It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $\underline{E\Lambda}$. Since the monads $\underline{E\Lambda}$ and $\underline{E\Sigma}$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
   \[
     \xy
-      (0,0)*+{E\Lambda(n) \times_{\Lambda(n)} X^n} ="00";
+      (0,0)*+{\coeq{E\Lambda}{X}{\Lambda}{n}} ="00";
       (0,-10)*+{B\Lambda(n)} ="01";
       (35,0)*+{E\Sigma_{n} \times_{\Sigma_{n}} X^n} ="10";
       (35,-10)*+{B\Sigma_{n}} ="11";

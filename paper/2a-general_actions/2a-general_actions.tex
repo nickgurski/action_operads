@@ -34,7 +34,7 @@ such that the following two equivariance axioms hold.
   \]
     \item For each $p \in P(n)$, $g \in \Lambda(n)$, and $q_i \in \Lambda(k_i)$:
   \[
-    \mu^{P}(p \cdot g; q_{1}, \ldots, q_{n}) = \mu^{P}\left(p; q_{g^{-1}(1)}, \ldots, q_{g^{-1}(n)}\right) \cdot \delta_{k_1,\ldots,k_n}^{\Lambda}(g).
+    \mu^{P}(p \cdot g; q_{1}, \ldots, q_{n}) = \mu^{P}\left(p; q_{g^{-1}(1)}, \ldots, q_{g^{-1}(n)}\right) \cdot \delta_{n;k_1,\ldots,k_n}^{\Lambda}(g).
   \]
   \end{itemize}
 \end{Defi}
@@ -119,8 +119,9 @@ for all $x \in X$.
 \end{enumerate}
 \end{Defi}
 
+$\coeq{P}{X}{\Lambda}{n}$
 
-Moving on to algebras for a $\Lambda$-operad, let $P$ be a $\Lambda$-operad and let $X$ be any set. Write $P(n) \times_{\Lambda(n)} X^{n}$ for the coequalizer of the pair of maps
+Moving on to algebras for a $\Lambda$-operad, let $P$ be a $\Lambda$-operad and let $X$ be any set. Write $\coeq{P}{X}{\Lambda}{n}$ for the coequalizer of the pair of maps
   \[
     P(n) \times \Lambda(n) \times X^{n} \rightrightarrows P(n) \times X^{n}
   \]
@@ -128,13 +129,13 @@ of which the first map is the action of $\Lambda(n)$ on $P(n)$ and the second ma
   \[
     P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times \Sigma_{n} \times X^{n} \rightarrow P(n) \times X^{n}
   \]
-using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the canonical action of $\Sigma_{n}$ on $X^{n}$ by permutation of coordinates: $\sigma \cdot (x_{1}, \ldots, x_{n}) = (x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)})$. By the universal property of the coequalizer, a function $f \colon P(n) \times_{\Lambda(n)} X^{n} \rightarrow Y$ can be identified with a function $\tilde{f} \colon P(n) \times X^{n} \rightarrow Y$ such that
+using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the canonical action of $\Sigma_{n}$ on $X^{n}$ by permutation of coordinates: $\sigma \cdot (x_{1}, \ldots, x_{n}) = (x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)})$. By the universal property of the coequalizer, a function $f \colon \coeq{P}{X}{\Lambda}{n} \rightarrow Y$ can be identified with a function $\tilde{f} \colon P(n) \times X^{n} \rightarrow Y$ such that
   \[
     \tilde{f}(p\cdot g; x_{1}, \ldots, x_{n}) = \tilde{f}\left(p; x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)}\right).
   \]
 
 \begin{Defi}
-  Let $P$ be a $\Lambda$-operad. An \textit{algebra} for $P$ consists of a set $X$ together with maps $\alpha_{n} \colon P(n) \times_{\Lambda(n)} X^{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the operad algebra axioms given in \cref{opalgax}.
+  Let $P$ be a $\Lambda$-operad. An \textit{algebra} for $P$ consists of a set $X$ together with maps $\alpha_{n} \colon \coeq{P}{X}{\Lambda}{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the operad algebra axioms given in \cref{opalgax}.
 \end{Defi}
 
 \begin{rem}
@@ -191,7 +192,7 @@ The proposition above holds for $P$-algebras in any closed symmetric monoidal ca
 \begin{Defi}
 Let $P$ be a $\Lambda$-operad. Then $P$ induces an endofunctor of $\mb{Sets}$, denoted $\underline{P}$, by the following formula.
   \[
-	 \underline{P}(X) = \coprod_n P(n) \times_{\Lambda(n)} X^n
+	 \underline{P}(X) = \coprod_n \coeq{P}{X}{\Lambda}{n}
   \]
 \end{Defi}
 
@@ -211,15 +212,15 @@ Let $\Lambda$ be an action operad. The category of algebras, $\Lambda\mbox{-}\mb
 \begin{proof}
 The key observation here is that, for each $n \in \mathbb{N}$,
 	\[
-		\Lambda(n) \times_{\Lambda(n)} X^n \cong X^n.
+		\coeq{\Lambda}{X}{\Lambda}{n} \cong X^n.
 	\]
 We will describe this bijection and leave the rest of the proof to the reader, which falls out of the various axioms either for being a monoid or for being a $\Lambda$-algebra.
 
-Recall that the elements of $\Lambda(n) \times_{\Lambda(n)} X^n$ are equivalence classes of the form $[g ; x_1, \ldots, x_n]$ for which
+Recall that the elements of $\coeq{\Lambda}{X}{\Lambda}{n}$ are equivalence classes of the form $[g ; x_1, \ldots, x_n]$ for which
 	\[
 		(gh; x_1, \ldots, x_n) \sim \left(g; x_{h^{-1}(1)}, \ldots, x_{h^{-1}(n)}\right).
 	\]
-There is an obvious map $X^n \rightarrow \Lambda(n) \times_{\Lambda(n)} X^n$ sending $(x_1, \ldots, x_n)$ to the equivalence class $[e; x_1, \ldots, x_n]$. The inverse to this map is given by the map $\Lambda(n) \times_{\Lambda(n)} X^n \rightarrow X^n$ sending $[g;x_1,\ldots,x_n]$ to the element $(x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)})$. It is then clear that these are inverses, relying on the equivalence relation to see that
+There is an obvious map $X^n \rightarrow \coeq{\Lambda}{X}{\Lambda}{n}$ sending $(x_1, \ldots, x_n)$ to the equivalence class $[e; x_1, \ldots, x_n]$. The inverse to this map is given by the map $\coeq{\Lambda}{X}{\Lambda}{n} \rightarrow X^n$ sending $[g;x_1,\ldots,x_n]$ to the element $(x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)})$. It is then clear that these are inverses, relying on the equivalence relation to see that
 	\[
 		[g;x_1,\ldots,x_n] = \left[e;x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)}\right].
 	\]
@@ -239,25 +240,25 @@ Let $\Lambda$ be an action operad.
 \begin{proof}
 Given any map of monoids $f \colon M \rightarrow N$ in a monoidal category, there exists an adjunction between right $M$-modules and right $N$-modules given by $f^{*}$ as the right adjoint and $A \mapsto A \otimes_{M} N$ as the left adjoint. Thus we define
   \[
-    S(P)(n) = P(n) \times_{\Lambda(n)} \Sigma_{n},
+    S(P)(n) = \coequ{P}{\Sigma}{\Lambda}{n},
   \]
 and this inherits a right $\Sigma_{n}$-action by multiplication. The unit of $S(P)$ is
   \[
-    * \stackrel{\eta}{\longrightarrow} P(1) \longrightarrow P(1)\times_{\Lambda(1)}\Sigma_{1} \cong P(1)/\Lambda(1).
+    * \stackrel{\eta}{\longrightarrow} P(1) \longrightarrow \coequ{P}{\Sigma}{\Lambda}{1} \cong P(1)/\Lambda(1).
   \]
 For the multiplication, let $K = k_1 + \cdots + k_n$, so we must define
 % \[
-% \mu \colon (P(n) \times_{\Lambda(n)} \Sigma_{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_{K}.
+% \mu \colon (\coequ{P}{\Sigma}{\Lambda}{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_{K}.
 % \]
   \[
-    \mu \colon \left(P(n) \times_{\Lambda(n)} \Sigma_n \right) \times \prod_{i=1}^n \left(P(k_i) \times_{\Lambda(k_i)} \Sigma_{k_i} \right) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_K.
+    \mu \colon \left(\coequ{P}{\Sigma}{\Lambda}{n}\right) \times \prod_{i=1}^n \left(\coequ{P}{\Sigma}{\Lambda}{k_i}\right) \rightarrow \coequ{P}{\Sigma}{\Lambda}{K}.
   \]
 Using the universal property of the coequalizer, this is induced by the following composite.
 
   \begin{align*}
     (P(n) \times \Sigma_{n}) \times \prod_{i=1}^n \left(P(k_i) \times \Sigma_{k_i}\right) &\cong \left(P(n) \times \prod_{i=1}^n P(k_{i}) \right) \times \left(\Sigma_{n} \times \prod_{i=1}^n \Sigma_{k_{i}} \right)\\
     &\xrightarrow{\mu^P \times \mu^{\Sigma}} P(K) \times \Sigma_{K}\\
-    &\longrightarrow  P(K) \times_{\Lambda(K)} \Sigma_{K}
+    &\longrightarrow  \coequ{P}{\Sigma}{\Lambda}{K}
   \end{align*}
 
 We leave verification of the associativity, unit, and equivariance axioms to the reader; they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\Lambda$-operad axioms for $P$. It is then straightforward to check the bijection between $\Lambda$-operad maps $P \rightarrow \pi^{*}Q$ and symmetric operad maps $S(P) \rightarrow Q$, thus establishing the adjunction.
@@ -266,7 +267,7 @@ The second claim is a simple calculation using the coequalizer that defines $S(\
 
 For the third claim, we find a natural isomorphism
   \[
-    P(n) \times_{\Lambda(n)}X^{n} \cong (P(n) \times_{\Lambda(n)} \Sigma_{n}) \times_{\Sigma_{n}} X^{n}
+    \coeq{P}{X}{\Lambda}{n} \cong (\coequ{P}{\Sigma}{\Lambda}{n}) \times_{\Sigma_{n}} X^{n}
   \]
 by the universal property of the colimits involved, so as functors $\underline{P} \cong \underline{S(P)}$. One can then easily verify that this isomorphism commutes with the unit and multiplication of the two monads involved using calculations similar to those used to establish the adjunction.
 \end{proof}
@@ -308,7 +309,19 @@ Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \em
 
 A \emph{transformation} $\Gamma \colon (F, \alpha) \Rightarrow (G, \beta)$ between monad maps is a natural transformation $\Gamma \colon F \Rightarrow G$ such that the following diagram commutes.
   
-
+  \[
+    \xy
+      (0,0)*+{TFX}="a";
+      (20,0)*+{TGX}="b";
+      (0,-15)*+{FSX}="c";
+      (20,-15)*+{GSX}="d";
+      %
+      {\ar^{T\Gamma_X} "a" ; "b"};
+      {\ar^{\beta_X} "b" ; "d"};
+      {\ar_{\alpha_X} "a" ; "c"};
+      {\ar_{\Gamma_{SX}} "c" ; "d"};
+    \endxy
+  \]
 \end{Defi}
 
 \begin{rem}
@@ -361,7 +374,7 @@ A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal categor
 % and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
 % QQQ Is this what we mean by a cocomplete symmetric monoidal category? The statement of the following theorem 3.3.7 then requires that the tensor product preserves colimits in each variable but the definition already includes this. QQQ
 \end{Defi}
-The following three results tie in with material in the coming chapters but are of a general nature which fits the nature of this section.
+The following three results tie in with material in the coming chapters but are of a general nature which better in the context of this section.
 
 
 \begin{prop}\label{monoidal_to_monadmap}
@@ -370,7 +383,7 @@ Let $C,D$ be cocomplete symmetric monoidal categories. Let $\Lambda$ be an actio
 \begin{proof}
 \cref{preserveGop} describes how the functor $F$ can be used to describe a functor
   \[
-    \Lambda\mbox{-}Op(C) \rightarrow \Lambda\mbox{-}Op(D),
+    \Lambda\mbox{-}\mb{Op}(C) \rightarrow \Lambda\mbox{-}\mb{Op}(D),
   \]
 from which we see that $FP$ is a $\Lambda$-operad in $D$.
 
@@ -415,7 +428,6 @@ We will first describe the components of the natural transformation $\sigma^* \c
   \]
 This is seen to be induced by the universal properties of the coequalizers and coproducts in the following diagram, where $\sigma_n$ denotes the $n$-ary component of the $\Lambda$-operad map $\sigma$ and $\lambda^P$, $\lambda^Q$, $\rho^P$, and $\rho^Q$ denote the usual left and right actions.
 
-The upper square which includes $\lambda^P$ and $\lambda^Q$ commutes due to $\sigma$ being a $\Lambda$-operad map, while the square with both $\rho$ actions commutes because the $\sigma_n$ and $\rho$ do not interact. Since $c^Q_n$ coequalizes $\lambda^Q$ and $\rho^Q$, then this commutativity shows that $c^Q_n \cdot (\sigma_n \otimes \id) \cdot \lambda^P = c^Q_n \cdot (\sigma_n \otimes \id) \cdot \rho^P$, hence the morphism $\sigma^*_{n,X}$ exists. The morphism $\sigma^*_X$ is then induced by the universal property of the coproduct $\underline{P}(X)$.
   \[
     \xy
       (0,0)*+{P(n) \otimes \Lambda(n) \otimes X^n}="a";
@@ -442,6 +454,8 @@ The upper square which includes $\lambda^P$ and $\lambda^Q$ commutes due to $\si
       {\ar^{\exists! \sigma^*_X} "g" ; "h"};      
     \endxy
   \]
+
+The upper square which includes $\lambda^P$ and $\lambda^Q$ commutes due to $\sigma$ being a $\Lambda$-operad map, while the square with both $\rho$ actions commutes because the $\sigma_n$ and $\rho$ do not interact. Since $c^Q_n$ coequalizes $\lambda^Q$ and $\rho^Q$, then this commutativity shows that $c^Q_n \cdot (\sigma_n \otimes \id) \cdot \lambda^P = c^Q_n \cdot (\sigma_n \otimes \id) \cdot \rho^P$, hence the morphism $\sigma^*_{n,X}$ exists. The morphism $\sigma^*_X$ is then induced by the universal property of the coproduct $\underline{P}(X)$.
 
 It is then routine to check that these components are natural in $X$ and constitute a monad map. That a functor is then induced on the category of algebras follows from Lemma 6.1.1 of \cite{leinster}; the process is described above, following \cref{defi:monad_map}.
 \end{proof}
@@ -486,8 +500,8 @@ Let $\Lambda$ be an action operad, and let $X, Y$ be $\Lambda$-collections. We d
   \]
 where the equivalence relation is generated by
   \begin{align*}
-    \left(xh; y_{1}, \ldots, y_{r}; g\right) &\sim \left(x; y_{h^{-1}(1)}, \ldots, y_{h^{-1}(r)}; \mu(h; e, \ldots, e)g\right), \\
-    \left(xe; y_{1}g_{1}, \ldots, y_{r}g_{r}; g\right) &\sim \left(x; y_{1}, \ldots, y_{r}; \mu(e; g_{1}, \ldots, g_{r})g\right).
+    \left(xh; y_{1}, \ldots, y_{r}; g\right) &\sim \left(x; y_{h^{-1}(1)}, \ldots, y_{h^{-1}(r)}; \delta(h)g\right), \\
+    \left(xe; y_{1}g_{1}, \ldots, y_{r}g_{r}; g\right) &\sim \left(x; y_{1}, \ldots, y_{r}; \beta(g_{1}, \ldots, g_{r})g\right).
   \end{align*}
 For the first relation above, we must have that the lefthand side is an element of
   \[

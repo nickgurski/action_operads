@@ -150,6 +150,24 @@ maxbibnames=99, minbibnames=99
 \newcommand{\ab}{\mathrm{ab}}
 \newcommand{\gp}{\mathrm{gp}}
 \newcommand{\trans}[2]{( #1 \, \, #2 )}
+% \newcommand{\coeq}[4]{\left[#1;#2\right]_{#3(#4)}}
+\newcommand{\coeq}[4]{#1(#4) \times_{#3(#4)} #2^{#4}}
+\newcommand{\coequ}[4]{#1(#4) \times_{#3(#4)} #2_{#4}}
+% \newcommand{\coequ}[4]{\left[#1;#2\right]_{#3(#4)}}
+\newcommand{\coeqb}[3]{#1 \times_#3 #2}
+\newcommand{\coeqsig}[3]{#1(#3) \times_{\Sigma_#3} #2^#3}
+% \begin{itemize}
+%   \item $P(n) \times_{\Lambda(n)} X^n$
+%   \item $P(n) \bullet_{\Lambda(n)} X^n$
+%   \item $P(n) ;_{\Lambda(n)} X^n$
+%   \item $(P;X)_{\Lambda(n)}$
+%   \item $(P \times X)^n_\Lambda$
+%   \item $\left[P;X\right]_{\Lambda(n)}$
+%   \item $\left[P(n);X^n\right]_{\Lambda}$
+%   \item $\left[P;_{\Lambda(n)}X\right]$
+%   \item $\left[P;X\right]_{\Lambda_n}$
+% \end{itemize}
+
 \crefname{lem}{Lemma}{Lemmas}
 \crefname{thm}{Theorem}{Theorems}
 \crefname{Defi}{Definition}{Definitions}

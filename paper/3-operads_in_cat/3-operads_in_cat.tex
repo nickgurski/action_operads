@@ -20,7 +20,7 @@ We have seen (\cref{op=monad1}) that given any $\Lambda$-operad $P$ there is an 
 
 The associated monad $\underline{P}$ acquires the structure of a $2$-functor as follows. We define $\underline{P}$ on categories much like before as  the coproduct
     \[
-        \underline{P}(X) = \coprod_n P(n) \times_{\Lambda(n)} X^n,
+        \underline{P}(X) = \coprod_n \coeq{P}{X}{\Lambda}{n},
     \]
 whose objects will be written as equivalence classes $[p;x_1,\ldots,x_n]$ where $p \in P(n)$ and each $x_i \in X$, sometimes written as $[p;\underline{x}]$ when there is no confusion. On functors we define $\underline{P}$ in a similar way, exactly as with functions of sets. Given a natural transformation $\alpha \colon f \Rightarrow g$ we define a new natural transformation $\underline{P}(\alpha)$ as follows. The component of $\underline{P}(\alpha)$ at the object
     \[
@@ -40,7 +40,7 @@ The material in this section can be given a rather more abstract interpretation,
 
 First we will set out some conventions and definitions.
 \begin{conv}\label{conv_coeq}
-We will identify maps $\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow X$ with maps $\tilde{\alpha}_n \colon P(n) \times X^n \rightarrow X$ which are equivariant with respect to the $\Lambda$-actions via the universal property of the coequalizer. The coequalizer in $\mb{Cat}$ also has a $2$-dimensional aspect to its universal property, so that a natural transformation $\Gamma \colon \alpha_{n} \Rightarrow \beta_{n}$ between functors as above determines and is determined by a transformation $\tilde{\Gamma} \colon \tilde{\alpha}_{n} \Rightarrow \tilde{\beta}_{n}$ with the property that the two possible whiskerings of $\tilde{\Gamma}$ with the two functors $P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times X^{n}$ are equal.
+We will identify maps $\alpha_n \colon \coeq{P}{X}{\Lambda}{n} \rightarrow X$ with maps $\tilde{\alpha}_n \colon P(n) \times X^n \rightarrow X$ which are equivariant with respect to the $\Lambda$-actions via the universal property of the coequalizer. The coequalizer in $\mb{Cat}$ also has a $2$-dimensional aspect to its universal property, so that a natural transformation $\Gamma \colon \alpha_{n} \Rightarrow \beta_{n}$ between functors as above determines and is determined by a transformation $\tilde{\Gamma} \colon \tilde{\alpha}_{n} \Rightarrow \tilde{\beta}_{n}$ with the property that the two possible whiskerings of $\tilde{\Gamma}$ with the two functors $P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times X^{n}$ are equal.
 
 Note also that in the following definitions we will often write the composite
     \[
@@ -57,7 +57,7 @@ Let $P$ be a $\Lambda$-operad. A \textit{pseudoalgebra} for $P$ consists of:
         \item a category $X$,
         \item a family of functors
             \[
-                \left(\alpha_n \colon P(n) \times_{\Lambda(n)} X^n \rightarrow X \right)_{n \in \mathbb{N}},
+                \left(\alpha_n \colon \coeq{P}{X}{\Lambda}{n} \rightarrow X \right)_{n \in \mathbb{N}},
             \]
         \item for each $n, k_1, \ldots, k_n \in \mathbb{N}$, a natural isomorphism $\phi_{k_1, \ldots, k_n}$ (corresponding, via Conventions \ref{conv_coeq}) to a natural isomorphism
             \[
@@ -634,7 +634,7 @@ We begin by noting that we suppress the difference between $2$-cells $\Gamma$ an
 A proof of the first statement follows from our proof of the second by inserting identities where appropriate. Thus we begin by constructing a $2$-functor $R \colon \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg} \rightarrow \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$. We map a $\underline{P}$-pseudoalgebra $(X,\alpha,\Phi,\Phi_\eta)$ to the following $P$-pseudoalgebra on the same category $X$. First we define the functor $\alpha_n$ to be the composite
     \[
         \xy
-            (0,0)*+{\alpha_n \colon P(n) \times_{\Lambda(n)} X^n}="00";
+            (0,0)*+{\alpha_n \colon \coeq{P}{X}{\Lambda}{n}}="00";
             (35,0)*+{\underline{P}(X)}="10";
             (55,0)*+{X.}="20";
             {\ar@{^{(}->} "00" ; "10"};
@@ -684,10 +684,10 @@ For a $1$-cell $(f,\overline{f}) \colon (X, \alpha) \rightarrow (Y, \beta)$, we 
         \xy
             (-30,0)*+{P(n) \times X^n}="-10";
             (-30,-15)*+{P(n) \times Y^n}="-11";
-            (0,0)*+{P(n) \times_{\Lambda(n)} X^n}="00";
+            (0,0)*+{\coeq{P}{X}{\Lambda}{n}}="00";
             (30,0)*+{\underline{P}(X)}="10";
             (60,0)*+{X}="20";
-            (0,-15)*+{P(n) \times_{\Lambda(n)} Y^n}="01";
+            (0,-15)*+{\coeq{P}{Y}{\Lambda}{n}}="01";
             (30,-15)*+{\underline{P}(Y)}="11";
             (60,-15)*+{Y}="21";
             {\ar@{^{(}->} "00" ; "10"};
@@ -710,7 +710,7 @@ For there to be an isomorphism of $2$-categories, we require an inverse to $R$, 
     \[
         \xy
             (-30,0)*+{P(n) \times X^n}="-10";
-            (0,0)*+{P(n) \times_{\Lambda(n)} X^n}="00";
+            (0,0)*+{\coeq{P}{X}{\Lambda}{n}}="00";
             (30,0)*+{\underline{P}(X)}="10";
             (30,-15)*+{X}="11";
             {\ar "-10" ; "00"};
@@ -778,10 +778,10 @@ Let $P$ be a $\Lambda$-operad. Then $\underline{P}$ is finitary.
 \begin{proof}
 To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
     \begin{align*}
-      \underline{P}(\text{colim}X_{i}) &= \coprod_n P(n) \times_{\Lambda(n)} (\text{colim}X_{i})^n \\
+      \underline{P}(\text{colim}X_{i}) &= \coprod_n \coeq{P}{(\text{colim}X_{i})}{\Lambda}{n} \\
       &\cong \coprod_n P(n) \times_{\Lambda(n)} \text{colim}(X_{i}^n) \\
-      &\cong \coprod_n \text{colim}(P(n) \times_{\Lambda(n)} X_{i}^n) \\
-      &\cong \text{colim}\coprod_n P(n) \times_{\Lambda(n)} X_{i}^n \\
+      &\cong \coprod_n \text{colim}(\coeq{P}{X_i}{\Lambda}{n}) \\
+      &\cong \text{colim}\coprod_n \coeq{P}{X_i}{\Lambda}{n} \\
       &= \text{colim}\underline{P}(X_{i}).
     \end{align*}
 Since $\mathbf{Cat}$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
@@ -859,14 +859,14 @@ A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit
     \end{itemize}
 \end{Defi}
 
-It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. Since we will be computing with coequalizers of the form $A \times_{\Lambda} B$ repeatedly, we give the following useful lemma.
+It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. Since we will be computing with coequalizers of the form $\coeqb{A}{B}{\Lambda}$ repeatedly, we give the following useful lemma.
 
 \begin{lem}\label{coeq-lem}
 Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. An action of $G$ on the product $A \times B$ can then be defined by
     \[
         (a,b) \cdot g \colon = \left(a \cdot g, g^{-1} \cdot b\right).
     \]
-If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $A \times_G B$.
+If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $\coeqb{A}{B}{G}$.
 \end{lem}
 \begin{proof}
 The category $A \times_G B$ is defined as the coequalizer
@@ -874,7 +874,7 @@ The category $A \times_G B$ is defined as the coequalizer
         \xy
             (0,0)*+{A \times G \times B}="00";
             (30,0)*+{A \times B}="10";
-            (60,0)*+{A \times_G B}="20";
+            (60,0)*+{\coeqb{A}{B}{G}}="20";
             {\ar@<1ex>^{\lambda} "00" ; "10"};
             {\ar@<-1ex>_{\rho} "00" ; "10"};
             {\ar^{\varepsilon} "10" ; "20"};
@@ -902,8 +902,8 @@ In order to show that $\eta$ is cartesian, we must prove that for a functor $f \
     \[
         \xy
             (40,0)*+{Y}="10";
-            (0,-15)*+{\coprod P(n) \times_{\Sigma_n} X^n}="01";
-            (40,-15)*+{\coprod P(n) \times_{\Sigma_n} Y^n}="11";
+            (0,-15)*+{\coprod \coeqsig{P}{X}{n}}="01";
+            (40,-15)*+{\coprod \coeqsig{P}{Y}{n}}="11";
             {\ar^{\eta_Y} "10" ; "11"};
             {\ar_{\underline{P}(f)} "01" ; "11"};
         \endxy
@@ -918,8 +918,8 @@ The pullback of this diagram is isomorphic to the coproduct of the pullbacks of 
             {\ar_{1 \times f} "01" ; "11"};
             % (45,-7.5)*{};
             (90,0)*+{\emptyset}="60";
-            (60,-15)*+{P(n) \times_{\Sigma_{n}} X^n}="51";
-            (90,-15)*+{P(n) \times_{\Sigma_{n}} Y^n}="61";
+            (60,-15)*+{\coeqsig{P}{X}{n}}="51";
+            (90,-15)*+{\coeqsig{P}{Y}{n}}="61";
             {\ar^{} "60" ; "61"};
             {\ar_{1 \times f^n} "51" ; "61"};
             (75,-21)*{n \neq 1}
@@ -949,9 +949,9 @@ Consider the following pullback of discrete categories.
 Letting $\mathbf{4}$ denote the pullback and similarly writing $\mathbf{2}_X = \{ x, x' \}$ and $\mathbf{2}_Y = \{y, y'\}$, the following diagram results as the image of this pullback square under $\underline{P}$.
     \[
         \xy
-            (0,0)*+{\coprod P(n) \times_{\Sigma_n} \mathbf{4}^n}="00";
-            (40,0)*+{\coprod P(n) \times_{\Sigma_n} \mathbf{2}_Y^n}="10";
-            (0,-15)*+{\coprod P(n) \times_{\Sigma_n} \mathbf{2}_X^n}="01";
+            (0,0)*+{\coprod \coeqsig{P}{\mathbf{4}}{n}}="00";
+            (40,0)*+{\coprod \coeqsig{P}{\mathbf{2}_Y}{n}}="10";
+            (0,-15)*+{\coprod \coeqsig{P}{\mathbf{2}_X}{n}}="01";
             (40,-15)*+{\coprod P(n)/\Sigma_n}="11";
             {\ar "00" ; "10"};
             {\ar "10" ; "11"};
@@ -1007,10 +1007,10 @@ Now assume that each $\Sigma_n$ acts freely on $P(n)$. Given a pullback
 we must show that the image of the diagram under $\underline{P}$ is also a pullback. Now this will be true if and only if each individual diagram
         \[
             \xy
-                (0,0)*+{P(n) \times_{\Sigma_n} A^n}="00";
-                (30,0)*+{P(n) \times_{\Sigma_n} B^n}="10";
-                (0,-15)*+{P(n) \times_{\Sigma_n} C^n}="01";
-                (30,-15)*+{P(n) \times_{\Sigma_n} D^n}="11";
+                (0,0)*+{\coeqsig{P}{A}{n}}="00";
+                (30,0)*+{\coeqsig{P}{B}{n}}="10";
+                (0,-15)*+{\coeqsig{P}{C}{n}}="01";
+                (30,-15)*+{\coeqsig{P}{D}{n}}="11";
                 {\ar^{1 \times F^n} "00" ; "10"};
                 {\ar^{1 \times S^n} "10" ; "11"};
                 {\ar_{1 \times R^n} "00" ; "01"};
@@ -1025,7 +1025,7 @@ Using Lemma \ref{coeq-lem}, we know that a pair
     \[
         \left(\left[p;\underline{c}\right], \left[q;\underline{b}\right]\right)
     \]
-is in the pullback if and only if there exists an element $g \in \Sigma_n$ such that $p \cdot g = q$ and $Hc_i = (Sb_{g^{-1}(i)})$. Using this we can define mutual inverses between $P(n) \times_{\Sigma_n} A^n$ and the pullback $Q'$. Considering the category $A$ as the pullback of the diagram we started with, we can consider objects of $P(n) \times_{\Sigma_n} A^n$ as being equivalence classes
+is in the pullback if and only if there exists an element $g \in \Sigma_n$ such that $p \cdot g = q$ and $Hc_i = (Sb_{g^{-1}(i)})$. Using this we can define mutual inverses between $\coeqsig{P}{A}{n}$ and the pullback $Q'$. Considering the category $A$ as the pullback of the diagram we started with, we can consider objects of $\coeqsig{P}{A}{n}$ as being equivalence classes
     \[
         [p;(b_1,c_1),\ldots,(b_n,c_n)]
     \]
@@ -1039,11 +1039,11 @@ which lies in the pullback since the identity in $\Sigma_n$ satisfies the condit
     \[
         \left[p;\left(c_1,b_{g^{-1}(1)}\right),\ldots,\left(c_n,b_{g^{-1}(n)}\right)\right]
     \]
-in $P(n) \times_{\Sigma_n} A^n$. If we apply the map into $Q'$ we get the pair
+in $\coeqsig{P}{A}{n}$. If we apply the map into $Q'$ we get the pair
     \[
         \left(\left[p;c_1,\ldots,c_n\right],\left[p;b_{g^{-1}(1)},\ldots,b_{g^{-1}(n)}\right]\right)
     \]
-which is equal to the original pair since $p \cdot g = q$; the other composite is trivially an identity. A similar calculation on morphisms finishes the proof that $P(n) \times_{\Sigma_n} A^{n}$ is the pullback as required.
+which is equal to the original pair since $p \cdot g = q$; the other composite is trivially an identity. A similar calculation on morphisms finishes the proof that $\coeqsig{P}{A}{n}$ is the pullback as required.
 \end{proof}
 
 \begin{prop}
@@ -1084,9 +1084,9 @@ are pullbacks then the outside of the diagram
 is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares below is a pullback.
     \[
         \xy
-            (0,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(P(k_i) \times_{\Sigma_{k_i}} X^{k_i}\right)}="00";
+            (0,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(\coeqsig{P}{X}{{k_i}}\right)}="00";
             (60,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(P(k_i) / \Sigma_{k_i}\right)}="10";
-            (0,-20)*+{P(n) \times_{\Sigma_{n}} X^n}="01";
+            (0,-20)*+{\coeqsig{P}{X}{n}}="01";
             (60,-20)*+{P(n) / \Sigma_{n}}="11";
             {\ar "00" ; "10"};
             {\ar "00" ; "01"};
@@ -1134,12 +1134,12 @@ The $2$-monad associated to a symmetric operad $P$ is $2$-cartesian if and only 
 We require one simple technical lemma before giving a complete characterization of $\Lambda$-operads which induce cartesian $2$-monads.
 
 \begin{lem}\label{kernel_lem}
-Let $C$ be a category with a right action of some group $\Lambda$, and let $\pi \colon  \Lambda \rightarrow \Sigma$ be a group homomorphism to any other group $\Sigma$. Then the right $\Sigma$-action on $C \times_{\Lambda} \Sigma$ is free if and only if the only elements of $\Lambda$ which fix an object of $C$ lie in the kernel of $\pi$.
+Let $C$ be a category with a right action of some group $\Lambda$, and let $\pi \colon  \Lambda \rightarrow \Sigma$ be a group homomorphism to any other group $\Sigma$. Then the right $\Sigma$-action on $\coeqb{C}{\Sigma}{\Lambda}$ is free if and only if the only elements of $\Lambda$ which fix an object of $C$ lie in the kernel of $\pi$.
 \end{lem}
 \begin{proof}
 First, note that a group action on a category is free if and only if it is free on objects as fixing a morphism requires fixing its source and target. Thus our arguments need only concern the objects involved.
 
-Since the set of objects functor preserves colimits, the objects of $C \times_{\Lambda} \Sigma$ are equivalence classes $[c;g]$ where $c \in C$ and $g \in \Sigma$, with $[c\cdot r;g] = [c; \pi(r)g]$. First assume the $\Sigma$-action is free. Then noting that $[c;e]\cdot g =[c;g]$, we have if $[c;g] = [c;e]$ then $g=e$. Let $r \in \Lambda$ be an element such that $c\cdot r = c$. Then
+Since the set of objects functor preserves colimits, the objects of $\coeqb{C}{\Sigma}{\Lambda}$ are equivalence classes $[c;g]$ where $c \in C$ and $g \in \Sigma$, with $[c\cdot r;g] = [c; \pi(r)g]$. First assume the $\Sigma$-action is free. Then noting that $[c;e]\cdot g =[c;g]$, we have if $[c;g] = [c;e]$ then $g=e$. Let $r \in \Lambda$ be an element such that $c\cdot r = c$. Then
   \[
     [c;e] = [c\cdot r; e] = [c; \pi(r)],
   \]
@@ -1149,7 +1149,7 @@ Now assume that every element of $\Lambda$ fixing an object lies in the kernel o
   \[
     [p; \tau] = [p;e]\cdot \tau = [p;e].
   \]
-Since the objects of $C \times_{\Lambda} \Sigma$ are equivalence classes as above, there exists an element $r \in \Lambda$ such that $p\cdot r^{-1} = p$ and $\tau = \pi(r)$. But by assumption, we must have $r^{-1}$, and hence $r$, in the kernel, so $\tau = e$ and the $\Sigma$-action is free.
+Since the objects of $\coeqb{C}{\Sigma}{\Lambda}$ are equivalence classes as above, there exists an element $r \in \Lambda$ such that $p\cdot r^{-1} = p$ and $\tau = \pi(r)$. But by assumption, we must have $r^{-1}$, and hence $r$, in the kernel, so $\tau = e$ and the $\Sigma$-action is free.
 \end{proof}
 
 \begin{thm}\label{cart_thm}

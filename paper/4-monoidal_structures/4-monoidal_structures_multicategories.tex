@@ -14,7 +14,7 @@ QQQ
 In this section we will discuss examples of the preceding theory. We have seen that there are three equivalent incarnations of the same algebraic structure:
 \begin{itemize}
 \item as an action operad $\Lambda$,
-\item as a $2$-monad $X \mapsto \coprod E\Lambda(n) \times_{\Lambda(n)} X^{n}$ on $\mb{Cat}$, or
+\item as a $2$-monad $X \mapsto \coprod \coeq{E\Lambda}{X}{\Lambda}{n}$ on $\mb{Cat}$, or
 \item as a club $B\Lambda \rightarrow B\Sigma$ satisfying certain properties.
 \end{itemize}
 In practice, something like the third of these is the most likely to arise from applications (even if the notion of a club is perhaps less well-known outside of the categorical literature than that of an operad or a $2$-monad) as a club can be given by a presentation as we discussed in \cref{sec:presofacops}. We will go into more detail here, explaining how particular monoidal structures of interest are represented in this theory.
@@ -1055,7 +1055,7 @@ Now $ \lambda_{p,q} \colon \mu(p;q,\ldots,q) \cdot t_{m,n} \cong \mu(q;p,\ldots,
   \]
 so we define $(\gamma_{A,B})_{[p;a_1,\ldots,a_n],[q;b_1,\ldots,b_m]}$ to be the morphism which is the image of $(\lambda_{p,q}\cdot t_{m,n}^{-1}, 1)$ under the map
   \[
-    \coprod P(n) \times (A \times B)^{n} \rightarrow \coprod P(n) \times_{\Lambda(n)} (A \times B)^{n}.
+    \coprod P(n) \times (A \times B)^{n} \rightarrow \coprod \coeq{P}{A \times B}{\Lambda}{n}.
   \]
 Naturality of $\gamma_{A,B}$ follows from that of each $\lambda_{p,q}$. We will write this morphism as $[\lambda_{p,q}t_{m,n}^{-1}, 1]$. In the case that either $p$ or $q$ is an identity then we choose the component of $\gamma$ to be the isomorphism involving the appropriate identity element using Axiom \ref{axiom:t_id} above.
 
@@ -1091,7 +1091,7 @@ The second of these is $d$ applied to the component of $1 \times \gamma$ at
   \]
 It is straightforward to compute that each of these maps is the image of $\left(\lambda_{p,q}\cdot t_{m,n}^{-1},1\right)$ under the functor
   \[
-    \coprod P(n) \times (A \times B)^{n} \rightarrow \coprod P(n) \times_{\Lambda(n)} (A \times B)^{n}.
+    \coprod P(n) \times (A \times B)^{n} \rightarrow \coprod \coeq{P}{A \times B}{\Lambda}{n}.
   \]
 The other two strength axioms follow by analogous calculations for other whiskerings of $\gamma$ with $d$ or $d^{*}$.
 
@@ -1225,11 +1225,11 @@ We choose $t_{m,n} = \tau_{m,n}$.
 \end{proof}
 
 \begin{rem}
-If a $\Lambda$-operad $P$ is contractible, it is not the case that its symmetrization $S(P)$ (see \cref{thm_sym}) will also be contractible. The category $P(n) \times_{\Lambda(n)} \Sigma_{n}$ will necessarily be a groupoid as it is a colimit of groupoids: contractible categories are always groupoids, and both $\Lambda(n)$ and $\Sigma_{n}$ are discrete. Let $g \in \textrm{ker} \, \pi_{n}$ be any non-identity element, and let $p \in P(n)$ be any object. Then
+If a $\Lambda$-operad $P$ is contractible, it is not the case that its symmetrization $S(P)$ (see \cref{thm_sym}) will also be contractible. The category $\coequ{P}{\Sigma}{\Lambda}{n}$ will necessarily be a groupoid as it is a colimit of groupoids: contractible categories are always groupoids, and both $\Lambda(n)$ and $\Sigma_{n}$ are discrete. Let $g \in \textrm{ker} \, \pi_{n}$ be any non-identity element, and let $p \in P(n)$ be any object. Then
   \[
     [p \cdot g, e] = [p, \pi(g)e] = [p,e],
   \]
-but unless $p\cdot g = p$ in $P(n)$, there will be a unique isomorphism between them that will not be the identity, and hence will define a nontrivial automorphism of $[p,e]$ in  $P(n) \times_{\Lambda(n)} \Sigma_{n}$. The existence of such ensures that $P(n) \times_{\Lambda(n)} \Sigma_{n}$ is not contractible.
+but unless $p\cdot g = p$ in $P(n)$, there will be a unique isomorphism between them that will not be the identity, and hence will define a nontrivial automorphism of $[p,e]$ in  $\coequ{P}{\Sigma}{\Lambda}{n}$. The existence of such ensures that $\coequ{P}{\Sigma}{\Lambda}{n}$ is not contractible.
 \end{rem}
 
 
@@ -1307,7 +1307,7 @@ We will now show that neither of these pseudo-commutative structures is symmetri
   \[
     f\colon \mu\left(p; \underline{q}\right) \cdot t_{n,m}t_{m,n} \rightarrow \mu\left(q; \underline{p}\right) \cdot t_{m,n} \rightarrow \mu\left(p; \underline{q}\right)
   \]
-is the identity. Now it is clear that $t_{n,m}$ is not equal to $t_{m,n}^{-1}$ in general: taking $m=n=2$, we note that $t_{2,2} = \sigma_{2}$, and this element is certainly not of order two in $B_{4}$. $B(4)$ is the category whose objects are the elements of $B_{4}$ with a unique isomorphism between any two pair of objects, and $B_{4}$ acts by multiplication on the right; this action is easily shown to be free and transitive. We recall (see \cref{coeq-lem}) that in a coequalizer of the form $A \times_{G} B$, a morphism $[f_{1}, f_{2}]$ equals $[g_{1}, g_{2}]$ if and only if there exists an $x \in G$ such that
+is the identity. Now it is clear that $t_{n,m}$ is not equal to $t_{m,n}^{-1}$ in general: taking $m=n=2$, we note that $t_{2,2} = \sigma_{2}$, and this element is certainly not of order two in $B_{4}$. $B(4)$ is the category whose objects are the elements of $B_{4}$ with a unique isomorphism between any two pair of objects, and $B_{4}$ acts by multiplication on the right; this action is easily shown to be free and transitive. We recall (see \cref{coeq-lem}) that in a coequalizer of the form $\coeqb{A}{B}{G}$, a morphism $[f_{1}, f_{2}]$ equals $[g_{1}, g_{2}]$ if and only if there exists an $x \in G$ such that
   \begin{align*}
     f_{1} \cdot x &= g_{1}, \\
     x^{-1} \cdot f_{2} &= g_{2}.

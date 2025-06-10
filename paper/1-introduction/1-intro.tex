@@ -68,13 +68,13 @@ A \times B_{1} \times \cdots \times B_{n} \times C
         \xy
             (0,0)*+{A \times G \times B}="00";
             (30,0)*+{A \times B}="10";
-            (60,0)*+{A \times_G B}="20";
+            (60,0)*+{\coeqb{A}{B}{G}}="20";
             {\ar@<1ex>^{\lambda} "00" ; "10"};
             {\ar@<-1ex>_{\rho} "00" ; "10"};
             {\ar^{\varepsilon} "10" ; "20"};
         \endxy
     \]
-will be written as $A \times_G B$, where $\rho$ represents a right action of $G$ on $A$, and $\lambda$ a left action of $G$ on $B$. This is similar to the notation often used to denote pullbacks, however we find in this work that no confusion arises from using notation in this way.
+will be written as $\coeqb{A}{B}{G}$, where $\rho$ represents a right action of $G$ on $A$, and $\lambda$ a left action of $G$ on $B$. This is similar to the notation often used to denote pullbacks, however we find in this work that no confusion arises from using notation in this way.
 \item\label{conv:beta_delta} In the following definitions of operads, we define operad multiplication as a function
   \[
     \mu \colon O(n) \times O(k_1) \times \ldots O(k_n) \rightarrow O(k_1 + \ldots + k_n)
