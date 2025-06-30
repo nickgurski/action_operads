@@ -1,0 +1,91 @@
+\documentclass{amsart}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{eucal}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+%\usepackage{geometry}
+\newcommand{\bs}{\boldsymbol}
+\newcommand{\mb}{\mathbf}
+\renewcommand{\dot}{\centerdot}
+\newcommand{\D}{\textrm{-}}
+\addtolength{\hoffset}{-2cm}
+\addtolength{\textwidth}{4cm}
+%\pdfshift
+
+\begin{document}
+
+This is a section-by-section list of all the major results, with their dependencies.
+
+\section{Introduction}
+
+Nothing to say here, I think.
+
+\section{Action operads}
+
+\textbf{Definition.} symmetric operad
+\\ \textbf{Definition.} non-symmetric operad
+\\ \textbf{Definition.} braided operad
+\\ \textbf{Definition.} operad map
+\\ \textbf{Definition.} action operad
+\\ \textbf{Definition.} map of action operads
+\\ \textbf{Definition/Example.} ribbon braids, and their (action) operad
+\\ \textbf{Result (1).} $\pi$ is a map of operads. \textcolor{magenta}{Dependency: defs}
+\\ \textbf{Result (2).} Operads internal to groups are action operads. \textcolor{magenta}{Dependency: (1)}
+\\ \textbf{Result (3).} The kernel of an action operad is an action operad. \textcolor{magenta}{Dependency: (1,2)}
+\\ \textbf{Result (4).} The image, in $\Sigma$ of an action operad is an action operad. \textcolor{magenta}{Dependency: (1)}
+\\ \textbf{Result (5).} A kernel/image short exact sequence. \textcolor{magenta}{Dependency: (3,4)}
+\\ \textbf{Result (6).} Some calculations with $e_i's$. \textcolor{magenta}{Dependency: defs}
+\\ \textbf{Result (7).} Some calculations with $\Lambda(0)$. \textcolor{magenta}{Dependency: (6)}
+\\ \textbf{Result (8).} The big $\beta, \delta$ theorem. \textcolor{magenta}{Dependency: (1)}
+\\ \textbf{Result (9).} $\pi$ is zero or surjective. \textcolor{magenta}{Dependency: (8)}
+\\ \textbf{Examples.} Cyclic, reflexive, hyperoctahedral, alternating. \textcolor{magenta}{Dependency: (8)}
+\\ \textbf{Definition.} lfp stuff
+\\ \textbf{Result (10).} The category of action operads is lfp. \textcolor{magenta}{Dependency: defs, external}
+\\ \textbf{Result (11).} $U: \mathbf{AOp} \to \mathbf{Sets}/\mathcal{S}$ preserves limits and filtered colimits. \textcolor{magenta}{Dependency: defs} \textcolor{blue}{Note: seriously check proof}
+\\ \textbf{Result (12).} $F: \mathbf{Sets}/\mathcal{S} \to \mathbf{AOp}$ left adjoint to $U$. \textcolor{magenta}{Dependency: external}
+\\ \textbf{Definition.} presentations for action operads \textcolor{magenta}{Dependency: (12)}
+
+\section{Operads with equivariance}
+
+\textbf{Definition.} $\Lambda$-operad
+\\ \textbf{Definition.} map of $\Lambda$-operads
+\\ \textbf{Definition.} category of $\Lambda$-operads
+\\ \textbf{Result (13).} $\Lambda$ is a $\Lambda$-operad. \textcolor{magenta}{Dependency: defs}
+\\ \textbf{Definition.} algebra over a non-symmetric operad \textcolor{blue}{Note: delete?}
+\\ \textbf{Definition.} algebra over a $\Lambda$-operad
+\\ \textbf{Definition.} category of algebras over a $\Lambda$-operad
+\\ \textbf{Result (14).} Endomorphism operad is a $\Lambda$-operad. \textcolor{magenta}{Dependency: defs} \textcolor{blue}{Note: should have independent endomorphism operad def beforehand, maybe rework all this stuff}
+\\ \textbf{Result (15).} Change-of-operad functor. \textcolor{magenta}{Dependency: defs}
+\\ \textbf{Result (16).} Algebras are operad maps into endomorphisms operad. \textcolor{magenta}{Dependency: (14)}
+\\ \textbf{Definition.} monad associated to a $\Lambda$-operad
+\\ \textbf{Result (17).} Monad algebra category is operad algebra category. \textcolor{magenta}{Dependency: defs}
+\\ \textbf{Result (18).} $\Lambda$-algebras, as a $\Lambda$-operad, are monoids. \textcolor{magenta}{Dependency: defs, maybe (16)} \textcolor{blue}{Note: unclear hypotheses, should say in sets I think}
+\\ \textbf{Result (19).} Three-part theorem about the adjunction between $\Lambda$- and $\Sigma$-operads and their categories of algebras. \textcolor{magenta}{Dependency: defs} \textcolor{blue}{Note: check proof}
+\\ \textbf{Definition.} monad map\textcolor{blue}{Note: some text after that needs to be in an environment}
+\\ \textbf{Definition.} cocomplete SMC \textcolor{blue}{Note: no emph in def, is wrong}
+\\ \textbf{Result (19).} Lax symmetric monoidal functors transport operads, with a comparison monad map. \textcolor{magenta}{Dependency: FUTURE!} \textcolor{blue}{Note: eep in general! where did we define the tensor product over a group notation?}
+\\ \textbf{Result (20).} Operad maps induce monad maps. \textcolor{magenta}{Dependency: stuff that isn't in an environment above} \textcolor{blue}{Note: continued eep}
+\\ \textbf{Result (21).} Combining to get an adjunction. \textcolor{magenta}{Dependency: (19, 20)} \textcolor{blue}{Note: continued eep}
+\\ \textbf{Definition.} collections, maps, the category thereof
+\\ \textbf{Definition.} substitution product of collections
+\\ \textbf{Result (22).} Substitution product gives monoidal structure, and monoids are operads. \textcolor{magenta}{Dependency: (19, 20)}
+\\ \textbf{Result (23).} $B\Lambda$ is a strict monoidal category. \textcolor{magenta}{Dependency: FUTURE! also (6)}
+\\ \textbf{Result (24).} $n$-fold Day convolution is a functor $B\Lambda \to \mathbf{Sets}$. \textcolor{magenta}{Dependency: (23)}
+\\ \textbf{Result (25).} Substitution product as coend using Day convolution. \textcolor{magenta}{Dependency: ??} \textcolor{blue}{Note: seriously check proof}
+\\ \textbf{Proof of (22).} \textcolor{magenta}{Dependency: (23,24,25)} \textcolor{blue}{Note: seriously check proof}
+
+
+\section{Operads in the category of categories}
+
+
+
+\section{The Borel construction for action operads}
+
+\section{Monoidal structures and multicategories}
+
+
+\end{document} 
