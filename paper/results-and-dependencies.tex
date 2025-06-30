@@ -19,6 +19,7 @@
 \begin{document}
 
 This is a section-by-section list of all the major results, with their dependencies.
+\textcolor{blue}{Throughout: track down specific refs, ie Theorem 2.7 in [3], not just [3]}
 
 \section{Introduction}
 
@@ -81,6 +82,27 @@ Nothing to say here, I think.
 
 \section{Operads in the category of categories}
 
+\textcolor{blue}{Note: worth revisiting introductory material, maybe some of it needs environments}
+\\ \textbf{Definition.} pseudoalgebras
+\\ \textbf{Definition.} strict algebras \textcolor{magenta}{Dependency: previous defn}
+\\ \textbf{Definition.} pseudomorphisms
+\\ \textbf{Definition.} strict morphisms \textcolor{magenta}{Dependency: previous defn}
+\\ \textbf{Definition.} algebra transformations
+\\ \textbf{Definition.} $P$-alg, strict and strong
+\\ \textbf{Definition.} 2-monads versions of the above
+\\ \textbf{Result (26).} 2-monad and operad algebra 2-categories agree, strict and strong. \textcolor{magenta}{Dependency: definitions here}
+\\ \textbf{Result (27).} 2-monad from an operad is finitary. \textcolor{magenta}{Dependency: definitions here} \textcolor{blue}{Note: check proof}
+\\ \textbf{Result (28).} 2-monad from an operad preserves bijective-on-objects funtors. \textcolor{magenta}{Dependency: definitions here}
+\\ \textbf{Result (29).} Pseudoalgebras equivalent to strict ones. \textcolor{magenta}{Dependency: definitions here} \textcolor{blue}{Note: worth explaining how this strictifies unbiased monoidal categories to strict ones, but not biased ones}
+\\ \textbf{Definition.} 2-cartesian 2-monad \textcolor{blue}{Note: we seem to need some definitions here}
+\\ \textbf{Result (30).} Coequalizer of actions is sometimes the quotient. \textcolor{magenta}{Dependency: none}\textcolor{blue}{Note: this looks like it could be improved, many aspects unclear}
+\\ \textbf{Result (31).} Unit for $\underline{P}$ is cartesian for any symmetric operad $P$. \textcolor{magenta}{Dependency: definitions here}
+\\ \textbf{Result (32).} The 2-monad $\underline{P}$ preserves pullbacks iff group action is free. \textcolor{magenta}{Dependency: (30)}
+\\ \textbf{Result (33).} Multiplication for $\underline{P}$ is cartesian if all group actions are free. \textcolor{magenta}{Dependency: (30)} \textcolor{blue}{Note: has some suspect proof-by-example looking text}
+\\ \textbf{Result (34).} $\underline{P}$ is 2-cartesian if and only if all group actions are free (symmetric case). \textcolor{magenta}{Dependency: (31, 32, 33; 30)} 
+\\ \textbf{Result (35).} $\underline{P}$ is 2-cartesian if and only if all group actions are free (symmetric case). \textcolor{magenta}{Dependency: (31, 32, 33; 30)} 
+\\ \textbf{Result (36).} Lemma about free $\Sigma$-actions on categories with $\Lambda$-action. \textcolor{magenta}{Dependency: defns} \textcolor{blue}{Note: needs to be fixed up a bit in the whole groups actions on categories rework}
+\\ \textbf{Result (37).} $\underline{P}$ is 2-cartesian if and only if all group actions are free ($\Lambda$ case). \textcolor{magenta}{Dependency: (35, 36; 30, 31, 32, 33, 34)} 
 
 
 \section{The Borel construction for action operads}
