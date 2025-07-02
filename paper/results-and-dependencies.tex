@@ -12,6 +12,7 @@
 \newcommand{\mb}{\mathbf}
 \renewcommand{\dot}{\centerdot}
 \newcommand{\D}{\textrm{-}}
+\newcommand{\ul}{\underline}
 \addtolength{\hoffset}{-2cm}
 \addtolength{\textwidth}{4cm}
 %\pdfshift
@@ -129,6 +130,35 @@ Nothing to say here, I think.
 
 
 \section{Monoidal structures and multicategories}
+\textcolor{blue}{Lots of examples here, unify them; should go in a section with presentation stuff}
+\\ \textbf{Definition.} coboundary category
+\\ \textbf{Definition.} coboundary functors
+\\ \textbf{Definition.} 2-category of coboundary stuff
+\\ \textbf{Result (48).} Strictification of coboundary cats. \textcolor{magenta}{Dependency: defs here}
+\\ \textbf{Definition.} stuff to define operad: disjoint, contains, $s_{p,q}$'s, $J_n$'s
+\\ \textbf{Result (49).} Action operad structure on $J$'s. \textcolor{magenta}{Dependency: (8), defs here} \textcolor{blue}{Note: issue in proof}
+\\ \textcolor{blue}{Conflict: $C$ vs $J$ notation; I understand now - $C$ is the monad, $J$'s give the club}
+\\ \textbf{Result (50).} The 2-monad $C$ for strict coboundary cats is a club. \textcolor{magenta}{Dependency: (47)}
+\\ \textbf{Result (51).} $C1 \cong BJ$. \textcolor{magenta}{Dependency: (49)}
+\\ \textbf{Result (52).} $C \cong \ul{EJ}$. \textcolor{magenta}{Dependency: (45, 50,51)}
+\\ \textbf{Definition.} strength stuff \textcolor{blue}{Note: change to left/right}
+\\ \textbf{Definition.} pseudo-commutative 2-monad
+\\ \textcolor{blue}{AC should redo all our straight line string diagrams to look pretty like his curvy, colored one}
+\\ \textbf{Definition.} pseudo-commutative operad
+\\ \textbf{Result (53).} Pseudo-commutative operads give pseudo-commutative 2-monads. \textcolor{magenta}{Dependency: defs here}
+\\ \textbf{Result (54).} Non-symmetric operads never give pseudo-commutative 2-monads. \textcolor{magenta}{Dependency: defs here} \textcolor{blue}{Note: last sentence of proof should probably be tightened up}
+\\ \textbf{Definition.} symmetric pseudo-commutative 2-monad
+\\ \textbf{Result (55).} From operad to symmetric p-c 2-monad. \textcolor{magenta}{Dependency: (53)} 
+\\ \textbf{Definition.} contractible operad
+\\ \textbf{Result (56).} $P$ contractible and has $t$'s, then p-c. \textcolor{magenta}{Dependency: (53, 55)}
+\\ \textbf{Result (57).} Contractible symmetric operads have symm p-c. \textcolor{magenta}{Dependency: (56; 53, 55)}
+\\ \textcolor{blue}{Remark about symmetrization not preserving contractibility doesn't read well}
+\\ \textbf{Result (58).} The 2-monad for strict braided monoidal cats has two non-symmetric p-c structures.
+\\ \textbf{Result (59).} The 2-monad for strict braided monoidal cats is $\ul{EB}$.   \textcolor{magenta}{Dependency: external}
+\\ \textbf{Definition.} positive braids
+\\ \textbf{Definition.} minimal braids \textcolor{blue}{Note: combine defs?}
+\\ \textbf{Result (60).} Bijection between positive minimal braids and permutations.   \textcolor{magenta}{Dependency: external}
+\\ \textbf{Proof of (58).} \textcolor{magenta}{Dependency: defs here, (53 ,60)} \textcolor{blue}{Note: seriously check proof}
 
 
 \end{document} 
