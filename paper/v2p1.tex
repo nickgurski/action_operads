@@ -51,30 +51,103 @@ Alex needs to thank the LMS for a Research Reboot grant. Anybody else we've talk
 
 
 
+\section{Notation and Conventions}\label{sec:notation}
 
+\begin{nota}[(Symmetric groups)]\label{nota:symm_sigma}
+We denote the symmetric group on the symbols $1, 2, \ldots, n$ by $\Sigma_n$. Elements of a symmetric group are usually denoted by lowercase Greek letters or written in cycle notation.
+\end{nota}
 
-\begin{conv}\label{conv1}
-We adopt the following conventions throughout.
-\begin{enumerate}
-\item\label{conv:symm_sigma} $\Sigma_{n}$ is the symmetric group on $n$ letters, and $B_{n}$ is the braid group on $n$ strands.
-\item\label{conv:g-action} For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$. We will use both $\cdot$ and concatenation to represent multiplication in a group.
-\item\label{conv:e_identity} The symbol $e$ will generically represent an identity element in a group. If we are considering a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$. We will often drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand. Occasionally we will write $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams.
-\item\label{conv:coeq} We will often be interested in elements of a product of the form
+\begin{nota}[(Braid groups)]\label{nota:braid}
+We denote the braid group on $n$ strands by $B_n$.
+\end{nota}
+
+\begin{nota}[(Identity elements)]\label{nota:e_identity}
+The symbol $e$ will generically represent an identity element in a group. If we are considering a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$. We will often drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand.
+\end{nota}
+
+\begin{conv}[(Identity morphisms)]\label{conv:1_id}
+We generically write an identity morphism $A \to A$ as either $1$ or $1_A$.
+\end{conv}
+
+\begin{nota}[(Group actions)]\label{nota:g-action}
+For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$ or $(x,g) \mapsto x g$. 
+Similar notation will be used for left actions, and for multiplication in a group.
+\end{nota}
+
+\begin{conv}[(Indexed objects)]\label{conv:indexed}
+We generically write $\{ \Lambda(n) \}_{n \in \N}$ for a $\N$-indexed family of objects $\Lambda(n)$. We will occasionallywrite $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams or when the objects $\Lambda_n$ have been independently defined, as in \cref{nota:symm_sigma,nota:braid}.
+\end{conv}
+
+\begin{conv}[(Products and quotients)]\label{conv:coeq}
+We will often be interested in elements of a product of the form
 \[
-A \times B_{1} \times \cdots \times B_{n} \times C
+A \times B(1) \times \cdots \times B(n) \times C
 \]
-(or similar, for example without $C$). We will write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, and in the case that we need equivalence classes of such elements they will be written as $[a; b_{1}, \ldots, b_{n}; c]$. This will often be the case when we are interested in the coequalizer of left and right group actions in the following sense. A coequalizer of maps
+(or similar, for example without $C$). We will write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, where $b_i \in B(i)$. 
+In the case that we need to consider equivalence classes of such elements, these classes will be written as $[a; b_{1}, \ldots, b_{n}; c]$. 
+The most common situation in which we consider such equivalence classes is that of a coequalizer of left and right group actions in the following sense. 
+A coequalizer of maps
     \[
         \xy
             (0,0)*+{A \times G \times B}="00";
             (30,0)*+{A \times B}="10";
             (60,0)*+{\coeqb{A}{B}{G}}="20";
-            {\ar@<1ex>^{\lambda} "00" ; "10"};
-            {\ar@<-1ex>_{\rho} "00" ; "10"};
+            {\ar@<1ex>^{1 \times \lambda} "00" ; "10"};
+            {\ar@<-1ex>_{\rho \times 1} "00" ; "10"};
             {\ar^{\varepsilon} "10" ; "20"};
         \endxy
     \]
-will be written as $\coeqb{A}{B}{G}$, where $\rho$ represents a right action of $G$ on $A$, and $\lambda$ a left action of $G$ on $B$. This is similar to the notation often used to denote pullbacks, however we find in this work that no confusion arises from using notation in this way.
+will be written as $\coeqb{A}{B}{G}$, where $\rho$ is a right action of $G$ on $A$, and $\lambda$ is a left action of $G$ on $B$. 
+This notation is meant to emphasize the analogy with tensor products of $R$-modules, even when the monoidal structure involved is cartesian.
+It also differentiates these coequalizers from pullbacks.
+\end{conv}
+
+
+\begin{conv}[(Pullbacks)]\label{conv:pb}
+The pullback of 
+\end{conv}
+
+\begin{Defi}\label{Defi:underlying-perm}
+Suppose that $f \colon G \to \Sigma_n$ is a group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. 
+\end{Defi}
+
+\begin{nota}[(Underlying permutations)]\label{nota:perm_shorthand}
+Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the set of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements.  
+For any $\sigma \in O(n)$, we will write $\sigma^{-1}(i)$ for $\pi_n(\sigma)^{-1}(i)$, the inverse image of $i$ with respect to the underlying permutation of $\sigma$.
+\end{nota}
+
+
+
+\begin{Defi}[(Block sum)]\label{Defi:beta-s}
+Suppose that $f \colon G \to \Sigma_n$ is a group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. 
+\end{Defi}
+
+\begin{Defi}[(Duplication)]\label{Defi:delta-s}
+Suppose that $f \colon G \to \Sigma_n$ is a group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. 
+\end{Defi}
+
+\begin{conv}\label{conv1}
+We adopt the following conventions throughout.
+\begin{enumerate}
+%\item\label{conv:symm_sigma} $\Sigma_{n}$ is the symmetric group on $n$ letters, and $B_{n}$ is the braid group on $n$ strands.
+%\item\label{conv:g-action} For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$. We will use both $\cdot$ and concatenation to represent multiplication in a group.
+%\item\label{conv:e_identity} The symbol $e$ will generically represent an identity element in a group. If we are considering a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$. We will often drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand. Occasionally we will write $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams.
+%\item\label{conv:coeq} We will often be interested in elements of a product of the form
+%\[
+%A \times B_{1} \times \cdots \times B_{n} \times C
+%\]
+%(or similar, for example without $C$). We will write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, and in the case that we need equivalence classes of such elements they will be written as $[a; b_{1}, \ldots, b_{n}; c]$. This will often be the case when we are interested in the coequalizer of left and right group actions in the following sense. A coequalizer of maps
+%    \[
+%        \xy
+%            (0,0)*+{A \times G \times B}="00";
+%            (30,0)*+{A \times B}="10";
+%            (60,0)*+{\coeqb{A}{B}{G}}="20";
+%            {\ar@<1ex>^{\lambda} "00" ; "10"};
+%            {\ar@<-1ex>_{\rho} "00" ; "10"};
+%            {\ar^{\varepsilon} "10" ; "20"};
+%        \endxy
+%    \]
+%will be written as $\coeqb{A}{B}{G}$, where $\rho$ represents a right action of $G$ on $A$, and $\lambda$ a left action of $G$ on $B$. This is similar to the notation often used to denote pullbacks, however we find in this work that no confusion arises from using notation in this way.
 \item\label{conv:beta_delta} In the following definitions of operads, we define operad multiplication as a function
   \[
     \mu \colon O(n) \times O(k_1) \times \ldots O(k_n) \rightarrow O(k_1 + \ldots + k_n)
@@ -105,7 +178,7 @@ and
     \delta_{n;k_1,\ldots,k_n} \colon \Sigma_{n} \rightarrow \Sigma_{k_1 + \ldots + k_n}.
   \]
 In the case of $\beta$ we form the block sum permutation $\beta(\tau_1,\ldots,\tau_n)$ which permutes the first $k_{1}$ elements according to $\tau_{1}$, the next $k_{2}$ elements according to $\tau_{2}$ and so on; this is an element of $\Sigma_{k_{1} + \cdots + k_{n}}$. For $\delta$ we take the permutation $\delta(\sigma) \in \Sigma_{k_{1} + \cdots + k_{n}}$ to be that which permutes the $n$ different blocks $1$ through $k_{1}$, $k_{1}+1$ through $k_{1} + k_{2}$, and so on, according to the permutation $\sigma \in \Sigma_{n}$. We expand on this at various points, including in \cref{Rem:perm_matrices}.
-\item\label{conv:perm_shorthand} Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the object of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements. The map $\pi_n$ in each case will represent a form of `underlying permutation' of each element, which we will then use to act on operad multiplication. As the notation starts to become cumbersome, we will often write $\sigma^{-1}(i)$ which should be read as $\pi_n(\sigma)^{-1}(i)$, where $\sigma \in O(n)$.
+%\item\label{conv:perm_shorthand} Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the object of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements. The map $\pi_n$ in each case will represent a form of `underlying permutation' of each element, which we will then use to act on operad multiplication. As the notation starts to become cumbersome, we will often write $\sigma^{-1}(i)$ which should be read as $\pi_n(\sigma)^{-1}(i)$, where $\sigma \in O(n)$.
 \item\label{conv:op_superscript} We adopt the convention that if an equation requires using operadic composition in more than one operad, we will indicate this by a superscript on each instance of $\mu$ unless it is entirely clear from context. This can be seen, for example, in \cref{Defi:op_map}.
 \end{enumerate}
 \end{conv}
