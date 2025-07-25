@@ -250,7 +250,7 @@ f(1^A) & = 1^B.
 
 This section will collect the basic background information on operads that we will later generalize in\ngnote{ref later sections}. We begin with the most common type of operad, a symmetric operad, before defining two more types of operad: plain and braided. 
 
-\begin{Defi}\label{Defi:sym-op}
+\begin{Defi}[(Symmetric operad)]\label{Defi:sym-op}
 A \textit{symmetric operad} $O$ (in the category of sets) consists of
 \begin{itemize}
 \item a set, $O(n)$, for each natural number $n$,
@@ -332,9 +332,9 @@ holds, where $\delta_{n; k_1, \ldots, k_n}$ is the function from \cref{Defi:delt
 \end{enumerate}
 \end{Defi}
 
-\begin{Defi}\label{Defi:operadic-mult}
+\begin{term}[(Operadic multiplication, composition)]\label{term:operadic-mult}
 The functions $\mu$ in \cref{Defi:sym-op} are called \emph{operadic multiplication} or \emph{operadic composition} maps.
-\end{Defi}
+\end{term}
 
 \begin{rem}\label{rem:op-def}
 One is intended to think that $x \in O(n)$ is a function with $n$ inputs and a single output, as below.
@@ -442,7 +442,7 @@ Operadic composition is then a generalization of function composition, with the 
 
 Here are two important examples of symmetric operads.
 
-\begin{example}\label{ex:Sigma}
+\begin{example}[(Symmetric operad of symmetric groups)]\label{ex:Sigma}
 The canonical example of \emph{a} symmetric operad is \emph{the} symmetric operad which we write as $\Sigma$. The set $\Sigma(n)$ is the set of elements of the symmetric group $\Sigma_{n}$, and the group action is just multiplication on the right. The identity element $\id \in \Sigma(1)$ is just the identity permutation on a one-element set. Operadic composition in $\Sigma$ will then be given by a function
   \[
     \Sigma(n) \times \Sigma(k_{1}) \times \cdots \times \Sigma(k_{n}) \rightarrow \Sigma(k_{1} + \cdots + k_{n})
@@ -592,7 +592,7 @@ where now the composition on the right side uses the function
 This equality is obvious using the picture above, but verifiable directly using only the algebra of the symmetric operad.
 \end{example}
 
-\begin{example}\label{ex:endo}
+\begin{example}[(Endomorphism operad)]\label{ex:endo}
 Let $X$ be a set. The \emph{endomorphism operad} of $X$, denoted $\mathcal{E}_X$, consists of 
 \begin{itemize}
 \item the sets
@@ -618,7 +618,7 @@ Intuition in \cref{rem:op-def} connected with example \cref{ex:endo} through the
 
 One can also drop the symmetric group actions entirely to obtain the notion of a non-symmetric or plain operad.
 
-\begin{Defi}
+\begin{Defi}[(Non-symmetric operad)]\label{Defi:non-sym-op}
 A \emph{non-symmetric operad} $O$ consists of 
 \begin{itemize}
 \item a set, $O(n)$, for each natural number $n$,
@@ -643,21 +643,37 @@ satisfying axioms 1 and 2 from \cref{Defi:sym-op}.
 \ngnoteil{insert example of non-symmetric operad here}
 \end{example}
 
+\cref{ex:non-sym}
 
-In the original topological applications \cite{maygeom}, symmetric operads were the central figures. A further kind of operad was studied by Fiedorowicz in \cite{fie-br}; we give the definition below in analogy with that for symmetric operads, with interpretation to follow afterwards to make it entirely rigorous. We do this to emphasize the key features that we will generalize in \cref{Defi:aop}.
+In the original topological applications \cite{maygeom}, symmetric operads were the central figures. A further kind of operad was studied by Fiedorowicz in \cite{fie-br}, that of a \emph{braided} operad in which the braid groups take the place of the symmetric groups. We sketch that definition below, but postpone details to\ngnote{write this out later, ref back}.
 
-\begin{Defi}\label{broperad}
+\begin{Defi}[(Braided operad, sketch)]\label{Defi:broperad}
 A \textit{braided operad} consists of
   \begin{itemize}
     \item a non-symmetric operad $O$ and
     \item for each $n$, a right action of the $n$th braid group $B_{n}$ on $O(n)$,
   \end{itemize}
-satisfying the following axioms.
-  \begin{align*}
-    \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot\beta(\tau_1,\ldots,\tau_n)\\
-    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma^{-1}(n)}\right)\cdot \delta(\sigma)
-  \end{align*}
-For the above equations to make sense, we require similar conditions on the elements to those in \cref{Rem:sigma_conditions}.
+%satisfying the following axioms.
+%  \begin{align*}
+%    \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot\beta(\tau_1,\ldots,\tau_n)\\
+%    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma^{-1}(n)}\right)\cdot \delta_{n; k_1, \ldots, k_n}(\sigma)
+%  \end{align*}
+%  
+such that the operadic multiplication functions $\mu$ are equivariant with respect to the braid group actions, meaning that two equations hold.
+\begin{itemize}
+\item[1] Suppose that $x \in O(n)$, $y_i \in O(k_i)$ for $i = 1, \ldots, n$, and $\tau_i \in B_{k_i}$ for  $i = 1, \ldots, n$. Then the first equivariance axiom is the requirement that
+\[
+\mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) = \mu(x;y_1,\ldots,y_n)\cdot \beta(\tau_1,\ldots,\tau_n)
+\]
+holds.%, where $\beta$ is the function from \cref{Defi:beta-s}.
+\item[2] Suppose that  $x \in O(n)$, $y_i \in O(k_i)$ for $i = 1, \ldots, n$, and $\sigma \in B_{n}$. 
+Then the second equivariance axiom is the requirement that
+\[
+ \mu(x \cdot \sigma; y_1, \ldots, y_n) = \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma^{-1}(n)}\right)\cdot \delta_{n; k_1, \ldots, k_n}(\sigma)
+\]
+holds.%, where $\delta_{n; k_1, \ldots, k_n}$ is the function from \cref{Defi:delta-s}.
+\end{itemize}
+%For the above equations to make sense, we require similar conditions on the elements to those in \cref{rem:sigma_conditions}.
 % For the above equations to make sense, we must have
 %   \begin{itemize}
 %       \item $x \in O(n)$,
@@ -667,26 +683,58 @@ For the above equations to make sense, we require similar conditions on the elem
 %   \end{itemize}
 \end{Defi}
 
-In order to make sense of this definition, we must define $\beta(\tau_1,\ldots,\tau_n)$ and $\delta(\sigma)$ in the context of braids. The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$. The braid $\delta(\sigma)$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$. These operations are sometimes referred to as `cabling' operations for braids, as described in, for example, \cite{doucot_local_2025}.
+\begin{rem}\label{rem:br-op-needed}
+The above sketch omits the definitions of $\beta, \delta$ for braids. We can recover these from........\ngnote{come back to this after defining the braid action operad}
+\end{rem}
 
-We require one final preparatory definition.
+\begin{example}\label{ex:braided-op}
+\ngnoteil{insert example of braided operad here, probably just braid groups??}
+\end{example}
 
-\begin{Defi}\label{Defi:op_map}
-Let $O,O'$ be operads. Then an \textit{operad map} $f \colon O \rightarrow O'$ consists of functions $f_{n} \colon O(n) \rightarrow O'(n)$ for each natural number such that the following axioms hold.
+We conclude this section by defining various categories of operads in $\mb{Sets}$, although the reader can generalize these to categories of operads in any symmetric monoidal category. We focus on the case of symmetric operads, and explain after how to modify the definitions for non-symmetric or braided operads.
+
+\begin{Defi}[(Map of symmetric operads)]\label{Defi:sym_op_map}
+Let $O, O'$ be symmetric operads in $\mb{Sets}$. Then a \textit{map of symmetric operads} (or just \emph{operad map} for short, when it is clear that the intent is to respect the symmetric group actions) $f \colon O \rightarrow O'$ consists of functions $f_{n} \colon O(n) \rightarrow O'(n)$ for each natural number such that the following axioms hold for all $x \in O(n), y_i \in O(k_i), \sigma \in \Sigma_n$.
 
   \begin{align*}
     f\left(\id_O\right) &= \id_{O'}\\
-    f\left(\mu^{O}(x;y_1,\ldots,y_n)\right) &= \mu^{O'}\left(f(x);f(y_1),\ldots,f(y_n)\right)
+    f\left(\mu^{O}(x;y_1,\ldots,y_n)\right) &= \mu^{O'}\left(f(x);f(y_1),\ldots,f(y_n)\right)\\
+    f(x \cdot \sigma) & = f(x) \cdot \sigma
   \end{align*}
-The maps $f_{n}$ are required to be equivariant with respect to the symmetric group actions if $f$ is to be a map of symmetric operads, or braid actions if $f$ is to be a map of braided operads. For example, if $p \in O(n)$ and $\sigma \in \Sigma_n$, then we require that $f(p \cdot \sigma) = f(p) \cdot \sigma$.
 \end{Defi}
 
+The next proposition states that symmetric operads and their maps form a category. We leave the proof to the reader.
 
-\begin{example}\label{ex:braid_operad_B}
-One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$. This is done in much the same way as we did for the symmetric operad using the `cabling' operations for braids described after \cref{broperad}. The collections of maps $\pi_{n} \colon B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutation of each braid constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
-\end{example}
+\begin{prop}\label{prop:cat-of-sym-op}
+There is a category with 
+\begin{itemize}
+\item objects the symmetric operads $O$ in $\mb{Sets}$, 
+\item morphisms the maps of symmetric operads between them,
+\item identities $1_O \colon O \to O$ given by
+\[
+(1_O)_n = 1_{O(n)} \colon O(n) \to O(n),
+\]
+and
+\item composition given by
+\[
+(g \circ f)_n = g_n \circ f_n.
+\]
+\end{itemize}
+\end{prop}
 
-\section{Action Operads}
+\begin{nota}[(The category of symmetric operads)]\label{nota:cat-of-sym-op}
+The category in \cref{prop:cat-of-sym-op} is called the \emph{category of symmetric operads (in $\mb{Sets}$)}, and is denoted $\Sigma\mbox{-}\mb{Op}$.
+\end{nota}
+
+\begin{rem}[(The category of non-symmetric operads)]\label{rem:cat-of-nonsym-op}
+
+\end{rem}
+
+\begin{rem}[(The category of braided operads)]\label{rem:cat-of-br-op}
+
+\end{rem}
+
+\section{Action Operads}\label{sec:aop}
 
 One should note that the axioms for symmetric and braided operads each use the fact that the groups of equivariance themselves form an operad. This is what we call an action operad and we remark on similar structures defined and studied by others. After introducing the basic definition, we will consider familiar examples, such as those just noted, as well as less familiar examples such as those constituted by ribbon braid groups or so-called `cactus' groups. We then proceed with some remarks about terminal and initial action operads, as well as maps between action operads.
 
@@ -706,6 +754,26 @@ for the multiplication in the operad $\Lambda$. Let $(g; f_1, \ldots, f_n)$ be a
   \end{eqn}
 in the group $\Lambda(k_{1} + \cdots + k_{n})$.
 \end{Defi}
+
+We give the three examples of action operads that have already appeared in this paper: the symmetric groups, the trivial groups, and the braid groups.
+
+\begin{example}[(Action operad of symmetric groups)]\label{example:aop-sym}
+
+\end{example}
+
+\begin{example}[(Action operad of trivial groups)]\label{example:aop-triv}
+
+\end{example}
+
+\begin{example}[(Action operad of braid groups)]\label{example:aop-braid}
+Copied:
+
+In order to make sense of this definition, we must define $\beta(\tau_1,\ldots,\tau_n)$ and $\delta(\sigma)$ in the context of braids. The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$. The braid $\delta(\sigma)$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$. These operations are sometimes referred to as `cabling' operations for braids, as described in, for example, \cite{doucot_local_2025}.
+
+Copied 2:
+
+One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$. This is done in much the same way as we did for the symmetric operad using the `cabling' operations for braids described after \cref{broperad}. The collections of maps $\pi_{n} \colon B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutation of each braid constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
+\end{example}
 
 \begin{rem}
 \begin{itemize}
