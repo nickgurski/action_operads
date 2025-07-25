@@ -246,9 +246,11 @@ f(1^A) & = 1^B.
 
 \artpart{Operads and Action Operads}
 
-\section{Background: Operads}
+\section{Background: Operads}\label{sec:back-op}
 
-\begin{Defi}
+This section will collect the basic background information on operads that we will later generalize in\ngnote{ref later sections}. We begin with the most common type of operad, a symmetric operad, before defining two more types of operad: plain and braided. 
+
+\begin{Defi}\label{Defi:sym-op}
 A \textit{symmetric operad} $O$ (in the category of sets) consists of
 \begin{itemize}
 \item a set, $O(n)$, for each natural number $n$,
@@ -261,13 +263,13 @@ A \textit{symmetric operad} $O$ (in the category of sets) consists of
 \end{itemize}
 satisfying the following three axioms.
 \begin{enumerate}
-\item The element $\id \in O(1)$ is a two-sided unit for $\mu$ in the sense that
+\item The element $\id \in O(1)$ is a two-sided unit for $\mu$, meaning that
   \begin{align*}
     \mu(\id;x) &= x,\\
     \mu(x;\id,\ldots,\id) &= x
   \end{align*}
 for any $x \in O(n)$.
-\item The functions $\mu$ (called operadic multiplication or operadic composition) are associative in the sense that the diagram below commutes.
+\item The functions $\mu$ are associative, meaning that the diagram below commutes.
 % \[
 % \xy
 % (0,0)*+{\scriptstyle O(n) \times O(k_{1}) \times \cdots \times O(k_{n}) \times O(l_{1,1}) \times \cdots \times O(l_{{1},k_{1}}) \times \cdots \times O(l_{n,1}) \times \cdots \times O(l_{{n},k_{n}})} ="00";
@@ -300,40 +302,41 @@ for any $x \in O(n)$.
     \endxy
   \]
 
-\item The functions $\mu$ are equivariant with respect to the symmetric group actions, and so satisfies the following two equations.
-  \begin{align*}
-    \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot \beta(\tau_1,\ldots,\tau_n)\\
-    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma_{-1}(n)}\right)\cdot \delta(\sigma)
-  \end{align*}
-  % \begin{align*}
-  %   \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot(\tau_1 \oplus \ldots \oplus \tau_n)\\
-  %   \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma_{-1}(n)}\right)\cdot \sigma^+
-  % \end{align*}
-\end{enumerate}
-\end{Defi}
-
-\begin{rem}\label{Rem:sigma_conditions}
-It is useful to write out in full what the sets in the diagram of the second axiom above mean. The use of numerous products and indices is to save space but the full picture becomes much clearer when these are expanded. For the equations in the third axiom above to make sense, we must have
+\item The functions $\mu$ are equivariant with respect to the symmetric group actions, meaning that two equations hold.
 \begin{itemize}
-\item $x \in O(n)$,
-\item $y_{i} \in O(k_{i})$ for $i=1, \ldots, n$,
-\item $\tau_{i} \in \Sigma_{k_{i}}$,
-\item $\sigma \in \Sigma_{n}$, and
-\item $\beta(\tau_1,\ldots,\tau_n), \delta(\sigma) \in \Sigma_{k_1 + \ldots + k_n}$ as described in \cref{conv1} \eqref{conv:beta_delta}.
+\item[3.1] Suppose that $x \in O(n)$, $y_i \in O(k_i)$ for $i = 1, \ldots, n$, and $\tau_i \in \Sigma_{k_i}$ for  $i = 1, \ldots, n$. Then the first equivariance axiom is the requirement that
+\[
+\mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) = \mu(x;y_1,\ldots,y_n)\cdot \beta(\tau_1,\ldots,\tau_n)
+\]
+holds, where $\beta$ is the function from \cref{Defi:beta-s}.
 \end{itemize}
-
-\end{rem}
-\begin{Defi}
-A \emph{non-symmetric operad} $O$ consists of the same data as above but without any symmetric group actions, and only satisfying the first and second axioms.
+\begin{itemize}
+\item[3.2] Suppose that  $x \in O(n)$, $y_i \in O(k_i)$ for $i = 1, \ldots, n$, and $\sigma \in \Sigma_{n}$. 
+Then the second equivariance axiom is the requirement that
+\[
+ \mu(x \cdot \sigma; y_1, \ldots, y_n) = \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma^{-1}(n)}\right)\cdot \delta_{n; k_1, \ldots, k_n}(\sigma)
+\]
+holds, where $\delta_{n; k_1, \ldots, k_n}$ is the function from \cref{Defi:delta-s}.
+\end{itemize}
+%
+%the following two equations hold.
+%  \begin{align*}
+%    \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot \beta(\tau_1,\ldots,\tau_n)\\
+%    \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma^{-1}(n)}\right)\cdot \delta(\sigma)
+%  \end{align*}
+%  % \begin{align*}
+%  %   \mu(x;y_1 \cdot \tau_1,\ldots,y_n \cdot \tau_n) &= \mu(x;y_1,\ldots,y_n)\cdot(\tau_1 \oplus \ldots \oplus \tau_n)\\
+%  %   \mu(x \cdot \sigma; y_1, \ldots, y_n) &= \mu\left(x;y_{\sigma^{-1}(1)},\ldots,y_{\sigma_{-1}(n)}\right)\cdot \sigma^+
+%  % \end{align*}
+%  For the first equation above, we 
+\end{enumerate}
 \end{Defi}
 
-\begin{rem}
-\begin{enumerate}
-\item One can change from operads in $\mb{Sets}$ to operads in another symmetric monoidal category $\mathcal{V}$ by requiring each $O(n)$ to be an object of $\mathcal{V}$ and replacing all instances of cartesian product with the appropriate tensor product in $\mathcal{V}$. This includes replacing the element $\id \in O(1)$ with a map $I \rightarrow O(1)$ from the unit object of $\mathcal{V}$ to $O(1)$.
-\item Every symmetric operad has an underlying \textit{symmetric collection} which consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps. The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in \cref{operad=monoid}. A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
-\end{enumerate}
-\end{rem}
+\begin{Defi}\label{Defi:operadic-mult}
+The functions $\mu$ in \cref{Defi:sym-op} are called \emph{operadic multiplication} or \emph{operadic composition} maps.
+\end{Defi}
 
+\begin{rem}\label{rem:op-def}
 One is intended to think that $x \in O(n)$ is a function with $n$ inputs and a single output, as below.
   \begin{center}
   \begin{tikzpicture}
@@ -422,8 +425,24 @@ Operadic composition is then a generalization of function composition, with the 
   %     (-19,-17)*{y_{2}};
   %   \endxy
   % \]
+  \end{rem}
 
-\begin{example}\label{exSigma}
+
+%\begin{rem}\label{Rem:sigma_conditions}
+%It is useful to write out in full what the sets in the diagram of the second axiom above mean. The use of numerous products and indices is to save space but the full picture becomes much clearer when these are expanded. For the equations in the third axiom above to make sense, we must have
+%\begin{itemize}
+%\item $x \in O(n)$,
+%\item $y_{i} \in O(k_{i})$ for $i=1, \ldots, n$,
+%\item $\tau_{i} \in \Sigma_{k_{i}}$,
+%\item $\sigma \in \Sigma_{n}$, and
+%\item $\beta(\tau_1,\ldots,\tau_n), \delta(\sigma) \in \Sigma_{k_1 + \ldots + k_n}$ as described in \cref{conv1} \eqref{conv:beta_delta}.
+%\end{itemize}
+%
+%\end{rem}
+
+Here are two important examples of symmetric operads.
+
+\begin{example}\label{ex:Sigma}
 The canonical example of \emph{a} symmetric operad is \emph{the} symmetric operad which we write as $\Sigma$. The set $\Sigma(n)$ is the set of elements of the symmetric group $\Sigma_{n}$, and the group action is just multiplication on the right. The identity element $\id \in \Sigma(1)$ is just the identity permutation on a one-element set. Operadic composition in $\Sigma$ will then be given by a function
   \[
     \Sigma(n) \times \Sigma(k_{1}) \times \cdots \times \Sigma(k_{n}) \rightarrow \Sigma(k_{1} + \cdots + k_{n})
@@ -571,6 +590,57 @@ where now the composition on the right side uses the function
     \mu \colon \Sigma(4) \times \Sigma(2) \times \Sigma(2) \times \Sigma(2) \times \Sigma(3) \rightarrow \Sigma(9).
   \]
 This equality is obvious using the picture above, but verifiable directly using only the algebra of the symmetric operad.
+\end{example}
+
+\begin{example}\label{ex:endo}
+Let $X$ be a set. The \emph{endomorphism operad} of $X$, denoted $\mathcal{E}_X$, consists of 
+\begin{itemize}
+\item the sets
+\[
+\mathcal{E}_X(n) = \mb{Sets}(X^n, X),
+\]
+\item the right group actions $\mathcal{E}_X(n) \times \Sigma_n \to \mathcal{E}_X(n)$ given by
+\[
+(f \cdot \sigma)(x_1, \ldots, x_n) = f( x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}),
+\]
+\item the element $\id \in \mathcal{E}_X(1)$ being the identity function $1 \colon X \to X$, and
+\item operadic multiplication given by
+\[
+\mu(g; f_1, \ldots, f_n) = g \circ (f_1 \times \cdots \times f_n).
+\]
+\end{itemize}
+We leave verification of the axioms to the reader, or recommend\ngnote{may-GoILS, find specific ref number}.
+\end{example}
+
+\begin{rem}
+Intuition in \cref{rem:op-def} connected with example \cref{ex:endo} through the concept of an algebra, see\ngnote{later section} for these.
+\end{rem}
+
+One can also drop the symmetric group actions entirely to obtain the notion of a non-symmetric or plain operad.
+
+\begin{Defi}
+A \emph{non-symmetric operad} $O$ consists of 
+\begin{itemize}
+\item a set, $O(n)$, for each natural number $n$,
+%\item for each $n$, a right $\Sigma_{n}$-action on $O(n)$,
+\item an element $\id \in O(1)$, and
+\item functions
+  \[
+    \mu \colon  O(n) \times O(k_{1}) \times \cdots \times O(k_{n}) \rightarrow O(k_{1} + \cdots + k_{n}),
+  \]
+\end{itemize}
+satisfying axioms 1 and 2 from \cref{Defi:sym-op}.
+\end{Defi}
+
+\begin{rem}
+\begin{enumerate}
+\item One can change from operads in $\mb{Sets}$ to operads in another symmetric monoidal category $\mathcal{V}$ by requiring each $O(n)$ to be an object of $\mathcal{V}$ and replacing all instances of cartesian product with the appropriate tensor product in $\mathcal{V}$. This includes replacing the element $\id \in O(1)$ with a map $I \rightarrow O(1)$ from the unit object of $\mathcal{V}$ to $O(1)$.
+\item Every symmetric operad has an underlying \textit{symmetric collection} which consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps. The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in \cref{operad=monoid}. A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
+\end{enumerate}
+\end{rem}
+
+\begin{example}\label{ex:non-sym}
+\ngnoteil{insert example of non-symmetric operad here}
 \end{example}
 
 
