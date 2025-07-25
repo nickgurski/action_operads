@@ -97,38 +97,99 @@ A coequalizer of maps
             {\ar^{\varepsilon} "10" ; "20"};
         \endxy
     \]
-will be written as $\coeqb{A}{B}{G}$, where $\rho$ is a right action of $G$ on $A$, and $\lambda$ is a left action of $G$ on $B$. 
+will be written as $\coeqb{A}{B}{G}$, where $\rho$ is a right action of $G$ on $A$ and $\lambda$ is a left action of $G$ on $B$. 
 This notation is meant to emphasize the analogy with tensor products of $R$-modules, even when the monoidal structure involved is cartesian.
 It also differentiates these coequalizers from pullbacks.
 \end{conv}
 
 
 \begin{conv}[(Pullbacks)]\label{conv:pb}
-The pullback of 
+The pullback of the diagram
+    \[
+        \xy
+            (10,0)*+{X}="00";
+            (0,-10)*+{Y}="10";
+            (10,-10)*+{A}="20";
+            {\ar^{f} "00" ; "20"};
+            {\ar_{g} "10" ; "20"};
+        \endxy
+    \]
+will be written as $X \times_A Y$. 
 \end{conv}
 
 \begin{Defi}\label{Defi:underlying-perm}
-Suppose that $f \colon G \to \Sigma_n$ is a group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. 
+Suppose that $f \colon G \to \Sigma_n$ is a given group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. If there is likely to be some confusion as to which homomorphism $f$ is being used, we will call $f(x)$ the \emph{underlying permutation with respect to $f$}.
 \end{Defi}
 
-\begin{nota}[(Underlying permutations)]\label{nota:perm_shorthand}
+\begin{nota}[(Applying underlying permutations)]\label{nota:perm_shorthand}
 Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the set of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements.  
-For any $\sigma \in O(n)$, we will write $\sigma^{-1}(i)$ for $\pi_n(\sigma)^{-1}(i)$, the inverse image of $i$ with respect to the underlying permutation of $\sigma$.
+For any $\sigma \in O(n)$, we will write $\sigma(i)$ for $\pi_n(\sigma)(i)$, the image of $i$ with respect to the underlying permutation of $\sigma$; the notation $\sigma^{-1}(i)$ will be used for the inverse image of $i$ with respect to the underlying permutation of $\sigma$.
 \end{nota}
 
 
 
 \begin{Defi}[(Block sum)]\label{Defi:beta-s}
-Suppose that $f \colon G \to \Sigma_n$ is a group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. 
+Let $k_1, \ldots, k_n$ be natural numbers and suppose that $\sigma_i \in \Sigma_{k_i}$ are permutations. The \emph{block sum} of $\sigma_1, \ldots, \sigma_n$, written 
+\[
+\beta( \sigma_1, \ldots, \sigma_n ),
+\]
+is the permutation in $\Sigma_K$, where $K = \sum_{i=1}^n k_i$, given as described below. 
+For $1 \leq j \leq K$, define $c$ to be the unique integer such that
+\[
+k_1 + \cdots + k_c < j \leq k_1 + \cdots + k_c +k_{c+1}.
+\]
+Define
+\[
+\beta( \sigma_1, \ldots, \sigma_n )(j) = k_1 + \cdots + k_c + \sigma_{c+1}\big( j - (\sum_{i=1}^c k_i) \big).
+\]
 \end{Defi}
+
+\begin{rem}\label{rem:beta-s}
+The formula above expresses the idea that $\beta( \sigma_1, \ldots, \sigma_n )$ permutes the first $k_1$ elements using $\sigma_1$, the next $k_2$ elements using $\sigma_2$, and so on.
+\end{rem}
 
 \begin{Defi}[(Duplication)]\label{Defi:delta-s}
-Suppose that $f \colon G \to \Sigma_n$ is a group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. 
+Let $k_1, \ldots, k_n$ be natural numbers, and suppose that $\sigma \in \Sigma_n$ is a permutation. The \emph{duplication} of $\sigma$ with respect to $k_1, \ldots, k_n$, written
+\[
+\delta_{n; k_1, \ldots, k_n}(\sigma),
+\]
+is the permutation in $\Sigma_K$, where $K = \sum_{i=1}^n k_i$, given as described below. 
+For $1 \leq j \leq K$, define $c$ to be the unique integer such that
+\[
+k_1 + \cdots + k_c < j \leq k_1 + \cdots + k_c +k_{c+1}.
+\]
+Define
+\[
+\delta_{n; k_1, \ldots, k_n}(\sigma)(j) = \big( \sum_{\sigma(k_i) < \sigma(k_{c+1})} k_i\big) + j - \big( \sum_{i=1}^c k_i \big).
+\]
 \end{Defi}
 
-\begin{conv}\label{conv1}
-We adopt the following conventions throughout.
-\begin{enumerate}
+\begin{rem}\label{rem:delta-s}
+The formula above for $\delta_{n; k_1, \ldots, k_n}(\sigma)$ is best explained by drawing the graph of $\sigma$ as follows. The function $\sigma$ can be represented by drawing two rows of $n$ dots each, and connecting dot $i$ in the top row to dot $\sigma(i)$ in the bottom row. Then $\delta_{n; k_1, \ldots, k_n}(\sigma)$ is obtained by 
+\begin{itemize}
+\item replacing dot $i$ in the top row with $k_i$ dots,
+\item replacing dot $\sigma(i)$ in the bottom row with $k_i$ dots, and
+\item connecting these two sets of $k_i$ dots in the unique way that preserves order.
+\end{itemize}
+Thus we see that the $i$th entry for $\sigma$ is duplicated $k_i$ times in $\delta_{n; k_1, \ldots, k_n}(\sigma)$.
+\end{rem}
+
+\begin{rem}\label{rem:forward-matrices}
+Figure out where to put these matrices in
+\cref{rem:perm_matrices}.
+\end{rem}
+
+\begin{conv}[(Superscripts)]\label{conv:superscripts}
+We generically use superscripts, when needed, to distinguish between operations of the same type associated to different structures. As an example, a monoid homomorphism $f \colon A \to B$ would have axioms written as
+\begin{align*}
+f(x \cdot^A y) & = f(x) \cdot^B f(y), \\
+f(1^A) & = 1^B.
+\end{align*}
+\end{conv}
+
+%\begin{conv}\label{conv1}
+%We adopt the following conventions throughout.
+%\begin{enumerate}
 %\item\label{conv:symm_sigma} $\Sigma_{n}$ is the symmetric group on $n$ letters, and $B_{n}$ is the braid group on $n$ strands.
 %\item\label{conv:g-action} For a group $G$, a right $G$-action on a set $X$ will be denoted $(x,g) \mapsto x \cdot g$. We will use both $\cdot$ and concatenation to represent multiplication in a group.
 %\item\label{conv:e_identity} The symbol $e$ will generically represent an identity element in a group. If we are considering a set of groups $\{ \Lambda(n) \}_{n \in \N}$ indexed by the natural numbers, then $e_{n}$ is the identity element in $\Lambda(n)$. We will often drop the subscripts and just write $e$ when the index $n$ in $\Lambda(n)$ is either clear from context or unimportant to the argument at hand. Occasionally we will write $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams.
@@ -148,40 +209,40 @@ We adopt the following conventions throughout.
 %        \endxy
 %    \]
 %will be written as $\coeqb{A}{B}{G}$, where $\rho$ represents a right action of $G$ on $A$, and $\lambda$ a left action of $G$ on $B$. This is similar to the notation often used to denote pullbacks, however we find in this work that no confusion arises from using notation in this way.
-\item\label{conv:beta_delta} In the following definitions of operads, we define operad multiplication as a function
-  \[
-    \mu \colon O(n) \times O(k_1) \times \ldots O(k_n) \rightarrow O(k_1 + \ldots + k_n)
-  \]
-for each $n$, $k_1$, $\ldots$, $k_n$, and we use the following two functions as a shorthand for two commonly occuring instances of such. First we define a function
-  \[
-    \beta \colon O(k_1) \times \ldots \times O(k_n) \rightarrow O(k_1 + \ldots + k_n)
-  \]
-for each $n$, $k_1$, $\ldots$, $k_n$, which takes elements $\tau_1 \in O(k_1)$, $\ldots$, $\tau_n \in O(k_n)$ and produces the element
-  \[
-    \beta(\tau_1, \ldots, \tau_n) = \mu(e_n; \tau_1, \ldots, \tau_n).
-  \]
-We think of this element as the block sum of the elements $\tau_1$, $\ldots$, $\tau_n$. We also define a function
-  \[
-    \delta_{n;k_1,\ldots,k_n} \colon O(n) \rightarrow O(k_1 + \ldots + k_n)
-  \]
-for each $n$, $k_1$, $\ldots$, $k_n$, which takes an element $\sigma \in O(n)$ and produces the element
-  \[
-    \delta(\sigma) = \mu(\sigma;e_{k_1}, \ldots, e_{k_n}).
-  \]
-
-In the particular case of the symmetric groups, these are functions
-  \[
-    \beta \colon \Sigma_{k_1} \times \Sigma_{k_n} \rightarrow \Sigma_{k_1 + \ldots + k_n}
-  \]
-and
-  \[
-    \delta_{n;k_1,\ldots,k_n} \colon \Sigma_{n} \rightarrow \Sigma_{k_1 + \ldots + k_n}.
-  \]
-In the case of $\beta$ we form the block sum permutation $\beta(\tau_1,\ldots,\tau_n)$ which permutes the first $k_{1}$ elements according to $\tau_{1}$, the next $k_{2}$ elements according to $\tau_{2}$ and so on; this is an element of $\Sigma_{k_{1} + \cdots + k_{n}}$. For $\delta$ we take the permutation $\delta(\sigma) \in \Sigma_{k_{1} + \cdots + k_{n}}$ to be that which permutes the $n$ different blocks $1$ through $k_{1}$, $k_{1}+1$ through $k_{1} + k_{2}$, and so on, according to the permutation $\sigma \in \Sigma_{n}$. We expand on this at various points, including in \cref{Rem:perm_matrices}.
+%\item\label{conv:beta_delta} In the following definitions of operads, we define operad multiplication as a function
+%  \[
+%    \mu \colon O(n) \times O(k_1) \times \ldots O(k_n) \rightarrow O(k_1 + \ldots + k_n)
+%  \]
+%for each $n$, $k_1$, $\ldots$, $k_n$, and we use the following two functions as a shorthand for two commonly occuring instances of such. First we define a function
+%  \[
+%    \beta \colon O(k_1) \times \ldots \times O(k_n) \rightarrow O(k_1 + \ldots + k_n)
+%  \]
+%for each $n$, $k_1$, $\ldots$, $k_n$, which takes elements $\tau_1 \in O(k_1)$, $\ldots$, $\tau_n \in O(k_n)$ and produces the element
+%  \[
+%    \beta(\tau_1, \ldots, \tau_n) = \mu(e_n; \tau_1, \ldots, \tau_n).
+%  \]
+%We think of this element as the block sum of the elements $\tau_1$, $\ldots$, $\tau_n$. We also define a function
+%  \[
+%    \delta_{n;k_1,\ldots,k_n} \colon O(n) \rightarrow O(k_1 + \ldots + k_n)
+%  \]
+%for each $n$, $k_1$, $\ldots$, $k_n$, which takes an element $\sigma \in O(n)$ and produces the element
+%  \[
+%    \delta(\sigma) = \mu(\sigma;e_{k_1}, \ldots, e_{k_n}).
+%  \]
+%
+%In the particular case of the symmetric groups, these are functions
+%  \[
+%    \beta \colon \Sigma_{k_1} \times \Sigma_{k_n} \rightarrow \Sigma_{k_1 + \ldots + k_n}
+%  \]
+%and
+%  \[
+%    \delta_{n;k_1,\ldots,k_n} \colon \Sigma_{n} \rightarrow \Sigma_{k_1 + \ldots + k_n}.
+%  \]
+%In the case of $\beta$ we form the block sum permutation $\beta(\tau_1,\ldots,\tau_n)$ which permutes the first $k_{1}$ elements according to $\tau_{1}$, the next $k_{2}$ elements according to $\tau_{2}$ and so on; this is an element of $\Sigma_{k_{1} + \cdots + k_{n}}$. For $\delta$ we take the permutation $\delta(\sigma) \in \Sigma_{k_{1} + \cdots + k_{n}}$ to be that which permutes the $n$ different blocks $1$ through $k_{1}$, $k_{1}+1$ through $k_{1} + k_{2}$, and so on, according to the permutation $\sigma \in \Sigma_{n}$. We expand on this at various points, including in \cref{rem:perm_matrices}.
 %\item\label{conv:perm_shorthand} Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the object of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements. The map $\pi_n$ in each case will represent a form of `underlying permutation' of each element, which we will then use to act on operad multiplication. As the notation starts to become cumbersome, we will often write $\sigma^{-1}(i)$ which should be read as $\pi_n(\sigma)^{-1}(i)$, where $\sigma \in O(n)$.
-\item\label{conv:op_superscript} We adopt the convention that if an equation requires using operadic composition in more than one operad, we will indicate this by a superscript on each instance of $\mu$ unless it is entirely clear from context. This can be seen, for example, in \cref{Defi:op_map}.
-\end{enumerate}
-\end{conv}
+%\item\label{conv:op_superscript} We adopt the convention that if an equation requires using operadic composition in more than one operad, we will indicate this by a superscript on each instance of $\mu$ unless it is entirely clear from context. This can be seen, for example, in \cref{Defi:op_map}.
+%\end{enumerate}
+%\end{conv}
 
 \artpart{Operads and Action Operads}
 
