@@ -41,7 +41,8 @@ An action operad $\mb{\Lambda}$ is an operad which incorporates all of the essen
 
 The paper is organized into the following sections.  Section 1 reviews the definition of an action operad, and defines the categorical Borel construction on them.  The key result, which reappears in proofs throughout the paper, is \cref{thm:charAOp}, characterizing action operads in terms of two new operations mimicking the block sum of permutations and the operation which takes a permutation of $n$ letters and produces a new permutation on $k_1 + k_2 + \cdots + k_n$ letters by permuting the blocks of $k_i$ letters.  In Section 2, we use this characterization and Kelly's theory of clubs \cite{kelly_club1, kelly_club0, kelly_club2} to embed action operads into monads on $\mb{Cat}$ and determine the essential image of this embedding.  Section 3 gives a construction of the free action operad from a suitable collection of data, and relates this to how clubs can be described using generators and relations.  The results of Sections 2 and 3 show that the definitions of symmetric monoidal category or coboundary category, for example, correspond to the action operad constructed from the corresponding free symmetric monoidal or coboundary category on one object; these and other examples appear in detail in Section 4.  Section 5 then extends the definition of $\mb{\Lambda}$-operad to that of $\mb{\Lambda}$-multicategory and shows that these arise abstractly via a Kleisli construction.
 
-The author would like to thank Alex Corner and Ed Prior for conversations contributing to this research.
+Copied from text:
+Yau \cite{yau_infinity_2021} collects together a large number of results on the topic of action operads while also investigating the setting of infinity group operads. 
 
 This research was supported by EPSRC 134023.
 
@@ -117,7 +118,7 @@ The pullback of the diagram
 will be written as $X \times_A Y$. 
 \end{conv}
 
-\begin{Defi}\label{Defi:underlying-perm}
+\begin{Defi}](Underlying permutation)]\label{Defi:underlying-perm}
 Suppose that $f \colon G \to \Sigma_n$ is a given group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. If there is likely to be some confusion as to which homomorphism $f$ is being used, we will call $f(x)$ the \emph{underlying permutation with respect to $f$}.
 \end{Defi}
 
@@ -427,6 +428,13 @@ Operadic composition is then a generalization of function composition, with the 
   % \]
   \end{rem}
 
+\begin{term}[($n$-ary operations)]\label{term:nary-ops}
+The set $O(n)$ in \cref{Defi:sym-op} is called the set of \emph{$n$-ary operations} of $O$.
+\end{term}
+
+\begin{rem}\label{rem:nary-ops-V}
+If $O$ is an operad in a category other than $\mb{Sets}$ (see \cref{rem:V-and-coll}), then we would call $O(n)$ the \emph{object} of $n$-ary operations.
+\end{rem}
 
 %\begin{rem}\label{Rem:sigma_conditions}
 %It is useful to write out in full what the sets in the diagram of the second axiom above mean. The use of numerous products and indices is to save space but the full picture becomes much clearer when these are expanded. For the equations in the third axiom above to make sense, we must have
@@ -632,15 +640,18 @@ A \emph{non-symmetric operad} $O$ consists of
 satisfying axioms 1 and 2 from \cref{Defi:sym-op}.
 \end{Defi}
 
-\begin{rem}
+\begin{rem}\label{rem:V-and-coll}
 \begin{enumerate}
-\item One can change from operads in $\mb{Sets}$ to operads in another symmetric monoidal category $\mathcal{V}$ by requiring each $O(n)$ to be an object of $\mathcal{V}$ and replacing all instances of cartesian product with the appropriate tensor product in $\mathcal{V}$. This includes replacing the element $\id \in O(1)$ with a map $I \rightarrow O(1)$ from the unit object of $\mathcal{V}$ to $O(1)$.
+\item One can change from operads in $\mb{Sets}$ to operads in another (symmetric) monoidal category $\mathcal{V}$ by requiring each $O(n)$ to be an object of $\mathcal{V}$ and replacing all instances of cartesian product with the appropriate tensor product in $\mathcal{V}$. One would also the element $\id \in O(1)$ with a map $I \rightarrow O(1)$ from the unit object of $\mathcal{V}$ to $O(1)$. In the case of symmetric operads, one would also express the right group actions as homomorphisms
+\[
+\Sigma_n^{op} \to \mathcal{V}\big( O(n), O(n) \big).
+\]
 \item Every symmetric operad has an underlying \textit{symmetric collection} which consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps. The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in \cref{operad=monoid}. A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
 \end{enumerate}
 \end{rem}
 
 \begin{example}\label{ex:non-sym}
-\ngnoteil{insert example of non-symmetric operad here}
+\ngnoteil{insert example of non-symmetric operad here, how about Trimble's thing in dimension 1?}
 \end{example}
 
 \cref{ex:non-sym}
@@ -705,6 +716,7 @@ Let $O, O'$ be symmetric operads in $\mb{Sets}$. Then a \textit{map of symmetric
 
 The next proposition states that symmetric operads and their maps form a category. We leave the proof to the reader.
 
+\ngnoteil{let's use the following prop/notation pair as a template for how to define categories}
 \begin{prop}\label{prop:cat-of-sym-op}
 There is a category with 
 \begin{itemize}
@@ -736,10 +748,30 @@ The category in \cref{prop:cat-of-sym-op} is called the \emph{category of symmet
 
 \section{Action Operads}\label{sec:aop}
 
-One should note that the axioms for symmetric and braided operads each use the fact that the groups of equivariance themselves form an operad. This is what we call an action operad and we remark on similar structures defined and studied by others. After introducing the basic definition, we will consider familiar examples, such as those just noted, as well as less familiar examples such as those constituted by ribbon braid groups or so-called `cactus' groups. We then proceed with some remarks about terminal and initial action operads, as well as maps between action operads.
+The axioms for both symmetric and braided operads use the following features.
+\begin{enumerate}
+\item For each $n$, we have a group $\Lambda_n$ acting on the set $O(n)$ of $n$-ary operations of the operad. Each such group is equipped with a homomorphism $\pi_n \colon \Lambda_n \to \Sigma_n$, so that every element of $\Lambda_n$ has an underlying permutation.
+\item The first equivariance axiom requires the additional data of a family of functions
+\[
+\beta \colon \Lambda_{k_1} \times \cdots \Lambda_{k_n} \to \Lambda_{k_1 + \cdots + k_n}.
+\]
+In order for this to be a well-defined function, the right group action axioms force these functions to be group homomorphisms.
+\item The second equivariance axiom requires the additional data of a family of functions
+\[
+\delta_{n; k_1, \ldots, k_n} \colon \Lambda_{k_1} \times \cdots \Lambda_{k_n} \to \Lambda_{k_1 + \cdots + k_n}.
+\]
+These functions are not forced to be group homomorphisms, but do satisfy some additional axioms.
+\end{enumerate}
+In this section, we define \emph{action operads} in \cref{Defi:aop} in order to present a unified treatment of a family of groups satisfying the conditions above. 
+In \cref{part:op-with-eq}, we define for each action operad $\Lambda$ a notion of $\Lambda$-operad; symmetric operads will arise when $\Lambda = \Sigma$, non-symmetric operads will arise when $\Lambda$ is the action operad of trivial groups, and braided operads will arise when $\Lambda = B$.
+Our definition of an action operad will not mention $\beta$ or $\delta$, but will instead use a single axiom relating the group structure, operadic multiplication, and underlying permutations. 
+The main result of this section is \cref{thm:charAOp} in which we prove that action operads can be described entirely in terms of the functions $\beta, \delta$ as above.
+We will give two examples of action operads (the symmetric groups and the trivial groups) in this section, and postpone the rest to \cref{sec:aop-examples}.
 
-\begin{Defi}\label{Defi:aop}
-An \textit{action operad} $\Lambda$ consists of
+%One should note that the axioms for symmetric and braided operads each use the fact that the groups of equivariance themselves form an operad. This is what we call an action operad and we remark on similar structures defined and studied by others. After introducing the basic definition, we will consider familiar examples, such as those just noted, as well as less familiar examples such as those constituted by ribbon braid groups or so-called `cactus' groups. We then proceed with some remarks about terminal and initial action operads, as well as maps between action operads.
+
+\begin{Defi}[(Action operad)]\label{Defi:aop}
+An \textit{action operad} $(\Lambda, \pi)$ consists of
 \begin{itemize}
 \item an operad $\Lambda = \{ \Lambda(n) \}$ in the category of sets such that each $\Lambda(n)$ is equipped with the structure of a group and
 \item a map $\pi \colon \Lambda \rightarrow \Sigma$ which is simultaneously a map of operads and a group homomorphism $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ for each $n$
@@ -755,29 +787,32 @@ for the multiplication in the operad $\Lambda$. Let $(g; f_1, \ldots, f_n)$ be a
 in the group $\Lambda(k_{1} + \cdots + k_{n})$.
 \end{Defi}
 
-We give the three examples of action operads that have already appeared in this paper: the symmetric groups, the trivial groups, and the braid groups.
+\begin{nota}\label{nota:suppress-pi}
+We write an action $(\Lambda, \pi)$ as merely $\Lambda$.
+The maps $\pi$ will be left implicit in the notation, as we will not have reason to study the case of a single operad $\Lambda$ equipped with two different action operad structures via $\pi$ and $\pi'$.
+\end{nota}
+
+\begin{rem}\label{rem:similar-defs}
+Our definition of an action operad is the same as that\ngnote{find out what term she uses} appearing in Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective. It is also the same as that appearing in work of Zhang\ngnote{find out what they call action operads} \cite{zhang-grp}, although we prove later (see \cref{calclem}) that Zhang's condition of $e_{1} \in \Lambda(1)$ being the identity element follows from the rest of the axioms.
+\end{rem}
+
+We now give the two examples of action operads that have already appeared in this paper: the symmetric groups and the trivial groups.
 
 \begin{example}[(Action operad of symmetric groups)]\label{example:aop-sym}
+Copied, likely could be improved:
 
+The symmetric operad $\Sigma$ has a canonical action operad structure. It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$. This is the terminal object in the category of action operads.
 \end{example}
 
 \begin{example}[(Action operad of trivial groups)]\label{example:aop-triv}
+Copied, likely could be improved:
 
-\end{example}
-
-\begin{example}[(Action operad of braid groups)]\label{example:aop-braid}
-Copied:
-
-In order to make sense of this definition, we must define $\beta(\tau_1,\ldots,\tau_n)$ and $\delta(\sigma)$ in the context of braids. The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$. The braid $\delta(\sigma)$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$. These operations are sometimes referred to as `cabling' operations for braids, as described in, for example, \cite{doucot_local_2025}.
-
-Copied 2:
-
-One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$. This is done in much the same way as we did for the symmetric operad using the `cabling' operations for braids described after \cref{broperad}. The collections of maps $\pi_{n} \colon B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutation of each braid constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
+The terminal operad $T$ in the category of sets has a unique action operad structure, $\mathbf{T}$. Since $T(n)$ is a singleton for each $n$, the group structure is unique, as is the map $\pi$. The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity. This is the initial object in the category of action operads.
 \end{example}
 
 \begin{rem}
 \begin{itemize}
-\item As per \cref{conv1} \eqref{conv:perm_shorthand}, we write $g(i)$ to mean $\pi(g)(i)$ and $g^{-1}(i)$ to mean $\pi(g)^{-1}(i)$, where this is obvious from context.  
+\item As per \cref{nota:perm_shorthand}, we write $g(i)$ to mean $\pi(g)(i)$ and $g^{-1}(i)$ to mean $\pi(g)^{-1}(i)$.  
 \item The final axiom is best explained using the operad $\Sigma$ of symmetric groups. Reading symmetric group elements as permutations from top to bottom, below is a pictorial representation of the final axiom for the map $\mu \colon \Sigma_{3} \times \Sigma_{2} \times \Sigma_{2} \times \Sigma_{2} \rightarrow \Sigma_{6}.$
   % \[
   %   \xy
@@ -856,13 +891,11 @@ One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid
     \node at (14.5,-4.5) {$\scriptstyle \mu\left((23)\cdot (132); e_2 \cdot (12), (12) \cdot e_2, (12) \cdot (12)\right)$};
   \end{tikzpicture}
   \end{center}
-\item Our definition of an action operad is the same as that appearing in Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective. It is also the same as that appearing in work of Zhang \cite{zhang-grp}, although we prove later (see \cref{calclem}) that Zhang's condition of $e_{1} \in \Lambda(1)$ being the identity element follows from the rest of the axioms.
-\item Yau \cite{yau_infinity_2021} collects together a large number of results on the topic of action operads while also investigating the setting of infinity group operads. 
 \end{itemize}
 \end{rem}
 
 Action operads are themselves the objects of a category, $\mb{AOp}$. The morphisms of this category are defined below.
-\begin{Defi}\label{mapaop}
+\begin{Defi}[(Map of action operads)]\label{Defi:mapaop}
 A \textit{map of action operads} $f \colon  \Lambda \rightarrow \Lambda'$ consists of a map $f \colon \Lambda \rightarrow \Lambda'$ of the underlying operads such that
   \begin{enumerate}
     \item $\pi^{\Lambda'} \circ f = \pi^{\Lambda}$ (i.e., $f$ is a map of operads over $\Sigma$) and
@@ -870,30 +903,45 @@ A \textit{map of action operads} $f \colon  \Lambda \rightarrow \Lambda'$ consis
   \end{enumerate}
 \end{Defi}
 
-\begin{Defi}\label{Defi:cat_aop}
-The category $\mb{AOp}$ of action operads has objects which are action operads $\Lambda$ and
- morphisms $\Lambda \rightarrow \Lambda'$ as defined in \cref{mapaop}.
-\end{Defi}
+\begin{prop}\label{prop:cat-of-aop}
+There is a category with 
+\begin{itemize}
+\item objects the action operads $O$ in $\mb{Sets}$, 
+\item morphisms as defined in \cref{Defi:mapaop},
+\item identities $1_\Lambda \colon \Lambda \to \Lambda$ given by the identity morphism of $\Lambda$ as an operad,
+and
+\item composition given by composition of maps of operads.
+\end{itemize}
+\end{prop}
 
-\begin{example}
-\begin{enumerate}
-\item The terminal operad $T$ in the category of sets has a unique action operad structure, $\mathbf{T}$. Since $T(n)$ is a singleton for each $n$, the group structure is unique, as is the map $\pi$. The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity. This is the initial object in the category of action operads.
-% (see \cref{mapaop} for the definition of morphisms in the category of action operads).
-\item The symmetric operad $\Sigma$ has a canonical action operad structure. It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$. This is the terminal object in the category of action operads.
-\end{enumerate}
-\end{example}
+\begin{nota}[(The category of action operads)]\label{nota:cat_aop}
+The category in \cref{prop:cat-of-aop} is called the \emph{category of action operads (in $\mb{Sets}$)}, and is denoted $\mb{AOp}$.
+\end{nota}
 
 \begin{prop}
-The map $\pi \colon \Lambda \rightarrow \Sigma$ is a map of action operads.
+Let $(\Lambda, \pi)$ be an action operad. The map $\pi \colon \Lambda \rightarrow \Sigma$ is a map of action operads.
 \end{prop}
 
 
-We now study some of the structure on the groups $\Lambda(n)$ for small values of $n$. Recall that $e_{n}$ is the identity element in the group $\Lambda(n)$.
+We now study some of the structure on the groups $\Lambda(n)$ for small values of $n$. Recall from \cref{nota:e_identity} that we write $e_{n}$ for the identity element in the group $\Lambda(n)$.
+Many of our proofs rely on the following version of the Eckmann-Hilton argument.
 
-\begin{lem}\label{calclem}
+\begin{prop}[(Eckmann-Hilton argument)]\label{prop:EH}
+Let $G$ be a group with identity element $e$, and suppose $\varphi \colon G \times G \to G$ is a function. If $\varphi$ is a homomorphism, meaning that
+\[
+\varphi(g',h') \cdot \varphi(g,h) = \varphi(g' \cdot g, h' \cdot h),
+\]
+and $\varphi(g,e) = g = \varphi(e,g)$ for all elements $g \in G$, then 
+\[
+\varphi(g, h) = g \cdot h
+\]
+and $G$ is abelian.
+\end{prop}
+
+\begin{lem}\label{lem:calclem}
 Let $\Lambda$ be an action operad.
 \begin{enumerate}
-\item In $\Lambda(1)$, the unit element $e_{1}$ for the group structure is equal to the identity element for the operad structure, $\id$.
+\item In $\Lambda(1)$, the identity element for the group structure, $e_1$, is equal to the identity element for the operad structure, $\id$.
 \item The equation
   \[
     \mu(e_{n}; e_{i_{1}}, \ldots, e_{i_{n}}) = e_{I}
@@ -903,59 +951,104 @@ holds for any natural numbers $n, i_{j}, I = \sum_{j=1}^n i_{j}$.
 \end{enumerate}
 \end{lem}
 \begin{proof}
-For the first claim, let $g \in \Lambda(1)$. Then
-  \begin{align*}
-    g & = g \cdot e_{1} \\
-    &= \mu(g; \id) \cdot \mu(\id; e_{1}) \\
-    &= \mu(g \cdot \id; \id \cdot e_{1}) \\
-    &= \mu(g \cdot \id; \id) \\
-    &= g \cdot \id
-  \end{align*}
-using that $e_{1}$ is the unit element for the group structure, that $\id$ is a two-sided unit for operad multiplication, and the final axiom for an action operad together with the fact that the only element of the symmetric group $\Sigma_{1}$ is the identity permutation. Thus $g = g \cdot \id$, so $\id = e_{1}$.
+For the first claim, we will prove that $\id \cdot e_1 = \id \cdot \id$, so $e_1 = \id$ by cancellation.
+Note that since the only element of $\Sigma_1$ is the identity permutation, the action operad axiom \cref{eqn:ao_axiom} is
+\[
+\mu(g';f')\cdot \mu(g;f) = \mu(g'g; f'f)
+\]
+when $g, g' \in \Lambda(1)$.
+Thus we obtain 
+\begin{align*}
+\id \cdot e_1 & = \mu(\id; \id) \cdot \mu(\id; e_{1}) \\
+& = \mu(\id \cdot \id; \id \cdot e_{1}) \\
+    &= \mu(\id \cdot \id; \id) \\
+    &= \id \cdot \id
+\end{align*}
+using that $\id$ is the identity element for operadic multiplication, the $n=1$ action operad axiom explained above, that $e_1$ is the identity for group multiplication, and that $\id$ is the identity for operadic multiplication again.
+Therefore $\id \cdot e_1 = \id \cdot \id$ as desired, and $e_1 = \id$.
 
-For the second claim, write the operadic product as $\mu(e; \underline{e})$, and consider the square of this element. We find that
+%For the first claim, let $g \in \Lambda(1)$. Then
+%  \begin{align*}
+%    g & = g \cdot e_{1} \\
+%    &= \mu(g; \id) \cdot \mu(\id; e_{1}) \\
+%    &= \mu(g \cdot \id; \id \cdot e_{1}) \\
+%    &= \mu(g \cdot \id; \id) \\
+%    &= g \cdot \id
+%  \end{align*}
+%using that $e_{1}$ is the unit element for the group structure, that $\id$ is a two-sided unit for operad multiplication, and the final axiom for an action operad together with the fact that the only element of the symmetric group $\Sigma_{1}$ is the identity permutation. Thus $g = g \cdot \id$, so $\id = e_{1}$.
+
+For the second claim, we write $\mu(e_{n}; e_{i_{1}}, \ldots, e_{i_{n}})$ as $\mu(e; \underline{e})$, and consider the square of this element. We find that
   \begin{align*}
     \mu(e; \underline{e}) \cdot \mu(e; \underline{e}) & = \mu(e \cdot e; \underline{e} \cdot \underline{e}) \\
     &= \mu(e; \underline{e}),
   \end{align*}
 where the first equality follows from the last action operad axiom together with the fact that $e$ gets mapped to the identity permutation; here $\underline{e} \cdot \underline{e}$ is the sequence $e_{i_{1}} \cdot e_{i_{1}}, \ldots, e_{i_{n}} \cdot e_{i_{n}}$. Thus $\mu(e; \underline{e})$ is an idempotent element of the group $\Lambda(I)$, so must be the identity element $e_{I}$.
 
-For the final claim, note that the specific operadic multiplication map $\mu \colon \Lambda(1) \times \Lambda(1) \rightarrow \Lambda(1)$ is a group homomorphism following from the action operad axioms, and $\id = e_{1}$ is a two-sided unit, so the Eckmann-Hilton argument shows that $\mu$ is actually group multiplication and that $\Lambda(1)$ is abelian.
+For the final claim, note that the specific operadic multiplication map $\mu \colon \Lambda(1) \times \Lambda(1) \rightarrow \Lambda(1)$ is a group homomorphism following from the action operad axioms, and $\id = e_{1}$ is a two-sided unit, so \cref{prop:EH} shows that $\mu$ is actually group multiplication and that $\Lambda(1)$ is abelian.
 \end{proof}
 
-\begin{lem}\label{G0abel}
-Let $\Lambda$ be an action operad. The group operation of $\Lambda(0)$ coincides with the operation 
-  \[
-    g, h \in \Lambda(0) \mapsto \mu(e_2; g, h)
-  \]
-arising from the operad structure. Furthermore, $\Lambda(0)$ is abelian.
+\begin{lem}\label{lem:G0abel}
+Let $\Lambda$ be an action operad. For any $g, h \in \Lambda(0)$, the equation
+\[
+g \cdot h = \mu(e_2; g,h)
+\]
+holds. As a consequence, $\Lambda(0)$ is abelian.
 \end{lem}
 \begin{proof}
-  Note first that
-    \begin{align*}
-      \mu(e_2; g, h) &= \mu(e_2 \cdot e_2; g \cdot e_0, e_0 \cdot h) \\
-      &= \mu(e_2; g, e_0) \cdot \mu(e_2; e_0, h),
-    \end{align*}
-  so for the first claim that $\mu(e_2; g, h) = g \cdot h$ it will suffice to show that $\mu(e_2; g, e_0) = g$ and $\mu(e_2; e_0, h) = h$ for all $g, h \in \Lambda(0)$. We will use the fact that $\mu(e_0; ) = e_0$, which follows below from a similar argument found in the second part of \cref{calclem}.
-    \begin{align*}
-      \mu(e_0;)\mu(e_0;) &= \mu\left(e_0^2;\right) \\
-      &= \mu(e_0;).
-    \end{align*}
-  Since $\mu(e_0;)$ is an idempotent element of $\Lambda(0)$, then it must be the identity $e_0$. Now we have this, the following sequence of calculations shows that $\mu(e_2; g, e_0) = g$, while a similar calculation would show that $\mu(e_2; e_0, h) = h$. Using \cref{calclem},
-    \begin{align*}
-      g &= \mu(e_1; g) \\
-      &= \mu(\mu(e_2; e_0, e_1); g) \\
-      &= \mu(e_2; \mu(e_0;), \mu(e_1; g)) \\
-      &= \mu(e_2; e_0, g).
-    \end{align*}
-  It remains to show that $\Lambda(0)$ is abelian, which relies on the coincidence of the operad multiplication and the group operation in $\Lambda(0)$, in an Eckmann-Hilton style argument.
-    \begin{align*}
-      g \cdot h &= \mu(e_2; g, h) \\
-      &= \mu(e_2 \cdot e_2; e_0 \cdot g, h \cdot e_0) \\
-      &= \mu(e_2; e_0, h) \cdot \mu(e_2; g, e_0) \\
-      &= h \cdot g.
-    \end{align*}
+The function $\Lambda(0) \times \Lambda(0) \to \Lambda(0)$ given by
+\[
+g, h \mapsto \mu(e_2; g, h)
+\]
+is a group homomorphism by the action operad axiom \cref{eqn:ao_axiom} as we verify below.
+\[
+\mu(e_2; g', h') \cdot \mu(e_2; g, h) = \mu(e_2 \cdot e_2; g' \cdot g, h' \cdot h) = \mu(e_2; g' \cdot g, h' \cdot h)
+\]
+In order to apply \cref{prop:EH} and conclude that $g \cdot h = \mu(e_2; g, h)$, we must verify that 
+\[
+\mu(e_2; e_0, g) = g = \mu(e_2; g, e_0)
+\]
+for all $g \in \Lambda(0)$.
+We will prove the first equality and leave the second to the reader, as it follows in a similar fashion.
+
+By the identity axiom for an operad and the first part of \cref{lem:calclem}, we have $g = \mu(\id; g) = \mu(e_1; g)$ for any $g \in \Lambda(0)$.
+By the second part of \cref{lem:calclem}, we also have the equality $e_1 = \mu(e_2; e_0, e_1)$.
+Then
+  \begin{align*}
+   g & = \mu(e_1; g) \\
+    &= \mu(\mu(e_2; e_0, e_1); g) \\
+    & = \mu(\mu(e_2; e_0, e_1); \mu(e_1; g)) \\
+    & = \mu(e_2; e_0, g),
+  \end{align*}
+  where the final equality follows from operadic associativity together with $g = \mu(e_1; g)$.
+  This calculation shows $g = \mu(e_2; e_0, g)$ as desired, and thus proves that the function $\mu(e_2; -,-)$ satisfies the hypotheses in \cref{prop:EH}.
+  Therefore $g \cdot h = \mu(e_2; g,h)$ and $\Lambda(0)$ is abelian.
+%  Note first that
+%    \begin{align*}
+%      \mu(e_2; g, h) &= \mu(e_2 \cdot e_2; g \cdot e_0, e_0 \cdot h) \\
+%      &= \mu(e_2; g, e_0) \cdot \mu(e_2; e_0, h),
+%    \end{align*}
+%  so for the first claim that $\mu(e_2; g, h) = g \cdot h$ it will suffice to show that $\mu(e_2; g, e_0) = g$ and $\mu(e_2; e_0, h) = h$ for all $g, h \in \Lambda(0)$. We will use the fact that $\mu(e_0; ) = e_0$, which follows below from a similar argument found in the second part of \cref{calclem}.
+%    \begin{align*}
+%      \mu(e_0;)\mu(e_0;) &= \mu\left(e_0^2;\right) \\
+%      &= \mu(e_0;).
+%    \end{align*}
+%  Since $\mu(e_0;)$ is an idempotent element of $\Lambda(0)$, then it must be the identity $e_0$. Now we have this, the following sequence of calculations shows that $\mu(e_2; g, e_0) = g$, while a similar calculation would show that $\mu(e_2; e_0, h) = h$. Using \cref{calclem},
+%    \begin{align*}
+%      g &= \mu(e_1; g) \\
+%      &= \mu(\mu(e_2; e_0, e_1); g) \\
+%      &= \mu(e_2; \mu(e_0;), \mu(e_1; g)) \\
+%      &= \mu(e_2; e_0, g).
+%    \end{align*}
+%  It remains to show that $\Lambda(0)$ is abelian, which relies on the coincidence of the operad multiplication and the group operation in $\Lambda(0)$, in an Eckmann-Hilton style argument.
+%    \begin{align*}
+%      g \cdot h &= \mu(e_2; g, h) \\
+%      &= \mu(e_2 \cdot e_2; e_0 \cdot g, h \cdot e_0) \\
+%      &= \mu(e_2; e_0, h) \cdot \mu(e_2; g, e_0) \\
+%      &= h \cdot g.
+%    \end{align*}
 \end{proof}
+
+\ngnoteil{start here}
 
 Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations, which we have previously used to describe particular types of operadic composition as described in \cref{conv1} \eqref{conv:beta_delta} and \cref{exSigma}. Rather than simply being convenient notation for common occurences of operadic composition, we will use these ideas to give a characterisation of action operads. First we recall these notions in more detail in the case of the symmetric operad $\Sigma$. The first operation is the block sum of permutations which we denote by
   \[
@@ -1254,7 +1347,17 @@ again a contradiction. Hence $\sigma = e_{n+1}$ and so the image of $\pi_{n+1}$ 
 
 
 
-\section{Examples}
+\section{Examples}\label{sec:aop-examples}
+
+\begin{example}[(Action operad of braid groups)]\label{example:aop-braid}
+Copied:
+
+In order to make sense of this definition, we must define $\beta(\tau_1,\ldots,\tau_n)$ and $\delta(\sigma)$ in the context of braids. The first is the block sum in the obvious sense:  given $n$ different braids on $k_{1}, \ldots, k_{n}$ strands, respectively, we form a new braid on $k_{1} + \cdots + k_{n}$ strands by taking a disjoint union where the braid $\tau_{i}$ is to the left of $\tau_{j}$ if $i < j$. The braid $\delta(\sigma)$ is obtained by replacing the $i$th strand with $k_{i}$ consecutive strands, all of which are braided together according to $\sigma$. These operations are sometimes referred to as `cabling' operations for braids, as described in, for example, \cite{doucot_local_2025}.
+
+Copied 2:
+
+One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$. This is done in much the same way as we did for the symmetric operad using the `cabling' operations for braids described after \cref{broperad}. The collections of maps $\pi_{n} \colon B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutation of each braid constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
+\end{example}
 
 \begin{Defi} For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is the group whose presentation is the same as that of the braid group $B_{n}$, except with the addition of $n$ new generators $t_1, \ldots, t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
   \begin{align*}
