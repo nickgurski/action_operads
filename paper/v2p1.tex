@@ -1048,17 +1048,18 @@ Then
 %    \end{align*}
 \end{proof}
 
-\ngnoteil{start here}
+The symmetric operad structure on the symmetric groups in \cref{ex:Sigma} was constructed using the functions $\beta, \delta$ from \cref{Defi:beta-s} and \cref{Defi:delta-s}, respectively.
+We are now ready to show that any action operad can be described in this way, as promised in the introductory remarks to this section.
 
-Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations, which we have previously used to describe particular types of operadic composition as described in \cref{conv1} \eqref{conv:beta_delta} and \cref{exSigma}. Rather than simply being convenient notation for common occurences of operadic composition, we will use these ideas to give a characterisation of action operads. First we recall these notions in more detail in the case of the symmetric operad $\Sigma$. The first operation is the block sum of permutations which we denote by
-  \[
-    \beta \colon \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{K},
-  \]
-where $K = \sum k_{i}$. The second is a kind of diagonal map which is defined for any natural number $n$ together with natural numbers $k_{1}, \ldots, k_{n}$. Then
-  \[
-    \delta = \delta_{n; k_{1}, \ldots, k_{n}} \colon \Sigma_{n} \rightarrow \Sigma_{K},
-  \]
-is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on. The first of these, $\beta$, is a group homomorphism, while $\delta$ is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.
+%Note that the operad of symmetric groups $\Sigma$ has its action operad structure determined by two auxiliary operations, which we have previously used to describe particular types of operadic composition as described in \cref{conv1} \eqref{conv:beta_delta} and \cref{exSigma}. Rather than simply being convenient notation for common occurences of operadic composition, we will use these ideas to give a characterisation of action operads. First we recall these notions in more detail in the case of the symmetric operad $\Sigma$. The first operation is the block sum of permutations which we denote by
+%  \[
+%    \beta \colon \Sigma_{k_{1}} \times \cdots \times \Sigma_{k_{n}} \rightarrow \Sigma_{K},
+%  \]
+%where $K = \sum k_{i}$. The second is a kind of diagonal map which is defined for any natural number $n$ together with natural numbers $k_{1}, \ldots, k_{n}$. Then
+%  \[
+%    \delta = \delta_{n; k_{1}, \ldots, k_{n}} \colon \Sigma_{n} \rightarrow \Sigma_{K},
+%  \]
+%is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k_{1}$ together in a block according to the action of $\sigma \in \Sigma_{n}$ on $1$, then $k_{1}+1, \ldots, k_{1}+k_{2}$ together in a block according to the action of $\sigma$ on $2$, and so on. The first of these, $\beta$, is a group homomorphism, while $\delta$ is a sort of twisted homomorphism, and taken together they define operadic multiplication in $\Sigma$.
 
 % \begin{Defi}\label{Defi:aop_bl}
 % Let $\Lambda$ be an action operad. For $h_i \in \Lambda(k_i)$ and $g \in \Lambda(n)$, define
@@ -1070,14 +1071,14 @@ is defined on $\sigma \in \Sigma_{n}$ by permuting the elements $1, 2, \ldots, k
 
 
 \begin{thm}\label{thm:charAOp}
-An action operad $\Lambda$ determines, and is determined by, the following: 
+An action operad $\Lambda$ determines, and is uniquely determined by, the following: 
 \begin{itemize}
 \item groups $\Lambda(n)$ together with group homomorphisms $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$,
 \item a group homomorphism
   \[
     \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) \stackrel{\beta}{\longrightarrow} \Lambda(k_{1} + \cdots + k_{n}),
   \]
-for each $k_{1}, \ldots, k_{n}$ together with the degenerate case of $n=0$ which then is a group homomorphism $1 \rightarrow \Lambda(0)$, and
+for each $n > 0$ and $k_{1}, \ldots, k_{n}$\ngnote{Used to have: together with the degenerate case of $n=0$ which then is a group homomorphism $1 \rightarrow \Lambda(0)$. Do we need this?}, and
 \item a function of sets
   \[
     \Lambda(n) \stackrel{\delta_{n; k_{1}, \ldots, k_{n}}}{\longrightarrow} \Lambda(k_{1} + \cdots + k_{n})
@@ -1129,7 +1130,7 @@ holds, where $\underline{h_i} = h_{i1},\ldots,h_{ij_i}$.
   \]
 
 
-\item\label{eq5} The function $\delta_{n; 1, \ldots, 1} \colon \Lambda(n) \rightarrow \Lambda(n)$ is the identity. The function $\delta_{1;n} \colon \Lambda(1) \to \Lambda(n)$ maps $e_1$ to $e_n$.
+\item\label{eq5} The function $\delta_{n; 1, \ldots, 1} \colon \Lambda(n) \rightarrow \Lambda(n)$ is the identity. The function $\delta_{1;n} \colon \Lambda(1) \to \Lambda(n)$ maps $e_1$ to $e_n$\ngnote{I think something more general is true: any $\delta$ maps $e_n$ to $e_K$}.
 
 \item\label{eq6} The equation $\delta_{n; k_1, \ldots, k_n}(g) \delta_{n; j_1, \ldots, j_n}(h) = \delta_{n; j_1,\ldots,j_n}(gh)$ holds when
 
@@ -1161,24 +1162,31 @@ holds, where $\delta_{i}(g_{i})$ is shorthand for $\delta_{k_{i}; m_{i1}, \ldots
 \end{thm}
 
 \begin{proof}
-Let $\Lambda$ be an action operad, and define $\beta, \delta$ as in \cref{conv1}. Since $\pi \colon \Lambda \rightarrow \Sigma$ is an operad map, Axioms \ref{eq1} and \ref{eq4} hold. Since $\Lambda$ is an operad of sets, Axioms \ref{eq2} and \ref{eq5} follow from the operad unit axioms, and Axioms \ref{eq3}, \ref{eq7}, and \ref{eq9} follow from the operad associativity axiom. Axioms \ref{eq6} and \ref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
+Let $\Lambda$ be an action operad, and define 
+\begin{align*}\label{eqn:bd-from-aop}
+\beta(g_1, \ldots, g_n) & = \mu(e_n; g_1, \ldots, g_n),\\
+\delta_{n; k_1, \ldots, k_n}(g) & = \mu(g; e_{k_1}, \ldots, e_{k_n}).
+\end{align*}
+Since $\pi \colon \Lambda \rightarrow \Sigma$ is an operad map, Axioms \ref{eq1} and \ref{eq4} hold by the definition of the operad structure on $\Sigma$ in \cref{ex:Sigma}. 
+Since $\Lambda$ is an operad of sets, Axioms \ref{eq2} and \ref{eq5} follow from the operad unit axioms and the first part of \cref{lem:calclem}, and Axioms \ref{eq3}, \ref{eq7}, and \ref{eq9} follow from the operad associativity axiom and the second part of \cref{lem:calclem}. Axioms \ref{eq6} and \ref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
 
 Conversely, given the data above, we need only define the operad multiplication, verify the operad unit and multiplication axioms, and finally check the action operad axiom. Multiplication is given by
   \[
     \mu(g; h_{1}, \ldots, h_{n}) = \delta_{n; k_{1}, \ldots, k_{n}}(g) \beta(h_{1}, \ldots, h_{n})
   \]
-where $h_{i} \in \Lambda(k_{i})$. The unit is $e \in \Lambda(1)$.
+where $h_{i} \in \Lambda(k_{i})$. The identity element $\id$ for the operad structure is $e_1 \in \Lambda(1)$.
 
-We now verify the operad unit axioms.
+We now verify the operad unit axioms. Let $g, h \in \Lambda(n)$. Then
   \begin{align*}
-    \mu(e; g) &= \delta(e)\beta(g) \\
-    &= e \cdot g \\
-    &= g \\
-    \mu(h; e, \ldots, e) &= \delta(h)\beta(e, \ldots, e) \\
-    &= h \cdot e \\
+    \mu(e_1; g) &= \delta(e_1)\beta(g) \\
+    &= e_1 \cdot g \\
+    &= g, \\
+    \mu(h; e_1, \ldots, e_1) &= \delta_{n; 1, \ldots, 1}(h)\beta(e_1, \ldots, e_1) \\
+    &= h \cdot e_n \\
     &= h
   \end{align*}
-These follow from Axioms \ref{eq2} and \ref{eq5}, together with the fact that $\beta$ is a group homomorphism.
+by Axioms \ref{eq2} and \ref{eq5}, together with the fact that $\beta$ is a group homomorphism.
+Thus $e_1$ satisfies the identity axioms for operadic multiplication.
 
 For the operad associativity axiom, let
 \begin{itemize}
@@ -1188,51 +1196,55 @@ For the operad associativity axiom, let
 \end{itemize}
 Further, let $P_{i} = p_{i1} + \cdots + p_{in_{i}}$ and $\underline{h_i}$ denote the list $h_{i1}, h_{i2}, \ldots, h_{in_{i}}$. We must then show that
   \[
-    \mu\left( f; \mu\left(g_{1}; \underline{h_1}\right), \ldots, \mu\left(g_{m}; \underline{h_m}\right) \right) = \mu\left( \mu\left(f; g_{1}, \ldots, g_{m}\right); \underline{h_1}, \ldots, \underline{h_m} \right).
+    \mu\big( f; \mu(g_{1}; \underline{h_1}), \ldots, \mu(g_{m}; \underline{h_m}) \big) = \mu\big( \mu(f; g_{1}, \ldots, g_{m}); \underline{h_1}, \ldots, \underline{h_m} \big).
   \]
 By definition, the left side of this equation is
   \[
-    \delta_{m; P_{1}, \ldots, P_{m}}(f) \beta\left( \mu\left(g_{1}; \underline{h_1}\right), \ldots, \mu\left(g_{m}; \underline{h_m}\right) \right),
+    \delta_{m; P_{1}, \ldots, P_{m}}(f) \beta\big( \mu(g_{1}; \underline{h_1}), \ldots, \mu(g_{m}; \underline{h_m}) \big),
   \]
 and
   \[
     \mu\left(g_{i}; \underline{h_i}\right) = \delta_{n_{i}; p_{i1}, \ldots, p_{in_{i}}}(g_{i})\beta\left(h_{i1}, \ldots, h_{in_{i}}\right).
   \]
+From this point, we suppress subscripts on the $\delta$'s.
 Since $\beta$ is a group homomorphism, we can then rewrite the left side as
   \[
-    \delta(f)\beta\left(\delta(g_{1}), \ldots, \delta(g_{m})\right)\beta\left(\beta\left(\underline{h_1}\right), \ldots, \beta\left(\underline{h_m}\right)\right)
+    \delta(f)\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big)\beta\big(\beta(\underline{h_1}), \ldots, \beta(\underline{h_m})\big)
   \]
 where we have suppressed the subscripts on the $\delta$'s. By Axiom \ref{eq3},
   \[
-    \beta\left(\beta\left(\underline{h_1}\right), \ldots, \beta\left(\underline{h_m}\right)\right) = \beta\left(\underline{h_1},\ldots,\underline{h_m}\right).
+    \beta\big(\beta(\underline{h_1}), \ldots, \beta(\underline{h_m})\big) = \beta\left(\underline{h_1},\ldots,\underline{h_m}\right).
   \]
-Further, Axiom \ref{eq9} above shows that
+Furthermore, Axiom \ref{eq9} above shows that
   \[
-    \beta\left(\delta(g_{1}), \ldots, \delta\left(g_{m}\right)\right) = \delta\left(\beta\left(g_{1}, \ldots, g_{m}\right)\right).
+    \beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big) = \delta\big(\beta(g_{1}, \ldots, g_{m})\big).
   \]
 Thus we have shown that the left side of the operad associativity axiom is equal to
   \[
-    \delta(f)\delta\left(\beta(g_{1}, \ldots, g_{m})\right)\beta\left(\underline{h_1},\ldots,\underline{h_m}\right).
+    \delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big)\beta\left(\underline{h_1},\ldots,\underline{h_m}\right).
   \]
 Now the right side is
   \[
-    \mu\left( \mu (f; g_{1}, \ldots, g_{m}); \underline{h_1}, \ldots, \underline{h_m} \right)
+    \mu\big( \mu (f; g_{1}, \ldots, g_{m}); \underline{h_1}, \ldots, \underline{h_m} \big),
   \]
 which is by definition
   \[
-    \delta\left(\mu (f; g_{1}, \ldots, g_{m})\right)\beta\left(\underline{h_1}, \ldots, \underline{h_m}\right).
+    \delta\big(\mu (f; g_{1}, \ldots, g_{m})\big)\beta\left(\underline{h_1}, \ldots, \underline{h_m}\right).
   \]
-Thus verifying the operad associativity axiom reduces to showing
+Cancelling the $\beta\left(\underline{h_1}, \ldots, \underline{h_m}\right)$ terms, verifying the operad associativity axiom reduces to showing
 \begin{eqn}\label{eqn:opass}
-\delta(f)\delta\left(\beta(g_{1}, \ldots, g_{m})\right) = \delta\left(\mu (f; g_{1}, \ldots, g_{m})\right).
-\end{eqn}By the definition of $\mu$,
+\delta(f)\delta\big(\beta(g_{1}, \ldots, g_{m})\big) = \delta\big(\mu (f; g_{1}, \ldots, g_{m})\big).
+\end{eqn}
+By the definition of $\mu$,
   \[
-    \delta(\mu (f; g_{1}, \ldots, g_{m})) = \delta\left(\delta(f)\beta(g_{1}, \ldots, g_{m}) \right)
+    \delta\big(\mu (f; g_{1}, \ldots, g_{m})\big) = \delta\big(\delta(f)\beta(g_{1}, \ldots, g_{m}) \big)
   \]
 which is itself equal to
 \begin{eqn}\label{eqn:opass2}
-\delta\left(\delta(f)\right) \delta\left(\beta(g_{1}, \ldots, g_{m})\right)
-\end{eqn}by Axiom \ref{eq6} above. Now the $\delta(f)$ on the left side of \cref{eqn:opass} uses $\delta_{n; P_{1}, \ldots, P_{n}}$, while the $\delta(\delta(f))$ in \cref{eqn:opass2} is actually
+\delta\big(\delta(f)\big) \delta\big(\beta(g_{1}, \ldots, g_{m})\big)
+\end{eqn}
+by Axiom \ref{eq6} above. 
+Now the $\delta(f)$ on the left side of \cref{eqn:opass} uses $\delta_{n; P_{1}, \ldots, P_{n}}$, while the $\delta(\delta(f))$ in \cref{eqn:opass2} is actually
   \[
     \delta_{m_1 + \cdots + m_{n}; q_{ij}}(\delta_{n; m_{1}, \ldots, m_{n}} (f))
   \]
@@ -1246,27 +1258,28 @@ Writing $\mu(g;\underline{h}) = \mu\left(g; h_{1}, \ldots, h_{n}\right)= $ and $
 \begin{small}
   \begin{align*}
     \mu(g;\underline{h})\mu(g';\underline{h'}) &= \delta\left(g\right) \beta\left(h_{1}, \ldots, h_{n}\right) \delta\left(g'\right) \beta\left(h_{1}', \ldots, h_{n}'\right) \\
-    &= \delta\left(g\right) \delta\left(g'\right) \beta\left(h_{\pi\left(g'\right)(1)}, \ldots, h_{\pi\left(g'\right)(n)}\right)  \beta\left(h_{1}', \ldots, h_{n}'\right) \\
-    &= \delta\left(gg'\right) \beta\left(h_{\pi\left(g'\right)(1)}h_{1}', \ldots, h_{\pi\left(g'\right)(n)}h_{n}'\right) \\
-    &= \mu\left(gg'; h_{\pi\left(g'\right)(1)}h_{1}', \ldots, h_{\pi\left(g'\right)(n)}h_{n}'\right)
+    &= \delta\left(g\right) \delta\left(g'\right) \beta\left(h_{g'(1)}, \ldots, h_{g'(n)}\right)  \beta\left(h_{1}', \ldots, h_{n}'\right) \\
+    &= \delta\left(gg'\right) \beta\left(h_{g'(1)}h_{1}', \ldots, h_{g'(n)}h_{n}'\right) \\
+    &= \mu\left(gg'; h_{g'(1)}h_{1}', \ldots, h_{g'(n)}h_{n}'\right)
   \end{align*}
 \end{small}
 \end{proof}
 
-\begin{prop}[Corollary 2.17,  \cite{zhang-grp}]\label{surjortriv} Let $\Lambda$ be an action operad. Then the homomorphisms $\pi_n \colon \Lambda(n) \rightarrow \Sigma_n$ are either all surjective or all the zero map.
+\begin{prop}[Corollary 2.17,  \cite{zhang-grp}]\label{prop:surjortriv} Let $\Lambda$ be an action operad. Then the homomorphisms $\pi_n \colon \Lambda(n) \rightarrow \Sigma_n$ are either all surjective or all the zero map.
 \end{prop}
 \begin{proof}
 % QQQ New short snazzy proof: It's basically the same, but the \beta and \delta axioms allow it to go through a bit more cleanly and less `handwavy'.
-We will prove each case separately. The two cases coincide for $n = 0$ and $n = 1$ as $\pi_0$ and $\pi_1$ are both the zero map and since $\Sigma_0$ and $\Sigma_1$ are the trivial group these maps are also surjective. Any homomorphism $G \rightarrow \Sigma_2$ must necessarily be surjective or the zero map.
+We will prove each case separately. The two cases coincide for $n = 0, 1$ as both $\Sigma_0, \Sigma_1$ are the trivial group and therefore any homomorphism with one of them as its codomain is both surjective and the zero map. Since $\Sigma_2$ only has one non-identity element, any homomorphism $G \rightarrow \Sigma_2$ must necessarily be surjective or the zero map.
 
-Suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is surjective, then there exists $g \in \Lambda(2)$ such that $\pi_2(g) = \trans{1}{2}$. Considering a transposition $\trans{a}{a+1} \in \Sigma_n$, for $n > 2$, we see that
+Suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is surjective, so there exists $g \in \Lambda(2)$ such that $\pi_2(g) = \trans{1}{2}$. Let $n>2$. Since $\Sigma_n$ is generated by the adjacent transpositions $\trans{a}{a+1}$, we will show that each such element is in the image of $\pi_n$. Write $\underline{x}^i$ for the $i$-tuple $x, x, \ldots, x$. Then $\trans{a}{a+1} = \beta(\underline{e_1}^{a-1} ,\trans{1}{2},\underline{e_1}^{n-a-1})$ in $\Sigma$, so
   \begin{align*}
-      \trans{a}{a+1} &= \beta(\underline{e_1},\trans{1}{2},\underline{e_1}) \\ &= \beta(\underline{\pi_1(e_1)},\pi_2(g),\underline{\pi_1(e_1)}) \\
-      &= \pi_n(\beta(\underline{e_1},g,\underline{e_1})).
+      \trans{a}{a+1} &= \beta(\underline{e_1}^{a-1},\trans{1}{2},\underline{e_1}^{n-a-1}) \\ &= \beta(\underline{\pi_1(e_1)}^{a-1},\pi_2(g),\underline{\pi_1(e_1)}^{n-a-1}) \\
+      &= \pi_n(\beta(\underline{e_1}^{a-1},g,\underline{e_1}^{n-a-1}))
   \end{align*}
-Since this is the image of an element in $\Lambda(n)$ and $\Sigma_n$ is generated by the adjacent transpositions, then $\pi_n$ is surjective. In this argument we have used Axiom \ref{eq1} of \ref{thm:charAOp} and $\trans{1}{2}$ is in the $a^\text{\tiny th}$ position.
-% where the underlined elements $\underline{e_1}$ consist of $n-a$ copies of $e_1$ to the left of $g$ and $n-a-1$ copies of $e_1$ to the right.
-Hence, if $\pi_2$ is surjective, then so is $\pi_n$ for any $n > 2$.
+by Axiom \ref{eq1} of \ref{thm:charAOp}.
+Thus $\pi_n$ is surjective for all $n>2$ if $\pi_2$ is surjective.
+
+\ngnoteil{start here}
 
 Now we will consider the case where $\pi_2$ is the zero map. Assume that $\pi_n$ is zero for some $n \geq 2$. Now let $\sigma \in \operatorname{Im} \pi_{n+1}$, so there exists $g \in \Lambda(n+1)$ such that $\pi_{n+1}(g) = \sigma$. Now $\delta_{n+1;\underline{1},0,\underline{1}}(\sigma)$ is an element of $\Sigma_n$ and
   \begin{align*}
