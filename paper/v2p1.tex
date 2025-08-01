@@ -1281,29 +1281,45 @@ Thus $\pi_n$ is surjective for all $n>2$ if $\pi_2$ is surjective.
 
 \ngnoteil{start here}
 
-Now we will consider the case where $\pi_2$ is the zero map. Assume that $\pi_n$ is zero for some $n \geq 2$. Now let $\sigma \in \operatorname{Im} \pi_{n+1}$, so there exists $g \in \Lambda(n+1)$ such that $\pi_{n+1}(g) = \sigma$. Now $\delta_{n+1;\underline{1},0,\underline{1}}(\sigma)$ is an element of $\Sigma_n$ and
-  \begin{align*}
-    \delta_{n+1;\underline{1},0,\underline{1}}(\sigma) &= \delta_{n+1;\underline{1},0,\underline{1}}(\pi_{n+1})(g) \\
-    &= \pi_n(\delta_{n+1;\underline{1},0,\underline{1}}(g)) \\
-    &= e_n,
-  \end{align*}
-using Axiom \ref{eq4} of \ref{thm:charAOp}. Hence $\sigma = e_{n+1}$ or $\sigma = \trans{a}{a+1}$.
-
-If $\sigma = e_{n+1}$ then $\pi_{n+1}$ is zero. But if $a \neq 1$, then using Axiom \ref{eq4} again
-  \begin{align*}
-    \trans{a-1}{a} &= \delta_{n+1;0,\underline{1}}(\trans{a}{a+1}) \\
-    &= \delta_{n+1;0,\underline{1}}(\pi_{n+1}(g)) \\
-    &= \pi_n(\delta_{n+1;0,\underline{1}}(g)) \\
-    &= e_n,
-  \end{align*}
-a contradiction. If $a = 1$, then $\trans{a}{a+1} = \trans{1}{2}$ and again using Axiom \ref{eq4}
-  \begin{align*}
-    \trans{1}{2} &= \delta_{n+1;\underline{1},0}(\trans{a}{a+1}) \\
-    &= \delta_{n+1;\underline{1},0}(\pi_{n+1}(g)) \\
-    &= \pi_n(\delta_{n+1;\underline{1}}(g),0) \\
-    &= e_n,
-  \end{align*}
-again a contradiction. Hence $\sigma = e_{n+1}$ and so the image of $\pi_{n+1}$ is trivial.
+Now we will consider the case where $\pi_2$ is the zero map.
+Suppose that there exists $g \in \Lambda(n)$ such that $\pi_n(g) = \sigma \neq e_n$ in $\Sigma_n$.
+Then we can find $1 \leq i < j \leq n$ such that $\sigma(j) < \sigma(i)$.
+Consider the element 
+\[
+h = \delta_{n; \underline{0}^{i-1}, 1, \underline{0}^{j-i-1}, 1, \underline{0}^{n-j}}(g) \in \Lambda(2).
+\]
+By the assumption that $\pi_2$ is the zero map, we must have that $\pi_2(h) = e_2$, but by Axiom \ref{eq4} of \ref{thm:charAOp} we also compute
+\[
+\pi_2(h) = \delta_{n; \underline{0}^{i-1}, 1, \underline{0}^{j-i-1}, 1, \underline{0}^{n-j}}\big( \pi_n(g) \big) =  \delta_{n; \underline{0}^{i-1}, 1, \underline{0}^{j-i-1}, 1, \underline{0}^{n-j}}\big( \sigma \big).
+\]
+The element $\delta_{n; \underline{0}^{i-1}, 1, \underline{0}^{j-i-1}, 1, \underline{0}^{n-j}}\big( \sigma \big)$ is equal to $\trans{1}{2}$ by the choice of $i, j$ and \cref{Defi:delta-s}.
+These two computations of $\pi_2(h)$ are in contradiction, so there must be no such $g \in \Lambda(n)$.
+Thus if $\pi_2$ is the zero map, so is $\pi_n$ for all $n>2$.
+%
+%
+%Assume that $\pi_n$ is zero for some $n \geq 2$. Now let $\sigma \in \operatorname{Im} \pi_{n+1}$, so there exists $g \in \Lambda(n+1)$ such that $\pi_{n+1}(g) = \sigma$. Now $\delta_{n+1;\underline{1},0,\underline{1}}(\sigma)$ is an element of $\Sigma_n$ and
+%  \begin{align*}
+%    \delta_{n+1;\underline{1},0,\underline{1}}(\sigma) &= \delta_{n+1;\underline{1},0,\underline{1}}(\pi_{n+1})(g) \\
+%    &= \pi_n(\delta_{n+1;\underline{1},0,\underline{1}}(g)) \\
+%    &= e_n,
+%  \end{align*}
+%using Axiom \ref{eq4} of \ref{thm:charAOp}. Hence $\sigma = e_{n+1}$ or $\sigma = \trans{a}{a+1}$.
+%
+%If $\sigma = e_{n+1}$ then $\pi_{n+1}$ is zero. But if $a \neq 1$, then using Axiom \ref{eq4} again
+%  \begin{align*}
+%    \trans{a-1}{a} &= \delta_{n+1;0,\underline{1}}(\trans{a}{a+1}) \\
+%    &= \delta_{n+1;0,\underline{1}}(\pi_{n+1}(g)) \\
+%    &= \pi_n(\delta_{n+1;0,\underline{1}}(g)) \\
+%    &= e_n,
+%  \end{align*}
+%a contradiction. If $a = 1$, then $\trans{a}{a+1} = \trans{1}{2}$ and again using Axiom \ref{eq4}
+%  \begin{align*}
+%    \trans{1}{2} &= \delta_{n+1;\underline{1},0}(\trans{a}{a+1}) \\
+%    &= \delta_{n+1;\underline{1},0}(\pi_{n+1}(g)) \\
+%    &= \pi_n(\delta_{n+1;\underline{1}}(g),0) \\
+%    &= e_n,
+%  \end{align*}
+%again a contradiction. Hence $\sigma = e_{n+1}$ and so the image of $\pi_{n+1}$ is trivial.
 
 % QQQ Old long proof:
 % We will prove each case separately. The two cases coincide for $n = 0$ and $n = 1$ as $\pi_0$ and $\pi_1$ are both the zero map and since $\Sigma_0$ and $\Sigma_1$ are the trivial group then these maps are also surjective.
