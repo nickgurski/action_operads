@@ -1281,8 +1281,6 @@ Suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is surjective, so th
 by Axiom \ref{eq1} of \ref{thm:charAOp}.
 Thus $\pi_n$ is surjective for all $n>2$ if $\pi_2$ is surjective.
 
-\ngnoteil{start here}
-
 Now we will consider the case where $\pi_2$ is the zero map.
 Suppose that there exists $g \in \Lambda(n)$ such that $\pi_n(g) = \sigma \neq e_n$ in $\Sigma_n$.
 Then we can find $1 \leq i < j \leq n$ such that $\sigma(j) < \sigma(i)$.
@@ -1451,14 +1449,14 @@ Much as the symmetric groups can be represented by crossings of a collection of 
 \end{tabular} \end{center}
 % This operad $RB$ is also clearly an action operad, since we can just define $\pi^{RB}_n \colon RB_{n} \rightarrow \Sigma_n$ to act like $\pi^B_n$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
 
-\begin{example}[(Action operad of cactus groups})]\label{ex:cactus-aop}
+\begin{example}[(Action operad of cactus groups)]\label{ex:cactus-aop}
 %\begin{enumerate}
 %\item We now describe two less trivial action operads, those given by the braid groups (\cref{ex:braid_operad_B}), $\Lambda = B$, and the ribbon braid groups, $\Lambda = RB$. In each case, the homomorphism $\pi$ is given by taking underlying permutations, and the operad structure is given geometrically by using the procedure explained after \cref{broperad}. For $RB$, the fact that $\pi(t) \in \Sigma_1 = \{e_1\}$ automatically takes care of the twists. We refer the reader to \cite{fie-br} for more information about braided operads, and to \cite{sal-wahl, wahl-thesis} for information about the ribbon case.
 The operad of $n$-fruit cactus groups defined by Henriques and Kamnitzer in \cite{hk-cobound} has an action operad structure that we will discuss in \cref{sec:exex-cactus}.
 %\end{enumerate}
 \end{example}
 
-\begin{example}[(Action operad from an abelian group})]\label{ex:abgp-aop}
+\begin{example}[(Action operad from an abelian group)]\label{ex:abgp-aop}
 Every abelian group $A$ gives rise to an action operad $A^{\bullet}$ as follows. The group $A^{\bullet}(n)$ is the direct sum of $n$ copies of $A$, $A^{n}$. The identity element is required to be $e \in A^{1}$, and the multiplication is defined by
   \[
     \mu((a_{1}, \ldots, a_{n}); \underline{b_1}, \ldots, \underline{b_n}) = (a_{1}+\underline{b_{1}}, a_{2} + \underline{b_{2}}, \ldots, a_{n} + \underline{b_{n}})
@@ -1666,6 +1664,7 @@ This functor is neither faithful nor conservative.
 
 
 \section{Action Operads as Extensions}
+
 
 
 \begin{prop}\label{Z}
