@@ -1665,52 +1665,97 @@ This functor is neither faithful nor conservative.
 
 \section{Action Operads as Extensions}
 
+In this short section, we situate action operads between operads in the category of groups and symmetric operads.
+We prove two main results.
+In \cref{prop:Z}, we prove that operads in the category of groups are precisely the same as action operads for which the homomorphisms $\pi_n$ are all the zero map; these are called ``non-crossed group operads'' in \cite{zhang-grp}.
+The second result is that every action operad with surjective $\pi_n$'s can be expressed as an extension of the action operad $\Sigma$ by an operad in the category of groups.
 
+\begin{rem}[(Operads in the category of groups)]\label{rem:op-in-grp}
+The category $\mb{Grp}$ of groups and group homomorphisms is symmetric monoidal using the cartesian product of groups.
+Thus we can form the category of operads in the category of groups, denoted $\mb{Op}(\mb{Grp})$, as in \cref{rem:V-and-coll}.
+The objects of this category are operads $P$ in $\mb{Sets}$ with the additional data of a group structure on each $P(n)$ such that operadic multiplication is a group homomorphism and $\id = e_1$ in $P(1)$; morphisms $f \colon P \to Q$ are those maps of operads such that $f_n \colon P(n) \to Q(n)$ is a group homomorphism for each $n$.
+\end{rem}
 
-\begin{prop}\label{Z}
-There exists a functor $Z \colon  \mb{Op}(\mb{Grp}) \rightarrow \mb{AOp}$ from the category of operads in groups (using the cartesian monoidal structure) to the category of action operads. This functor is full, faithful, and its image is precisely the collection of action operads $\Lambda$ with $\pi_{n}(g) = e_{n}$ for all $n \in \mathbb{N}$, $g \in \Lambda(n)$.
+\begin{prop}\label{prop:Z}
+There exists a functor $Z \colon  \mb{Op}(\mb{Grp}) \rightarrow \mb{AOp}$ from the category of operads in groups to the category of action operads. This functor is full, faithful, and its image is precisely the collection of action operads $\Lambda$ with $\pi_{n}(g) = e_{n}$ for all $n \in \mathbb{N}$, $g \in \Lambda(n)$.
 \end{prop}
 \begin{proof}
 Given an operad in groups $P$, $Z(P)$ is the action operad with the same underlying operad and each $\pi_{n}$ the zero map. It is easy to verify that $\mu$ is a group homomorphism if and only if $\pi_{n}$ is zero for all $n$, and further that maps between such action operads are precisely the same thing as maps between the corresponding operads in the category of groups.
 \end{proof}
 
-We have the following corollary.
-\begin{cor}\label{corZ}
-For an action operad $\Lambda$, the sets
+\ngnoteil{reworking previous version as follows: 1. prove that if $f: \Lambda \to \Lambda'$ is a map of action operads, then both its images and kernels form action operads. 2. apply to $\pi$}
+
+\begin{prop}\label{prop:im-and-ker-aop}
+Let $f \colon \Lambda \to \Lambda'$ be a map of action operads.
+\begin{enumerate}
+\item The groups
   \[
-    \mathrm{Ker}\,\pi_n = \{g \in \Lambda(n)~\colon~\pi_{n}(g) = e_{n} \}
+    \mathrm{Ker}\,f_n = \{x \in \Lambda(n)~\colon~f(x) = e_{n} \}
   \]
 form an action operad for which the inclusion $\mathrm{Ker}\,\pi \hookrightarrow \Lambda$ is a map of action operads.
-\end{cor}
-\begin{proof}
-For $\textrm{Ker}\,\pi \hookrightarrow \Lambda$ to be a map of action operads, we must define the map $\textrm{Ker}\,\pi \rightarrow \Sigma$ to be zero,  and we must check that the operadic multiplication of elements in the kernel is also in the kernel. This last fact is a trivial consequence of $\pi$ being an operad map.
-\end{proof}
-\begin{cor}\label{image}
-For an action operad $\Lambda$, the sets
+\item The groups
   \[
-    \mathrm{Im}\,\pi_n = \{\pi_n(g)~\colon~g \in \Lambda(n)\}
+    \mathrm{Im}\,f_n = \{f(x)~\colon~x \in \Lambda(n)\}
   \]
-form an action operad for which the inclusion $\mathrm{Im}\,\pi \hookrightarrow \Sigma$ is a map of action operads.
-\end{cor}
+form an action operad for which the inclusion $\mathrm{Im}\,\pi \hookrightarrow \Lambda'$ is a map of action operads.
+\end{enumerate}
+\end{prop}
 \begin{proof}
-The operad multiplication of elements in the image is also in the image, as is the unit element in $\mathrm{Im}\,\pi_1$, following again as a consequence of $\pi$ being an operad map. The map $\mathrm{Im}\,\pi \hookrightarrow \Sigma$ is an inclusion and so is immediately seen to be a map of action operads.
+
 \end{proof}
 
-
-
-\begin{cor}\label{extension}
-Every action operad $\Lambda$ with nontrivial $\pi$ fits into a short exact sequence
-  \[
-    T \rightarrow \mathrm{Ker}\,\pi \hookrightarrow \Lambda \stackrel{\pi}{\longrightarrow} \Sigma \rightarrow T,
-  \]
-by which we mean this is a sequence of action operad maps which is an exact sequence of groups at each $n$.
+\begin{cor}\label{cor:ker-opingrp}
+\ngnoteil{kernels are actually operads in Grp}
 \end{cor}
 
-\begin{rem}
-Thus we see that an action operad is either an operad in groups, or is an extension of $\Sigma$ by an operad in groups. This gives a simple proof that the operads of pure braids and pure ribbon braids (those braids or ribbon braids whose underlying permutations are the identity) are both operads in groups.
+\begin{example}[(Action operads of pure braids, pure ribbon braids)]\label{ex:pure-braids}
+%Thus we see that an action operad is either an operad in groups, or is an extension of $\Sigma$ by an operad in groups. 
+The $n$th pure braid group, $PB_n$, is defined as the kernel of the homomorphism $\pi_n \colon B_n \to \Sigma_n$, or equivalently as the subgroup of the $n$th braid group consisting of those braids with underlying permutation the identity.
+\cref{prop:im-and-ker-aop} gives a simple proof that the pure braid groups form an operad in the category of groups.
+Similarly, the pure ribbon braid group, $PRB_n$, is defined as the kernel of $\pi_n \colon RB_n \to \Sigma_n$, and these groups also constitute an operad in the category of groups.
+
+\end{example}
+
+\begin{rem}[(Kernels and images of $\pi$)]\label{rem:im-and-ker-Sigma}
+\ngnoteil{apply the above to $\pi \colon \Lambda \to \Sigma$}
 \end{rem}
 
+%We have the following corollary.
+%\begin{cor}\label{corZ}
+%For an action operad $\Lambda$, the sets
+%  \[
+%    \mathrm{Ker}\,\pi_n = \{g \in \Lambda(n)~\colon~\pi_{n}(g) = e_{n} \}
+%  \]
+%form an action operad for which the inclusion $\mathrm{Ker}\,\pi \hookrightarrow \Lambda$ is a map of action operads.
+%\end{cor}
+%\begin{proof}
+%For $\textrm{Ker}\,\pi \hookrightarrow \Lambda$ to be a map of action operads, we must define the map $\textrm{Ker}\,\pi \rightarrow \Sigma$ to be zero,  and we must check that the operadic multiplication of elements in the kernel is also in the kernel. This last fact is a trivial consequence of $\pi$ being an operad map.
+%\end{proof}
+%
+%\begin{cor}\label{image}
+%For an action operad $\Lambda$, the sets
+%  \[
+%    \mathrm{Im}\,\pi_n = \{\pi_n(g)~\colon~g \in \Lambda(n)\}
+%  \]
+%form an action operad for which the inclusion $\mathrm{Im}\,\pi \hookrightarrow \Sigma$ is a map of action operads.
+%\end{cor}
+%\begin{proof}
+%The operad multiplication of elements in the image is also in the image, as is the unit element in $\mathrm{Im}\,\pi_1$, following again as a consequence of $\pi$ being an operad map. The map $\mathrm{Im}\,\pi \hookrightarrow \Sigma$ is an inclusion and so is immediately seen to be a map of action operads.
+%\end{proof}
 
+\begin{Defi}\label{Defi:ses-aop}
+A \emph{short exact sequence of action operads}...
+\end{Defi}
+
+\begin{cor}\label{cor:extension}
+Let $(\Lambda, \pi)$ be an action operad and assume that every homomorphism $\pi_n \colon \Lambda(n) \to \Sigma_n$ is surjective.
+Then there is a short exact sequence of action operads
+%Every action operad $\Lambda$ with nontrivial $\pi$ fits into a short exact sequence
+  \[
+    T \rightarrow \mathrm{Ker}\,\pi \hookrightarrow \Lambda \stackrel{\pi}{\longrightarrow} \Sigma \rightarrow T.
+  \]
+%by which we mean this is a sequence of action operad maps which is an exact sequence of groups at each $n$.
+\end{cor}
 
 \section{Presentations for Action Operads}
 
