@@ -920,7 +920,7 @@ and
 The category in \cref{prop:cat-of-aop} is called the \emph{category of action operads (in $\mb{Sets}$)}, and is denoted $\mb{AOp}$.
 \end{nota}
 
-\begin{prop}
+\begin{prop}\label{prop:pi-in-aop}
 Let $(\Lambda, \pi)$ be an action operad. The map $\pi \colon \Lambda \rightarrow \Sigma$ is a map of action operads.
 \end{prop}
 
@@ -1668,7 +1668,8 @@ This functor is neither faithful nor conservative.
 In this short section, we situate action operads between operads in the category of groups and symmetric operads.
 We prove two main results.
 In \cref{prop:Z}, we prove that operads in the category of groups are precisely the same as action operads for which the homomorphisms $\pi_n$ are all the zero map; these are called ``non-crossed group operads'' in \cite{zhang-grp}.
-The second result is that every action operad with surjective $\pi_n$'s can be expressed as an extension of the action operad $\Sigma$ by an operad in the category of groups.
+We then turn to studying kernels, images, and short exact sequences of action operads.
+We finally prove, in \cref{cor:extension}, that every action operad with surjective $\pi_n$'s can be expressed as an extension of the action operad $\Sigma$ by an operad in the category of groups.
 
 \begin{rem}[(Operads in the category of groups)]\label{rem:op-in-grp}
 The category $\mb{Grp}$ of groups and group homomorphisms is symmetric monoidal using the cartesian product of groups.
@@ -1676,14 +1677,33 @@ Thus we can form the category of operads in the category of groups, denoted $\mb
 The objects of this category are operads $P$ in $\mb{Sets}$ with the additional data of a group structure on each $P(n)$ such that operadic multiplication is a group homomorphism and $\id = e_1$ in $P(1)$; morphisms $f \colon P \to Q$ are those maps of operads such that $f_n \colon P(n) \to Q(n)$ is a group homomorphism for each $n$.
 \end{rem}
 
-\begin{prop}\label{prop:Z}
-There exists a functor $Z \colon  \mb{Op}(\mb{Grp}) \rightarrow \mb{AOp}$ from the category of operads in groups to the category of action operads. This functor is full, faithful, and its image is precisely the collection of action operads $\Lambda$ with $\pi_{n}(g) = e_{n}$ for all $n \in \mathbb{N}$, $g \in \Lambda(n)$.
+\begin{prop}\label{prop:Z-obj}
+Let $P$ be an operad in $\mb{Grp}$. Then there is an action operad, denoted $Z(P)$, with
+\begin{itemize}
+\item $Z(P)(n) = P(n)$,
+\item the same operadic multiplication as $P$, and
+\item each $\pi_n \colon P(n) \to \Sigma_n$ the zero map.
+\end{itemize}
+Furthermore, if $\Lambda$ is an action operad for which each $\pi_n$ is the zero map, then the groups $\Lambda(n)$ define an operad in $\mb{Grp}$ using the operadic multiplication of $\Lambda$.
 \end{prop}
 \begin{proof}
-Given an operad in groups $P$, $Z(P)$ is the action operad with the same underlying operad and each $\pi_{n}$ the zero map. It is easy to verify that $\mu$ is a group homomorphism if and only if $\pi_{n}$ is zero for all $n$, and further that maps between such action operads are precisely the same thing as maps between the corresponding operads in the category of groups.
+It is easy to verify, using \cref{eqn:ao_axiom} of \cref{Defi:aop}, that the operadic multiplication $\mu$ of an action operad is a group homomorphism if and only if $\pi_{n}$ is zero for all $n$.
 \end{proof}
 
-\ngnoteil{reworking previous version as follows: 1. prove that if $f: \Lambda \to \Lambda'$ is a map of action operads, then both its images and kernels form action operads. 2. apply to $\pi$}
+\begin{prop}\label{prop:Z}
+The assignment on objects $P \mapsto Z(P)$ extends to a functor 
+\[
+Z \colon  \mb{Op}(\mb{Grp}) \rightarrow \mb{AOp}.
+\]
+This functor is full, faithful, and its image at the level of objects is precisely the collection of action operads $\Lambda$ for which each $\pi_n$ is the zero map.
+\end{prop}
+\begin{proof}
+Let $f \colon P \to Q$ be a morphism in $\mb{Op}(\mb{Grp})$, meaning that $f$ consists of a family of group homomorphisms $f_n \colon P(n) \to Q(n)$ that define a map of operads.
+Define $Z(f)_n = f_n$. We must check that these functions define a map of action operads; functoriality will follow immediately, as composition and identities in both $\mb{Op}(\mb{Grp})$ and $\mb{AOp}$ are given levelwise.
+Since each action operad $Z(P)$ has $\pi_n$ the zero map for all $n$, the first numbered axiom in \cref{Defi:mapaop} is satisfied trivially.
+The second numbered axiom follows from the definition of a morphism in $\mb{Op}(\mb{Grp})$.
+This completes the proof that $Z(f)$ is a map of action operads, and the same reasoning shows that every map of action operads $g \colon Z(P) \to Z(Q)$ is $Z(g')$ for a unique $g' \colon P \to Q$ in $\mb{Op}(\mb{Grp})$, thus $Z$ is full and faithful.
+\end{proof}
 
 \begin{prop}\label{prop:im-and-ker-aop}
 Let $f \colon \Lambda \to \Lambda'$ be a map of action operads.
@@ -1692,7 +1712,7 @@ Let $f \colon \Lambda \to \Lambda'$ be a map of action operads.
   \[
     \mathrm{Ker}\,f_n = \{x \in \Lambda(n)~\colon~f(x) = e_{n} \}
   \]
-form an action operad for which the inclusion $\mathrm{Ker}\,\pi \hookrightarrow \Lambda$ is a map of action operads.
+form an action operad for which the inclusion $\mathrm{Ker}\,f \hookrightarrow \Lambda$ is a map of action operads.
 \item The groups
   \[
     \mathrm{Im}\,f_n = \{f(x)~\colon~x \in \Lambda(n)\}
@@ -1701,12 +1721,32 @@ form an action operad for which the inclusion $\mathrm{Im}\,\pi \hookrightarrow 
 \end{enumerate}
 \end{prop}
 \begin{proof}
+For the first part, we start by defining $\pi_n^{\mathrm{Ker}\,f} \colon \mathrm{Ker}\,f_n \to \Sigma_n$ as the composite group homomorphism
+\[
+\mathrm{Ker}\,f_n \hookrightarrow \Lambda(n) \stackrel{\pi_n^{\Lambda}}{\to} \Sigma_n.
+\]
+Since $\pi^{\Lambda} = \pi^{\Lambda'} \circ f$, the composites $\pi_n^{\mathrm{Ker}\,f}$ are all the zero map.
+Next we verify that the subgroups $\mathrm{Ker}\,f_n$ are closed under operadic multiplication. 
+Let $y \in \mathrm{Ker}\,f_n$ and $x_i \in \mathrm{Ker}\,f_{k_i}$ for $i=1, \ldots, n$.
+Then
+\begin{align*}
+f \big( \mu(y; x_1, \ldots, x_n) \big) & = \mu\big( f(y); f(x_1), \ldots, f(x_n) \big) \\
+& = \mu(e_n; e_{k_1}, \ldots, e_{k_n} ) \\ 
+& = e_{k_1 + \cdots + k_n}
+\end{align*}
+by the assumption that $f$ is a map of operads, that $y$ and each $x_i$ is in the kernel, and \cref{lem:calclem}, showing that the kernel subgroups are closed under operadic multiplication.
+The operadic identity $\id \in \Lambda(1)$ is an element of $\mathrm{Ker}\,f_1$ because it is equal to $e_1$ by \cref{lem:calclem}.
+Thus the groups $\mathrm{Ker}\,f_n$ form a sub-operad of $\Lambda$, and the action operad axiom \cref{eqn:ao_axiom} of \cref{Defi:aop} for $\mathrm{Ker}\,f$ follows immediately from the same axiom for $\Lambda$.
+This completes the proof of the first claim, and in fact shows, via \cref{prop:Z-obj}, that these groups constitute an operad in $\mb{Grp}$.
 
+For the second part, we start by defining $\pi_n^{\mathrm{Im}\,f} \colon \mathrm{Im}\,f_n \to \Sigma_n$ as the composite group homomorphism
+\[
+\mathrm{Im}\,f_n \hookrightarrow \Lambda'(n) \stackrel{\pi_n^{\Lambda'}}{\to} \Sigma_n.
+\]
+These subgroups are closed under operadic multiplication in $\Lambda'$ using that $f$ is a map of action operads.
+The operadic identity $\id \in \Lambda'(1)$ is an element of $\mathrm{Im}\,f_1$ because it is equal to $e_1$ by \cref{lem:calclem}.
+This completes the proof that the groups $\mathrm{Im}\,f_n$ form a sub-operad of $\Lambda'$, and the action operad axiom \cref{eqn:ao_axiom} of \cref{Defi:aop} for $\mathrm{Im}\,f$ follows immediately from the same axiom for $\Lambda'$, finishing the proof of the second claim.
 \end{proof}
-
-\begin{cor}\label{cor:ker-opingrp}
-\ngnoteil{kernels are actually operads in Grp}
-\end{cor}
 
 \begin{example}[(Action operads of pure braids, pure ribbon braids)]\label{ex:pure-braids}
 %Thus we see that an action operad is either an operad in groups, or is an extension of $\Sigma$ by an operad in groups. 
@@ -1717,7 +1757,9 @@ Similarly, the pure ribbon braid group, $PRB_n$, is defined as the kernel of $\p
 \end{example}
 
 \begin{rem}[(Kernels and images of $\pi$)]\label{rem:im-and-ker-Sigma}
-\ngnoteil{apply the above to $\pi \colon \Lambda \to \Sigma$}
+We note that if $(\Lambda, \pi)$ is an action operad, then we can apply the results of \cref{prop:im-and-ker-aop} to $\pi$ by \cref{prop:pi-in-aop}.
+The action operad $\mathrm{Ker}\,\pi_n$ will then be an operad in groups, and the action operad $\mathrm{Im}\,\pi_n$ will be a sub-action operad of $\Sigma$.
+By \cref{prop:surjortriv}, this means that the action operad $\mathrm{Im}\,\pi_n$ is either $\Sigma$ or the trivial action operad $T$ (\cref{example:aop-triv}).
 \end{rem}
 
 %We have the following corollary.
@@ -1744,8 +1786,20 @@ Similarly, the pure ribbon braid group, $PRB_n$, is defined as the kernel of $\p
 %\end{proof}
 
 \begin{Defi}\label{Defi:ses-aop}
-A \emph{short exact sequence of action operads}...
+A \emph{short exact sequence of action operads} consists of action operads $\Lambda_1, \Lambda_2, \Lambda_3$ and maps of action operads $f \colon \Lambda_1 \to \Lambda_2$, $g \colon \Lambda_2 \to \Lambda_3$ such that
+\begin{itemize}
+\item the action operad $\mathrm{Ker}\,f$ is the trivial action operad $T$,
+\item the action operad $\mathrm{Im}\,f$ is the action operad $\mathrm{Ker}\,g$, and
+\item the action operad $\mathrm{Im}\,g$ is the action operad $\Lambda_3$.
+\end{itemize}
+We denote such a short exact sequence as
+\[
+T \to \Lambda_1 \stackrel{f}{\to} \Lambda_2 \stackrel{g}{\to} \Lambda_3 \to T,
+\]
+and we say that a short exact sequence exhibits \emph{$\Lambda_2$ as an extension of $\Lambda_3$ by $\Lambda_1$}.
 \end{Defi}
+
+The following corollary puts \cref{rem:im-and-ker-Sigma} into the language of short exact sequences and extensions.
 
 \begin{cor}\label{cor:extension}
 Let $(\Lambda, \pi)$ be an action operad and assume that every homomorphism $\pi_n \colon \Lambda(n) \to \Sigma_n$ is surjective.
