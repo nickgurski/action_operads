@@ -1813,71 +1813,123 @@ Then there is a short exact sequence of action operads
 
 \section{Presentations for Action Operads}
 
-A useful method for constructing new examples of some given algebraic structure is through the use of presentations. A presentation consists of generating data together with relations between generators using the operations of the algebra involved. In categorical terms, the generators and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer. This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and $2$-monad. The most direct route to the desired results uses the theory of locally finitely presentable categories. We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
+This section details how to provide presentations for action operads using the theory of locally finitely presentable (lfp) categories.
+We refer the reader to \cite{ar} for a full treatment of lfp categories.
+Our treatment here diverges slightly from how one might give presentations for symmetric operads because it is necessary to build in the underlying permutation map $\pi \colon \Lambda \to \Sigma$ from the beginning.
+In the theory of plain operads, the starting point is a collection: sets $\{ P(n) \}$ indexed by the natural numbers.
+In the theory of symmetric operads, these are enhanced to symmetric collections: sets $\{ P(n) \}$ indexed by the natural numbers, together with a right action $P(n) \times \Sigma_n \to P(n)$.
+Our analogue of collections (see \cref{Defi:coll-over-SS}) are now sets $P(n)$, indexed by natural numbers, equipped with a function $\pi_n \colon P(n) \to \Sigma_n$.
+Thus the natural notion of the arity of an element in an action operad is not a natural number $n$, but rather a pair $(n, \sigma)$ where $\sigma \in \Sigma_n$.
 
-\begin{Defi}\label{def:filtered}
-  A \textit{filtered category} is a nonempty category $C$ such that
-    \begin{itemize}
-      \item if $a,b$ are objects of $C$, then there exists another object $c \in C$ and morphisms $a \rightarrow c, b \rightarrow c$; and
-      \item if $f,g \colon a \rightarrow b$ are parallel morphisms in $C$, then there exists a morphism $h \colon b \rightarrow c$ such that $hf = hg$.
-    \end{itemize}
+\begin{Defi}[(Collections over $\SS$)]\label{Defi:coll-over-SS}
+  Let $\SS$ be the set that is the disjoint union of the underlying sets of all the symmetric groups. Then $\mb{Sets}/\SS$ is the slice category over $\SS$ with objects $(X,f)$ where $X$ is a set and $f \colon X \rightarrow \SS$ and morphisms $(X_{1}, f_{1}) \rightarrow (X_{2}, f_{2})$ are those functions $g \colon X_{1} \rightarrow X_{2}$ such that $f_{1} = f_{2}g$. We call an object $(X,f)$ a \textit{collection over $\SS$}, and say that an element $x \in X$ has \emph{underlying permutation $\sigma$} if $f(x) = \sigma$.
 \end{Defi}
 
-\begin{Defi}
-  A \emph{filtered colimit} is a colimit over a filtered category.
-\end{Defi}
+\begin{nota}\label{nota:Xofsigma}
+If $(X, f)$ is a collection over $\SS$, we write $X(\sigma)$ for $f^{-1}(\sigma)$. In other words, $X(\sigma)$ is the set of elements of $X$ with underlying permutation $\sigma \in \Sigma_n \subseteq \SS$.
+\end{nota}
 
-\begin{Defi}
-  Let $C$ be a category with all filtered colimits. An object $x \in C$ is \textit{finitely presentable} if the representable functor $C(x, -) \colon C \rightarrow \mb{Sets}$ preserves filtered colimits.
-\end{Defi}
-
-\begin{Defi}
-  A \textit{locally finitely presentable category} is a category $C$ such that
-  \begin{itemize}
-    \item $C$ is cocomplete and
-    \item there exists a small subcategory $C_{fp} \subseteq C$ of finitely presentable objects such that any object $x \in C$ is the filtered colimit of some diagram in $C_{fp}$.
-  \end{itemize}
-\end{Defi}
-
-The definition of a locally finitely presentable category has many equivalent variants, but we find this one most practicable to work with in this setting.
-
-\begin{thm}
-The category $\mb{AOp}$ is locally finitely presentable.
+\begin{thm}\label{thm:aop-lfp}
+The category $\mb{AOp}$ of action operads is a variety of $\SS$-sorted finitary algebras, and therefore is a finitary monadic category over $\mb{Sets}/\SS$. In particular, $\mb{AOp}$ is locally finitely presentable.
 \end{thm}
 \begin{proof}
-First note that we can define a category $\mb{Op}^{g}$, whose objects are operads $P$ in which each $P(n)$ also carries a group structure. This is an equational theory using equations with only finitely many elements, so $\mb{Op}^{g}$ is locally finitely presentable \cite[Corollary 3.7]{ar}. A slice category of a locally finitely presentable category is itself locally finite presentable \cite[Proposition 1.57]{ar} and since the symmetric operad is an object of $\mb{Op}^{g}$, the slice category $\mb{Op}^{g}/\Sigma$ is locally finitely presentable.
+In order to prove that $\mb{AOp}$ is a variety of $\SS$-sorted finitary algebras (henceforth shortened to \emph{$\mb{AOp}$ is a variety}), we must define a set $\mathcal{O}$ of operation symbols and a set of equations $E$ such that action operads are the 
+\begin{itemize}
+\item collections $(X, f)$ over $\SS$, 
+\item equipped with functions
+\[
+X(\theta) \colon X(\sigma_1) \times \cdots \times X(\sigma_n) \to X(\sigma)
+\]
+for each operation symbol $\theta \in \mathcal{O}$ of type $\theta \colon \sigma_1 \times \cdots \times \sigma_n \to \sigma$,
+\item satisfying the equations in $E$.
+\end{itemize}
+The set $\mathcal{O}$ of operation symbols is defined to have the elements given below.
+\begin{enumerate}
+\item \ngnoteil{group mult}
+\item \ngnoteil{identities}
+\item \ngnoteil{inverses}
+\item Let $\mu$ denote the operadic multiplication in the operad of symmetric groups, $\Sigma$, from \cref{ex:Sigma}. For each $\sigma \in \Sigma_n$ and $\tau_i \in \Sigma_{k_i}$ for $i=1, \ldots, n$, we define an operation symbol $\theta[\sigma; \tau_i]$ of type
+\[
+\theta[\sigma; \tau_i] \colon \sigma \times \tau_1 \times \cdots \times \tau_n \to \mu(\sigma; \tau_1, \ldots, \tau_n).
+\]
+\end{enumerate}
+The set $E$ of equations is defined to have the elements below.
+\begin{enumerate}
+\item \ngnoteil{mult assoc}
+\item \ngnoteil{mult unital}
+\item \ngnoteil{operad assoc}
+\item \ngnoteil{operad unital}
+\item \ngnoteil{action operad axiom}
+\end{enumerate}
 
-There is an obvious inclusion functor $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$. Now $\mb{AOp}$ is a full subcategory of $\mb{Op}^{g}/\Sigma$ which is closed under products, subobjects. Since any object of $\mb{Op}^{g}/\Sigma$ isomorphic to an action operad is in fact an action operad, the inclusion   $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$ is actually the inclusion of a reflective subcategory. One can easily check that $\mb{AOp}$ is in fact closed under all limits and filtered colimits in $\mb{Op}^{g}/\Sigma$, so by the Reflection Theorem (2.48 in \cite{ar}), $\mb{AOp}$ is locally finitely presentable.
+\ngnoteil{put in brief explanation that these are action operads}
+This completes the proof that $\mb{AOp}$ is a variety. It is therefore a finitary monadic category over $\mb{Sets}/\SS$ by \cite[Thm~3.18]{ar} and locally finitely presentable by \cite[Cor~3.7]{ar}.
 \end{proof}
 
-\begin{Defi}
-  Let $\SS$ be the set which is the disjoint union of the underlying sets of all the symmetric groups. Then $\mb{Sets}/\SS$ is the slice category over $\SS$ with objects $(X,f)$ where $X$ is a set and $f \colon X \rightarrow \SS$ and morphisms $(X_{1}, f_{1}) \rightarrow (X_{2}, f_{2})$ are those functions $g \colon X_{1} \rightarrow X_{2}$ such that $f_{1} = f_{2}g$. We call an object $(X,f)$ a \textit{collection over $\SS$}.
-\end{Defi}
 
-\begin{rem}
-In standard presentations of the theory of operads (see, for example, \cite{mss-op}), a nonsymmetric operad will have an underlying collection (or $\mathbb{N}$-indexed collection of sets) while a symmetric operad will have an underlying symmetric collection (or $\mathbb{N}$-indexed collection of sets in which the $n$th set has an action of $\Sigma_{n}$). Our collections over $\SS$ more closely resemble the former as there is no group action present.
-\end{rem}
-
-\begin{example}
-One can easily form new action operads from old ones by taking limits. To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there. Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$ which themselves are (possibly wide) pullbacks in the category of operads. This pullback will then be computed levelwise, showing that at each dimension there is a group structure with a group homomorphism to the appropriate $\Sigma_{n}$ and that the final action operad axiom holds since it does in each component. The equalizer of a pair of maps will then just be the levelwise equalizer. This shows that the pointwise product of an action operad $P$ with an action operad of the form $Z(Q)$ (as in \cref{Z}) is again an action operad, but the pointwise product of two arbitrary action operads might not be.
-\end{example}
-\begin{thm}\label{underlyingSS}
-There exists a forgetful functor $U \colon \mb{AOp} \rightarrow \mb{Sets}/\SS$ which preserves all limits and filtered colimits.
-\end{thm}
-
-\begin{proof}
-For a given action operad $\Lambda$, we put $U(\Lambda) = \left(\coprod_{\mathbb{N}} \Lambda(n), \coprod_{\mathbb{N}} \pi_n \right)$ and this easily extends to a mapping on morphisms using the universal property of the coproduct. The preservation of filtered colimits follows from the fact that these are computed pointwise, together with the fact that every map between action operads preserves underlying permutations.
-As equalizers are computed levelwise, and the product $\Lambda \times \Lambda'$ has underlying operad the pullback $\Lambda \times_{\Sigma} \Lambda'$; this pullback is itself computed levelwise. Together, these imply that $U$ also preserves all limits.
-\end{proof}
-
+%A useful method for constructing new examples of some given algebraic structure is through the use of presentations. A presentation consists of generating data together with relations between generators using the operations of the algebra involved. In categorical terms, the generators and relations are both given as free gadgets on some underlying data, and the presentation itself is a coequalizer. This section will establish the categorical structure necessary to give presentations for action operads, and then explain how such a presentation is reflected in the associated club and $2$-monad. The most direct route to the desired results uses the theory of locally finitely presentable categories. We recall the main definitions briefly, but refer the reader to \cite{ar} for additional details.
+%
+%\begin{Defi}\label{def:filtered}
+%  A \textit{filtered category} is a nonempty category $C$ such that
+%    \begin{itemize}
+%      \item if $a,b$ are objects of $C$, then there exists another object $c \in C$ and morphisms $a \rightarrow c, b \rightarrow c$; and
+%      \item if $f,g \colon a \rightarrow b$ are parallel morphisms in $C$, then there exists a morphism $h \colon b \rightarrow c$ such that $hf = hg$.
+%    \end{itemize}
+%\end{Defi}
+%
+%\begin{Defi}
+%  A \emph{filtered colimit} is a colimit over a filtered category.
+%\end{Defi}
+%
+%\begin{Defi}
+%  Let $C$ be a category with all filtered colimits. An object $x \in C$ is \textit{finitely presentable} if the representable functor $C(x, -) \colon C \rightarrow \mb{Sets}$ preserves filtered colimits.
+%\end{Defi}
+%
+%\begin{Defi}
+%  A \textit{locally finitely presentable category} is a category $C$ such that
+%  \begin{itemize}
+%    \item $C$ is cocomplete and
+%    \item there exists a small subcategory $C_{fp} \subseteq C$ of finitely presentable objects such that any object $x \in C$ is the filtered colimit of some diagram in $C_{fp}$.
+%  \end{itemize}
+%\end{Defi}
+%
+%The definition of a locally finitely presentable category has many equivalent variants, but we find this one most practicable to work with in this setting.
+%
+%\begin{thm}
+%The category $\mb{AOp}$ is locally finitely presentable.
+%\end{thm}
+%\begin{proof}
+%First note that we can define a category $\mb{Op}^{g}$, whose objects are operads $P$ in which each $P(n)$ also carries a group structure. This is an equational theory using equations with only finitely many elements, so $\mb{Op}^{g}$ is locally finitely presentable \cite[Corollary 3.7]{ar}. A slice category of a locally finitely presentable category is itself locally finite presentable \cite[Proposition 1.57]{ar} and since the symmetric operad is an object of $\mb{Op}^{g}$, the slice category $\mb{Op}^{g}/\Sigma$ is locally finitely presentable.
+%
+%There is an obvious inclusion functor $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$. Now $\mb{AOp}$ is a full subcategory of $\mb{Op}^{g}/\Sigma$ which is closed under products, subobjects. Since any object of $\mb{Op}^{g}/\Sigma$ isomorphic to an action operad is in fact an action operad, the inclusion   $\mb{AOp} \hookrightarrow \mb{Op}^{g}/\Sigma$ is actually the inclusion of a reflective subcategory. One can easily check that $\mb{AOp}$ is in fact closed under all limits and filtered colimits in $\mb{Op}^{g}/\Sigma$, so by the Reflection Theorem (2.48 in \cite{ar}), $\mb{AOp}$ is locally finitely presentable.
+%\end{proof}
+%
+%
+%
+%\begin{rem}
+%In standard presentations of the theory of operads (see, for example, \cite{mss-op}), a nonsymmetric operad will have an underlying collection (or $\mathbb{N}$-indexed collection of sets) while a symmetric operad will have an underlying symmetric collection (or $\mathbb{N}$-indexed collection of sets in which the $n$th set has an action of $\Sigma_{n}$). Our collections over $\SS$ more closely resemble the former as there is no group action present.
+%\end{rem}
+%
+%\begin{example}
+%One can easily form new action operads from old ones by taking limits. To take a limit of a diagram in $\mb{AOp}$, one forgets down to the category of operads over $\Sigma$ and takes the limit there. Concretely, products in $\mb{AOp}$ are computed as products in $\mb{Op}/\Sigma$ which themselves are (possibly wide) pullbacks in the category of operads. This pullback will then be computed levelwise, showing that at each dimension there is a group structure with a group homomorphism to the appropriate $\Sigma_{n}$ and that the final action operad axiom holds since it does in each component. The equalizer of a pair of maps will then just be the levelwise equalizer. This shows that the pointwise product of an action operad $P$ with an action operad of the form $Z(Q)$ (as in \cref{Z}) is again an action operad, but the pointwise product of two arbitrary action operads might not be.
+%\end{example}
+%\begin{thm}\label{underlyingSS}
+%There exists a forgetful functor $U \colon \mb{AOp} \rightarrow \mb{Sets}/\SS$ which preserves all limits and filtered colimits.
+%\end{thm}
+%
+%\begin{proof}
+%For a given action operad $\Lambda$, we put $U(\Lambda) = \left(\coprod_{\mathbb{N}} \Lambda(n), \coprod_{\mathbb{N}} \pi_n \right)$ and this easily extends to a mapping on morphisms using the universal property of the coproduct. The preservation of filtered colimits follows from the fact that these are computed pointwise, together with the fact that every map between action operads preserves underlying permutations.
+%As equalizers are computed levelwise, and the product $\Lambda \times \Lambda'$ has underlying operad the pullback $\Lambda \times_{\Sigma} \Lambda'$; this pullback is itself computed levelwise. Together, these imply that $U$ also preserves all limits.
+%\end{proof}
+%
 \begin{cor}
 $U$ has a left adjoint $F \colon \mb{Sets}/\SS \rightarrow \mb{AOp}$, the free action operad functor.
 \end{cor}
-\begin{proof}
-The category $\mb{Sets}/\SS$ is locally finitely presentable as it is equivalent to the functor category $[\SS, \mb{Sets}]$ (here $\SS$ is treated as a discrete category) and any presheaf category is locally finitely presentable. The functor $U$ preserves limits and filtered colimits between locally finitely presentable categories, so has a left adjoint (see Theorem 1.66 in \cite{ar}).
-\end{proof}
+%\begin{proof}
+%The category $\mb{Sets}/\SS$ is locally finitely presentable as it is equivalent to the functor category $[\SS, \mb{Sets}]$ (here $\SS$ is treated as a discrete category) and any presheaf category is locally finitely presentable. The functor $U$ preserves limits and filtered colimits between locally finitely presentable categories, so has a left adjoint (see Theorem 1.66 in \cite{ar}).
+%\end{proof}
 
-\begin{Defi}
+\begin{Defi}[(Presentation for action operads)]\label{Defi:pres-aop}
   A \textit{presentation} for an action operad $\Lambda$ consists of
   \begin{itemize}
     \item a pair of collections over $\SS$ denoted $\mathbf{g}, \mathbf{r}$,
@@ -1885,6 +1937,10 @@ The category $\mb{Sets}/\SS$ is locally finitely presentable as it is equivalent
     \item a map $p \colon F\mathbf{g} \rightarrow \Lambda$ of action operads exhibiting $\Lambda$ as the coequalizer of $s_{1},s_{2}$.
   \end{itemize}
 \end{Defi}
+
+\begin{example}[(The presentation for $\Sigma$)]\label{ex:sigma-pres}
+\ngnoteil{work out presentation for symmetric groups as action operad}
+\end{example}
 
 \section{Action Operads as Clubs}
 
