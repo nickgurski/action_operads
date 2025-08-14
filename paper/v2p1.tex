@@ -704,6 +704,8 @@ These operations are sometimes referred to as `cabling' operations for braids, a
 \ngnoteil{insert example of braided operad here, probably just braid groups??}
 \end{example}
 
+\ngnoteil{can we prove that the operad of braid groups is NOT a symmetric operad?}
+
 We conclude this section by defining various categories of operads in $\mb{Sets}$, although the reader can generalize these to categories of operads in any symmetric monoidal category. We focus on the case of symmetric operads, and explain after how to modify the definitions for non-symmetric or braided operads.
 
 \begin{Defi}[(Map of symmetric operads)]\label{Defi:sym_op_map}
@@ -1818,7 +1820,7 @@ We refer the reader to \cite{ar} for a full treatment of lfp categories.
 Our treatment here diverges slightly from how one might give presentations for symmetric operads because it is necessary to build in the underlying permutation map $\pi \colon \Lambda \to \Sigma$ from the beginning.
 In the theory of plain operads, the starting point is a collection: sets $\{ P(n) \}$ indexed by the natural numbers.
 In the theory of symmetric operads, these are enhanced to symmetric collections: sets $\{ P(n) \}$ indexed by the natural numbers, together with a right action $P(n) \times \Sigma_n \to P(n)$.
-Our analogue of collections (see \cref{Defi:coll-over-SS}) are now sets $P(n)$, indexed by natural numbers, equipped with a function $\pi_n \colon P(n) \to \Sigma_n$.
+Our analogue of collections (see \cref{Defi:coll-over-SS}) are now sets $P(n)$, indexed by natural numbers, equipped with functions $\pi_n \colon P(n) \to \Sigma_n$.
 Thus the natural notion of the arity of an element in an action operad is not a natural number $n$, but rather a pair $(n, \sigma)$ where $\sigma \in \Sigma_n$.
 
 \begin{Defi}[(Collections over $\SS$)]\label{Defi:coll-over-SS}
@@ -1840,30 +1842,73 @@ In order to prove that $\mb{AOp}$ is a variety of $\SS$-sorted finitary algebras
 \[
 X(\theta) \colon X(\sigma_1) \times \cdots \times X(\sigma_n) \to X(\sigma)
 \]
-for each operation symbol $\theta \in \mathcal{O}$ of type $\theta \colon \sigma_1 \times \cdots \times \sigma_n \to \sigma$,
+for each operation symbol $\theta \in \mathcal{O}$ of type $\theta \colon \sigma_1, \ldots, \sigma_n \to \sigma$,
 \item satisfying the equations in $E$.
 \end{itemize}
 The set $\mathcal{O}$ of operation symbols is defined to have the elements given below.
 \begin{enumerate}
-\item \ngnoteil{group mult}
-\item \ngnoteil{identities}
-\item \ngnoteil{inverses}
+\item For each $\sigma, \tau \in \Sigma_n$, we define an operation symbol
+\[
+\star[\sigma, \tau] \colon \sigma, \tau \to \sigma \tau,
+\]
+where the target $\sigma \tau$ is the product of these permutations in $\Sigma_n$.
+\item For each natural number $n$, we define an operation symbol
+\[
+U_n \colon \to e_n,
+\]
+where the source is the empty list of permutations and the target is the identity element $e_n \in \Sigma_n$.
+\item For each $\sigma \in \Sigma_n$, we define an operation symbol
+\[
+i[\sigma] \colon \sigma \to \sigma^{-1}.
+\]
 \item Let $\mu$ denote the operadic multiplication in the operad of symmetric groups, $\Sigma$, from \cref{ex:Sigma}. For each $\sigma \in \Sigma_n$ and $\tau_i \in \Sigma_{k_i}$ for $i=1, \ldots, n$, we define an operation symbol $\theta[\sigma; \tau_i]$ of type
 \[
-\theta[\sigma; \tau_i] \colon \sigma \times \tau_1 \times \cdots \times \tau_n \to \mu(\sigma; \tau_1, \ldots, \tau_n).
+\theta[\sigma; \tau_i] \colon \sigma, \tau_1, \ldots, \tau_n \to \mu(\sigma; \tau_1, \ldots, \tau_n).
 \]
 \end{enumerate}
 The set $E$ of equations is defined to have the elements below.
 \begin{enumerate}
-\item \ngnoteil{mult assoc}
-\item \ngnoteil{mult unital}
-\item \ngnoteil{operad assoc}
-\item \ngnoteil{operad unital}
-\item \ngnoteil{action operad axiom}
+\item We write $x \star y$ for $\star[\sigma, \tau](x,y)$, where $x$ is a variable of type $\sigma$ and $y$ is a variable of type $\tau$. For each triple $\rho, \sigma, \tau \in \Sigma_n$, there is an equation
+\[
+(x \star y) \star z = x \star (y \star z).
+\]
+\item An $\mathcal{O}$-algebra $X$ has, for each $n$, an element $u_n \in X(e_n)$ given by $U_n$. For each $\sigma \in \Sigma_n$, there are equations
+\begin{align*}
+u_n \star x & = x,\\
+x \star u_n & = x.
+\end{align*}
+\item We write $x^{-1}$ for $i[\sigma](x)$, where $x$ is a variable of type $\sigma$. For each $\sigma \in \Sigma_n$, there are equations
+\begin{align*}
+x^{-1} \star x & = u_n,\\
+x \star x^{-1} & = u_n.
+\end{align*}
+\item We write $\theta(x; y_1, \ldots, y_n)$ for $\theta[\sigma; \tau_i](x, y_1, \ldots, y_n)$, where $x$ is a variable of type $\sigma \in \Sigma_n$ and for each $i= 1, \ldots, n$ $y_i$ is a variable of type $\tau_i \in \Sigma_{k_i}$. Then for each 
+\begin{itemize}
+\item $\rho \in \Sigma_n$;
+\item $\sigma_i \in \Sigma_{k_i}$, for $i= 1, \ldots, n$; and
+\item $\tau_{i,j} \in \Sigma_{h_{i,j}}$, for $i=1, \ldots, n$ and $j=1, \ldots, k_i$;
+\end{itemize}
+there is an equation
+\begin{multline*}
+\theta\big( \theta(x; y_1, \ldots, y_n); z_{1,1}, \ldots, z_{1, k_1}, \ldots, z_{n, k_n} \big) = \\ \theta\big( x; \theta(y_1; z_{1,1}, \ldots, z_{1, k_1}), \ldots, \theta(y_n; z_{n, 1}, \ldots, z_{n, k_n}) \big).
+\end{multline*}
+\item For each $\sigma \in \Sigma_n$, there are equations
+\begin{align*}
+\theta(u_1; x)& = x, \\
+\theta(x; u_1, \ldots, u_1) & = x.
+\end{align*}
+\item Let $x$ be a variable of type $\sigma \in \Sigma_i$, $y_i$ be a variable of type $\tau_i \in \Sigma_{k_i}$ for $i=1, \ldots, n$, $x'$ be a variable of type $\sigma' \in \Sigma_n$, and $y_i'$ be a variable of type $\tau_i' \in \Sigma_{\sigma^{-1}(i)}$. Then for each such choice of permutations, there is an equation
+\[
+\theta(x'; y_1', \ldots, y_n') \star \theta(x; y_1, \ldots, y_n) = \theta(x' \star x; y'_{\sigma(1)} \star y_1, \ldots, y'_{\sigma(n)} \star y_n).
+\]
 \end{enumerate}
 
-\ngnoteil{put in brief explanation that these are action operads}
-This completes the proof that $\mb{AOp}$ is a variety. It is therefore a finitary monadic category over $\mb{Sets}/\SS$ by \cite[Thm~3.18]{ar} and locally finitely presentable by \cite[Cor~3.7]{ar}.
+The category of $\mathcal{O}$-algebras satisfying the equations in $E$ is isomorphic to $\mb{AOp}$ as follows. Given such an algebra $(X, f)$, define an action operad $(\Lambda^X, \pi)$ by defining 
+\[
+\Lambda^X(n) = \coprod_{\sigma \in \Sigma_n} X(\sigma)
+\]
+and defining $\pi_n \colon X(n) \to \Sigma_n$ to be $f$ restricted to $\Lambda^X(n) \subseteq X$. Each $X(n)$ is a group using $\star$ as its multiplication and $u_n$ as its identity element, and $\pi_n$ is a homomorphism since $\pi_n(x \star y) = \sigma \tau$ when $x \in X(\sigma), y \in X(\tau)$ by the definition of the source and target of $\star$. The operadic multiplication is given by the operation symbols $\theta[\sigma; \tau_i]$, and equations 4 and 5 in $E$ are the operadic associativity and unit axioms, using the first part of \cref{lem:calclem}. The additional action operad axiom is equation 6 in $E$. A morphism of $\mathcal{O}$-algebras is easily seen to define a map of action operads, and these assignments are an isomorphism between the category $\mb{AOp}$ and the category of $\mathcal{O}$-algebras satisfying the equations in $E$.
+This completes the proof that $\mb{AOp}$ is the variety defined by $\mathcal{O}$ and $E$. It is therefore a finitary monadic category over $\mb{Sets}/\SS$ by \cite[Thm~3.18]{ar} and locally finitely presentable by \cite[Cor~3.7]{ar}.
 \end{proof}
 
 
@@ -1922,8 +1967,11 @@ This completes the proof that $\mb{AOp}$ is a variety. It is therefore a finitar
 %As equalizers are computed levelwise, and the product $\Lambda \times \Lambda'$ has underlying operad the pullback $\Lambda \times_{\Sigma} \Lambda'$; this pullback is itself computed levelwise. Together, these imply that $U$ also preserves all limits.
 %\end{proof}
 %
-\begin{cor}
-$U$ has a left adjoint $F \colon \mb{Sets}/\SS \rightarrow \mb{AOp}$, the free action operad functor.
+
+For our purposes, the most important consequence of \cref{thm:aop-lfp} is that we can freely generate an action operad from a collection over $\SS$, as stated below.
+
+\begin{cor}\label{cor:free-aop-fun}
+The underlying collection functor $U \colon \mb{AOp} \to  \mb{Sets}/\SS$ has a left adjoint $F \colon \mb{Sets}/\SS \rightarrow \mb{AOp}$, the free action operad functor.
 \end{cor}
 %\begin{proof}
 %The category $\mb{Sets}/\SS$ is locally finitely presentable as it is equivalent to the functor category $[\SS, \mb{Sets}]$ (here $\SS$ is treated as a discrete category) and any presheaf category is locally finitely presentable. The functor $U$ preserves limits and filtered colimits between locally finitely presentable categories, so has a left adjoint (see Theorem 1.66 in \cite{ar}).
@@ -1939,7 +1987,99 @@ $U$ has a left adjoint $F \colon \mb{Sets}/\SS \rightarrow \mb{AOp}$, the free a
 \end{Defi}
 
 \begin{example}[(The presentation for $\Sigma$)]\label{ex:sigma-pres}
-\ngnoteil{work out presentation for symmetric groups as action operad}
+Here we explicitly give a presentation for the action operad of symmetric groups.
+Recall that the symmetric group $\Sigma_n$ has a presentation, as a \emph{group}, with
+\begin{itemize}
+\item generators $\sigma_{1;n}, \ldots, \sigma_{n-1;n}$ and
+\item relations
+\begin{enumerate}
+\item $\sigma_{i;n}^2 = e_n$ for all $i$,
+\item $\sigma_{i;n} \sigma_{j;n} = \sigma_{j;n} \sigma_{i;n}$ for $i, j$ satisfying $|i-j| \geq 2$, and
+\item $\sigma_{i;n} \sigma_{i+1;n} \sigma_{i;n} = \sigma_{i+1;n} \sigma_{i;n} \sigma_{i+1;n}$ for $1 \leq i < n-1$.
+\end{enumerate}
+\end{itemize}
+\ngmpar{Not super happy with this part, but got the main idea down for now}Note the nonstandard naming of the generators as $\sigma_{i;n}$ instead of merely $\sigma_i$. We have included this additional information in our generators as it is necessary to distinguish between the generators traditionally denoted $\sigma_i$ that are in different symmetric groups. 
+
+Utilizing the operad structure, we notice that
+\[
+\sigma_{i;n} = \beta(e_{i-1}, \sigma_{1;2}, e_{n-i-1}).
+\]
+Furthermore, the second relation above is a consequence of this expression, the fact that $\beta$ is a group homomorphism, and the second part of \cref{lem:calclem}.
+Thus as an action operad, $\Sigma$ is generated by the single element $\sigma_{1;2} \in \Sigma_2$.
+In order to simplify notation, we just write $\sigma$ instead of $\sigma_{1;2}$.
+
+We now define the relations for this presentation of $\Sigma$ as an action operad.
+The first relation is 
+\begin{equation}\label{eq:rel1}
+\sigma^2 = e_2.
+\end{equation}
+The second relation is
+\begin{equation}\label{eq:rel2}
+\mu(\sigma; e_1, e_2) = \mu(e_2; e_1, \sigma) \cdot \mu(e_2; \sigma, e_1).
+\end{equation}
+We therefore claim that $\Sigma$ has a presentation given by
+\begin{itemize}
+\item $\mathbf{g} = \{ \sigma \}$, defined as a collection over $\SS$ by the function sending $\sigma$ to $(1 \ 2) \in \Sigma_2$;
+\item $\mathbf{r} = \{ \rho_1, \rho_2 \}$, defined as a collection over $\SS$ by the function sending $\rho_1$ to $e_2 \in \Sigma_2$ and $\rho_2$ to $(1 \ 3 \ 2) \in \Sigma_3$;
+\item $s_1 \colon F\mathbf{r} \to F\mathbf{g}$ defined uniquely by requiring
+\begin{align*}
+s_1(\rho_1) & = \sigma^2,\\
+s_1(\rho_2) & = \mu(\sigma; e_1, e_2);
+\end{align*}
+\item and $s_2 \colon F\mathbf{r} \to F\mathbf{g}$ defined uniquely by requiring
+\begin{align*}
+s_2(\rho_1) & = e_2,\\
+s_2(\rho_2) & = \mu(e_2; e_1, \sigma) \cdot \mu(e_2; \sigma, e_1).
+\end{align*}
+\end{itemize}
+We note that both $s_1, s_2$ map $\rho_1$ to $(1 \ 2)(1 \ 2) = e_2 \in \Sigma_2$, and both $s_1, s_2$ map $\rho_2$ to $(1 \ 3 \ 2) = (2 \ 3)(1 \ 2)$, thus defining maps of collections over $\SS$.
+
+In order to prove that the above is a presentation for $\Sigma$, we must define a map of action operads $t \colon F\mathbf{g} \to \Sigma$ that exhibits $\Sigma$ as the coequalizer of $s_1, s_2$.
+Define $t$ by requiring $t(\sigma) = (1 \ 2)$.
+The calculations above prove that $t \circ s_1 = t \circ s_2$, and now we must prove that $t$ is the universal map of action operads coequalizing $s_1, s_2$.
+Let $\Lambda$ be an action operad, and $f \colon F\mathbf{g} \to \Lambda$ a map of action operads such that $f \circ s_1 = f \circ s_2$.
+We construct a unique map of action operads $\tilde{f} \colon \Sigma \to \Lambda$ such that $f = \tilde{f} \circ t$.
+If such an $\tilde{f}$ exists, it must map the transposition $\sigma_{1;2} = (1 \ 2) \in \Sigma_2$ to $f(\sigma)$.
+Since each other generator (of $\Sigma_n$ as a group) $\sigma_{i;n}$ is the image
+\begin{equation}\label{eq:sig-in}
+\sigma_{i;n} = \beta(e_{i-1}, \sigma_{1;2}, e_{n-i-1}) = \mu(e_3; e_{i-1}, \sigma_{1;2}, e_{n-i-1})
+\end{equation}
+of $\sigma_{1;2}$ under an operadic multiplication, any map of action operads $\tilde{f}$ satisfying $f = \tilde{f} \circ t$ is unique if it exists, and $\tilde{f}_n$ is 
+defined on the generators of $\Sigma_n$ using \cref{eq:sig-in} by
+\begin{align*}
+\tilde{f}_n(\sigma_{i;n}) & = \tilde{f} \big( \mu(e_3; e_{i-1}, \sigma_{1;2}, e_{n-i-1}) \big) \\
+& = \mu\big( \tilde{f}_n(e_3); \tilde{f}_n(e_{i-1}), \tilde{f}_n(\sigma_{1;2}), \tilde{f}_n(e_{n-i-1}) \big) \\
+& =  \mu(e_3; e_{i-1}, f(\sigma), e_{n-i-1}).
+\end{align*}
+In order to show that these formulas define a unique homomorphism $\tilde{f}_n \colon \Sigma_n \to \Lambda(n)$, we must check that they respect the relations in the presentation of $\Sigma_n$ given above.
+We only check the third axiom, and only in the case $i=1, n=3$; the rest we leave as a simple exercise for the reader.
+In order to verify that $\tilde{f}_3$ respects this relation, we must show that
+\begin{equation}\label{eq:3term}
+\tilde{f}_3( \sigma_{1;3}) \ \tilde{f}_3(\sigma_{2;3} ) \ \tilde{f}_3(\sigma_{1;3} ) = \tilde{f}_3(\sigma_{2;3} ) \ \tilde{f}_3(\sigma_{1;3} ) \ \tilde{f}_3( \sigma_{2;3}).
+\end{equation}
+By\ngnote{need updated version on my board}, the left side of the above is 
+\begin{align*}
+\mu\big( e_2; f(\sigma), e_1 \big) \mu\big( e_2; e_1, f(\sigma) \big) \mu\big( e_2; f(\sigma), e_1 \big) & = f \big( \mu(e_2; \sigma, e_1)\mu(e_2;e_1,  \sigma)\mu(e_2; \sigma, e_1) \big).
+\end{align*}
+Since $f$ is a map of action operads and coequalizes $s_1, s_2$, we obtain
+\begin{align*}
+f \big( \mu(e_2; \sigma, e_1)\mu(e_2;e_1,  \sigma)\mu(e_2; \sigma, e_1) \big) & = f\big( \mu(e_2; \sigma, e_1) \mu(\sigma; e_1, e_2) \big)
+\end{align*}
+by the equality $fs_1(\rho_2) = fs_2(\rho_2)$.
+Finally, the action operad axiom shows that
+\[
+f\big( \mu(e_2; \sigma, e_1) \mu(\sigma; e_1, e_2) \big) = f\big( \mu(\sigma; e_1, \sigma) \big).
+\]
+A similar argument shows that the right side of \cref{eq:3term} is equal to 
+\[
+f \big(\mu(e_2;e_1, \sigma) \mu(e_2; \sigma, e_1)\mu(e_2;e_1,  \sigma) \big),
+\]
+and once by coequalizing $s_1, s_2$ is therefore $f\big( \mu(\sigma; e_1, \sigma) \big)$.
+We have now verified that $\tilde{f}_n$ respects the relations for the presentation of $\Sigma_n$, and therefore defines a unique group homomorphism $\tilde{f}_n \colon \Sigma_n \to \Lambda(n)$.
+
+
+
+\ngnoteil{only thing left is to show $\tilde{f}$'s are an operad map over $\Sigma$}
 \end{example}
 
 \section{Action Operads as Clubs}
