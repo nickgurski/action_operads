@@ -76,7 +76,7 @@ Similar notation will be used for left actions, and for multiplication in a grou
 \end{nota}
 
 \begin{conv}[(Indexed objects)]\label{conv:indexed}
-We generically write $\{ \Lambda(n) \}_{n \in \N}$ for a $\N$-indexed family of objects $\Lambda(n)$. We will occasionallywrite $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams or when the objects $\Lambda_n$ have been independently defined, as in \cref{nota:symm_sigma,nota:braid}.
+We generically write $\{ \Lambda(n) \}_{n \in \N}$ for a $\N$-indexed family of objects $\Lambda(n)$. We will occasionally write $\Lambda_n$ in place of $\Lambda(n)$, especially in diagrams or when the objects $\Lambda_n$ have been independently defined, as in \cref{nota:symm_sigma,nota:braid}.
 \end{conv}
 
 \begin{conv}[(Products and quotients)]\label{conv:coeq}
@@ -103,6 +103,12 @@ This notation is meant to emphasize the analogy with tensor products of $R$-modu
 It also differentiates these coequalizers from pullbacks.
 \end{conv}
 
+\begin{conv}[(Tilde for maps respecting equivariance)]\label{conv:equiv-maps}
+Suppose that $\coeqb{A}{B}{G}$ is a coequalizer as in \cref{conv:coeq}.
+By definition, maps $f \colon \coeqb{A}{B}{G} \to X$ are in bijection with maps $A \times B \to X$ that coequalize $1 \times \lambda$ and $\rho \times 1$.
+Given such a map $f$, we will always denote the corresponding map $A \times B \to X$ as $\tilde{f}$.
+\end{conv}
+
 
 \begin{conv}[(Pullbacks)]\label{conv:pb}
 The pullback of the diagram
@@ -118,7 +124,7 @@ The pullback of the diagram
 will be written as $X \times_A Y$. 
 \end{conv}
 
-\begin{Defi}](Underlying permutation)]\label{Defi:underlying-perm}
+\begin{Defi}[(Underlying permutation)]\label{Defi:underlying-perm}
 Suppose that $f \colon G \to \Sigma_n$ is a given group homomorphism, and $x \in G$. The \emph{underlying permutation} of $x$ is the element $f(x) \in \Sigma_n$. If there is likely to be some confusion as to which homomorphism $f$ is being used, we will call $f(x)$ the \emph{underlying permutation with respect to $f$}.
 \end{Defi}
 

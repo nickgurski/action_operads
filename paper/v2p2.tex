@@ -2,7 +2,12 @@
 
 \section{\texorpdfstring{$\Lambda$}{L}-Operads and their Algebras}
 
-Just as we had the definitions of operad, symmetric operad, and braided operad, we now come to the general definition of a $\Lambda$-operad, where $\Lambda$ is an action operad. Thereafter we begin to delve into the theory around $\Lambda$-operads. Beginning by recasting familiar operads as $\Lambda$-operads for particular choices of $\Lambda$, we then proceed to shadow standard operadic definitions for algebras and pseudoalgebras in this setting, characterising algebras using endomorphism $\Lambda$-operads, and deriving monads from $\Lambda$-operads. We show that there is an adjunction between $\Lambda\mbox{-}\mb{Op}$ and $\Sigma\mbox{-}\mb{Op}$, and prove some technical results regarding maps between monads induced by $\Lambda$-operads.
+This section presents the definition of a $\Lambda$-operad (\cref{Defi:lamop}), where $\Lambda$ is an action operad.
+This definition unifies the various types (non-symmetric, symmetric, and braided) of operads discussed in \cref{sec:back-op} under one umbrella term.
+The different group actions arise from different choices of $\Lambda$.
+We also define algebras over a $\Lambda$-operad in \cref{Defi:aop-alg}, and prove a change-of-action operad result in \cref{prop:pbaop}.
+
+%Just as we had the definitions of operad, symmetric operad, and braided operad, we now come to the general definition of a $\Lambda$-operad,  Thereafter we begin to delve into the theory around $\Lambda$-operads. Beginning by recasting familiar operads as $\Lambda$-operads for particular choices of $\Lambda$, we then proceed to shadow standard operadic definitions for algebras and pseudoalgebras in this setting, characterising algebras using endomorphism $\Lambda$-operads, and deriving monads from $\Lambda$-operads. We show that there is an adjunction between $\Lambda\mbox{-}\mb{Op}$ and $\Sigma\mbox{-}\mb{Op}$, and prove some technical results regarding maps between monads induced by $\Lambda$-operads.
  	% QQQ chapter: operads and algebras with general group actions
  	% \begin{itemize}
  	% 	\item defines $\Lambda$-operads
@@ -18,7 +23,7 @@ Just as we had the definitions of operad, symmetric operad, and braided operad, 
  	% \end{itemize}
 
 
-\begin{Defi}\label{Defi:lamop}
+\begin{Defi}[($\Lambda$-operads)]\label{Defi:lamop}
   Let $\Lambda$ be an action operad. A \textit{$\Lambda$-operad} $P$ (in $\mb{Sets}$) consists of
     \begin{itemize}
       \item a non-symmetric operad $P$ in $\mb{Sets}$ and
@@ -26,11 +31,11 @@ Just as we had the definitions of operad, symmetric operad, and braided operad, 
     \end{itemize}
 such that the following two equivariance axioms hold.
   \begin{itemize}
-    \item For each $p \in P(n)$, $q_i \in P(k_i)$, and $g_i \in \Lambda(k_i)$:
+    \item For each $p \in P(n)$, $q_i \in P(k_i)$, and $g_i \in \Lambda(k_i)$ for $i=1, \ldots, n$:
   \[
     \mu^{P}(p; q_{1} \cdot g_{1}, \ldots, q_{n} \cdot g_{n}) = \mu^{P}(p; q_{1}, \ldots, y_{n}) \cdot \beta^{\Lambda}(g_{1}, \ldots, g_{n}).
   \]
-    \item For each $p \in P(n)$, $g \in \Lambda(n)$, and $q_i \in \Lambda(k_i)$:
+    \item For each $p \in P(n)$, $g \in \Lambda(n)$, and $q_i \in \Lambda(k_i)$ for $i=1, \ldots, n$:
   \[
     \mu^{P}(p \cdot g; q_{1}, \ldots, q_{n}) = \mu^{P}\left(p; q_{g^{-1}(1)}, \ldots, q_{g^{-1}(n)}\right) \cdot \delta_{n;k_1,\ldots,k_n}^{\Lambda}(g).
   \]
@@ -38,8 +43,8 @@ such that the following two equivariance axioms hold.
 \end{Defi}
 
 
-\begin{Defi}\label{Defi:aop_map}
-Let $P$ and $Q$ be $\Lambda$-operads. A \emph{morphism $f \colon P \rightarrow Q$ of $\Lambda$-operads} consists of an operad map (\ref{Defi:aop_map}) which is levelwise equivariant with respect to the $\Lambda(n)$-actions, i.e., for each $n \in \mathbb{N}$ the following diagram commutes.
+\begin{Defi}[(Map of ($\Lambda$-operads)]\label{Defi:aop_map}
+Let $P$ and $Q$ be $\Lambda$-operads. A \emph{map $f \colon P \rightarrow Q$ of $\Lambda$-operads} consists of an operad map (\ref{Defi:aop_map}) that is levelwise equivariant with respect to the $\Lambda(n)$-actions, i.e., for each $n \in \mathbb{N}$ the following diagram commutes.
   \[
     \xy
       (0,0)*+{P(n) \times \Lambda(n)}="00";
@@ -55,11 +60,30 @@ Let $P$ and $Q$ be $\Lambda$-operads. A \emph{morphism $f \colon P \rightarrow Q
   \]
 \end{Defi}
 
-\begin{Defi}
-  The category $\Lambda\mbox{-}\mb{Op}$ of $\Lambda$-operads has objects the $\Lambda$-operads and morphisms the $\Lambda$-operad maps.
-\end{Defi}
+\begin{prop}\label{prop:cat-of-L-op}
+There is a category with 
+\begin{itemize}
+\item objects the $\Lambda$-operads $P$ in $\mb{Sets}$, 
+\item morphisms the maps of $\Lambda$-operads between them,
+\item identities $1_P \colon P \to P$ given by
+\[
+(1_P)_n = 1_{P(n)} \colon P(n) \to P(n),
+\]
+and
+\item composition given by
+\[
+(g \circ f)_n = g_n \circ f_n.
+\]
+\end{itemize}
+\end{prop}
 
-\begin{example}
+\begin{nota}[(The category of $\Lambda$-operads)]\label{nota:cat-of-L-op}
+The category in \cref{prop:cat-of-sym-op} is called the \emph{category of $\Lambda$-operads (in $\mb{Sets}$)}, and is denoted $\Lambda\mbox{-}\mb{Op}$.
+\end{nota}
+
+
+\begin{example}[(Non-symmetric, symmetric, and braided operads as $\Lambda$-operads)]
+Each of the types of operad discussed in \cref{sec:back-op} can be expressed as $\Lambda$-operad for some choice of $\Lambda$\ngnote{this sentence doesn't read correctly fix later}.
   \begin{enumerate}
     \item Let $T$ denote the terminal operad in $\mb{Sets}$ equipped with its unique action operad structure. Then a $T$-operad is just a non-symmetric operad in $\mb{Sets}$.
     \item Let $\Sigma$ denote the operad of symmetric groups with $\pi \colon \Sigma \rightarrow \Sigma$ the identity map. Then a $\Sigma$-operad is a symmetric operad in the category of sets.
@@ -68,24 +92,26 @@ Let $P$ and $Q$ be $\Lambda$-operads. A \emph{morphism $f \colon P \rightarrow Q
 \end{example}
 
 A further example of a $\Lambda$-operad is given by the underlying operad, $\Lambda$, of $\Lambda$ itself.
-\begin{prop}\label{gisgop}
+\begin{prop}\label{prop:gisgop}
 Let $\Lambda$ be an action operad. Then the operad $\Lambda$ is itself a $\Lambda$-operad.
 \end{prop}
 \begin{proof}
 The underlying operad $\Lambda$ is of course an operad in $\mb{Sets}$. The action $\Lambda(n) \times \Lambda(n) \rightarrow \Lambda(n)$ is given simply by the group multiplication in $\Lambda(n)$. The two equivariance axioms are then both instances of the action operad axiom of $\Lambda$.
 \end{proof}
 
-An operad is intended to be an abstract description of a certain type of algebraic structure, and the particular instances of that structure are the algebras for that operad. We begin with the definition of an algebra over a non-symmetric operad and add in the group actions later.
+An operad is intended to be an abstract description of a certain type of algebraic structure, and the particular instances of that structure are the algebras for that operad. 
+We give the general definition first in \cref{Defi:aop-alg}, and then recover algebras over non-symmetric, symmetric, and braided operads in SOMETHING.
+We remind the reader of the tilde notation for maps respecting coequalizers, \cref{conv:equiv-maps}.
 
-\begin{Defi}\label{opalgax}
-Let $O$ be a non-symmetric operad. An \textit{algebra} for $O$ consists of a set $X$ together with maps $\alpha_{n} \colon O(n) \times X^{n} \rightarrow X$ such that the following axioms hold.
+\begin{Defi}\label{Defi:aop-alg}
+Let $\Lambda$ be an action operad, and $P$ be a $\Lambda$-operad. An \textit{algebra} for $P$ consists of a set $X$ together with maps $\alpha_{n} \colon \coeq{P}{X}{\Lambda}{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the following axioms.
 \begin{enumerate}
-\item The element $\id \in O(1)$ is a unit in the sense that
+\item The element $\id \in P(1)$ is a unit in the sense that
   \[
-    \alpha_{1}(\id; x) = x
+    \tilde{\alpha}_{1}(\id; x) = x
   \]
 for all $x \in X$.
-\item The maps $\alpha_{n}$ are associative in the sense that the following diagram commutes.
+\item The maps $\tilde{\alpha}_{n}$ are associative in the sense that the following diagram commutes.
   %%Expanded diagram
   % \[
   %   \xy
@@ -103,19 +129,26 @@ for all $x \in X$.
   % \]
   \[
     \xy
-      (0,0)*+{O(n) \times \prod_{i=1}^n \left(O(k_i) \times X^{k_i}\right)}="ul";
-      (60,0)*+{O(n) \times X^{n}}="ur";
-      (0,-12)*+{O(n) \times \left(\prod_{i=1}^n O(k_i)\right) \times \prod_{i=1}^n \left(X^{k_i}\right) }="ml";
-      (0,-24)*+{O(\sum k_{i}) \times X^{\sum k_{i}}}="bl";
+      (0,0)*+{P(n) \times \prod_{i=1}^n \left(P(k_i) \times X^{k_i}\right)}="ul";
+      (60,0)*+{P(n) \times X^{n}}="ur";
+      (0,-12)*+{P(n) \times \left(\prod_{i=1}^n P(k_i)\right) \times \prod_{i=1}^n \left(X^{k_i}\right) }="ml";
+      (0,-24)*+{P(\sum k_{i}) \times X^{\sum k_{i}}}="bl";
       (60,-24)*+{X}="br";
-      {\ar^>>>>>>>>>>>>>>{1 \times \alpha_{k_{1}} \times \cdots \alpha_{k_{n}}} "ul"; "ur"};
-      {\ar^{\alpha_{n}} "ur"; "br"};
+      {\ar^>>>>>>>>>>>>>>{1 \times \tilde{\alpha}_{k_{1}} \times \cdots \times \tilde{\alpha}_{k_{n}}} "ul"; "ur"};
+      {\ar^{\tilde{\alpha}_{n}} "ur"; "br"};
       {\ar_{\cong} "ul"; "ml"};
       {\ar_{\mu \times 1} "ml"; "bl"};
-      {\ar_{\alpha_{\sum k_{i}}} "bl"; "br"};
+      {\ar_{\tilde{\alpha}_{\sum k_{i}}} "bl"; "br"};
     \endxy
   \]
 \end{enumerate}
+
+%operad algebra axioms given in \cref{opalgax}.
+\end{Defi}
+
+\begin{Defi}\label{opalgax}
+Let $O$ be a non-symmetric operad. An \textit{algebra} for $O$ consists of a set $X$ together with maps $\alpha_{n} \colon O(n) \times X^{n} \rightarrow X$ such that the following axioms hold.
+
 \end{Defi}
 
 $\coeq{P}{X}{\Lambda}{n}$
@@ -132,10 +165,6 @@ using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the canon
   \[
     \tilde{f}(p\cdot g; x_{1}, \ldots, x_{n}) = \tilde{f}\left(p; x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)}\right).
   \]
-
-\begin{Defi}
-  Let $P$ be a $\Lambda$-operad. An \textit{algebra} for $P$ consists of a set $X$ together with maps $\alpha_{n} \colon \coeq{P}{X}{\Lambda}{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the operad algebra axioms given in \cref{opalgax}.
-\end{Defi}
 
 \begin{rem}
 It is worth noting that the equivariance required for a $P$-algebra is built into the definition above by requiring the existence of the maps $\alpha_{n}$ to be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying plain operad (see \cref{pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
@@ -171,7 +200,7 @@ $\mathcal{E}_{X}$ is a symmetric operad, so we define the actions by
 
 The previous result is really a change-of-structure-groups result. We record the general result as the following proposition.
 
-\begin{prop}\label{pbaop}
+\begin{prop}\label{prop:pbaop}
 Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads. Then $f$ induces a functor $f^{*} \colon \Lambda'\mbox{-}\mb{Op} \rightarrow \Lambda\mbox{-}\mb{Op}$.
 \end{prop}
 
