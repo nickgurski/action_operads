@@ -43,7 +43,7 @@ such that the following two equivariance axioms hold.
 \end{Defi}
 
 
-\begin{Defi}[(Map of ($\Lambda$-operads)]\label{Defi:aop_map}
+\begin{Defi}[(Map of $\Lambda$-operads)]\label{Defi:aop_map}
 Let $P$ and $Q$ be $\Lambda$-operads. A \emph{map $f \colon P \rightarrow Q$ of $\Lambda$-operads} consists of an operad map (\ref{Defi:aop_map}) that is levelwise equivariant with respect to the $\Lambda(n)$-actions, i.e., for each $n \in \mathbb{N}$ the following diagram commutes.
   \[
     \xy
@@ -82,7 +82,7 @@ The category in \cref{prop:cat-of-sym-op} is called the \emph{category of $\Lamb
 \end{nota}
 
 
-\begin{example}[(Non-symmetric, symmetric, and braided operads as $\Lambda$-operads)]
+\begin{example}[(Non-symmetric, symmetric, and braided operads as $\Lambda$-operads)]\label{ex:lop-exs}
 Each of the types of operad discussed in \cref{sec:back-op} can be expressed as $\Lambda$-operad for some choice of $\Lambda$\ngnote{this sentence doesn't read correctly fix later}.
   \begin{enumerate}
     \item Let $T$ denote the terminal operad in $\mb{Sets}$ equipped with its unique action operad structure. Then a $T$-operad is just a non-symmetric operad in $\mb{Sets}$.
@@ -100,11 +100,30 @@ The underlying operad $\Lambda$ is of course an operad in $\mb{Sets}$. The actio
 \end{proof}
 
 An operad is intended to be an abstract description of a certain type of algebraic structure, and the particular instances of that structure are the algebras for that operad. 
-We give the general definition first in \cref{Defi:aop-alg}, and then recover algebras over non-symmetric, symmetric, and braided operads in SOMETHING.
-We remind the reader of the tilde notation for maps respecting coequalizers, \cref{conv:equiv-maps}.
+We give the general definition first in \cref{Defi:aop-alg}, and then recover algebras over non-symmetric, symmetric, and braided operads in \cref{ex:lop-alg-exs}.
 
-\begin{Defi}\label{Defi:aop-alg}
-Let $\Lambda$ be an action operad, and $P$ be a $\Lambda$-operad. An \textit{algebra} for $P$ consists of a set $X$ together with maps $\alpha_{n} \colon \coeq{P}{X}{\Lambda}{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the following axioms.
+\begin{rem}\label{rem:aop-alg-pre}
+In preparation for the definition of an algebra over a $\Lambda$-operad, we make the following two remarks.
+\begin{enumerate}
+\item If $\Lambda$ is an action operad and $X$ is a set, then $\Lambda(n)$ acts on $X^n$ by 
+\[
+\Lambda(n) \times X^n \stackrel{\pi_n \times 1}{\to} \Sigma_n \times X^n \stackrel{\kappa_n}{\to} X^n,
+\]
+where $\kappa_n$ is defined by the formula
+\[
+\kappa_n(\sigma; x_1, \ldots, x_n) = (x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}).
+\]
+Thus we would write
+\[
+g \cdot (x_1, \ldots, x_n) = (x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)})
+\]
+using \cref{nota:perm_shorthand}.
+\item Following the previous item, we define $\coeq{P}{X}{\Lambda}{n}$ as in \cref{conv:coeq}. As the definition of an algebra over $P$ will involve maps with source $\coeq{P}{X}{\Lambda}{n}$, we remind the reader of the tilde notation for maps respecting coequalizers, \cref{conv:equiv-maps}.
+\end{enumerate}
+\end{rem}
+
+\begin{Defi}[($P$-algebras)]\label{Defi:aop-alg}
+Let $\Lambda$ be an action operad, and $P$ be a $\Lambda$-operad. An \textit{algebra} for $P$, or \emph{$P$-algebra}, consists of a set $X$ together with maps $\alpha_{n} \colon \coeq{P}{X}{\Lambda}{n} \rightarrow X$ such that the maps $\tilde{\alpha}_{n}$ satisfy the following axioms.
 \begin{enumerate}
 \item The element $\id \in P(1)$ is a unit in the sense that
   \[
@@ -142,36 +161,44 @@ for all $x \in X$.
     \endxy
   \]
 \end{enumerate}
-
-%operad algebra axioms given in \cref{opalgax}.
 \end{Defi}
 
-\begin{Defi}\label{opalgax}
-Let $O$ be a non-symmetric operad. An \textit{algebra} for $O$ consists of a set $X$ together with maps $\alpha_{n} \colon O(n) \times X^{n} \rightarrow X$ such that the following axioms hold.
-
-\end{Defi}
-
-$\coeq{P}{X}{\Lambda}{n}$
-
-Moving on to algebras for a $\Lambda$-operad, let $P$ be a $\Lambda$-operad and let $X$ be any set. Write $\coeq{P}{X}{\Lambda}{n}$ for the coequalizer of the pair of maps
-  \[
-    P(n) \times \Lambda(n) \times X^{n} \rightrightarrows P(n) \times X^{n}
-  \]
-of which the first map is the action of $\Lambda(n)$ on $P(n)$ and the second map is
-  \[
-    P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times \Sigma_{n} \times X^{n} \rightarrow P(n) \times X^{n}
-  \]
-using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the canonical action of $\Sigma_{n}$ on $X^{n}$ by permutation of coordinates: $\sigma \cdot (x_{1}, \ldots, x_{n}) = (x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)})$. By the universal property of the coequalizer, a function $f \colon \coeq{P}{X}{\Lambda}{n} \rightarrow Y$ can be identified with a function $\tilde{f} \colon P(n) \times X^{n} \rightarrow Y$ such that
-  \[
-    \tilde{f}(p\cdot g; x_{1}, \ldots, x_{n}) = \tilde{f}\left(p; x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)}\right).
-  \]
+%\begin{Defi}\label{opalgax}
+%Let $O$ be a non-symmetric operad. An \textit{algebra} for $O$ consists of a set $X$ together with maps $\alpha_{n} \colon O(n) \times X^{n} \rightarrow X$ such that the following axioms hold.
+%
+%\end{Defi}
+%
+%$\coeq{P}{X}{\Lambda}{n}$
+%
+%Moving on to algebras for a $\Lambda$-operad, let $P$ be a $\Lambda$-operad and let $X$ be any set. Write $\coeq{P}{X}{\Lambda}{n}$ for the coequalizer of the pair of maps
+%  \[
+%    P(n) \times \Lambda(n) \times X^{n} \rightrightarrows P(n) \times X^{n}
+%  \]
+%of which the first map is the action of $\Lambda(n)$ on $P(n)$ and the second map is
+%  \[
+%    P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times \Sigma_{n} \times X^{n} \rightarrow P(n) \times X^{n}
+%  \]
+%using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the canonical action of $\Sigma_{n}$ on $X^{n}$ by permutation of coordinates: $\sigma \cdot (x_{1}, \ldots, x_{n}) = (x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)})$. By the universal property of the coequalizer, a function $f \colon \coeq{P}{X}{\Lambda}{n} \rightarrow Y$ can be identified with a function $\tilde{f} \colon P(n) \times X^{n} \rightarrow Y$ such that
+%  \[
+%    \tilde{f}(p\cdot g; x_{1}, \ldots, x_{n}) = \tilde{f}\left(p; x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)}\right).
+%  \]
 
 \begin{rem}
-It is worth noting that the equivariance required for a $P$-algebra is built into the definition above by requiring the existence of the maps $\alpha_{n}$ to be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying plain operad (see \cref{pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
+It is worth reiterating that the equivariance required for a $P$-algebra is built into the definition above by requiring the existence of the maps $\alpha_{n}$ to be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying non-symmetric operad (see \cref{prop:pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
 \end{rem}
 
-\begin{Defi}
-Let $P$ be a $\Lambda$-operad. The category of algebras for $P$, $P\mbox{-}\mb{Alg}$, has objects the $P$-algebras $(X, \alpha)$ and morphisms $f \colon  (X, \alpha) \rightarrow (Y, \beta)$ those functions $f \colon X \rightarrow Y$ such that the following diagram commutes for every $n$.
+\begin{example}[(Algebras over non-symmetric, symmetric, and braided operads as $\Lambda$-operads)]\label{ex:lop-alg-exs}
+We can recover standard notions of algebras over non-symmetric, symmetric, and braided operads as algebras over a $\Lambda$-operad.
+  \begin{enumerate}
+    \item For the action operad $T$ of trivial groups, a $T$-operad is a non-symmetric operad. The coequalizer $\coeq{P}{X}{T}{n}$ is isomorphic to $P(n) \times X^n$, so without loss of generality we can assume that $\tilde{\alpha}_n=\alpha_n$. This recovers the usual notion of an algebra over a non-symmetric operad, see\ngnote{maybe Tom's book, GILS}.
+    \item For the action operad $\Sigma$ of symmetric groups, a $\Sigma$-operad is a symmetric operad. \cref{Defi:aop-alg} is equivalent to May's original definition\ngnote{get citation, def number} by \cref{rem:aop-alg-pre}.
+    \item For the action operad $B$ of braid groups, a $B$-operad is a braided operad in the sense of Fiedorowicz \cite{fie-br}. Once again, \cref{Defi:aop-alg} is equivalent to Fiedorowicz's definition\ngnote{get citation, def number} by \cref{rem:aop-alg-pre}.
+  \end{enumerate}
+\end{example}
+
+
+\begin{Defi}[(Map of $P$-algebras)]\label{Defi:map-palg}
+Let $P$ be a $\Lambda$-operad, and let $(X, \alpha)$ and $(Y, \beta)$ be $P$-algebras. Then a \emph{map of $P$-algebras} $f \colon  (X, \alpha) \rightarrow (Y, \beta)$ is a function $f \colon X \rightarrow Y$ such that the following diagram commutes for every $n$.
   \[
     \xy
       {\ar^{1 \times f^{n}} (0,0)*+{P(n) \times X^{n}}; (50,0)*+{P(n) \times Y^{n}} };
@@ -180,41 +207,102 @@ Let $P$ be a $\Lambda$-operad. The category of algebras for $P$, $P\mbox{-}\mb{A
       {\ar_{f} (0,-15)*+{X}; (50,-15)*+{Y} };
     \endxy
   \]
-
 \end{Defi}
 
-Let $X$ be a set. Then the endomorphism operad of $X$, denoted $\mathcal{E}_{X}$, is given by the sets $\mathcal{E}_{X}(n) = \mb{Sets}(X^{n}, X)$ with the identity function in $\mathcal{E}_{X}(1)$ giving the unit element and composition of functions giving the composition operation. Concretely, composition is given by the formula
-  \[
-    \mu(f; g_{1}, \ldots, g_{n}) = f \circ (g_{1} \times \cdots \times g_{n}).
-  \]
+\begin{prop}\label{prop:cat-of-Palg}
+Let $\Lambda$ be an action operad and $P$ be a $\Lambda$-operad.
+There is a category with 
+\begin{itemize}
+\item objects the $P$-algebras $(X, \alpha)$, 
+\item morphisms the maps of $P$-algebras between them,
+\item identities $1_{(X, \alpha)} \colon (X, \alpha) \to (X, \alpha)$ given by the identities $1_X$, and
+\item composition given by composition of the underlying functions.
+\end{itemize}
+\end{prop}
 
-\begin{lem}
-Let $\Lambda$ be an action operad, and let $X$ be a set. Then $\mathcal{E}_{X}$ carries a canonical $\Lambda$-operad structure.
-\end{lem}
-\begin{proof}
-$\mathcal{E}_{X}$ is a symmetric operad, so we define the actions by
-  \[
-    \mathcal{E}_{X}(n) \times \Lambda(n) \stackrel{1 \times \pi_{n}}{\longrightarrow} \mathcal{E}_{X}(n) \times \Sigma_{n} \rightarrow \mathcal{E}_{X}(n).
-  \]
-\end{proof}
+\begin{nota}[(The category of $P$-algebras)]\label{nota:cat-of-palg}
+The category in \cref{prop:cat-of-Palg} is called the \emph{category of $P$-algebras (in $\mb{Sets}$)}, and is denoted $P\mbox{-}\mb{Alg}$.
+\end{nota}
 
-The previous result is really a change-of-structure-groups result. We record the general result as the following proposition.
+The final goal of this section is to recast the category of algebras over a $\Lambda$-operad $P$ using the endomorphism operad of \cref{ex:endo}.
+We begin by sketching a change-of-action operad result.
 
 \begin{prop}\label{prop:pbaop}
-Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads. Then $f$ induces a functor $f^{*} \colon \Lambda'\mbox{-}\mb{Op} \rightarrow \Lambda\mbox{-}\mb{Op}$.
-\end{prop}
-
-We can now use endomorphism operads to characterize algebra structures.
-
-\begin{prop}\label{endoalg}
-Let $X$ be a set, and $P$ a $\Lambda$-operad. Then algebra structures on $X$ are in 1-to-1 correspondence with $\Lambda$-operad maps $P \rightarrow \mathcal{E}_{X}$.
+Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads. 
+\begin{enumerate}
+\item The map $f$ induces a functor $f^{*} \colon \Lambda'\mbox{-}\mb{Op} \rightarrow \Lambda\mbox{-}\mb{Op}$ with the property that $(f^{*}P)(n) = P(n)$ for every $\Lambda'$-operad $P$.
+\item \ngmpar{figure this out later, fill in proof too}Is there one going the other way?
+\item Is there an adjunction? I think we need there to be one.
+\end{enumerate}
 \end{prop}
 \begin{proof}
-A map $P(k) \rightarrow \mathcal{E}_{X}(k)$ corresponds, using the closed structure on $\mb{Sets}$, to a map $P(k) \times X^{k} \rightarrow X$. The monoid homomorphism axioms give the unit and associativity axioms, and the requirement that $P \rightarrow \mathcal{E}_{X}$ be a map of $\Lambda$-operads gives the equivariance condition.
+The right action of $\Lambda(n)$ on $(f^{*}P)(n) = P(n)$ is given as the composite
+\[
+P(n) \times \Lambda(n) \stackrel{1 \times f_n}{\to} P(n) \times \Lambda'(n) \to P(n),
+\]
+where the second map is the action given by the $\Lambda'$-operad structure on $P$.
+This group action, together with the operadic multiplication maps for $P$ as a $\Lambda'$-operad, give $f^*P$ a $\Lambda$-operad structure.
+Given a map $h \colon P \to Q$ of $\Lambda'$-operads, the maps $h_n \colon P(n) \to Q(n)$ also constitute a map of $\Lambda$-operad $f^*P \to f^*Q$ by SOMETHING.
+It is then straightforward to check the functoriality of these assignments, finishing the proof of the first claim.
+
+
 \end{proof}
 
-\begin{rem}
-The proposition above holds for $P$-algebras in any closed symmetric monoidal category. Having a closed structure (in addition to all small colimits) is a stronger condition than the tensor preserving colimits in each variable, but it is a natural one that arises in many examples.
+\begin{prop}\label{prop:e-fun}
+The assignment sending a set $X$ to its endomorphism operad $\mathcal{E}_X$ (\cref{ex:endo}) is the object part of a functor $\mathcal{E} \colon \mb{Sets} \to \Sigma\mbox{-}\mb{Op}$.
+\end{prop}
+\begin{proof}
+define on morphisms, check functoriality
+\end{proof}
+
+\begin{lem}\label{lem:alg=map}
+\ngmpar{cite May GILS} Let $P$ be a symmetric operad and $X$ be a set.
+\begin{enumerate}
+\item $P$-algebra structures on $X$, given by $\{ \alpha_n \colon  \coeq{P}{X}{\Sigma}{n} \rightarrow X\}$, are in bijection with maps of symmetric operads $\alpha \cn P \to \mathcal{E}_X$.
+\item As a consequence, the category of $P$-algebras is isomorphic to the comma category $P \downarrow \mathcal{E}$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+Cite May for 1, explain how 2 follows by writing out the definitions.
+\end{proof}
+
+\begin{cor}\label{cor:pi-star}
+Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \Lambda \to \Sigma$. 
+\begin{enumerate}
+\item The map $\pi$ induces a functor $\pi^* \colon \Sigma\mbox{-}\mb{Op} \to \Lambda\mbox{-}\mb{Op}$.
+\item For any $\Lambda$-operad $P$, the category $P\mbox{-}\mb{Alg}$ is isomorphic to the comma category $P \downarrow \pi^* \circ \mathcal{E}$.
+\end{enumerate}
+\end{cor}
+\begin{proof}
+1 is part one of \cref{prop:pbaop} applied to $\pi$ via \cref{prop:pi-in-aop}.
+2 is part three of \cref{prop:pbaop} and part two of \cref{lem:alg=map}.
+\end{proof}
+
+%\begin{lem}
+%Let $\Lambda$ be an action operad, and let $X$ be a set. Then $\mathcal{E}_{X}$ carries a canonical $\Lambda$-operad structure.
+%\end{lem}
+%\begin{proof}
+%$\mathcal{E}_{X}$ is a symmetric operad, so we define the actions by
+%  \[
+%    \mathcal{E}_{X}(n) \times \Lambda(n) \stackrel{1 \times \pi_{n}}{\longrightarrow} \mathcal{E}_{X}(n) \times \Sigma_{n} \rightarrow \mathcal{E}_{X}(n).
+%  \]
+%\end{proof}
+%
+%The previous result is really a change-of-structure-groups result. We record the general result as the following proposition.
+%
+%
+%
+%We can now use endomorphism operads to characterize algebra structures.
+%
+%\begin{prop}\label{endoalg}
+%Let $X$ be a set, and $P$ a $\Lambda$-operad. Then algebra structures on $X$ are in 1-to-1 correspondence with $\Lambda$-operad maps $P \rightarrow \mathcal{E}_{X}$.
+%\end{prop}
+%\begin{proof}
+%A map $P(k) \rightarrow \mathcal{E}_{X}(k)$ corresponds, using the closed structure on $\mb{Sets}$, to a map $P(k) \times X^{k} \rightarrow X$. The monoid homomorphism axioms give the unit and associativity axioms, and the requirement that $P \rightarrow \mathcal{E}_{X}$ be a map of $\Lambda$-operads gives the equivariance condition.
+%\end{proof}
+
+\begin{rem}\label{rem:sec8-in-V}
+\ngnoteil{explain that this whole section applies to operads and algebras in some other $V$}
 \end{rem}
 
 
