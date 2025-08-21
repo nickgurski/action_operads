@@ -231,8 +231,19 @@ We begin by sketching a change-of-action operad result.
 Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads. 
 \begin{enumerate}
 \item The map $f$ induces a functor $f^{*} \colon \Lambda'\mbox{-}\mb{Op} \rightarrow \Lambda\mbox{-}\mb{Op}$ with the property that $(f^{*}P)(n) = P(n)$ for every $\Lambda'$-operad $P$.
-\item \ngmpar{figure this out later, fill in proof too}Is there one going the other way?
-\item Is there an adjunction? I think we need there to be one.
+\item \ngmpar{figure this out later, fill in proof too}Is there one going the other way? Should be $(f_{!}P)(n)$ given by the coequalizer
+    \[
+        \xy
+            (0,0)*+{P(n) \times \Lambda(n) \times \Lambda'(n)}="00";
+            (30,0)*+{P(n) \times \Lambda'(n)}="10";
+            (60,0)*+{\coeqb{P(n)}{\Lambda'(n)}{\Lambda(n)}}="20";
+            {\ar@<1ex>^{1 \times (\star \circ f_n \times 1)} "00" ; "10"};
+            {\ar@<-1ex>_{\rho \times 1} "00" ; "10"};
+            {\ar^{\varepsilon} "10" ; "20"};
+        \endxy
+    \]
+where $\star \colon \Lambda'(n) \times \Lambda'(n) \to \Lambda'(n)$ is group multiplication and $\rho \colon P(n) \times \Lambda(n) \to P(n)$ is the right action given by the $\Lambda$-operad structure. 
+\item Is there an adjunction? I think we need there to be one. The functor $f_{!}$ is left adjoint to $f^*$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -245,7 +256,31 @@ This group action, together with the operadic multiplication maps for $P$ as a $
 Given a map $h \colon P \to Q$ of $\Lambda'$-operads, the maps $h_n \colon P(n) \to Q(n)$ also constitute a map of $\Lambda$-operad $f^*P \to f^*Q$ by SOMETHING.
 It is then straightforward to check the functoriality of these assignments, finishing the proof of the first claim.
 
+\ngnoteil{Moved from a proof that was below, needs rewriting:}
+Given any map of monoids $f \colon M \rightarrow N$ in a monoidal category, there exists an adjunction between right $M$-modules and right $N$-modules given by $f^{*}$ as the right adjoint and $A \mapsto A \otimes_{M} N$ as the left adjoint. Thus we define
+  \[
+    S(P)(n) = \coequ{P}{\Sigma}{\Lambda}{n},
+  \]
+and this inherits a right $\Sigma_{n}$-action by multiplication. The unit of $S(P)$ is
+  \[
+    * \stackrel{\eta}{\longrightarrow} P(1) \longrightarrow \coequ{P}{\Sigma}{\Lambda}{1} \cong P(1)/\Lambda(1).
+  \]
+For the multiplication, let $K = k_1 + \cdots + k_n$, so we must define
+% \[
+% \mu \colon (\coequ{P}{\Sigma}{\Lambda}{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_{K}.
+% \]
+  \[
+    \mu \colon \left(\coequ{P}{\Sigma}{\Lambda}{n}\right) \times \prod_{i=1}^n \left(\coequ{P}{\Sigma}{\Lambda}{k_i}\right) \rightarrow \coequ{P}{\Sigma}{\Lambda}{K}.
+  \]
+Using the universal property of the coequalizer, this is induced by the following composite.
 
+  \begin{align*}
+    (P(n) \times \Sigma_{n}) \times \prod_{i=1}^n \left(P(k_i) \times \Sigma_{k_i}\right) &\cong \left(P(n) \times \prod_{i=1}^n P(k_{i}) \right) \times \left(\Sigma_{n} \times \prod_{i=1}^n \Sigma_{k_{i}} \right)\\
+    &\xrightarrow{\mu^P \times \mu^{\Sigma}} P(K) \times \Sigma_{K}\\
+    &\longrightarrow  \coequ{P}{\Sigma}{\Lambda}{K}
+  \end{align*}
+
+We leave verification of the associativity, unit, and equivariance axioms to the reader; they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\Lambda$-operad axioms for $P$. It is then straightforward to check the bijection between $\Lambda$-operad maps $P \rightarrow \pi^{*}Q$ and symmetric operad maps $S(P) \rightarrow Q$, thus establishing the adjunction.
 \end{proof}
 
 \begin{prop}\label{prop:e-fun}
@@ -311,97 +346,100 @@ Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \L
 
 \section{\texorpdfstring{$\Lambda$}{L}-Operads as Monads}
 
-\begin{Defi}
+This section revisits the theory of monads associated to operads, now in the context of $\Lambda$-operads.
+For many purposes, the monad associated to a $\Lambda$-operad contains all the information that is needed, as we shall see below.
+
+\begin{Defi}\label{Defi:und-P}
 Let $P$ be a $\Lambda$-operad. Then $P$ induces an endofunctor of $\mb{Sets}$, denoted $\underline{P}$, by the following formula.
   \[
 	 \underline{P}(X) = \coprod_n \coeq{P}{X}{\Lambda}{n}
   \]
 \end{Defi}
 
-We now have the following proposition; its proof is standard \cite{maygeom}, and we leave it to the reader should they be interested in the details.
+We now have the following proposition; its proof is standard \cite{maygeom}, and we leave it to the reader.
 
-\begin{prop}\label{op=monad1}  Let $P$ be a $\Lambda$-operad.
+\begin{prop}\label{prop:op=monad1}  Let $P$ be a $\Lambda$-operad.
   \begin{enumerate}
-    \item The $\Lambda$-operad structure on $P$ induces a monad structure on $\underbar{P}$.
-    \item The category of algebras for the operad $P$ is isomorphic to the category of algebras for the monad $\underbar{P}$.
+    \item The $\Lambda$-operad structure on $P$ induces a monad structure on $\underline{P}$ via the operadic multiplication and operadic identities for $P$. We denote this monad $(\underline{P}, \mu, \id)$, or just $\underline{P}$ when $\mu, \id$ are understood.
+    \item The category of algebras for the $\Lambda$-operad $P$ is isomorphic to the category of algebras for the monad $(\underline{P}, \mu, \id)$.
   \end{enumerate}
 \end{prop}
 
+
 In the case that we take $P = \Lambda$, we do not get algebras more interesting than monoids.
-\begin{prop}
-Let $\Lambda$ be an action operad. The category of algebras, $\Lambda\mbox{-}\mb{Alg}$, for $\Lambda$ taken as a $\Lambda$-operad, is equivalent to the category of monoids.
+\begin{prop}\label{prop:Lalg=monoid}
+Let $\Lambda$ be an action operad. The category of algebras for $\Lambda$ taken as a $\Lambda$-operad, $\Lambda\mbox{-}\mb{Alg}$, is isomorphic to the category of monoids.
 \end{prop}
 \begin{proof}
-The key observation here is that, for each $n \in \mathbb{N}$,
-	\[
-		\coeq{\Lambda}{X}{\Lambda}{n} \cong X^n.
-	\]
-We will describe this bijection and leave the rest of the proof to the reader, which falls out of the various axioms either for being a monoid or for being a $\Lambda$-algebra.
-
-Recall that the elements of $\coeq{\Lambda}{X}{\Lambda}{n}$ are equivalence classes of the form $[g ; x_1, \ldots, x_n]$ for which
+The category of monoids is $\underline{T}\mbox{-}\mb{Alg}$, so we produce an isomorphism of monads $R \colon \underline{T} \cong \underline{\Lambda}$.
+For a set $X$, $\underline{T}(X)$ is $\coprod_n \coeq{T}{X}{T}{n} \cong \coprod_n X^n$, while $\underline{\Lambda}(X)$ is
+\[
+\coprod_n \coeq{\Lambda}{X}{\Lambda}{n}.
+\]
+The elements of the coequalizer $\coeq{\Lambda}{X}{\Lambda}{n}$ are equivalence classes $[g; x_1, \ldots, x_n]$ under the equivalence relation
 	\[
 		(gh; x_1, \ldots, x_n) \sim \left(g; x_{h^{-1}(1)}, \ldots, x_{h^{-1}(n)}\right).
 	\]
-There is an obvious map $X^n \rightarrow \coeq{\Lambda}{X}{\Lambda}{n}$ sending $(x_1, \ldots, x_n)$ to the equivalence class $[e; x_1, \ldots, x_n]$. The inverse to this map is given by the map $\coeq{\Lambda}{X}{\Lambda}{n} \rightarrow X^n$ sending $[g;x_1,\ldots,x_n]$ to the element $(x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)})$. It is then clear that these are inverses, relying on the equivalence relation to see that
-	\[
-		[g;x_1,\ldots,x_n] = \left[e;x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)}\right].
-	\]
-That the second map is well-defined is simple to show.
+The functions $R_{X;n} \colon \coeq{\Lambda}{X}{\Lambda}{n} \to X^n$ defined by
+\[
+R_{X;n}\big( \ [g; x_1, \ldots, x_n] \ \big) = \big( x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)}\big)
+\]
+are bijections, and are easily seen to be natural in $X$. 
+Define $R_X = \coprod_n R_{X;n}$.
+We leave it to the reader that these components also commute with the multiplication and unit of the monads $\underline{T}, \underline{\Lambda}$, so produce the desired isomorphism of monads.
+The isomorphism of monads $R$ then induces an isomorphism between categories of algebras, proving the desired claim.
+%
+%The key observation here is that, for each $n \in \mathbb{N}$,
+%	\[
+%		\coeq{\Lambda}{X}{\Lambda}{n} \cong X^n.
+%	\]
+%We will describe this bijection and leave the rest of the proof to the reader, which falls out of the various axioms either for being a monoid or for being a $\Lambda$-algebra.
+%
+%Recall that the elements of $\coeq{\Lambda}{X}{\Lambda}{n}$ are equivalence classes of the form $[g ; x_1, \ldots, x_n]$ for which
+%	\[
+%		(gh; x_1, \ldots, x_n) \sim \left(g; x_{h^{-1}(1)}, \ldots, x_{h^{-1}(n)}\right).
+%	\]
+%There is an obvious map $X^n \rightarrow \coeq{\Lambda}{X}{\Lambda}{n}$ sending $(x_1, \ldots, x_n)$ to the equivalence class $[e; x_1, \ldots, x_n]$. The inverse to this map is given by the map $\coeq{\Lambda}{X}{\Lambda}{n} \rightarrow X^n$ sending $[g;x_1,\ldots,x_n]$ to the element $(x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)})$. It is then clear that these are inverses, relying on the equivalence relation to see that
+%	\[
+%		[g;x_1,\ldots,x_n] = \left[e;x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)}\right].
+%	\]
+%That the second map is well-defined is simple to show.
 \end{proof}
+
+
+
 
 We end this section with a discussion of the relationship between symmetric operads and $\Lambda$-operads for an arbitrary action operad $\Lambda$.
 
 \begin{thm}\label{thm_sym}
-Let $\Lambda$ be an action operad.
+Let $(\Lambda, \pi)$ be an action operad.
 \begin{enumerate}
-\item An adjunction exists between the category of $\Lambda$-operads and the category of symmetric operads, with right adjoint $\pi^{*} \colon \Lambda\mbox{-}\mb{Op} \rightarrow \Sigma\mbox{-}\mb{Op}$ and left adjoint denoted $S$.
-\item The counit of this adjunction is an isomorphism, but the unit is not, thus this adjunction is not an equivalence of categories
-\item There exists a natural isomorphism of monads between $\underline{P}$ and $\underline{S(P)}$ for a $\Lambda$-operad $P$. In particular, these monads (and hence operads) have isomorphic categories of algebras.
+\item The counit of the adjunction $\pi_{!} \dashv \pi^*$ from \cref{prop:pbaop} is an isomorphism, but the unit is not. In particular, this adjunction is not an equivalence of categories
+\item For any $\Lambda$-operad P, there exists a natural isomorphism of monads between $\underline{P}$ and $\underline{\pi_{!}P}$. In particular, these monads (and hence operads) have isomorphic categories of algebras.
 \end{enumerate}
 \end{thm}
 \begin{proof}
-Given any map of monoids $f \colon M \rightarrow N$ in a monoidal category, there exists an adjunction between right $M$-modules and right $N$-modules given by $f^{*}$ as the right adjoint and $A \mapsto A \otimes_{M} N$ as the left adjoint. Thus we define
-  \[
-    S(P)(n) = \coequ{P}{\Sigma}{\Lambda}{n},
-  \]
-and this inherits a right $\Sigma_{n}$-action by multiplication. The unit of $S(P)$ is
-  \[
-    * \stackrel{\eta}{\longrightarrow} P(1) \longrightarrow \coequ{P}{\Sigma}{\Lambda}{1} \cong P(1)/\Lambda(1).
-  \]
-For the multiplication, let $K = k_1 + \cdots + k_n$, so we must define
-% \[
-% \mu \colon (\coequ{P}{\Sigma}{\Lambda}{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_{K}.
-% \]
-  \[
-    \mu \colon \left(\coequ{P}{\Sigma}{\Lambda}{n}\right) \times \prod_{i=1}^n \left(\coequ{P}{\Sigma}{\Lambda}{k_i}\right) \rightarrow \coequ{P}{\Sigma}{\Lambda}{K}.
-  \]
-Using the universal property of the coequalizer, this is induced by the following composite.
+\ngnoteil{actually show the calculation, plus fix notation since $S$ is now $\pi_{!}$}
+The first claim is a simple calculation using the coequalizer that defines $S(\pi^{*}Q)$, using that $Q(n)$ is itself the coequalizer of the obvious pair of maps $Q(n) \times \Sigma_{n} \times \Sigma_{n}$.
 
-  \begin{align*}
-    (P(n) \times \Sigma_{n}) \times \prod_{i=1}^n \left(P(k_i) \times \Sigma_{k_i}\right) &\cong \left(P(n) \times \prod_{i=1}^n P(k_{i}) \right) \times \left(\Sigma_{n} \times \prod_{i=1}^n \Sigma_{k_{i}} \right)\\
-    &\xrightarrow{\mu^P \times \mu^{\Sigma}} P(K) \times \Sigma_{K}\\
-    &\longrightarrow  \coequ{P}{\Sigma}{\Lambda}{K}
-  \end{align*}
-
-We leave verification of the associativity, unit, and equivariance axioms to the reader; they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\Lambda$-operad axioms for $P$. It is then straightforward to check the bijection between $\Lambda$-operad maps $P \rightarrow \pi^{*}Q$ and symmetric operad maps $S(P) \rightarrow Q$, thus establishing the adjunction.
-
-The second claim is a simple calculation using the coequalizer that defines $S(\pi^{*}Q)$, using that $Q(n)$ is itself the coequalizer of the obvious pair of maps $Q(n) \times \Sigma_{n} \times \Sigma_{n}$.
-
-For the third claim, we find a natural isomorphism
+\ngnoteil{actually show the calculation, again!}
+For the second claim, we find a natural isomorphism
   \[
     \coeq{P}{X}{\Lambda}{n} \cong (\coequ{P}{\Sigma}{\Lambda}{n}) \times_{\Sigma_{n}} X^{n}
   \]
 by the universal property of the colimits involved, so as functors $\underline{P} \cong \underline{S(P)}$. One can then easily verify that this isomorphism commutes with the unit and multiplication of the two monads involved using calculations similar to those used to establish the adjunction.
 \end{proof}
 
-\begin{rem}
-\begin{enumerate}
-\item The adjunction alone is enough to establish that $P$ and $S(P)$ have isomorphic categories of algebras using \cref{endoalg}.
-\item This theorem shows that semantically, one need never consider any kind of operad aside from symmetric operads: any other kind of operad can be symmetrized without altering the algebras. But as the operad should be considered a finer level of detail than the monad, restricting to symmetric operads misses the structure present in the more nuanced group actions.
+%\begin{rem}
+%\begin{enumerate}
+%\item The adjunction alone is enough to establish that $P$ and $S(P)$ have isomorphic categories of algebras using \cref{endoalg}.
+%\item This theorem shows that semantically, one need never consider any kind of operad aside from symmetric operads: any other kind of operad can be symmetrized without altering the algebras. But as the operad should be considered a finer level of detail than the monad, restricting to symmetric operads misses the structure present in the more nuanced group actions.
+%
+%\item Furthermore, there is clearly an artifact left from only considering the algebras themselves as objects in a symmetric monoidal category. It is well-known that a braided structure is all that is required for non-symmetric operads, and so one is left to consider that the natural home for algebras over a $\Lambda$-operad might be a type of monoidal structure other than symmetric in which case the theorem above gives no insight.
+%\end{enumerate}
+%\end{rem}
 
-\item Furthermore, there is clearly an artifact left from only considering the algebras themselves as objects in a symmetric monoidal category. It is well-known that a braided structure is all that is required for non-symmetric operads, and so one is left to consider that the natural home for algebras over a $\Lambda$-operad might be a type of monoidal structure other than symmetric in which case the theorem above gives no insight.
-\end{enumerate}
-\end{rem}
+\ngnoteil{I can't find where we use any of this stuff. I will leave it in for now, but am tempted to delete it.}
 
 We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. We will use the following standard definitions of monad maps and transformations, as per \cite{street-formal}.
 
