@@ -1,5 +1,11 @@
 \artpart{Operads with Equivariance}\label{part:op-with-eq}
 
+Moved this comment, needs intro and something like below: ``most of this stuff admits an enriched variant''
+\begin{rem}
+It is possible to consider $\Lambda$-operads in categories other than the category of sets. In this case we still use the notion of an action operad given above, but then take the operad $P$ to have objects $P(n)$ which are the objects of some closed symmetric monoidal category $\mathcal{V}$. We will rarely use anything that might require the closed structure as such, only the fact that the tensor product distributes over colimits in each variable. This is a consequence of the fact that both $X \otimes -$ and $- \otimes X$ are left adjoints in the case of a closed symmetric monoidal category. Thus while we set up the foundations using only operads in $\mb{Sets}$, the diligent reader could easily modify this theory for their closed symmetric monoidal category of choice. In fact, we will use the same theory in $\mb{Cat}$ with its cartesian structure, noting only that the same arguments work in $\mb{Cat}$ with essentially no modification.
+\end{rem}
+
+
 \section{\texorpdfstring{$\Lambda$}{L}-Operads and their Algebras}
 
 This section presents the definition of a $\Lambda$-operad (\cref{Defi:lamop}), where $\Lambda$ is an action operad.
@@ -349,7 +355,7 @@ Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \L
 This section revisits the theory of monads associated to operads, now in the context of $\Lambda$-operads.
 For many purposes, the monad associated to a $\Lambda$-operad contains all the information that is needed, as we shall see below.
 
-\begin{Defi}\label{Defi:und-P}
+\begin{Defi}[(Endofunctor induced by a $\Lambda$-operad)]\label{Defi:und-P}
 Let $P$ be a $\Lambda$-operad. Then $P$ induces an endofunctor of $\mb{Sets}$, denoted $\underline{P}$, by the following formula.
   \[
 	 \underline{P}(X) = \coprod_n \coeq{P}{X}{\Lambda}{n}
@@ -633,52 +639,78 @@ The counit $\epz \colon FU \Rightarrow 1$ induces an operad map $\epz \colon FUF
 These constitute an adjunction $\left(F,\psi^F\right) \dashv (\id, \eta^*) \circ \left(U, \psi^U\right)$ in the $2$-category of monads, and hence induce an adjunction between $\underline{P}$-algebras in $C$ and $\underline{FP}$-algebras in $D$.
 \end{cor}
 
-\section{The Substitution Product}
+\section{The Substitution Product}\label{sec:sub}
 
-In this section, we will show that $\Lambda$-operads are the monoids in the category of $\Lambda$-collections equipped with an appropriate substitution product. Such a result is fairly standard \cite{mss-op}, and in both the symmetric and non-symmetric cases can easily be proven directly. Since we work with an arbitrary action operad, however, it will be more economical to take the abstract approach using coends and Day convolution.
+In this section, we will show that $\Lambda$-operads are the monoids in the category of $\Lambda$-collections equipped with an appropriate substitution product. 
+Such a result is fairly standard (see \ngnote{find specific number} \cite{mss-op}), and in both the symmetric and non-symmetric cases can easily be proven directly. 
+Since we work with an arbitrary action operad, however, it will be more economical to take the abstract approach using coends and Day convolution.
 
-\begin{rem}
-It is possible to consider $\Lambda$-operads in categories other than the category of sets. In this case we still use the notion of an action operad given above, but then take the operad $P$ to have objects $P(n)$ which are the objects of some closed symmetric monoidal category $\mathcal{V}$. We will rarely use anything that might require the closed structure as such, only the fact that the tensor product distributes over colimits in each variable. This is a consequence of the fact that both $X \otimes -$ and $- \otimes X$ are left adjoints in the case of a closed symmetric monoidal category. Thus while we set up the foundations using only operads in $\mb{Sets}$, the diligent reader could easily modify this theory for their closed symmetric monoidal category of choice. In fact, we will use the same theory in $\mb{Cat}$ with its cartesian structure, noting only that the same arguments work in $\mb{Cat}$ with essentially no modification.
-\end{rem}
-
-\begin{Defi}
-Let $\Lambda$ be an action operad. The category $\Lambda\mb{\mbox{-}Coll}$ of $\Lambda$-collections has objects $X = \{ X(n) \}_{n \in \N}$ which consist of a set $X(n)$ for each natural number $n$ together with an action $X(n) \times \Lambda(n) \rightarrow X(n)$ of $\Lambda(n)$ on $X(n)$. A morphism $f \colon X \rightarrow Y$ in $\Lambda\mb{\mbox{-}Coll}$ consists of a $\Lambda(n)$-equivariant map $f_{n} \colon X(n) \rightarrow Y(n)$ for each natural number $n$.
+\begin{Defi}[($\Lambda$-collections)]\label{Defi:BLambda}
+Let $\Lambda$ be an action operad.
+\begin{enumerate}
+\item The category $B\Lambda$ has 
+\begin{itemize}
+\item objects natural numbers $n \in \N$, and
+\item morphism sets $B\Lambda(m,n)$ empty when $m\neq n$
+\[
+B\Lambda(n,n) = \Lambda(n),
+\]
+with composition given by group multiplication and identities given by the elements $e_n$.
+\end{itemize}
+\item The category $\Lambda\mb{\mbox{-}Coll}$ of \emph{$\Lambda$-collections} is the presheaf category
+  \[
+[B\Lambda^{\textrm{op}}, \mb{Sets}].
+  \]
+\end{enumerate}
 \end{Defi}
+
+%\begin{Defi}
+%Let $\Lambda$ be an action operad. The category $\Lambda\mb{\mbox{-}Coll}$ of $\Lambda$-collections has objects $X = \{ X(n) \}_{n \in \N}$ which consist of a set $X(n)$ for each natural number $n$ together with an action $X(n) \times \Lambda(n) \rightarrow X(n)$ of $\Lambda(n)$ on $X(n)$. A morphism $f \colon X \rightarrow Y$ in $\Lambda\mb{\mbox{-}Coll}$ consists of a $\Lambda(n)$-equivariant map $f_{n} \colon X(n) \rightarrow Y(n)$ for each natural number $n$.
+%\end{Defi}
 
 \begin{rem}
 %QQQ First instance of B\Lambda - replacing with B\Lambda
-The definition of $\Lambda\mb{\mbox{-}Coll}$ does not require that $\Lambda$ be an action operad, only that one has a natural number-indexed set of groups. Given any such collection of groups $\{ \Lambda(n) \}_{n \in \N}$, we can form the category $B\Lambda$ whose objects are natural numbers and whose hom-sets are given by $B\Lambda(m,n) = \emptyset$ if $m \neq n$ and $B\Lambda(n,n) = \Lambda(n)$ (where composition and units are given by group multiplication and identity elements, respectively). Then $\Lambda\mb{\mbox{-}Coll}$ is the presheaf category
-  \[
-    \widehat{B\Lambda} = [B\Lambda^{\textrm{op}}, \mb{Sets}],
-  \]
-with the opposite category arising from our choice of right actions. A key step in explaining how $\Lambda$-operads arise as monoids in the category of $\Lambda$-collections is to show that being an action operad endows $B\Lambda$ with a monoidal structure.
+The definition of $\Lambda\mb{\mbox{-}Coll}$ does not require that $\Lambda$ be an action operad, only that one has a natural number-indexed set of groups. 
+%Given any such collection of groups $\{ \Lambda(n) \}_{n \in \N}$, we can form the category $B\Lambda$ whose objects are natural numbers and whose hom-sets are given by $B\Lambda(m,n) = \emptyset$ if $m \neq n$ and $B\Lambda(n,n) = \Lambda(n)$ (where composition and units are given by group multiplication and identity elements, respectively). Then 
+%with the opposite category arising from our choice of right actions. A key step in explaining how $\Lambda$-operads arise as monoids in the category of $\Lambda$-collections is to show that being an action operad endows $B\Lambda$ with a monoidal structure.
 \end{rem}
 
-\begin{Defi}
-Let $\Lambda$ be an action operad, and let $X, Y$ be $\Lambda$-collections. We define the $\Lambda$-collection $X \circ Y$ to be
+\begin{Defi}[(The substitution product $\circ$)]\label{Defi:sub-prod}
+Let $\Lambda$ be an action operad, and let $X, Y$ be $\Lambda$-collections. We define the $\Lambda$-collection $X \circ Y$ by
   \[
     X \circ Y (n) = \left(\left( \coprod_{k_{1} + \cdots + k_{r} = n} X(r) \times Y(k_{1}) \times \cdots \times Y(k_{r}) \right) \times \Lambda(n)\right) / \sim
   \]
-where the equivalence relation is generated by
-  \begin{align*}
-    \left(xh; y_{1}, \ldots, y_{r}; g\right) &\sim \left(x; y_{h^{-1}(1)}, \ldots, y_{h^{-1}(r)}; \delta(h)g\right), \\
-    \left(xe; y_{1}g_{1}, \ldots, y_{r}g_{r}; g\right) &\sim \left(x; y_{1}, \ldots, y_{r}; \beta(g_{1}, \ldots, g_{r})g\right).
-  \end{align*}
-For the first relation above, we must have that the lefthand side is an element of
-  \[
-    X(r) \times Y(k_1) \times \cdots \times Y(k_r) \times \Lambda(n)
-  \]
-while the righthand side is an element of
-  \[
-    X(r) \times Y\left(k_{h^{-1}(1)}\right) \times \cdots \times Y\left(k_{h^{-1}(r)}\right) \times \Lambda(n);
-  \]
-for the second relation, we must have $x \in X(r)$, $y_{i} \in Y(k_{i})$, $f \in \Lambda(r)$, $g_{i} \in \Lambda(k_{i})$, and $g \in \Lambda(n)$. The right $\Lambda(n)$-action on $X \circ Y(n)$ is given by multiplication on the final coordinate.
+where the equivalence relation is generated by the following.
+\begin{enumerate}
+\item For $x \in X(r)$, $h \in \Lambda(r)$, $y_i \in Y(k_i)$ for $i = 1, \ldots, r$, and $g \in \Lambda(n)$, we have
+\[
+ \left(xh; y_{1}, \ldots, y_{r}; g\right) \sim \left(x; y_{h^{-1}(1)}, \ldots, y_{h^{-1}(r)}; \delta_{r; k_1, \ldots, k_r}(h)g\right).
+\]
+\item For $x \in X(r)$, $y_{i} \in Y(k_{i})$ for $i = 1, \ldots, r$, $g_{i} \in \Lambda(k_{i})$  for $i = 1, \ldots, r$, and $g \in \Lambda(n)$, we have
+\[
+ \left(x; y_{1}g_{1}, \ldots, y_{r}g_{r}; g\right) \sim \left(x; y_{1}, \ldots, y_{r}; \beta(g_{1}, \ldots, g_{r})g\right).
+\]
+\end{enumerate}
+%  \begin{align*}
+%   , \\
+%   
+%  \end{align*}
+%For the first relation above, we must have that the lefthand side is an element of
+%  \[
+%    X(r) \times Y(k_1) \times \cdots \times Y(k_r) \times \Lambda(n)
+%  \]
+%while the righthand side is an element of
+%  \[
+%    X(r) \times Y\left(k_{h^{-1}(1)}\right) \times \cdots \times Y\left(k_{h^{-1}(r)}\right) \times \Lambda(n);
+%  \]
+%for the second relation, we must have . The right $\Lambda(n)$-action on $X \circ Y(n)$ is given by multiplication on the final coordinate.
 \end{Defi}
 
 
-We will now develop the tools to prove that the category $\Lambda\mb{\mbox{-}Coll}$ has a monoidal structure given by $\circ$, and that operads are the monoids therein.
+We will now develop the tools to prove that the category $\Lambda\mb{\mbox{-}Coll}$ has a monoidal structure given by $\circ$, and that operads are the monoids with respect to this monoidal structure.
+We provide the statement here.
 
-\begin{thm}\label{operad=monoid}
+\begin{thm}\label{thm:operad=monoid}
 Let $\Lambda$ be an action operad.
   \begin{enumerate}
     \item The category $\Lambda\mb{\mbox{-}Coll}$ has a monoidal structure with tensor product given by $\circ$ and unit given by the collection $I$ with $I(n) = \emptyset$ when $n \neq 1$, and $I(1) = \Lambda(1)$ with the $\Lambda$-action given by multiplication on the right.
@@ -686,55 +718,71 @@ Let $\Lambda$ be an action operad.
   \end{enumerate}
 \end{thm}
 
-While this theorem can be proven by direct calculation using the equivalence relation given above, such a proof is unenlightening. Furthermore, we want to consider $\Lambda$-operads in categories other than sets, so an element-wise proof might not apply. Instead we now develop some general machinery that will apply to $\Lambda$-operads in any cocomplete symmetric monoidal category in which each of  the functors $X \otimes -, - \otimes X$ preserve colimits (as is the case if the monoidal structure is closed). This theory also demonstrates the importance of the final axiom in the definition of an action operad. Our construction of the monoidal structure on the category of $\Lambda$-collections will require the Day convolution product \cite{day-thesis}. This is a general construction which produces a monoidal structure on the category of presheaves $[\mathcal{V}^{\textrm{op}}, \mb{Sets}]$ from a monoidal structure on the category $\mathcal{V}$. Since the category of $\Lambda$-collections is the presheaf category $[B\Lambda^{\textrm{op}}, \mb{Sets}]$, we need to show that $B\Lambda$ has a monoidal structure.
+While this theorem can be proven by direct calculation using the equivalence relation given above, such a proof is unenlightening. 
+Furthermore, we want to consider $\Lambda$-operads in categories other than sets, so an element-wise proof might not apply. 
+Instead we will develop general machinery that will apply to $\Lambda$-operads in any cocomplete symmetric monoidal category, by which we mean a category that is cocomplete, equipped with a symmetric monoidal structure, and the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X$ (as is the case if the monoidal structure is closed). 
+Our construction of the monoidal structure on the category of $\Lambda$-collections will require the Day convolution product \cite{day-thesis}, and we begin by proving that $B\Lambda$ has a monoidal structure.
 
-\begin{prop}\label{Gmonoidal}
+%. This is a general construction which produces a monoidal structure on the category of presheaves $[\mathcal{V}^{\textrm{op}}, \mb{Sets}]$ from a monoidal structure on the category $\mathcal{V}$. Since the category of $\Lambda$-collections is the presheaf category $[B\Lambda^{\textrm{op}}, \mb{Sets}]$, we need to show that 
+
+\begin{prop}\label{prop:Gmonoidal}
 The action operad structure of $\Lambda$ gives $B\Lambda$ a strict monoidal structure.
 \end{prop}
 \begin{proof}
-The tensor product on $B\Lambda$ is given by addition on objects, with unit object 0. The only thing to do is define the tensor product on morphisms and check naturality for the associativity and unit isomorphisms, which will both be identities. On morphisms, $+$ must be given by a group homomorphism
+The tensor product on $B\Lambda$ is given by addition on objects, with unit object 0; we denote tensor product by $+$. 
+%The only thing to do is define the tensor product on morphisms and check naturality for the associativity and unit isomorphisms, which will both be identities. 
+On morphisms, $+$ must be given by a group homomorphism
   \[
     + \colon \Lambda(n) \times \Lambda(m) \rightarrow \Lambda(n+m),
   \]
- and this is given by the formula
+ and is defined by the formula
   \[
-    +(g,h) = \mu(e_{2}; g,h).
+    +(g,h) = \beta(g,h).
   \]
-We need that $+$ is a group homomorphism, and the second part of \cref{calclem} shows that it preserves identity elements. The final action operad axiom shows that it also preserves group multiplication since $\pi_{2}(e_{2}) = e_{2}$ (each $\pi_{n}$ is a group homomorphism) and therefore
-  \begin{align*}
-    \left(+(g,h)\right) \cdot \left(+(g',h')\right) &= \mu\left(e_{2}; g,h\right) \cdot\mu\left(e_{2}; g',h'\right) \\
-    &= \mu\left(e_{2}e_{2}; gg', hh'\right) \\
-    &= +\left(gg',hh'\right).
-  \end{align*}
-We now write $+(g,h)$ as $g+h$.
+By \cref{thm:charAOp}, $\beta$ is a homomorphism as desired, and we now write $+(g,h)$ as $g+h$.
+%We need that $+$ is a group homomorphism, and the second part of \cref{calclem} shows that it preserves identity elements. The final action operad axiom shows that it also preserves group multiplication since $\pi_{2}(e_{2}) = e_{2}$ (each $\pi_{n}$ is a group homomorphism) and therefore
+%  \begin{align*}
+%    \left(+(g,h)\right) \cdot \left(+(g',h')\right) &= \mu\left(e_{2}; g,h\right) \cdot\mu\left(e_{2}; g',h'\right) \\
+%    &= \mu\left(e_{2}e_{2}; gg', hh'\right) \\
+%    &= +\left(gg',hh'\right).
+%  \end{align*}
 
-For naturality of the associator, we must have $(f+g)+h = f+(g+h)$. By the operad axioms for both units and associativity, the lefthand side is given by
-  \begin{align*}
-    \mu(e_{2}; \mu(e_{2}; f,g), h) &= \mu(e_{2}; \mu(e_{2}; f,g), \mu(\id;h)) \\
-    &= \mu(\mu(e_{2}; e_{2}, \id); f,g,h),
-  \end{align*}
-while the righthand side is then
-  \[
-    \mu(e_{2}; f, \mu(e_{2}; g,h)) = \mu(\mu(e_{2}; \id, e_{2}); f,g,h).
-  \]
-By \cref{calclem}, both of these are equal to $\mu(e_{3}; f,g,h)$, proving associativity. Naturality of the unit isomorphisms follows similarly, using $e_{0}$.
+Addition of objects is strictly associative and unital.
+Strict associativity at the level of morphisms follows from \cref{eq3}, and strict unitality at the level of morphisms follows from \cref{eq3} and \cref{lem:e0-unit}.
+Thus $B\Lambda$ is a strict monoidal category as desired, completing the proof.
+
+%For naturality of the associator, we must have $(f+g)+h = f+(g+h)$. By the operad axioms for both units and associativity, the lefthand side is given by
+%  \begin{align*}
+%    \mu(e_{2}; \mu(e_{2}; f,g), h) &= \mu(e_{2}; \mu(e_{2}; f,g), \mu(\id;h)) \\
+%    &= \mu(\mu(e_{2}; e_{2}, \id); f,g,h),
+%  \end{align*}
+%while the righthand side is then
+%  \[
+%    \mu(e_{2}; f, \mu(e_{2}; g,h)) = \mu(\mu(e_{2}; \id, e_{2}); f,g,h).
+%  \]
+%By \cref{calclem}, both of these are equal to $\mu(e_{3}; f,g,h)$, proving associativity. Naturality of the unit isomorphisms follows similarly, using $e_{0}$.
 \end{proof}
 
-Now that $B\Lambda$ has a monoidal structure, there is also a monoidal structure on the category of $B\Lambda$-collections
+Now that $B\Lambda$ has a monoidal structure, there is also a monoidal structure on the category of $B\Lambda$-collections using Day convolution, denoted $\star$. 
+
+\begin{Defi}[(Day convolution, \cite{day-thesis})]\label{Defi:day-conv}
+Given collections $X, Y$, their \emph{convolution product} $X \star Y$ is given by the coend formula
   \[
-    [B\Lambda^{\textrm{op}}, \mb{Sets}] = \widehat{B\Lambda}
+    X \star Y (k) = \int^{m,n \in B\Lambda} X(m) \times Y(n) \times B\Lambda(k, m+n).
   \]
-using Day convolution, denoted $\star$. Given collections $X, Y$, their convolution product $X \star Y$ is given by the coend formula
-  \[
-    X \star Y (k) = \int^{m,n \in B\Lambda} X(m) \times Y(n) \times B\Lambda(k, m+n)
-  \]
-We refer the reader to \cite{day-thesis} for further details. We do note, however, that the $n$-fold Day convolution product of a presheaf $Y$ with itself is given by the following coend formula.
+  \end{Defi}
+  
+\begin{rem}[($n$-fold Day convolution)]\label{rem:nfold-DC}
+The $n$-fold Day convolution product of a presheaf $Y$ with itself is given by the following coend formula.
   \[
     Y^{\star n}(k) = \int^{(k_{1}, \ldots, k_{n}) \in B\Lambda^{n}} Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n})
   \]
-Computations with Day convolution will necessarily involve heavy use of the calculus of coends, and we refer the unfamiliar reader to \cite{maclane-catwork} or \cite{loregian}. Our goal is to express the substitution tensor product as a coend just as in \cite{kelly-op}, and to do that we need one final result about the Day convolution product.
+  \end{rem}
+  
+Computations with Day convolution will necessarily involve heavy use of the calculus of coends, and we refer the unfamiliar reader to \cite{maclane-catwork} or \cite{loregian}. 
+Our goal is to express the substitution tensor product as a coend just as in \cite{kelly-op}, and to do that we need one final result about the Day convolution product.
 
-\begin{lem}\label{calclem2}
+\begin{lem}\label{lem:calclem2}
 Let $\Lambda$ be an action operad, let $Y \in \widehat{B\Lambda}$, and let $k$ be a fixed natural number. Then the assignment
   \[
     n \mapsto Y^{\star n}(k)
