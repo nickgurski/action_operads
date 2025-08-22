@@ -133,7 +133,13 @@ Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where
 For any $\sigma \in O(n)$, we will write $\sigma(i)$ for $\pi_n(\sigma)(i)$, the image of $i$ with respect to the underlying permutation of $\sigma$; the notation $\sigma^{-1}(i)$ will be used for the inverse image of $i$ with respect to the underlying permutation of $\sigma$.
 \end{nota}
 
-
+\begin{rem}[(Left action of symmetric groups on tuples)]\label{rem:Sn-tuples}
+The most common group action we will encounter is the left action of the symmetric group $\Sigma_n$ on a set of the form $X^n$.
+We write this action as $\sigma \cdot (x_1, \ldots, x_n)$, and emphasize that it is given by the formula
+\[
+\sigma \cdot (x_1, \ldots, x_n) = (x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}).
+\]
+\end{rem}
 
 \begin{Defi}[(Block sum)]\label{Defi:beta-s}
 Let $k_1, \ldots, k_n$ be natural numbers and suppose that $\sigma_i \in \Sigma_{k_i}$ are permutations. The \emph{block sum} of $\sigma_1, \ldots, \sigma_n$, written 

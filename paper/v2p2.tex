@@ -772,10 +772,18 @@ Given collections $X, Y$, their \emph{convolution product} $X \star Y$ is given 
   \]
   \end{Defi}
   
-\begin{rem}[($n$-fold Day convolution)]\label{rem:nfold-DC}
-The $n$-fold Day convolution product of a presheaf $Y$ with itself is given by the following coend formula.
+\begin{rem}\label{rem:DC-simple}
+Given that $  B\Lambda(k, m+n)$ is empty unless $k=m+n$, the coend in \cref{Defi:day-conv} can be rewritten as
   \[
-    Y^{\star n}(k) = \int^{(k_{1}, \ldots, k_{n}) \in B\Lambda^{n}} Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n})
+    X \star Y (k) = \int^{m+n=k} X(m) \times Y(n) \times \Lambda(k).
+  \]
+In this formulation, $\Lambda(m) \times \Lambda(n)$ acts on $X(m) \times Y(n)$ by the product of their separate actions, and acts on $\Lambda(k)$ by $(g, h) \cdot t = \beta(g,h) t$.
+\end{rem}
+  
+\begin{rem}[($n$-fold Day convolution)]\label{rem:nfold-DC}
+The $n$-fold Day convolution product of a $\Lambda$-collection $Y$ with itself is given by the following coend formula.
+  \[
+    Y^{\star n}(k) = \int^{k_{1}+ \cdots + k_{n}=k } Y(k_{1}) \times \cdots \times Y(k_{n}) \times \Lambda(k)
   \]
   \end{rem}
   
@@ -792,9 +800,9 @@ can be given the structure of a functor $B\Lambda \rightarrow \mb{Sets}$.
 \begin{proof}
 Since the convolution product is given by a coend, it is the universal object with maps
   \[
-    Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n}) \rightarrow Y^{\star n}(k)
+    \theta_{k_1, \ldots, k_n; k} \colon Y(k_{1}) \times \cdots \times Y(k_{n}) \times \Lambda(k) \rightarrow Y^{\star n}(k),
   \]
-such that the following diagram commutes for every $g_{1} \in \Lambda(k_{1}), \ldots, g_{n} \in \Lambda(k_{n})$, where $K = k_1 + \cdots + k_n$.
+for $k= k_1 + \cdots + k_n$, such that the following diagram commutes for every $g_{1} \in \Lambda(k_{1}), \ldots, g_{n} \in \Lambda(k_{n})$.
   %%Expanded diagram
   % \[
   %   \xy
@@ -808,34 +816,88 @@ such that the following diagram commutes for every $g_{1} \in \Lambda(k_{1}), \l
   % \]
   \[
     \xy
-      (0,0)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,K)}="a";
-      (60,0)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,K)}="b";
-      (60,-20)*+{Y^{\star n}(k)}="c";
-      (0,-20)*+{\prod_{i=1}^n Y(k_i) \times B\Lambda(k,K)}="d";
+      (0,0)*+{Y(k_1) \times \cdots \times Y(k_n)  \times \Lambda(k)}="a";
+      (70,0)*+{Y(k_1) \times \cdots \times Y(k_n) \times \Lambda(k)}="b";
+      (70,-20)*+{Y^{\star n}(k)}="c";
+      (0,-20)*+{Y(k_1) \times \cdots \times Y(k_n)  \times \Lambda(k)}="d";
       %
       {\ar^{(-\cdot g_1, \cdots, -\cdot g_n) \times 1} "a" ; "b"};
-      {\ar_{1 \times ((g_1 + \cdots + g_n)\cdot -)} "a" ; "d"};
-      {\ar "b" ; "c"};
-      {\ar "d" ; "c"};
+      {\ar_{1 \times \big( (g_1 + \cdots + g_n)\cdot -\big)} "a" ; "d"};
+      {\ar^{\theta_{k_1, \ldots, k_n; k}} "b" ; "c"};
+      {\ar_{\theta_{k_1, \ldots, k_n; k}} "d" ; "c"};
     \endxy
   \]
+%
+%The first map along the top acts using the $g_{i}$'s, while the first map along the bottom is given by
+%  \[
+%    h \mapsto \mu(e_{n}; g_{1}, \ldots, g_{n}) \cdot h
+%  \]
+%in the final coordinate.
 
-The first map along the top acts using the $g_{i}$'s, while the first map along the bottom is given by
+Let $f \in \Lambda(n)$, considered as a morphism $n \rightarrow n$ in $B\Lambda$. We induce a map 
+\[
+f \bullet - \colon Y^{\star n}(k) \rightarrow Y^{\star n}(k)
+\]
+using the universal property of the coend. For each $k$ and $k_1, \ldots, k_n$ such that $k = k_1 + \cdots + k_n$, define
+\[
+f[k_1, \ldots, k_n] \colon Y(k_1) \times \cdots \times Y(k_n) \times \Lambda(k) \to  Y(k_{f^{-1}(1)}) \times \cdots \times Y(k_{f^{-1}(n)}) \times \Lambda(k)
+\]
+by
+\[
+f[k_1, \ldots, k_n](y_1, \ldots, y_n; g) = \big( y_{f^{-1}(1)}, \ldots, y_{f^{-1}(n)}; \delta_{n; k_1, \ldots, k_n}(f) \big).
+\]
+\ngmpar{the labels below need help, but I don't remember enough xypic to fix them}We now check that the following diagram commutes.
   \[
-    h \mapsto \mu(e_{n}; g_{1}, \ldots, g_{n}) \cdot h
+    \xy
+      (0,0)*+{\prod_{i=1}^n Y(k_i)  \times \Lambda(k)}="a";
+      (50,0)*+{\prod_{i=1}^n Y(k_i) \times \Lambda(k)}="b";
+      (80,-20)*+{\prod_{i=1}^n Y(k_{f^{-1}(i)}) \times \Lambda(k)}="c";
+      (80,-50)*+{Y^{\star n}(k)}="d";
+      (0,-30)*+{\prod_{i=1}^n Y(k_i)  \times \Lambda(k)}="e";
+      (30,-50)*+{\prod_{i=1}^n Y(k_{f^{-1}(i)}) \times \Lambda(k)}="f";
+      (30,-20)*+{\prod_{i=1}^n Y(k_{f^{-1}(i)}) \times \Lambda(k)}="g";
+      (40,-10)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}}="1";
+      (15,-25)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}}="2";
+      (40,-35)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}}="3";
+      %
+      {\ar^{(-\cdot g_1, \cdots, -\cdot g_n) \times 1} "a" ; "b"};
+      {\ar^{f[k_1, \ldots, k_n]} "b" ; "c"};
+      {\ar_{\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k}} "c" ; "d"};
+      {\ar_{1 \times \big( (g_1 + \cdots + g_n)\cdot -\big)} "a" ; "e"};
+      {\ar_{f[k_1, \ldots, k_n]} "e" ; "f"};
+      {\ar_{\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k}} "f" ; "d"};
+      {\ar^{f[k_1, \ldots, k_n]} "a" ; "g"};
+      {\ar_{1 \times \big( (g_{f^{-1}(1)} + \cdots + g_{f^{-1}(n)})\cdot -\big)} "g" ; "f"};
+      {\ar_{(-\cdot g_{f^{-1}(1)}, \cdots, -\cdot g_{f^{-1}(n)}) \times 1} "g" ; "c"};
+    \endxy
   \]
-in the final coordinate.
-
-Let $f \in \Lambda(n)$, considered as a morphism $n \rightarrow n$ in $B\Lambda$. We induce a map $f \bullet - \colon Y^{\star n}(k) \rightarrow Y^{\star n}(k)$ using the collection of maps
-  \[
-    \prod_{i=1}^{n} Y(k_{i}) \times B\Lambda(k, k_{1} + \cdots + k_{n}) \rightarrow \prod_{i=1}^{n} Y(k_{\pi (f)^{-1}(i)}) \times B\Lambda(k, k_{1} + \cdots + k_{n})
-  \]
-by using the symmetry $\pi(f)$ on the first $n$ factors and left multiplication by the element $\mu(f; e_{k_{1}}, \ldots, e_{k_{n}})$ on $B\Lambda(k, k_{1} + \cdots + k_{n})$. To induce a map between the coends, we must show that these maps commute with the two lefthand maps in the diagram above. For the top map, this is merely functoriality of the product together with naturality of the symmetry. For the bottom map, this is the equation
-  \[
-    \mu(f; \overline{e}) \cdot \mu(e; g_{1}, \ldots, g_{n}) = \mu(e; g_{\pi (f)^{-1} 1}, \ldots, g_{\pi (f)^{-1} n}) \cdot \mu(f; \overline{e}).
-  \]
-Both of these are equal to $\mu(f; g_{1}, \ldots, g_{n})$ by the action operad axiom. Functoriality is then easy to check using that the maps inducing $(f_{1}f_{2}) \bullet -$ are given by the composite of the maps inducing $f_{1} \bullet (f_{2} \bullet -)$.
+Squares $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$ and $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$ commute by naturality of symmetries, and square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$ commutes by the definition of the coend. 
+Therefore by the universality property, there is a unique map $f \bullet - \colon Y^{\star n}(k) \rightarrow Y^{\star n}(k)$ such that
+\begin{equation}\label{eq:fbullet}
+\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k} \circ f[k_1, \ldots, k_n] = (f \bullet -) \circ \theta_{k_1, \ldots, k_n; k}
+\end{equation}
+for all $k$ and $k_1, \ldots, k_n$ such that $k = k_1 + \cdots + k_n$.
+\ngmpar{fix spacing below}Given $f_1, f_2 \in \Lambda(n)$, we have
+\begin{align*}
+(f_2 \bullet -) \circ (f_1 \bullet -) \circ \theta_{k_1, \ldots, k_n; k} & = (f_2 \bullet -) \circ \theta_{k_{f_1^{-1}(1)}, \ldots, k_{f_1^{-1}(n)}; k} \circ f_1[k_1, \ldots, k_n] \\
+& = \theta_{k_{f_1^{-1}(f_2^{-1}(1))}, \ldots, k_{f_1^{-1}(f_2^{-1}(n))}; k} \circ f_2[k_{f_1^{-1}(1)}, \ldots, k_{f_2^{-1}(n)}] \circ f_1[k_1, \ldots, k_n] \\
+& = \theta_{k_{(f_2f_1)^{-1}(1)}, \ldots, k_{(f_2f_1)^{-1}(n)};k} \circ (f_2f_1)[k_1, \ldots, k_n] \\
+& = \big( (f_2f_1) \bullet -\big) \circ \theta_{k_1, \ldots, k_n; k}
+\end{align*}
+by \cref{eq:fbullet} twice, the left action of $\Sigma_n$ on $n$-tuples as in \cref{rem:Sn-tuples}, and \cref{eq6}.
+By the universal property of the coend, we conclude that $(f_2 \bullet -) \circ (f_1 \bullet -) = \big( (f_2f_1) \bullet -\big)$, verifying functoriality and completing the proof.
+% using the collection of maps
+%  \[
+%    \prod_{i=1}^{n} Y(k_{i}) \times B\Lambda(k, k_{1} + \cdots + k_{n}) \rightarrow \prod_{i=1}^{n} Y(k_{\pi (f)^{-1}(i)}) \times B\Lambda(k, k_{1} + \cdots + k_{n})
+%  \]
+%by using the symmetry $\pi(f)$ on the first $n$ factors and left multiplication by the element $\mu(f; e_{k_{1}}, \ldots, e_{k_{n}})$ on $B\Lambda(k, k_{1} + \cdots + k_{n})$. To induce a map between the coends, we must show that these maps commute with the two lefthand maps in the diagram above. For the top map, this is merely functoriality of the product together with naturality of the symmetry. For the bottom map, this is the equation
+%  \[
+%    \mu(f; \overline{e}) \cdot \mu(e; g_{1}, \ldots, g_{n}) = \mu(e; g_{\pi (f)^{-1} 1}, \ldots, g_{\pi (f)^{-1} n}) \cdot \mu(f; \overline{e}).
+%  \]
+%Both of these are equal to $\mu(f; g_{1}, \ldots, g_{n})$ by the action operad axiom. Functoriality is then easy to check using that the maps inducing $(f_{1}f_{2}) \bullet -$ are given by the composite of the maps inducing $f_{1} \bullet (f_{2} \bullet -)$.
 \end{proof}
+
+\ngnoteil{start here}
 
 We are now ready for the abstract description of the substitution tensor product. The following proposition is easily checked directly using the definition of the coend; in fact, the righthand side below should be taken as the definition of $X \circ Y$ as both sides are really the result of some colimiting process.
 
