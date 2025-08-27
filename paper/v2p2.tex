@@ -916,7 +916,11 @@ We are now ready for the abstract description of the substitution tensor product
   \]
 \end{prop}
 \begin{proof}
-We prove this by induction on $l$. Note that $X^{\star 1} \cong X$ by \cref{rem:yoneda-coend}.
+We prove this by induction on $l$. 
+Note that $X^{\star 1} \cong X$ by \cref{rem:yoneda-coend}, so the $l=1$ case reduces to constructing an isomorphism
+\[
+  \int^{m} X(m) \times Y^{\star m} \cong X \circ Y.
+\]
 The coend $\int^{n} X(n) \times Y^{\star n}(k)$ can be expanded as follows, using \cref{rem:nfold-DC}, the fact that $A \times -$ preserves colimits for any $A$, and the Fubini theorem for coends\ngnote{ref here}.
 \begin{align*}
 \int^{n} X(n) \times Y^{\star n}(k) & \cong \int^{n} X(n) \times \left( \int^{k_{1}+ \cdots + k_{n}=k } Y(k_{1}) \times \cdots \times Y(k_{n}) \times \Lambda(k) \right) \\
@@ -938,13 +942,6 @@ I(k) = \left\{ \begin{array}{lr}
 \end{array} \right.
 \]
 Then $I^{\star n} (k)$ is empty unless $k=n$, and then is isomorphic to $\Lambda(n)$.
-\end{lem}
-\begin{proof}
-
-\end{proof}
-
-\begin{lem}\label{lem:star-of-circle}
-$
 \end{lem}
 \begin{proof}
 
