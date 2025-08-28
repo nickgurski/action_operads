@@ -2,7 +2,13 @@
 
 \section{Background: 2-Monads and their Algebras}
 
-\begin{Defi}
+\ngnoteil{insert something like: we assume basic familiarity with 2-categories, but still review 2-monads stuff}
+
+\begin{Defi}[(2-monad)]\label{Defi:2monad}
+Let $\m{K}$ be a 2-category. A \emph{2-monad} on $\m{K}$ consists of...
+\end{Defi}
+
+\begin{Defi}[(Pseudoalgebra, 2-monad version)]\label{Defi:pseudoalgebra}
 Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A $T$-\textit{pseudoalgebra} consists of an object $X$, a $1$-cell $\alpha \colon TX \rightarrow X$, and invertible $2$-cells
     \[
         \xy
@@ -93,11 +99,11 @@ satisfying the following axioms.
     \end{itemize}
 \end{Defi}
 
-\begin{Defi}
-Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A \textit{strict $T$-algebra} consists of a pseudoalgebra in which all of the isomorphisms $\Phi$ are identities.
+\begin{Defi}[(Strict algebra, 2-monad version)]\label{Defi:strictalgebra}
+Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A \textit{strict $T$-algebra} is a pseudoalgebra in which all of the isomorphisms $\Phi$ are identities.
 \end{Defi}
 
-\begin{Defi}
+\begin{Defi}[(Pseudomorphism, 2-monad version)]\label{Defi:pseudomorphism}
 Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$, $(Y,\beta,\Psi,\Psi_\eta)$ be $T$-pseudoalgebras. A \textit{pseudomorphism} $(f, \bar{f})$ between these pseudoalgebras consists of a $1$-cell $f \colon X \rightarrow Y$ along with an invertible $2$-cell
     \[
         \xy
@@ -197,15 +203,15 @@ satisfying the following axioms.
 \end{itemize}
 \end{Defi}
 
-\begin{Defi}
+\begin{Defi}[(Strict morphism, 2-monad verison)]\label{Defi:strictmorphism}
 Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$ and $(Y,\beta,\Psi,\Psi_\eta)$ be $T$-pseudoalgebras. A \textit{strict morphism} $(f, \bar{f})$ consists of a pseudomorphism in which $\bar{f}$ is an identity.
 \end{Defi}
 
 \begin{rem}
-Once again, the strict algebras and strict morphisms are exactly the same as algebras and morphisms for the underlying monad on the underlying category of $\m{K}$.
+The strict algebras and strict morphisms are exactly the same as algebras and morphisms for the underlying monad on the underlying category of $\m{K}$.
 \end{rem}
 
-\begin{Defi}
+\begin{Defi}[($T$-transformation, 2-monad version)]\label{Defi:Ttrans}
 Let $(f, \overline{f}), (g, \overline{g}) \colon X \rightarrow Y$ be pseudomorphisms of $T$-algebras. A \textit{$T$-transformation} consists of a $2$-cell $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds.
     \[
         \xy
@@ -238,9 +244,10 @@ Let $(f, \overline{f}), (g, \overline{g}) \colon X \rightarrow Y$ be pseudomorph
 
 \end{Defi}
 
-Once again, we have $2$-categories defined using the different kinds of cells.
+There are many different possible choices of 2-categories in which the objects are some kind of algebra over a 2-monad $T$.
+Here are the two that will be the most important for us.
 
-\begin{Defi}
+\begin{Defi}[(2-categories of algebras, 2-monad version)]\label{Defi:2cat-of-algs}
 Let $T$ be a $2$-monad.
 \begin{itemize}
 \item The $2$-category $T\mbox{-}\mb{Alg}_{s}$ consists of strict $T$-algebras, strict morphisms, and $T$-transformations.
@@ -250,7 +257,63 @@ Let $T$ be a $2$-monad.
 
 \section{\texorpdfstring{$\Lambda$}{L}-Operads in Cat as 2-Monads}
 
-\begin{Defi}\label{def:ps-alg}
+This section begins our study of algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$.
+This theory blends together standard results in both 2-monad theory\ngnote{lack codescent, bkp} and operad theory\ngnote{may geometry of iterated loops}.
+
+\begin{conv}[(Sets and discrete categories)]\label{conv:set-disc}
+Throughout the rest of this text, $\Lambda$ will be an action in the category of sets.
+By abuse of notation, any set $S$ will be identified with the discrete, small category $dS$ with object set $S$.
+In this way, we also view any action operad $\Lambda$ as an operad in $\mb{Cat}$, and we view any group $G$ as a discrete, strict monoidal category.
+\end{conv}
+
+\begin{conv}[(Group actions on categories)]\label{conv:group-act-cat}
+A group action on a category is meant in the strict sense, not in the up-to-isomorphism sense.
+Thus if $G$ acts on $C$, the equations
+\begin{align*}
+g \cdot (h \cdot x) & = (gh) \cdot x,\\
+1 \cdot x & = x
+\end{align*}
+hold for all $x$, where $x$ is allowed to be either an object or morphism of $C$.
+\end{conv}
+
+\begin{Defi}[(Free actions)]\label{Defi:free-action}
+Suppose that a group $G$ acts on a category $C$. We say that the action is \emph{free} if...
+\end{Defi}
+
+Since we will be computing with coequalizers of the form $\coeqb{A}{B}{\Lambda}$ repeatedly, we give the following useful lemma.
+
+\begin{lem}\label{coeq-lem}
+Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. An action of $G$ on the product $A \times B$ can then be defined by
+    \[
+        (a,b) \cdot g \colon = \left(a \cdot g, g^{-1} \cdot b\right).
+    \]
+If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $\coeqb{A}{B}{G}$.
+\end{lem}
+\begin{proof}
+The category $A \times_G B$ is defined as the coequalizer
+    \[
+        \xy
+            (0,0)*+{A \times G \times B}="00";
+            (30,0)*+{A \times B}="10";
+            (60,0)*+{\coeqb{A}{B}{G}}="20";
+            {\ar@<1ex>^{\lambda} "00" ; "10"};
+            {\ar@<-1ex>_{\rho} "00" ; "10"};
+            {\ar^{\varepsilon} "10" ; "20"};
+        \endxy
+    \]
+where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow (A \times B)/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
+    \[
+        [a \cdot g, b] = \left[(a \cdot g) \cdot g^{-1}, g \cdot b\right] = [a, g \cdot b].
+    \]
+
+Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we define a functor $\phi \colon (A \times B)/G \rightarrow X$ by $\phi[a,b] = \chi(a,b)$. That this is well-defined is clear, since
+    \[
+        \phi\left[a \cdot g, g^{-1} \cdot b\right] = \chi\left(a \cdot g, g^{-1} \cdot b\right) = \chi\left(a \cdot \left(gg^{-1}\right), b\right) = \chi(a, b) = \phi[a,b].
+    \]
+This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
+\end{proof}
+
+\begin{Defi}[(Pseudoalgebra, $\Lambda$-operad version)]\label{def:ps-alg-lop}
 Let $P$ be a $\Lambda$-operad. A \textit{pseudoalgebra} for $P$ consists of: 
     \begin{itemize}
         \item a category $X$,
@@ -365,6 +428,7 @@ satisfying the following axioms.
 \end{Defi}
 
 \begin{rem}
+\ngnoteil{reread this, and resolve whatever issue it is addressing}
   The requirement in \cref{def:ps-alg} of a natural isomorphism $\varphi_\eta$ is to induce a natural isomorphism $\tilde{\varphi}_\eta$. This requirement is really of a natural isomorphism
     \[
       \xy
@@ -396,11 +460,11 @@ satisfying the following axioms.
   which can be whiskered with the isomorphism $X \rightarrow 1 \times X$. We make the convention of referring to this whiskered natural isomorphism as $\tilde{\varphi}_\eta$, since no confusion will arise in practice.
 \end{rem}
 
-\begin{Defi}
+\begin{Defi}[(Strict algebra, $\Lambda$-operad version)]\label{Defi:strictalgebra-lop}
 Let $P$ be a $\Lambda$-operad. A \textit{strict algebra} for $P$ consists of a pseudoalgebra in which all of the isomorphisms $\phi$ are identities.
 \end{Defi}
 
-\begin{Defi}\label{def:ps-morph}
+\begin{Defi}[(Pseudomorphism, $\Lambda$-operad version)]\label{Defi:pseudomorphism-lop}
 Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\Lambda$-operad $P$. A \textit{pseudomorphism} of $P$-pseudoalgebras consists of: 
     \begin{itemize}
         \item a functor $f \colon X \rightarrow Y$
@@ -509,11 +573,11 @@ satisfying the following axioms.
     \end{itemize}
 \end{Defi}
 
-\begin{Defi}
+\begin{Defi}[(Strict morphism, $\Lambda$-operad version)]\label{Defi:strictmorphism-lop}
 Let $(X, \alpha_n,\phi,\phi_\eta)$ and $(Y, \beta_n,\psi,\psi_{\eta})$ be pseudoalgebras for a $\Lambda$-operad $P$. A \textit{strict morphism} of $P$-pseudoalgebras consists of a pseudomorphism in which all of the isomorphisms $\overline{f}_{n}$ are identities.
 \end{Defi}
 
-\begin{rem}
+\begin{rem}[(Insert description here)]
 A strict algebra for a $\Lambda$-operad $P$ in $\mb{Cat}$ is precisely the same thing as an algebra for $P$ considered as an operad in the \textit{category} of small categories and functors. A strict morphism between strict algebras is then just a map of $P$-algebras in the standard sense. We could also consider the notion of a lax algebra for an operad, or a lax morphism of algebras, simply by considering natural transformations in place of isomorphisms in the definitions.
 
 In \cref{def:ps-morph} of a pseudomorphism we did not originally make it clear that the isomorphisms $\overline{f}_n$ should satisfy an equivariance condition. This was highlighted in Remark 2.22 of Rubin's thesis \cite{rubin-thesis}. Similarly, this is also explicity stated as Definition 2.23 of \cite{guillou_symmetric}, as mentioned in \cite{guillou_multiplicative}. That we don't include an explicit equivariance axiom is due to Conventions \ref{conv_coeq}. In \cref{def:ps-morph} we require the existence of natural isomorphisms $f_n$ in order to induce corresponding natural isomorphisms $\overline{f}_n$. That the $\overline{f}_n$ are induced by the $f_n$ corresponds to the fact that the $\overline{f}_n$ satisfy an equivariance condition, namely that for $(\sigma, g, x_1, \ldots, x_n) \in P(n) \times \Lambda(n) \times X^n$, we have
@@ -522,7 +586,7 @@ In \cref{def:ps-morph} of a pseudomorphism we did not originally make it clear t
   \]
 \end{rem}
 
-\begin{Defi}
+\begin{Defi}[($P$-transformation, $\Lambda$-operad version)]\label{Defi:Ptrans}
 Let $P$ be a $\Lambda$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) \rightarrow (Y, \beta, \psi, \psi_\eta)$ be pseudomorphisms of $P$-pseudoalgebras. A \textit{$P$-transformation} is then a natural transformation $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds, for all $n$.
     \[
         \xy
@@ -555,7 +619,7 @@ Let $P$ be a $\Lambda$-operad and let $f, g \colon (X, \alpha, \phi, \phi_\eta) 
 
 We can form various $2$-categories using these cells.
 
-\begin{Defi}
+\begin{Defi}[(2-categories of algebras, $\Lambda$-operad version)]\label{Defi:2cat-of-algs-lop}
 Let $P$ be a $\Lambda$-operad.
 \begin{itemize}
 \item The $2$-category $P\mbox{-}\mb{Alg}_{s}$ consists of strict $P$-algebras, strict morphisms, and $P$-transformations.
@@ -565,7 +629,7 @@ Let $P$ be a $\Lambda$-operad.
 
 Our main result in this section is the following, showing that one can consider algebras and higher cells, in either strict or pseudo strength, using either the operadic or $2$-monadic incarnation of a $\Lambda$-operad $P$. This extends \cref{op=monad1}.
 
-\begin{thm}
+\begin{thm}\label{thm:2monad=op}
 Let $P$ be a $\Lambda$-operad in $\mb{Cat}$.
 \begin{itemize}
 \item There is an isomorphism of $2$-categories
@@ -580,6 +644,7 @@ Let $P$ be a $\Lambda$-operad in $\mb{Cat}$.
 \end{itemize}
 \end{thm}
 \begin{proof}
+\ngnoteil{hopefully shorten}
 We begin by noting that we suppress the difference between $2$-cells $\Gamma$ and those $\tilde{\Gamma}$ as in Conventions \ref{conv_coeq}, implicitly always using $2$-cells defined on a coequalizer which are appropriately equivariant with respect to the group actions involved.
 
 A proof of the first statement follows from our proof of the second by inserting identities where appropriate. Thus we begin by constructing a $2$-functor $R \colon \mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg} \rightarrow \mb{Ps}\mbox{-}P\mbox{-}\mb{Alg}$. We map a $\underline{P}$-pseudoalgebra $(X,\alpha,\Phi,\Phi_\eta)$ to the following $P$-pseudoalgebra on the same category $X$. First we define the functor $\alpha_n$ to be the composite
@@ -687,32 +752,43 @@ For example, the component of $\overline{F}$ at the object $[p;x_1,x_2,x_3]$ wou
 The mapping for $2$-cells is just the identity as before. These mappings again constitute a $2$-functor in the obvious way and from how they are defined it is also clear that this is an inverse to $R$.
 \end{proof}
 
-\begin{rem}
-Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad (\cref{endoalg}). We can similarly define pseudomorphisms for a $\mathbf{Cat}$-enriched $\Lambda$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
+\begin{rem}\label{rem:lop-alg-E}
+Every category $C$ determines an endomorphism operad $\mathcal{E}_C$ in $\mb{Cat}$ by defining
+\[
+\mathcal{E}_C(n) = [C^n, C],
+\]
+where the square brackets indicate the functor category.
+While $\mathcal{E}_C$ is naturally a symmetric operad, it can be given the structure of a $\Lambda$-operad for any action operad $(\Lambda, \pi)$ using $\pi^*$ from \cref{prop:pbaop}.
+The reader can verify that strict $P$-algebra structures are in bijection with strict maps of $\Lambda$-operads $P \to \mathcal{E}_C$, and pseudo-$P$-algebra structures are in bijection with pseudomorphisms of $\Lambda$-operads $P \to \mathcal{E}_C$.
+It is possible to develop analogues of \cref{lem:alg=map} and \cref{cor:pi-star}, but we do not pursue this line of research here.
 
-If $P$, $Q$ are $\Lambda$-operads then a \textit{pseudomorphism} of $\Lambda$-operads $F \colon P \rightarrow Q$ consists of a family of $\Lambda$-equivariant functors
-            \[
-                \left(F_n \colon P(n) \rightarrow Q(n)\right)_{n \in \mathbb{N}}
-            \]
-together with isomorphisms instead of the standard algebra axioms. For example, the associativity isomorphism has the following form.
-            \[
-                \xy
-                    (0,0)*+{\scriptstyle P(n) \times \prod_i P(k_i)}="00";
-                    (35,0)*+{\scriptstyle Q(n) \times \prod_i Q(k_i)}="10";
-                    (0,-15)*+{\scriptstyle P(\Sigma k_i)}="01";
-                    (35,-15)*+{\scriptstyle Q(\Sigma k_i)}="11";
-                    {\ar^{F_n \times \prod_i F_{k_i}} "00" ; "10"};
-                    {\ar^{\mu^Q} "10" ; "11"};
-                    {\ar_{\mu^P} "00" ; "01"};
-                    {\ar_{F_{\Sigma k_i}} "01" ; "11"};
-                    {\ar@{=>}^{\psi_{k_1,\ldots,k_n}} (15,-5.5) ; (15,-9.5)};
-                \endxy
-            \]
-
-These isomorphisms are then required to satisfy their own axioms, and these ensure that we have a weak map of $2$-monads $\underline{P} \Rightarrow \underline{Q}$. In particular, one can show that a pseudomorphism from $P$ into the endomorphism operad $\mathcal{E}_X$ produces pseudoalgebras for the operad $P$ using the closed structure on $\mb{Cat}$. While abstractly pleasing, we do not pursue this argument any further here.
+%Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad (\cref{endoalg}). We can similarly define pseudomorphisms for a $\mathbf{Cat}$-enriched $\Lambda$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
+%
+%If $P$, $Q$ are $\Lambda$-operads then a \textit{pseudomorphism} of $\Lambda$-operads $F \colon P \rightarrow Q$ consists of a family of $\Lambda$-equivariant functors
+%            \[
+%                \left(F_n \colon P(n) \rightarrow Q(n)\right)_{n \in \mathbb{N}}
+%            \]
+%together with isomorphisms instead of the standard algebra axioms. For example, the associativity isomorphism has the following form.
+%            \[
+%                \xy
+%                    (0,0)*+{\scriptstyle P(n) \times \prod_i P(k_i)}="00";
+%                    (35,0)*+{\scriptstyle Q(n) \times \prod_i Q(k_i)}="10";
+%                    (0,-15)*+{\scriptstyle P(\Sigma k_i)}="01";
+%                    (35,-15)*+{\scriptstyle Q(\Sigma k_i)}="11";
+%                    {\ar^{F_n \times \prod_i F_{k_i}} "00" ; "10"};
+%                    {\ar^{\mu^Q} "10" ; "11"};
+%                    {\ar_{\mu^P} "00" ; "01"};
+%                    {\ar_{F_{\Sigma k_i}} "01" ; "11"};
+%                    {\ar@{=>}^{\psi_{k_1,\ldots,k_n}} (15,-5.5) ; (15,-9.5)};
+%                \endxy
+%            \]
+%
+%These isomorphisms are then required to satisfy their own axioms, and these ensure that we have a weak map of $2$-monads $\underline{P} \Rightarrow \underline{Q}$. In particular, one can show that a pseudomorphism from $P$ into the endomorphism operad $\mathcal{E}_X$ produces pseudoalgebras for the operad $P$ using the closed structure on $\mb{Cat}$. While abstractly pleasing, we do not pursue this argument any further here.
 \end{rem}
 
 \section{Transferring Operads and \texorpdfstring{$\Lambda$}{L}-Monoidal Categories}
+
+\ngnoteil{start here}
 
 \begin{rem}
 I moved this here for
@@ -1215,38 +1291,7 @@ A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit
     \end{itemize}
 \end{Defi}
 
-It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. Since we will be computing with coequalizers of the form $\coeqb{A}{B}{\Lambda}$ repeatedly, we give the following useful lemma.
-
-\begin{lem}\label{coeq-lem}
-Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. An action of $G$ on the product $A \times B$ can then be defined by
-    \[
-        (a,b) \cdot g \colon = \left(a \cdot g, g^{-1} \cdot b\right).
-    \]
-If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $\coeqb{A}{B}{G}$.
-\end{lem}
-\begin{proof}
-The category $A \times_G B$ is defined as the coequalizer
-    \[
-        \xy
-            (0,0)*+{A \times G \times B}="00";
-            (30,0)*+{A \times B}="10";
-            (60,0)*+{\coeqb{A}{B}{G}}="20";
-            {\ar@<1ex>^{\lambda} "00" ; "10"};
-            {\ar@<-1ex>_{\rho} "00" ; "10"};
-            {\ar^{\varepsilon} "10" ; "20"};
-        \endxy
-    \]
-where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow (A \times B)/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
-    \[
-        [a \cdot g, b] = \left[(a \cdot g) \cdot g^{-1}, g \cdot b\right] = [a, g \cdot b].
-    \]
-
-Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we define a functor $\phi \colon (A \times B)/G \rightarrow X$ by $\phi[a,b] = \chi(a,b)$. That this is well-defined is clear, since
-    \[
-        \phi\left[a \cdot g, g^{-1} \cdot b\right] = \chi\left(a \cdot g, g^{-1} \cdot b\right) = \chi\left(a \cdot \left(gg^{-1}\right), b\right) = \chi(a, b) = \phi[a,b].
-    \]
-This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
-\end{proof}
+It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. 
 
 We begin our study of the cartesian property in the context of symmetric operads.
 
