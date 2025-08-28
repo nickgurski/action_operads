@@ -4,6 +4,9 @@ Moved this comment, needs intro and something like below: ``most of this stuff a
 \begin{rem}
 It is possible to consider $\Lambda$-operads in categories other than the category of sets. In this case we still use the notion of an action operad given above, but then take the operad $P$ to have objects $P(n)$ which are the objects of some closed symmetric monoidal category $\mathcal{V}$. We will rarely use anything that might require the closed structure as such, only the fact that the tensor product distributes over colimits in each variable. This is a consequence of the fact that both $X \otimes -$ and $- \otimes X$ are left adjoints in the case of a closed symmetric monoidal category. Thus while we set up the foundations using only operads in $\mb{Sets}$, the diligent reader could easily modify this theory for their closed symmetric monoidal category of choice. In fact, we will use the same theory in $\mb{Cat}$ with its cartesian structure, noting only that the same arguments work in $\mb{Cat}$ with essentially no modification.
 \end{rem}
+\begin{rem}
+The above result can be interpreted for $\Lambda$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which the tensor product distributes over colimits in each variable. In order to do so, the following changes must be made. First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects. Second, any product with a hom-set from $B\Lambda$ must be replaced by a copower with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$). The same changes also allow one to interpret the results in the following chapter about algebras in such a category, unless noted otherwise.
+\end{rem}
 
 
 \section{\texorpdfstring{$\Lambda$}{L}-Operads and their Algebras}
@@ -791,7 +794,7 @@ Computations with Day convolution will necessarily involve heavy use of the calc
 Our goal is to express the substitution tensor product as a coend just as in \cite{kelly-op}, and to do that we need one final result about the Day convolution product.
 
 \begin{lem}\label{lem:calclem2}
-Let $\Lambda$ be an action operad, let $Y \in \widehat{B\Lambda}$, and let $k$ be a fixed natural number. Then the assignment
+Let $\Lambda$ be an action operad, $Y$ be a $\Lambda$-collection, and $k$ be a fixed natural number. Then the assignment
   \[
     n \mapsto Y^{\star n}(k)
   \]
@@ -897,7 +900,7 @@ By the universal property of the coend, we conclude that $(f_2 \bullet -) \circ 
 %Both of these are equal to $\mu(f; g_{1}, \ldots, g_{n})$ by the action operad axiom. Functoriality is then easy to check using that the maps inducing $(f_{1}f_{2}) \bullet -$ are given by the composite of the maps inducing $f_{1} \bullet (f_{2} \bullet -)$.
 \end{proof}
 
-\begin{rem}\label{rem:yoneda-coend}
+\begin{rem}[(Yoneda via coends)]\label{rem:yoneda-coend}
 We make heavy use of the following consequence of the Yoneda lemma: given any functor $F \colon B\Lambda \rightarrow \mb{Sets}$ and a fixed object $a \in B\Lambda$, there is a natural isomorphism
   \[
     \int^{n \in B\Lambda} B\Lambda(n,a) \times F(n) \cong F(a)
@@ -909,29 +912,54 @@ There is a corresponding result for $F \colon B\Lambda^{\textrm{op}} \rightarrow
 
 We are now ready for the abstract description of the substitution tensor product.
 
-\begin{prop}\label{prop:star-of-circle}
-  Let $X, Y$ be $\Lambda$-collections. Then there is an isomorphism
+\begin{lem}\label{lem:star-of-circle}
+  Let $X, Y$ be $\Lambda$-collections. Then there is a natural isomorphism
   \[
-    \int^{m} X^{\star l}(m) \times Y^{\star m} \cong (X \circ Y)^{\star l}.
+  X \circ Y \cong  \int^{n} X(n) \times Y^{\star n},
   \]
-\end{prop}
+  induced by the colimit structures.
+\end{lem}
 \begin{proof}
-We prove this by induction on $l$. 
-Note that $X^{\star 1} \cong X$ by \cref{rem:yoneda-coend}, so the $l=1$ case reduces to constructing an isomorphism
-\[
-  \int^{m} X(m) \times Y^{\star m} \cong X \circ Y.
-\]
 The coend $\int^{n} X(n) \times Y^{\star n}(k)$ can be expanded as follows, using \cref{rem:nfold-DC}, the fact that $A \times -$ preserves colimits for any $A$, and the Fubini theorem for coends\ngnote{ref here}.
 \begin{align*}
 \int^{n} X(n) \times Y^{\star n}(k) & \cong \int^{n} X(n) \times \left( \int^{k_{1}+ \cdots + k_{n}=k } Y(k_{1}) \times \cdots \times Y(k_{n}) \times \Lambda(k) \right) \\
 & \cong \int^{n, k_{1}+ \cdots + k_{n}=k} X(n) \times Y(k_{1}) \times \cdots \times Y(k_{n}) \times \Lambda(k).
 \end{align*}
 This final coend, when written out as a coequalizer, gives the formula in \cref{Defi:sub-prod}.
+The two isomorphisms above are natural in both variables by the universal property of the colimits involved.
+\end{proof}
+
+\begin{cor}\label{cor:circ-adj}
+Let $Y$ be a $\Lambda$-collection.
+\begin{enumerate}
+\item The functor $- \circ Y \colon \Lambda\mb{\mbox{-}Coll} \to \Lambda\mb{\mbox{-}Coll}$ has a right adjoint $[Y, -]$.
+\item For any other $\Lambda$-collection $X$, there is a natural isomorphism
+\[
+X^{\star n} \circ Y \cong (X \circ Y)^{\star n},
+\]
+induced by the colimit structures.
+\end{enumerate}
+\end{cor}
+\begin{proof}
+We define the $\Lambda$-collection $[Y, Z]$ by
+\[
+[Y,Z](k) = \Lambda\mb{\mbox{-}Coll}(Y^{\star k}, Z)
+\]
+on objects and \cref{lem:calclem2} on morphisms via precomposition. 
+Then
+\begin{align*}
+\Lambda\mb{\mbox{-}Coll}\left( X \circ Y, Z \right) & \cong \Lambda\mb{\mbox{-}Coll}\left( \int^{n} X(n) \times Y^{\star n}, Z \right) \\
+& \cong \int_{n} \Lambda\mb{\mbox{-}Coll}\big(  X(n) \times Y^{\star n}, Z \big) \\
+& \cong \int_{n} \mb{Sets}\big(  X(n), \Lambda\mb{\mbox{-}Coll}(Y^{\star n}, Z) \big) \\
+& \cong \Lambda\mb{\mbox{-}Coll}\big( X, [Y,Z] \big)
+\end{align*}
+by \cref{lem:star-of-circle}, the representable functor $\Lambda\mb{\mbox{-}Coll}\left( -, Z \right)$ mapping coends to ends, the copowering of collections over sets, and the identification of the set of natural transformations as an end. 
+Each of these isomorphisms is visibly natural in all three variables, so  $[Y, -]$ is right adjoint to $- \circ Y$, completing the proof of the first claim.
+
+The second claim follows immediately from the first, as $X \mapsto X^{\star n}$ is a colimit, hence preserved by $- \circ Y$. 
 \end{proof}
 
 Finally we are in a position to prove \cref{thm:operad=monoid}. 
-
-\ngnoteil{start here}
 
 \begin{lem}\label{lem:Istarn(k)}
 Let $I$ be the $\Lambda$-collection defined by
@@ -944,7 +972,7 @@ I(k) = \left\{ \begin{array}{lr}
 Then $I^{\star n} (k)$ is empty unless $k=n$, and then is isomorphic to $\Lambda(n)$.
 \end{lem}
 \begin{proof}
-
+\ngnoteil{insert relatively easy coend proof}
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:operad=monoid}]
@@ -957,52 +985,82 @@ First we must show that $\Lambda\mbox{-}\mb{Coll}$ has a monoidal structure usin
 where both isomorphisms are induced by the universal property of the coend. For the right unit isomorphism, we have that
   \begin{align*}
     X \circ I (k) &= \int^{n} X(n) \times I^{\star n}(k) \\
-    &\cong \int^{n} X(n) \times \int^{k_{1}, \ldots, k_{n}} B\Lambda(k_{1},1) \times \cdots \times B\Lambda(k_{n},1) \times B\Lambda(K) \\
-    &\cong \int^{n} X(n) \times B\Lambda(k,1+ \cdots +1) \\
-    &= \int^{n} X(n) \times B\Lambda(k,n) \\
     &\cong X(k)
   \end{align*}
-using the same methods and where $K = k_1 + \cdots + k_n$.
+by \cref{lem:Istarn(k)}.
 
-For associativity, we compute $(X \circ Y) \circ Z$ and $X \circ (Y \circ Z)$.
-  \begin{align*}
-    ((X \circ Y) \circ Z) (k) &= \int^{m} X \circ Y (m) \times Z^{\star m}(k) \\
-    &= \int^{m} \left( \int^{l} X(l) \times Y^{\star l}(m) \right) \times Z^{\star m}(k) \\
-    &\cong \int^{m,l} X(l) \times Y^{\star l}(m) \times Z^{\star m}(k) \\
-    &\cong \int^{l} X(l) \times \int^{m} Y^{\star l}(m) \times Z^{\star m}(k)
-  \end{align*}
-The first isomorphism is from products distributing over colimits and hence coends, and the second is that fact plus the Fubini Theorem for coends \cite{maclane-catwork}. A similar calculation shows
-  \[
-    (X \circ (Y \circ Z))(k) \cong \int^{l} X(l) \times (Y \circ Z)^{\star l}(k).
-  \]
-Thus the associativity isomorphism will be induced once we construct an isomorphism $\int^{m} Y^{\star l}(m) \times Z^{\star m} \cong (Y \circ Z)^{\star l}$. We do this by induction, with the $l=1$ case being the isomorphism $Y^{\star 1} \cong Y$ together with the definition of $\circ.$  Assuming true for $l$, we prove the case for $l+1$ by the calculations below.
-  \begin{align*}
-    (Y \circ Z)^{\star (l+1)} &\cong (Y \circ Z) \star (Y \circ Z)^{\star l} \\
-    &\cong (Y \circ Z) \star \left( \int^{m} Y^{\star l}(m) \times Z^{\star m} \right) \\
-    &= \left( \int^{n} Y(n) \times Z^{\star n} \right) \star \left( \int^{m} Y^{\star l}(m) \times Z^{\star m} \right) \\
-    &= \int^{a,b} \left( \int^{n} Y(n) \times Z^{\star n}(a) \right)  \times \left( \int^{m} Y^{\star l}(m) \times Z^{\star m}(b) \right) \times B\Lambda(-, a+b) \\
-    &\cong \int^{a,b,n,m} Y(n) \times Y^{\star l}(m) \times Z^{\star n}(a) \times Z^{\star m}(b) \times  B\Lambda(-, a+b) \\
-    &\cong \int^{n,m} Y(n) \times Y^{\star l}(m) \times Z^{\star (n+m)} \\
-    &\cong \int^{j} \int^{n,m} Y(n) \times Y^{\star l}(m) \times B\Lambda(j, n+m) \times Z^{\star j} \\
-    &\cong \int^{j} Y^{\star (l+1)}(j) \times Z^{\star j}
-  \end{align*}
-Each isomorphism above arises from the symmetric monoidal structure on $\mb{Sets}$ using products, the monoidal structure on presheaves using $\star$, the properties of the coend, or the fact that products distribute over colimits.
+Next we turn to constructing the associativity isomorphisms.
+We first compute that
+\begin{align*}
+\big[ Y, [Z,W] \big](k) & = \lcoll \big( Y^{\star k}, [Z, W] \big) \\
+& \cong \lcoll ( Y^{\star k} \circ Z, W) \\
+& \cong \lcoll \big( (Y \circ Z)^{\star k}, W \big) \\
+& = \lcoll \big[ Y \circ Z, W \big] (k)
+\end{align*}
+by the definition of the internal hom from the first part of \cref{cor:circ-adj} and the preservation of colimits from the second part of \cref{cor:circ-adj}.
+These isomorphisms are compatible with the right $\Lambda(k)$-actions, so constitute an isomorphism that we denote
+\[
+\overline{a} \colon \big[ Y, [Z,W] \big] \cong \big[ Y \circ Z, W \big].
+\]
+The associativity isomorphism is defined to be the one induced, by Yoneda, from the composite below, in which each unmarked isomorphism is obtained from an adjunction of the form $- \circ A \dashv [A, -]$.
+\begin{align*}
+\lcoll \big( (X \circ Y) \circ Z, W \big) & \cong \lcoll \big( X \circ Y, [Z, W] \big) \\
+& \cong \lcoll \big( X, \big[ Y, [Z,W] \big] \big) \\
+& \stackrel{\overline{a}}{\cong} \lcoll \big( X, \big[ Y \circ Z, W \big] \big) \\
+& \cong \lcoll \big(X \circ (Y \circ Z), W \big)
+\end{align*}
 
-For the monoidal category axioms on $\widehat{B\Lambda}$, we only need to note that the unit and associativity isomorphisms arise, using the universal properties of the coend, from the unit and associativity isomorphisms on the category of sets together with the interaction between products and colimits. Hence the monoidal category axioms follow by those same axioms in $\mb{Sets}$ together with the universal property of the coend.
+In order to finish the proof that $(\lcoll, \circ, I)$, with the unit and associativity isomorphisms above, is a monoidal category, we must check two axioms.
+These axioms follow immediately from the fact that the unit and associativity isomorphisms were all induced by the universal property of the colimit constructing their domains.
 
-Now we must show that monoids in $(\widehat{B\Lambda}, \circ)$ are operads. By the Yoneda lemma, a map of $\Lambda$-collections $\eta \colon I \rightarrow X$ corresponds to an element $\id \in X(1)$ since $I = B\Lambda(-,1)$. A map $\mu \colon (X \circ X) \rightarrow X$ is given by a collection of $\Lambda(k)$-equivariant maps $X \circ X (k) \rightarrow X(k)$. By the universal property of the coend, this is equivalent to giving maps
+%For associativity, we compute $(X \circ Y) \circ Z$ and $X \circ (Y \circ Z)$.
+%  \begin{align*}
+%    ((X \circ Y) \circ Z) (k) &= \int^{m} X \circ Y (m) \times Z^{\star m}(k) \\
+%    &= \int^{m} \left( \int^{l} X(l) \times Y^{\star l}(m) \right) \times Z^{\star m}(k) \\
+%    &\cong \int^{m,l} X(l) \times Y^{\star l}(m) \times Z^{\star m}(k) \\
+%    &\cong \int^{l} X(l) \times \int^{m} Y^{\star l}(m) \times Z^{\star m}(k)
+%  \end{align*}
+%The first isomorphism is from products distributing over colimits and hence coends, and the second is that fact plus the Fubini Theorem for coends \cite{maclane-catwork}. A similar calculation shows
+%  \[
+%    (X \circ (Y \circ Z))(k) \cong \int^{l} X(l) \times (Y \circ Z)^{\star l}(k).
+%  \]
+%Thus the associativity isomorphism will be induced once we construct an isomorphism $\int^{m} Y^{\star l}(m) \times Z^{\star m} \cong (Y \circ Z)^{\star l}$. We do this by induction, with the $l=1$ case being the isomorphism $Y^{\star 1} \cong Y$ together with the definition of $\circ.$  Assuming true for $l$, we prove the case for $l+1$ by the calculations below.
+%  \begin{align*}
+%    (Y \circ Z)^{\star (l+1)} &\cong (Y \circ Z) \star (Y \circ Z)^{\star l} \\
+%    &\cong (Y \circ Z) \star \left( \int^{m} Y^{\star l}(m) \times Z^{\star m} \right) \\
+%    &= \left( \int^{n} Y(n) \times Z^{\star n} \right) \star \left( \int^{m} Y^{\star l}(m) \times Z^{\star m} \right) \\
+%    &= \int^{a,b} \left( \int^{n} Y(n) \times Z^{\star n}(a) \right)  \times \left( \int^{m} Y^{\star l}(m) \times Z^{\star m}(b) \right) \times B\Lambda(-, a+b) \\
+%    &\cong \int^{a,b,n,m} Y(n) \times Y^{\star l}(m) \times Z^{\star n}(a) \times Z^{\star m}(b) \times  B\Lambda(-, a+b) \\
+%    &\cong \int^{n,m} Y(n) \times Y^{\star l}(m) \times Z^{\star (n+m)} \\
+%    &\cong \int^{j} \int^{n,m} Y(n) \times Y^{\star l}(m) \times B\Lambda(j, n+m) \times Z^{\star j} \\
+%    &\cong \int^{j} Y^{\star (l+1)}(j) \times Z^{\star j}
+%  \end{align*}
+%Each isomorphism above arises from the symmetric monoidal structure on $\mb{Sets}$ using products, the monoidal structure on presheaves using $\star$, the properties of the coend, or the fact that products distribute over colimits.
+
+%For the monoidal category axioms on $\widehat{B\Lambda}$, we only need to note that the unit and associativity isomorphisms arise, using the universal properties of the coend, from the unit and associativity isomorphisms on the category of sets together with the interaction between products and colimits. Hence the monoidal category axioms follow by those same axioms in $\mb{Sets}$ together with the universal property of the coend.
+
+Now we must show that monoids in $(\lcoll, \circ, I)$ are operads. By the Yoneda lemma, a map of $\Lambda$-collections $\eta \colon I \rightarrow X$ corresponds to an element $\id \in X(1)$ since $I = B\Lambda(-,1)$. A map $\mu \colon X \circ X \rightarrow X$ is given by, for each $k$, a $\Lambda(k)$-equivariant map $(X \circ X) (k) \rightarrow X(k)$. By the universal property of the coend, this is equivalent to giving maps
   \[
-    \mu_{n, K} \colon X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times B\Lambda(k, k_{1}+\cdots +k_{n}) \rightarrow X(k)
+  \mu_{n; k_1, \ldots, k_n;k} \colon X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times \Lambda(k) \to X(k)
+%    \mu_{n, K} \colon X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times B\Lambda(k, k_{1}+\cdots +k_{n}) \rightarrow X(k)
   \]
-which are compatible with the actions of $\Lambda(k)$ (using the hom-set in the source, and the standard right action in the target) as well as each of $\Lambda(n), \Lambda(k_{1}), \ldots, \Lambda(k_{n})$. The hom-set in $B\Lambda$ is nonempty precisely when $k=k_{1} + \cdots + k_{n}$, so we define the operad multiplication $\mu$ for $X$ to be
-  \[
-    \mu (x; y_{1}, \ldots, y_{n}) = \mu_{n, K}(x; y_{1}, \ldots, y_{n}; e_{k}).
+that are compatible with the following group actions as specified.
+\begin{itemize}
+\item $\Lambda(n)$ acts on $X(n)$ on the right by the given action, and on $X(k_1) \times \cdots \times X(k_n) \times \Lambda(k)$ on the left by permutations and $\delta$. The map $\mu$ must coequalize these.
+\item The group $\Lambda(k_i)$ acts on the factor $X(k_i)$ on the right by the given action, and on the left of $\Lambda(k)$ by group multiplication and $\beta$. The map $\mu$ must coequalize these.
+\item $\Lambda(k)$ acts on the right of $\Lambda(k)$ by group multiplication, and on $X(k)$ on the right by the given action. The map $\mu$ must preserve this action.
+\end{itemize}
+Given such a monoid structure, we define the operadic multiplication on the $\Lambda$-collection $X$ by
+\[
+    \mu (x; y_{1}, \ldots, y_{n}) = \mu_{n; k_1, \ldots, k_n; k}(x; y_{1}, \ldots, y_{n}; e_{k}).
   \]
-Compatibility with the actions of the  $\Lambda(n), \Lambda(k_{1}), \ldots, \Lambda(k_{n})$ give the equivariance axioms, and the unit and associativity for the monoid structure give the unit and associativity axioms for the operad structure. Finally, it is easy to check that a map of monoids is nothing more than an operad map which is appropriately equivariant for each $n$.
+Conversely, given an operad $P$, we make the underlying $\Lambda$-collection into a monoid under $\circ$ by defining
+\[
+ \mu_{n; k_1, \ldots, k_n; k}(x; y_{1}, \ldots, y_{n}; g) =  \mu (x; y_{1}, \ldots, y_{n}) \cdot g.
+\]
+We leave checking the remaining details to the reader.
 \end{proof}
 
-\begin{rem}
-The above result can be interpreted for $\Lambda$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which the tensor product distributes over colimits in each variable. In order to do so, the following changes must be made. First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects. Second, any product with a hom-set from $B\Lambda$ must be replaced by a copower with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$). The same changes also allow one to interpret the results in the following chapter about algebras in such a category, unless noted otherwise.
-\end{rem}
+
 
 
