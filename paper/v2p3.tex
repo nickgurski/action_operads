@@ -276,42 +276,6 @@ g \cdot (h \cdot x) & = (gh) \cdot x,\\
 hold for all $x$, where $x$ is allowed to be either an object or morphism of $C$.
 \end{conv}
 
-\begin{Defi}[(Free actions)]\label{Defi:free-action}
-Suppose that a group $G$ acts on a category $C$. We say that the action is \emph{free} if...
-\end{Defi}
-
-Since we will be computing with coequalizers of the form $\coeqb{A}{B}{\Lambda}$ repeatedly, we give the following useful lemma.
-
-\begin{lem}\label{coeq-lem}
-Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. An action of $G$ on the product $A \times B$ can then be defined by
-    \[
-        (a,b) \cdot g \colon = \left(a \cdot g, g^{-1} \cdot b\right).
-    \]
-If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $\coeqb{A}{B}{G}$.
-\end{lem}
-\begin{proof}
-The category $A \times_G B$ is defined as the coequalizer
-    \[
-        \xy
-            (0,0)*+{A \times G \times B}="00";
-            (30,0)*+{A \times B}="10";
-            (60,0)*+{\coeqb{A}{B}{G}}="20";
-            {\ar@<1ex>^{\lambda} "00" ; "10"};
-            {\ar@<-1ex>_{\rho} "00" ; "10"};
-            {\ar^{\varepsilon} "10" ; "20"};
-        \endxy
-    \]
-where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow (A \times B)/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
-    \[
-        [a \cdot g, b] = \left[(a \cdot g) \cdot g^{-1}, g \cdot b\right] = [a, g \cdot b].
-    \]
-
-Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we define a functor $\phi \colon (A \times B)/G \rightarrow X$ by $\phi[a,b] = \chi(a,b)$. That this is well-defined is clear, since
-    \[
-        \phi\left[a \cdot g, g^{-1} \cdot b\right] = \chi\left(a \cdot g, g^{-1} \cdot b\right) = \chi\left(a \cdot \left(gg^{-1}\right), b\right) = \chi(a, b) = \phi[a,b].
-    \]
-This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
-\end{proof}
 
 \begin{rem}[($\Lambda$-operads in $\mb{Cat}$)]\label{rem:lop-in-cat}
 Here we explicitly describe the structure of a $\Lambda$-operad $P$ in $\mb{Cat}$, following \cref{rem:sec8-in-V}.
@@ -1062,18 +1026,45 @@ The $2$-monad $\underline{E\Lambda}$ has underlying 2-functor given by
   \[
     X \mapsto \EL(X) = \coprod_{n \geq 0} \coeq{E\Lambda}{X}{\Lambda}{n}.
   \]
-We will eventually show that $\Lambda$-monoidal categories can be given in more familiar terms as in Chapter 19 of \cite{yau_infinity_2021}, but first we compute the hom-sets of the free algebras $\EL(X)$.
-It will be useful for our calculations later to give an explicit description of the categories $\coeq{E\Lambda}{X}{\Lambda}{n}$. Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
-  \[
-    (gh; x_1, \ldots, x_n) \sim \left(g; x_{h^{-1}(1)}, \ldots, x_{h^{-1}(n)}\right);
-  \]
-  we write these classes as $[g; x_1, \ldots, x_n]$. Morphisms are then equivalence classes of morphisms
-  \[
-    (!; f_1, \ldots, f_n) \colon  (g; x_1, \ldots, x_n) \rightarrow \left(h; x_1', \ldots, x_n'\right).
-  \]
-We have two distinguished classes of morphisms, one for which the map $! \colon  g \rightarrow h$ is the identity and one for which all the $f_{i}$'s are the identity. Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type. Now $\coeq{E\Lambda}{X}{\Lambda}{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $\coeq{E\Lambda}{X}{\Lambda}{n}$ is in the image of the quotient map. Using this fact, we can prove the following useful lemma.
+We will eventually show that $\Lambda$-monoidal categories can be given in more familiar terms, as in Chapter 19 of \cite{yau_infinity_2021}.
+Our final result of this section, \cref{prop:hom-set-lemma}, will give a complete description of the free algebras $\EL(X)$.
+This description relies upon computing coequalizers of a special form.
 
-  
+\begin{Defi}[(Free actions)]\label{Defi:free-action}
+Suppose that a group $G$ acts on a category $C$. We say that the action is \emph{free} if...
+\end{Defi}
+
+\begin{lem}\label{lem:coeq-lem}
+Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. An action of $G$ on the product $A \times B$ can then be defined by
+    \[
+        (a,b) \cdot g \colon = \left(a \cdot g, g^{-1} \cdot b\right).
+    \]
+If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $\coeqb{A}{B}{G}$.
+\end{lem}
+\begin{proof}
+The category $A \times_G B$ is defined as the coequalizer
+    \[
+        \xy
+            (0,0)*+{A \times G \times B}="00";
+            (30,0)*+{A \times B}="10";
+            (60,0)*+{\coeqb{A}{B}{G}}="20";
+            {\ar@<1ex>^{\lambda} "00" ; "10"};
+            {\ar@<-1ex>_{\rho} "00" ; "10"};
+            {\ar^{\varepsilon} "10" ; "20"};
+        \endxy
+    \]
+where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow (A \times B)/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
+    \[
+        [a \cdot g, b] = \left[(a \cdot g) \cdot g^{-1}, g \cdot b\right] = [a, g \cdot b].
+    \]
+
+Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we define a functor $\phi \colon (A \times B)/G \rightarrow X$ by $\phi[a,b] = \chi(a,b)$. That this is well-defined is clear, since
+    \[
+        \phi\left[a \cdot g, g^{-1} \cdot b\right] = \chi\left(a \cdot g, g^{-1} \cdot b\right) = \chi\left(a \cdot \left(gg^{-1}\right), b\right) = \chi(a, b) = \phi[a,b].
+    \]
+This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
+\end{proof}
+
 %where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $\underline{E\Sigma}$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
 
 % QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
@@ -1210,13 +1201,25 @@ We have two distinguished classes of morphisms, one for which the map $! \colon 
 
 
 
-\begin{lem}\label{hom-set-lemma}
-For an action operad $\Lambda$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $\coeq{E\Lambda}{X}{\Lambda}{n}$ is
+\begin{prop}\label{prop:hom-set-lemma}
+\ngmpar{Rework into a full description of the free algebra $\EL(X)$}For an action operad $\Lambda$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $\coeq{E\Lambda}{X}{\Lambda}{n}$ is
   \[
     \coprod_{g \in \Lambda(n)} \prod_{i=1}^{n} X\left(x_i, y_{g(i)}\right).
   \]
-\end{lem}
+\end{prop}
 \begin{proof}
+\ngnoteil{copied from exposition}
+It will be useful for our calculations later to give an explicit description of the categories $\coeq{E\Lambda}{X}{\Lambda}{n}$. Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
+  \[
+    (gh; x_1, \ldots, x_n) \sim \left(g; x_{h^{-1}(1)}, \ldots, x_{h^{-1}(n)}\right);
+  \]
+  we write these classes as $[g; x_1, \ldots, x_n]$. Morphisms are then equivalence classes of morphisms
+  \[
+    (!; f_1, \ldots, f_n) \colon  (g; x_1, \ldots, x_n) \rightarrow \left(h; x_1', \ldots, x_n'\right).
+  \]
+We have two distinguished classes of morphisms, one for which the map $! \colon  g \rightarrow h$ is the identity and one for which all the $f_{i}$'s are the identity. Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type. Now $\coeq{E\Lambda}{X}{\Lambda}{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $\coeq{E\Lambda}{X}{\Lambda}{n}$ is in the image of the quotient map. Using this fact, we can prove the following useful lemma.
+
+\ngnoteil{old proof}
 A morphism with source $(e; x_1, \ldots, x_n)$ in $E\Lambda(n) \times X^{n}$ is uniquely a composite
   \[
     (e; x_1, \ldots, x_n) \stackrel{(\id; f_{1}, \ldots, f_{n})}{\longrightarrow} \left(e; x_1', \ldots, x_n'\right) \stackrel{(!; \id, \ldots, \id)}{\longrightarrow} \left(g; x_1', \ldots, x_n'\right).
