@@ -1238,41 +1238,45 @@ The material in this section can be given a rather more abstract interpretation,
 
 \section{Coherence}
 
-This section will be concerned with characterizing various properties of those $2$-monads induced by $\Lambda$-operads in $\mb{Cat}$. We first show that these $2$-monads are finitary. Second, we show that the coherence theorem in \cite{lack-cod} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra (and so similarly, by our previous results, to the pseudoalgebras for a $\Lambda$-operad $P$). Both of these results are simple extensions of well-known results about operads. Finally, we give conditions for these $2$-monads to be $2$-cartesian, describing how they interact with certain limits, namely $2$-pullbacks. Operads do not always yield $2$-cartesian $2$-monads, and giving a complete characterization of when they do is more involved than our results on accessibility or coherence.
-
- For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these $2$-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary. In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables. If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}. There are additional results of a purely $2$-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
+This section addresses questions of coherence for $2$-monads induced by $\Lambda$-operads in $\mb{Cat}$. Coherence theorems take various forms, and we will primarily be concerned with strictification-style coherence theorems. The prototypical case here is the coherence theorem for monoidal categories. In a monoidal category we require associator isomorphisms
     \[
-        \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg} \rightarrow T\mbox{-}\mb{Alg}_s
+        \left( A \otimes B \right) \otimes C \cong A \otimes \left( B \otimes C \right)
     \]
-to the forgetful $2$-functor which regards a strict algebra as a pseudoalgebra with identity structure isomorphisms.
+for all objects in the category. The coherence theorem tells us that, for any monoidal category $M$, there exists a strict monoidal category which is equivalent to $M$. In other words, we can treat the associators in $M$ as identities, and similarly for the unit isomorphisms.
+
+
+
+By \cref{thm:2monad=op}, we can study the algebras for a $\Lambda$-operad $P$ directly, or do so by studying the algebras for the corresponding 2-monad $\underline{P}$. We first note that the $2$-monads induced by $\Lambda$-operads are finitary, using standard arguments. Second, we show that the coherence theorem in \cite{lack-cod}\ngnote{cite john power general coherence} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra. 
+
+% For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these $2$-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary. In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables. 
+% If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}. There are additional results of a purely $2$-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
+%    \[
+%        \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg} \rightarrow T\mbox{-}\mb{Alg}_s
+%    \]
+%to the forgetful $2$-functor which regards a strict algebra as a pseudoalgebra with identity structure isomorphisms.
 
 We begin by showing each associated $2$-monad is finitary.
 \begin{prop}
 Let $P$ be a $\Lambda$-operad. Then $\underline{P}$ is finitary.
 \end{prop}
 \begin{proof}
-To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
-    \begin{align*}
-      \underline{P}(\text{colim}X_{i}) &= \coprod_n \coeq{P}{(\text{colim}X_{i})}{\Lambda}{n} \\
-      &\cong \coprod_n P(n) \times_{\Lambda(n)} \text{colim}(X_{i}^n) \\
-      &\cong \coprod_n \text{colim}(\coeq{P}{X_i}{\Lambda}{n}) \\
-      &\cong \text{colim}\coprod_n \coeq{P}{X_i}{\Lambda}{n} \\
-      &= \text{colim}\underline{P}(X_{i}).
-    \end{align*}
-Since $\mathbf{Cat}$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
+The argument is identical to that for braided operads in Section 4.1 of \cite{lack-cod}.
+%To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
+%    \begin{align*}
+%      \underline{P}(\text{colim}X_{i}) &= \coprod_n \coeq{P}{(\text{colim}X_{i})}{\Lambda}{n} \\
+%      &\cong \coprod_n P(n) \times_{\Lambda(n)} \text{colim}(X_{i}^n) \\
+%      &\cong \coprod_n \text{colim}(\coeq{P}{X_i}{\Lambda}{n}) \\
+%      &\cong \text{colim}\coprod_n \coeq{P}{X_i}{\Lambda}{n} \\
+%      &= \text{colim}\underline{P}(X_{i}).
+%    \end{align*}
+%Since $\mathbf{Cat}$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
 \end{proof}
 
-The next part of this section is motivated by the issue of coherence. At its most basic, a coherence theorem is a way of describing when a notion of weaker structure is in some way equivalent to a stricter structure. The prototypical case here is the coherence theorem for monoidal categories. In a monoidal category we require associator isomorphisms
-    \[
-        \left( A \otimes B \right) \otimes C \cong A \otimes \left( B \otimes C \right)
-    \]
-for all objects in the category. The coherence theorem tells us that, for any monoidal category $M$, there exists a strict monoidal category which is equivalent to $M$. In other words, we can treat the associators in $M$ as identities, and similarly for the unit isomorphisms.
+We now give an abstract coherence theorem for algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$ following the method of John Power\ngnote{cite power again}. In order to do so, we recall the notion of an enhanced factorization system and Power's coherence result.
 
-The abstract approach to coherence considers when the pseudoalgebras for a $2$-monad $T$ are equivalent to strict $T$-algebras, with the most comprehensive account appearing in \cite{lack-cod}. Lack gives a general theorem which provides sufficient conditions for the existence of a left adjoint to the forgetful $2$-functor
-    \[
-        U \colon T\mbox{-}\mb{Alg}_s \rightarrow \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}
-    \]
-for which the components of the unit of the adjunction are equivalences. We focus on one version of this general result which has hypotheses that are quite easy to check in practice. First we require that the base $2$-category $\mathcal{K}$ has an enhanced factorization system. This is much like an orthogonal factorization system on a $2$-category, consisting of two classes of maps $(\mathcal{L},\mathcal{R})$, satisfying the lifting properties on $1$-cells and $2$-cells as follows. Given a commutative square
+\begin{Defi}[(Enhanced factorization system)]\label{Defi:efs}
+\ngnoteil{fix this definition}
+First we require that the base $2$-category $\mathcal{K}$ has an enhanced factorization system. This is much like an orthogonal factorization system on a $2$-category, consisting of two classes of maps $(\mathcal{L},\mathcal{R})$, satisfying the lifting properties on $1$-cells and $2$-cells as follows. Given a commutative square
      \[
         \xy
             (0,0)*+{A}="00";
@@ -1311,16 +1315,100 @@ where $l \in \m{L}$ and $r \in {R}$, there exists a unique morphism $m \colon B 
         \endxy
     \]
 there exists a unique pair $(m,\beta)$ where $m \colon B \rightarrow C$ is a $1$-cell and $\beta \colon rm \Rightarrow g$ is an invertible $2$-cell such that $ml = f$ and $\beta \ast 1_{l} = \alpha$.
+\end{Defi}
 
-Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which follows simply from the fact that the set of objects functor, $\ob \colon \mb{Cat} \rightarrow \mb{Set}$, preserves colimits, being left adjoint to the indiscrete category functor, $E \colon \mb{Set} \rightarrow \mb{Cat}$, as described in \cref{symmoncor}.
+%The abstract approach to coherence considers when the pseudoalgebras for a $2$-monad $T$ are equivalent to strict $T$-algebras, with the most comprehensive account appearing in \cite{lack-cod}. Lack gives a general theorem which provides sufficient conditions for the existence of a left adjoint to the forgetful $2$-functor
+%    \[
+%        U \colon T\mbox{-}\mb{Alg}_s \rightarrow \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}
+%    \]
+%for which the components of the unit of the adjunction are equivalences. We focus on one version of this general result which has hypotheses that are quite easy to check in practice. 
+
+\begin{thm}[cite power]\label{thm:power}
+Let $\mathcal{K}$ be a 2-category, and $T$ be a 2-monad on $\mathcal{K}$. If 
+\ngnoteil{below is copied, fix}
+Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. 
+\ngnoteil{resuming}
+Then the inclusion 2-functor  \[
+        U \colon T\mbox{-}\mb{Alg}_s \rightarrow \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}
+    \]
+has a left 2-adjoint, and the components of the unit of the adjunction are equivalences in $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$. In particular, every pseudo-$T$-algebra is equivalent to a strict one.
+\end{thm}
+
+\begin{lem}[cite power again]\label{lem:efs-cat}
+The 2-category $\mb{Cat}$ has an enhanced factorization system in which the class $\mathcal{L}$ consists of the functors that are bijective on objects and the class $\mathcal{R}$ consists of the functors that are full and faithful.
+\end{lem}
+
+%In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. 
 
 \begin{prop}
 For any $\Lambda$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
 \end{prop}
+\begin{proof}
+\ngnoteil{copied, fix}
+The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which follows simply from the fact that the set of objects functor, $\ob \colon \mb{Cat} \rightarrow \mb{Set}$, preserves colimits, being left adjoint to the indiscrete category functor, $E \colon \mb{Set} \rightarrow \mb{Cat}$, as described in \cref{symmoncor}.
+\end{proof}
+
 \begin{cor}
 Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra.
 \end{cor}
 
+\begin{rem}[(Unpacking pseudo-$\underline{P}$-algebras)]\label{rem:ps-P-alg-unpack}
+\ngnoteil{explain how these are unbiased and weak}
+\end{rem}
+
+
+
+\begin{nota}[(Standard association)]\label{nota:standard-assoc}
+Let $(M, \otimes, I, a, l, r)$ be a monoidal category. The \emph{standard association} of a tuple $x_1, \ldots, x_n$ of objects is defined inductively as follows.
+\begin{enumerate}
+\item The standard association of the empty tuple, written $\underline{\emptyset}$, is the unit object $I$.
+\item The standard association of a single object $x$, written $\underline{x}$, is $x$ itself.
+\item Assume that the standard association of $n$ objects $x_1, \ldots, x_n$ has been given as $\underline{x_1 \cdots x_n}$. The standard association of $n+1$ objects $x_1, \ldots, x_{n+1}$ is defined by the formula
+\[
+\underline{x_1 \cdots x_{n+1}} = x_1 \otimes \underline{x_2 \cdots x_{n+1}}.
+\]
+\end{enumerate}
+\end{nota}
+
+
+\begin{Defi}[(Weak $\Lambda$-monoidal categories)]\label{Defi:wk-lmc}
+A \emph{weak $\Lambda$-monoidal category} consists of
+\begin{itemize}
+\item a monoidal category $(M, \otimes, I, a, l, r)$ and
+\item a natural isomorphism
+\[
+[g] \colon \underline{x_1 \dots x_n} \cong \underline{x_{g^{-1}(1)} \cdots x_{g^{-1}(n)} }
+\]
+for each $g \in \Lambda(n)$
+\end{itemize}
+satisfying the following two axioms.
+\begin{enumerate}
+\item For every pair $g, h \in \Lambda(n)$, the composite $[h] \circ [g]$ shown below
+\[
+\underline{x_1 \dots x_n} \stackrel{[g]}{\to} \underline{x_{g^{-1}(1)} \cdots x_{g^{-1}(n)} } \stackrel{[h]}{\to} \underline{x_{g^{-1}(h^{-1}(1))} \cdots x_{g^{-1}(h^{-1}(n))} } 
+\]
+equals $[hg]$, where $hg \in \Lambda(n)$ is given by multiplication using the group structure.
+\item \ngnoteil{then one about operadic composition, or maybe do two more with deltas and betas}
+\end{enumerate}
+\end{Defi}
+
+\ngnoteil{now need weak $\Lambda$-monoidal functors, then 2-category $\wlmc$ of weak lmc's, weak lmf's, and monoidal transformations}
+
+\begin{thm}\label{thm:wlmc-to-lmc}
+Let $\Lambda$ be an action operad.
+\begin{enumerate}
+\item There is an inclusion 2-functor
+\[
+i \colon \lmc \to \wlmc,
+\]
+the image of which consists of those weak $\Lambda$-monoidal categories for which the underlying monoidal category is strict.
+\item Every weak $\Lambda$-monoidal category is equivalent, in $\wlmc$, to one in the image of $i$.
+\end{enumerate}
+\end{thm}
+
+\begin{rem}[(Pseudo-$\EL$-algebras versus weak $\Lambda$-monoidal categories)]\label{rem:psELalg-vs-wlmc}
+compare the pseudoalgebras and the stuff above
+\end{rem}
 
 
 \section{Group Actions and Cartesian 2-Monads}\label{sec:cart}
