@@ -1238,7 +1238,7 @@ The material in this section can be given a rather more abstract interpretation,
 
 \section{Coherence}
 
-This section addresses questions of coherence for $2$-monads induced by $\Lambda$-operads in $\mb{Cat}$. Coherence theorems take various forms, and we will primarily be concerned with strictification-style coherence theorems. The prototypical case here is the coherence theorem for monoidal categories. In a monoidal category we require associator isomorphisms
+This section addresses questions of coherence for $2$-monads induced by $\Lambda$-operads in $\mb{Cat}$. Coherence theorems take various forms, and we will primarily be concerned with strictification-style coherence theorems. The prototypical example here is the coherence theorem for monoidal categories. In a monoidal category we require associator isomorphisms
     \[
         \left( A \otimes B \right) \otimes C \cong A \otimes \left( B \otimes C \right)
     \]
@@ -1255,7 +1255,6 @@ By \cref{thm:2monad=op}, we can study the algebras for a $\Lambda$-operad $P$ di
 %    \]
 %to the forgetful $2$-functor which regards a strict algebra as a pseudoalgebra with identity structure isomorphisms.
 
-We begin by showing each associated $2$-monad is finitary.
 \begin{prop}
 Let $P$ be a $\Lambda$-operad. Then $\underline{P}$ is finitary.
 \end{prop}
@@ -1415,9 +1414,25 @@ compare the pseudoalgebras and the stuff above
 
 \textbf{Why do people care??}
 
+\ngnoteil{rewrite this section intro, maybe the whole point is the relationship between cartesian-ness and free group actions}
+
 We finally turn to a discussion of the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and so it is useful to be able to characterize exactly when they are. An example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian, as we now describe.
 
-\begin{Defi}
+\begin{Defi}[(2-pullback)]\label{Defi:2pb}
+Let $\mathcal{K}$ be a 2-category, 
+\ngnoteil{fill in}
+\end{Defi}
+
+\begin{Defi}[(Preserving 2-pullbacks)]\label{Defi:pres-2pb}
+Let $\mathcal{K}, \mathcal{L}$ be a 2-categories with all 2-pullbacks, and $F \colon \mathcal{K} \to \mathcal{L}$ a 2-functor between them. Then $F$ \emph{preserves 2-pullbacks} if the morphism
+\[
+F(A \times_C B) \to F(A) \times_{F(C)} F(B)
+\]
+induced by the universal property is an isomorphism.
+\end{Defi}
+
+
+\begin{Defi}[(2-cartesian 2-monad)]\label{Defi:2cart-monad}
 A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit{$2$-cartesian} if
     \begin{itemize}
         \item the $2$-category $\mathcal{K}$ has $2$-pullbacks,
@@ -1430,11 +1445,11 @@ It is important to note that the  $2$-pullback of a diagram is actually the same
 
 We begin our study of the cartesian property in the context of symmetric operads.
 
-\begin{prop}\label{cart_unit}
+\begin{prop}\label{prop:cart_unit}
 Let $P$ be a symmetric operad. Then the unit $\eta \colon \id \Rightarrow \underline{P}$ for the associated monad is a cartesian transformation.
 \end{prop}
 \begin{proof}
-In order to show that $\eta$ is cartesian, we must prove that for a functor $f \colon X \rightarrow Y$, the pullback of the following diagram is the category $X$.
+In order to show that $\eta$ is cartesian, we must prove that for a functor $f \colon X \rightarrow Y$, the pullback of the diagram below is the category $X$.
     \[
         \xy
             (40,0)*+{Y}="10";
@@ -1465,7 +1480,7 @@ It is easy then to see that $X$ is the pullback of the $n=1$ cospan, and that th
 \end{proof}
 
 
-\begin{prop}
+\begin{prop}\label{prop:P-2cart}
 Let $P$ be a symmetric operad. Then the $2$-monad $\underline{P}$ preserves pullbacks if and only if $\Sigma_{n}$ acts freely on $P(n)$ for all $n$.
 \end{prop}
 \begin{proof}
@@ -1507,7 +1522,7 @@ and likewise for the projection to $\underline{P}(\mb{2}_X)$.
 
 Now assume that, for some $n$, the action of $\Sigma_n$ on $P(n)$ is not free. Then find some $p \in P(n)$ along with a nonidentity element $g \in \Sigma_n$ such that $p \cdot g = p$. We will show that the existence of $g$ proves that $\underline{P}$ is not cartesian.
 
-Now $g \neq e$, so there exists an $i$ such that $g(i) \neq i$; without loss of generality, we may take $i=1$. Using this $g$ we can find two distinct elements
+Now $g \neq e$, so there exists an $i \in \{1, \ldots, n\}$ such that $g(i) \neq i$; without loss of generality, we may take $i=1$. Using this $g$ we can find two distinct elements
     \[
         \left[p;(x',y),(x,y),\ldots,(x,y),(x,y'),(x,y),\ldots,(x,y)\right]
     \]
@@ -1547,21 +1562,27 @@ we must show that the image of the diagram under $\underline{P}$ is also a pullb
                 (30,0)*+{\coeqsig{P}{B}{n}}="10";
                 (0,-15)*+{\coeqsig{P}{C}{n}}="01";
                 (30,-15)*+{\coeqsig{P}{D}{n}}="11";
-                {\ar^{1 \times F^n} "00" ; "10"};
-                {\ar^{1 \times S^n} "10" ; "11"};
-                {\ar_{1 \times R^n} "00" ; "01"};
-                {\ar_{1 \times H^n} "01" ; "11"}:
+                {\ar^{\coeqb{1}{F^n}{\Sigma_{n}}} "00" ; "10"};
+                {\ar^{\coeqb{1}{S^n}{\Sigma_{n}}} "10" ; "11"};
+                {\ar_{\coeqb{1}{R^n}{\Sigma_{n}}} "00" ; "01"};
+                {\ar_{\coeqb{1}{H^n}{\Sigma_{n}}} "01" ; "11"}:
             \endxy
     \]
-is also a pullback. The pullback of the functors $1 \times H^n$ and $1 \times S^n$ is a category consisting of pairs of objects $[p;\underline{c}]$ and $[q;\underline{b}]$, where $\underline{b}$ and $\underline{c}$ represent lists of elements in $B$ and $C$, respectively. These pairs are then required to satisfy the property that
+is also a pullback. 
+\ngnoteil{rework the rest of this slightly to just check the pb universal property directly}
+The pullback of the functors $\coeqb{1}{H^n}{\Sigma_{n}}$ and $\coeqb{1}{S^n}{\Sigma_{n}}$ is a category consisting of pairs of objects $[p;\underline{c}]$ and $[q;\underline{b}]$, where $\underline{b}$ and $\underline{c}$ represent lists of elements in $B$ and $C$, respectively, that satisfy the property that
     \[
-        \left[p;\underline{H(c)}\right] = \left[q; \underline{S(b)}\right].
+        \left[p;\underline{H(c)}\right] = \left[q; \underline{S(b)}\right]
     \]
-Using Lemma \ref{coeq-lem}, we know that a pair
+    in $\coeqsig{P}{D}{n}$.
+Since the action is free by hypothesis, Lemma \ref{lem:coeq-lem} implies that a pair
     \[
         \left(\left[p;\underline{c}\right], \left[q;\underline{b}\right]\right)
     \]
-is in the pullback if and only if there exists an element $g \in \Sigma_n$ such that $p \cdot g = q$ and $Hc_i = (Sb_{g^{-1}(i)})$. Using this we can define mutual inverses between $\coeqsig{P}{A}{n}$ and the pullback $Q'$. Considering the category $A$ as the pullback of the diagram we started with, we can consider objects of $\coeqsig{P}{A}{n}$ as being equivalence classes
+is in the pullback if and only if there exists a necessarily unique element $g \in \Sigma_n$ such that $p \cdot g = q$ and $Hc_i = (Sb_{g^{-1}(i)})$. 
+The morphisms in the pullback admit a similar description.
+
+Using this we can define mutual inverses between $\coeqsig{P}{A}{n}$ and the pullback $Q'$. Considering the category $A$ as the pullback of the diagram we started with, we can consider objects of $\coeqsig{P}{A}{n}$ as being equivalence classes
     \[
         [p;(b_1,c_1),\ldots,(b_n,c_n)]
     \]
@@ -1569,9 +1590,9 @@ where $p \in P(n)$ and $Hc_i = Sb_i$ for all $i$.
 
 Taking such an object, we send it to the pair
     \[
-        \left(\left[p;c_1,\ldots,c_n\right],[p;b_1,\ldots,b_n]\right)
+        \left(\left[p;c_1,\ldots,c_n\right],[p;b_1,\ldots,b_n]\right),
     \]
-which lies in the pullback since the identity in $\Sigma_n$ satisfies the condition given earlier. An inverse to this sends a pair of equivalence classes in $Q'$ to the single equivalence class
+and note that it lies in the pullback since the identity in $\Sigma_n$ satisfies the condition given earlier. An inverse to this sends a pair of equivalence classes in $Q'$ to the single equivalence class
     \[
         \left[p;\left(c_1,b_{g^{-1}(1)}\right),\ldots,\left(c_n,b_{g^{-1}(n)}\right)\right]
     \]
@@ -1582,7 +1603,7 @@ in $\coeqsig{P}{A}{n}$. If we apply the map into $Q'$ we get the pair
 which is equal to the original pair since $p \cdot g = q$; the other composite is trivially an identity. A similar calculation on morphisms finishes the proof that $\coeqsig{P}{A}{n}$ is the pullback as required.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{prop:mu-2cart}
 Let $P$ be a symmetric operad. If the $\Sigma_n$-actions are all free, then the multiplication $\mu \colon  \underline{P}^{2} \Rightarrow \underline{P}$ of the associated monad is a cartesian transformation.
 \end{prop}
 \begin{proof}
@@ -1663,14 +1684,14 @@ which is what we started with. Showing the other composite is an identity is sim
 
 Collecting these results together gives the following corollary.
 
-\begin{cor}\label{cart_cor}
+\begin{cor}\label{cor:cart_cor}
 The $2$-monad associated to a symmetric operad $P$ is $2$-cartesian if and only if the action of $\Sigma_n$ is free on each $P(n)$.
 \end{cor}
 
-We require one simple technical lemma before giving a complete characterization of $\Lambda$-operads which induce cartesian $2$-monads.
+We require one simple technical lemma before giving a complete characterization of $\Lambda$-operads that induce cartesian $2$-monads.
 
-\begin{lem}\label{kernel_lem}
-Let $C$ be a category with a right action of some group $\Lambda$, and let $\pi \colon  \Lambda \rightarrow \Sigma$ be a group homomorphism to any other group $\Sigma$. Then the right $\Sigma$-action on $\coeqb{C}{\Sigma}{\Lambda}$ is free if and only if the only elements of $\Lambda$ which fix an object of $C$ lie in the kernel of $\pi$.
+\begin{lem}\label{lem:kernel_lem}
+Let $C$ be a category with a right action of some group $\Lambda$, and let $\pi \colon  \Lambda \rightarrow \Sigma$ be a group homomorphism to any other group $\Sigma$. Then the right $\Sigma$-action on $\coeqb{C}{\Sigma}{\Lambda}$ is free if and only if the only elements of $\Lambda$ that fix an object of $C$ lie in the kernel of $\pi$.
 \end{lem}
 \begin{proof}
 First, note that a group action on a category is free if and only if it is free on objects as fixing a morphism requires fixing its source and target. Thus our arguments need only concern the objects involved.
@@ -1688,11 +1709,18 @@ Now assume that every element of $\Lambda$ fixing an object lies in the kernel o
 Since the objects of $\coeqb{C}{\Sigma}{\Lambda}$ are equivalence classes as above, there exists an element $r \in \Lambda$ such that $p\cdot r^{-1} = p$ and $\tau = \pi(r)$. But by assumption, we must have $r^{-1}$, and hence $r$, in the kernel, so $\tau = e$ and the $\Sigma$-action is free.
 \end{proof}
 
-\begin{thm}\label{cart_thm}
-The $2$-monad associated to a $\Lambda$-operad $P$ is $2$-cartesian if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
+\begin{thm}\label{thm:cart_thm}
+The $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ is $2$-cartesian if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
 \end{thm}
 \begin{proof}
 Since the monad $\underline{P}$ is isomorphic to $\underline{S(P)}$, we need only verify when $\underline{S(P)}$ is $2$-cartesian. Thus the theorem is a direct consequence of \cref{kernel_lem} and \cref{cart_cor}.
+\end{proof}
+
+\begin{cor}\label{cor:EL-2cart}
+Let $\Lambda$ be an action operad in $\mb{Sets}$. Then the 2-monad $\underline{\EL}$ is 2-cartesian.
+\end{cor}
+\begin{proof}
+The action of $\Lambda(n)$ on $\EL(n)$ is free for all $n$, so in particular satisfies the conditions in \cref{thm:cart_thm}.
 \end{proof}
 
 \section{Action Operads as Clubs}\label{sec:club}
