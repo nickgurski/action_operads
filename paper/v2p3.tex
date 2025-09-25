@@ -2001,6 +2001,8 @@ $[0,1] \times [-\varepsilon, \varepsilon] \rightarrow \mathbb{R}^{3}$. This intr
 
 \section{Pseudocommutativity}\label{sec:pscomm}
 
+\ngnoteil{shorter intro, get to the point here, maybe move some of this to paper intro}
+
 This section gives conditions sufficient to equip the $2$-monad $\underline{P}$ induced by a $\Lambda$-operad $P$ in $\mb{Cat}$ with a pseudo-commutative structure. Such a pseudo-commutativity will then give the $2$-category $\mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$ some additional structure that we briefly explain here. For a field $k$, the category $\mb{Vect}$ of vector spaces over $k$ has many nice features. Of particular interest to us are the following three structures. First, the category $\mb{Vect}$ is monoidal using the tensor product $\otimes_{k}$. Second, the set of linear maps $V \rightarrow W$ is itself a vector space which we denote $[V,W]$. Third, there is a notion of multilinear map $V_{1} \times \cdots \times V_{n} \rightarrow W$, with linear maps being the $1$-ary version. While these three structures are each useful in isolation, they are tied together by natural isomorphisms
   \[
     \mb{Vect}(V_{1} \otimes V_{2}, W) \cong \mb{Vect}(V_{1}, [V_{2}, W]) \cong \mb{Bilin}(V_{1} \times V_{2}, W)
@@ -2008,7 +2010,8 @@ This section gives conditions sufficient to equip the $2$-monad $\underline{P}$ 
 expressing that $\otimes$ gives a closed monoidal structure which represents the multicategory of multilinear maps. Moreover, the adjunction between $\mb{Vect}$ and $\mb{Sets}$ respects all of this structure in the appropriate way. This incredibly rich interplay between the tensor product, the internal mapping space, and the multicategory of multilinear maps all arises from the free vector space monad on $\mb{Sets}$ being a \textit{commutative} monad \cite{kock-monads, kock-closed, kock-strong}. The notion of a pseudo-commutative $2$-monad \cite{HP} is then a generalization of this machinery to a $2$-categorical context, and can be viewed as a starting point for importing tools from linear algebra into category theory.
 
 The aim of this section is to give conditions that ensure that the $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ has a pseudo-commutative structure. We give the definition of pseudo-commutativity as in \cite{HP} but before doing so we require the definition of a strength for a $2$-monad.
-\begin{Defi}
+\begin{Defi}\label{Defi:strengths}
+\ngnoteil{left/right strength terminology?}
 A \textit{strength} for an endo-$2$-functor $T \colon \m{K} \rightarrow \m{K}$ on a $2$-category with products and terminal object $1$ consists of a $2$-natural transformation $d$ with components
     \[
         d_{A,B} \colon A \times TB \rightarrow T(A \times B)
@@ -2071,7 +2074,7 @@ The strength and costrength for the associated $2$-monad $\underline{P}$ are qui
 which sends an object $(a, [p;b_1,\ldots,b_n])$ to the object $[p;(a,b_1),\ldots,(a,b_n)]$. We also define the costrength similarly, sending an object $([p;a_1,\ldots,a_n],b)$ to the object which is an equivalence class $[p;(a_1,b), \ldots, (a_n, b)]$. Both the strength and the costrength are defined in the obvious way on morphisms.
 % QQQ (Check obviousness.)
 
-\begin{rem}
+\begin{rem}\label{rem:strength-nonsym}
 It is crucial to note that the strength $d$ and the costrength $d^{*}$ do not depend on the $\Lambda$-actions in the following sense. The $\Lambda$-operad $P$ has an underlying non-symmetric operad that we also denote $P$, and it has a strength
   \[
     d_{A,B} \colon A \times \left(\amalg P(n) \times B^n\right) \rightarrow \amalg P(n) \times \left(A \times B \right)^n
@@ -2083,7 +2086,7 @@ given by essentially the same formula:
 The strength for the $\Lambda$-equivariant $P$ is just the induced functor between coequalizers.
 \end{rem}
 
-\begin{Defi}
+\begin{Defi}\label{Defi:pscommute}
     Given a $2$-monad $T \colon \m{K} \rightarrow \m{K}$ with strength $d$ and costrength $d^{\ast}$, a \textit{pseudo-commutativity} consists of an invertible modification $\gamma$ with components
       \[
         \xy
@@ -2181,20 +2184,39 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
 \end{Defi}
 
 \begin{rem}
-    It is noted in \cite{HP} that this definition has some redundancy and therein it is shown that any two of the strength axioms immediately implies the third. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold, as well as the following associativity axiom:
+    It is noted in \cite{HP} that this definition has some redundancy and therein it is shown that any two of the strength axioms immediately implies the third\ngnote{explain exactly which numbers these are}. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold, as well as the following associativity axiom:
         \[
             \gamma_{A,B \times C} \circ (1_{TA} \times \gamma_{B,C}) = \gamma_{A \times B,C} \times (\gamma_{A,B} \times 1_{TC}).
         \]
 \end{rem}
-We need some further notation before stating our main theorem. Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two lists. Then the set $\{ (a_{i}, b_{j})\}$ has $mn$ elements, and two natural lexicographic orderings. One of these we write as $\underline{(a, \underline{b})}$, and it has the order given by
+
+We need some further notation before stating our main theorem. 
+
+\begin{nota}[(Lexicographic and colexicographic orderings)]\label{nota:double-underlines}
+Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two ordered finite lists. We use the following notation for the lexicographic and colexicographic orderings on the set $\underline{a} \times \underline{b} = \{ (a_{i}, b_{j})\}$. 
+\begin{enumerate}
+\item The \emph{lexicographic ordering} is denoted $\underline{(a, \underline{b})}$, and has the order given by
   \[
     (a_{p}, b_{q}) < (a_{r}, b_{s}) \textrm{ if } \left\{ \begin{array}{l} p < r, \textrm{ or } \\ p=r \textrm{ and } q < s. \end{array} \right.
   \]
-The other we write as $\underline{(\underline{a}, b)}$, and it has the order given by
+\item The \emph{colexicographic ordering} is denoted $\underline{(\underline{a}, b)}$, and has the order given by
 \[
     (a_{p}, b_{q}) < (a_{r}, b_{s}) \textrm{ if } \left\{ \begin{array}{l} q < s, \textrm{ or } \\ q=s \textrm{ and } p < r. \end{array} \right.
   \]
-The notation $(a, \underline{b})$ is meant to indicate that there is a single $a$ but a list of $b$'s, so then $\underline{(a, \underline{b})}$ would represent a list which itself consists of lists of that form. There exists a unique permutation $\tau_{m,n} \in \Sigma_{mn}$ which has the property that $\tau_{m,n}(i) = j$ if the $i$th element of the ordered set $\underline{(a, \underline{b})}$ is equal to the $j$th element of the ordered set $\underline{(\underline{a}, b)}$. By construction, we have $\tau_{n,m} = \tau_{m,n}^{-1}$. We illustrate these permutations with a couple of examples.
+\end{enumerate}
+\end{nota}
+
+\begin{rem}
+The notation $(a, \underline{b})$ is meant to indicate that there is a single $a$ but a list of $b$'s, so then $\underline{(a, \underline{b})}$ would represent a list which itself consists of lists of that form. 
+\end{rem}
+
+\begin{Defi}[(The transposition permutation, $\tau$)]\label{Defi:tau}
+Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two ordered finite lists. 
+The permutation $\tau_{m,n} \in \Sigma_{mn}$ is defined uniquely by the property that $\tau_{m,n}(i) = j$ if the $i$th element of the ordered set $\underline{(a, \underline{b})}$ is equal to the $j$th element of the ordered set $\underline{(\underline{a}, b)}$.
+\end{Defi}
+
+\ngnoteil{probably shorten all this exposition}
+By construction, we have $\tau_{n,m} = \tau_{m,n}^{-1}$. We illustrate these permutations with a couple of examples.
     \[
         \xy
             {\ar@{-} (0,0) ; (0,-10)};
@@ -2238,14 +2260,19 @@ Note then that $\tau_{m,n}$ is the permutation given by taking the transpose of 
 \end{figure}
 % We now give sufficient conditions for equipping the $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ with a pseudo-commutative structure. Let $\mathbb{N}_{+}$ denote the set of positive natural numbers.
 
-We now define what it means for a $\Lambda$-operad to be pseudo-commuative, before then showing that such an operad yields a pseudo-commutative structure on the corresponding $2$-monad $\underline{P}$. Let $\mathbb{N}_{+}$ denote the set of positive integers.
+We now define what it means for a $\Lambda$-operad to be pseudo-commuative, before then showing that such an operad yields a pseudo-commutative structure on the corresponding $2$-monad $\underline{P}$. 
 
-QQQ Rewrite all this using the beta and delta operations, so it's consistent with before.
+\begin{nota}
+Let $\mathbb{N}_{+}$ denote the set of positive integers.
+\end{nota}
+
+\ngnoteil{Need to look back at how we structured other definitions, make it consistent}
 \begin{Defi}\label{def:ps-comm_operad}
-Let $P$ be a $\Lambda$-operad. A pseudo-commutative structure on $P$ consists of:
+Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. A pseudo-commutative structure on $P$ consists of the following data.
+\ngnoteil{From before: QQQ Rewrite all this using the beta and delta operations, so it's consistent with before. This seems to be partially done, but need to recheck details}
     \begin{itemize}
         \item For each pair $(m,n) \in \mathbb{N}_{+}^2$, an element $t_{m,n} \in \Lambda(mn)$ such that $\pi(t_{m,n}) = \tau_{m,n}$.
-        \item For each $p \in P(n)$, $q \in P(m)$, a natural isomorphism
+        \item For each $p \in P(n)$, $q \in P(m)$, a natural isomorphism\ngnote{natural where/how?}
             \[
                 \lambda_{p,q} \colon \mu(p;q,\ldots,q) \cdot t_{m,n} \cong \mu(q;p,\ldots,p).
             \]
@@ -2348,7 +2375,7 @@ Remark 11.2 of \cite{guillou_multiplicative} describes the need for an extra equ
           \[
             \lambda_{p \cdot g, q \cdot h} \circ \left(\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
           \]
-On closer inspection, this appears to be an instance of naturality for the natural isomorphisms $\lambda$, as shown in the naturality square below.
+On closer inspection, this equation is an instance of naturality for $\lambda$, as shown in the naturality square below.\ngmpar{What are the morphisms $p \to p \cdot g$ that this is naturality wrt? Probably the unique $e \to g$ acting on $p$, but we should explain.}
           \[
             \xy
               (-20,10)*+{\mu^P\left(p;\underline{q}\right) \cdot t_{m,n}}="a";
@@ -2364,8 +2391,8 @@ On closer inspection, this appears to be an instance of naturality for the natur
           \]
 \end{remark}
 
-\begin{thm}\label{pscomm}
-Let $P$ be a $\Lambda$-operad equipped with a pseudo-commutative structure. Then $\underline{P}$ has a pseudo-commutativity.
+\begin{thm}\label{thm:pscomm}
+Let $P$ be a $\Lambda$-operad in $\mb{Cat}$ equipped with a pseudo-commutative structure. Then $\underline{P}$ has a pseudo-commutativity.
 \end{thm}
 
 % \begin{thm}\label{pscomm}
@@ -2445,6 +2472,7 @@ Let $P$ be a $\Lambda$-operad equipped with a pseudo-commutative structure. Then
 % \end{thm}
 
 \begin{proof}
+\ngnoteil{go through details again}
 We refer to the Axioms in \cref{def:ps-comm_operad} throughout. We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$. Such a transformation $\gamma_{A,B}$ has components with source
   \[
     \left[\mu\left(p; \underline{q}\right); \underline{(a, \underline{b})}\right]
@@ -2564,10 +2592,11 @@ is equal to
 This composite of two morphisms, together with the necessary identities coming from operad axioms, is precisely the left and bottom leg of the diagram in Axiom \ref{axiom:t_diagR}. Using the same method, one then verifies that $\gamma * (\mu \times 1)$ has its first component the image of the morphism appearing along the top and right leg of the diagram in \ref{axiom:t_diagR}. The second component of these morphisms are all identities arising from $\Lambda$-equivariance, so the first multiplication axiom is a consequence of Axioms \ref{axiom:t_sumR} and \ref{axiom:t_diagR} for the pseudo-commutative structure. We leave the calculations for the second multiplication axiom to the reader as they are of the same nature, using Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL}.
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{cor:not-pc}
 Let $P$ be a non-symmetric operad. Then the induced monad $\underline{P}$ is never pseudo-commutative.
 \end{cor}
 \begin{proof}
+\ngnoteil{go through details again}
 In the non-symmetric case, the $2$-monad is just given using coproducts and products, i.e., there is no coequalizer. In order to define $\gamma$, we then need an isomorphism
   \[
     \left(\mu(p; \underline{q}); \underline{(a, \underline{b})}\right) \cong \left(\mu(q; \underline{p}); \underline{(\underline{a},b)}\right).
@@ -2577,7 +2606,7 @@ When $A,B$ are discrete, there is no isomorphism $\underline{\left(a,\underline{
 
 
 
-A further property that a pseudo-commutativity can possess is that of symmetry. This symmetry is then reflected in the monoidal structure on the $2$-category of algebras, which will then also have a symmetric tensor product (in a suitable, $2$-categorical sense).
+Hyland and Power also define a symmetry for a pseudo-commutative structure on a 2-monad $T$. This symmetry is then reflected in the monoidal structure on the $2$-category of algebras, which will then also have a symmetric tensor product (in a suitable, $2$-categorical sense)\ngnote{include specific reference}.
 
 \begin{Defi}
 Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad on a symmetric monoidal $2$-category $\m{K}$ with symmetry $c$. We then say that a pseudo-commutativity $\gamma$ for $T$ is \textit{symmetric} when the following is satisfied for all $A$, $B \in \m{K}$:
@@ -2614,26 +2643,31 @@ The commutativity of the diagram above ensures that the first component of the s
 Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. We say that $P$ is \textit{contractible} if each category $P(n)$ is equivalent to the terminal category.
 \end{Defi}
 
-\begin{cor}
+\begin{cor}\label{cor:contract-to-psc}
 If $P$ is contractible and there exist $t_{m,n}$ as in \cref{pscomm}, then $\underline{P}$ acquires a pseudo-commutativity. Furthermore, it is symmetric if $t_{n,m} = t_{m,n}^{-1}$.
 \end{cor}
 \begin{proof}
 The only thing left to define is the collection of natural isomorphisms $\lambda_{p,q}$. But since each $P(n)$ is contractible, $\lambda_{p,q}$ must be the unique isomorphism between its source and target, and furthermore the last two axioms hold since any pair of parallel arrows are equal in a contractible category.
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{cor:contractplussym-to-psc}
 If $P$ is a contractible symmetric operad then $\underline{P}$ has a symmetric pseudo-commutativity.
 \end{cor}
 \begin{proof}
 We choose $t_{m,n} = \tau_{m,n}$.
 \end{proof}
 
-\begin{rem}
-If a $\Lambda$-operad $P$ is contractible, it is not the case that its symmetrization $S(P)$ (see \cref{thm_sym}) will also be contractible. The category $\coequ{P}{\Sigma}{\Lambda}{n}$ will necessarily be a groupoid as it is a colimit of groupoids: contractible categories are always groupoids, and both $\Lambda(n)$ and $\Sigma_{n}$ are discrete. Let $g \in \textrm{ker} \, \pi_{n}$ be any non-identity element, and let $p \in P(n)$ be any object. Then
-  \[
-    [p \cdot g, e] = [p, \pi(g)e] = [p,e],
-  \]
-but unless $p\cdot g = p$ in $P(n)$, there will be a unique isomorphism between them that will not be the identity, and hence will define a nontrivial automorphism of $[p,e]$ in  $\coequ{P}{\Sigma}{\Lambda}{n}$. The existence of such ensures that $\coequ{P}{\Sigma}{\Lambda}{n}$ is not contractible.
+\begin{rem}\label{rem:symm-and-contract}
+If a $\Lambda$-operad $P$ is contractible, it is not the case that its symmetrization $S(P)$ (see \cref{thm_sym}) will also be contractible.
+\ngnoteil{now just give an example, do braids work?}
+Thus we see that a given $\Lambda$-operad $P$ might satisfy the hypotheses of \cref{cor:contract-to-psc} without its symmetrization $S(P)$ satisfying the hypotheses of \cref{cor:contractplussym-to-psc}.
+\ngnoteil{This is exactly the kind of thing that ``keeping more complicated action operads around lets you do more stuff'' needs to reference!}
+
+%The category $\coequ{P}{\Sigma}{\Lambda}{n}$ will necessarily be a groupoid as it is a colimit of groupoids: contractible categories are always groupoids, and both $\Lambda(n)$ and $\Sigma_{n}$ are discrete. Let $g \in \textrm{ker} \, \pi_{n}$ be any non-identity element, and let $p \in P(n)$ be any object. Then
+%  \[
+%    [p \cdot g, e] = [p, \pi(g)e] = [p,e],
+%  \]
+%but unless $p\cdot g = p$ in $P(n)$, there will be a unique isomorphism between them that will not be the identity, and hence will define a nontrivial automorphism of $[p,e]$ in  $\coequ{P}{\Sigma}{\Lambda}{n}$. The existence of such ensures that $\coequ{P}{\Sigma}{\Lambda}{n}$ is not contractible.
 \end{rem}
 
 
