@@ -261,7 +261,9 @@ f(1^A) & = 1^B.
 
 \section{Background: Operads}\label{sec:back-op}
 
-This section will collect the basic background information on operads that we will later generalize in\ngnote{ref later sections}. We begin with the most common type of operad, a symmetric operad, before defining two more types of operad: plain and braided. 
+This section will collect the basic background information on operads that we will later generalize in
+% \ngnote{ref later sections}
+\cref{sec:forward-op}. We begin with the most common type of operad, a symmetric operad, before defining two more types of operad: plain and braided. 
 
 \begin{Defi}[(Symmetric operad)]\label{Defi:sym-op}
 A \textit{symmetric operad} $O$ (in the category of sets) consists of
@@ -519,32 +521,49 @@ evaluated on the element $\left( (1 \,\, 2 \,\, 3); \trans{1}{2},\trans{1}{2}\tr
  \textbf{End this example here, with labels, move the rest to after 2.26.}
 
 \begin{remark}\label{Rem:perm_matrices}
-Permutations, as elements of $\Sigma_n$, can be considered as permutation \emph{matrices}, matrices with exactly one $1$ in each row and column. E.g., the permutation $(1 \,\, 3 \,\, 2) \in \Sigma_3$ can be considered as the matrix
+Permutations, as elements of $\Sigma_n$, can be considered as permutation \emph{matrices} with exactly one $1$ in each row and column. E.g., the permutation $(1 \,\, 3 \,\, 2) \in \Sigma_3$ can be considered as a matrix which permutes three elements $\begin{bmatrix} a & b & c \end{bmatrix}$ upon pre-multiplication:
   \[
   \begin{bmatrix}
+  0 & 1 & 0 \\
   0 & 0 & 1 \\
-  1 & 0 & 0 \\
-  0 & 1 & 0
-  \end{bmatrix},
-  \]
-which permutes three elements $  \begin{bmatrix} a & b & c \end{bmatrix}$ by pre-multiplying by the permutation matrix:
-  \[
-  \begin{bmatrix}
-  0 & 0 & 1 \\
-  1 & 0 & 0 \\
-  0 & 1 & 0
+  1 & 0 & 0
   \end{bmatrix}
   \begin{bmatrix}
   a \\ b \\ c
   \end{bmatrix}
   =
   \begin{bmatrix}
-  c \\ a \\ b
+  b \\ c \\ a
   \end{bmatrix}.
   \]
-Then $\beta$ corresponds to the process of taking the block diagonal matrix of the original permutation matrices. So given elements $\trans{1}{2} \in \Sigma_2$, $e_1 \in \Sigma_1$, and $(1 \,\, 3 \,\, 2) \in \Sigma_3$, then
-  \begin{align*}
-  \beta(\trans{1}{2},e_1,(1 \,\, 2 \,\, 3)) &=
+Then $\beta$ corresponds to the process of taking the block diagonal matrix of the original permutation matrices. So given elements $\trans{1}{2} \in \Sigma_2$, $e_1 \in \Sigma_1$, and $(1 \,\, 2 \,\, 3) \in \Sigma_3$, then
+  % \begin{align*}
+  % \beta(\trans{1}{2},e_1,(1 \,\, 2 \,\, 3)) &=
+  % \begin{bmatrix}
+  % \begin{bmatrix}
+  % 0 & 1 \\
+  % 1 & 0
+  % \end{bmatrix} & 0 & 0 \\
+  % 0 & \begin{bmatrix} 1 \end{bmatrix} & 0 \\
+  % 0 & 0 &   \begin{bmatrix}
+  % 0 & 0 & 1 \\
+  % 1 & 0 & 0 \\
+  % 0 & 1 & 0
+  % \end{bmatrix}
+  % \end{bmatrix}\\
+  % &=
+  % \begin{bmatrix}
+  % 0 & 1 & 0 & 0 & 0 & 0 \\
+  % 1 & 0 & 0 & 0 & 0 & 0 \\
+  % 0 & 0 & 1 & 0 & 0 & 0 \\
+  % 0 & 0 & 0 & 0 & 0 & 1 \\
+  % 0 & 0 & 0 & 1 & 0 & 0 \\
+  % 0 & 0 & 0 & 0 & 1 & 0 \\
+  % \end{bmatrix}
+  % % &= \trans{1}{2}(3)(4 \,\, 5 \,\, 6).
+  % \end{align*}
+  \[
+  \beta(\trans{1}{2},e_1,(1 \,\, 2 \,\, 3)) =
   \begin{bmatrix}
   \begin{bmatrix}
   0 & 1 \\
@@ -556,8 +575,8 @@ Then $\beta$ corresponds to the process of taking the block diagonal matrix of t
   1 & 0 & 0 \\
   0 & 1 & 0
   \end{bmatrix}
-  \end{bmatrix}\\
-  &=
+  \end{bmatrix}
+  =
   \begin{bmatrix}
   0 & 1 & 0 & 0 & 0 & 0 \\
   1 & 0 & 0 & 0 & 0 & 0 \\
@@ -565,10 +584,12 @@ Then $\beta$ corresponds to the process of taking the block diagonal matrix of t
   0 & 0 & 0 & 0 & 0 & 1 \\
   0 & 0 & 0 & 1 & 0 & 0 \\
   0 & 0 & 0 & 0 & 1 & 0 \\
-  \end{bmatrix} \\
-  &= \trans{1}{2}(3)(4 \,\, 5 \,\, 6).
-  \end{align*}
-Similarly, we can describe $\delta$ as an operation on permutation matrices. The idea here is that for $\sigma \in \Sigma_n$, $\delta_{n;k_1,\ldots,k_n}(\sigma)$ takes a block diagonal of identity matrices $I_{k_1}$, $\ldots$, $I_{k_n}$ (which corresponds to $\beta(e_{k_1},\ldots,e_{k_n}) \in \Sigma_{k_1+\ldots+k_n}$), and permutes these according to the effect of the permutation $\sigma$. For example, given $\sigma = (1 \,\, 2 \,\, 3)$, then
+  \end{bmatrix}
+  % &= \trans{1}{2}(3)(4 \,\, 5 \,\, 6).
+  \]
+which corresponds to the permutation $\trans{1}{2}(3)(4 \,\, 5 \,\, 6)$.
+
+Similarly, we can describe $\delta$ as an operation on permutation matrices. The idea here being that for $\sigma \in \Sigma_n$, $\delta_{n;k_1,\ldots,k_n}(\sigma)$ takes a block diagonal of identity matrices $I_{k_1}$, $\ldots$, $I_{k_n}$ (which corresponds to $\beta(e_{k_1},\ldots,e_{k_n}) \in \Sigma_{k_1+\ldots+k_n}$), and permutes these according to the effect of the permutation $\sigma$. For example, given $\sigma = (1 \,\, 2 \,\, 3)$, then
   \[
     \delta_{3;2,1,3}(\sigma) =
     \begin{bmatrix}
@@ -601,9 +622,9 @@ We make use of a similar interpretation of signed permutations and block diagona
 \end{remark}
 
   
-Note that $(12)(34) \in \Sigma(4)$ is actually $\mu(e_{2}; (12), (12))$, where $e_{2} \in \Sigma_{2}$ is the identity permutation. Using this and operad associativity, one can easily check that
+Note that $\trans{1}{2}\trans{3}{4} \in \Sigma(4)$ is actually $\mu(e_{2}; \trans{1}{2}, \trans{1}{2})$, where $e_{2} \in \Sigma_{2}$ is the identity permutation. Using this and operad associativity, one can easily check that
   \[
-    \mu \left( (123); (12), (12)(34), (13) \right) = \mu \left( (1234); (12), (12), (12), (13) \right),
+    \mu \left( (1 \, 2 \, 3); \trans{1}{2}, \trans{1}{2}\trans{3}{4}, \trans{1}{3} \right) = \mu \left( (1 \, 2 \, 3 \, 4); \trans{1}{2}, \trans{1}{2}, \trans{1}{2}, \trans{1}{3} \right),
   \]
 where now the composition on the right side uses the function
   \[
@@ -629,7 +650,7 @@ Let $X$ be a set. The \emph{endomorphism operad} of $X$, denoted $\mathcal{E}_X$
 \mu(g; f_1, \ldots, f_n) = g \circ (f_1 \times \cdots \times f_n).
 \]
 \end{itemize}
-We leave verification of the axioms to the reader, or recommend\ngnote{may-GoILS, find specific ref number}.
+We leave verification of the axioms to the reader, or recommend\ngnote{may-GoILS, find specific ref number}.\acnote{May doesn't check the axioms. Not in Leinster either.}
 \end{example}
 
 \begin{rem}
@@ -809,7 +830,7 @@ The maps $\pi$ will be left implicit in the notation, as we will not have reason
 \end{nota}
 
 \begin{rem}\label{rem:similar-defs}
-Our definition of an action operad is the same as that\ngnote{find out what term she uses} appearing in Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective. It is also the same as that appearing in work of Zhang\ngnote{find out what they call action operads} \cite{zhang-grp}, although we prove later (see \cref{calclem}) that Zhang's condition of $e_{1} \in \Lambda(1)$ being the identity element follows from the rest of the axioms.
+Our definition of an action operad is the same as that\ngnote{find out what term she uses}  appearing in Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective \acnote{1.5.1 is def of ribbon operad, but she doesn't do it in generality?}. It is also the same as the group operads appearing in work of Zhang \cite{zhang-grp}, although we prove later (see \cref{calclem}) that Zhang's condition of $e_{1} \in \Lambda(1)$ being the identity element follows from the rest of the axioms.
 \end{rem}
 
 We now give the two examples of action operads that have already appeared in this paper: the symmetric groups and the trivial groups.
@@ -1512,7 +1533,7 @@ In particular, the families of cyclic groups $\{ C_n \}$, reflexive groups $\Lam
 \begin{example}[(Non-example: hyperoctahedral groups)]\label{ex:counterex2}
 Copied:
 
-n Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad. We clarify that counterexample here, while also describing another. Elements of $H_n$ can be thought of as signed permutations or, equivalently, as $n \times n$ invertible matrices whose entries consist of $-1$, $0$, or $1$ and in which each row and column has exactly one non-zero entry. E.g., we can consider an element of $H_3$ as a permutation matrix and a $3$-tuple of elements of $C_2 = \{-1,1\}$, or simply as a signed permutation matrix:
+In Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad. We clarify that counterexample here, while also describing another. Elements of $H_n$ can be thought of as signed permutations or, equivalently, as $n \times n$ invertible matrices whose entries consist of $-1$, $0$, or $1$ and in which each row and column has exactly one non-zero entry. E.g., we can consider an element of $H_3$ as a permutation matrix and a $3$-tuple of elements of $C_2 = \{-1,1\}$, or simply as a signed permutation matrix:
   \[
     \left(\trans{2}{3}
     ;
@@ -1534,7 +1555,7 @@ n Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequenc
     \in H_3.
   \]
 
-In order to describe the hyperoctahedral groups as an action operad, we could use \cref{thm:charAOp} and define maps $\pi$, $\beta$, and $\delta$. The obvious map $\pi_n \colon H_n \rightarrow \Sigma_n$ takes the `absolute value' of a signed permutation matrix, giving back simply the underlying permutation. It seems obvious then to define $\beta$ to be the block sum of signed permutation matrices, in much the same way as for the symmetric groups. E.g.,
+In order to describe the hyperoctahedral groups as an action operad, we could use \cref{thm:charAOp} and define maps $\pi$, $\beta$, and $\delta$. The obvious map $\pi_n \colon H_n \rightarrow \Sigma_n$ takes the `absolute value' of a signed permutation matrix, giving back simply the underlying permutation. It seems obvious then to define $\beta$ to be the block sum of signed permutation matrices in much the same way as for the symmetric groups. E.g.,
   \[
     \beta\left(
       \begin{bmatrix}
@@ -1556,7 +1577,7 @@ In order to describe the hyperoctahedral groups as an action operad, we could us
       0  &  0 &  0 & -1 & 0
     \end{bmatrix}.
   \]
-For the maps $\delta$, there seems to be two sensible options to try. The first captures Zhang's counterexample by first taking $r_n$ to be the order-reversing signed permutation matrix where all entries are $-1$, i.e., the $n \times n$ matrix with $-1$ in every entry of the anti-diagonal. Then we can define $\delta_{n;k_1,\ldots,k_n}(\sigma)$ to be the block sum $\beta(-r_{k_1},\ldots,-r_{k_n})$ acted on by the product of $r_n$ and $\sigma$. For example,
+For the maps $\delta$ there seem to be two sensible options to try. The first captures Zhang's counterexample by first taking $r_n$ to be the order-reversing signed permutation matrix where all entries are $-1$, i.e., the $n \times n$ matrix with $-1$ in every entry of the anti-diagonal. Then we can define $\delta_{n;k_1,\ldots,k_n}(\sigma)$ to be the block sum $\beta(-r_{k_1},\ldots,-r_{k_n})$ acted on by the product of $r_n$ and $\sigma$. For example,
   \begin{align*}
     \delta_{3;2,1,3}\left(
     \begin{bmatrix}
