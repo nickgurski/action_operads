@@ -650,7 +650,7 @@ Let $X$ be a set. The \emph{endomorphism operad} of $X$, denoted $\mathcal{E}_X$
 \mu(g; f_1, \ldots, f_n) = g \circ (f_1 \times \cdots \times f_n).
 \]
 \end{itemize}
-We leave verification of the axioms to the reader, or recommend\ngnote{may-GoILS, find specific ref number}.\acnote{May doesn't check the axioms. Not in Leinster either.}
+We leave verification of the axioms to the reader, or recommend\ngnote{may-GoILS, find specific ref number}.\acnote{May doesn't check the axioms. Not in Leinster either. Done in some detail using circle $i$ notation in Ján Pulmann, Operads and Field Theory.}
 \end{example}
 
 \begin{rem}
@@ -683,11 +683,24 @@ satisfying axioms 1 and 2 from \cref{Defi:sym-op}.
 \end{enumerate}
 \end{rem}
 
+\acnote{Another example of non-symmetric operad is the operad of \emph{pure} braid groups: see James Griffin's comment below the old \href{https://golem.ph.utexas.edu/category/2014/03/operads_of_finite_groups.html}{blog post}.}
 \begin{example}\label{ex:non-sym}
 \ngnoteil{insert example of non-symmetric operad here, how about Trimble's thing in dimension 1?}
+In seeking a definition of weak $n$-category which can be described through iterated enrichment, Trimble defines an operad $E$ as follows:
+    \begin{itemize}
+        \item for $n \geq 0$, $E(n)$ is the space of continuous, endpoint preserving maps
+            \[
+                [0,1] \rightarrow [0,n],
+            \]
+        \item the identity element $1 \in E(1)$ is the identity map
+            \[
+                [0,1] \rightarrow [0,1],
+            \]
+        \item composition is described by `reparameterisation'
+        \acnote{this is harder to write down compactly than I remember, how much detail do we want about composition? and what am I writing about it being non-symmetric?}
+        \acnote{cite Tom's survey \cite{leinster-survey} and Cheng/Lauda \cite{cheng-lauda}? Or Cheng/Gurski \cite{cg-cobordism} cobordisms paper?}
+    \end{itemize}
 \end{example}
-
-\cref{ex:non-sym}
 
 In the original topological applications \cite{maygeom}, symmetric operads were the central figures. A further kind of operad was studied by Fiedorowicz in \cite{fie-br}, that of a \emph{braided} operad in which the braid groups take the place of the symmetric groups. We sketch that definition below, but postpone details to\ngnote{write this out later, ref back}.
 
