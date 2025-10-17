@@ -17,7 +17,7 @@ Terminal groups & Non-symmetric operad \\
 Symmetric groups & Symmetric operad \\
 Braid groups & Braided operad \\
 \end{tabular} \\ \end{center}
-These definitions have appeared, with minor variations, in two sources of which we are aware.  In Wahl's thesis \cite{wahl-thesis}, the essential definitions appear but not in complete generality as she requires a surjectivity condition.  Zhang \cite{zhang-grp} also studies these notions\footnote{Zhang calls our action operad a \textit{group operad}.  We dislike this terminology as it seems to imply that we are dealing with an operad in the category of groups, which is not the case unless all of the maps $\pi_{n}:G(n) \rightarrow \Sigma_{n}$ are zero maps.}, once again in the context of homotopy theory, but requires the  superfluous condition that $e_{1} = \textrm{id}$ (see Lemma \ref{calclem}).
+These definitions have appeared, with minor variations, in two sources of which we are aware.  In Wahl's thesis \cite{wahl-thesis}, the essential definitions appear but not in complete generality as she requires a surjectivity condition.  Zhang \cite{zhang-grp} also studies these notions\footnote{Zhang calls our action operad a \textit{group operad}.  We dislike this terminology as it seems to imply that we are dealing with an operad in the category of groups, which is not the case unless all of the maps $\pi_{n}:G(n) \rightarrow \Sigma_{n}$ are zero maps.}, once again in the context of homotopy theory, but requires the  superfluous condition that $e_{1} = \textrm{id}$ (see Lemma \ref{lem:calclem}).
 
 This paper consists of the following.  In Section 1, we give the definition of an action operad $\mb{G}$ and a $\mb{G}$-operad.  We develop this definition abstractly so as to apply it in any suitable symmetric monoidal category.   It is standard to express operads as monoids in a particular functor category using a composition tensor product.  In order to show that our $\mb{G}$-operads fit into this philosophy, we must work abstractly and use the calculus of coends together with the Day convolution product \cite{day-thesis}.  The reader uninterested in these details can happily skip them, although we find the route taken here to be quite satisfactory in justifying the axioms for an action operad $\mb{G}$ and the accompanying notion of $\mb{G}$-operad.  Many of our calculations are generalizations of those appearing in work of Kelly \cite{kelly-op}, although there are slight differences in flavor between the two treatments.
 %Kelly:  On the operads of JP May
@@ -187,10 +187,108 @@ The formula above for $\delta_{n; k_1, \ldots, k_n}(\sigma)$ is best explained b
 Thus we see that the $i$th entry for $\sigma$ is duplicated $k_i$ times in $\delta_{n; k_1, \ldots, k_n}(\sigma)$.
 \end{rem}
 
-\begin{rem}\label{rem:forward-matrices}
-Figure out where to put these matrices in
-\cref{rem:perm_matrices}.
-\end{rem}
+\ngnoteil{moved this remark here, fix and maybe shorten?}
+
+\begin{remark}\label{rem:perm_matrices}
+Permutations, as elements of $\Sigma_n$, can be considered as permutation \emph{matrices} with exactly one $1$ in each row and column. E.g., the permutation $(1 \,\, 3 \,\, 2) \in \Sigma_3$ can be considered as a matrix which permutes three elements $\begin{bmatrix} a & b & c \end{bmatrix}$ upon pre-multiplication:
+  \[
+  \begin{bmatrix}
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+  1 & 0 & 0
+  \end{bmatrix}
+  \begin{bmatrix}
+  a \\ b \\ c
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+  b \\ c \\ a
+  \end{bmatrix}.
+  \]
+Then $\beta$ corresponds to the process of taking the block diagonal matrix of the original permutation matrices. So given elements $\trans{1}{2} \in \Sigma_2$, $e_1 \in \Sigma_1$, and $(1 \,\, 2 \,\, 3) \in \Sigma_3$, then
+  % \begin{align*}
+  % \beta(\trans{1}{2},e_1,(1 \,\, 2 \,\, 3)) &=
+  % \begin{bmatrix}
+  % \begin{bmatrix}
+  % 0 & 1 \\
+  % 1 & 0
+  % \end{bmatrix} & 0 & 0 \\
+  % 0 & \begin{bmatrix} 1 \end{bmatrix} & 0 \\
+  % 0 & 0 &   \begin{bmatrix}
+  % 0 & 0 & 1 \\
+  % 1 & 0 & 0 \\
+  % 0 & 1 & 0
+  % \end{bmatrix}
+  % \end{bmatrix}\\
+  % &=
+  % \begin{bmatrix}
+  % 0 & 1 & 0 & 0 & 0 & 0 \\
+  % 1 & 0 & 0 & 0 & 0 & 0 \\
+  % 0 & 0 & 1 & 0 & 0 & 0 \\
+  % 0 & 0 & 0 & 0 & 0 & 1 \\
+  % 0 & 0 & 0 & 1 & 0 & 0 \\
+  % 0 & 0 & 0 & 0 & 1 & 0 \\
+  % \end{bmatrix}
+  % % &= \trans{1}{2}(3)(4 \,\, 5 \,\, 6).
+  % \end{align*}
+  \[
+  \beta(\trans{1}{2},e_1,(1 \,\, 2 \,\, 3)) =
+  \begin{bmatrix}
+  \begin{bmatrix}
+  0 & 1 \\
+  1 & 0
+  \end{bmatrix} & 0 & 0 \\
+  0 & \begin{bmatrix} 1 \end{bmatrix} & 0 \\
+  0 & 0 &   \begin{bmatrix}
+  0 & 0 & 1 \\
+  1 & 0 & 0 \\
+  0 & 1 & 0
+  \end{bmatrix}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+  0 & 1 & 0 & 0 & 0 & 0 \\
+  1 & 0 & 0 & 0 & 0 & 0 \\
+  0 & 0 & 1 & 0 & 0 & 0 \\
+  0 & 0 & 0 & 0 & 0 & 1 \\
+  0 & 0 & 0 & 1 & 0 & 0 \\
+  0 & 0 & 0 & 0 & 1 & 0 \\
+  \end{bmatrix}
+  % &= \trans{1}{2}(3)(4 \,\, 5 \,\, 6).
+  \]
+which corresponds to the permutation $\trans{1}{2}(3)(4 \,\, 5 \,\, 6)$.
+
+Similarly, we can describe $\delta$ as an operation on permutation matrices. The idea here being that for $\sigma \in \Sigma_n$, $\delta_{n;k_1,\ldots,k_n}(\sigma)$ takes a block diagonal of identity matrices $I_{k_1}$, $\ldots$, $I_{k_n}$ (which corresponds to $\beta(e_{k_1},\ldots,e_{k_n}) \in \Sigma_{k_1+\ldots+k_n}$), and permutes these according to the effect of the permutation $\sigma$. For example, given $\sigma = (1 \,\, 2 \,\, 3)$, then
+  \[
+    \delta_{3;2,1,3}(\sigma) =
+    \begin{bmatrix}
+    I_2 & 0 & 0 \\
+    0 & I_1 & 0 \\
+    0 & 0 & I_3
+    \end{bmatrix}
+    \ast
+    \sigma
+    =
+      \begin{bmatrix}
+      0 & 0 & 1 \\
+      1 & 0 & 0 \\
+      0 & 1 & 0
+      \end{bmatrix}
+    \ast
+    \begin{bmatrix}
+    I_2 & 0 & 0 \\
+    0 & I_1 & 0 \\
+    0 & 0 & I_3
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    0 & 0 & I_3 \\
+    I_2 & 0 & 0 \\
+    0 & I_1 & 0
+    \end{bmatrix}.
+  \]
+We make use of a similar interpretation of signed permutations and block diagonal matrices in a counterexample given in \cref{Ex:counterex}.
+\end{remark}
 
 \begin{conv}[(Superscripts)]\label{conv:superscripts}
 We generically use superscripts, when needed, to distinguish between operations of the same type associated to different structures. As an example, a monoid homomorphism $f \colon A \to B$ would have axioms written as
@@ -473,7 +571,7 @@ which takes permutations $\sigma \in \Sigma_{n}, \tau_{i} \in \Sigma_{k_{i}}$ an
   \[
     \mu(\sigma; \tau_{1}, \ldots, \tau_{n}) = \delta(\sigma) \cdot \beta(\tau_1,\ldots,\tau_n),
   \]
-with $\beta$ and $\delta$ as in \cref{conv1}.
+with $\beta$ and $\delta$ as in \cref{Defi:beta-s,Defi:delta-s}.
 
 Below we have drawn the permutation for the composition
   \[
@@ -491,8 +589,8 @@ evaluated on the element $\left( (1 \,\, 2 \,\, 3); \trans{1}{2},\trans{1}{2}\tr
   \draw (9,0) -- (11,-1) -- (4,-2.5);
   \draw (10,0) -- (10,-1) -- (3,-2.5);
   \draw (11,0) -- (9,-1) -- (2,-2.5);
-  \node at (13.3,-0.5) {$\beta(\trans{1}{2},\trans{1}{2}\trans{3}{4}, \trans{1}{3}$};
-  \node at (13.3,-2) {$\delta((1 \,\, 2 \,\, 3))$};
+  \node at (13.3,-0.5) {$\beta\big( \trans{1}{2},\trans{1}{2}\trans{3}{4}, \trans{1}{3} \big)$};
+  \node at (13.3,-2) {$\delta_{3;2,4,3}\big( (1 \,\, 2 \,\, 3) \big)$};
   \end{tikzpicture}
   \end{center}
   % \[
@@ -520,117 +618,18 @@ evaluated on the element $\left( (1 \,\, 2 \,\, 3); \trans{1}{2},\trans{1}{2}\tr
   
  \textbf{End this example here, with labels, move the rest to after 2.26.}
 
-\begin{remark}\label{Rem:perm_matrices}
-Permutations, as elements of $\Sigma_n$, can be considered as permutation \emph{matrices} with exactly one $1$ in each row and column. E.g., the permutation $(1 \,\, 3 \,\, 2) \in \Sigma_3$ can be considered as a matrix which permutes three elements $\begin{bmatrix} a & b & c \end{bmatrix}$ upon pre-multiplication:
-  \[
-  \begin{bmatrix}
-  0 & 1 & 0 \\
-  0 & 0 & 1 \\
-  1 & 0 & 0
-  \end{bmatrix}
-  \begin{bmatrix}
-  a \\ b \\ c
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-  b \\ c \\ a
-  \end{bmatrix}.
-  \]
-Then $\beta$ corresponds to the process of taking the block diagonal matrix of the original permutation matrices. So given elements $\trans{1}{2} \in \Sigma_2$, $e_1 \in \Sigma_1$, and $(1 \,\, 2 \,\, 3) \in \Sigma_3$, then
-  % \begin{align*}
-  % \beta(\trans{1}{2},e_1,(1 \,\, 2 \,\, 3)) &=
-  % \begin{bmatrix}
-  % \begin{bmatrix}
-  % 0 & 1 \\
-  % 1 & 0
-  % \end{bmatrix} & 0 & 0 \\
-  % 0 & \begin{bmatrix} 1 \end{bmatrix} & 0 \\
-  % 0 & 0 &   \begin{bmatrix}
-  % 0 & 0 & 1 \\
-  % 1 & 0 & 0 \\
-  % 0 & 1 & 0
-  % \end{bmatrix}
-  % \end{bmatrix}\\
-  % &=
-  % \begin{bmatrix}
-  % 0 & 1 & 0 & 0 & 0 & 0 \\
-  % 1 & 0 & 0 & 0 & 0 & 0 \\
-  % 0 & 0 & 1 & 0 & 0 & 0 \\
-  % 0 & 0 & 0 & 0 & 0 & 1 \\
-  % 0 & 0 & 0 & 1 & 0 & 0 \\
-  % 0 & 0 & 0 & 0 & 1 & 0 \\
-  % \end{bmatrix}
-  % % &= \trans{1}{2}(3)(4 \,\, 5 \,\, 6).
-  % \end{align*}
-  \[
-  \beta(\trans{1}{2},e_1,(1 \,\, 2 \,\, 3)) =
-  \begin{bmatrix}
-  \begin{bmatrix}
-  0 & 1 \\
-  1 & 0
-  \end{bmatrix} & 0 & 0 \\
-  0 & \begin{bmatrix} 1 \end{bmatrix} & 0 \\
-  0 & 0 &   \begin{bmatrix}
-  0 & 0 & 1 \\
-  1 & 0 & 0 \\
-  0 & 1 & 0
-  \end{bmatrix}
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-  0 & 1 & 0 & 0 & 0 & 0 \\
-  1 & 0 & 0 & 0 & 0 & 0 \\
-  0 & 0 & 1 & 0 & 0 & 0 \\
-  0 & 0 & 0 & 0 & 0 & 1 \\
-  0 & 0 & 0 & 1 & 0 & 0 \\
-  0 & 0 & 0 & 0 & 1 & 0 \\
-  \end{bmatrix}
-  % &= \trans{1}{2}(3)(4 \,\, 5 \,\, 6).
-  \]
-which corresponds to the permutation $\trans{1}{2}(3)(4 \,\, 5 \,\, 6)$.
 
-Similarly, we can describe $\delta$ as an operation on permutation matrices. The idea here being that for $\sigma \in \Sigma_n$, $\delta_{n;k_1,\ldots,k_n}(\sigma)$ takes a block diagonal of identity matrices $I_{k_1}$, $\ldots$, $I_{k_n}$ (which corresponds to $\beta(e_{k_1},\ldots,e_{k_n}) \in \Sigma_{k_1+\ldots+k_n}$), and permutes these according to the effect of the permutation $\sigma$. For example, given $\sigma = (1 \,\, 2 \,\, 3)$, then
-  \[
-    \delta_{3;2,1,3}(\sigma) =
-    \begin{bmatrix}
-    I_2 & 0 & 0 \\
-    0 & I_1 & 0 \\
-    0 & 0 & I_3
-    \end{bmatrix}
-    \ast
-    \sigma
-    =
-      \begin{bmatrix}
-      0 & 0 & 1 \\
-      1 & 0 & 0 \\
-      0 & 1 & 0
-      \end{bmatrix}
-    \ast
-    \begin{bmatrix}
-    I_2 & 0 & 0 \\
-    0 & I_1 & 0 \\
-    0 & 0 & I_3
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-    0 & 0 & I_3 \\
-    I_2 & 0 & 0 \\
-    0 & I_1 & 0
-    \end{bmatrix}.
-  \]
-We make use of a similar interpretation of signed permutations and block diagonal matrices in a counterexample given in \cref{Ex:counterex}.
-\end{remark}
 
   
-Note that $\trans{1}{2}\trans{3}{4} \in \Sigma(4)$ is actually $\mu(e_{2}; \trans{1}{2}, \trans{1}{2})$, where $e_{2} \in \Sigma_{2}$ is the identity permutation. Using this and operad associativity, one can easily check that
-  \[
-    \mu \left( (1 \, 2 \, 3); \trans{1}{2}, \trans{1}{2}\trans{3}{4}, \trans{1}{3} \right) = \mu \left( (1 \, 2 \, 3 \, 4); \trans{1}{2}, \trans{1}{2}, \trans{1}{2}, \trans{1}{3} \right),
-  \]
-where now the composition on the right side uses the function
-  \[
-    \mu \colon \Sigma(4) \times \Sigma(2) \times \Sigma(2) \times \Sigma(2) \times \Sigma(3) \rightarrow \Sigma(9).
-  \]
-This equality is obvious using the picture above, but verifiable directly using only the algebra of the symmetric operad.
+%Note that $\trans{1}{2}\trans{3}{4} \in \Sigma(4)$ is actually $\mu(e_{2}; \trans{1}{2}, \trans{1}{2})$, where $e_{2} \in \Sigma_{2}$ is the identity permutation. Using this and operad associativity, one can easily check that
+%  \[
+%    \mu \left( (1 \, 2 \, 3); \trans{1}{2}, \trans{1}{2}\trans{3}{4}, \trans{1}{3} \right) = \mu \left( (1 \, 2 \, 3 \, 4); \trans{1}{2}, \trans{1}{2}, \trans{1}{2}, \trans{1}{3} \right),
+%  \]
+%where now the composition on the right side uses the function
+%  \[
+%    \mu \colon \Sigma(4) \times \Sigma(2) \times \Sigma(2) \times \Sigma(2) \times \Sigma(3) \rightarrow \Sigma(9).
+%  \]
+%This equality is obvious using the picture above, but verifiable directly using only the algebra of the symmetric operad.
 \end{example}
 
 \begin{example}[(Endomorphism operad)]\label{ex:endo}
@@ -655,7 +654,7 @@ We leave verification of the axioms to the reader.
 \end{example}
 
 \begin{rem}
-Intuition in \cref{rem:op-def} connected with example \cref{ex:endo} through the concept of an algebra, see\ngnote{later section} for these.
+The intuition in \cref{rem:op-def} is connected with \cref{ex:endo} through the concept of an algebra, see \cref{sec:forward-op}.
 \end{rem}
 
 One can also drop the symmetric group actions entirely to obtain the notion of a non-symmetric or plain operad.
@@ -703,7 +702,7 @@ In seeking a definition of weak $n$-category which can be described through iter
     \end{itemize}
 \end{example}
 
-In the original topological applications \cite{maygeom}, symmetric operads were the central figures. A further kind of operad was studied by Fiedorowicz in \cite{fie-br}, that of a \emph{braided} operad in which the braid groups take the place of the symmetric groups. We sketch that definition below, but postpone details to\ngnote{write this out later, ref back}.
+In the original topological applications \cite{maygeom}, symmetric operads were the central figures. A further kind of operad was studied by Fiedorowicz in \cite{fie-br}, that of a \emph{braided} operad in which the braid groups take the place of the symmetric groups. We sketch that definition below.
 
 \begin{Defi}[(Braided operad, sketch)]\label{Defi:broperad}
 A \textit{braided operad} consists of
@@ -748,10 +747,10 @@ These operations are sometimes referred to as `cabling' operations for braids, a
 \end{rem}
 
 \begin{example}\label{ex:braided-op}
-\ngnoteil{insert example of braided operad here, probably just braid groups??}
+Example 3.1 of \cite{fie-br} shows that there is a braided operad structure on the spaces $\tilde{C}_2(n)$, obtained as the universal covers of the spaces $C_2(n)$ appearing in the little 2-disks operad. The other canonical example of a braided operad is the operad of braid groups $B_n$, as obtained by applying \cref{prop:gisgop}.
 \end{example}
 
-\ngnoteil{can we prove that the operad of braid groups is NOT a symmetric operad?}
+%\ngnoteil{can we prove that the operad of braid groups is NOT a symmetric operad?}
 
 We conclude this section by defining various categories of operads in $\mb{Sets}$, although the reader can generalize these to categories of operads in any symmetric monoidal category. We focus on the case of symmetric operads, and explain after how to modify the definitions for non-symmetric or braided operads.
 
@@ -790,11 +789,11 @@ The category in \cref{prop:cat-of-sym-op} is called the \emph{category of symmet
 \end{nota}
 
 \begin{rem}[(The category of non-symmetric operads)]\label{rem:cat-of-nonsym-op}
-
+Omitting symmetries entirely, we can also form the category of non-symmetric operads (in $\mb{Sets}$), denoted $\mb{Op}$. The objects are non-symmetric operads (\cref{Defi:non-sym-op}) and the morphisms have the same data as maps of symmetric operads (\cref{Defi:sym_op_map}) but only satisfy the first two axioms as there is no group action to preserve. Composition and identites are defined exactly as for symmetric operads.
 \end{rem}
 
 \begin{rem}[(The category of braided operads)]\label{rem:cat-of-br-op}
-
+Replacing symmetries with braids, we can form the category of braided operads (in $\mb{Sets}$), denoted $B\mbox{-}\mb{Op}$. The objects are braided operads (\cref{Defi:broperad}). The morphisms have the same data as maps of symmetric operads (\cref{Defi:sym_op_map}) and satisfy identical looking axioms so long as the equivariance axiom is interpretted using braids rather than symmetries. Composition and identites are defined exactly as for symmetric operads.
 \end{rem}
 
 \section{Action Operads}\label{sec:aop}
@@ -844,21 +843,17 @@ The maps $\pi$ will be left implicit in the notation, as we will not have reason
 \end{nota}
 
 \begin{rem}\label{rem:similar-defs}
-Our definition of an action operad is the same as that\ngnote{find out what term she uses}  appearing in Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective \acnote{1.5.1 is def of ribbon operad, but she doesn't do it in generality?}. It is also the same as the group operads appearing in work of Zhang \cite{zhang-grp}, although we prove later (see \cref{calclem}) that Zhang's condition of $e_{1} \in \Lambda(1)$ being the identity element follows from the rest of the axioms.
+Our definition of an action operad is the same as the \emph{operads from families of groups} appearing in Section 1.2 Wahl's thesis \cite{wahl-thesis}, but without the condition that each $\pi_{n}$ is surjective. It is also the same as the \emph{group operads} appearing in work of Zhang \cite{zhang-grp}, although we prove later (see \cref{lem:calclem}) that Zhang's condition of $e_{1} \in \Lambda(1)$ being the identity element follows from the rest of the axioms.
 \end{rem}
 
 We now give the two examples of action operads that have already appeared in this paper: the symmetric groups and the trivial groups.
 
 \begin{example}[(Action operad of symmetric groups)]\label{example:aop-sym}
-Copied, likely could be improved:
-
-The symmetric operad $\Sigma$ has a canonical action operad structure. It is given by taking $\pi$ to be the identity map, and this action operad will be denoted $\mathbf{\Sigma}$. This is the terminal object in the category of action operads.
+The symmetric operad $\Sigma$ has a canonical action operad structure. It is given by taking $\pi$ to be the identity map, and is the terminal object in the category of action operads.
 \end{example}
 
 \begin{example}[(Action operad of trivial groups)]\label{example:aop-triv}
-Copied, likely could be improved:
-
-The terminal operad $T$ in the category of sets has a unique action operad structure, $\mathbf{T}$. Since $T(n)$ is a singleton for each $n$, the group structure is unique, as is the map $\pi$. The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the unique element which happens to be the identity. This is the initial object in the category of action operads.
+The terminal operad $T$ in the category of sets has a unique action operad structure. Since $T(n)$ is a singleton for each $n$, the group structure is unique, as is the map $\pi$. The single action operad axiom is then automatic as both sides of \cref{eqn:ao_axiom} are the identity. This is the initial object in the category of action operads.
 \end{example}
 
 \begin{rem}
