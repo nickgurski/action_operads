@@ -849,7 +849,8 @@ by
 \[
 f[k_1, \ldots, k_n](y_1, \ldots, y_n; g) = \big( y_{f^{-1}(1)}, \ldots, y_{f^{-1}(n)}; \delta_{n; k_1, \ldots, k_n}(f) \big).
 \]
-\ngmpar{the labels below need help, but I don't remember enough xypic to fix them}We now check that the following diagram commutes.
+% \ngmpar{the labels below need help, but I don't remember enough xypic to fix them}
+We now check that the following diagram commutes, where underlined elements represent list of the indicated elements indexed from $1$ to $n$.
   \[
     \xy
       (0,0)*+{\prod_{i=1}^n Y(k_i)  \times \Lambda(k)}="a";
@@ -861,17 +862,23 @@ f[k_1, \ldots, k_n](y_1, \ldots, y_n; g) = \big( y_{f^{-1}(1)}, \ldots, y_{f^{-1
       (30,-20)*+{\prod_{i=1}^n Y(k_{f^{-1}(i)}) \times \Lambda(k)}="g";
       (40,-10)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}}="1";
       (15,-25)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}}="2";
-      (40,-35)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}}="3";
+      (60,-35)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}}="3";
       %
-      {\ar^{(-\cdot g_1, \cdots, -\cdot g_n) \times 1} "a" ; "b"};
+      % {\ar^{\left(-\cdot g_1, \cdots, -\cdot g_n\right) \times 1} "a" ; "b"};
+      {\ar^{\left(-\cdot \beta\left(\underline{g_i}\right)\right) \times 1} "a" ; "b"};
       {\ar^{f[k_1, \ldots, k_n]} "b" ; "c"};
-      {\ar_{\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k}} "c" ; "d"};
-      {\ar_{1 \times \big( (g_1 + \cdots + g_n)\cdot -\big)} "a" ; "e"};
+      % {\ar_{\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k}} "c" ; "d"};
+      {\ar^{\theta_{\underline{k_{f^{-1}(i)}}; k}} "c" ; "d"};
+      % {\ar_{1 \times \left( (g_1 + \cdots + g_n)\cdot -\right)} "a" ; "e"};
+      {\ar_{1 \times \left( \beta\left(\underline{g_i}\right)\cdot -\right)} "a" ; "e"};
       {\ar_{f[k_1, \ldots, k_n]} "e" ; "f"};
-      {\ar_{\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k}} "f" ; "d"};
+      % {\ar_{\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k}} "f" ; "d"};
+      {\ar_{\theta_{\underline{k_{f^{-1}(i)}}; k}} "f" ; "d"};
       {\ar^{f[k_1, \ldots, k_n]} "a" ; "g"};
-      {\ar_{1 \times \big( (g_{f^{-1}(1)} + \cdots + g_{f^{-1}(n)})\cdot -\big)} "g" ; "f"};
-      {\ar_{(-\cdot g_{f^{-1}(1)}, \cdots, -\cdot g_{f^{-1}(n)}) \times 1} "g" ; "c"};
+      % {\ar_{1 \times \left( \left(g_{f^{-1}(1)} + \cdots + g_{f^{-1}(n)}\right)\cdot -\right)} "g" ; "f"};
+      {\ar^{1 \times \left(\beta\left(\underline{g_{f^{-1}(i)}}\right) \cdot - \right)} "g" ; "f"};
+      % {\ar_{\left(-\cdot g_{f^{-1}(1)}, \cdots, -\cdot g_{f^{-1}(n)}\right) \times 1} "g" ; "c"};
+      {\ar_{\left(\underline{- \cdot g_{f^{-1}(i)}} \right) \times 1} "g" ; "c"};
     \endxy
   \]
 Squares $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$ and $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$ commute by naturality of symmetries, and square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$ commutes by the definition of the coend. 
@@ -887,7 +894,15 @@ for all $k$ and $k_1, \ldots, k_n$ such that $k = k_1 + \cdots + k_n$.
 & = \theta_{k_{(f_2f_1)^{-1}(1)}, \ldots, k_{(f_2f_1)^{-1}(n)};k} \circ (f_2f_1)[k_1, \ldots, k_n] \\
 & = \big( (f_2f_1) \bullet -\big) \circ \theta_{k_1, \ldots, k_n; k}
 \end{align*}
+\acnote{this spacing any better? similar lists to the diagram above - also is there a typo in the second line above? $f_2$ at end of the middle list should be $f_1$?}
+\begin{align*}
+(f_2 \bullet -) \circ (f_1 \bullet -) \circ \theta_{\underline{k_i};k} &= (f_2 \bullet -) \circ \theta_{\underline{k_{f_1^{-1}(i)}};k} \circ f_1\left[\underline{k_i}\right] \\
+&= \theta_{\underline{k_{f_1^{-1}(f_2^{-1}(i))}};k} \circ f_2\left[k_{f_1^{-1}(1)}, \ldots, k_{f_1^{-1}(n)}\right] \circ f_1\left[\underline{k_i}\right] \\
+&= \theta_{\underline{k_{(f_2f_1)^{-1}(i)}};k} \circ (f_2f_1)\left[\underline{k_i}\right] \\
+&= ((f_2f_1) \bullet -) \circ \theta_{\underline{k_i};k}
+\end{align*}
 by \cref{eq:fbullet} twice, the left action of $\Sigma_n$ on $n$-tuples as in \cref{rem:Sn-tuples}, and \cref{eq6}.
+\acnote{Did these use to come up as `Item'? Or have I broken something?}
 By the universal property of the coend, we conclude that $(f_2 \bullet -) \circ (f_1 \bullet -) = \big( (f_2f_1) \bullet -\big)$, verifying functoriality and completing the proof.
 % using the collection of maps
 %  \[
@@ -920,7 +935,7 @@ We are now ready for the abstract description of the substitution tensor product
   induced by the colimit structures.
 \end{lem}
 \begin{proof}
-The coend $\int^{n} X(n) \times Y^{\star n}(k)$ can be expanded as follows, using \cref{rem:nfold-DC}, the fact that $A \times -$ preserves colimits for any $A$, and the Fubini theorem for coends\ngnote{ref here}.
+The coend $\int^{n} X(n) \times Y^{\star n}(k)$ can be expanded as follows, using \cref{rem:nfold-DC}, the fact that $A \times -$ preserves colimits for any $A$, and the Fubini theorem for coends \cite[Theorem 1.3.1]{loregian}.
 \begin{align*}
 \int^{n} X(n) \times Y^{\star n}(k) & \cong \int^{n} X(n) \times \left( \int^{k_{1}+ \cdots + k_{n}=k } Y(k_{1}) \times \cdots \times Y(k_{n}) \times \Lambda(k) \right) \\
 & \cong \int^{n, k_{1}+ \cdots + k_{n}=k} X(n) \times Y(k_{1}) \times \cdots \times Y(k_{n}) \times \Lambda(k).

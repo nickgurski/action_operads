@@ -2217,7 +2217,7 @@ Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, 
 The permutation $\tau_{m,n} \in \Sigma_{mn}$ is defined uniquely by the property that $\tau_{m,n}(i) = j$ if the $i$th element of the ordered set $\underline{(a, \underline{b})}$ is equal to the $j$th element of the ordered set $\underline{(\underline{a}, b)}$.
 \end{Defi}
 
-\ngnoteil{probably shorten all this exposition}
+% \ngnoteil{probably shorten all this exposition}
 By construction, we have $\tau_{n,m} = \tau_{m,n}^{-1}$. We illustrate these permutations with a couple of examples.
     \[
         \xy
@@ -2240,26 +2240,26 @@ By construction, we have $\tau_{n,m} = \tau_{m,n}^{-1}$. We illustrate these per
         \endxy
     \]
 
-Note then that $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$. This has the effect of rearranging $m$ groups of $n$ things into $n$ groups of $m$ things. E.g., the permutation represented below is $\tau_{5,3}$ and corresponds to taking the transpose of the matrix shown.
-  \[
-      \begin{bmatrix}
-        \textcolor{myorange}{(a_1,b_1)} & \textcolor{myorange}{(a_1,b_2)} & \textcolor{myorange}{(a_1,b_3)} \\
-        \textcolor{mygreen}{(a_2,b_1)} & \textcolor{mygreen}{(a_2,b_2)} & \textcolor{mygreen}{(a_2,b_3)} \\
-        \textcolor{myviolet}{(a_3,b_1)} & \textcolor{myviolet}{(a_3,b_2)} & \textcolor{myviolet}{(a_3,b_3)} \\
-        \textcolor{myred}{(a_4,b_1)} & \textcolor{myred}{(a_4,b_2)} & \textcolor{myred}{(a_4,b_3)} \\
-        \textcolor{myblue}{(a_5,b_1)} & \textcolor{myblue}{(a_5,b_2)} & \textcolor{myblue}{(a_5,b_3)}                               
-      \end{bmatrix}^T
-      =
-      \begin{bmatrix}
-        \textcolor{myorange}{(a_1,b_1)} & \textcolor{mygreen}{(a_2,b_1)} & \textcolor{myviolet}{(a_3,b_1)} & \textcolor{myred}{(a_4,b_1)} & \textcolor{myblue}{(a_5,b_1)} \\ 
-        \textcolor{myorange}{(a_1,b_2)} & \textcolor{mygreen}{(a_2,b_2)} & \textcolor{myviolet}{(a_3,b_2)} & \textcolor{myred}{(a_4,b_2)} & \textcolor{myblue}{(a_5,b_2)} \\  
-        \textcolor{myorange}{(a_1,b_3)} & \textcolor{mygreen}{(a_2,b_3)} & \textcolor{myviolet}{(a_3,b_3)} & \textcolor{myred}{(a_4,b_3)} & \textcolor{myblue}{(a_5,b_3)}
-      \end{bmatrix}
-  \]
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\columnwidth]{4-monoidal_structures/t-5-3.pdf}
-\end{figure}
+Note then that $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$. This has the effect of rearranging $m$ groups of $n$ things into $n$ groups of $m$ things.
+%   \[
+%       \begin{bmatrix}
+%         \textcolor{myorange}{(a_1,b_1)} & \textcolor{myorange}{(a_1,b_2)} & \textcolor{myorange}{(a_1,b_3)} \\
+%         \textcolor{mygreen}{(a_2,b_1)} & \textcolor{mygreen}{(a_2,b_2)} & \textcolor{mygreen}{(a_2,b_3)} \\
+%         \textcolor{myviolet}{(a_3,b_1)} & \textcolor{myviolet}{(a_3,b_2)} & \textcolor{myviolet}{(a_3,b_3)} \\
+%         \textcolor{myred}{(a_4,b_1)} & \textcolor{myred}{(a_4,b_2)} & \textcolor{myred}{(a_4,b_3)} \\
+%         \textcolor{myblue}{(a_5,b_1)} & \textcolor{myblue}{(a_5,b_2)} & \textcolor{myblue}{(a_5,b_3)}                               
+%       \end{bmatrix}^T
+%       =
+%       \begin{bmatrix}
+%         \textcolor{myorange}{(a_1,b_1)} & \textcolor{mygreen}{(a_2,b_1)} & \textcolor{myviolet}{(a_3,b_1)} & \textcolor{myred}{(a_4,b_1)} & \textcolor{myblue}{(a_5,b_1)} \\ 
+%         \textcolor{myorange}{(a_1,b_2)} & \textcolor{mygreen}{(a_2,b_2)} & \textcolor{myviolet}{(a_3,b_2)} & \textcolor{myred}{(a_4,b_2)} & \textcolor{myblue}{(a_5,b_2)} \\  
+%         \textcolor{myorange}{(a_1,b_3)} & \textcolor{mygreen}{(a_2,b_3)} & \textcolor{myviolet}{(a_3,b_3)} & \textcolor{myred}{(a_4,b_3)} & \textcolor{myblue}{(a_5,b_3)}
+%       \end{bmatrix}
+%   \]
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.8\columnwidth]{4-monoidal_structures/t-5-3.pdf}
+% \end{figure}
 % We now give sufficient conditions for equipping the $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ with a pseudo-commutative structure. Let $\mathbb{N}_{+}$ denote the set of positive natural numbers.
 
 We now define what it means for a $\Lambda$-operad to be pseudo-commuative, before then showing that such an operad yields a pseudo-commutative structure on the corresponding $2$-monad $\underline{P}$. 
@@ -2309,7 +2309,7 @@ These are required to satisfy the following axioms:
             \[
                 \mu^{\Lambda}\left(e_l; t_{m_1,n}, \ldots, t_{m_l,n}\right) \cdot \mu^{\Lambda}\left(t_{l,n};\underline{e_{m_1},\ldots,e_{m_l}}\right) = t_{n,M}.
             \]
-            QQQ New version:
+            \acnoteil{which version?}
             \[
               \beta(t_{n,m_1},\ldots,t_{n,m_l}) \cdot \delta_{\underline{m_i},\ldots,\underline{m_i}}(t_{n,l}) = t_{n,M}.
             \]
@@ -2318,7 +2318,7 @@ These are required to satisfy the following axioms:
             \[
                 \mu^{\Lambda}\left(t_{m,l};\underline{e_{n_1}},\ldots,\underline{e_{n_m}}\right) \cdot \mu^{\Lambda}\left(e_m;t_{n_1,l},\ldots,t_{n_m,l}\right) = t_{N,l}.
             \]
-            QQQ New version
+            \acnoteil{which version?}
             \[
               \delta_{\underline{n_1},\ldots,\underline{n_m}}(t_{m,l}) \cdot \beta(t_{n_1,l},\ldots,t_{n_m,l}) = t_{N,l}.
             \]
@@ -2871,7 +2871,7 @@ which is
   \[
     t_{\underline{j}}\beta(t_{j_{n}}, \ldots, t_{j_{1}}) t_{\underline{j}} \beta(t_{j_{1}}, \ldots, t_{j_{n}}).
   \]
-(QQQ What is $t_{\underline{j}}$?)
+\acnote{What is $t_{\underline{j}}$?}
 By the remarks above in the definition of $\delta$ and the fact that $s_{p,q}^{2}=e$, the element above is easily seen to be the identity.
 \item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{k,l}s_{p,q})$ when $(p,q)$ is disjoint from $(k,l)$. This is another simple calculation using the definition of $\delta$ and the disjointness of the terms involved.
 \item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{a,b}s_{p,q})$,  where $a = \hat{s}_{p,q}(l), b = \hat{s}_{p,q}(k)$, if $p < k < l < q$. In this case, we use all of the relations in the cactus groups to show that each side is equal to
@@ -3021,7 +3021,7 @@ is minimal. The calculation for Axiom \ref{axiom:t_sumR}, showing that
   \]
 is also minimal, follows from the same argument, showing that it is equal to $t_{N, l}$ (here $N$ is the sum of the $n_{i}$, where once again $i$ ranges from 1 to $l$).
 
-QQQ Where are Axioms \ref{axiom:t_diagR} and \ref{axiom:t_diagL} checked?
+\acnoteil{Where are Axioms \ref{axiom:t_diagR} and \ref{axiom:t_diagL} checked?}
 
 These calculations show, using \cref{pscomm}, that the $B$-operad $B$ induces a $2$-monad which has a pseudo-commutative structure. As noted before, $B$-algebras are precisely braided strict monoidal categories. The second pseudo-commutative structure arises by using negative, minimal braids instead of positive ones, and proceeds using the same arguments. This finishes the first part of the proof of \cref{braidpscomm}.
 
