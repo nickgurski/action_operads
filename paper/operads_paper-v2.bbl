@@ -149,6 +149,54 @@
       \endverb
       \keyw{20E22,20F38,55U10,Braid group,combing,configuration space,crossed simplicial group,mapping class group,normal form}
     \endentry
+    \entry{BKP}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=68f04659e30158669ecff7b7dd46eabd}{%
+           family={Blackwell},
+           familyi={B\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
+           family={Kelly},
+           familyi={K\bibinitperiod},
+           given={G.\bibnamedelimi M.},
+           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=1b56a8b84d4622f12fe641a23d4e1681}{%
+           family={Power},
+           familyi={P\bibinitperiod},
+           given={A.\bibnamedelimi J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{aaaa757dd3ecdf08d2a34f44f71bb337}
+      \strng{fullhash}{aaaa757dd3ecdf08d2a34f44f71bb337}
+      \strng{fullhashraw}{aaaa757dd3ecdf08d2a34f44f71bb337}
+      \strng{bibnamehash}{aaaa757dd3ecdf08d2a34f44f71bb337}
+      \strng{authorbibnamehash}{aaaa757dd3ecdf08d2a34f44f71bb337}
+      \strng{authornamehash}{aaaa757dd3ecdf08d2a34f44f71bb337}
+      \strng{authorfullhash}{aaaa757dd3ecdf08d2a34f44f71bb337}
+      \strng{authorfullhashraw}{aaaa757dd3ecdf08d2a34f44f71bb337}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0022-4049}
+      \field{journaltitle}{J. Pure Appl. Algebra}
+      \field{number}{1}
+      \field{title}{Two-dimensional monad theory}
+      \field{volume}{59}
+      \field{year}{1989}
+      \field{pages}{1\bibrangedash 41}
+      \range{pages}{41}
+      \verb{doi}
+      \verb 10.1016/0022-4049(89)90160-6
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1016/0022-4049(89)90160-6
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1016/0022-4049(89)90160-6
+      \endverb
+    \endentry
     \entry{cg-cobordism}{article}{}{}
       \name{author}{2}{}{%
         {{hash=58257b3ae9d752dcf69472fc4d5bf347}{%

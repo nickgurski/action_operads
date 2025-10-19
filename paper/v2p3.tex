@@ -1,15 +1,51 @@
 \artpart{Operads in Categories}
 
-\section{Background: 2-Monads and their Algebras}
+\section{Background: $2$-monads and their Algebras}
 
-\ngnoteil{insert something like: we assume basic familiarity with 2-categories, but still review 2-monads stuff}
+\ngnoteil{insert something like: we assume basic familiarity with 2-categories, but still review $2$-monads stuff}
+To investigate operads in $\mathbf{Cat}$ we will make use of $2$-monads and their algebras, specifically the notion of pseudoalgebra for a $2$-monad. We assume familiarity with basic $2$-category theory, but cover the required definitions and theory related to $2$-monads here. For further reference, we refer the reader to \cite{BKP} and \cite{power-gen}.
 
-\begin{Defi}[(2-monad)]\label{Defi:2monad}
-Let $\m{K}$ be a 2-category. A \emph{2-monad} on $\m{K}$ consists of...
+\begin{Defi}[($2$-monad)]\label{Defi:2monad}
+Let $\m{K}$ be a 2-category. A \emph{$2$-monad} on $\m{K}$ consists of
+    \begin{itemize}
+        \item a strict $2$-functor $T \colon \m{K} \rightarrow \m{K}$,
+        \item a $2$-natural transformation $\mu \colon T^2 \Rightarrow T$,
+        \item a $2$-natural transformation $\eta \colon \id_{\m{K}} \Rightarrow T$,
+    \end{itemize}
+satisfying the following axioms.
+    \begin{itemize}
+        \item The following diagram commutes.
+        \[
+            \xy
+                (0,0)*+{T^3X}="00";
+                (20,0)*+{T^2X}="10";
+                (0,-15)*+{T^2X}="01";
+                (20,-15)*+{TX}="11";
+                {\ar^{T\mu_X} "00" ; "10"};
+                {\ar^{\mu_x} "10" ; "11"};
+                {\ar_{\mu_{TX}} "00" ;  "01"};
+                {\ar_{\mu_X} "01" ; "11"};
+            \endxy
+        \]
+        \item The following diagram commutes.
+        \[
+            \xy
+                (0,0)*+{TX}="00";
+                (20,0)*+{T^2X}="10";
+                (40,0)*+{TX}="20";
+                (20,-15)*+{TX}="11";
+                %
+                {\ar^{\eta_{TX}} "00" ; "10"};
+                {\ar_{T\eta_X} "20" ; "10"};
+                {\ar|{\mu_X} "10" ; "11"};
+                {\ar_{\id_{TX}} "00" ; "11"};
+                {\ar^{\id{TX}} "20" ; "11"};
+            \endxy
+        \]
 \end{Defi}
 
-\begin{Defi}[(Pseudoalgebra, 2-monad version)]\label{Defi:pseudoalgebra}
-Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A $T$-\textit{pseudoalgebra} consists of an object $X$, a $1$-cell $\alpha \colon TX \rightarrow X$, and invertible $2$-cells
+\begin{Defi}[(Pseudoalgebra, $2$-monad version)]\label{Defi:pseudoalgebra}
+Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A $T$-\textit{pseudoalgebra} consists of an object $X$, a $1$-cell $\alpha \colon TX \rightarrow X$ in $\m{K}$, and invertible $2$-cells of $\m{K}$
     \[
         \xy
             (0,0)*+{T^2X}="00";
@@ -101,11 +137,11 @@ satisfying the following axioms.
 
 Power's definition of a pseudoalgebra includes a third axiom relating to the unit of the $2$-monad \cite[Definition 2.4, Axiom 2.1]{power-gen}. However, following an argument of Marmolejo \cite[Lemma 9.1]{marm-doct} this extra axiom is redundant and is omitted here.
 
-\begin{Defi}[(Strict algebra, 2-monad version)]\label{Defi:strictalgebra}
+\begin{Defi}[(Strict algebra, $2$-monad version)]\label{Defi:strictalgebra}
 Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad. A \textit{strict $T$-algebra} is a pseudoalgebra in which all of the isomorphisms $\Phi$ are identities.
 \end{Defi}
 
-\begin{Defi}[(Pseudomorphism, 2-monad version)]\label{Defi:pseudomorphism}
+\begin{Defi}[(Pseudomorphism, $2$-monad version)]\label{Defi:pseudomorphism}
 Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$, $(Y,\beta,\Psi,\Psi_\eta)$ be $T$-pseudoalgebras. A \textit{pseudomorphism} $(f, \bar{f})$ between these pseudoalgebras consists of a $1$-cell $f \colon X \rightarrow Y$ along with an invertible $2$-cell
     \[
         \xy
@@ -205,7 +241,7 @@ satisfying the following axioms.
 \end{itemize}
 \end{Defi}
 
-\begin{Defi}[(Strict morphism, 2-monad verison)]\label{Defi:strictmorphism}
+\begin{Defi}[(Strict morphism, $2$-monad verison)]\label{Defi:strictmorphism}
 Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$ and $(Y,\beta,\Psi,\Psi_\eta)$ be $T$-pseudoalgebras. A \textit{strict morphism} $(f, \bar{f})$ consists of a pseudomorphism in which $\bar{f}$ is an identity.
 \end{Defi}
 
@@ -213,7 +249,7 @@ Let $T$ be a $2$-monad and let $(X,\alpha,\Phi,\Phi_\eta)$ and $(Y,\beta,\Psi,\P
 The strict algebras and strict morphisms are exactly the same as algebras and morphisms for the underlying monad on the underlying category of $\m{K}$.
 \end{rem}
 
-\begin{Defi}[($T$-transformation, 2-monad version)]\label{Defi:Ttrans}
+\begin{Defi}[($T$-transformation, $2$-monad version)]\label{Defi:Ttrans}
 Let $(f, \overline{f}), (g, \overline{g}) \colon X \rightarrow Y$ be pseudomorphisms of $T$-algebras. A \textit{$T$-transformation} consists of a $2$-cell $\gamma \colon f \Rightarrow g$ such that the following equality of pasting diagrams holds.
     \[
         \xy
@@ -246,10 +282,10 @@ Let $(f, \overline{f}), (g, \overline{g}) \colon X \rightarrow Y$ be pseudomorph
 
 \end{Defi}
 
-There are many different possible choices of 2-categories in which the objects are some kind of algebra over a 2-monad $T$.
+There are many different possible choices of 2-categories in which the objects are some kind of algebra over a $2$-monad $T$.
 Here are the two that will be the most important for us.
 
-\begin{Defi}[(2-categories of algebras, 2-monad version)]\label{Defi:2cat-of-algs}
+\begin{Defi}[(2-categories of algebras, $2$-monad version)]\label{Defi:2cat-of-algs}
 Let $T$ be a $2$-monad.
 \begin{itemize}
 \item The $2$-category $T\mbox{-}\mb{Alg}_{s}$ consists of strict $T$-algebras, strict morphisms, and $T$-transformations.
@@ -257,10 +293,10 @@ Let $T$ be a $2$-monad.
 \end{itemize}
 \end{Defi}
 
-\section{\texorpdfstring{$\Lambda$}{L}-Operads in Cat as 2-Monads}
+\section{\texorpdfstring{$\Lambda$}{L}-Operads in Cat as $2$-monads}
 
 This section begins our study of algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$.
-This theory blends together standard results in both 2-monad theory\ngnote{lack codescent, bkp} and operad theory\ngnote{may geometry of iterated loops}.
+This theory blends together standard results in both $2$-monad theory\ngnote{lack codescent, bkp} and operad theory\ngnote{may geometry of iterated loops}.
 
 \begin{conv}[(Sets and discrete categories)]\label{conv:set-disc}
 Throughout the rest of this text, $\Lambda$ will be an action in the category of sets.
@@ -1008,9 +1044,9 @@ Let $\Lambda$ be an action operad.
 \end{Defi}
 
 \begin{rem}[($E\Lambda$-algebras are $\EL$-algebras)]\label{rem:elambda=el}
-In each of the items above, we could have expressed the same concept using the 2-monad $\EL$ instead of the $\Lambda$-operad $E\Lambda$ by \cref{thm:2monad=op}.
+In each of the items above, we could have expressed the same concept using the $2$-monad $\EL$ instead of the $\Lambda$-operad $E\Lambda$ by \cref{thm:2monad=op}.
 The same substitution can be made throughout without changing any of the results.
-We have just chosen to state definitions and results in terms of operads rather than 2-monads.
+We have just chosen to state definitions and results in terms of operads rather than $2$-monads.
 \end{rem}
 
 \begin{rem}[(Strictness of $\Lambda$-monoidal categories)]\label{rem:strictness-lmc}
@@ -1248,7 +1284,7 @@ for all objects in the category. The coherence theorem tells us that, for any mo
 
 
 
-By \cref{thm:2monad=op}, we can study the algebras for a $\Lambda$-operad $P$ directly, or do so by studying the algebras for the corresponding 2-monad $\underline{P}$. We first note that the $2$-monads induced by $\Lambda$-operads are finitary, using standard arguments. Second, we show that the coherence theorem in \cite{lack-cod}\ngnote{cite john power general coherence} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra. 
+By \cref{thm:2monad=op}, we can study the algebras for a $\Lambda$-operad $P$ directly, or do so by studying the algebras for the corresponding $2$-monad $\underline{P}$. We first note that the $2$-monads induced by $\Lambda$-operads are finitary, using standard arguments. Second, we show that the coherence theorem in \cite{lack-cod}\ngnote{cite john power general coherence} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra. 
 
 % For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these $2$-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary. In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables. 
 % If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}. There are additional results of a purely $2$-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
@@ -1273,7 +1309,7 @@ The argument is identical to that for braided operads in Section 4.1 of \cite{la
 %Since $\mathbf{Cat}$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
 \end{proof}
 
-We now give an abstract coherence theorem for algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$ following the method of John Power\ngnote{cite power again}. In order to do so, we recall the notion of an enhanced factorization system and Power's coherence result.
+We now give an abstract coherence theorem for algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$ following the method of John Power \cite{power-gen}. In order to do so, we recall the notion of an enhanced factorization system and Power's coherence result.
 
 \begin{Defi}[(Enhanced factorization system)]\label{Defi:efs}
 \ngnoteil{fix this definition}
@@ -1325,7 +1361,7 @@ there exists a unique pair $(m,\beta)$ where $m \colon B \rightarrow C$ is a $1$
 %for which the components of the unit of the adjunction are equivalences. We focus on one version of this general result which has hypotheses that are quite easy to check in practice. 
 
 \begin{thm}[cite power]\label{thm:power}
-Let $\mathcal{K}$ be a 2-category, and $T$ be a 2-monad on $\mathcal{K}$. If 
+Let $\mathcal{K}$ be a 2-category, and $T$ be a $2$-monad on $\mathcal{K}$. If 
 \ngnoteil{below is copied, fix}
 Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. 
 \ngnoteil{resuming}
@@ -1412,7 +1448,7 @@ compare the pseudoalgebras and the stuff above
 \end{rem}
 
 
-\section{Group Actions and Cartesian 2-Monads}\label{sec:cart}
+\section{Group Actions and Cartesian $2$-monads}\label{sec:cart}
 
 \textbf{Why do people care??}
 
@@ -1434,7 +1470,7 @@ induced by the universal property is an isomorphism.
 \end{Defi}
 
 
-\begin{Defi}[(2-cartesian 2-monad)]\label{Defi:2cart-monad}
+\begin{Defi}[(2-cartesian $2$-monad)]\label{Defi:2cart-monad}
 A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit{$2$-cartesian} if
     \begin{itemize}
         \item the $2$-category $\mathcal{K}$ has $2$-pullbacks,
@@ -1719,7 +1755,7 @@ Since the monad $\underline{P}$ is isomorphic to $\underline{S(P)}$, we need onl
 \end{proof}
 
 \begin{cor}\label{cor:EL-2cart}
-Let $\Lambda$ be an action operad in $\mb{Sets}$. Then the 2-monad $\underline{\EL}$ is 2-cartesian.
+Let $\Lambda$ be an action operad in $\mb{Sets}$. Then the $2$-monad $\underline{\EL}$ is 2-cartesian.
 \end{cor}
 \begin{proof}
 The action of $\Lambda(n)$ on $\EL(n)$ is free for all $n$, so in particular satisfies the conditions in \cref{thm:cart_thm}.
@@ -1727,7 +1763,7 @@ The action of $\Lambda(n)$ on $\EL(n)$ is free for all $n$, so in particular sat
 
 \section{Action Operads as Clubs}\label{sec:club}
 
-Kelly's theory of clubs \cite{kelly_club1, kelly_club0, kelly_club2} was designed to simplify and explain how coherence results for a 2-monad $T$ can often be extracted from information about the 
+Kelly's theory of clubs \cite{kelly_club1, kelly_club0, kelly_club2} was designed to simplify and explain how coherence results for a $2$-monad $T$ can often be extracted from information about the 
 %certain aspects of coherence results, namely the fact that many coherence results rely on extrapolating information about general free objects for a $2$-monad $T$ from information about the 
 specific free object $T1$ where $1$ denotes the terminal category. This occurs, for example, in the study of the many different types of monoidal category:  plain monoidal category, braided monoidal category, symmetric monoidal category, and so on. This section will explain how every action operad gives rise to a club, as well as compute the clubs that arise as the image of this procedure.
 
@@ -2186,7 +2222,7 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
 \end{Defi}
 
 \begin{rem}
-    It is noted in \cite{HP} that this definition has some redundancy and therein it is shown that any two of the strength axioms immediately implies the third\ngnote{explain exactly which numbers these are}. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold, as well as the following associativity axiom:
+    It is noted in \cite[Proposition 1]{HP} that this definition has some redundancy and therein it is claimed that any two of the strength axioms (Axioms 1-3) immediately implies the third. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold (Axioms 4-6), as well as the following associativity axiom:
         \[
             \gamma_{A,B \times C} \circ (1_{TA} \times \gamma_{B,C}) = \gamma_{A \times B,C} \times (\gamma_{A,B} \times 1_{TC}).
         \]
@@ -2309,7 +2345,7 @@ These are required to satisfy the following axioms:
             \[
                 \mu^{\Lambda}\left(e_l; t_{m_1,n}, \ldots, t_{m_l,n}\right) \cdot \mu^{\Lambda}\left(t_{l,n};\underline{e_{m_1},\ldots,e_{m_l}}\right) = t_{n,M}.
             \]
-            \acnoteil{which version?}
+            \acnoteil{check below is same as above, then delete above}
             \[
               \beta(t_{n,m_1},\ldots,t_{n,m_l}) \cdot \delta_{\underline{m_i},\ldots,\underline{m_i}}(t_{n,l}) = t_{n,M}.
             \]
@@ -2318,7 +2354,7 @@ These are required to satisfy the following axioms:
             \[
                 \mu^{\Lambda}\left(t_{m,l};\underline{e_{n_1}},\ldots,\underline{e_{n_m}}\right) \cdot \mu^{\Lambda}\left(e_m;t_{n_1,l},\ldots,t_{n_m,l}\right) = t_{N,l}.
             \]
-            \acnoteil{which version?}
+            \acnoteil{check below is same as above, then delete above}
             \[
               \delta_{\underline{n_1},\ldots,\underline{n_m}}(t_{m,l}) \cdot \beta(t_{n_1,l},\ldots,t_{n_m,l}) = t_{N,l}.
             \]
@@ -2608,8 +2644,8 @@ When $A,B$ are discrete, there is no isomorphism $\underline{\left(a,\underline{
 
 
 
-Hyland and Power also define a symmetry for a pseudo-commutative structure on a 2-monad $T$. This symmetry is then reflected in the monoidal structure on the $2$-category of algebras, which will then also have a symmetric tensor product (in a suitable, $2$-categorical sense)\ngnote{include specific reference}.
-
+Hyland and Power also define a symmetry for a pseudo-commutative structure on a $2$-monad $T$. This symmetry is then reflected in the monoidal structure on the $2$-category of algebras, which will then also have a symmetric tensor product (in a suitable, $2$-categorical sense)\ngnote{include specific reference}.
+\acnote{This is prop 18 in HP. But they are talking about the \emph{multicategory} $T$-Alg.}
 \begin{Defi}
 Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad on a symmetric monoidal $2$-category $\m{K}$ with symmetry $c$. We then say that a pseudo-commutativity $\gamma$ for $T$ is \textit{symmetric} when the following is satisfied for all $A$, $B \in \m{K}$:
     \[
