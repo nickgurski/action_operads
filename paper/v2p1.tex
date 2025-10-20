@@ -1460,7 +1460,26 @@ Yau checks that these groups and functions satisfy the axioms of an action opera
 %One can form an operad $B$ where $B(n)$ is the underlying set of the $n$th braid group, $B_{n}$. This is done in much the same way as we did for the symmetric operad using the `cabling' operations for braids described after \cref{broperad}. The collections of maps $\pi_{n} \colon B_{n} \rightarrow \Sigma_{n}$ giving the underlying permutation of each braid constitutes an operad map (of non-symmetric or braided operads) operads $Br \rightarrow \Sigma$.
 \end{example}
 
-\begin{Defi} For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is the group whose presentation is the same as that of the braid group $B_{n}$, except with the addition of $n$ new generators $t_1, \ldots, t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
+\begin{example}[(Action operad of ribbon braid groups)]\label{example:aop-rbraid}
+\ngnoteil{new:}
+For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is defined to be the semidirect product $\mathbb{Z}^n \trianglelefteq B_n$, where the action of $B_n$ on $\mathbb{Z}^n$ is given, using the underlying permutation of a braid $\gamma$, by the formula\ngmpar{Okay, I think there are some issues with inverses in all the literature, or maybe everyone is secretly using a right action. I am attempting to fix that, but maybe no one cares}
+\[
+\gamma \cdot (a_1, \ldots, a_n) = (a_{\gamma^{-1}(1)}, \ldots, a_{\gamma^{-1}(n)}).
+\]
+Alternatively, $RB_n$ can be described as the group of isotopy classes of braids equipped with a framing\ngnote{ref on the framed braid group papers on the nlab page}. A purely algebraic presentation of $RB_n$ is given by generators $\sigma_1, \ldots, \sigma_{n-1}, t_1, \ldots, t_n$ where 
+\begin{itemize}
+\item the $\sigma_i$ are the usual braid generators and satisfy the relations of the braid group, and 
+\item the $t_i$ are the \emph{full twists} and satisfy the additional equations
+\begin{align*}
+t_i t_j & = t_j t_i, \\
+\sigma_i t_j & = t_{\sigma_i^{-1}(j)} \sigma_i
+\end{align*}
+for all $i, j$\ngnote{check these equations agree with yours below, and if they don't figure out if yours also have the issue about inverses from above}.
+\end{itemize}
+
+
+\ngnoteil{old:}
+For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is the group whose presentation is the same as that of the braid group $B_{n}$, except with the addition of $n$ new generators $t_1, \ldots, t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
   \begin{align*}
     b_i \cdot t_i &= t_{i+1} \cdot b_i,\\
     b_i \cdot t_{i+1} &= t_i \cdot b_i.
@@ -1473,43 +1492,45 @@ where $t$ is the sole twist in $RB_1$, and for the `block twists' $t_{(m)}$ we a
   \[
     t_{(0)} = e_n, \quad \quad \quad t_{(m+m')} = \left(t_{(m)} \otimes t_{(m')}\right) \cdot b_{(m', m)} \cdot b_{(m, m')}
   \]
-\end{Defi}
+\end{example}
 
-Much as the symmetric groups can be represented by crossings of a collection of strings, and the braid groups by braidings of strings, the ribbon braid groups deal with the ways that one can braid together several flat ribbons, including the ability to twist a ribbon about its own axis by 360 degrees. The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.
-\begin{center} \begin{tabular}{ccc}
-			\begin{tikzpicture}[baseline]
-				\node(xl1) at (-0.7,1){};
-				\node(xr1) at (-0.3,1){};
-				\node(yl1) at (0.3,1){};
-				\node(yr1) at (0.7,1){};
-				\node(yl2) at (-0.7, -1){};
-				\node(yr2) at (-0.3, -1){};
-				\node(xl2) at (0.3, -1){};
-				\node(xr2) at (0.7, -1){};
-				\node(b) at (0,0)[circle,fill=white, minimum size=0.5cm]{};
-       				\draw[rounded corners](xl1.north) to (-0.7,0.5) to (0.3,-0.5) to (xl2.south);
-       				\draw[rounded corners](xr1.north) to (-0.3,0.5) to (0.7,-0.5) to (xr2.south);
-				\begin{pgfonlayer}{bg}
-				\draw[rounded corners](yl1.north) to (0.3, 0.5) to (-0.7, -0.5) to (yl2.south);
-				\draw[rounded corners](yr1.north) to (0.7, 0.5) to (-0.3, -0.5) to (yr2.south);
-    				\end{pgfonlayer}
-				\draw(xl1.north) to (xr1.north);
-				\draw(xl2.south) to (xr2.south);
-				\draw(yl1.north) to (yr1.north);
-				\draw(yl2.south) to (yr2.south);
-			\end{tikzpicture} & \quad \quad \quad \quad \quad \quad \quad &
-			\begin{tikzpicture}[baseline]
-				\node(xl1) at (-0.2,1){};
-				\node(xr1) at (0.2,1){};	
-				\node(xl2) at (-0.2, -1){};
-				\node(xr2) at (0.2, -1){};
-				\draw[rounded corners](xl1.north) to (-0.2,0.4) to (0.2, 0.3) to (0.2, -0.3) to (-0.2, -0.4) to (xl2.south);	
-       				\draw[rounded corners](xr1.north) to (0.2,0.4) to (-0.2, 0.3) to (-0.2, -0.3) to (0.2, -0.4) to (xr2.south);
-				\draw(xl1.north) to (xr1.north);
-				\draw(xl2.south) to (xr2.south);	
-			\end{tikzpicture} \\
-			$b$ & & $t$ 
-\end{tabular} \end{center}
+\ngnoteil{as much as I like the picture, I am commenting out the twist}
+
+%Much as the symmetric groups can be represented by crossings of a collection of strings, and the braid groups by braidings of strings, the ribbon braid groups deal with the ways that one can braid together several flat ribbons, including the ability to twist a ribbon about its own axis by 360 degrees. The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.
+%\begin{center} \begin{tabular}{ccc}
+%			\begin{tikzpicture}[baseline]
+%				\node(xl1) at (-0.7,1){};
+%				\node(xr1) at (-0.3,1){};
+%				\node(yl1) at (0.3,1){};
+%				\node(yr1) at (0.7,1){};
+%				\node(yl2) at (-0.7, -1){};
+%				\node(yr2) at (-0.3, -1){};
+%				\node(xl2) at (0.3, -1){};
+%				\node(xr2) at (0.7, -1){};
+%				\node(b) at (0,0)[circle,fill=white, minimum size=0.5cm]{};
+%       				\draw[rounded corners](xl1.north) to (-0.7,0.5) to (0.3,-0.5) to (xl2.south);
+%       				\draw[rounded corners](xr1.north) to (-0.3,0.5) to (0.7,-0.5) to (xr2.south);
+%				\begin{pgfonlayer}{bg}
+%				\draw[rounded corners](yl1.north) to (0.3, 0.5) to (-0.7, -0.5) to (yl2.south);
+%				\draw[rounded corners](yr1.north) to (0.7, 0.5) to (-0.3, -0.5) to (yr2.south);
+%    				\end{pgfonlayer}
+%				\draw(xl1.north) to (xr1.north);
+%				\draw(xl2.south) to (xr2.south);
+%				\draw(yl1.north) to (yr1.north);
+%				\draw(yl2.south) to (yr2.south);
+%			\end{tikzpicture} & \quad \quad \quad \quad \quad \quad \quad &
+%			\begin{tikzpicture}[baseline]
+%				\node(xl1) at (-0.2,1){};
+%				\node(xr1) at (0.2,1){};	
+%				\node(xl2) at (-0.2, -1){};
+%				\node(xr2) at (0.2, -1){};
+%				\draw[rounded corners](xl1.north) to (-0.2,0.4) to (0.2, 0.3) to (0.2, -0.3) to (-0.2, -0.4) to (xl2.south);	
+%       				\draw[rounded corners](xr1.north) to (0.2,0.4) to (-0.2, 0.3) to (-0.2, -0.3) to (0.2, -0.4) to (xr2.south);
+%				\draw(xl1.north) to (xr1.north);
+%				\draw(xl2.south) to (xr2.south);	
+%			\end{tikzpicture} \\
+%			$b$ & & $t$ 
+%\end{tabular} \end{center}
 % This operad $RB$ is also clearly an action operad, since we can just define $\pi^{RB}_n \colon RB_{n} \rightarrow \Sigma_n$ to act like $\pi^B_n$ on any braids, at which point the fact that $\pi(t) \in S_1 = \{e_1\}$ will automatically take care of the twists.
 
 \begin{example}[(Action operad of cactus groups)]\label{ex:cactus-aop}
@@ -1542,50 +1563,53 @@ In particular, the families of cyclic groups $\{ C_n \}$, reflexive groups $\Lam
 \begin{example}[(Non-example: hyperoctahedral groups)]\label{ex:counterex2}
 Copied:
 
-In Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad. We clarify that counterexample here, while also describing another. Elements of $H_n$ can be thought of as signed permutations or, equivalently, as $n \times n$ invertible matrices whose entries consist of $-1$, $0$, or $1$ and in which each row and column has exactly one non-zero entry. E.g., we can consider an element of $H_3$ as a permutation matrix and a $3$-tuple of elements of $C_2 = \{-1,1\}$, or simply as a signed permutation matrix:
-  \[
-    \left(\trans{2}{3}
-    ;
-    -1,1,-1\right)
-    =
-    \left(\begin{bmatrix}
-    1 & 0 & 0 \\
-    0 & 0 & 1 \\
-    0 & 1 & 0
-    \end{bmatrix}
-    ;
-    -1,1,-1\right)
-    =
-    \begin{bmatrix}
-    -1 & 0 & 0 \\
-    0 & 0 & -1 \\
-    0 & 1 & 0
-    \end{bmatrix}
-    \in H_3.
-  \]
+In Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad. We clarify that counterexample here, while also describing another.
+The group $H_n$ can be described in many ways: as permutations $\pi$ of the set $\{-n, 1-n, \ldots, -1, 1, \ldots, n-1, n\}$ such that $\pi(i) = -\pi(-i)$ for all $i$, as the subgroup of $O(n)$ consisting of those matrices with all integer coefficients, or as invertible $n \times n$-matrices whose entries consist of $-1$, $0$, or $1$ and in which each row and column has exactly one non-zero entry. 
+%E.g., we can consider an element of $H_3$ as a permutation matrix and a $3$-tuple of elements of $C_2 = \{-1,1\}$, or simply as a signed permutation matrix:
+%  \[
+%    \left(\trans{2}{3}
+%    ;
+%    -1,1,-1\right)
+%    =
+%    \left(\begin{bmatrix}
+%    1 & 0 & 0 \\
+%    0 & 0 & 1 \\
+%    0 & 1 & 0
+%    \end{bmatrix}
+%    ;
+%    -1,1,-1\right)
+%    =
+%    \begin{bmatrix}
+%    -1 & 0 & 0 \\
+%    0 & 0 & -1 \\
+%    0 & 1 & 0
+%    \end{bmatrix}
+%    \in H_3.
+%  \]
 
-In order to describe the hyperoctahedral groups as an action operad, we could use \cref{thm:charAOp} and define maps $\pi$, $\beta$, and $\delta$. The obvious map $\pi_n \colon H_n \rightarrow \Sigma_n$ takes the `absolute value' of a signed permutation matrix, giving back simply the underlying permutation. It seems obvious then to define $\beta$ to be the block sum of signed permutation matrices in much the same way as for the symmetric groups. E.g.,
-  \[
-    \beta\left(
-      \begin{bmatrix}
-      -1 & 0 & 0 \\
-      0 & 0 & -1 \\
-      0 & 1 & 0
-      \end{bmatrix},
-      \begin{bmatrix}
-      0 & 1 \\
-      -1 & 0
-      \end{bmatrix}
-    \right)
-    =
-    \begin{bmatrix}
-      -1 &  0 &  0 &  0 & 0 \\
-      0  &  0 & -1 &  0 & 0 \\
-      0  &  1 &  0 &  0 & 0 \\
-      0  &  0 &  0 &  0 & 1 \\
-      0  &  0 &  0 & -1 & 0
-    \end{bmatrix}.
-  \]
+In order to describe the hyperoctahedral groups as an action operad, we could use \cref{thm:charAOp} and define maps $\pi$, $\beta$, and $\delta$. The obvious map $\pi_n \colon H_n \rightarrow \Sigma_n$ takes the `absolute value' of a signed permutation matrix, giving back the underlying permutation. It seems obvious then to define $\beta$ to be the block sum of signed permutation matrices in much the same way as for the symmetric groups. 
+%E.g.,
+%  \[
+%    \beta\left(
+%      \begin{bmatrix}
+%      -1 & 0 & 0 \\
+%      0 & 0 & -1 \\
+%      0 & 1 & 0
+%      \end{bmatrix},
+%      \begin{bmatrix}
+%      0 & 1 \\
+%      -1 & 0
+%      \end{bmatrix}
+%    \right)
+%    =
+%    \begin{bmatrix}
+%      -1 &  0 &  0 &  0 & 0 \\
+%      0  &  0 & -1 &  0 & 0 \\
+%      0  &  1 &  0 &  0 & 0 \\
+%      0  &  0 &  0 &  0 & 1 \\
+%      0  &  0 &  0 & -1 & 0
+%    \end{bmatrix}.
+%  \]
 For the maps $\delta$ there seem to be two sensible options to try. The first captures Zhang's counterexample by first taking $r_n$ to be the order-reversing signed permutation matrix where all entries are $-1$, i.e., the $n \times n$ matrix with $-1$ in every entry of the anti-diagonal. Then we can define $\delta_{n;k_1,\ldots,k_n}(\sigma)$ to be the block sum $\beta(-r_{k_1},\ldots,-r_{k_n})$ acted on by the product of $r_n$ and $\sigma$. For example,
   \begin{align*}
     \delta_{3;2,1,3}\left(
@@ -1628,7 +1652,7 @@ For the maps $\delta$ there seem to be two sensible options to try. The first ca
       -r_2 & 0 & 0
       \end{bmatrix}.
     \end{align*}
-In particular, this gives $\delta_{1;n}([-1]) = r_n$ as in \cite{zhang-grp}. Taking $\sigma = (\trans{2}{3};-1,1,-1)$, as above, we can show that Axiom \ref{eq8} fails in \cref{thm:charAOp}. The left-hand side of the axiom would be
+In particular, this gives $\delta_{1;n}([-1]) = r_n$ as in \cite{zhang-grp}. Taking $\sigma = (\trans{2}{3};-1,1,-1)$, as above, we can show that Axiom \ref{eq8} fails in \cref{thm:charAOp}\ngnote{I got confused reading this, the calculations don't match what I expect}. The left-hand side of the axiom would be
         \[
           \delta_{1;3}([-1])\beta(\sigma) = r_n \cdot \sigma =
           \begin{bmatrix}
