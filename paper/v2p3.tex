@@ -3,7 +3,7 @@
 \section{Background: $2$-monads and their Algebras}
 
 \ngnoteil{insert something like: we assume basic familiarity with 2-categories, but still review $2$-monads stuff}
-To investigate operads in $\mathbf{Cat}$ we will make use of $2$-monads and their algebras, specifically the notion of pseudoalgebra for a $2$-monad. We assume familiarity with basic $2$-category theory, but cover the required definitions and theory related to $2$-monads here. For further reference, we refer the reader to \cite{BKP} and \cite{power-gen}.
+To investigate operads in $\cat$ we will make use of $2$-monads and their algebras, specifically the notion of pseudoalgebra for a $2$-monad. We assume familiarity with basic $2$-category theory, but cover the required definitions and theory related to $2$-monads here. For further reference, we refer the reader to \cite{BKP} and \cite{power-gen}.
 
 \begin{Defi}[($2$-monad)]\label{Defi:2monad}
 Let $\m{K}$ be a 2-category. A \emph{$2$-monad} on $\m{K}$ consists of
@@ -769,7 +769,7 @@ While $\mathcal{E}_C$ is naturally a symmetric operad, it can be given the struc
 The reader can verify that strict $P$-algebra structures are in bijection with strict maps of $\Lambda$-operads $P \to \mathcal{E}_C$, and pseudo-$P$-algebra structures are in bijection with pseudomorphisms of $\Lambda$-operads $P \to \mathcal{E}_C$.
 It is possible to develop analogues of \cref{lem:alg=map} and \cref{cor:pi-star}, but we do not pursue this line of research here.
 
-%Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad (\cref{endoalg}). We can similarly define pseudomorphisms for a $\mathbf{Cat}$-enriched $\Lambda$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
+%Another interpretation of pseudoalgebras can be given in terms of pseudomorphisms of operads. Algebras for an operad $P$ can be identified with a morphism of operads $F \colon P \rightarrow \mathcal{E}_X$, where $\mathcal{E}_X$ is the endomorphism operad (\cref{endoalg}). We can similarly define pseudomorphisms for a $\cat$-enriched $\Lambda$-operad and identify pseudoalgebras with pseudomorphisms into the endomorphism operad.
 %
 %If $P$, $Q$ are $\Lambda$-operads then a \textit{pseudomorphism} of $\Lambda$-operads $F \colon P \rightarrow Q$ consists of a family of $\Lambda$-equivariant functors
 %            \[
@@ -806,7 +806,7 @@ In order to define $\Lambda$-monoidal categories, we must first construct the op
 %now.
 %\end{rem}
 %
-%We have seen (\cref{op=monad1}) that given any $\Lambda$-operad $P$ there is an induced monad $\underline{P} \colon \m{C} \rightarrow \m{C}$ and that the category of algebras for the operad $P$ is isomorphic to the category of algebras for the monad $\underline{P}$, following \cite{maygeom}. Now we are considering $\Lambda$-operads in $\mathbf{Cat}$, the induced monad associated to an operad of this sort can be shown to be a $2$-monad (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated $2$-monad correspond precisely, i.e., there is an isomorphism of $2$-categories between the $2$-category with either strict or pseudo-level cells defined operadically and the $2$-category with either strict or pseudo-level cells defined $2$-monadically.
+%We have seen (\cref{op=monad1}) that given any $\Lambda$-operad $P$ there is an induced monad $\underline{P} \colon \m{C} \rightarrow \m{C}$ and that the category of algebras for the operad $P$ is isomorphic to the category of algebras for the monad $\underline{P}$, following \cite{maygeom}. Now we are considering $\Lambda$-operads in $\cat$, the induced monad associated to an operad of this sort can be shown to be a $2$-monad (see \cite{KS} for background on $2$-monads) and we will proceed to show that the notions of pseudoalgebra for both the operad and the associated $2$-monad correspond precisely, i.e., there is an isomorphism of $2$-categories between the $2$-category with either strict or pseudo-level cells defined operadically and the $2$-category with either strict or pseudo-level cells defined $2$-monadically.
 %
 %
 %
@@ -1026,7 +1026,7 @@ The functor $E \colon \mb{Sets} \rightarrow \mb{Cat}$ is right adjoint to the se
 %Combining \cref{preserveGop} and \cref{gisgop} with \cref{symmoncor}, we immediately obtain the following.
 
 \begin{cor}\label{cor:elambda_lambdaop}
-Let $\Lambda$ be an action operad. Then $E\Lambda = \{ E\left(\Lambda(n)\right) \}$ (see \cref{nota:e_b}) is a $\Lambda$-operad in $\mb{Cat}$.
+Let $\Lambda$ be an action operad. Then $\EL = \{ E\left(\Lambda(n)\right) \}$ (see \cref{nota:e_b}) is a $\Lambda$-operad in $\mb{Cat}$.
 \end{cor}
 \begin{proof}
 \ngnoteil{this needs to follow the same structure as \cref{rem:lop-in-cat}}
@@ -1037,14 +1037,14 @@ Let $\Lambda$ be an action operad. Then $E\Lambda = \{ E\left(\Lambda(n)\right) 
 \begin{Defi}[($\Lambda$-monoidal categories, functors, and transformations)]\label{Defi:lmc}
 Let $\Lambda$ be an action operad.
 \begin{itemize}
-\item A \emph{$\Lambda$-monoidal category} is a strict algebra for the $\Lambda$-operad $E\Lambda$. 
-\item A \emph{$\Lambda$-monoidal functor} is a strict morphism for the $\Lambda$-operad $E\Lambda$. 
-\item A \emph{$\Lambda$-transformation} is an $E\Lambda$-transformation.
+\item A \emph{$\Lambda$-monoidal category} is a strict algebra for the $\Lambda$-operad $\EL$. 
+\item A \emph{$\Lambda$-monoidal functor} is a strict morphism for the $\Lambda$-operad $\EL$. 
+\item A \emph{$\Lambda$-transformation} is an $\EL$-transformation.
 \end{itemize}
 \end{Defi}
 
-\begin{rem}[($E\Lambda$-algebras are $\EL$-algebras)]\label{rem:elambda=el}
-In each of the items above, we could have expressed the same concept using the $2$-monad $\EL$ instead of the $\Lambda$-operad $E\Lambda$ by \cref{thm:2monad=op}.
+\begin{rem}[($\EL$-algebras are $\EL$-algebras)]\label{rem:elambda=el}
+In each of the items above, we could have expressed the same concept using the $2$-monad $\EL$ instead of the $\Lambda$-operad $\EL$ by \cref{thm:2monad=op}.
 The same substitution can be made throughout without changing any of the results.
 We have just chosen to state definitions and results in terms of operads rather than $2$-monads.
 \end{rem}
@@ -1054,15 +1054,15 @@ We have just chosen to state definitions and results in terms of operads rather 
 \end{rem}
 
 \begin{Defi}[(The 2-category of $\Lambda$-monoidal categories)]
-The $2$-category $\lmc$ is the $2$-category $\EL\mbox{-}\mb{Alg}_{s}$ of strict algebras, strict morphisms, and algebra $2$-cells for $E\Lambda$.
+The $2$-category $\lmc$ is the $2$-category $\EL\mbox{-}\mb{Alg}_{s}$ of strict algebras, strict morphisms, and algebra $2$-cells for $\EL$.
 \end{Defi}
 
 %Any $\Lambda$-operad $P$ in $\mb{Cat}$ gives rise to a $2$-monad on $\mb{Cat}$ which we will often also denote by $P$ or, as in \cref{section:operads_in_Cat}, by $\underline{P}$. In the context of \cref{cor:elambda_lambdaop}, that 
 
 \ngnoteil{start here, had just copied stuff up and it needs to be improved/shortened}
-The $2$-monad $\underline{E\Lambda}$ has underlying 2-functor given by
+The $2$-monad $\underline{\EL}$ has underlying 2-functor given by
   \[
-    X \mapsto \EL(X) = \coprod_{n \geq 0} \coeq{E\Lambda}{X}{\Lambda}{n}.
+    X \mapsto \EL(X) = \coprod_{n \geq 0} \coeq{\EL}{X}{\Lambda}{n}.
   \]
 We will eventually show that $\Lambda$-monoidal categories can be given in more familiar terms, as in Chapter 19 of \cite{yau_infinity_2021}.
 Our final result of this section, \cref{prop:hom-set-lemma}, will give a complete description of the free algebras $\EL(X)$.
@@ -1103,12 +1103,12 @@ Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X
 This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
 \end{proof}
 
-%where the action of $\Lambda(n)$ on $E\Lambda(n)$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $\underline{E\Sigma}$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
+%where the action of $\Lambda(n)$ on $\ELn$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $\underline{E\Sigma}$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
 
 % QQQ Here is probably a natural place to split into another chapter? Previous stuff "Abstract categorical properties of action operads", later stuff "Monoidal structures and multicategories". Or after these results/the next section.
 % QQQ We came to the conclusion just to cite Yau's results in Chapter 19. `A strict $G$-monoidal category is..., etc.'
 
-%Strict $\Lambda$-monoidal categories, in the sense of being strict algebras for the monad $\underline{E\Lambda}$, can be characterised in more familiar terms by specifying a monoidal structure with appropriate equivariant interaction with the $\Lambda(n)$-actions. Explicit proofs of such can be found in , along with similar characterisations for strict $\Lambda$-monoidal functors and $\Lambda$-monoidal categories whose underlying monoidal structure is weak.
+%Strict $\Lambda$-monoidal categories, in the sense of being strict algebras for the monad $\underline{\EL}$, can be characterised in more familiar terms by specifying a monoidal structure with appropriate equivariant interaction with the $\Lambda(n)$-actions. Explicit proofs of such can be found in , along with similar characterisations for strict $\Lambda$-monoidal functors and $\Lambda$-monoidal categories whose underlying monoidal structure is weak.
 
 % \begin{prop}\label{el_via_moncats}
 % A strict $\Lambda$-monoidal category structure on $X$ determines and is determined by
@@ -1137,7 +1137,7 @@ This is also unique and so we find that $(A \times B)/G$ satisfies the universal
 % \begin{proof}
 
 
-% First we shall show an $\EL$-algebra structure on $X$ can be used to specify the monoidal structure described above. If $X$ is an $\EL$-algebra then we also have the family of morphisms $\alpha_n \colon E\Lambda(n) \times X^n \rightarrow X$ satisfying the usual axioms. We define the monoidal product of two objects $x$, $y \in X$ to be
+% First we shall show an $\EL$-algebra structure on $X$ can be used to specify the monoidal structure described above. If $X$ is an $\EL$-algebra then we also have the family of morphisms $\alpha_n \colon \ELn \times X^n \rightarrow X$ satisfying the usual axioms. We define the monoidal product of two objects $x$, $y \in X$ to be
 %   \[
 %     x \otimes y = \alpha_2(e_2;x,y)
 %   \]
@@ -1178,7 +1178,7 @@ This is also unique and so we find that $(A \times B)/G$ satisfies the universal
 %   \[
 %     ! \colon e_n \rightarrow \sigma
 %   \]
-% in $E\Lambda(n)$, which we use to define the isomorphism
+% in $\ELn$, which we use to define the isomorphism
 %   \[
 %     \tilde{\sigma} = \alpha_n(!;\underline{\id}) \colon \alpha_n(e_n;x_1,\ldots,x_n) \rightarrow \alpha_n(\sigma;x_1,\ldots,x_n).
 %   \]
@@ -1194,7 +1194,7 @@ This is also unique and so we find that $(A \times B)/G$ satisfies the universal
 %   \]
 % satisfying the axioms specified above. We need to describe morphisms
 %   \[
-%     \alpha_n \colon E\Lambda(n) \times X^n \rightarrow X
+%     \alpha_n \colon \ELn \times X^n \rightarrow X
 %   \]
 % which satisfy the axioms of an $\EL$-algebra. To begin with we first define
 %   \[
@@ -1206,7 +1206,7 @@ This is also unique and so we find that $(A \times B)/G$ satisfies the universal
 %   \]
 % This is easily checked to be well-defined.
 
-% A morphism in $E\Lambda(n) \times_{\Lambda(n)} X^n$ from $[\sigma;x_1,\ldots,x_n]$ to $[\tau;y_1,\ldots,y_n]$ consists of a unique isomorphism $! \colon \sigma \cong \tau$ along with morphisms $f_i \colon x_i \rightarrow y_i$ in $X$. We define $\alpha_n(!;f_1,\ldots,f_n)$ to be the following composite.
+% A morphism in $\ELn \times_{\Lambda(n)} X^n$ from $[\sigma;x_1,\ldots,x_n]$ to $[\tau;y_1,\ldots,y_n]$ consists of a unique isomorphism $! \colon \sigma \cong \tau$ along with morphisms $f_i \colon x_i \rightarrow y_i$ in $X$. We define $\alpha_n(!;f_1,\ldots,f_n)$ to be the following composite.
 %     \[
 %         \alpha_n(\sigma;x_1,\ldots,x_n) \xrightarrow{\tilde{\sigma}^{-1}} \alpha_n(e_n;x_1,\ldots,x_n) \xrightarrow{\otimes f_i} \alpha_n(e_n;y_1,\ldots,y_n) \xrightarrow{\tilde{\tau}} \alpha_n(\tau;y_1,\ldots,y_n)
 %     \]
@@ -1240,14 +1240,14 @@ This is also unique and so we find that $(A \times B)/G$ satisfies the universal
 
 
 \begin{prop}\label{prop:hom-set-lemma}
-\ngmpar{Rework into a full description of the free algebra $\EL(X)$}For an action operad $\Lambda$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $\coeq{E\Lambda}{X}{\Lambda}{n}$ is
+\ngmpar{Rework into a full description of the free algebra $\EL(X)$}For an action operad $\Lambda$ and any category $X$, the set of morphisms from $[e; x_1, \ldots, x_n]$ to $[e; y_1, \ldots, y_n]$ in $\coeq{\EL}{X}{\Lambda}{n}$ is
   \[
     \coprod_{g \in \Lambda(n)} \prod_{i=1}^{n} X\left(x_i, y_{g(i)}\right).
   \]
 \end{prop}
 \begin{proof}
 \ngnoteil{copied from exposition}
-It will be useful for our calculations later to give an explicit description of the categories $\coeq{E\Lambda}{X}{\Lambda}{n}$. Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
+It will be useful for our calculations later to give an explicit description of the categories $\coeq{\EL}{X}{\Lambda}{n}$. Objects are equivalence classes of tuples $(g; x_1, \ldots, x_n)$ where $g \in \Lambda(n)$ and the $x_{i}$ are objects of $X$, with the equivalence relation given by
   \[
     (gh; x_1, \ldots, x_n) \sim \left(g; x_{h^{-1}(1)}, \ldots, x_{h^{-1}(n)}\right);
   \]
@@ -1255,10 +1255,10 @@ It will be useful for our calculations later to give an explicit description of 
   \[
     (!; f_1, \ldots, f_n) \colon  (g; x_1, \ldots, x_n) \rightarrow \left(h; x_1', \ldots, x_n'\right).
   \]
-We have two distinguished classes of morphisms, one for which the map $! \colon  g \rightarrow h$ is the identity and one for which all the $f_{i}$'s are the identity. Every morphism in $E\Lambda(n) \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type. Now $\coeq{E\Lambda}{X}{\Lambda}{n}$ is a quotient of $E\Lambda(n) \times X^{n}$ by a free group action, so every morphism of $\coeq{E\Lambda}{X}{\Lambda}{n}$ is in the image of the quotient map. Using this fact, we can prove the following useful lemma.
+We have two distinguished classes of morphisms, one for which the map $! \colon  g \rightarrow h$ is the identity and one for which all the $f_{i}$'s are the identity. Every morphism in $\ELn \times X^{n}$ is uniquely a composite of a  morphism of the first type followed by one of the second type. Now $\coeq{\EL}{X}{\Lambda}{n}$ is a quotient of $\ELn \times X^{n}$ by a free group action, so every morphism of $\coeq{\EL}{X}{\Lambda}{n}$ is in the image of the quotient map. Using this fact, we can prove the following useful lemma.
 
 \ngnoteil{old proof}
-A morphism with source $(e; x_1, \ldots, x_n)$ in $E\Lambda(n) \times X^{n}$ is uniquely a composite
+A morphism with source $(e; x_1, \ldots, x_n)$ in $\ELn \times X^{n}$ is uniquely a composite
   \[
     (e; x_1, \ldots, x_n) \stackrel{(\id; f_{1}, \ldots, f_{n})}{\longrightarrow} \left(e; x_1', \ldots, x_n'\right) \stackrel{(!; \id, \ldots, \id)}{\longrightarrow} \left(g; x_1', \ldots, x_n'\right).
   \]
@@ -1271,7 +1271,7 @@ and therefore is a morphism $[e; x_1, \ldots, x_n] \rightarrow [e; y_1, \ldots, 
 
 \begin{rem}
 \ngnoteil{moved to the end, shorten/rewrite}
-The material in this section can be given a rather more abstract interpretation, in the sense of \cite{KL97}. The idea here is that the category of $\Lambda$-collections acts on the category $\mathbf{Cat}$ via a functor $\diamond \colon \Lambda\text{-}\mathbf{Coll} \times \mathbf{Cat} \rightarrow \mathbf{Cat}$ which sends $(P,X)$ to $\underline{P}(X)$ as described above. Fixing a $\Lambda$-collection $P$ produces an endofunctor $\underline{P} \colon \mathbf{Cat} \rightarrow \mathbf{Cat}$ which is then a monad when $P$ is a $\Lambda$-operad, just as monoids in $\Lambda\text{-}\mathbf{Coll}$ are precisely $\Lambda$-operads.
+The material in this section can be given a rather more abstract interpretation, in the sense of \cite{KL97}. The idea here is that the category of $\Lambda$-collections acts on the category $\cat$ via a functor $\diamond \colon \Lambda\text{-}\mathbf{Coll} \times \cat \rightarrow \cat$ which sends $(P,X)$ to $\underline{P}(X)$ as described above. Fixing a $\Lambda$-collection $P$ produces an endofunctor $\underline{P} \colon \cat \rightarrow \cat$ which is then a monad when $P$ is a $\Lambda$-operad, just as monoids in $\Lambda\text{-}\mathbf{Coll}$ are precisely $\Lambda$-operads.
 \end{rem}
 
 \section{Coherence}
@@ -1298,7 +1298,7 @@ Let $P$ be a $\Lambda$-operad. Then $\underline{P}$ is finitary.
 \end{prop}
 \begin{proof}
 The argument is identical to that for braided operads in Section 4.1 of \cite{lack-cod}.
-%To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\mathbf{Cat}$. Then consider the following sequence of isomorphisms:
+%To show that $\underline{P}$ is finitary we must show that it preserves filtered colimits or, equivalently, that it preserves directed colimits (see \cite{ar}). Consider some directed colimit, $\text{colim}X_{i}$ say, in $\cat$. Then consider the following sequence of isomorphisms:
 %    \begin{align*}
 %      \underline{P}(\text{colim}X_{i}) &= \coprod_n \coeq{P}{(\text{colim}X_{i})}{\Lambda}{n} \\
 %      &\cong \coprod_n P(n) \times_{\Lambda(n)} \text{colim}(X_{i}^n) \\
@@ -1306,7 +1306,7 @@ The argument is identical to that for braided operads in Section 4.1 of \cite{la
 %      &\cong \text{colim}\coprod_n \coeq{P}{X_i}{\Lambda}{n} \\
 %      &= \text{colim}\underline{P}(X_{i}).
 %    \end{align*}
-%Since $\mathbf{Cat}$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
+%Since $\cat$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
 \end{proof}
 
 We now give an abstract coherence theorem for algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$ following the method of John Power \cite{power-gen}. In order to do so, we recall the notion of an enhanced factorization system and Power's coherence result.
@@ -1375,7 +1375,7 @@ has a left 2-adjoint, and the components of the unit of the adjunction are equiv
 The 2-category $\mb{Cat}$ has an enhanced factorization system in which the class $\mathcal{L}$ consists of the functors that are bijective on objects and the class $\mathcal{R}$ consists of the functors that are full and faithful.
 \end{lem}
 
-%In our case we are considering $2$-monads on the $2$-category $\mathbf{Cat}$, which has the enhanced factorization system where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. 
+%In our case we are considering $2$-monads on the $2$-category $\cat$, which has the enhanced factorization system where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. 
 
 \begin{prop}
 For any $\Lambda$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
@@ -1838,18 +1838,18 @@ Let $\Lambda$ be an action operad. Then the map of operads $\pi \colon \Lambda \
 
 To give the functor $B\pi \colon B\Lambda \rightarrow B \Sigma$ the structure of a club it suffices (see\ngnote{find specific thm number} \cite{leinster}) to show that
 \begin{itemize}
-\item the induced monad, which we will show to be $\underline{E\Lambda}$, is a cartesian monad on $\mb{Cat}$,
-\item the transformation $\tilde{\pi} \colon \underline{E\Lambda} \Rightarrow \underline{E\Sigma}$ induced by the functor $E\pi$ is cartesian, and
+\item the induced monad, which we will show to be $\underline{\EL}$, is a cartesian monad on $\mb{Cat}$,
+\item the transformation $\tilde{\pi} \colon \underline{\EL} \Rightarrow \underline{E\Sigma}$ induced by the functor $E\pi$ is cartesian, and
 \item $\tilde{\pi}$ commutes with the monad structures.
 \end{itemize}
-The monad $\underline{E\Lambda}$ is always cartesian by \cref{cor:EL-2cart}. The transformation $\tilde{\pi}$ is the coproduct of the maps $\tilde{\pi}_{n}$ that are induced by the universal property of the coequalizer as shown below.
+The monad $\underline{\EL}$ is always cartesian by \cref{cor:EL-2cart}. The transformation $\tilde{\pi}$ is the coproduct of the maps $\tilde{\pi}_{n}$ that are induced by the universal property of the coequalizer as shown below.
   \[
     \xy
-      (0,0)*+{\scriptstyle E\Lambda(n) \times \Lambda(n) \times X^n} ="00";
+      (0,0)*+{\scriptstyle \ELn \times \Lambda(n) \times X^n} ="00";
       (0,-15)*+{\scriptstyle E\Sigma_{n} \times \Sigma_{n} \times X^n} ="01";
-      (30,0)*+{\scriptstyle E\Lambda(n) \times X^n} ="10";
+      (30,0)*+{\scriptstyle \ELn \times X^n} ="10";
       (30,-15)*+{\scriptstyle E\Sigma_{n} \times X^n} ="11";
-      (60,0)*+{\scriptstyle E\Lambda(n) \otimes_{\Lambda(n)} X^n} ="20";
+      (60,0)*+{\scriptstyle \ELn \otimes_{\Lambda(n)} X^n} ="20";
       (60,-15)*+{\scriptstyle E\Sigma_{n} \otimes_{\Sigma_{n}}  X^n} ="21";
       {\ar (11,1)*{}; (22,1)*{} };
       {\ar (11,-1)*{}; (22,-1)*{} };
@@ -1864,10 +1864,10 @@ The monad $\underline{E\Lambda}$ is always cartesian by \cref{cor:EL-2cart}. The
   \]
 Naturality is immediate, and since $\pi$ is a map of operads $\tilde{\pi}$ also commutes with the monad structures.
 
-It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $\underline{E\Lambda}$. Since the monads $\underline{E\Lambda}$ and $\underline{E\Sigma}$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
+It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $\underline{\EL}$. Since the monads $\underline{\EL}$ and $\underline{E\Sigma}$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
   \[
     \xy
-      (0,0)*+{\coeq{E\Lambda}{X}{\Lambda}{n}} ="00";
+      (0,0)*+{\coeq{\EL}{X}{\Lambda}{n}} ="00";
       (0,-10)*+{B\Lambda(n)} ="01";
       (35,0)*+{E\Sigma_{n} \otimes_{\Sigma_{n}} X^n} ="10";
       (35,-10)*+{B\Sigma_{n}} ="11";
@@ -1882,7 +1882,7 @@ By \cref{coeq-lem}
 , this amounts to showing that the square below is a pullback.
   \[
     \xy
-      (0,0)*+{\left(E\Lambda(n) \times X^n\right)/\Lambda(n)} ="00";
+      (0,0)*+{\left(\ELn \times X^n\right)/\Lambda(n)} ="00";
       (0,-10)*+{B\Lambda(n)} ="01";
       (35,0)*+{\left(E\Sigma_{n} \times X^n\right)/\Sigma_{n}} ="10";
       (35,-10)*+{B\Sigma_{n}} ="11";
@@ -1898,14 +1898,14 @@ Here, $(A \times B)/G$ is the category whose objects are equivalence classes of 
   \]
 A similar description holds for objects in the top left, with $g \in \Lambda(n)$ replacing $\sigma$ and $\pi(g)^{-1}$ replacing $\sigma^{-1}$ in the subscripts. The map along the top sends $[g; x_{1}, \ldots, x_{n}]$ to $[\pi(g); x_{1}, \ldots, x_{n}]$, and thus sends $[e; x_{1}, \ldots, x_{n}]$ to $[e; x_{1}, \ldots, x_{n}]$, giving a bijection on objects.
 
-Now a morphism in $(E\Lambda(n) \times X^{n})/\Lambda(n)$ can be given as
+Now a morphism in $(\ELn \times X^{n})/\Lambda(n)$ can be given as
   \[
     [e; x_{1}, \ldots, x_{n}] \stackrel{[!; f_{i}]}{\longrightarrow} [g; y_{1}, \ldots, y_{n}].
   \]
 Mapping down to $B\Lambda(n)$ gives $ge^{-1} = g$, while mapping over to $(E\Sigma_{n} \times X^{n})/\Sigma_{n}$ gives $[!; f_{i}]$ where $! \colon e \rightarrow \pi(g)$ is now a morphism in $E\Sigma_{n}$. In other words, a morphism in the upper left corner of our putative pullback square is determined completely by its images along the top and lefthand functors. Furthermore, given $g \in \Lambda(n)$, $\tau = \pi(g)$, and morphisms $f_{i} \colon x_{i} \rightarrow y_{i}$ in $X$, the morphism $[! \colon e \rightarrow g; f_{i}]$ maps to the pair $(g, [! \colon e \rightarrow \tau; f_{i}])$, completing the proof that this square is indeed a pullback.
 \end{proof}
 
-The club, which we now denote $K_{\Lambda}$, associated to $E\Lambda$ has the following properties. First, the functor $K_{\Lambda} \rightarrow B\Sigma$ is a functor between groupoids. Second, the functor $K_{\Lambda} \rightarrow B\Sigma$ is  bijective-on-objects. We claim that these properties characterize those clubs which arise from action operads. Thus the clubs arising from action operads are a special class of PROPs \cite{mac_prop, markl_prop}.
+The club, which we now denote $K_{\Lambda}$, associated to $\EL$ has the following properties. First, the functor $K_{\Lambda} \rightarrow B\Sigma$ is a functor between groupoids. Second, the functor $K_{\Lambda} \rightarrow B\Sigma$ is  bijective-on-objects. We claim that these properties characterize those clubs which arise from action operads. Thus the clubs arising from action operads are a special class of PROPs \cite{mac_prop, markl_prop}.
 
 \begin{thm}\label{thm:club=operad}
 Let $K$ be a club such that
@@ -1951,11 +1951,11 @@ These hypotheses could be relaxed somewhat. Instead of having a club over $B\Sig
 
 \ngnoteil{need specific references in Kelly}
 
-In \cite{kelly_club1}, Kelly discusses clubs given by generators and relations. His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible. In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $E\Lambda$ are always strict monoidal categories with additional structure. Tracing through his discussion of generators and relations for a club gives the following theorem.
+In \cite{kelly_club1}, Kelly discusses clubs given by generators and relations. His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible. In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $\EL$ are always strict monoidal categories with additional structure. Tracing through his discussion of generators and relations for a club gives the following theorem.
 
 \ngmpar{I worry about the rigor of the next two results}
 \begin{thm}\label{thm:pres1}
-Let $\Lambda$ be an action operad with presentation given by $(\mathbf{g},\mathbf{r}, s_{i}, p)$. Then the club $E\Lambda$ is generated by
+Let $\Lambda$ be an action operad with presentation given by $(\mathbf{g},\mathbf{r}, s_{i}, p)$. Then the club $\EL$ is generated by
 \begin{itemize}
   \item functors giving the unit object and tensor product, and
   \item natural transformations given by the collection $\mathbf{g}$:  each element $x$ of $\mathbf{g}$ with $\pi(x) = \sigma_{x} \in \Sigma_{|x|}$ gives a natural transformation from the $n$th tensor power functor to itself,
@@ -1980,7 +1980,7 @@ subject to a set $\mathcal{R}$ of axioms. Each such axiom is given by the data
   \item two finite sets $f_{1}, \ldots, f_{n}$ and $f_{1}', \ldots, f_{m}'$ of elements of $\mathcal{G}$; and
   \item two formal composites $F,F'$ using only composition and tensor product operations and the $f_{i}$, respectively $f_{i}'$, 
 \end{itemize}
-such that the underlying permutation of $F$ equals the underlying permutation of $F'$ (we compute the underlying permutations using the functions $\beta, \delta$ of \cref{thm:charAOp}). The element $\left(\underline{f}, \underline{f}', F, F'\right)$ of the set $\mathcal{R}$ of axioms corresponds to the requirement that the composite of the morphisms $f_{i}$ using $F$ equals the composite of the morphisms $f_{j}'$ using $F'$ in any strict monoidal category of type $\mathcal{M}$. Then strict monoidal categories of type $\mathcal{M}$ are given as the algebras for the club $E\Lambda$ where $\Lambda$ is the action operad with
+such that the underlying permutation of $F$ equals the underlying permutation of $F'$ (we compute the underlying permutations using the functions $\beta, \delta$ of \cref{thm:charAOp}). The element $\left(\underline{f}, \underline{f}', F, F'\right)$ of the set $\mathcal{R}$ of axioms corresponds to the requirement that the composite of the morphisms $f_{i}$ using $F$ equals the composite of the morphisms $f_{j}'$ using $F'$ in any strict monoidal category of type $\mathcal{M}$. Then strict monoidal categories of type $\mathcal{M}$ are given as the algebras for the club $\EL$ where $\Lambda$ is the action operad with
 \begin{itemize}
   \item $\mathbf{g} = \mathcal{G}$,
   \item $\mathbf{r} = \mathcal{R}$,
@@ -3103,7 +3103,7 @@ which is not equal to $\tau_{2,4} = (2 \,\, 3 \,\, 5)(4 \,\, 7 \,\, 6)$. Hence i
 I commented out the profunctors stuff, but it is still in the file.
 \end{rem}
 %\subsection{Profunctors and multicategories}
-%In this section we generalize from operads to multicategories (or colored operads). The notions of plain and symmetric multicategories are standard \cite{bd_hda3}, but in fact there is a corresponding notion of $\Lambda$-multicategory for any action operad $\Lambda$. We will give the basic definition and then show that it arises abstractly from a lifting of $\underline{E\Lambda}$ as a $2$-monad  on $\mb{Cat}$ to a pseudomonad on $\mb{Prof}$, the bicategory of categories, profunctors, and transformations. A quick treatment of similar material but restricted to the symmetric case can be found in \cite{garner_poly}.
+%In this section we generalize from operads to multicategories (or colored operads). The notions of plain and symmetric multicategories are standard \cite{bd_hda3}, but in fact there is a corresponding notion of $\Lambda$-multicategory for any action operad $\Lambda$. We will give the basic definition and then show that it arises abstractly from a lifting of $\underline{\EL}$ as a $2$-monad  on $\mb{Cat}$ to a pseudomonad on $\mb{Prof}$, the bicategory of categories, profunctors, and transformations. A quick treatment of similar material but restricted to the symmetric case can be found in \cite{garner_poly}.
 %
 %\begin{Defi}\label{lambda_multicat}
 %Let $\Lambda$ be an action operad. A \emph{$\Lambda$-multicategory} $M$ consists of the following data:
@@ -3183,12 +3183,12 @@ I commented out the profunctors stuff, but it is still in the file.
 %
 %
 %\begin{thm}
-%The $2$-monad $\underline{E\Lambda}$ on the $2$-category $\mb{Cat}$ lifts to a pseudomonad $\widetilde{\underline{E\Lambda}}$ on the bicategory $\mb{Prof}$.
+%The $2$-monad $\underline{\EL}$ on the $2$-category $\mb{Cat}$ lifts to a pseudomonad $\widetilde{\underline{\EL}}$ on the bicategory $\mb{Prof}$.
 %\end{thm}
 %\begin{proof}
-%On objects, we have $\widetilde{\underline{E\Lambda}}(X) = \underline{E\Lambda}(X)$. Let $F \colon  X \srarrow Y$ be a profunctor given by the functor $F \colon Y^{\textrm{op}} \times X \rightarrow \mb{Sets}$. We define $\widetilde{\underline{E\Lambda}}F$ to be the functor
+%On objects, we have $\widetilde{\underline{\EL}}(X) = \underline{\EL}(X)$. Let $F \colon  X \srarrow Y$ be a profunctor given by the functor $F \colon Y^{\textrm{op}} \times X \rightarrow \mb{Sets}$. We define $\widetilde{\underline{\EL}}F$ to be the functor
 %  \[
-%    ( \underline{E\Lambda}(Y) )^{\textrm{op}} \times \underline{E\Lambda}(X) \rightarrow \mb{Sets}
+%    ( \underline{\EL}(Y) )^{\textrm{op}} \times \underline{\EL}(X) \rightarrow \mb{Sets}
 %  \]
 %which is defined by the formulas
 %  \[
@@ -3201,16 +3201,16 @@ I commented out the profunctors stuff, but it is still in the file.
 %  \]
 %For a functor $G \colon X \rightarrow Y$, it is easy to check that
 %  \[
-%    \widetilde{\underline{E\Lambda}}\left(G^{+}\right) = \left( \underline{E\Lambda} G \right)^{+}
+%    \widetilde{\underline{\EL}}\left(G^{+}\right) = \left( \underline{\EL} G \right)^{+}
 %  \]
-%using \cref{hom-set-lemma}. The same formulas define the action of  $\widetilde{\underline{E\Lambda}}$ on $2$-cells as well. The multiplication and unit of $\widetilde{\underline{E\Lambda}}$ are just $\mu^{+}$ and $\eta^{+}$, where $\mu, \eta$ are the multiplication and unit, respectively, of $\underline{E\Lambda}$. The remainder of the pseudomonad data comes from the pseudofunctoriality of $(-)^{+}$, and the axioms follow from the $2$-monad axioms for $\underline{E\Lambda}$ and the pseudofunctor axioms for $(-)^{+}$.
+%using \cref{hom-set-lemma}. The same formulas define the action of  $\widetilde{\underline{\EL}}$ on $2$-cells as well. The multiplication and unit of $\widetilde{\underline{\EL}}$ are just $\mu^{+}$ and $\eta^{+}$, where $\mu, \eta$ are the multiplication and unit, respectively, of $\underline{\EL}$. The remainder of the pseudomonad data comes from the pseudofunctoriality of $(-)^{+}$, and the axioms follow from the $2$-monad axioms for $\underline{\EL}$ and the pseudofunctor axioms for $(-)^{+}$.
 %\end{proof}
 %
 %\begin{rem}
-%Since $\mb{Prof}$ is essentially the Kleisli bicategory for the free cocompletion pseudomonad, this lift corresponds to a pseudo-distributive law between $\underline{E\Lambda}$ and the free cocompletion pseudomonad, but we do not pursue this perspective here.
+%Since $\mb{Prof}$ is essentially the Kleisli bicategory for the free cocompletion pseudomonad, this lift corresponds to a pseudo-distributive law between $\underline{\EL}$ and the free cocompletion pseudomonad, but we do not pursue this perspective here.
 %\end{rem}
 %
-%Given a bicategory $B$ and a pseudomonad $T$ on $B$, we can form the Kleisli bicategory of $T$, $\mb{Kl}_{T}$. It has the same objects as $B$, but a $1$-cell from $a$ to $b$ in  $\mb{Kl}_{T}$ is a $1$-cell $f \colon a \rightarrow Tb$ in $B$. In the case $B = \mb{Prof}, T = \widetilde{\underline{E\Lambda}}$, the objects of $\mb{Kl}_{T}$ are categories, the $1$-cells $X \srarrow Y$ are profunctors from $X$ to $\underline{E\Lambda}(Y$), or alternatively a functor $(\underline{E\Lambda}(Y))^{op} \times X \rightarrow \mb{Sets}$, and the $2$-cells are natural transformation between such.
+%Given a bicategory $B$ and a pseudomonad $T$ on $B$, we can form the Kleisli bicategory of $T$, $\mb{Kl}_{T}$. It has the same objects as $B$, but a $1$-cell from $a$ to $b$ in  $\mb{Kl}_{T}$ is a $1$-cell $f \colon a \rightarrow Tb$ in $B$. In the case $B = \mb{Prof}, T = \widetilde{\underline{\EL}}$, the objects of $\mb{Kl}_{T}$ are categories, the $1$-cells $X \srarrow Y$ are profunctors from $X$ to $\underline{\EL}(Y$), or alternatively a functor $(\underline{\EL}(Y))^{op} \times X \rightarrow \mb{Sets}$, and the $2$-cells are natural transformation between such.
 %
 %We now recall some standard definitions \cite{ben-bicats}.
 %
@@ -3307,24 +3307,24 @@ I commented out the profunctors stuff, but it is still in the file.
 %\item $\Lambda$-multicategories and
 %\item $\Lambda$-multifunctors
 %\end{itemize}
-%and the bicategory $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ of
+%and the bicategory $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{\EL}}})$ of
 %\begin{itemize}
-%\item monads on sets (viewed as discrete categories) in $\mb{Kl}_{\widetilde{\underline{E\Lambda}}}$,
+%\item monads on sets (viewed as discrete categories) in $\mb{Kl}_{\widetilde{\underline{\EL}}}$,
 %\item oplax monad maps $(F, \alpha)$ between them which are isomorphic to one of the form $(f^{+}, \alpha)$ for $f \colon S \rightarrow T$ for some function of the underlying sets, and
 %\item transformations of monad maps
 %\end{itemize}
 %are biequivalent.
 %
-%Under this biequivalence, the category of $\Lambda$-operads is equivalent to the bicategory of monads on the terminal set in $\mb{Kl}_{\widetilde{\underline{E\Lambda}}}$.
+%Under this biequivalence, the category of $\Lambda$-operads is equivalent to the bicategory of monads on the terminal set in $\mb{Kl}_{\widetilde{\underline{\EL}}}$.
 %\end{thm}
 %\begin{proof}
-%First, we note that $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ is a locally essentially discrete bicategory, by which we mean the hom-categories are all equivalent to discrete categories. We will show there is a unique isomorphism or no $2$-cell at all between oplax monad maps of the form $(f^{+}, \alpha)$, from which the claim follows in general. A $2$-cell between such has as its data a natural transformation $\gamma \colon f^{+} \Rightarrow g^{+}$ which has components
+%First, we note that $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{\EL}}})$ is a locally essentially discrete bicategory, by which we mean the hom-categories are all equivalent to discrete categories. We will show there is a unique isomorphism or no $2$-cell at all between oplax monad maps of the form $(f^{+}, \alpha)$, from which the claim follows in general. A $2$-cell between such has as its data a natural transformation $\gamma \colon f^{+} \Rightarrow g^{+}$ which has components
 %  \[
 %    \gamma_{[e; t_1, \ldots, t_n], s} \colon f^{+}([e; t_1, \ldots, t_n], s) \rightarrow g^{+}([e; t_1, \ldots, t_n], s).
 %  \]
-%Both of these sets are empty unless $n=1$, and then the source is nonempty when $f(s) = t$ and the target is nonempty when $g(s)=t$; when nonempty, both of these sets are singletons. If both are nonempty for some $s$, then the functions $f,g$ agree on $s$. Assume the target is nonempty for some $([e;t], s)$ but that the source is empty, in other words that $g(s)=t$ but $f(s) \neq t$. Then consider $\gamma_{[e;f(s)], s}$. Its source is $f^{+}([e;f(s)], s)$ which is nonempty by construction, but its target is $g^{+}([e;f(s)], s)$. We know that $g(s) = t \neq f(s)$, so $g^{+}([e;f(s)], s)$ must be empty, giving a map from a nonempty set to an empty one, a contradiction. Thus there is a at most one $2$-cell from an oplax monad map $(f^{+}, \alpha)$ to another $(g^{+}, \beta)$, such a map can only exist if $f = g$, and if it does exist then it is invertible. Thus the hom-categories of $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ are essentially discrete, and this bicategory is equivalent to a category.
+%Both of these sets are empty unless $n=1$, and then the source is nonempty when $f(s) = t$ and the target is nonempty when $g(s)=t$; when nonempty, both of these sets are singletons. If both are nonempty for some $s$, then the functions $f,g$ agree on $s$. Assume the target is nonempty for some $([e;t], s)$ but that the source is empty, in other words that $g(s)=t$ but $f(s) \neq t$. Then consider $\gamma_{[e;f(s)], s}$. Its source is $f^{+}([e;f(s)], s)$ which is nonempty by construction, but its target is $g^{+}([e;f(s)], s)$. We know that $g(s) = t \neq f(s)$, so $g^{+}([e;f(s)], s)$ must be empty, giving a map from a nonempty set to an empty one, a contradiction. Thus there is a at most one $2$-cell from an oplax monad map $(f^{+}, \alpha)$ to another $(g^{+}, \beta)$, such a map can only exist if $f = g$, and if it does exist then it is invertible. Thus the hom-categories of $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{\EL}}})$ are essentially discrete, and this bicategory is equivalent to a category.
 %
-%We begin by describing an object of $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ which is a monad in $\mb{Kl}_{\widetilde{\underline{E\Lambda}}}$ whose underlying category is a set $S$. A $1$-cell $M \colon S \srarrow S$ is then a functor $(\underline{E\Lambda}(S)^{op} \times S \rightarrow \mb{Sets}$ which amounts to sets $M(s_1, \ldots, s_n; s)$ for $s_1, \ldots, s_n, s \in S$ together with a right action of $\Lambda(n)$ as in \ref{lambda_multicat}. A $2$-cell $1_{S} \Rightarrow M$ consists of a $\Lambda(1)$-equivariant function $\Lambda(1) \rightarrow M(s;s)$ for each $s \in S$, in other words an element $\id_{s} \in M(s;s)$. A $2$-cell $M \circ M \Rightarrow M$ then consists of a multicategorical composition function, as in \ref{lambda_multicat}, with appropriate equivariance built in by the coend used for composition of profunctors. Associativity and unit conditions are then seen to be the same as for $\Lambda$-multicategories.
+%We begin by describing an object of $\mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{\EL}}})$ which is a monad in $\mb{Kl}_{\widetilde{\underline{\EL}}}$ whose underlying category is a set $S$. A $1$-cell $M \colon S \srarrow S$ is then a functor $(\underline{\EL}(S)^{op} \times S \rightarrow \mb{Sets}$ which amounts to sets $M(s_1, \ldots, s_n; s)$ for $s_1, \ldots, s_n, s \in S$ together with a right action of $\Lambda(n)$ as in \ref{lambda_multicat}. A $2$-cell $1_{S} \Rightarrow M$ consists of a $\Lambda(1)$-equivariant function $\Lambda(1) \rightarrow M(s;s)$ for each $s \in S$, in other words an element $\id_{s} \in M(s;s)$. A $2$-cell $M \circ M \Rightarrow M$ then consists of a multicategorical composition function, as in \ref{lambda_multicat}, with appropriate equivariance built in by the coend used for composition of profunctors. Associativity and unit conditions are then seen to be the same as for $\Lambda$-multicategories.
 %
 %By definition, an oplax monad map $(f^{+}, \alpha) \colon  (S,M) \rightarrow (S', M')$ consists of a function $f \colon S \rightarrow S'$ and a transformation $\alpha \colon M \circ f^{+} \Rightarrow f^{+} \circ M'$ satisfying two axioms. The transformation $\alpha$ amounts to giving $\Lambda(n)$-equivariant functions
 %  \[
@@ -3332,7 +3332,7 @@ I commented out the profunctors stuff, but it is still in the file.
 %  \]
 %and the two axioms correspond to the unit and composition axioms for a $\Lambda$-multifunctor.
 %
-%These descriptions give the action on objects and morphisms of a pseudofunctor $\Lambda\mbox{-}\mb{Multicat} \rightarrow \mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{E\Lambda}}})$ with local contractibility providing the pseudofunctoriality constraints as well as showing that the axioms for a pseudofunctor hold. It is also clear that this pseudofunctor is biessentially surjective and locally essentially surjective, so it is a biequivalence once again using local contractibility.
+%These descriptions give the action on objects and morphisms of a pseudofunctor $\Lambda\mbox{-}\mb{Multicat} \rightarrow \mb{Mnd}_{d}(\mb{Kl}_{\widetilde{\underline{\EL}}})$ with local contractibility providing the pseudofunctoriality constraints as well as showing that the axioms for a pseudofunctor hold. It is also clear that this pseudofunctor is biessentially surjective and locally essentially surjective, so it is a biequivalence once again using local contractibility.
 %
 %The final claim is then an immediate consequence of the definitions of $\Lambda$-operad and $\Lambda$-multicategory.
 %\end{proof}
