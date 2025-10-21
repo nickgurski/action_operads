@@ -830,7 +830,7 @@ such that one additional axiom holds. Write
   \[
     \mu \colon  \Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) \rightarrow \Lambda(k_{1} + \cdots + k_{n})
   \]
-for the multiplication in the operad $\Lambda$. Let $(g; f_1, \ldots, f_n)$ be an element of the product $\Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n})$ and let $(g'; f_1', \ldots f_n')$ be an element of the product $\Lambda(n) \times \Lambda(k_{g^{-1}(1)}) \times \cdots \times \Lambda(k_{g^{-1}(1)})$. We require that
+for the multiplication in the operad $\Lambda$. Let $(g; f_1, \ldots, f_n)$ be an element of the product $\Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n})$ and let $(g'; f_1', \ldots f_n')$ be an element of the product $\Lambda(n) \times \Lambda(k_{g^{-1}(1)}) \times \cdots \times \Lambda(k_{g^{-1}(n)})$. We require that
   \begin{eqn}\label{eqn:ao_axiom}
     \mu\left(g'; f_1', \ldots f_n'\right)  \mu\left(g; f_1, \ldots, f_n\right) = \mu\left(g'g; f_{g(1)}'f_{1}, \ldots, f_{g(n)}'f_{n}\right)
   \end{eqn}
@@ -2211,7 +2211,7 @@ by induction. Fixing $i$ and inducting on $j$, we start on the right and compute
 & = \tilde{f}_{i+j+1}( \sigma_{1;2}; e_i, e_{j+1})  \\
 & = \tilde{f}_{i+j+1}\delta_{2; i, j+1}(\sigma_{1;2}).  \\
 \end{align*}
-The equalities above are derived, in order, from the following:
+The equalities above are derived, in order\ngnote{we could number the equalities above if that would improve clarity}, from the following:
 \begin{enumerate}
 \item the definition of $\delta$, 
 \item the definition of $\tilde{f}_2$, 
