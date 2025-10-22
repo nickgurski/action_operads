@@ -65,6 +65,13 @@ such that the following two equivariance axioms hold.
   \end{itemize}
 \end{Defi}
 
+\begin{rem}\label{rem:single-axiom}
+Using \cref{eqn:mu-from-betadelta} from the proof of \cref{thm:charAOp}, the two equivariance axioms in \cref{Defi:lamop} can be combined into the single equality
+\[
+    \mu\left(p; p_1, \ldots p_n\right)  \mu\left(\tau;\tau_1, \ldots, \tau_n\right) = \mu\left(p \cdot \tau; p_{\tau(1)}\cdot \tau_{1}, \ldots,  p_{\tau(n)}\cdot \tau_{n}\right).
+\]
+\end{rem}
+
 
 \begin{Defi}[(Map of $\Lambda$-operads)]\label{Defi:aop_map}
 Let $P$ and $Q$ be $\Lambda$-operads. A \emph{map $f \colon P \rightarrow Q$ of $\Lambda$-operads} consists of an operad map (\cref{Defi:aop_map}) that is levelwise equivariant with respect to the $\Lambda(n)$-actions, i.e., for each $n \in \mathbb{N}$ the following diagram commutes.
@@ -258,7 +265,7 @@ We begin by sketching a change-of-action operad result.
 Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads. 
 \begin{enumerate}
 \item The map $f$ induces a functor $f^{*} \colon \Lambda'\mbox{-}\mb{Op} \rightarrow \Lambda\mbox{-}\mb{Op}$ with the property that $(f^{*}P)(n) = P(n)$ for every $\Lambda'$-operad $P$.
-\item \ngmpar{figure this out later, fill in proof too}Is there one going the other way? Should be $(f_{!}P)(n)$ given by the coequalizer
+\item The map $f$ induces a functor $f_{!} \colon \Lambda\mbox{-}\mb{Op} \rightarrow \Lambda'\mbox{-}\mb{Op}$, where $(f_{!}P)(n)$ is defined by the coequalizer below,
     \[
         \xy
             (-10,0)*+{P(n) \times \Lambda(n) \times \Lambda'(n)}="00";
@@ -270,7 +277,7 @@ Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads.
         \endxy
     \]
 where $\star \colon \Lambda'(n) \times \Lambda'(n) \to \Lambda'(n)$ is group multiplication and $\rho \colon P(n) \times \Lambda(n) \to P(n)$ is the right action given by the $\Lambda$-operad structure. 
-\item Is there an adjunction? I think we need there to be one. The functor $f_{!}$ is left adjoint to $f^*$.
+\item The functor $f_{!}$ is left adjoint to $f^*$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -308,40 +315,66 @@ In order to do so, we must check that
 \tilde{m}\big( (p\cdot \sigma,\tau); (p_1\cdot\sigma_1, \tau_1), \ldots, (p_n\cdot\sigma_n, \tau_n) \big) = \tilde{m}\big( (p,f(\sigma)\tau); (p_1, f(\sigma_1)\tau_1), \ldots, (p_n, f(\sigma_n)\tau_n) \big).
 \]
 By definition the left side is
-\[
+\begin{equation}\label{eqn:lhs-fshriek}
 \left[ \mu^{P}(p\cdot\sigma; p_{\tau^{-1}(1)}\cdot\sigma_{\tau^{-1}(1)}, \ldots, p_{\tau^{-1}(n)}\cdot\sigma_{\tau^{-1}(n)}),\  \mu^{\Lambda'}(\tau; \tau_1, \ldots, \tau_n)            \right],
-\]
+\end{equation}
 while the right side is
+\begin{equation}\label{eqn:rhs-fshriek}
+\left[\mu^P(p; p_{(f(\sigma)\tau)^{-1}(1)}, \ldots, p_{(f(\sigma)\tau)^{-1}(n)}), \ \mu^{\Lambda'}\big( f(\sigma)\tau; f(\sigma_1)\tau_1, \ldots, f(\sigma_n)\tau_n\big)          \right].
+\end{equation}
+By the action operad axioms and the fact that $f$ is a map of action operads, we have the equalities
+\begin{align*}
+\mu\big( f(\sigma)\tau; f(\sigma_1)\tau_1, \ldots, f(\sigma_n)\tau_n\big) &= \mu\big( f(\sigma); f(\sigma_{\tau^{-1}(1)}), \ldots, f(\sigma_{\tau^{-1}(n)})\big)\mu\big( \tau; \tau_1, \ldots, \tau_n\big) \\
+& = f\left(\mu\big( \sigma; \sigma_{\tau^{-1}(1)}, \ldots, \sigma_{\tau^{-1}(n)}\big) \right)\mu\big( \tau; \tau_1, \ldots, \tau_n\big).
+\end{align*}
+By the equality $[p\cdot \sigma, \tau] = [p, f(\sigma)\tau]$, we therefore conclude that \cref{eqn:rhs-fshriek} equals
 \[
-\left[\mu^P(p; p_{(f(\sigma)\tau)^{-1}(1)}, \ldots, p_{(f(\sigma)\tau)^{-1}(n)}), \ \mu^{\Lambda'}(f(\sigma)\tau; f(\sigma_1)\tau_1, \ldots, f(\sigma_n)\tau_n)          \right].
+\left[\mu^P(p; p_{(f(\sigma)\tau)^{-1}(1)}, \ldots, p_{(f(\sigma)\tau)^{-1}(n)}) \cdot \mu\big( \sigma; \sigma_{\tau^{-1}(1)}, \ldots, \sigma_{\tau^{-1}(n)}\big), \mu\big( \tau; \tau_1, \ldots, \tau_n\big) \right].
 \]
+By the single-equality version of the $\Lambda$-operad equivariance axioms from \cref{rem:single-axiom}, we obtain that the first coordinate can be rewritten as
+\begin{align*}
+\mu^P(p; p_{(f(\sigma)\tau)^{-1}(1)}, \ldots, p_{(f(\sigma)\tau)^{-1}(n)}) \cdot \mu\big( \sigma; \sigma_{\tau^{-1}(1)}, \ldots, \sigma_{\tau^{-1}(n)}\big) = \\
+\mu^P(p\cdot \sigma; p_{(f(\sigma)\tau)^{-1}\big( \sigma(1) \big)}\cdot \sigma_{\tau^{-1}(1)}, \ldots, p_{(f(\sigma)\tau)^{-1}\big( \sigma(n) \big)}\cdot \sigma_{\tau^{-1}(n)}). 
+\end{align*}
+The indices on the terms $p_{(f(\sigma)\tau)^{-1}\big( \sigma(1) \big)}$ can be simplified using that $f$ is a map of action operads, and hence preserves underlying permutations. Thus 
+\begin{align*}
+(f(\sigma)\tau)^{-1}\big( \sigma(i) \big) & = \tau^{-1}\left( f(\sigma)^{-1}\left( \sigma(i) \right) \right) \\
+& = \tau^{-1}(i)
+\end{align*}
+because the underlying permutation of $\sigma$ is equal to that of $f(\sigma)$. After substituting these simplifications into the above, we obtain \cref{eqn:lhs-fshriek}, completing the proof that $\tilde{m}$ coequalizes the two maps in \cref{eqn:coeq-m} and therefore induces a unique operadic multiplication on $f_{!}P$.
 
-\ngnoteil{Moved from a proof that was below, needs rewriting:}
-Given any map of monoids $f \colon M \rightarrow N$ in a monoidal category, there exists an adjunction between right $M$-modules and right $N$-modules given by $f^{*}$ as the right adjoint and $A \mapsto A \otimes_{M} N$ as the left adjoint. Thus we define
-  \[
-    S(P)(n) = \coequ{P}{\Sigma}{\Lambda}{n},
-  \]
-and this inherits a right $\Sigma_{n}$-action by multiplication. The unit of $S(P)$ is
-  \[
-    * \stackrel{\eta}{\longrightarrow} P(1) \longrightarrow \coequ{P}{\Sigma}{\Lambda}{1} \cong P(1)/\Lambda(1).
-  \]
-For the multiplication, let $K = k_1 + \cdots + k_n$, so we must define
-% \[
-% \mu \colon (\coequ{P}{\Sigma}{\Lambda}{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_{K}.
-% \]
-  \[
-    \mu \colon \left(\coequ{P}{\Sigma}{\Lambda}{n}\right) \times \prod_{i=1}^n \left(\coequ{P}{\Sigma}{\Lambda}{k_i}\right) \rightarrow \coequ{P}{\Sigma}{\Lambda}{K}.
-  \]
-Using the universal property of the coequalizer, this is induced by the following composite.
-
-  \begin{align*}
-    (P(n) \times \Sigma_{n}) \times \prod_{i=1}^n \left(P(k_i) \times \Sigma_{k_i}\right) &\cong \left(P(n) \times \prod_{i=1}^n P(k_{i}) \right) \times \left(\Sigma_{n} \times \prod_{i=1}^n \Sigma_{k_{i}} \right)\\
-    &\xrightarrow{\mu^P \times \mu^{\Sigma}} P(K) \times \Sigma_{K}\\
-    &\longrightarrow  \coequ{P}{\Sigma}{\Lambda}{K}
-  \end{align*}
-
-We leave verification of the associativity, unit, and equivariance axioms to the reader; they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\Lambda$-operad axioms for $P$. It is then straightforward to check the bijection between $\Lambda$-operad maps $P \rightarrow \pi^{*}Q$ and symmetric operad maps $S(P) \rightarrow Q$, thus establishing the adjunction.
+\ngnoteil{remaining to do: check unit, associativity, equivariance axioms; check functoriality (finishes 2)}
+\ngnoteil{remaining to do:  (all of 3)}
+%
+%
+%\ngnoteil{Moved from a proof that was below, needs rewriting:}
+%Given any map of monoids $f \colon M \rightarrow N$ in a monoidal category, there exists an adjunction between right $M$-modules and right $N$-modules given by $f^{*}$ as the right adjoint and $A \mapsto A \otimes_{M} N$ as the left adjoint. Thus we define
+%  \[
+%    S(P)(n) = \coequ{P}{\Sigma}{\Lambda}{n},
+%  \]
+%and this inherits a right $\Sigma_{n}$-action by multiplication. The unit of $S(P)$ is
+%  \[
+%    * \stackrel{\eta}{\longrightarrow} P(1) \longrightarrow \coequ{P}{\Sigma}{\Lambda}{1} \cong P(1)/\Lambda(1).
+%  \]
+%For the multiplication, let $K = k_1 + \cdots + k_n$, so we must define
+%% \[
+%% \mu \colon (\coequ{P}{\Sigma}{\Lambda}{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_{K}.
+%% \]
+%  \[
+%    \mu \colon \left(\coequ{P}{\Sigma}{\Lambda}{n}\right) \times \prod_{i=1}^n \left(\coequ{P}{\Sigma}{\Lambda}{k_i}\right) \rightarrow \coequ{P}{\Sigma}{\Lambda}{K}.
+%  \]
+%Using the universal property of the coequalizer, this is induced by the following composite.
+%
+%  \begin{align*}
+%    (P(n) \times \Sigma_{n}) \times \prod_{i=1}^n \left(P(k_i) \times \Sigma_{k_i}\right) &\cong \left(P(n) \times \prod_{i=1}^n P(k_{i}) \right) \times \left(\Sigma_{n} \times \prod_{i=1}^n \Sigma_{k_{i}} \right)\\
+%    &\xrightarrow{\mu^P \times \mu^{\Sigma}} P(K) \times \Sigma_{K}\\
+%    &\longrightarrow  \coequ{P}{\Sigma}{\Lambda}{K}
+%  \end{align*}
+%
+%We leave verification of the associativity, unit, and equivariance axioms to the reader; they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\Lambda$-operad axioms for $P$. It is then straightforward to check the bijection between $\Lambda$-operad maps $P \rightarrow \pi^{*}Q$ and symmetric operad maps $S(P) \rightarrow Q$, thus establishing the adjunction.
 \end{proof}
+
+\ngnoteil{keep fixing these up}
 
 \begin{prop}\label{prop:e-fun}
 The assignment sending a set $X$ to its endomorphism operad $\mathcal{E}_X$ (\cref{ex:endo}) is the object part of a functor $\mathcal{E} \colon \mb{Sets} \to \Sigma\mbox{-}\mb{Op}$.
@@ -366,11 +399,13 @@ Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \L
 \begin{enumerate}
 \item The map $\pi$ induces a functor $\pi^* \colon \Sigma\mbox{-}\mb{Op} \to \Lambda\mbox{-}\mb{Op}$.
 \item For any $\Lambda$-operad $P$, the category $P\mbox{-}\mb{Alg}$ is isomorphic to the comma category $P \downarrow \pi^* \circ \mathcal{E}$.
+\item For any $\Lambda$-operad $P$, the category $P\mbox{-}\mb{Alg}$ is isomorphic to the comma category $\pi_{!}P \downarrow \mathcal{E}$.
 \end{enumerate}
 \end{cor}
 \begin{proof}
 Claim 1 is part one of \cref{prop:pbaop} applied to $\pi$ via \cref{prop:pi-in-aop}.
 Claim 2 is part three of \cref{prop:pbaop} and part two of \cref{lem:alg=map}.
+Claim 3\ngnote{follows from adjointness}.
 \end{proof}
 
 %\begin{lem}
