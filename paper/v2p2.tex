@@ -264,7 +264,7 @@ We begin by sketching a change-of-action operad result.
 \begin{prop}\label{prop:pbaop}
 Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads. 
 \begin{enumerate}
-\item The map $f$ induces a functor $f^{*} \colon \Lambda'\mbox{-}\mb{Op} \rightarrow \Lambda\mbox{-}\mb{Op}$ with the property that $(f^{*}P)(n) = P(n)$ for every $\Lambda'$-operad $P$.
+\item The map $f$ induces a functor $f^{*} \colon \Lambda'\mbox{-}\mb{Op} \rightarrow \Lambda\mbox{-}\mb{Op}$ with the property that $(f^{*}Q)(n) = Q(n)$ for every $\Lambda'$-operad $Q$.
 \item The map $f$ induces a functor $f_{!} \colon \Lambda\mbox{-}\mb{Op} \rightarrow \Lambda'\mbox{-}\mb{Op}$, where $(f_{!}P)(n)$ is defined by the coequalizer below,
     \[
         \xy
@@ -281,12 +281,12 @@ where $\star \colon \Lambda'(n) \times \Lambda'(n) \to \Lambda'(n)$ is group mul
 \end{enumerate}
 \end{prop}
 \begin{proof}
-The right action of $\Lambda(n)$ on $(f^{*}P)(n) = P(n)$ is given as the composite
+The right action of $\Lambda(n)$ on $(f^{*}Q)(n) = Q(n)$ is given as the composite
 \[
-P(n) \times \Lambda(n) \stackrel{1 \times f_n}{\to} P(n) \times \Lambda'(n) \to P(n),
+Q(n) \times \Lambda(n) \stackrel{1 \times f_n}{\to} Q(n) \times \Lambda'(n) \to Q(n),
 \]
-where the second map is the action given by the $\Lambda'$-operad structure on $P$.
-This group action, together with the operadic multiplication maps for $P$ as a $\Lambda'$-operad, give $f^*P$ a $\Lambda$-operad structure.
+where the second map is the action given by the $\Lambda'$-operad structure on $Q$.
+This group action, together with the operadic multiplication maps for $Q$ as a $\Lambda'$-operad, give $f^*Q$ a $\Lambda$-operad structure.
 Given a map $h \colon P \to Q$ of $\Lambda'$-operads, we must check that the maps $h_n \colon P(n) \to Q(n)$ also constitute a map of $\Lambda$-operads $f^*P \to f^*Q$.
 The functions $h_n$ give a map of underlying operads by definition, so we need only verify the equivariance with respect to the $\Lambda(n)$-actions.
 This equivariance diagram commutes by the functoriality of products and the definition of $h$ as a map of $\Lambda'$-operads.
@@ -342,9 +342,9 @@ The indices on the terms $p_{(f(\sigma)\tau)^{-1}\big( \sigma(1) \big)}$ can be 
 & = \tau^{-1}(i)
 \end{align*}
 because the underlying permutation of $\sigma$ is equal to that of $f(\sigma)$. After substituting these simplifications into the above, we obtain \cref{eqn:lhs-fshriek}, completing the proof that $\tilde{m}$ coequalizes the two maps in \cref{eqn:coeq-m} and therefore induces a unique operadic multiplication on $f_{!}P$. By definition, the operadic multiplication map $m \colon f_{!}P(n) \times f_{!}P(k_1) \times \cdots \times f_{!}P(k_n) \to f_{!}P\left( \sum k_i\right)$ is therefore defined to be
-\[
+\begin{equation}\label{eqn:defn-m}
 m\left( [p,\tau]; [p_1, \tau_1], \ldots, [p_n, \tau_n]\right) = \left[ \mu^P(p; p_{\tau^{-1}(1)}, \ldots, p_{\tau^{-1}(n)}), \mu^{\Lambda'}(\tau; \tau_1, \ldots, \tau_n) \right].
-\]
+\end{equation}
 
 The unit for $f_{!}P$ is $[\id, e_1]$ where $\id \in P(1)$ is the  unit for $P$ and $e_1 \in \Lambda'(1)$ is the unit for $\Lambda'$. It is straightforward to show that $[\id, e_1]$ acts as a unit for $f_{!}P$ using the unit axioms for $P$ and $\Lambda'$, and we leave these calculations to the reader.
 
@@ -387,8 +387,75 @@ Therefore the first coordinate of $\hat{m}\left( \hat{m}\left( (p,\tau); \underl
 \end{align*}
 matching \cref{eqn:firstcoord} and verifying operadic associativity.
 
-\ngnoteil{remaining to do:  equivariance axioms; check functoriality (finishes 2)}
-\ngnoteil{remaining to do:  (all of 3)}
+Finally we check the equivariance axiom in the form of \cref{rem:single-axiom}. This axiom is the equality
+\[
+m\left( [p,\tau]; \underline{[p_i, \tau_i]}\right)\cdot \mu(\omega; \underline{\omega_i}) = 
+m\left( [p,\tau]\cdot \omega; [p_{\omega(1)}, \tau_{\omega(1)}]\cdot \omega_1, \ldots, [p_{\omega(n)}, \tau_{\omega(n)}]\cdot \omega_n \right).
+\]
+Using the formula for $m$, it is straightforward to verify that both sides are equal to
+\[
+\left[ \mu(p; \tau \bullet_i \underline{p_i}), \mu(\tau \omega; \tau_{\omega(1)}\omega_1, \ldots, \tau_{\omega(n)}\omega_n) \right].
+\]
+Thus the equivariance axiom for a $\Lambda'$-operad holds for $f_{!}P$, and completes the proof that $f_{!}P$ is a $\Lambda'$-operad.
+
+Next we turn to the functoriality of $f_{!}$. Let $g \colon P \to Q$ be a map of $\Lambda$-operads. Define $f_{!}g \colon f_{!}P \to f_{!}Q$ by the formula
+\begin{equation}\label{eqn:fshriek-g}
+(f_{!}g)_n\left( [p, \tau] \right) = [g(p), \tau],
+\end{equation}
+for $[p, \tau] \in f_{!}P(n)$.
+Since $g$ is a map of $\Lambda$-operads, it preserves the identity elements, so
+\[
+(f_{!}g)\left( [\id, e_1] \right) = [g(\id), e_1] = [\id, e_1],
+\]
+showing that $f_{!}g$ also preserves identity elements. It is clear that $f_{!}g$ is levelwise equivariant with respect to the $\Lambda'(n)$-actions, so we need only check that it preserves operadic multiplication. We leave this calculation to the reader, as it is a straightforward application of the fact that $g$ is a map of $\Lambda$-operads so preserves operadic multiplication. This completes the definition of $f_{!}$ on morphisms. It is immediate that $f_{!}$ preserves composition and identity maps, and is thus a functor 
+\[ f_{!} \colon \Lambda\mbox{-}\mb{Op} \rightarrow \Lambda'\mbox{-}\mb{Op}\]
+as desired, completing the proof of the second claim in the statement.
+
+We now prove the third claim, that $f_{!}$ is left adjoint to $f^*$.
+The unit of this adjuntion has a component at the $\Lambda$-operad $P$ given by a map $\eta^P \colon P \to f^*f_{!}P$, and is defined by the formula
+\[
+\eta^{P}_n(p) = [p, e_n]
+\]
+for all $p \in P(n)$. The map $\eta^P$ preserves the operadic identity by definition, and it preserves operadic multiplication by a simple application of \cref{eqn:defn-m} defining operadic multiplication in $f_{!}P$. Furthermore, $\eta^P$ preserves the right $\Lambda$-actions because
+\begin{align*}
+\eta^{P}(p\cdot \tau) & = [p \cdot \tau, e_n] \\
+& = [p, f(\tau)e_n] \\
+& = [p, e_n] \cdot \tau \\
+& = \eta^P(p) \cdot \tau.
+\end{align*}
+Thus $\eta^P$ is a map of $\Lambda$-operads. It is then simple to check that these components define a natural transformation $1 \Rightarrow f^* f_{!}$.
+
+The counit of this adjunction has a component at the $\Lambda'$-operad $Q$ given by a map $\varepsilon^Q \colon f_{!}f^*Q \to Q$, and is defined by the formula
+\[
+\varepsilon^Q_n\left( [q,\tau] \right) = q \cdot \tau.
+\]
+Since $f_{!}f^*Q(n)$ is defined to be $f^*Q(n) \otimes_{\Lambda(n)} \Lambda'(n)$ and the action of $\Lambda(n)$ on  $f^*Q(n)$ is given by $q \cdot_{f^*Q} \sigma = q \cdot_{Q} f(\sigma)$, the equivalence relation defining $f_!f^*Q(n)$ is generated by the equalities
+\[
+[q \cdot_{Q} f(\sigma), \tau] = [q, f(\sigma)\tau]
+\]
+for all $\sigma \in \Lambda(n)$. In particular, the formula for $\varepsilon^Q_n$ is well-defined on equivalence classes. It is obvious that $\varepsilon^Q$ preserves the operadic identity and the right $\Lambda'(n)$-actions, so we only need to show that it preserves operadic multiplication. We therefore compute that
+\begin{align*}
+\varepsilon^Q \left( m\left( [q, \tau]; \underline{ [q_i, \tau_i] } \right) \right) & = \varepsilon^Q\left( [\mu(q; \tau \bullet_i \underline{q_i}), \mu(\tau; \underline{\tau_i}) ] \right) \\
+& = \mu(q; \tau \bullet_i \underline{q_i}) \cdot \mu(\tau; \underline{\tau_i}) \\
+& = \mu(q \cdot \tau; \underline{q_i \cdot \tau_i}) \\
+& = m\left( \varepsilon^Q[q,\tau]; \underline{\varepsilon^Q[q_i, \tau_i]}\right)
+\end{align*}
+by the definition of $m$, the definition of $\varepsilon^Q$, the equation in \cref{rem:single-axiom}, and the definition of $\varepsilon^Q$ again.
+Thus $\varepsilon^Q$ preserves operadic multiplication, and is a map of $\Lambda'$-operads. As with $\eta$, naturality in $Q$ is simple to check.
+
+For a $\Lambda$-operad $P$, the composite $\varepsilon^{f_{!}P} \circ f_{!}\eta^{P}$ is given by
+\begin{align*}
+\varepsilon^{f_{!}P} \circ f_{!}\eta^{P}[p, \tau] & = \varepsilon^{f_{!}P}\left[ [p,e_n], \tau\right] \\
+& = [p, e_n \tau]\\
+& = [p, \tau],
+\end{align*}
+so is the identity. Likewise, for a $\Lambda'$-operad $Q$ the composite $f^*\varepsilon^Q \circ \eta^{f^*Q}$ is given by
+\begin{align*}
+f^*\varepsilon^Q \circ \eta^{f^*Q}(q) & = f^*\varepsilon^Q[q,e_n] \\
+& = q \cdot e_n \\
+& = q,
+\end{align*}
+so is also the identity. These two calculations verify the triangle identities, and therefore prove that $f_{!} \dashv f^*$.
 %
 %
 %\ngnoteil{Moved from a proof that was below, needs rewriting:}
