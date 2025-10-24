@@ -487,33 +487,31 @@ so is also the identity. These two calculations verify the triangle identities, 
 
 \ngnoteil{keep fixing these up}
 
-\begin{prop}\label{prop:e-fun}
-The assignment sending a set $X$ to its endomorphism operad $\mathcal{E}_X$ (\cref{ex:endo}) is the object part of a functor $\mathcal{E} \colon \mb{Sets} \to \Sigma\mbox{-}\mb{Op}$.
-\end{prop}
-\begin{proof}
-define on morphisms, check functoriality
-\end{proof}
+%\begin{prop}\label{prop:e-fun}
+%The assignment sending a set $X$ to its endomorphism operad $\mathcal{E}_X$ (\cref{ex:endo}) is the object part of a functor $\mathcal{E} \colon \mb{Sets} \to \Sigma\mbox{-}\mb{Op}$.
+%\end{prop}
+%\begin{proof}
+%define on morphisms, check functoriality
+%\end{proof}
 
 \begin{lem}\label{lem:alg=map}
-\ngmpar{cite May GILS} Let $P$ be a symmetric operad and $X$ be a set.
-\begin{enumerate}
-\item $P$-algebra structures on $X$, given by $\{ \alpha_n \colon  \coeq{P}{X}{\Sigma}{n} \rightarrow X\}$, are in bijection with maps of symmetric operads $\alpha \cn P \to \mathcal{E}_X$.
-\item As a consequence, the category of $P$-algebras is isomorphic to the comma category $P \downarrow \mathcal{E}$.
+\ngmpar{cite May GILS} Let $P$ be a symmetric operad and $X$ be a set. $P$-algebra structures on $X$, given by $\{ \alpha_n \colon  \coeq{P}{X}{\Sigma}{n} \rightarrow X\}$ as in \cref{Defi:aop-alg}, are in bijection with maps of symmetric operads $\alpha \cn P \to \mathcal{E}_X$.
 \end{enumerate}
 \end{lem}
-\begin{proof}
-Cite May for 1, explain how 2 follows by writing out the definitions.
-\end{proof}
+%\begin{proof}
+%Cite May for 1, explain how 2 follows by writing out the definitions.
+%\end{proof}
 
 \begin{cor}\label{cor:pi-star}
 Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \Lambda \to \Sigma$. 
-\begin{enumerate}
-\item The map $\pi$ induces a functor $\pi^* \colon \Sigma\mbox{-}\mb{Op} \to \Lambda\mbox{-}\mb{Op}$.
-\item For any $\Lambda$-operad $P$, the category $P\mbox{-}\mb{Alg}$ is isomorphic to the comma category $P \downarrow \pi^* \circ \mathcal{E}$.
-\item For any $\Lambda$-operad $P$, the category $P\mbox{-}\mb{Alg}$ is isomorphic to the comma category $\pi_{!}P \downarrow \mathcal{E}$.
-\end{enumerate}
+ For any $\Lambda$-operad $P$ and any set $X$, $P$-algebra structures on $X$ are in bijection with 
+\begin{itemize}
+\item maps of $\Lambda$-operads $\alpha \colon \Lambda \to \pi^* \mathcal{E}_X$ or
+\item maps of symmetric operads $\alpha \colon \pi_{!}\Lambda \to  \mathcal{E}_X$.
+\end{itemize}
 \end{cor}
 \begin{proof}
+\ngnoteil{this is the old stuff, need to rewrite}
 Claim 1 is part one of \cref{prop:pbaop} applied to $\pi$ via \cref{prop:pi-in-aop}.
 Claim 2 is part three of \cref{prop:pbaop} and part two of \cref{lem:alg=map}.
 Claim 3\ngnote{follows from adjointness}.
