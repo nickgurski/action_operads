@@ -205,7 +205,7 @@ Permutations, as elements of $\Sigma_n$, can be considered as permutation \emph{
   b \\ c \\ a
   \end{bmatrix}.
   \]
-Then $\beta$ corresponds to the process of taking the block diagonal matrix of the original permutation matrices. So given elements $\trans{1}{2} \in \Sigma_2$, $e_1 \in \Sigma_1$, and $(1 \,\, 2 \,\, 3) \in \Sigma_3$, then
+Then the block sum $\beta$ (\cref{Defi:beta-s}) corresponds to the process of taking the block diagonal matrix of the original permutation matrices. So given elements $\trans{1}{2} \in \Sigma_2$, $e_1 \in \Sigma_1$, and $(1 \,\, 2 \,\, 3) \in \Sigma_3$, then
   % \begin{align*}
   % \beta(\trans{1}{2},e_1,(1 \,\, 2 \,\, 3)) &=
   % \begin{bmatrix}
@@ -258,7 +258,7 @@ Then $\beta$ corresponds to the process of taking the block diagonal matrix of t
   \]
 which corresponds to the permutation $\trans{1}{2}(3)(4 \,\, 5 \,\, 6)$.
 
-Similarly, we can describe $\delta$ as an operation on permutation matrices. The idea here being that for $\sigma \in \Sigma_n$, $\delta_{n;k_1,\ldots,k_n}(\sigma)$ takes a block diagonal of identity matrices $I_{k_1}$, $\ldots$, $I_{k_n}$ (which corresponds to $\beta(e_{k_1},\ldots,e_{k_n}) \in \Sigma_{k_1+\ldots+k_n}$), and permutes these according to the effect of the permutation $\sigma$. For example, given $\sigma = (1 \,\, 2 \,\, 3)$, then
+Similarly, we can describe the duplication $\delta$ (\cref{Defi:delta-s}) as an operation on permutation matrices. The idea here being that for $\sigma \in \Sigma_n$, $\delta_{n;k_1,\ldots,k_n}(\sigma)$ takes a block diagonal of identity matrices $I_{k_1}$, $\ldots$, $I_{k_n}$ (which corresponds to $\beta(e_{k_1},\ldots,e_{k_n}) \in \Sigma_{k_1+\ldots+k_n}$), and permutes these according to the effect of the permutation $\sigma$. For example, given $\sigma = (1 \,\, 2 \,\, 3)$, then
   \[
     \delta_{3;2,1,3}(\sigma) =
     \begin{bmatrix}
@@ -1143,7 +1143,7 @@ An action operad $\Lambda$ determines, and is uniquely determined by, the follow
   \[
     \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) \stackrel{\beta}{\longrightarrow} \Lambda(k_{1} + \cdots + k_{n}),
   \]
-for each $n > 0$ and $k_{1}, \ldots, k_{n}$\ngnote{Used to have: together with the degenerate case of $n=0$ which then is a group homomorphism $1 \rightarrow \Lambda(0)$. Do we need this?}, and
+for each $n > 0$ and $k_{1}, \ldots, k_{n}$\ngnote{Used to have: together with the degenerate case of $n=0$ which then is a group homomorphism $1 \rightarrow \Lambda(0)$. Do we need this?}\acnote{Think the $n=0$ case just tells us that $e_0 \cdot e_0 = e_0$?}, and
 \item a function of sets
   \[
     \Lambda(n) \stackrel{\delta_{n; k_{1}, \ldots, k_{n}}}{\longrightarrow} \Lambda(k_{1} + \cdots + k_{n})
@@ -1466,7 +1466,11 @@ For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is defined t
 \[
 \gamma \cdot (a_1, \ldots, a_n) = (a_{\gamma^{-1}(1)}, \ldots, a_{\gamma^{-1}(n)}).
 \]
-Alternatively, $RB_n$ can be described as the group of isotopy classes of braids equipped with a framing\ngnote{ref on the framed braid group papers on the nlab page}. A purely algebraic presentation of $RB_n$ is given by generators $\sigma_1, \ldots, \sigma_{n-1}, t_1, \ldots, t_n$ where 
+Alternatively, $RB_n$ can be described as the group of isotopy classes of braids equipped with a framing\ngnote{ref on the framed braid group papers on the nlab page}. A purely algebraic presentation of $RB_n$ is given by generators
+    \[
+        \sigma_1, \ldots, \sigma_{n-1}, t_1, \ldots, t_n
+    \]
+where 
 \begin{itemize}
 \item the $\sigma_i$ are the usual braid generators and satisfy the relations of the braid group, and 
 \item the $t_i$ are the \emph{full twists} and satisfy the additional equations
@@ -1494,7 +1498,7 @@ where $t$ is the sole twist in $RB_1$, and for the `block twists' $t_{(m)}$ we a
   \]
 \end{example}
 
-\ngnoteil{as much as I like the picture, I am commenting out the twist}
+% \ngnoteil{as much as I like the picture, I am commenting out the twist}
 
 %Much as the symmetric groups can be represented by crossings of a collection of strings, and the braid groups by braidings of strings, the ribbon braid groups deal with the ways that one can braid together several flat ribbons, including the ability to twist a ribbon about its own axis by 360 degrees. The actual definition of the ribbon braid groups is as the fundamental group of a configuration space in which points have labels in the circle, $S^{1}$; see \cite{sal-wahl}.
 %\begin{center} \begin{tabular}{ccc}
@@ -1610,7 +1614,8 @@ In order to describe the hyperoctahedral groups as an action operad, we could us
 %      0  &  0 &  0 & -1 & 0
 %    \end{bmatrix}.
 %  \]
-For the maps $\delta$ there seem to be two sensible options to try. The first captures Zhang's counterexample by first taking $r_n$ to be the order-reversing signed permutation matrix where all entries are $-1$, i.e., the $n \times n$ matrix with $-1$ in every entry of the anti-diagonal. Then we can define $\delta_{n;k_1,\ldots,k_n}(\sigma)$ to be the block sum $\beta(-r_{k_1},\ldots,-r_{k_n})$ acted on by the product of $r_n$ and $\sigma$. For example,
+
+For the maps $\delta$ there seem to be two sensible options to try. The first captures Zhang's counterexample by first taking $r_n$ to be the order-reversing signed permutation matrix where all entries are $-1$, i.e., the $n \times n$ matrix with $-1$ in every entry of the anti-diagonal. Then we can define $\delta_{n;k_1,\ldots,k_n}(\sigma)$ to be the block sum $\beta(r_{k_1},\ldots,r_{k_n})$ acted on by the product of $r_n$ and $\sigma$. For example,
   \begin{align*}
     \delta_{3;2,1,3}\left(
     \begin{bmatrix}
@@ -1630,9 +1635,9 @@ For the maps $\delta$ there seem to be two sensible options to try. The first ca
       \right)
       \ast
       \begin{bmatrix}
-      -r_2 & 0 & 0 \\
-      0 & -r_1 & 0 \\
-      0 & 0 & -r_3
+      r_2 & 0 & 0 \\
+      0 & r_1 & 0 \\
+      0 & 0 & r_3
       \end{bmatrix}\\
 &=
     \begin{bmatrix}
@@ -1642,35 +1647,35 @@ For the maps $\delta$ there seem to be two sensible options to try. The first ca
       \end{bmatrix}
       \ast
       \begin{bmatrix}
-      -r_2 & 0 & 0 \\
-      0 & -r_1 & 0 \\
-      0 & 0 & -r_3
+      r_2 & 0 & 0 \\
+      0 & r_1 & 0 \\
+      0 & 0 & r_3
       \end{bmatrix}\\
       &= \begin{bmatrix}
-      0 & r_1 & 0\\
-      0 & 0 & -r_3 \\
-      -r_2 & 0 & 0
+      0 & -r_1 & 0\\
+      0 & 0 & r_3 \\
+      r_2 & 0 & 0
       \end{bmatrix}.
     \end{align*}
-In particular, this gives $\delta_{1;n}([-1]) = r_n$ as in \cite{zhang-grp}. Taking $\sigma = (\trans{2}{3};-1,1,-1)$, as above, we can show that Axiom \ref{eq8} fails in \cref{thm:charAOp}\ngnote{I got confused reading this, the calculations don't match what I expect}. The left-hand side of the axiom would be
-        \[
-          \delta_{1;3}([-1])\beta(\sigma) = r_n \cdot \sigma =
-          \begin{bmatrix}
-          0 & -1 & 0 \\
-          0 & 0 & 1 \\
-          1 & 0 & 0
-          \end{bmatrix}
-        \]
-However, the right-hand side of the axiom would be
-  \[
-    \beta(\sigma)\delta_{1;3}([-1]) = \sigma \cdot r_n =
-    \begin{bmatrix}
-    0 & 0 & 1 \\
-    1 & 0 & 0 \\
-    0 & -1 & 0
-    \end{bmatrix}.
-  \]
-Clearly defining $\delta_{n;k_1,\ldots,k_n}(\sigma) = (\sigma \cdot r_n) \ast \beta(-r_{k_1},\ldots,-r_{k_n})$ would run into the same problem.
+In particular, this gives $\delta_{1;n}([-1]) = r_n$ as in \cite{zhang-grp}. Taking $\sigma = (\trans{2}{3};-1,1,-1)$, as above, we can show that Axiom \ref{eq8} fails in \cref{thm:charAOp}\ngnote{I got confused reading this, the calculations don't match what I expect}\acnote{fixed, I think? and cut down a bit}. The left-hand side of the axiom would be $\delta_{1;3}([-1])\beta(\sigma) = r_n \cdot \sigma = ((1 \,\, 3 \,\, 2); 1, -1, 1)$.
+        % \[
+        %   \delta_{1;3}([-1])\beta(\sigma) = r_n \cdot \sigma =
+        %   \begin{bmatrix}
+        %   0 & -1 & 0 \\
+        %   0 & 0 & 1 \\
+        %   1 & 0 & 0
+        %   \end{bmatrix}
+        % \]
+However, the right-hand side of the axiom would be $\beta(\sigma)\delta_{1;3}([-1]) = \sigma \cdot r_n = ((1 \,\, 2 \,\, 3);1,-1,1)$.
+  % \[
+  %   \beta(\sigma)\delta_{1;3}([-1]) = \sigma \cdot r_n =
+  %   \begin{bmatrix}
+  %   0 & 0 & 1 \\
+  %   1 & 0 & 0 \\
+  %   0 & -1 & 0
+  %   \end{bmatrix}.
+  % \]
+Clearly defining $\delta_{n;k_1,\ldots,k_n}(\sigma) = (\sigma \cdot r_n) \ast \beta(r_{k_1},\ldots,r_{k_n})$ would run into the same problem.
 
 An alternative way of defining $\delta$ is to take $\delta_{n;k_1,\ldots,k_n}(\sigma) = \sigma \ast \beta(e_{k_1},\ldots,e_{k_n})$, without involving the order-reversing permutation $r_n$, having the effect of making $\delta_{1;n}([-1]) = -I_n$. This then does satisfy Axiom \ref{eq8}, but fails Axiom \ref{eq6} instead; working through the following counterexample shows this to be the case:
   \begin{align*}
@@ -1736,7 +1741,7 @@ An alternative way of defining $\delta$ is to take $\delta_{n;k_1,\ldots,k_n}(\s
 
 \begin{rem}\label{rem:crossed}
 The crossed simplicial groups of Krasauskas \cite{Kra87} and Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. 
-On objects, we define a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$ from the category of action operads to the category of crossed simplicial groups by defining $C(\Lambda)(n) = \Lambda(n+1)$. 
+On objects, we define a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$ from the category of action operads to the category of crossed simplicial groups by defining $C(\Lambda)(n) = \Lambda(n+1)$. \acnote{Why do we shift the index here? Doesn't this cause us to lose informatino about $\Lambda(0)$?}
 The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition of $\Lambda$ as in \cite[Construction~1.1]{Kra96} or \cite[Section~2]{ber-simplicial}. 
 On morphisms, something\ngnote{is it just $C(f)(n) = f_{n+1}$? That seems conservative to me}.
 This functor is neither faithful nor conservative.
