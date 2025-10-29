@@ -485,7 +485,6 @@ so is also the identity. These two calculations verify the triangle identities, 
 %We leave verification of the associativity, unit, and equivariance axioms to the reader; they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\Lambda$-operad axioms for $P$. It is then straightforward to check the bijection between $\Lambda$-operad maps $P \rightarrow \pi^{*}Q$ and symmetric operad maps $S(P) \rightarrow Q$, thus establishing the adjunction.
 \end{proof}
 
-\ngnoteil{keep fixing these up}
 
 %\begin{prop}\label{prop:e-fun}
 %The assignment sending a set $X$ to its endomorphism operad $\mathcal{E}_X$ (\cref{ex:endo}) is the object part of a functor $\mathcal{E} \colon \mb{Sets} \to \Sigma\mbox{-}\mb{Op}$.
@@ -505,15 +504,17 @@ so is also the identity. These two calculations verify the triangle identities, 
 Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \Lambda \to \Sigma$. 
  For any $\Lambda$-operad $P$ and any set $X$, $P$-algebra structures on $X$ are in bijection with 
 \begin{itemize}
-\item maps of $\Lambda$-operads $\alpha \colon \Lambda \to \pi^* \mathcal{E}_X$ or
-\item maps of symmetric operads $\alpha' \colon \pi_{!}\Lambda \to  \mathcal{E}_X$.
+\item maps of $\Lambda$-operads $\alpha \colon P \to \pi^* \mathcal{E}_X$ or
+\item maps of symmetric operads $\alpha' \colon \pi_{!}P \to  \mathcal{E}_X$.
 \end{itemize}
 \end{cor}
 \begin{proof}
-\ngnoteil{this is the old stuff, need to rewrite}
-Claim 1 is part one of \cref{prop:pbaop} applied to $\pi$ via \cref{prop:pi-in-aop}.
-Claim 2 is part three of \cref{prop:pbaop} and part two of \cref{lem:alg=map}.
-Claim 3\ngnote{follows from adjointness}.
+By the definition of the $\Lambda(n)$-actions on $P(n)$ and $X^n$, the maps \[\coeq{P}{X}{\Lambda}{n} \rightarrow X\] defining a $P$-algebra structure in \cref{Defi:aop-alg} are in bijection with 
+$\Lambda(n)$-equivariant maps $P(n) \to \pi^*\mathcal{E}_X(n)$. The correspondence between the axioms in \cref{Defi:aop-alg} and the map of $\Lambda$-operad axioms (\cref{Defi:aop_map}) follows just as in the proof of \cref{lem:alg=map}. The equivalence between the $\Lambda$- and symmetric operads versions follows immediately from adjointness, \cref{prop:pbaop}.
+%\ngnoteil{this is the old stuff, need to rewrite}
+%Claim 1 is part one of \cref{prop:pbaop} applied to $\pi$ via \cref{prop:pi-in-aop}.
+%Claim 2 is part three of \cref{prop:pbaop} and part two of \cref{lem:alg=map}.
+%Claim 3\ngnote{follows from adjointness}.
 \end{proof}
 
 \begin{rem}\label{rem:sym-vs-lam}
