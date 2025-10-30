@@ -1,8 +1,11 @@
-\artpart{Operads with Equivariance}\label{part:op-with-eq}
+%\artpart{Operads with Equivariance}\label{part:op-with-eq}
+
+\ngnoteil{merging part 2 into part 1, move this intro?}
 
 In the second part of this paper, we study $\Lambda$-operads: these are operads $P$ equipped with group actions of the form $P(n) \times \Lambda(n) \to P(n)$ and satisfying equivariance axioms similar to those for symmetric operads (\cref{Defi:sym-op}). \cref{sec:forward-op} presents the definitions of $\Lambda$-operads and their algebras.\cref{sec:lop-monad} studies the monads associated to $\Lambda$-operads. \cref{sec:sub} shows that $\Lambda$-operads are the monoids in a category of $\Lambda$-collections via the substitution product.
 
 \begin{rem}\label{rem:lop-Venriched}
+\ngnoteil{maybe move this slightly for better visibility/numbering}
 The material in this part is presented in the case when the $\Lambda$-operads $P$ have underlying \emph{sets} $P(n)$, but it can be easily generalized. In fact, \cref{part:op-in-cat} deals almost exclusively when the operad $P$ is an operad in $\cat$. Here are the changes required to account for operads in another monoidal category $\mathcal{V}$.
 \begin{itemize}
 \item $\mathcal{V}$ should be a closed, symmetric monoidal category. It is possible to relax the closed condition to merely requiring that $X \otimes -$, and therefore also $- \otimes X$ by symmetry, preserves colimits.
@@ -28,7 +31,7 @@ or equivalently repackaged as an action $P(n) \cdot \Lambda(n) \to P(n)$ using t
 This section presents the definition of a $\Lambda$-operad (\cref{Defi:lamop}), where $\Lambda$ is an action operad.
 This definition unifies the various types (non-symmetric, symmetric, and braided) of operads discussed in \cref{sec:back-op} under one umbrella term.
 The different group actions arise from different choices of $\Lambda$.
-We also define algebras over a $\Lambda$-operad in \cref{Defi:aop-alg}, and prove a change-of-action operad result in \cref{prop:pbaop}.
+We also define algebras over a $\Lambda$-operad in \cref{Defi:aop-alg}, and prove a change-of-action operad result in \cref{thm:pbaop}.
 
 %Just as we had the definitions of operad, symmetric operad, and braided operad, we now come to the general definition of a $\Lambda$-operad,  Thereafter we begin to delve into the theory around $\Lambda$-operads. Beginning by recasting familiar operads as $\Lambda$-operads for particular choices of $\Lambda$, we then proceed to shadow standard operadic definitions for algebras and pseudoalgebras in this setting, characterising algebras using endomorphism $\Lambda$-operads, and deriving monads from $\Lambda$-operads. We show that there is an adjunction between $\Lambda\mbox{-}\mb{Op}$ and $\Sigma\mbox{-}\mb{Op}$, and prove some technical results regarding maps between monads induced by $\Lambda$-operads.
  	% QQQ chapter: operads and algebras with general group actions
@@ -218,7 +221,7 @@ for all $x \in X$.
 %  \]
 
 \begin{rem}
-It is worth reiterating that the equivariance required for a $P$-algebra is built into the definition above by requiring the existence of the maps $\alpha_{n}$ to be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying non-symmetric operad (see \cref{prop:pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
+It is worth reiterating that the equivariance required for a $P$-algebra is built into the definition above by requiring the existence of the maps $\alpha_{n}$ to be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying non-symmetric operad (see \cref{thm:pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
 \end{rem}
 
 \begin{example}[(Algebras over non-symmetric, symmetric, and braided operads as $\Lambda$-operads)]\label{ex:lop-alg-exs}
@@ -261,7 +264,7 @@ The category in \cref{prop:cat-of-Palg} is called the \emph{category of $P$-alge
 The final goal of this section is to recast the category of algebras over a $\Lambda$-operad $P$ using the endomorphism operad of \cref{ex:endo}.
 We begin by sketching a change-of-action operad result.
 
-\begin{prop}\label{prop:pbaop}
+\begin{thm}\label{thm:pbaop}
 Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads. 
 \begin{enumerate}
 \item The map $f$ induces a functor $f^{*} \colon \Lambda'\mbox{-}\mb{Op} \rightarrow \Lambda\mbox{-}\mb{Op}$ with the property that $(f^{*}Q)(n) = Q(n)$ for every $\Lambda'$-operad $Q$.
@@ -279,7 +282,7 @@ Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads.
 where $\star \colon \Lambda'(n) \times \Lambda'(n) \to \Lambda'(n)$ is group multiplication and $\rho \colon P(n) \times \Lambda(n) \to P(n)$ is the right action given by the $\Lambda$-operad structure. 
 \item The functor $f_{!}$ is left adjoint to $f^*$.
 \end{enumerate}
-\end{prop}
+\end{thm}
 \begin{proof}
 The right action of $\Lambda(n)$ on $(f^{*}Q)(n) = Q(n)$ is given as the composite
 \[
@@ -494,11 +497,11 @@ so is also the identity. These two calculations verify the triangle identities, 
 %\end{proof}
 
 \begin{lem}\label{lem:alg=map}
-\ngmpar{cite May GILS} Let $P$ be a symmetric operad and $X$ be a set. $P$-algebra structures on $X$, given by $\{ \alpha_n \colon  \coeq{P}{X}{\Sigma}{n} \rightarrow X\}$ as in \cref{Defi:aop-alg}, are in bijection with maps of symmetric operads $\alpha \cn P \to \mathcal{E}_X$.
+Let $P$ be a symmetric operad and $X$ be a set. $P$-algebra structures on $X$, given by $\{ \alpha_n \colon  \coeq{P}{X}{\Sigma}{n} \rightarrow X\}$ as in \cref{Defi:aop-alg}, are in bijection with maps of symmetric operads $\alpha \cn P \to \mathcal{E}_X$.
 \end{lem}
-%\begin{proof}
-%Cite May for 1, explain how 2 follows by writing out the definitions.
-%\end{proof}
+\begin{proof}
+\ngnoteil{This is almost in May GILS, but doesn't have enough details. We should provide a few.}
+\end{proof}
 
 \begin{cor}\label{cor:pi-star}
 Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \Lambda \to \Sigma$. 
@@ -510,10 +513,10 @@ Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \L
 \end{cor}
 \begin{proof}
 By the definition of the $\Lambda(n)$-actions on $P(n)$ and $X^n$, the maps \[\coeq{P}{X}{\Lambda}{n} \rightarrow X\] defining a $P$-algebra structure in \cref{Defi:aop-alg} are in bijection with 
-$\Lambda(n)$-equivariant maps $P(n) \to \pi^*\mathcal{E}_X(n)$. The correspondence between the axioms in \cref{Defi:aop-alg} and the map of $\Lambda$-operad axioms (\cref{Defi:aop_map}) follows just as in the proof of \cref{lem:alg=map}. The equivalence between the $\Lambda$- and symmetric operads versions follows immediately from adjointness, \cref{prop:pbaop}.
+$\Lambda(n)$-equivariant maps $P(n) \to \pi^*\mathcal{E}_X(n)$. The correspondence between the axioms in \cref{Defi:aop-alg} and the map of $\Lambda$-operad axioms (\cref{Defi:aop_map}) follows just as in the proof of \cref{lem:alg=map}. The equivalence between the $\Lambda$- and symmetric operads versions follows immediately from adjointness, \cref{thm:pbaop}.
 %\ngnoteil{this is the old stuff, need to rewrite}
-%Claim 1 is part one of \cref{prop:pbaop} applied to $\pi$ via \cref{prop:pi-in-aop}.
-%Claim 2 is part three of \cref{prop:pbaop} and part two of \cref{lem:alg=map}.
+%Claim 1 is part one of \cref{thm:pbaop} applied to $\pi$ via \cref{prop:pi-in-aop}.
+%Claim 2 is part three of \cref{thm:pbaop} and part two of \cref{lem:alg=map}.
 %Claim 3\ngnote{follows from adjointness}.
 \end{proof}
 
@@ -615,7 +618,7 @@ We end this section with a discussion of the relationship between symmetric oper
 \begin{thm}\label{thm_sym}
 Let $(\Lambda, \pi)$ be an action operad.
 \begin{enumerate}
-\item The counit of the adjunction $\pi_{!} \dashv \pi^*$ from \cref{prop:pbaop} is an isomorphism, but the unit is not. In particular, this adjunction is not an equivalence of categories
+\item The counit of the adjunction $\pi_{!} \dashv \pi^*$ from \cref{thm:pbaop} is an isomorphism, but the unit is not. In particular, this adjunction is not an equivalence of categories
 \item For any $\Lambda$-operad P, there exists a natural isomorphism of monads between $\underline{P}$ and $\underline{\pi_{!}P}$. In particular, these monads (and hence operads) have isomorphic categories of algebras.
 \end{enumerate}
 \end{thm}
