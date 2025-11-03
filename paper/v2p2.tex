@@ -947,7 +947,7 @@ We provide the statement here.
 \begin{thm}\label{thm:operad=monoid}
 Let $\Lambda$ be an action operad.
   \begin{enumerate}
-    \item The category $\Lambda\mb{\mbox{-}Coll}$ has a monoidal structure with tensor product given by $\circ$ and unit given by the collection $I$ with $I(n) = \emptyset$ when $n \neq 1$, and $I(1) = \Lambda(1)$ with the $\Lambda$-action given by multiplication on the right.
+    \item The category $\Lambda\mb{\mbox{-}Coll}$ has a monoidal structure with tensor product given by $\circ$ and unit given by the collection $I$ with $I(n) = \emptyset$ when $n \neq 1$ and $I(1) = \Lambda(1)$.
     \item The category $\mb{Mon}(\Lambda\mb{\mbox{-}Coll})$ of monoids in $\Lambda\mb{\mbox{-}Coll}$ is equivalent to the category of $\Lambda$-operads.
   \end{enumerate}
 \end{thm}
@@ -1078,7 +1078,7 @@ f[k_1, \ldots, k_n] \colon Y(k_1) \times \cdots \times Y(k_n) \times \Lambda(k) 
 \]
 by
 \[
-f[k_1, \ldots, k_n](y_1, \ldots, y_n; g) = \big( y_{f^{-1}(1)}, \ldots, y_{f^{-1}(n)}; \delta_{n; k_1, \ldots, k_n}(f) \big).
+f[k_1, \ldots, k_n](y_1, \ldots, y_n; g) = \big( y_{f^{-1}(1)}, \ldots, y_{f^{-1}(n)}; \delta_{n; k_1, \ldots, k_n}(f) g\big).
 \]
 % \ngmpar{the labels below need help, but I don't remember enough xypic to fix them}
 We now check that the following diagram commutes, where underlined elements represent lists of the indicated elements indexed from $1$ to $n$, e.g.,
@@ -1099,7 +1099,7 @@ We now check that the following diagram commutes, where underlined elements repr
       (60,-35)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}}="3";
       %
       % {\ar^{\left(-\cdot g_1, \cdots, -\cdot g_n\right) \times 1} "a" ; "b"};
-      {\ar^{\left(-\cdot \beta\left(\underline{g_i}\right)\right) \times 1} "a" ; "b"};
+      {\ar^{\left(\underline{-\cdot g_i}\right) \times 1} "a" ; "b"};
       {\ar^{f[k_1, \ldots, k_n]} "b" ; "c"};
       % {\ar_{\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k}} "c" ; "d"};
       {\ar^{\theta_{\underline{k_{f^{-1}(i)}}; k}} "c" ; "d"};
@@ -1115,28 +1115,28 @@ We now check that the following diagram commutes, where underlined elements repr
       {\ar_{\left(\underline{- \cdot g_{f^{-1}(i)}} \right) \times 1} "g" ; "c"};
     \endxy
   \]
-Squares $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$ and $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$ commute by naturality of symmetries, and square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$ commutes by the definition of the coend. 
+Square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$ commutes by naturality of symmetries, square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$ commutes by \cref{eq8} from \cref{thm:charAOp}, and square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$ commutes by the definition of the coend. 
 Therefore by the universality property, there is a unique map $f \bullet - \colon Y^{\star n}(k) \rightarrow Y^{\star n}(k)$ such that
 \begin{equation}\label{eq:fbullet}
 \theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k} \circ f[k_1, \ldots, k_n] = (f \bullet -) \circ \theta_{k_1, \ldots, k_n; k}
 \end{equation}
 for all $k$ and $k_1, \ldots, k_n$ such that $k = k_1 + \cdots + k_n$.
-\ngmpar{fix spacing below}Given $f_1, f_2 \in \Lambda(n)$, we have
-\begin{align*}
-(f_2 \bullet -) \circ (f_1 \bullet -) \circ \theta_{k_1, \ldots, k_n; k} & = (f_2 \bullet -) \circ \theta_{k_{f_1^{-1}(1)}, \ldots, k_{f_1^{-1}(n)}; k} \circ f_1[k_1, \ldots, k_n] \\
-& = \theta_{k_{f_1^{-1}(f_2^{-1}(1))}, \ldots, k_{f_1^{-1}(f_2^{-1}(n))}; k} \circ f_2[k_{f_1^{-1}(1)}, \ldots, k_{f_2^{-1}(n)}] \circ f_1[k_1, \ldots, k_n] \\
-& = \theta_{k_{(f_2f_1)^{-1}(1)}, \ldots, k_{(f_2f_1)^{-1}(n)};k} \circ (f_2f_1)[k_1, \ldots, k_n] \\
-& = \big( (f_2f_1) \bullet -\big) \circ \theta_{k_1, \ldots, k_n; k}
-\end{align*}
-\acnote{this spacing any better? similar lists to the diagram above - also is there a typo in the second line above? $f_2$ at end of the middle list should be $f_1$?}
+Given $f_1, f_2 \in \Lambda(n)$, we have
+%\begin{align*}
+%(f_2 \bullet -) \circ (f_1 \bullet -) \circ \theta_{k_1, \ldots, k_n; k} & = (f_2 \bullet -) \circ \theta_{k_{f_1^{-1}(1)}, \ldots, k_{f_1^{-1}(n)}; k} \circ f_1[k_1, \ldots, k_n] \\
+%& = \theta_{k_{f_1^{-1}(f_2^{-1}(1))}, \ldots, k_{f_1^{-1}(f_2^{-1}(n))}; k} \circ f_2[k_{f_1^{-1}(1)}, \ldots, k_{f_2^{-1}(n)}] \circ f_1[k_1, \ldots, k_n] \\
+%& = \theta_{k_{(f_2f_1)^{-1}(1)}, \ldots, k_{(f_2f_1)^{-1}(n)};k} \circ (f_2f_1)[k_1, \ldots, k_n] \\
+%& = \big( (f_2f_1) \bullet -\big) \circ \theta_{k_1, \ldots, k_n; k}
+%\end{align*}
+%\acnote{this spacing any better? similar lists to the diagram above - also is there a typo in the second line above? $f_2$ at end of the middle list should be $f_1$?}
 \begin{align*}
 (f_2 \bullet -) \circ (f_1 \bullet -) \circ \theta_{\underline{k_i};k} &= (f_2 \bullet -) \circ \theta_{\underline{k_{f_1^{-1}(i)}};k} \circ f_1\left[\underline{k_i}\right] \\
 &= \theta_{\underline{k_{f_1^{-1}(f_2^{-1}(i))}};k} \circ f_2\left[k_{f_1^{-1}(1)}, \ldots, k_{f_1^{-1}(n)}\right] \circ f_1\left[\underline{k_i}\right] \\
 &= \theta_{\underline{k_{(f_2f_1)^{-1}(i)}};k} \circ (f_2f_1)\left[\underline{k_i}\right] \\
 &= ((f_2f_1) \bullet -) \circ \theta_{\underline{k_i};k}
 \end{align*}
-by \cref{eq:fbullet} twice, the left action of $\Sigma_n$ on $n$-tuples as in \cref{rem:Sn-tuples}, and \cref{eq6}.
-\acnote{Did these use to come up as `Item'? Or have I broken something?}
+by \cref{eq:fbullet} twice, the left action of $\Sigma_n$ on $n$-tuples as in \cref{rem:Sn-tuples}, and \cref{eq6} from \cref{thm:charAOp}.
+\acnote{Did these use to come up as `Item'? Or have I broken something?}\ngnote{We can easily change them to whatever you like. They are just items in a list, not sure the best name for that}
 By the universal property of the coend, we conclude that $(f_2 \bullet -) \circ (f_1 \bullet -) = \big( (f_2f_1) \bullet -\big)$, verifying functoriality and completing the proof.
 % using the collection of maps
 %  \[
@@ -1208,8 +1208,6 @@ Each of these isomorphisms is visibly natural in all three variables, so  $[Y, -
 The second claim follows immediately from the first, as $X \mapsto X^{\star n}$ is a colimit, hence preserved by $- \circ Y$. 
 \end{proof}
 
-Finally we are in a position to prove \cref{thm:operad=monoid}. 
-
 \begin{lem}\label{lem:Istarn(k)}
 Let $I$ be the $\Lambda$-collection defined by
 \[
@@ -1221,8 +1219,18 @@ I(k) = \left\{ \begin{array}{lr}
 Then $I^{\star n} (k)$ is empty unless $k=n$, and then is isomorphic to $\Lambda(n)$.
 \end{lem}
 \begin{proof}
-\ngnoteil{insert relatively easy coend proof}
+By definition, we have
+ \[
+    I^{\star n}(k) = \int^{k_{1}+ \cdots + k_{n}=k } I(k_{1}) \times \cdots \times I(k_{n}) \times \Lambda(k).
+  \]
+The only non-empty terms appear when $k_1 = k_2 = \cdots = k_n = 1$, from which we derive $k=n$. The coend is therefore the coequalizer $\coeqb{\Lambda(1)^n}{\Lambda(n)}{\Lambda(1)^n}$, where $\Lambda(1)^n$ acts on itself by right multiplication and on $\Lambda(n)$ by
+\[
+(g_1, \ldots, g_n) \cdot h = \beta(g_1, \ldots, g_n)h.
+\]
+This coequalizer is again $\Lambda(n)$, via the map above, completing the proof.
 \end{proof}
+
+Finally we are in a position to prove \cref{thm:operad=monoid}. 
 
 \begin{proof}[Proof of \cref{thm:operad=monoid}]
 First we must show that $\Lambda\mbox{-}\mb{Coll}$ has a monoidal structure using $\circ$. To prove this, we must give the unit and associativity isomorphisms and then check the monoidal category axioms. Define the unit object to be $I = B\Lambda(-,1)$. Then for the left unit isomorphism, we find that
