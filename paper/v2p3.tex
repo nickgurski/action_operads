@@ -2,7 +2,6 @@
 
 \section{Background: $2$-monads and their Algebras}
 
-\ngnoteil{insert something like: we assume basic familiarity with 2-categories, but still review $2$-monads stuff}
 To investigate operads in $\cat$ we will make use of $2$-monads and their algebras, specifically the notion of a pseudoalgebra for a $2$-monad. We assume familiarity with basic $2$-category theory\ngnote{cite johnson-yau book, kelly-street paper}, but cover the required definitions and theory related to $2$-monads here. For further reference, we refer the reader to \cite{BKP} and \cite{power-gen}.
 
 \begin{Defi}[($2$-monad)]\label{Defi:2monad}
@@ -318,17 +317,37 @@ hold for all $x$, where $x$ is allowed to be either an object or morphism of $C$
 \end{conv}
 
 \begin{Defi}[(Free actions)]\label{Defi:free-action}
-Suppose that a group $G$ acts on a category $C$. We say that the action is \emph{free} if...
+Suppose that a group $G$ acts on a category $C$, and let $x$ denote either an object or a morphism of $C$.
+We say that the action is \emph{free} if, for any $x$, $g \cdot x = x$ implies that $g$ is the identity element $e \in G$.
 \end{Defi}
 
+
+
 \begin{lem}\label{lem:coeq-lem}
-Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. An action of $G$ on the product $A \times B$ can then be defined by
+Let $G$ be a group, $C$ be a category, and $\mu \colon G \times C \to C$ be an action of $G$ on $C$. Suppose that the action of $G$ on $C$ is free.
+\begin{enumerate}
+\item Then there is a category $C/G$ with
+\begin{itemize}
+\item objects $[c]$, where $c$ is an object of $C$ and $[c]$ denotes its orbit under the $G$-action; and
+\item morphisms $[f] \colon [c] \to [d]$, where $f \colon c \to d'$ and $d' \in [d]$.
+\end{itemize}
+\item The category $C/G$ is the coequalizer
     \[
-        (a,b) \cdot g \colon = \left(a \cdot g, g^{-1} \cdot b\right).
+        \xy
+            (0,0)*+{G \times C}="00";
+            (30,0)*+{C}="10";
+            (60,0)*+{C/G}="20";
+            {\ar@<1ex>^{\mu} "00" ; "10"};
+            {\ar@<-1ex>_{\pi_2} "00" ; "10"};
+            {\ar^{\varepsilon} "10" ; "20"};
+        \endxy
     \]
-If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $\coeqb{A}{B}{G}$.
+where the top map is the action of $G$ on $C$, the bottom map is the projection onto $C$, and the coequalizing map $\varepsilon$ is defined by sending an object or morphism to its equivalence class in $C/G$.
+\end{enumerate}
+
 \end{lem}
 \begin{proof}
+\ngnoteil{this is the old proof, rewrite:}
 The category $A \times_G B$ is defined as the coequalizer
     \[
         \xy
@@ -352,6 +371,52 @@ Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X
 This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
 \end{proof}
 
+%\ngnoteil{old:}
+%
+%\begin{lem}\label{lem:coeq-lem}
+%Let $G$ be a group and let $A$, $B$ be categories for which $A$ has a right action by $G$ and $B$ has a left action by $G$. An action of $G$ on the product $A \times B$ can then be defined by
+%    \[
+%        (a,b) \cdot g \colon = \left(a \cdot g, g^{-1} \cdot b\right).
+%    \]
+%If this action of $G$ on $A \times B$ is free, then the category $(A \times B)/G$, consisting of the equivalence classes of this action, is isomorphic to the coequalizer $\coeqb{A}{B}{G}$.
+%\end{lem}
+%\begin{proof}
+%The category $A \times_G B$ is defined as the coequalizer
+%    \[
+%        \xy
+%            (0,0)*+{A \times G \times B}="00";
+%            (30,0)*+{A \times B}="10";
+%            (60,0)*+{\coeqb{A}{B}{G}}="20";
+%            {\ar@<1ex>^{\lambda} "00" ; "10"};
+%            {\ar@<-1ex>_{\rho} "00" ; "10"};
+%            {\ar^{\varepsilon} "10" ; "20"};
+%        \endxy
+%    \]
+%where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow (A \times B)/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
+%    \[
+%        [a \cdot g, b] = \left[(a \cdot g) \cdot g^{-1}, g \cdot b\right] = [a, g \cdot b].
+%    \]
+%
+%Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we define a functor $\phi \colon (A \times B)/G \rightarrow X$ by $\phi[a,b] = \chi(a,b)$. That this is well-defined is clear, since
+%    \[
+%        \phi\left[a \cdot g, g^{-1} \cdot b\right] = \chi\left(a \cdot g, g^{-1} \cdot b\right) = \chi\left(a \cdot \left(gg^{-1}\right), b\right) = \chi(a, b) = \phi[a,b].
+%    \]
+%This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
+%\end{proof}
+
+\begin{rem}\label{rem:operadcoeq-as-quotient}
+Recall that any right action $\mu \colon C \times G \to C$ can be viewed as a left action $\mu' \colon G \times C \to C$ via
+\[
+\mu'(g,c) = \mu(c, g^{-1}).
+\]
+Suppose that $P$ is a $\Lambda$-operad in $\mb{Cat}$ such that the action of $\Lambda(n)$ on $P(n) \times X^n$, given by
+\[
+\lambda \cdot (p, \underline{x_i}) = (p \cdot \lambda^{-1}, \underline{x_{\lambda^{-1}(i)}}),
+\]
+ is free for every category $X$; this hypothesis is easily verified in the case that the action of $\Lambda(n)$ on $P(n)$ is itself free.
+ Then the coequalizer $\coeqb{P(n)}{X^n}{\Lambda(n)}$ coincides with the one in the second part of \cref{lem:coeq-lem}, and can therefore be computed as $\left( P(n) \times X^n \right)/\Lambda(n)$.
+ 
+\end{rem}
 
 \begin{rem}[($\Lambda$-operads in $\mb{Cat}$)]\label{rem:lop-in-cat}
 Here we explicitly describe the structure of a $\Lambda$-operad $P$ in $\mb{Cat}$, following \cref{rem:sec8-in-V}\ngnote{Hmm, this remark seems to have been removed, probably need a replacement}.
