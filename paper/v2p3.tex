@@ -308,7 +308,7 @@ In this way, we also view any action operad $\Lambda$ as an operad in $\mb{Cat}$
 
 \begin{conv}[(Group actions on categories)]\label{conv:group-act-cat}
 A group action on a category is meant in the strict sense, not in the up-to-isomorphism sense.
-Thus if $G$ acts on $C$, the equations
+Thus if $G$ acts on $C$, the equations\ngmpar{Eek, should I be using $e$ for the identity group element? I think yes.}
 \begin{align*}
 g \cdot (h \cdot x) & = (gh) \cdot x,\\
 1 \cdot x & = x
@@ -319,6 +319,7 @@ hold for all $x$, where $x$ is allowed to be either an object or morphism of $C$
 \begin{Defi}[(Free actions)]\label{Defi:free-action}
 Suppose that a group $G$ acts on a category $C$, and let $x$ denote either an object or a morphism of $C$.
 We say that the action is \emph{free} if, for any $x$, $g \cdot x = x$ implies that $g$ is the identity element $e \in G$.
+This is equivalent to the condition that, for all $x, y$ there exists at most one $g \in G$ such that $g \cdot x = y$.
 \end{Defi}
 
 
@@ -329,7 +330,7 @@ Let $G$ be a group, $C$ be a category, and $\mu \colon G \times C \to C$ be an a
 \item Then there is a category $C/G$ with
 \begin{itemize}
 \item objects $[c]$, where $c$ is an object of $C$ and $[c]$ denotes its orbit under the $G$-action; and
-\item morphisms $[f] \colon [c] \to [d]$, where $f \colon c \to d'$ and $d' \in [d]$.
+\item morphisms $[p] \colon [c] \to [d]$, where $p \colon c_1 \to d_1$, $c_1 \in [c]$, $d_1 \in [d]$, and $[p]$ denotes the orbit of $p$ under the $G$-action.
 \end{itemize}
 \item The category $C/G$ is the coequalizer
     \[
@@ -342,33 +343,67 @@ Let $G$ be a group, $C$ be a category, and $\mu \colon G \times C \to C$ be an a
             {\ar^{\varepsilon} "10" ; "20"};
         \endxy
     \]
-where the top map is the action of $G$ on $C$, the bottom map is the projection onto $C$, and the coequalizing map $\varepsilon$ is defined by sending an object or morphism to its equivalence class in $C/G$.
+where the top map is the action of $G$ on $C$, the bottom map is the projection onto $C$, and the coequalizing functor $\varepsilon$ is defined by sending an object or morphism to its orbit in $C/G$.
 \end{enumerate}
 
 \end{lem}
 \begin{proof}
-\ngnoteil{this is the old proof, rewrite:}
-The category $A \times_G B$ is defined as the coequalizer
-    \[
-        \xy
-            (0,0)*+{A \times G \times B}="00";
-            (30,0)*+{A \times B}="10";
-            (60,0)*+{\coeqb{A}{B}{G}}="20";
-            {\ar@<1ex>^{\lambda} "00" ; "10"};
-            {\ar@<-1ex>_{\rho} "00" ; "10"};
-            {\ar^{\varepsilon} "10" ; "20"};
-        \endxy
-    \]
-where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow (A \times B)/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
-    \[
-        [a \cdot g, b] = \left[(a \cdot g) \cdot g^{-1}, g \cdot b\right] = [a, g \cdot b].
-    \]
+In order to prove part one of the lemma, we must define identities and composition, and check the axioms for a category. Define the identity morphism $\id_{[c]} \colon [c] \to [c]$ to be $[\id_{c}]$. For morphisms $[p] \colon [a] \to [b]$ and $[q] \colon [b] \to [c]$ represented by $p \colon a_1 \to b_1$ and $q \colon b_2 \to c_2$, let $g \in G$ be the unique element, since the action is free, such that
+\[
+g \cdot b_2 = b_1.
+\]
+Define $[q] \circ [p] = [g\cdot q \ \circ \ p]$. Now we check the axioms.
+\begin{itemize}
+\item For $[p] \colon [a] \to [b]$ represented by $p \colon a_1 \to b_1$, the composite $[p] \circ \id_{[a]}$ is $[g \cdot p \ \circ \ \id_{a}]$ where $g$ is the unique element such that $g \cdot a_1 = a$. Since $g \cdot p \ \circ \ \id_{a} = g \cdot p$, the composite  $[p] \circ \id_{[a]}$ equals $[g \cdot p] = [p]$ as desired.
+\item For $[p] \colon [a] \to [b]$ represented by $p \colon a_1 \to b_1$, the composite $\id_{[b]} \circ [p]$ is $[g \cdot \id_{b} \ \circ \ p]$ where $g$ is the unique element such that $g \cdot b_1 = b$. Since the action of $G$ on $C$ is functorial, $g \cdot \id_{b} = \id_{g \cdot b} = \id_{b_1}$, so $[g \cdot \id_{b} \ \circ \ p] = [\id_{b_1} \circ p] = [p]$ as desired.
+\item For $[p] \colon [a] \to [b]$ represented by $p \colon a_1 \to b_1$, $[q] \colon [b] \to [c]$ represented by $q \colon b_2 \to c_2$, and $[r] \colon [c] \to [d]$ represented by $r \colon c_3 \to d_3$, we compute
+\[
+[r] \circ \big([q] \circ [p]\big) = [h \cdot r \ \circ \ g \cdot q \ \circ \ p],
+\]
+where $g \cdot b_2 = b_1$ and $h \cdot c_3 = g \cdot c_2$, and
+\[
+\big([r] \circ [q]\big) \circ [p] = [g \cdot \big( j \cdot r \ \circ \ q \big) \ \circ p],
+\]
+where $g \cdot b_2 = b_1$ and $j \cdot c_3 = c_2$. By functoriality of the $G$-action, $g \cdot \big( j \cdot r \ \circ \ q \big) = gj \cdot r \ \circ g \cdot q$, so to prove associativity we need only check that $gj = h$. This follows from the assumption that the action is free together with the equations $h \cdot c_3 = g \cdot c_2$ and $j \cdot c_3 = c_2$.
+\end{itemize}
+Thus $C/G$ is a category.
 
-Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we define a functor $\phi \colon (A \times B)/G \rightarrow X$ by $\phi[a,b] = \chi(a,b)$. That this is well-defined is clear, since
-    \[
-        \phi\left[a \cdot g, g^{-1} \cdot b\right] = \chi\left(a \cdot g, g^{-1} \cdot b\right) = \chi\left(a \cdot \left(gg^{-1}\right), b\right) = \chi(a, b) = \phi[a,b].
-    \]
-This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
+For the second claim in the lemma, first note that $\varepsilon$, defined by $\varepsilon(x) = [x]$ for $x$ an object or morphism of $C$, is a functor. Furthermore, we see that 
+\[
+\varepsilon \pi_2(g, x) = \varepsilon(x) = [x] = [g \cdot x] = \varepsilon \mu(g,x),
+\]
+so $\varepsilon$ does coequalize $\mu$ and $\pi_2$. In order to check universality, let $F \colon C \to D$ be any other functor that coequalizes. We must check that there is a unique functor $\overline{F} \colon C/G \to D$ such that $\overline{F} \circ \varepsilon = F$. Any such $\overline{F}$ must be defined by $\overline{F}\big( [c] \big) = F(c)$ on objects, and since $F$ coequalizes $\mu, \pi_2$ this function is well-defined. The same argument applies to morphisms, so $\overline{F}\big( [p] \big) = F(p)$. As for objects, this function is well-defined, and also forces the uniqueness of $\overline{F}$. We need only check functoriality to finish the proof. By construction $\overline{F}$ preserves identity morphisms. For composition, we have
+\begin{align*}
+\overline{F} \left( [q] \circ [p] \right) & = \overline{F}\left( [g\cdot q \ \circ \ p] \right) \\
+& = F(g\cdot q \ \circ \ p) \\
+& = F(g \cdot q) \circ F(p) \\ 
+& \stackrel{c}{=} F(q) \circ F(p) \\
+& \overline{F}\left( [q] \right) \circ \overline{F}\left( [p] \right),
+\end{align*}
+where the equality labeled $c$ is a consequence of $F$ coequalizing $\mu, \pi_2$. This calculation shows that $\overline{F}$ is a functor, so $C/G$ is the coequalizer of $\mu, \pi_2$.
+%
+%\ngnoteil{this is the old proof, rewrite:}
+%The category $A \times_G B$ is defined as the coequalizer
+%    \[
+%        \xy
+%            (0,0)*+{A \times G \times B}="00";
+%            (30,0)*+{A \times B}="10";
+%            (60,0)*+{\coeqb{A}{B}{G}}="20";
+%            {\ar@<1ex>^{\lambda} "00" ; "10"};
+%            {\ar@<-1ex>_{\rho} "00" ; "10"};
+%            {\ar^{\varepsilon} "10" ; "20"};
+%        \endxy
+%    \]
+%where $\lambda(a,g,b) = (a \cdot g, b)$ and $\rho(a,g,b) = (a, g \cdot b)$. However, the map $A \times B \rightarrow (A \times B)/G$, sending $(a,b)$ to the equivalence class $[a,b] = [a \cdot g, g^{-1} \cdot b]$, also coequalizes $\lambda$ and $\rho$ since
+%    \[
+%        [a \cdot g, b] = \left[(a \cdot g) \cdot g^{-1}, g \cdot b\right] = [a, g \cdot b].
+%    \]
+%
+%Given any other category $X$ and a functor $\chi \colon A \times B \rightarrow X$ which coequalizes $\lambda$ and $\rho$, we define a functor $\phi \colon (A \times B)/G \rightarrow X$ by $\phi[a,b] = \chi(a,b)$. That this is well-defined is clear, since
+%    \[
+%        \phi\left[a \cdot g, g^{-1} \cdot b\right] = \chi\left(a \cdot g, g^{-1} \cdot b\right) = \chi\left(a \cdot \left(gg^{-1}\right), b\right) = \chi(a, b) = \phi[a,b].
+%    \]
+%This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
 \end{proof}
 
 %\ngnoteil{old:}
