@@ -1482,11 +1482,12 @@ The argument is identical to that for braided operads in Section 4.1 of \cite{la
 %Since $\cat$ is locally finitely presentable then directed colimits commute with finite limits, giving the first isomorphism. The second isomorphism follows from this fact as well as that colimits commute with coequalizers. The third isomorphism is simply coproducts commuting with other colimits.
 \end{proof}
 
-We now give an abstract coherence theorem for algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$ following the method of John Power \cite{power-gen}. In order to do so, we recall the notion of an enhanced factorization system and Power's coherence result.
+We now give an abstract coherence theorem for algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$ following the method of John Power \cite{power-gen} and generalized by Lack \cite{lack-cod}. In order to do so, we recall the notion of an enhanced factorization system and Power's coherence result.
 
 \begin{Defi}[(Enhanced factorization system)]\label{Defi:efs}
-\ngnoteil{fix this definition}
-First we require that the base $2$-category $\mathcal{K}$ has an enhanced factorization system. This is much like an orthogonal factorization system on a $2$-category, consisting of two classes of maps $(\mathcal{L},\mathcal{R})$, satisfying the lifting properties on $1$-cells and $2$-cells as follows. Given a commutative square
+Let $K$ be a 2-category. An \emph{enhanced factorization system} on $K$ consists of two classes of 1-cells $\mathcal{L},\mathcal{R}$ satisfying the following properties.
+\begin{enumerate}
+\item Given a commutative square of 1-cells
      \[
         \xy
             (0,0)*+{A}="00";
@@ -1499,7 +1500,9 @@ First we require that the base $2$-category $\mathcal{K}$ has an enhanced factor
             {\ar_{g} "01" ; "11"};
         \endxy
      \]
-where $l \in \m{L}$ and $r \in {R}$, there exists a unique morphism $m \colon B \rightarrow C$ such that $rm = g$ and $ml = f$. Similarly, given two commuting squares for which $rf = gl$ and $rf' = f'l$, along with $2$-cells $\delta \colon f \Rightarrow f'$ and $\gamma \colon g \Rightarrow g'$ for which $\gamma \ast 1_l = 1_r \ast \delta$, there exists a unique $2$-cell $\mu \colon m \Rightarrow m'$, where $m$ and $m'$ are induced by the $1$-cell lifting property, satisfying $\mu \ast 1_l = \delta$ and $1_r \ast \mu = \gamma$. However, there is an additional $2$-dimensional property of the factorization system which says that given maps $l \in \m{L}$, $r \in \m{R}$ and an invertible $2$-cell $\alpha \colon rf \Rightarrow gl$
+where $l \in \m{L}$ and $r \in {R}$, there exists a unique 1-cell $m \colon B \rightarrow C$ such that $rm = g$ and $ml = f$.
+\item Given two commuting squares  of 1-cells as above, $rf_1 = g_1l$ and $rf_2 = g_2l$ where $l \in \m{L}$ and $r \in {R}$ , along with $2$-cells $\delta \colon f_1 \Rightarrow f_2$ and $\gamma \colon g_1 \Rightarrow g_2$ for which $\gamma \ast l = r \ast \delta$, there exists a unique $2$-cell $\mu \colon m_1 \Rightarrow m_2$, where $m_1$ and $m_2$ are induced by the $1$-cell lifting property, satisfying $\mu \ast l = \delta$ and $r \ast \mu = \gamma$.
+\item Given maps $l \in \m{L}$, $r \in \m{R}$ and an invertible $2$-cell $\alpha \colon rf \Rightarrow gl$
     \[
         \xy
             (0,0)*+{A}="00";
@@ -1524,46 +1527,50 @@ where $l \in \m{L}$ and $r \in {R}$, there exists a unique morphism $m \colon B 
             {\ar@{=>}^{\beta} (41,-8) ; (38,-12)};
         \endxy
     \]
-there exists a unique pair $(m,\beta)$ where $m \colon B \rightarrow C$ is a $1$-cell and $\beta \colon rm \Rightarrow g$ is an invertible $2$-cell such that $ml = f$ and $\beta \ast 1_{l} = \alpha$.
+there exists a unique pair $(m,\beta)$ where $m \colon B \rightarrow C$ is a $1$-cell and $\beta \colon rm \Rightarrow g$ is an invertible $2$-cell such that $ml = f$ and $\beta \ast l = \alpha$.
+\end{enumerate}
 \end{Defi}
 
-%The abstract approach to coherence considers when the pseudoalgebras for a $2$-monad $T$ are equivalent to strict $T$-algebras, with the most comprehensive account appearing in \cite{lack-cod}. Lack gives a general theorem which provides sufficient conditions for the existence of a left adjoint to the forgetful $2$-functor
-%    \[
-%        U \colon T\mbox{-}\mb{Alg}_s \rightarrow \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}
-%    \]
-%for which the components of the unit of the adjunction are equivalences. We focus on one version of this general result which has hypotheses that are quite easy to check in practice. 
 
-\begin{thm}[cite power]\label{thm:power}
-Let $\mathcal{K}$ be a 2-category, and $T$ be a $2$-monad on $\mathcal{K}$. If 
-\ngnoteil{below is copied, fix}
-Further conditions require that $T$ preserve $\mathcal{L}$ maps and that whenever $r \in \mathcal{R}$ and $rk \cong 1$, then $kr \cong 1$. 
-\ngnoteil{resuming}
-Then the inclusion 2-functor  \[
+\begin{thm}[Theorem~3.4 \cite{power-gen},~Theorem~4.6 \cite{lack-cod}]\label{thm:power}
+Let $K$ be a 2-category, and $T$ be a $2$-monad on $K$. If $K$ has an enhanced factorization system $\mathcal{L}, \mathcal{R}$ such that 
+\begin{enumerate}
+\item for every $r \colon C \to D$ in $\mathcal{R}$, 1-cell $s \colon D \to C$, and isomorphism $\alpha \colon rs \cong 1_{D}$, there exists an isomorphism $\beta \colon sr \cong 1_C$; and
+\item for every $l \in \mathcal{L}$, the 1-cell $Tl$ is also in $\mathcal{L}$;
+\end{enumerate}
+then the inclusion 2-functor  \[
         U \colon T\mbox{-}\mb{Alg}_s \rightarrow \mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}
     \]
 has a left 2-adjoint, and the components of the unit of the adjunction are equivalences in $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$. In particular, every pseudo-$T$-algebra is equivalent to a strict one.
 \end{thm}
 
-\begin{lem}[cite power again]\label{lem:efs-cat}
+\begin{lem}[Lemma~3.3 \cite{power-gen}]\label{lem:efs-cat}
 The 2-category $\mb{Cat}$ has an enhanced factorization system in which the class $\mathcal{L}$ consists of the functors that are bijective on objects and the class $\mathcal{R}$ consists of the functors that are full and faithful.
 \end{lem}
 
-%In our case we are considering $2$-monads on the $2$-category $\cat$, which has the enhanced factorization system where $\m{L}$ consists of bijective-on-objects functors and $\m{R}$ is given by the full and faithful functors. This, along with the $2$-dimensional property making it an enhanced factorization system, is described in \cite{power-gen}. 
+
 
 \begin{prop}
 For any $\Lambda$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
 \end{prop}
 \begin{proof}
-\ngnoteil{copied, fix}
-The last stated condition, involving isomorphisms and maps in $\m{R}$, is then clearly satisfied and so the only thing we need to check in order to satisfy the conditions of the coherence result are that the induced $2$-monads $\underline{P}$ preserve bijective-on-objects functors, which follows simply from the fact that the set of objects functor, $\ob \colon \mb{Cat} \rightarrow \mb{Set}$, preserves colimits, being left adjoint to the indiscrete category functor, $E \colon \mb{Set} \rightarrow \mb{Cat}$, as described in \cref{symmoncor}.
+This follows immediately from the description of $\EL$ in \cref{prop:hom-set-lemma}.
 \end{proof}
 
 \begin{cor}
 Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra.
 \end{cor}
 
-\begin{rem}[(Unpacking pseudo-$\underline{P}$-algebras)]\label{rem:ps-P-alg-unpack}
-\ngnoteil{explain how these are unbiased and weak}
+\begin{rem}[(Pseudo-$\EL$-algebras are unbiased)]\label{rem:ps-P-alg-unpack}
+The pseudo-$\EL$-algebras are a \emph{weak} and \emph{unbiased} form of $\Lambda$-monoidal categories.
+\begin{itemize}
+\item Here \emph{weak} means equational axioms are replaced by coherent isomorphisms. On its own, the reader might expect such a claim to mean that pseudo-$\EL$-algebras have an underlying monoidal, rather than strict monoidal, structure. This is not the case.
+\item These pseudoalgebras are also \emph{unbiased}, meaning they have prescribed $n$-ary tensor product operations $\otimes_n \colon X^n \to X$ for every $n \in \mathbb{N}$, and these are related by the isomorphisms in the previous point using operadic composition. Thus instead of an associativity isomorphism $(x \otimes y) \otimes z \cong x \otimes (y \otimes z)$, there is an isomorphism
+\[
+\otimes_2\left( \otimes_2(x,y), z\right) \cong \otimes_3(x,y,z).
+\]
+\end{itemize}
+We refer the reader to Section 3.1 of \cite{leinster} for a further discussion of the relationship between strict structures and unbiased, weak ones.
 \end{rem}
 
 
