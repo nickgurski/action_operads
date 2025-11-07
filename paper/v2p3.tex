@@ -112,6 +112,69 @@ where the equality labeled $c$ is a consequence of $F$ coequalizing $\mu, \pi_2$
 
 \begin{Defi}[(2-limits)]\label{Defi:2limit}
 \ngnoteil{put in definition here}
+\acnoteil{I put in the really spelled-out version, hopefully correctly}
+Let $F \colon \mathbb{D} \rightarrow \mathcal{K}$ be a 2-functor. The (strict) 2-limit of $F$ consists of:
+    \begin{itemize}
+        \item an object $\lim F$ in $\mathcal{K}$,
+        \item for each object $d \in \mathbb{D}$, a 1-cell $\pi_d \colon \lim F \rightarrow Fd$,
+    \end{itemize}
+such that:
+    \begin{enumerate}
+        \item For any 1-cell $f \colon d \rightarrow d'$ in $\mathbb{D}$, the following diagram commutes.
+          \[
+            \xy
+              (0,0)*+{\lim F}="00";
+              (20,10)*+{Fd}="10";
+              (20,-10)*+{Fd'}="11";
+              % (0,-15)*+{}="01";
+              %
+              {\ar^{\pi_d} "00" ; "10"};
+              {\ar_{\pi_{d'}} "00" ; "11"};
+              {\ar^{Ff} "10" ; "11"};
+            \endxy
+          \]
+        \item For any 1-cells $f, g \colon d \rightarrow d'$ and any 2-cell $\alpha \colon f \Rightarrow g$ in $\mathbb{D}$,
+            \[
+                F\alpha \ast \id_{\pi_d} = \id_{\pi_{d'}}.
+            \]
+    \end{enumerate}
+These data then satify the following universal properties:
+    \begin{enumerate}
+        \item For any object $X$ and 1-cells $\chi_d \colon X \rightarrow Fd$ satisfying
+          \[
+            \xy
+              (0,0)*+{X}="00";
+              (20,10)*+{Fd}="10";
+              (20,-10)*+{Fd'}="11";
+              % (0,-15)*+{}="01";
+              %
+              {\ar^{\chi_d} "00" ; "10"};
+              {\ar_{\chi_{d'}} "00" ; "11"};
+              {\ar^{Ff} "10" ; "11"};
+            \endxy
+          \]
+        there exists a unique 1-cell $h \colon X \rightarrow \lim F$ in $\mathcal{K}$ such that $\pi_d \circ h = \chi_d$.
+        \item For any 1-cells $h, k \colon X \rightarrow \lim F$ and 2-cells
+          \[
+            \xy
+              (0,0)*+{X}="00";
+              (20,0)*+{\lim F}="10";
+              (20,-15)*+{Fd}="11";
+              (0,-15)*+{\lim F}="01";
+              %
+              {\ar^{h} "00" ; "10"};
+              {\ar_{k} "00" ; "01"};
+              {\ar^{\pi_d} "10" ; "11"};
+              {\ar_{\pi_d} "01" ; "11"};
+              %
+              {\ar@{=>}^{\varphi_c} (12,-5.5) ; (8,-9.5)};
+            \endxy
+          \]
+        there exists a unique 2-cell $\gamma \colon h \rightarrow k$ such that
+            \[
+                \id_{\pi_d} \ast \gamma = \varphi_d.
+            \]
+    \end{enumerate}
 \end{Defi}
 
 \begin{rem}[(Limits versus 2-limits)]\label{rem:lim-v-2lim}
