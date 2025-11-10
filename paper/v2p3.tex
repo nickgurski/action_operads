@@ -1627,7 +1627,7 @@ Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-a
 \begin{rem}[(Pseudo-$\EL$-algebras are unbiased)]\label{rem:ps-P-alg-unpack}
 The pseudo-$\EL$-algebras are a \emph{weak} and \emph{unbiased} form of $\Lambda$-monoidal categories.
 \begin{itemize}
-\item Here \emph{weak} means equational axioms are replaced by coherent isomorphisms. On its own, the reader might expect such a claim to mean that pseudo-$\EL$-algebras have an underlying monoidal, rather than strict monoidal, structure. This is not the case.
+\item Here \emph{weak} means equational axioms at the level of objects are replaced by coherent isomorphisms. On its own, the reader might expect such a claim to mean that pseudo-$\EL$-algebras have an underlying monoidal, rather than strict monoidal, structure. This is not the case.
 \item These pseudoalgebras are also \emph{unbiased}, meaning they have prescribed $n$-ary tensor product operations $\otimes_n \colon X^n \to X$ for every $n \in \mathbb{N}$, and these are related by the isomorphisms in the previous point using operadic composition. Thus instead of an associativity isomorphism $(x \otimes y) \otimes z \cong x \otimes (y \otimes z)$, there is an isomorphism
 \[
 \otimes_2\left( \otimes_2(x,y), z\right) \cong \otimes_3(x,y,z).
@@ -1672,7 +1672,39 @@ equals $[hg]$, where $hg \in \Lambda(n)$ is given by multiplication using the gr
 \end{enumerate}
 \end{Defi}
 
-\ngnoteil{now need weak $\Lambda$-monoidal functors, then 2-category $\wlmc$ of weak lmc's, weak lmf's, and monoidal transformations}
+\begin{nota}
+By coherence for monoidal functors in the form\ngnote{ref gurski-johnson pseudomorphisms paper}, every monoidal functor $(F, F_2, F_0)$ induces a unique isomorphism
+\[
+F_n \colon \underline{Fx_1 \cdots Fx_n} \cong F(\underline{x_1 \cdots x_n}).
+\]
+In the case that $n=0, 2$, these isomorphisms agree with the isomorphisms $F_0, F_2$ in the data defining $F$ as a monoidal functor.
+\end{nota}
+
+
+\begin{Defi}[(Weak $\Lambda$-monoidal functors)]\label{Defi:wk-lmf}
+Let $M, N$ be weak $\Lambda$-monoidal categories. A \emph{weak $\Lambda$-monoidal functor} $F \colon M \to N$ consists of a monoidal functor $(F, F_0, F_2) \colon M \to N$ of the underlying monoidal categories such that for all $g \in \Lambda(n)$ and all tuples of objects $x_1, \ldots, x_n \in M$, the following diagram commutes.
+\ngnoteil{F commutes with [g]'s}
+\end{Defi}
+
+\begin{prop}\label{prop:2cat-of-weaklambda}
+There is a 2-category with 
+\begin{itemize}
+\item objects the weak $\Lambda$-monoidal category, 
+\item 1-cells the weak $\Lambda$-monoidal functors,
+\item 2-cells the monoidal transformations,
+\item 1-cell identities $1_M \colon M \to M$ given by the identity functor equipped with\ngnote{fill in},
+and
+\item the underlying functor of the composite 1-cell given by
+\end{itemize}
+\end{prop}
+\begin{proof}
+\ngnoteil{fill in}
+\end{proof}
+
+\begin{nota}[(2-category of weak $\Lambda$-monoidal categories)]\label{nota:2cat-of-weaklambda}
+The 2-category in \cref{prop:2cat-of-weaklambda} is called the \emph{2-category of weak $\Lambda$-monoidal categories}, and is denoted $\wlmc$.
+\end{nota}
+
 
 \begin{thm}\label{thm:wlmc-to-lmc}
 Let $\Lambda$ be an action operad.
@@ -1685,6 +1717,9 @@ the image of which consists of those weak $\Lambda$-monoidal categories for whic
 \item Every weak $\Lambda$-monoidal category is equivalent, in $\wlmc$, to one in the image of $i$.
 \end{enumerate}
 \end{thm}
+\begin{proof}
+\ngnoteil{fill in}
+\end{proof}
 
 \begin{rem}[(Pseudo-$\EL$-algebras versus weak $\Lambda$-monoidal categories)]\label{rem:psELalg-vs-wlmc}
 compare the pseudoalgebras and the stuff above
