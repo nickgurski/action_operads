@@ -819,7 +819,7 @@ A strict algebra for a $\Lambda$-operad $P$ in $\mb{Cat}$ is precisely the same 
 
 
 \begin{rem}[(Equivariance axioms, or lack thereof)]\label{rem:eq-lack}
-In the version of \cref{Defi:pseudomorphism-lop} that appeared in the original preprint\ngnote{cite our original version, maybe even with definition number}, we did not state clearly that the isomorphisms $\overline{f}_n$ should satisfy an equivariance condition. This was highlighted in Remark 2.22 of Rubin's thesis \cite{rubin-thesis}. Similarly, this omission is also explicity stated as Definition 2.23 of \cite{guillou_symmetric}, as mentioned in \cite{guillou_multiplicative}. That we don't include an explicit equivariance axiom is due to \cref{conv:equiv-maps,rem:lim-v-2lim}. In \cref{Defi:pseudomorphism-lop} we require the existence of natural isomorphisms $f_n$ in order to induce corresponding natural isomorphisms $\overline{f}_n$. That the $\overline{f}_n$ are induced by the $f_n$ corresponds to the fact that the $\overline{f}_n$ satisfy an equivariance condition, namely that for $(\sigma, g, x_1, \ldots, x_n) \in P(n) \times \Lambda(n) \times X^n$, we have
+In the version of \cref{Defi:pseudomorphism-lop} that appeared in the original preprint \cite[Definition 2.4]{cg-preprint}, we did not state clearly that the isomorphisms $\overline{f}_n$ should satisfy an equivariance condition. This was highlighted in Remark 2.22 of Rubin's thesis \cite{rubin-thesis}. Similarly, this omission is also explicity stated as Definition 2.23 of \cite{guillou_symmetric}, as mentioned in \cite{guillou_multiplicative}. That we don't include an explicit equivariance axiom is due to \cref{conv:equiv-maps,rem:lim-v-2lim}. In \cref{Defi:pseudomorphism-lop} we require the existence of natural isomorphisms $f_n$ in order to induce corresponding natural isomorphisms $\overline{f}_n$. That the $\overline{f}_n$ are induced by the $f_n$ corresponds to the fact that the $\overline{f}_n$ satisfy an equivariance condition, namely that for $(\sigma, g, x_1, \ldots, x_n) \in P(n) \times \Lambda(n) \times X^n$, we have
   \[
     \left(\overline{f}_n\right)_{\left(\sigma \cdot g, x_1, \ldots, x_n\right)} = \left(\overline{f}_n\right)_{\left(\sigma,x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)}\right)}.
   \]
@@ -1520,7 +1520,7 @@ for all objects in the category. The coherence theorem tells us that, for any mo
 
 
 
-By \cref{thm:2monad=op}, we can study the algebras for a $\Lambda$-operad $P$ directly, or do so by studying the algebras for the corresponding $2$-monad $\underline{P}$. We first note that the $2$-monads induced by $\Lambda$-operads are finitary, using standard arguments. Second, we show that the coherence theorem in \cite{lack-cod}\ngnote{cite john power general coherence} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra. 
+By \cref{thm:2monad=op}, we can study the algebras for a $\Lambda$-operad $P$ directly, or do so by studying the algebras for the corresponding $2$-monad $\underline{P}$. We first note that the $2$-monads induced by $\Lambda$-operads are finitary, using standard arguments. Second, we show that the Lack's generalised version \cite[Theorem 4.10]{lack-cod} of Power's coherence theorem \cite[Theorem 3.4]{power-gen} applies to all such $2$-monads and allows us to show that each pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra.
 
 % For a $2$-monad $T$, the $2$-categories $\mb{Ps}\mbox{-}T\mbox{-}\mb{Alg}$ (of pseudoalgebras and weak morphisms) and $T\mbox{-}\mb{Alg}_s$ (of strict algebras and strict morphisms) are of particular interest. The behavior of colimits in both of these $2$-categories can often be deduced from properties of $T$, the most common being that $T$ is finitary. In practice, one thinks of a finitary monad as one in which all operations take finitely many inputs as variables. 
 % If $T$ is finitary, then $T\mbox{-}\mb{Alg}_s$ will be cocomplete by standard results given in \cite{BKP}. There are additional results of a purely $2$-dimensional nature concerning finitary $2$-monads, detailed in \cite{lack-cod} and extending those in \cite{BKP}, namely the existence of a left adjoint
@@ -1673,7 +1673,7 @@ equals $[hg]$, where $hg \in \Lambda(n)$ is given by multiplication using the gr
 \end{Defi}
 
 \begin{nota}
-By coherence for monoidal functors in the form\ngnote{ref gurski-johnson pseudomorphisms paper}, every monoidal functor $(F, F_2, F_0)$ induces a unique isomorphism
+By coherence for monoidal functors in the form \cite{gj-pseudo} \ngnote{ref gurski-johnson pseudomorphisms paper}, every monoidal functor $(F, F_2, F_0)$ induces a unique isomorphism
 \[
 F_n \colon \underline{Fx_1 \cdots Fx_n} \cong F(\underline{x_1 \cdots x_n}).
 \]
@@ -2912,8 +2912,8 @@ When $A,B$ are discrete, there is no isomorphism $\underline{\left(a,\underline{
 
 
 
-Hyland and Power also define a symmetry for a pseudo-commutative structure on a $2$-monad $T$. This symmetry is then reflected in the monoidal structure on the $2$-category of algebras, which will then also have a symmetric tensor product (in a suitable, $2$-categorical sense)\ngnote{include specific reference}.
-\acnote{This is prop 18 in HP. But they are talking about the \emph{multicategory} $T$-Alg.}
+Hyland and Power also define a symmetry for a pseudo-commutative structure on a $2$-monad $T$. This symmetry is then reflected in the monoidal structure on the $2$-category of algebras, which will then also have a symmetric tensor product (in a suitable, $2$-categorical sense) \cite[Theorem 13]{HP}.
+
 \begin{Defi}
 Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad on a symmetric monoidal $2$-category $\m{K}$ with symmetry $c$. We then say that a pseudo-commutativity $\gamma$ for $T$ is \textit{symmetric} when the following is satisfied for all $A$, $B \in \m{K}$:
     \[
@@ -3285,7 +3285,7 @@ A braid $\gamma \in B_{n}$ is \textit{positive} if it is an element of the submo
  A braid $\gamma \in B_{n}$ is \textit{minimal} if no pair of strands in $\gamma$ cross twice.
 \end{Defi}
 
-For our purposes, we are interested in braids which are both positive and minimal. A proof of the following lemma can be found in \cite{EM2}\ngnote{specific ref}.
+For our purposes, we are interested in braids which are both positive and minimal. A proof of the following lemma can be found in \cite[Theorem 2.6]{EM2} \cite{EM2} \ngnote{specific ref}\acnote{correct ref?}.
 
 \begin{lem}\label{pmlem}
 Let $PM_{n}$ be the subset of $B_{n}$ consisting of positive, minimal braids. Then the function sending a braid to its underlying permutation is a bijection of sets $PM_{n} \rightarrow \Sigma_{n}$.
