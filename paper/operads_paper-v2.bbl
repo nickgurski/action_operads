@@ -821,7 +821,7 @@
       \field{pages}{106\bibrangedash 147. Lecture Notes in Math.\bibrangessep Vol. 281}
       \range{pages}{-1}
     \endentry
-    \entry{kelly-elem}{article}{}{}
+    \entry{Kelly2005}{article}{}{}
       \name{author}{1}{}{%
         {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
            family={Kelly},
@@ -838,6 +838,35 @@
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \field{extraname}{2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Repr. Theory Appl. Categ.}
+      \field{note}{Reprint of the 1982 original [Cambridge Univ. Press, Cambridge; MR0651714]}
+      \field{number}{10}
+      \field{title}{Basic concepts of enriched category theory}
+      \field{year}{2005}
+      \field{pages}{vi+137}
+      \range{pages}{-1}
+    \endentry
+    \entry{kelly-elem}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
+           family={Kelly},
+           familyi={K\bibinitperiod},
+           given={G.\bibnamedelimi M.},
+           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{fullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{fullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{bibnamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{authorbibnamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \field{extraname}{3}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -879,7 +908,7 @@
       \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{3}
+      \field{extraname}{4}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -909,7 +938,7 @@
       \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{4}
+      \field{extraname}{5}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -936,7 +965,7 @@
       \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{5}
+      \field{extraname}{6}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}

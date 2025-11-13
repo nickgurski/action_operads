@@ -180,8 +180,7 @@ These data then satify the following universal properties:
 \begin{rem}[(Limits versus 2-limits)]\label{rem:lim-v-2lim}
 Let $C$ be a small category, and $F \colon C \to \mb{Cat}$ be a functor.
 We can treat $C$ as a locally discrete 2-category, and then $F$ becomes a 2-functor.
-The limit of $F$, as a functor, is then also the 2-limit of $F$, as a 2-functor\ngnote{needs a ref, maybe just in Kelly's book somewhere?} by standard methods in enriched category theory.
-In particular, every limit (or colimit) of such a diagram automatically inherits a 2-dimensional aspect to its universal property.
+The limit of $F$, as a functor, is then also the 2-limit of $F$, as a 2-functor by standard methods in enriched category theory \cite[Section 3.8, p50]{Kelly2005}. In particular, every limit (or colimit) of such a diagram automatically inherits a 2-dimensional aspect to its universal property.
 \end{rem}
 
 \begin{conv}[(Naming 2-limits)]\label{conv:name-2lim}
@@ -2219,7 +2218,7 @@ These hypotheses could be relaxed somewhat. Instead of having a club over $B\Sig
 
 \ngnoteil{need specific references in Kelly}
 
-In \cite{kelly_club1}, Kelly discusses clubs given by generators and relations. His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible. In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $\EL$ are always strict monoidal categories with additional structure. Tracing through his discussion of generators and relations for a club gives the following theorem.
+In \cite[Section 3]{kelly_club1}, Kelly discusses clubs given by generators and relations. His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible. In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $\EL$ are always strict monoidal categories with additional structure. Tracing through his discussion of generators and relations for a club gives the following theorem.
 
 \ngmpar{I worry about the rigor of the next two results}
 \begin{thm}\label{thm:pres1}
@@ -3120,7 +3119,7 @@ The collection of groups $J = \{ J_{n} \}$ form an action operad.
 \end{thm}
 \begin{proof}
 \ngnoteil{This is the part where instead we could check that the group presentations match the action operad presentation that we extract from the definition/the end of Sec 15}
-\textbf{There is an issue with the corrected version of Axiom 5 and the $t$'s that needs some fixing. AC: It needs to be that $\delta_{1;n}(e_1) = e_n$, but $\delta$ is only defined on the symbols $s_{p,q}$. Could just define $\delta_{1;n}(e_1) = e_n$ and then check that this doesn't cause any problems with the other characterisation?}
+\acnoteil{There is an issue with the corrected version of Axiom 5 and the $t$'s that needs some fixing. AC: It needs to be that $\delta_{1;n}(e_1) = e_n$, but $\delta$ is only defined on the symbols $s_{p,q}$. Could just define $\delta_{1;n}(e_1) = e_n$ and then check that this doesn't cause any problems with the other characterisation?}
 
 We will use \cref{thm:charAOp} to determine the rest of the action operad structure. Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, group homomorphisms $\beta \colon J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}$ and functions $\delta \colon J_{n} \rightarrow J_{K}$ satisfying nine axioms. We define both of these on generators, starting with $\beta$.
 
@@ -3285,7 +3284,7 @@ A braid $\gamma \in B_{n}$ is \textit{positive} if it is an element of the submo
  A braid $\gamma \in B_{n}$ is \textit{minimal} if no pair of strands in $\gamma$ cross twice.
 \end{Defi}
 
-For our purposes, we are interested in braids which are both positive and minimal. A proof of the following lemma can be found in \cite[Theorem 2.6]{EM2} \cite{EM2} \ngnote{specific ref}\acnote{correct ref?}.
+For our purposes, we are interested in braids which are both positive and minimal. A proof of the following lemma can be found in \cite[Theorem 2.6]{EM2} \ngnote{specific ref}\acnote{correct ref?}.
 
 \begin{lem}\label{pmlem}
 Let $PM_{n}$ be the subset of $B_{n}$ consisting of positive, minimal braids. Then the function sending a braid to its underlying permutation is a bijection of sets $PM_{n} \rightarrow \Sigma_{n}$.
