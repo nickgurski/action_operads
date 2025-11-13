@@ -1682,8 +1682,21 @@ In the case that $n=0, 2$, these isomorphisms agree with the isomorphisms $F_0, 
 
 \begin{Defi}[(Weak $\Lambda$-monoidal functors)]\label{Defi:wk-lmf}
 Let $M, N$ be weak $\Lambda$-monoidal categories. A \emph{weak $\Lambda$-monoidal functor} $F \colon M \to N$ consists of a monoidal functor $(F, F_0, F_2) \colon M \to N$ of the underlying monoidal categories such that for all $g \in \Lambda(n)$ and all tuples of objects $x_1, \ldots, x_n \in M$, the following diagram commutes.
-\ngnoteil{F commutes with [g]'s}
+     \[
+        \xy
+            (0,0)*+{\underline{Fx_1 \cdots Fx_n}}="00";
+            (50,0)*+{\underline{Fx_{g^{1-}(1)} \cdots Fx_{g^{1-}(n)}}}="10";
+            (0,-15)*+{F\underline{x_1 \cdots x_n}}="01";
+            (50,-15)*+{F\underline{x_{g^{1-}(1)} \cdots x_{g^{1-}(n)}}}="11";
+            {\ar^{[g]} "00" ; "10"};
+            {\ar^{F_n} "10" ; "11"};
+            {\ar_{F_n} "00" ; "01"};
+            {\ar_{F[g]} "01" ; "11"};
+        \endxy
+     \]
 \end{Defi}
+
+We leave the proof of the following proposition to the reader, as the details are simple to fill in and mimic similar proofs for braided or symmetric monoidal categories.
 
 \begin{prop}\label{prop:2cat-of-weaklambda}
 There is a 2-category with 
@@ -1691,14 +1704,11 @@ There is a 2-category with
 \item objects the weak $\Lambda$-monoidal category, 
 \item 1-cells the weak $\Lambda$-monoidal functors,
 \item 2-cells the monoidal transformations,
-\item 1-cell identities $1_M \colon M \to M$ given by the identity functor equipped with\ngnote{fill in},
+\item 1-cell identities $1_M \colon M \to M$ given by the identity functor equipped with $F_0 = \id_I$ and $(F_2)_{x,y} = \id_{x \otimes y}$,
 and
-\item the underlying functor of the composite 1-cell given by
+\item composition of 1-cells given by composition of the underlying monoidal functors.
 \end{itemize}
 \end{prop}
-\begin{proof}
-\ngnoteil{fill in}
-\end{proof}
 
 \begin{nota}[(2-category of weak $\Lambda$-monoidal categories)]\label{nota:2cat-of-weaklambda}
 The 2-category in \cref{prop:2cat-of-weaklambda} is called the \emph{2-category of weak $\Lambda$-monoidal categories}, and is denoted $\wlmc$.
@@ -1717,6 +1727,23 @@ the image of which consists of those weak $\Lambda$-monoidal categories for whic
 \end{enumerate}
 \end{thm}
 \begin{proof}
+Let $X$ be an $\EL$-algebra given by functors $\mu_n \colon \coeq{\EL}{X}{\Lambda}{n} \to X$, or equivalently a single functor $\mu \colon \underline{\EL}(X) \to X$. 
+We will equip $X$ with a strict monoidal structure, and then extend that to a weak $\Lambda$-monoidal category structure.
+Let $T$ be the trivial action operad, and let $T \to \Lambda$ be the unique map of action operads (see \cref{example:aop-triv}). Then $\underline{ET}$ is easily seen to the free monoid 2-monad on $\mb{Cat}$, and the description of $\EL$ in \cref{prop:hom-set-lemma} shows that $\underline{ET}(X)$ embeds as the subcategory of $\underline{\EL}(X)$ consisting of all the objects and morphisms in the summand corresponding to $e_n \in \Lambda(n)$. Thus $X$ obtains an $ET$-algebra structure via the composite
+\[
+\underline{ET}(X) \hookrightarrow \underline{\EL}(X) \stackrel{\mu}{\to} X.
+\]
+This $ET$-algebra structure is the desired strict monoidal structure.
+
+Let $g \in \Lambda(n)$ and $x_1, \ldots, x_n$ be objects of $X$. There is a unique isomorphism $\tilde{g} \colon e_n \cong g$ in $\EL(n)$, and applying $\mu_n$ to 
+\[
+[e_n; x_1, \ldots, x_n] \stackrel{[\tilde{g}; \id, \ldots, \id]}{\longrightarrow} [g; x_1, \ldots, x_n] = [e_n; x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)}]
+\]
+produces an isomorphism 
+\[
+[\tilde{g}; \underline{\id}] \colon x_1 \otimes \cdots \otimes x_n \cong x_{g^{-1}(1)} \otimes \ldots \otimes x_{g^{-1}(n)}.
+\]
+Define $[g]$ to be $[\tilde{g}; \underline{\id}]$. The two axioms in \cref{Defi:wk-lmc} follow immediately from the action operad axioms, completing the construction of the 2-functor $i$ on objects.
 \ngnoteil{fill in}
 \end{proof}
 
