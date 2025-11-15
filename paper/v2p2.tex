@@ -982,7 +982,7 @@ By \cref{thm:charAOp}, $\beta$ is a homomorphism as desired, and we now write $+
 %  \end{align*}
 
 Addition of objects is strictly associative and unital.
-Strict associativity at the level of morphisms follows from \cref{eq3}, and strict unitality at the level of morphisms follows from \cref{eq3} and \cref{lem:e0-unit}.
+Strict associativity at the level of morphisms follows from Axiom \eqref{eq3}, and strict unitality at the level of morphisms follows from Axiom \eqref{eq3} and \cref{lem:e0-unit}.
 Thus $B\Lambda$ is a strict monoidal category as desired, completing the proof.
 
 %For naturality of the associator, we must have $(f+g)+h = f+(g+h)$. By the operad axioms for both units and associativity, the lefthand side is given by
@@ -1055,7 +1055,7 @@ for $k= k_1 + \cdots + k_n$, such that the following diagram commutes for every 
       (70,-20)*+{Y^{\star n}(k)}="c";
       (0,-20)*+{Y(k_1) \times \cdots \times Y(k_n)  \times \Lambda(k)}="d";
       %
-      {\ar^{(-\cdot g_1, \cdots, -\cdot g_n) \times 1} "a" ; "b"};
+      {\ar^{(-\cdot g_1, \ldots, -\cdot g_n) \times 1} "a" ; "b"};
       {\ar_{1 \times \big( (g_1 + \cdots + g_n)\cdot -\big)} "a" ; "d"};
       {\ar^{\theta_{k_1, \ldots, k_n; k}} "b" ; "c"};
       {\ar_{\theta_{k_1, \ldots, k_n; k}} "d" ; "c"};
@@ -1098,7 +1098,7 @@ We now check that the following diagram commutes, where underlined elements repr
       (15,-25)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}}="2";
       (60,-35)*+{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}}="3";
       %
-      % {\ar^{\left(-\cdot g_1, \cdots, -\cdot g_n\right) \times 1} "a" ; "b"};
+      % {\ar^{\left(-\cdot g_1, \ldots, -\cdot g_n\right) \times 1} "a" ; "b"};
       {\ar^{\left(\underline{-\cdot g_i}\right) \times 1} "a" ; "b"};
       {\ar^{f[k_1, \ldots, k_n]} "b" ; "c"};
       % {\ar_{\theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k}} "c" ; "d"};
@@ -1111,11 +1111,11 @@ We now check that the following diagram commutes, where underlined elements repr
       {\ar^{f[k_1, \ldots, k_n]} "a" ; "g"};
       % {\ar_{1 \times \left( \left(g_{f^{-1}(1)} + \cdots + g_{f^{-1}(n)}\right)\cdot -\right)} "g" ; "f"};
       {\ar^{1 \times \left(\beta\left(\underline{g_{f^{-1}(i)}}\right) \cdot - \right)} "g" ; "f"};
-      % {\ar_{\left(-\cdot g_{f^{-1}(1)}, \cdots, -\cdot g_{f^{-1}(n)}\right) \times 1} "g" ; "c"};
+      % {\ar_{\left(-\cdot g_{f^{-1}(1)}, \ldots, -\cdot g_{f^{-1}(n)}\right) \times 1} "g" ; "c"};
       {\ar_{\left(\underline{- \cdot g_{f^{-1}(i)}} \right) \times 1} "g" ; "c"};
     \endxy
   \]
-Square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$ commutes by naturality of symmetries, square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$ commutes by \cref{eq8} from \cref{thm:charAOp}, and square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$ commutes by the definition of the coend. 
+Square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$ commutes by naturality of symmetries, square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$ commutes by Axiom \eqref{eq8} from \cref{thm:charAOp}, and square $\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$ commutes by the definition of the coend. 
 Therefore by the universality property, there is a unique map $f \bullet - \colon Y^{\star n}(k) \rightarrow Y^{\star n}(k)$ such that
 \begin{equation}\label{eq:fbullet}
 \theta_{k_{f^{-1}(1)}, \ldots, k_{f^{-1}(n)}; k} \circ f[k_1, \ldots, k_n] = (f \bullet -) \circ \theta_{k_1, \ldots, k_n; k}
@@ -1135,9 +1135,7 @@ Given $f_1, f_2 \in \Lambda(n)$, we have
 &= \theta_{\underline{k_{(f_2f_1)^{-1}(i)}};k} \circ (f_2f_1)\left[\underline{k_i}\right] \\
 &= ((f_2f_1) \bullet -) \circ \theta_{\underline{k_i};k}
 \end{align*}
-by \cref{eq:fbullet} twice, the left action of $\Sigma_n$ on $n$-tuples as in \cref{rem:Sn-tuples}, and \cref{eq6} from \cref{thm:charAOp}.
-\acnote{Did these use to come up as `Item'? Or have I broken something?}\ngnote{We can easily change them to whatever you like. They are just items in a list, not sure the best name for that}
-By the universal property of the coend, we conclude that $(f_2 \bullet -) \circ (f_1 \bullet -) = \big( (f_2f_1) \bullet -\big)$, verifying functoriality and completing the proof.
+by \cref{eq:fbullet} twice, the left action of $\Sigma_n$ on $n$-tuples as in \cref{rem:Sn-tuples}, and Axiom \eqref{eq6} from \cref{thm:charAOp}. By the universal property of the coend, we conclude that $(f_2 \bullet -) \circ (f_1 \bullet -) = \big( (f_2f_1) \bullet -\big)$, verifying functoriality and completing the proof.
 % using the collection of maps
 %  \[
 %    \prod_{i=1}^{n} Y(k_{i}) \times B\Lambda(k, k_{1} + \cdots + k_{n}) \rightarrow \prod_{i=1}^{n} Y(k_{\pi (f)^{-1}(i)}) \times B\Lambda(k, k_{1} + \cdots + k_{n})

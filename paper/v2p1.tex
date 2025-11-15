@@ -322,11 +322,11 @@ f(1^A) & = 1^B.
 %will be written as $\coeqb{A}{B}{G}$, where $\rho$ represents a right action of $G$ on $A$, and $\lambda$ a left action of $G$ on $B$. This is similar to the notation often used to denote pullbacks, however we find in this work that no confusion arises from using notation in this way.
 %\item\label{conv:beta_delta} In the following definitions of operads, we define operad multiplication as a function
 %  \[
-%    \mu \colon O(n) \times O(k_1) \times \ldots O(k_n) \rightarrow O(k_1 + \ldots + k_n)
+%    \mu \colon O(n) \times O(k_1) \times \ldots O(k_n) \rightarrow O(k_1 + \cdots + k_n)
 %  \]
 %for each $n$, $k_1$, $\ldots$, $k_n$, and we use the following two functions as a shorthand for two commonly occuring instances of such. First we define a function
 %  \[
-%    \beta \colon O(k_1) \times \ldots \times O(k_n) \rightarrow O(k_1 + \ldots + k_n)
+%    \beta \colon O(k_1) \times \ldots \times O(k_n) \rightarrow O(k_1 + \cdots + k_n)
 %  \]
 %for each $n$, $k_1$, $\ldots$, $k_n$, which takes elements $\tau_1 \in O(k_1)$, $\ldots$, $\tau_n \in O(k_n)$ and produces the element
 %  \[
@@ -334,7 +334,7 @@ f(1^A) & = 1^B.
 %  \]
 %We think of this element as the block sum of the elements $\tau_1$, $\ldots$, $\tau_n$. We also define a function
 %  \[
-%    \delta_{n;k_1,\ldots,k_n} \colon O(n) \rightarrow O(k_1 + \ldots + k_n)
+%    \delta_{n;k_1,\ldots,k_n} \colon O(n) \rightarrow O(k_1 + \cdots + k_n)
 %  \]
 %for each $n$, $k_1$, $\ldots$, $k_n$, which takes an element $\sigma \in O(n)$ and produces the element
 %  \[
@@ -343,11 +343,11 @@ f(1^A) & = 1^B.
 %
 %In the particular case of the symmetric groups, these are functions
 %  \[
-%    \beta \colon \Sigma_{k_1} \times \Sigma_{k_n} \rightarrow \Sigma_{k_1 + \ldots + k_n}
+%    \beta \colon \Sigma_{k_1} \times \Sigma_{k_n} \rightarrow \Sigma_{k_1 + \cdots + k_n}
 %  \]
 %and
 %  \[
-%    \delta_{n;k_1,\ldots,k_n} \colon \Sigma_{n} \rightarrow \Sigma_{k_1 + \ldots + k_n}.
+%    \delta_{n;k_1,\ldots,k_n} \colon \Sigma_{n} \rightarrow \Sigma_{k_1 + \cdots + k_n}.
 %  \]
 %In the case of $\beta$ we form the block sum permutation $\beta(\tau_1,\ldots,\tau_n)$ which permutes the first $k_{1}$ elements according to $\tau_{1}$, the next $k_{2}$ elements according to $\tau_{2}$ and so on; this is an element of $\Sigma_{k_{1} + \cdots + k_{n}}$. For $\delta$ we take the permutation $\delta(\sigma) \in \Sigma_{k_{1} + \cdots + k_{n}}$ to be that which permutes the $n$ different blocks $1$ through $k_{1}$, $k_{1}+1$ through $k_{1} + k_{2}$, and so on, according to the permutation $\sigma \in \Sigma_{n}$. We expand on this at various points, including in \cref{rem:perm_matrices}.
 %\item\label{conv:perm_shorthand} Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where $O(n)$ is the object of $n$-ary operations of an operad $O$ and $\Sigma_n$ is the symmetric group on $n$ elements. The map $\pi_n$ in each case will represent a form of `underlying permutation' of each element, which we will then use to act on operad multiplication. As the notation starts to become cumbersome, we will often write $\sigma^{-1}(i)$ which should be read as $\pi_n(\sigma)^{-1}(i)$, where $\sigma \in O(n)$.
@@ -555,7 +555,7 @@ If $O$ is an operad in a category other than $\mb{Sets}$ (see \cref{rem:V-and-co
 %\item $y_{i} \in O(k_{i})$ for $i=1, \ldots, n$,
 %\item $\tau_{i} \in \Sigma_{k_{i}}$,
 %\item $\sigma \in \Sigma_{n}$, and
-%\item $\beta(\tau_1,\ldots,\tau_n), \delta(\sigma) \in \Sigma_{k_1 + \ldots + k_n}$ as described in \cref{conv1} \eqref{conv:beta_delta}.
+%\item $\beta(\tau_1,\ldots,\tau_n), \delta(\sigma) \in \Sigma_{k_1 + \cdots + k_n}$ as described in \cref{conv1} \eqref{conv:beta_delta}.
 %\end{itemize}
 %
 %\end{rem}
@@ -1193,8 +1193,7 @@ holds, where $\underline{h_i} = h_{i1},\ldots,h_{ij_i}$.
   \]
 
 
-\item\label{eq5} The function $\delta_{n; 1, \ldots, 1} \colon \Lambda(n) \rightarrow \Lambda(n)$ is the identity. The function $\delta_{1;n} \colon \Lambda(1) \to \Lambda(n)$ maps $e_1$ to $e_n$\ngnote{I think something more general is true: any $\delta$ maps $e_n$ to $e_K$}.
-\acnote{So $\delta_{n;k_1,\ldots,k_n}(e_{k_1},\ldots,e_{k_n}) = e_{K}$?}
+\item\label{eq5} The function $\delta_{n; 1, \ldots, 1} \colon \Lambda(n) \rightarrow \Lambda(n)$ is the identity. The function $\delta_{n;k_1,\ldots,k_n} \colon \Lambda(1) \to \Lambda(n)$ maps $e_n$ to $e_{k_1 + \cdots + k_n}$
 \item\label{eq6} The equation $\delta_{n; k_1, \ldots, k_n}(g) \delta_{n; j_1, \ldots, j_n}(h) = \delta_{n; j_1,\ldots,j_n}(gh)$ holds when
 
   \[
@@ -1230,8 +1229,8 @@ Let $\Lambda$ be an action operad, and define
 \beta(g_1, \ldots, g_n) & = \mu(e_n; g_1, \ldots, g_n),\\
 \delta_{n; k_1, \ldots, k_n}(g) & = \mu(g; e_{k_1}, \ldots, e_{k_n}).
 \end{align*}
-Since $\pi \colon \Lambda \rightarrow \Sigma$ is an operad map, Axioms \ref{eq1} and \ref{eq4} hold by the definition of the operad structure on $\Sigma$ in \cref{ex:Sigma}. 
-Since $\Lambda$ is an operad of sets, Axioms \ref{eq2} and \ref{eq5} follow from the operad unit axioms and the first part of \cref{lem:calclem}, and Axioms \ref{eq3}, \ref{eq7}, and \ref{eq9} follow from the operad associativity axiom and the second part of \cref{lem:calclem}. Axioms \ref{eq6} and \ref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
+Since $\pi \colon \Lambda \rightarrow \Sigma$ is an operad map, Axioms \eqref{eq1} and \eqref{eq4} hold by the definition of the operad structure on $\Sigma$ in \cref{ex:Sigma}. 
+Since $\Lambda$ is an operad of sets, Axioms \eqref{eq2} and \eqref{eq5} follow from the operad unit axioms and the first part of \cref{lem:calclem}, and Axioms \eqref{eq3}, \eqref{eq7}, and \eqref{eq9} follow from the operad associativity axiom and the second part of \cref{lem:calclem}. Axioms \eqref{eq6} and \eqref{eq8} are special cases of the additional action operad axiom, as is the fact that $\beta$ is a group homomorphism.
 
 Conversely, given the data above, we need only define the operad multiplication, verify the operad unit and multiplication axioms, and finally check the action operad axiom. Multiplication is given by
   \begin{equation}\label{eqn:mu-from-betadelta}
@@ -1248,7 +1247,7 @@ We now verify the operad unit axioms. Let $g, h \in \Lambda(n)$. Then
     &= h \cdot e_n \\
     &= h
   \end{align*}
-by Axioms \ref{eq2} and \ref{eq5}, together with the fact that $\beta$ is a group homomorphism.
+by Axioms \eqref{eq2} and \eqref{eq5}, together with the fact that $\beta$ is a group homomorphism.
 Thus $e_1$ satisfies the identity axioms for operadic multiplication.
 
 For the operad associativity axiom, let
@@ -1274,11 +1273,11 @@ Since $\beta$ is a group homomorphism, we can then rewrite the left side as
   \[
     \delta(f)\beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big)\beta\big(\beta(\underline{h_1}), \ldots, \beta(\underline{h_m})\big)
   \]
-where we have suppressed the subscripts on the $\delta$'s. By Axiom \ref{eq3},
+where we have suppressed the subscripts on the $\delta$'s. By Axiom \eqref{eq3},
   \[
     \beta\big(\beta(\underline{h_1}), \ldots, \beta(\underline{h_m})\big) = \beta\left(\underline{h_1},\ldots,\underline{h_m}\right).
   \]
-Furthermore, Axiom \ref{eq9} above shows that
+Furthermore, Axiom \eqref{eq9} above shows that
   \[
     \beta\big(\delta(g_{1}), \ldots, \delta(g_{m})\big) = \delta\big(\beta(g_{1}, \ldots, g_{m})\big).
   \]
@@ -1306,18 +1305,18 @@ which is itself equal to
 \begin{eqn}\label{eqn:opass2}
 \delta\big(\delta(f)\big) \delta\big(\beta(g_{1}, \ldots, g_{m})\big)
 \end{eqn}
-by Axiom \ref{eq6} above. 
+by Axiom \eqref{eq6} above. \acnote{Why is there a tiny indent after every equation environment? Can't get rid of it.} 
 Now the $\delta(f)$ on the left side of \cref{eqn:opass} uses $\delta_{n; P_{1}, \ldots, P_{n}}$, while the $\delta(\delta(f))$ in \cref{eqn:opass2} is actually
   \[
     \delta_{m_1 + \cdots + m_{n}; q_{ij}}(\delta_{n; m_{1}, \ldots, m_{n}} (f))
   \]
-where the $q_{ij}$ are defined, by Axiom \ref{eq6}, to be given by
+where the $q_{ij}$ are defined, by Axiom \eqref{eq6}, to be given by
   \[
     q_{ij} = p_{i,g_{i}^{-1}(j)}
   \]
-using the compatibility of $\beta$ and $\pi$ in Axiom \ref{eq1}. By Axiom \ref{eq7}, this composite of $\delta$'s  is then $\delta_{n; Q_{1}, \ldots, Q_{n}}$ where $Q_{i} = q_{i1} + \cdots + q_{im_{i}}$. But by the definition of the $q_{ij}$, we immediately see that $Q_{i} = P_{i}$, so the $\delta(f)$ in \cref{eqn:opass} is equal to the $\delta(\delta(f))$ appearing in \cref{eqn:opass2}, concluding the proof of the operad associativity axiom.
+using the compatibility of $\beta$ and $\pi$ in Axiom \eqref{eq1}. By Axiom \eqref{eq7}, this composite of $\delta$'s  is then $\delta_{n; Q_{1}, \ldots, Q_{n}}$ where $Q_{i} = q_{i1} + \cdots + q_{im_{i}}$. But by the definition of the $q_{ij}$, we immediately see that $Q_{i} = P_{i}$, so the $\delta(f)$ in \cref{eqn:opass} is equal to the $\delta(\delta(f))$ appearing in \cref{eqn:opass2}, concluding the proof of the operad associativity axiom.
 
-Writing $\mu(g;\underline{h}) = \mu\left(g; h_{1}, \ldots, h_{n}\right)= $ and $\mu(g';\underline{h'}) = \mu\left(g'; h_{1}', \ldots, h_{n}'\right)$, the action operad axiom is now the calculation below, and uses Axioms \ref{eq4} and \ref{eq8}.
+Writing $\mu(g;\underline{h}) = \mu\left(g; h_{1}, \ldots, h_{n}\right)= $ and $\mu(g';\underline{h'}) = \mu\left(g'; h_{1}', \ldots, h_{n}'\right)$, the action operad axiom is now the calculation below, and uses Axioms \eqref{eq4} and \eqref{eq8}.
 \begin{small}
   \begin{align*}
     \mu(g;\underline{h})\mu(g';\underline{h'}) &= \delta\left(g\right) \beta\left(h_{1}, \ldots, h_{n}\right) \delta\left(g'\right) \beta\left(h_{1}', \ldots, h_{n}'\right) \\
@@ -1339,7 +1338,7 @@ Suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is surjective, so th
       \trans{a}{a+1} &= \beta(\underline{e_1}^{a-1},\trans{1}{2},\underline{e_1}^{n-a-1}) \\ &= \beta(\underline{\pi_1(e_1)}^{a-1},\pi_2(g),\underline{\pi_1(e_1)}^{n-a-1}) \\
       &= \pi_n(\beta(\underline{e_1}^{a-1},g,\underline{e_1}^{n-a-1}))
   \end{align*}
-by Axiom \ref{eq1} of \ref{thm:charAOp}.
+by Axiom \eqref{eq1} of \ref{thm:charAOp}.
 Thus $\pi_n$ is surjective for all $n>2$ if $\pi_2$ is surjective.
 
 Now we will consider the case where $\pi_2$ is the zero map.
@@ -1349,7 +1348,7 @@ Consider the element
 \[
 h = \delta_{n; \underline{0}^{i-1}, 1, \underline{0}^{j-i-1}, 1, \underline{0}^{n-j}}(g) \in \Lambda(2).
 \]
-By the assumption that $\pi_2$ is the zero map, we must have that $\pi_2(h) = e_2$, but by Axiom \ref{eq4} of \ref{thm:charAOp} we also compute
+By the assumption that $\pi_2$ is the zero map, we must have that $\pi_2(h) = e_2$, but by Axiom \eqref{eq4} of \ref{thm:charAOp} we also compute
 \[
 \pi_2(h) = \delta_{n; \underline{0}^{i-1}, 1, \underline{0}^{j-i-1}, 1, \underline{0}^{n-j}}\big( \pi_n(g) \big) =  \delta_{n; \underline{0}^{i-1}, 1, \underline{0}^{j-i-1}, 1, \underline{0}^{n-j}}\big( \sigma \big).
 \]
@@ -1364,16 +1363,16 @@ Thus if $\pi_2$ is the zero map, so is $\pi_n$ for all $n>2$.
 %    &= \pi_n(\delta_{n+1;\underline{1},0,\underline{1}}(g)) \\
 %    &= e_n,
 %  \end{align*}
-%using Axiom \ref{eq4} of \ref{thm:charAOp}. Hence $\sigma = e_{n+1}$ or $\sigma = \trans{a}{a+1}$.
+%using Axiom \eqref{eq4} of \ref{thm:charAOp}. Hence $\sigma = e_{n+1}$ or $\sigma = \trans{a}{a+1}$.
 %
-%If $\sigma = e_{n+1}$ then $\pi_{n+1}$ is zero. But if $a \neq 1$, then using Axiom \ref{eq4} again
+%If $\sigma = e_{n+1}$ then $\pi_{n+1}$ is zero. But if $a \neq 1$, then using Axiom \eqref{eq4} again
 %  \begin{align*}
 %    \trans{a-1}{a} &= \delta_{n+1;0,\underline{1}}(\trans{a}{a+1}) \\
 %    &= \delta_{n+1;0,\underline{1}}(\pi_{n+1}(g)) \\
 %    &= \pi_n(\delta_{n+1;0,\underline{1}}(g)) \\
 %    &= e_n,
 %  \end{align*}
-%a contradiction. If $a = 1$, then $\trans{a}{a+1} = \trans{1}{2}$ and again using Axiom \ref{eq4}
+%a contradiction. If $a = 1$, then $\trans{a}{a+1} = \trans{1}{2}$ and again using Axiom \eqref{eq4}
 %  \begin{align*}
 %    \trans{1}{2} &= \delta_{n+1;\underline{1},0}(\trans{a}{a+1}) \\
 %    &= \delta_{n+1;\underline{1},0}(\pi_{n+1}(g)) \\
@@ -1652,7 +1651,7 @@ For the maps $\delta$ there seem to be two sensible options to try. The first ca
       r_2 & 0 & 0
       \end{bmatrix}.
     \end{align*}
-In particular, this gives $\delta_{1;n}([-1]) = r_n$ as in \cite{zhang-grp}. Taking $\sigma = (\trans{2}{3};-1,1,-1)$, as above, we can show that Axiom \ref{eq8} fails in \cref{thm:charAOp}
+In particular, this gives $\delta_{1;n}([-1]) = r_n$ as in \cite{zhang-grp}. Taking $\sigma = (\trans{2}{3};-1,1,-1)$, as above, we can show that Axiom \eqref{eq8} fails in \cref{thm:charAOp}
 % \ngnote{I got confused reading this, the calculations don't match what I expect}\acnote{fixed, I think? and cut down a bit}
 . The left-hand side of the axiom would be $\delta_{1;3}([-1])\beta(\sigma) = r_n \cdot \sigma = ((1 \,\, 3 \,\, 2); 1, -1, 1)$.
         % \[
@@ -1674,7 +1673,7 @@ However, the right-hand side of the axiom would be $\beta(\sigma)\delta_{1;3}([-
   % \]
 Clearly defining $\delta_{n;k_1,\ldots,k_n}(\sigma) = (\sigma \cdot r_n) \ast \beta(r_{k_1},\ldots,r_{k_n})$ would run into the same problem.
 
-An alternative way of defining $\delta$ is to take $\delta_{n;k_1,\ldots,k_n}(\sigma) = \sigma \ast \beta(e_{k_1},\ldots,e_{k_n})$, without involving the order-reversing permutation $r_n$, having the effect of making $\delta_{1;n}([-1]) = -I_n$. This then does satisfy Axiom \ref{eq8}, but fails Axiom \ref{eq6} instead; working through the following counterexample shows this to be the case:
+An alternative way of defining $\delta$ is to take $\delta_{n;k_1,\ldots,k_n}(\sigma) = \sigma \ast \beta(e_{k_1},\ldots,e_{k_n})$, without involving the order-reversing permutation $r_n$, having the effect of making $\delta_{1;n}([-1]) = -I_n$. This then does satisfy Axiom \eqref{eq8}, but fails Axiom \eqref{eq6} instead; working through the following counterexample shows this to be the case:
   \begin{align*}
     \delta_{3;2,1,3}\left(
     \begin{bmatrix}
@@ -1714,7 +1713,7 @@ An alternative way of defining $\delta$ is to take $\delta_{n;k_1,\ldots,k_n}(\s
 %    &\neq c_4^n
 %  \end{align*}
 %for any $n \in \{1,2,3,4\}$.
-%\item Reflexive groups \cite{Kra87}: Here we would like to take $\Lambda(n) = C_2 = \{e, c_2\}$ with $\pi_n(c_2)$ being the order-reversing permutation on $n$ elements. With these groups and the underlying permutations as described, we find that Axiom \ref{eq1} of \cref{thm:charAOp} is not satisfied. Either $\beta(c_2,c_2) = c_2$ or $\beta(c_2,c_2) = e$. Now
+%\item Reflexive groups \cite{Kra87}: Here we would like to take $\Lambda(n) = C_2 = \{e, c_2\}$ with $\pi_n(c_2)$ being the order-reversing permutation on $n$ elements. With these groups and the underlying permutations as described, we find that Axiom \eqref{eq1} of \cref{thm:charAOp} is not satisfied. Either $\beta(c_2,c_2) = c_2$ or $\beta(c_2,c_2) = e$. Now
 %  \[
 %    \beta(\pi_2(c_2),\pi_2(c_2)) = \beta(\trans{1}{2},\trans{1}{2}) = \trans{1}{2}\trans{3}{4}.
 %  \]
@@ -1727,9 +1726,9 @@ An alternative way of defining $\delta$ is to take $\delta_{n;k_1,\ldots,k_n}(\s
 %    \pi_4(\beta(c_2,c_2)) = \pi_4(e) = e_4 \neq \trans{1}{2}\trans{3}{4}.
 %  \]
 %\item
-% Hyperoctahedral groups: Can't remember what this fails to satisfy... Dan Graves came up with a counterexample, using the main action operad equivariance axiom, which was clearer than Zhang's description \cite{zhang-grp} - Example 2.28. Can show now that this is really saying that it fails Axiom \ref{eq8} of \cref{thm:charAOp} when taking $\delta_{1;n}(-1)$ to be the order-reversing permutation. If considering elements of the hyperoctahedral groups to be signed permutation matrices, then it may be the case that this works if taking $\delta_{1;n}(-1)$ to be the negative identity matrix.
+% Hyperoctahedral groups: Can't remember what this fails to satisfy... Dan Graves came up with a counterexample, using the main action operad equivariance axiom, which was clearer than Zhang's description \cite{zhang-grp} - Example 2.28. Can show now that this is really saying that it fails Axiom \eqref{eq8} of \cref{thm:charAOp} when taking $\delta_{1;n}(-1)$ to be the order-reversing permutation. If considering elements of the hyperoctahedral groups to be signed permutation matrices, then it may be the case that this works if taking $\delta_{1;n}(-1)$ to be the negative identity matrix.
 
-% In Example 2.28 of \cite{zhang-grp}, Zhang describes how the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad, despite naturally being a crossed simplicial group. Thanks to Dan Graves, we can also describe directly which axioms of \cref{thm:charAOp} fail to be satisfied, clarifying Zhang's counterexample. On the one hand, if we take $\delta_{1;n}(-1)$ to be the order-reversing permutation, then this fails to satisfy Axiom \ref{eq8} of \cref{thm:charAOp}.
+% In Example 2.28 of \cite{zhang-grp}, Zhang describes how the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad, despite naturally being a crossed simplicial group. Thanks to Dan Graves, we can also describe directly which axioms of \cref{thm:charAOp} fail to be satisfied, clarifying Zhang's counterexample. On the one hand, if we take $\delta_{1;n}(-1)$ to be the order-reversing permutation, then this fails to satisfy Axiom \eqref{eq8} of \cref{thm:charAOp}.
 
 % QQQ Need to revisit this and remember how it works. Certain that it doesn't work for $\delta_{1;k}(\tau) = r_k$, but need to carefully check for when $\delta(\sigma)$ is a `permuted signed block identity' matrix(???).
 %\item Alternating groups: If we take $\beta$ and $\delta$ to be analogues of the same maps for the symmetric groups, then we can easily produce non-even permutations using $\delta$: $\delta_{4;,0,0,1,1}(\trans{1}{2}\trans{3}{4})=\trans{1}{2} \notin A_2$ or $\delta_{4;1,1,1,2}(\trans{1}{2}\trans{3}{4}) = \trans{1}{2}\trans{3}{4}\trans{4}{5} \notin A_5$.
