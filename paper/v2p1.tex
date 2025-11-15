@@ -1,7 +1,7 @@
 %!TEX root = ../operads_paper.tex
 \section{Introduction}
-QQQ Needs an intro. Might be something salvageable from the original papers.
-
+\acnoteil{Needs an intro. Might be something salvageable from the original papers.
+}
 Original paper intro:
 
 Operads were defined by May \cite{maygeom} in the early 70's to provide a convenient tool to approach problems in algebraic topology, notably the question of when a space $X$ admits an $n$-fold delooping $Y$ so that $X \simeq \Omega^{n}Y$.  An operad, like an algebraic theory \cite{lawvere-thesis}, is something like a presentation for a monad or algebraic structure.  The theory of operads has seen great success, and we would like to highlight two reasons.  First, operads can be defined in any suitable symmetric monoidal category, so that there are operads of topological spaces, of chain complexes, of simplicial sets, and of categories, to name a few examples.  Moreover, symmetric (lax) monoidal functors carry operads to operads, so we can use operads in one category to understand objects in another via transport by such a functor.  Second, operads in a fixed category are highly flexible tools.  In particular, the categories listed above all have some inherent notion of ``homotopy equivalence'' which is weaker than that of isomorphism, so we can study operads which are equivalent but not isomorphic.  These tend to have algebras which have similar features in an ``up-to-homotopy'' sense but very different combinatorial or geometric properties arising from the fact that different objects make up these equivalent but not isomorphic operads.
@@ -616,7 +616,7 @@ evaluated on the element $\left( (1 \,\, 2 \,\, 3); \trans{1}{2},\trans{1}{2}\tr
   %   \endxy
   % \]
   
- \textbf{End this example here, with labels, move the rest to after 2.26.}
+ \ngnoteil{End this example here, with labels, move the rest to after 2.26.}
 
 
 
@@ -683,12 +683,11 @@ satisfying axioms 1 and 2 from \cref{Defi:sym-op}.
 \end{enumerate}
 \end{rem}
 
-\acnote{Another example of non-symmetric operad is the operad of \emph{pure} braid groups: see James Griffin's comment below the old \href{https://golem.ph.utexas.edu/category/2014/03/operads_of_finite_groups.html}{blog post}.}
-\begin{example}\label[example]{ex:non-sym}
-\ngnoteil{insert example of non-symmetric operad here, how about Trimble's thing in dimension 1?}
-In seeking a definition of weak $n$-category which can be described through iterated enrichment, Trimble defines an operad $E$ as follows:
+% \acnote{Another example of non-symmetric operad is the operad of \emph{pure} braid groups: see James Griffin's comment below the old \href{https://golem.ph.utexas.edu/category/2014/03/operads_of_finite_groups.html}{blog post}.}
+\begin{example}[(Trimble's Operad $E$)]\label[example]{ex:non-sym}
+In seeking a definition of weak $n$-category which can be described through iterated enrichment, Trimble defined an operad $E$ as follows:
     \begin{itemize}
-        \item for $n \geq 0$, $E(n)$ is the space of continuous, endpoint preserving maps
+        \item for $n \geq 0$, $E(n)$ is the space of continuous endpoint-preserving maps
             \[
                 [0,1] \rightarrow [0,n],
             \]
@@ -696,10 +695,9 @@ In seeking a definition of weak $n$-category which can be described through iter
             \[
                 [0,1] \rightarrow [0,1],
             \]
-        \item composition is described by `reparameterisation'
-        \acnote{this is harder to write down compactly than I remember, how much detail do we want about composition? and what am I writing about it being non-symmetric?}
-        \acnote{cite Tom's survey \cite{leinster-survey} and Cheng/Lauda \cite{cheng-lauda}? Or Cheng/Gurski \cite{cg-cobordism} cobordisms paper?}
+        \item composition is described by substitution and reparameterisation.
     \end{itemize}
+More details about Trimble's operad $E$ can be found in \cite[Definition $T_R$]{leinster-survey} and \cite[Example 1.7]{cg-comparison}, with variants considered in \cite{cg-cobordism}.
 \end{example}
 
 In the original topological applications \cite{maygeom}, symmetric operads were the central figures. A further kind of operad was studied by Fiedorowicz in \cite{fie-br}, that of a \emph{braided} operad in which the braid groups take the place of the symmetric groups. We sketch that definition below.
