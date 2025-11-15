@@ -2342,9 +2342,10 @@ This section gives conditions sufficient to equip the $2$-monad $\underline{P}$ 
 expressing that $\otimes$ gives a closed monoidal structure which represents the multicategory of multilinear maps. Moreover, the adjunction between $\mb{Vect}$ and $\mb{Sets}$ respects all of this structure in the appropriate way. This incredibly rich interplay between the tensor product, the internal mapping space, and the multicategory of multilinear maps all arises from the free vector space monad on $\mb{Sets}$ being a \textit{commutative} monad \cite{kock-monads, kock-closed, kock-strong}. The notion of a pseudo-commutative $2$-monad \cite{HP} is then a generalization of this machinery to a $2$-categorical context, and can be viewed as a starting point for importing tools from linear algebra into category theory.
 
 The aim of this section is to give conditions that ensure that the $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ has a pseudo-commutative structure. We give the definition of pseudo-commutativity as in \cite{HP} but before doing so we require the definition of a strength for a $2$-monad.
+
+
 \begin{Defi}\label{Defi:strengths}
-\ngnoteil{left/right strength terminology?}
-A \textit{strength} for an endo-$2$-functor $T \colon \m{K} \rightarrow \m{K}$ on a $2$-category with products and terminal object $1$ consists of a $2$-natural transformation $d$ with components
+A \textit{left strength} for an endo-$2$-functor $T \colon \m{K} \rightarrow \m{K}$ on a $2$-category with products and terminal object $1$ consists of a $2$-natural transformation $d$ with components
     \[
         d_{A,B} \colon A \times TB \rightarrow T(A \times B)
     \]
@@ -2393,21 +2394,25 @@ satisfying the following unit and associativity axioms \cite{kock-monads}.
     {\ar_{d_{A,B}} "ll"; "lr"};
     \endxy
   \]
-Similarly, a \emph{costrength} for $T$ consists of a $2$-natural transformation $d^{\ast}$ with components
+Similarly, a \emph{right strength} for $T$ consists of a $2$-natural transformation $d^{\ast}$ with components
   \[
       d^{\ast}_{A,B} \colon TA \times B \rightarrow T(A \times B)
   \]
 again satisfying unit and associativity axioms.
 \end{Defi}
-The strength and costrength for the associated $2$-monad $\underline{P}$ are quite simple to define. We define the strength $d$ for $\underline{P}$ as follows. The component $d_{A,B}$ is a functor
+The strengths for the associated $2$-monad $\underline{P}$ are quite simple to define. We define the left strength $d$ for $\underline{P}$ as follows. The component $d_{A,B}$ is a functor
     \[
         d_{A,B} \colon A \times \left(\amalg P(n) \times_{\Lambda(n)} B^n\right) \rightarrow \amalg P(n) \times_{\Lambda(n)} \left(A \times B \right)^n
     \]
-which sends an object $(a, [p;b_1,\ldots,b_n])$ to the object $[p;(a,b_1),\ldots,(a,b_n)]$. We also define the costrength similarly, sending an object $([p;a_1,\ldots,a_n],b)$ to the object which is an equivalence class $[p;(a_1,b), \ldots, (a_n, b)]$. Both the strength and the costrength are defined in the obvious way on morphisms.
+which sends an object $(a, [p;b_1,\ldots,b_n])$ to the object $[p;(a,b_1),\ldots,(a,b_n)]$. We also define the right strength similarly, sending an object $([p;a_1,\ldots,a_n],b)$ to the object which is an equivalence class $[p;(a_1,b), \ldots, (a_n, b)]$. Both the left and the right strengths are defined in the obvious way on morphisms.
 % QQQ (Check obviousness.)
 
+\begin{remark}\label{rem:strength}
+In a subtle change of terminology, what we refer to as a \emph{right} strength in \cref{Defi:strengths} is in \cite[Section 3.1]{HP} simply a strength, while our \emph{left} strength corresponds to a right strength. We stress this difference to match more contemporary usage \cite[Definition 3.3]{mu-strong}, avoiding the confusion that a prefix of `co-' generally means a reversal of directions.
+\end{remark}
+
 \begin{rem}\label{rem:strength-nonsym}
-It is crucial to note that the strength $d$ and the costrength $d^{*}$ do not depend on the $\Lambda$-actions in the following sense. The $\Lambda$-operad $P$ has an underlying non-symmetric operad that we also denote $P$, and it has a strength
+It is crucial to note that the left strength $d$ and the right strength $d^{*}$ do not depend on the $\Lambda$-actions in the following sense. The $\Lambda$-operad $P$ has an underlying non-symmetric operad that we also denote $P$, and it has a left strength
   \[
     d_{A,B} \colon A \times \left(\amalg P(n) \times B^n\right) \rightarrow \amalg P(n) \times \left(A \times B \right)^n
   \]
@@ -2415,11 +2420,11 @@ given by essentially the same formula:
   \[
     \left( a; (p; b_{1}, \ldots, b_{n}) \right) \mapsto \left(p; (a,b_{1}), \ldots, (a, b_{n})\right).
   \]
-The strength for the $\Lambda$-equivariant $P$ is just the induced functor between coequalizers.
+The left strength for the $\Lambda$-equivariant $P$ is just the induced functor between coequalizers.
 \end{rem}
 
 \begin{Defi}\label{Defi:pscommute}
-    Given a $2$-monad $T \colon \m{K} \rightarrow \m{K}$ with strength $d$ and costrength $d^{\ast}$, a \textit{pseudo-commutativity} consists of an invertible modification $\gamma$ with components
+    Given a $2$-monad $T \colon \m{K} \rightarrow \m{K}$ with left strength $d$ and right strength $d^{\ast}$, a \textit{pseudo-commutativity} consists of an invertible modification $\gamma$ with components
       \[
         \xy
             (0,0)*+{TA \times TB}="00";
@@ -2835,7 +2840,7 @@ We show that this is a modification by noting that it does not rely on objects i
     \]
 As such we can simply write $(\gamma_{A,B})_{[p;\underline{a}],[q;\underline{b}]}$ in shorthand as $\gamma_{p,q}$.
 
-There are now seven axioms to check for a pseudo-commutativity:  three strength axioms, two unit axioms, and two multiplication axioms. For the first strength axiom, we must verify that two different $2$-cells of shape
+There are now seven axioms to check for a pseudo-commutativity: three strength axioms, two unit axioms, and two multiplication axioms. For the first strength axiom, we must verify that two different $2$-cells of shape
   \[
     \xy
       (0,0)*+{A \times TB \times TC}="0";
@@ -2863,7 +2868,7 @@ For the unit axioms, we must compute the components of $\gamma$ precomposed with
 
 For the multiplication axioms, first note that Axiom \ref{axiom:t_sumR} is necessary in order to ensure the existence of the top horizontal equality in the diagram of Axiom \ref{axiom:t_diagR} for the pseudo-commutative structure; the same goes for Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL}. We now explain how Axioms \ref{axiom:t_sumR} and \ref{axiom:t_diagR} for the pseudo-commutative structure ensure that the first multiplication axiom holds, with the same reasoning showing that Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL} imply the second multiplication axiom.
 
-We begin by studying the pasting diagram in the first multiplication axiom, but computing its values using the strength and costrength for the non-symmetric operad underlying $P$; this means that we evaluate on objects of the form $(p; a_{1}, \ldots, a_{n})$ rather than on their equivalence classes. Let $p \in P(l), q_{i} \in P(m_{i})$ for $1 \leq i \leq l$, and $r \in P(n)$. Computing the top and right leg around the pasting diagram gives the function on objects which sends
+We begin by studying the pasting diagram in the first multiplication axiom, but computing its values using the strengths for the non-symmetric operad underlying $P$; this means that we evaluate on objects of the form $(p; a_{1}, \ldots, a_{n})$ rather than on their equivalence classes. Let $p \in P(l), q_{i} \in P(m_{i})$ for $1 \leq i \leq l$, and $r \in P(n)$. Computing the top and right leg around the pasting diagram gives the function on objects which sends
   \[
     \left( (p; (q_{1}; \un{a_{1}}), \ldots, (q_{l}; \un{a_{l}})), (r; \un{b}) \right)
   \]
@@ -2895,7 +2900,7 @@ By the $\Lambda$-operad axioms, the target of this morphism is equal to
   \]
 Note that this is not the same object as one obtains by computing $T\mu \circ T^{2}d^{*} \circ Td \circ d^{*}$ using the underlying non-symmetric operad of $P$ as we are required to use the $\Lambda$-equivariance to ensure that the target of $\gamma$ is the correct one.
 
-Next we compute the source of $(\mu \circ Td^{*})*\gamma$, the other $2$-cell in the pasting appearing in the first multiplication axiom. We compute this once again using the strength and costrength for the underlying non-symmetric operad, and note once again that this will not match our previous calculations precisely, but only up to an application of $\Lambda$-equivariance. This functor has its map on objects given by
+Next we compute the source of $(\mu \circ Td^{*})*\gamma$, the other $2$-cell in the pasting appearing in the first multiplication axiom. We compute this once again using the strengths for the underlying non-symmetric operad, and note once again that this will not match our previous calculations precisely, but only up to an application of $\Lambda$-equivariance. This functor has its map on objects given by
   \[
     \left( (p; (q_{1}; \un{a_{1}}), \ldots, (q_{l}; \un{a_{l}})), (r; \un{b}) \right) \mapsto \left(\mu(\mu(p; \un{r}); \un{q_{1}}, \ldots, \un{q_{l}}); \un{(\un{a_{1}}, b_{\bullet})}, \ldots, \un{(\un{a_{l}}, b_{\bullet})} \right).
   \]
