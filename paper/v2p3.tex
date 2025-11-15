@@ -2954,7 +2954,7 @@ Let $T \colon \m{K} \rightarrow \m{K}$ be a $2$-monad on a symmetric monoidal $2
 
 With the notion of symmetry at hand we are able to extend the above theorem, stating when $\underline{P}$ is symmetric.
 \begin{thm}
-The pseudo-commutativity of $\underline{P}$ given by \cref{pscomm}  is symmetric if for all $m,n \in \mathbb{N}_+$ the two conditions below hold.
+The pseudo-commutativity of $\underline{P}$ given by \cref{thm:pscomm}  is symmetric if for all $m,n \in \mathbb{N}_+$ the two conditions below hold.
     \begin{enumerate}
         \item $t_{m,n} = t_{n,m}^{-1}$.
         \item The following diagram commutes:
@@ -2973,7 +2973,7 @@ The pseudo-commutativity of $\underline{P}$ given by \cref{pscomm}  is symmetric
     \end{enumerate}
 \end{thm}
 \begin{proof}
-The commutativity of the diagram above ensures that the first component of the symmetry axiom commutes in $P(n)$ before taking equivalence classes in the coequalizer, just as in the proof of \cref{pscomm}.
+The commutativity of the diagram above ensures that the first component of the symmetry axiom commutes in $P(n)$ before taking equivalence classes in the coequalizer, just as in the proof of \cref{thm:pscomm}.
 \end{proof}
 
 \begin{Defi}
@@ -2981,7 +2981,7 @@ Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. We say that $P$ is \textit{contract
 \end{Defi}
 
 \begin{cor}\label{cor:contract-to-psc}
-If $P$ is contractible and there exist $t_{m,n}$ as in \cref{pscomm}, then $\underline{P}$ acquires a pseudo-commutativity. Furthermore, it is symmetric if $t_{n,m} = t_{m,n}^{-1}$.
+If $P$ is contractible and there exist $t_{m,n}$ as in \cref{def:ps-comm_operad}, then $\underline{P}$ acquires a pseudo-commutativity. Furthermore, it is symmetric if $t_{n,m} = t_{m,n}^{-1}$.
 \end{cor}
 \begin{proof}
 The only thing left to define is the collection of natural isomorphisms $\lambda_{p,q}$. But since each $P(n)$ is contractible, $\lambda_{p,q}$ must be the unique isomorphism between its source and target, and furthermore the last two axioms hold since any pair of parallel arrows are equal in a contractible category.
@@ -3287,7 +3287,7 @@ The $2$-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=o
 
 \section{Extended Example: Braided Monoidal Categories}
 
-We conclude with a computation using \cref{pscomm}. This result (\ref{braidpscomm} below) was only conjectured in \cite{HP}, but we are able to prove it quite easily with the machinery developed thus far. Our strategy is to construct a $\Lambda$-operad which is contractible together with the group elements required in \cref{pscomm}. Note that the symmetrized version of this operad will not be contractible, and we do not know of a proof using the structure of the symmetrized operad.
+We conclude with a computation using \cref{def:ps-comm_operad} and \cref{thm:pscomm}. This result (\ref{braidpscomm} below) was only conjectured in \cite{HP}, but we are able to prove it quite easily with the machinery developed thus far. Our strategy is to construct a $\Lambda$-operad which is contractible together with the group elements required in \cref{def:ps-comm_operad}. Note that the symmetrized version of this operad will not be contractible, and we do not know of a proof using the structure of the symmetrized operad.
 
 \begin{thm}\label{braidpscomm}
 The $2$-monad $\underline{B}$ for braided strict monoidal categories on $\mb{Cat}$ has two pseudo-commutative structures on it, neither of which are symmetric.
@@ -3324,7 +3324,7 @@ It is worth noting that this bijection is not an isomorphism of groups, since $P
 \end{rem}
 
 \begin{proof}[Proof of \cref{braidpscomm}]
-We refer to the Axioms of \cref{def:ps-comm_operad} throughout the proof. In order to use \cref{pscomm} with the action operad being the braid operad $B$, we must first construct elements $t_{m,n} \in B_{mn}$ satisfying certain properties. Using \cref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$. Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in B_{n}$ is positive and minimal, we find that $t_{1,n} = e_{n} = t_{n,1}$ in $B_{n}$, satisfying Axiom \eqref{axiom:t_id}. Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
+We refer to the Axioms of \cref{def:ps-comm_operad} throughout the proof. In order to use \cref{thm:pscomm} with the action operad being the braid operad $B$, we must first construct elements $t_{m,n} \in B_{mn}$ satisfying certain properties as in \cref{def:ps-comm_operad}. Using \cref{pmlem}, we define $t_{m,n}$ to be the unique positive minimal braid such that $\pi(t_{m,n}) = \tau_{m,n}$. Since $\tau_{1,n} = e_{n} = \tau_{n,1}$ in $\Sigma_{n}$ and the identity element $e_{n} \in B_{n}$ is positive and minimal, we find that $t_{1,n} = e_{n} = t_{n,1}$ in $B_{n}$, satisfying Axiom \eqref{axiom:t_id}. Thus in order to verify the remaining hypotheses, we must check two equations, each of which states that some element $t_{m,n}$ can be expressed as a product of operadic compositions of other elements.
 
 Let $l, m_{1}, \ldots, m_{l}, n$ be natural numbers, and let $N = \sum m_{i}$. We must check Axiom \eqref{axiom:t_sumL} is satisfied, i.e., that
   \[
@@ -3355,7 +3355,7 @@ is also minimal, follows from the same argument, showing that it is equal to $t_
 
 \acnoteil{Where are Axioms \ref{axiom:t_diagR} and \ref{axiom:t_diagL} checked?}
 
-These calculations show, using \cref{pscomm}, that the $B$-operad $B$ induces a $2$-monad which has a pseudo-commutative structure. As noted before, $B$-algebras are precisely braided strict monoidal categories. The second pseudo-commutative structure arises by using negative, minimal braids instead of positive ones, and proceeds using the same arguments. This finishes the first part of the proof of \cref{braidpscomm}.
+These calculations show, using \cref{thm:pscomm}, that the $B$-operad $B$ induces a $2$-monad which has a pseudo-commutative structure. As noted before, $B$-algebras are precisely braided strict monoidal categories. The second pseudo-commutative structure arises by using negative, minimal braids instead of positive ones, and proceeds using the same arguments. This finishes the first part of the proof of \cref{braidpscomm}.
 
 We will now show that neither of these pseudo-commutative structures is symmetric. The symmetry axiom in this case reduces to the fact that, in some category which is given as a coequalizer, the morphism with first component
   \[
