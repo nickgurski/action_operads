@@ -1763,8 +1763,24 @@ produces an isomorphism
 \[
 [\tilde{g}; \underline{\id}] \colon x_1 \otimes \cdots \otimes x_n \cong x_{g^{-1}(1)} \otimes \ldots \otimes x_{g^{-1}(n)}.
 \]
-Define $[g]$ to be $[\tilde{g}; \underline{\id}]$. The two axioms in \cref{Defi:wk-lmc} follow immediately from the action operad axioms, completing the construction of the 2-functor $i$ on objects.
-\ngnoteil{fill in}
+Define $[g]$ to be $[\tilde{g}; \underline{\id}]$. The three axioms in \cref{Defi:wk-lmc} follow immediately from the action operad axioms, completing the construction of the 2-functor $i$ on objects. Similar arguments apply to strict $\EL$-morphisms and $\EL$-transformations, and we leave them to the reader. The arguments above and \cref{prop:hom-set-lemma} show that the resulting 2-functor $i$ has image those weak $\Lambda$-monoidal category with strict underlying monoidal structure, finishing the proof of the first claim.
+
+Now let $M$ be a weak $\Lambda$-monoidal category, and let $M_u$ denote its underlying monoidal category. By coherence for monoidal categories\ngnote{ref joyal-street, maybe my tricats book}, there is a strict monoidal category $\textrm{st}\ M_u$ and strict monoidal equivalence $e \colon \textrm{st}\ M_u \to M_u$ given as follows.
+\begin{itemize}
+\item The objects of $\textrm{st}\ M_u$ consist of a natural number $n$ and then an ordered list $x_1, \ldots, x_n$ of objects of $M_u$. There is a unique such object when $n=0$.
+\item The functor $e$ maps $(n; x_1, \ldots, x_n)$ to the standard association (\cref{nota:standard-assoc}) $\underline{x_1 \cdots x_n}$.
+\item The set of morphisms from $(m; x_1, \ldots, x_m)$ to $(n; y_1, \ldots, y_n)$ in $\textrm{st}\ M_u$ is defined to be the set of morphism from $\underline{x_1 \cdots x_m}$ to $\underline{y_1 \cdots y_n}$ in $M_u$.
+\item The monoidal structure is given on objects by the sum of natural numbers and the concatenation of lists, and on morphisms is given by
+\[
+\underline{x_1 \cdots x_m y_1 \cdots y_n} \cong \underline{x_1 \cdots x_m} \otimes \underline{y_1 \cdots y_n} \stackrel{f \otimes g}{\to} \underline{u_1 \cdots u_k} \otimes \underline{v_1 \cdots v_j} \cong \underline{u_1 \cdots u_kv_1 \cdots v_j}.
+\]
+\end{itemize}
+We will equip $\textrm{st}\ M_u$ with the structure of a $\Lambda$-monoidal category in such a way that $e$ induces an equivalence between it and $M$.
+
+Let $(n_i; x_{i1}, \ldots, x_{in_i})$ be objects of $\textrm{st}\ M_u$ for $i=1, \ldots, m$. For an element $g \in \Lambda(k)$, define $[g]$ to be the isomorphism $[\delta_{m; k_1, \ldots, k_m}(g)]$ from \cref{Defi:wk-lmc}.
+We must now verify the three axioms from \cref{Defi:wk-lmc} using this definition of $[g]$ in $\textrm{st}\ M_u$.
+Each axiom follows from the characterization of action operads in \cref{thm:charAOp}.
+The first axiom is a consequence of \cref{eq6}, the second axiom is a consequence of \cref{eq9}, and the third axiom is a consequence of \cref{eq7}. We write $\textrm{st}^{\Lambda}\ M$ for this $\Lambda$-monoidal structure on $\textrm{st}\ M_u$. Since $\textrm{st}\ M_u$ is strict monoidal by construction and $e \colon \textrm{st}\ M_u \to M$ is known to be a monoidal equivalence, we can prove that $e$ is actually a $\Lambda$-monoidal equivalence $\textrm{st}^{\Lambda}\ M \to M$ by showing that $e$ is a $\Lambda$-monoidal functor.
 \end{proof}
 
 \begin{rem}[(Pseudo-$\EL$-algebras versus weak $\Lambda$-monoidal categories)]\label{rem:psELalg-vs-wlmc}
