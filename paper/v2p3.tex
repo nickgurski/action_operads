@@ -1662,12 +1662,32 @@ for each $g \in \Lambda(n)$
 \end{itemize}
 satisfying the following two axioms.
 \begin{enumerate}
-\item For every pair $g, h \in \Lambda(n)$, the composite $[h] \circ [g]$ shown below
+\item Let $g, h \in \Lambda(n)$. The composite $[h] \circ [g]$ shown below
 \[
 \underline{x_1 \dots x_n} \stackrel{[g]}{\to} \underline{x_{g^{-1}(1)} \cdots x_{g^{-1}(n)} } \stackrel{[h]}{\to} \underline{x_{g^{-1}(h^{-1}(1))} \cdots x_{g^{-1}(h^{-1}(n))} } 
 \]
 equals $[hg]$, where $hg \in \Lambda(n)$ is given by multiplication using the group structure.
-\item \ngnoteil{then one about operadic composition, or maybe do two more with deltas and betas}
+\item Let $h_i \in \Lambda(k_i)$ for $i=1, \ldots, n$, and let $x_{ij}$ be objects of $M$ for $i = 1, \ldots, n$ and double indices $ij$ such that $1 \leq j \leq k_i$. Then the isomorphism
+\[
+[\beta(h_1, \ldots, h_n)] \colon \underline{x_{ij}} \to \underline{x_{ih_i^{-1}(j)}}
+\]
+is equal to the composite
+\[
+\underline{x_{ij}} \cong \underline{\underline{x_{1j}} \cdots \underline{x_{nj}}} 
+\stackrel{\underline{[h_i]}}{\to} 
+\underline{\underline{x_{1h_1^{-1}(j)}} \cdots \underline{x_{nh_n^{-1}(j)}}} \cong
+\underline{x_{ih_i^{-1}(j)}},
+\]
+where the two unlabeled isomorphisms are the unique reassociations given by coherence for monoidal categories.
+\item Let $g \in \Lambda(n)$, and let $x_{ij}$ be objects of $M$ for $i = 1, \ldots, n$ and double indices $ij$ such that $1 \leq j \leq k_i$. Then the isomorphism
+\[
+[\delta_{n; k_1, \ldots, k_n}(g)] \colon \underline{x_{ij}} \to \underline{x_{g^{-1}(1)1} x_{g^{-1}(1)2}\cdots x_{g^{-1}(1)k_{g^{-1}(1)}} \cdots x_{g^{-1}(n)k_{g^{-1}(n)}}}
+\]
+is equal to the composite
+\[
+\underline{x_{ij}} \cong \underline{y_i} \stackrel{[g]}{\to} \underline{y_{g^{-1}(i)}} \cong \underline{x_{g^{-1}(1)1} x_{g^{-1}(1)2}\cdots x_{g^{-1}(1)k_{g^{-1}(1)}} \cdots x_{g^{-1}(n)k_{g^{-1}(n)}}},
+\]
+where $y_i = \underline{x_{i1} \cdots x_{ik_i}}$ and the two unlabeled isomorphism are the unique reassociations given by coherence for monoidal categories.
 \end{enumerate}
 \end{Defi}
 
