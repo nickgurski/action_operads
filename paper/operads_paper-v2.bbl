@@ -105,6 +105,42 @@
       \verb http://dx.doi.org/10.1016/j.aim.2007.06.014
       \endverb
     \endentry
+    \entry{bm-crossed}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=d3115e499ea9a8c399d6f6036f2b1fef}{%
+           family={Batanin},
+           familyi={B\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3a6ee440fc18c863a05a50c286901596}{%
+           family={Markl},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {European Mathematical Society (EMS)}%
+      }
+      \strng{namehash}{9b5db1c0bcb00e97012cd9c7cd3ce831}
+      \strng{fullhash}{9b5db1c0bcb00e97012cd9c7cd3ce831}
+      \strng{fullhashraw}{9b5db1c0bcb00e97012cd9c7cd3ce831}
+      \strng{bibnamehash}{9b5db1c0bcb00e97012cd9c7cd3ce831}
+      \strng{authorbibnamehash}{9b5db1c0bcb00e97012cd9c7cd3ce831}
+      \strng{authornamehash}{9b5db1c0bcb00e97012cd9c7cd3ce831}
+      \strng{authorfullhash}{9b5db1c0bcb00e97012cd9c7cd3ce831}
+      \strng{authorfullhashraw}{9b5db1c0bcb00e97012cd9c7cd3ce831}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Noncommutative Geometry}
+      \field{number}{3}
+      \field{title}{Crossed interval groups and operations on the Hochschild cohomology}
+      \field{volume}{8}
+      \field{year}{2014}
+      \field{pages}{655\bibrangedash 693}
+      \range{pages}{39}
+    \endentry
     \entry{ber-simplicial}{article}{}{}
       \name{author}{2}{}{%
         {{hash=0fc14fcfe3868bf837352d7fcdbb0bb1}{%
@@ -746,6 +782,47 @@
       \verb{url}
       \verb http://dx.doi.org/10.1016/S0022-4049(02)00133-0
       \endverb
+    \endentry
+    \entry{accg-actionclones}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=96b8d2c3ea6d1de49347d63121a6ed5f}{%
+           given={javier},
+           giveni={j\bibinitperiod},
+           prefix={aramayona\bibnamedelima javier},
+           prefixi={a\bibinitperiod\bibinitdelim j\bibinitperiod}}}%
+        {{hash=5ec8683fffdf055f80c91114ee14b54c}{%
+           family={Cantero},
+           familyi={C\bibinitperiod},
+           given={Federico},
+           giveni={F\bibinitperiod}}}%
+        {{hash=443b14df782289c9a27217ab5b32dfcd}{%
+           family={Carmona},
+           familyi={C\bibinitperiod},
+           given={Víctor},
+           giveni={V\bibinitperiod}}}%
+        {{hash=526ed392d22c3b150c334efadd613ce0}{%
+           family={Gutiérrez},
+           familyi={G\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{31e8ba97f05a4df147c3e197edf3489f}
+      \strng{fullhash}{31e8ba97f05a4df147c3e197edf3489f}
+      \strng{fullhashraw}{31e8ba97f05a4df147c3e197edf3489f}
+      \strng{bibnamehash}{31e8ba97f05a4df147c3e197edf3489f}
+      \strng{authorbibnamehash}{31e8ba97f05a4df147c3e197edf3489f}
+      \strng{authornamehash}{31e8ba97f05a4df147c3e197edf3489f}
+      \strng{authorfullhash}{31e8ba97f05a4df147c3e197edf3489f}
+      \strng{authorfullhashraw}{31e8ba97f05a4df147c3e197edf3489f}
+      \field{sortinit}{j}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Publicacions Matemàtiques}
+      \field{title}{Cloning systems and action operads}
+      \field{year}{2025}
+      \field{pages}{To appear}
+      \range{pages}{-1}
     \endentry
     \entry{js}{article}{}{}
       \name{author}{2}{}{%
@@ -1768,6 +1845,36 @@
       \verb http://dx.doi.org/10.1017/CBO9780511618505
       \endverb
     \endentry
+    \entry{thumann2017operad}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=9b576d915c1e372fcde138d02f01b279}{%
+           family={Thumann},
+           familyi={T\bibinitperiod},
+           given={Werner},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{9b576d915c1e372fcde138d02f01b279}
+      \strng{fullhash}{9b576d915c1e372fcde138d02f01b279}
+      \strng{fullhashraw}{9b576d915c1e372fcde138d02f01b279}
+      \strng{bibnamehash}{9b576d915c1e372fcde138d02f01b279}
+      \strng{authorbibnamehash}{9b576d915c1e372fcde138d02f01b279}
+      \strng{authornamehash}{9b576d915c1e372fcde138d02f01b279}
+      \strng{authorfullhash}{9b576d915c1e372fcde138d02f01b279}
+      \strng{authorfullhashraw}{9b576d915c1e372fcde138d02f01b279}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Mathematics}
+      \field{title}{Operad groups and their finiteness properties}
+      \field{volume}{307}
+      \field{year}{2017}
+      \field{pages}{417\bibrangedash 487}
+      \range{pages}{71}
+    \endentry
     \entry{wahl-thesis}{book}{}{}
       \name{author}{1}{}{%
         {{hash=66a0675635bef8e4bf51f2da23422364}{%
@@ -1791,6 +1898,39 @@
       \field{note}{Thesis (Ph.D.)--University of Oxford}
       \field{title}{Ribbon braids and related operads}
       \field{year}{2001}
+    \endentry
+    \entry{wz-cloning}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=3b56fe21834989a92626c71ca357bb81}{%
+           family={Witzel},
+           familyi={W\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5e41780494ec8d64026281882064b5d7}{%
+           family={Zaremsky},
+           familyi={Z\bibinitperiod},
+           given={Matthew\bibnamedelima CB},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{18e8cff74d59fd3bf0ea031f44fd97d8}
+      \strng{fullhash}{18e8cff74d59fd3bf0ea031f44fd97d8}
+      \strng{fullhashraw}{18e8cff74d59fd3bf0ea031f44fd97d8}
+      \strng{bibnamehash}{18e8cff74d59fd3bf0ea031f44fd97d8}
+      \strng{authorbibnamehash}{18e8cff74d59fd3bf0ea031f44fd97d8}
+      \strng{authornamehash}{18e8cff74d59fd3bf0ea031f44fd97d8}
+      \strng{authorfullhash}{18e8cff74d59fd3bf0ea031f44fd97d8}
+      \strng{authorfullhashraw}{18e8cff74d59fd3bf0ea031f44fd97d8}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Groups, Geometry, and Dynamics}
+      \field{number}{1}
+      \field{title}{Thompson groups for systems of groups, and their finiteness properties}
+      \field{volume}{12}
+      \field{year}{2018}
+      \field{pages}{289\bibrangedash 358}
+      \range{pages}{70}
     \endentry
     \entry{yau_infinity_2021}{book}{}{}
       \name{author}{1}{}{%
@@ -1827,6 +1967,57 @@
       \verb{url}
       \verb https://www.worldscientific.com/worldscibooks/10.1142/12687
       \endverb
+    \endentry
+    \entry{yoshida2018group}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=d3ed1ef4eddb42f3c8d458601dbca810}{%
+           family={Yoshida},
+           familyi={Y\bibinitperiod},
+           given={Jun},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{d3ed1ef4eddb42f3c8d458601dbca810}
+      \strng{fullhash}{d3ed1ef4eddb42f3c8d458601dbca810}
+      \strng{fullhashraw}{d3ed1ef4eddb42f3c8d458601dbca810}
+      \strng{bibnamehash}{d3ed1ef4eddb42f3c8d458601dbca810}
+      \strng{authorbibnamehash}{d3ed1ef4eddb42f3c8d458601dbca810}
+      \strng{authornamehash}{d3ed1ef4eddb42f3c8d458601dbca810}
+      \strng{authorfullhash}{d3ed1ef4eddb42f3c8d458601dbca810}
+      \strng{authorfullhashraw}{d3ed1ef4eddb42f3c8d458601dbca810}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1806.03012}
+      \field{title}{Group operads as crossed interval groups}
+      \field{year}{2018}
+    \endentry
+    \entry{zaremsky2017user}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=5e41780494ec8d64026281882064b5d7}{%
+           family={Zaremsky},
+           familyi={Z\bibinitperiod},
+           given={Matthew\bibnamedelima CB},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{5e41780494ec8d64026281882064b5d7}
+      \strng{fullhash}{5e41780494ec8d64026281882064b5d7}
+      \strng{fullhashraw}{5e41780494ec8d64026281882064b5d7}
+      \strng{bibnamehash}{5e41780494ec8d64026281882064b5d7}
+      \strng{authorbibnamehash}{5e41780494ec8d64026281882064b5d7}
+      \strng{authornamehash}{5e41780494ec8d64026281882064b5d7}
+      \strng{authorfullhash}{5e41780494ec8d64026281882064b5d7}
+      \strng{authorfullhashraw}{5e41780494ec8d64026281882064b5d7}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Topology Proceedings}
+      \field{title}{A User’s Guide to Cloning Systems}
+      \field{volume}{50}
+      \field{year}{2017}
+      \field{pages}{13\bibrangedash 33}
+      \range{pages}{21}
     \endentry
     \entry{zhang-grp}{misc}{}{}
       \name{author}{1}{}{%
