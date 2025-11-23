@@ -185,7 +185,7 @@ These data then satify the following universal properties:
 \begin{rem}[(Limits versus 2-limits)]\label{rem:lim-v-2lim}
 Let $C$ be a small category, and $F \colon C \to \mb{Cat}$ be a functor.
 We can treat $C$ as a locally discrete 2-category, and then $F$ becomes a 2-functor.
-The limit of $F$, as a functor, is then also the 2-limit of $F$, as a 2-functor by standard methods in enriched category theory \cite[Section 3.8, p50]{Kelly2005}. In particular, every limit (or colimit) of such a diagram automatically inherits a 2-dimensional aspect to its universal property.
+The limit of $F$, as a functor, is then also the 2-limit of $F$, as a 2-functor by standard methods in enriched category theory \cite[Section 3.8]{Kelly2005}. In particular, every limit (or colimit) of such a diagram automatically inherits a 2-dimensional aspect to its universal property.
 \end{rem}
 
 \begin{conv}[(Naming 2-limits)]\label{conv:name-2lim}
@@ -1816,7 +1816,7 @@ While satisfying in its brevity, one would expect \cref{cor:coherence-for-ulP} t
 
 \ngnoteil{rewrite this section intro, maybe the whole point is the relationship between cartesian-ness and free group actions}
 
-We finally turn to a discussion of the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and so it is useful to be able to characterize exactly when they are. An example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian, as we now describe.
+This is the first of two sections to investigate the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in\ngnote{cite specific theorem} \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and an example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian. We prove in \cref{cor:cart_cor,thm:cart_thm} that $P$ being 2-cartesian is equivalent to either free group actions, in the symmetric case, or a slight weakening of free group actions, in the general $\Lambda$-operad case.
 
 
 
@@ -1831,7 +1831,9 @@ A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit
     \end{itemize}
 \end{Defi}
 
-It is important to note that the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$, see \cite{kelly-elem}. 
+\begin{rem}
+As discussed in \cref{rem:lim-v-2lim}, the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$.\ngnote{kelly-elem citation used to be here, not sure if we need it}
+\end{rem}
 
 We begin our study of the cartesian property in the context of symmetric operads.
 
@@ -1849,7 +1851,7 @@ In order to show that $\eta$ is cartesian, we must prove that for a functor $f \
             {\ar_{\underline{P}(f)} "01" ; "11"};
         \endxy
     \]
-The pullback of this diagram is isomorphic to the coproduct of the pullbacks of diagrams of the following form.
+The pullback of this diagram is isomorphic to the coproduct of the pullbacks of diagrams of the following form, where on the left we note that no coequalizer is needed because $\Sigma_1$ is the trivial group.
 \[
         \xy
             (30,0)*+{Y}="10";
@@ -1900,37 +1902,34 @@ Letting $\mathbf{4}$ denote the pullback and similarly writing $\mathbf{2}_X = \
             {\ar "01" ; "11"}:
         \endxy
     \]
-The projection map $\underline{P}(\mb{4}) \rightarrow \underline{P}(\mb{2}_Y)$ maps an element
+The projection map $\pi_Y \colon \underline{P}(\mb{4}) \rightarrow \underline{P}(\mb{2}_Y)$ is defined by
     \[
-        [p;(x_1,y_1), \ldots, (x_n,y_n)]
+        \pi_Y\big(\ [p;(x_1,y_1), \ldots, (x_n,y_n)]\ \big) = [p;y_1,\ldots,y_n],
     \]
-to the element
-    \[
-        [p;y_1,\ldots,y_n]
-    \]
-and likewise for the projection to $\underline{P}(\mb{2}_X)$.
+and likewise for the projection $\pi_X$ to $\underline{P}(\mb{2}_X)$.
 
-Now assume that, for some $n$, the action of $\Sigma_n$ on $P(n)$ is not free. Then find some $p \in P(n)$ along with a nonidentity element $g \in \Sigma_n$ such that $p \cdot g = p$. We will show that the existence of $g$ proves that $\underline{P}$ is not cartesian.
-
-Now $g \neq e$, so there exists an $i \in \{1, \ldots, n\}$ such that $g(i) \neq i$; without loss of generality, we may take $i=1$. Using this $g$ we can find two distinct elements
+Now assume that, for some $n$, the action of $\Sigma_n$ on $P(n)$ is not free. Then there exist $p \in P(n)$ and a non-identity $g \in \Sigma_n$ such that $p \cdot g = p$. We will show that the existence of $g$ proves that $\underline{P}$ is not cartesian.
+Since $g \neq e$, so there exists an $i \in \{1, \ldots, n\}$ such that $g(i) \neq i$; without loss of generality, we may take $i=1$ and assume $g(1)=2$. Consider the two distinct elements
     \[
-        \left[p;(x',y),(x,y),\ldots,(x,y),(x,y'),(x,y),\ldots,(x,y)\right]
+      a_1=  \left[p;(x',y),(x,y'),(x,y),\ldots,(x,y)\right]
     \]
 and
     \[
-        \left[p;(x,y),\ldots,(x,y),(x',y'),(x,y),\ldots,(x,y)\right]
+     a_2=   \left[p;(x,y),(x',y'),(x,y),\ldots,(x,y)\right]
     \]
-in $\underline{P}(\mb{4})$. In the first element we put $(x',y)$ in the first position and $(x,y')$ in position $g(1)$, whilst in the second element we put $(x',y')$ in position $g(1)$. Both of these elements, however, are mapped to the same elements in $\underline{P}(\mb{2}_X)$, since
+in $\underline{P}(\mb{4})$, where all the elements of these lists are given by $(x,y)$ unless otherwise indicated. Both of these elements are mapped to the same elements in $\underline{P}(\mb{2}_X)$:
     \begin{align*}
-           \left[p; x', x, \ldots, x\right]&= \left[p \cdot g; (x', x, \ldots, x)\right]\\
+           \pi_X(a_1) & = \left[p; x', x, \ldots, x\right] \\
+           &= \left[p \cdot g; x', x, \ldots, x\right]\\
           &= \left[p;g\cdot (x', x, \ldots, x)\right]\\
-          &= \left[p;x,x,\ldots,x',\ldots,x\right].
+          &= \left[p;x,x',x,\ldots,x\right] \\
+          & = \pi_X(a_2).
     \end{align*}
-Similarly, both of the elements are mapped to the same element in $\underline{P}(\mathbf{2}_Y)$, simply
+Similarly, 
     \[
-        \left[p;y,\ldots,y', \ldots, y\right].
+        \pi_Y(a_1) = \left[p;y,y',y, \ldots, y\right] = \pi_Y(a_2).
     \]
-The pullback of this diagram, however, has a unique element which is projected to the ones we have considered, so $\underline{P}(\mb{4})$ is not a pullback. Hence $\underline{P}$ does not preserve pullbacks if for some $n$ the action of $\Sigma_n$ on $P(n)$ is not free.
+The pullback of this diagram, however, has a unique element which is projected to the ones we have considered, so $\underline{P}(\mb{4})$ is not a pullback of the square displayed above. This completes the proof that $\underline{P}$ does not preserve pullbacks if for some $n$ the action of $\Sigma_n$ on $P(n)$ is not free.
 
 Now assume that each $\Sigma_n$ acts freely on $P(n)$. Given a pullback
     \[
@@ -1959,39 +1958,84 @@ we must show that the image of the diagram under $\underline{P}$ is also a pullb
             \endxy
     \]
 is also a pullback. 
-\ngnoteil{rework the rest of this slightly to just check the pb universal property directly}
-The pullback of the functors $\coeqb{1}{H^n}{\Sigma_{n}}$ and $\coeqb{1}{S^n}{\Sigma_{n}}$ is a category consisting of pairs of objects $[p;\underline{c}]$ and $[q;\underline{b}]$, where $\underline{b}$ and $\underline{c}$ represent lists of elements in $B$ and $C$, respectively, that satisfy the property that
-    \[
-        \left[p;\underline{H(c)}\right] = \left[q; \underline{S(b)}\right]
-    \]
-    in $\coeqsig{P}{D}{n}$.
-Since the action is free by hypothesis, Lemma \ref{lem:coeq-lem} implies that a pair
-    \[
-        \left(\left[p;\underline{c}\right], \left[q;\underline{b}\right]\right)
-    \]
-is in the pullback if and only if there exists a necessarily unique element $g \in \Sigma_n$ such that $p \cdot g = q$ and $Hc_i = (Sb_{g^{-1}(i)})$. 
-The morphisms in the pullback admit a similar description.
 
-Using this we can define mutual inverses between $\coeqsig{P}{A}{n}$ and the pullback $Q'$. Considering the category $A$ as the pullback of the diagram we started with, we can consider objects of $\coeqsig{P}{A}{n}$ as being equivalence classes
-    \[
-        [p;(b_1,c_1),\ldots,(b_n,c_n)]
+Suppose that 
+        \[
+            \xy
+                (0,0)*+{X}="00";
+                (30,0)*+{\coeqsig{P}{B}{n}}="10";
+                (0,-15)*+{\coeqsig{P}{C}{n}}="01";
+                (30,-15)*+{\coeqsig{P}{D}{n}}="11";
+                {\ar^{K} "00" ; "10"};
+                {\ar^{\coeqb{1}{S^n}{\Sigma_{n}}} "10" ; "11"};
+                {\ar_{L} "00" ; "01"};
+                {\ar_{\coeqb{1}{H^n}{\Sigma_{n}}} "01" ; "11"}:
+            \endxy
     \]
-where $p \in P(n)$ and $Hc_i = Sb_i$ for all $i$.
+commutes. For an object $x \in X$, write 
+\begin{align*}
+K(x) & = [u; x_1, \ldots, x_n],\\
+L(x) & = [v; x_1', \ldots, x_n'].
+\end{align*}
+Since the action of $\Sigma_n$ is free on $P(n)$, \cref{lem:coeq-lem} and \cref{rem:operadcoeq-as-quotient} imply that the equation $\coeqb{1}{S^n}{\Sigma_{n}}\circ K(x) = \coeqb{1}{H^n}{\Sigma_{n}}\circ L(x)$ is equivalent to the existence of a unique $g \in \Sigma_n$ such that
+\begin{itemize}
+\item $u \cdot g = v$ and
+\item for each $i$, $Sx_i = Hx'_{g^{-1}(i)}$.
+\end{itemize}
+Since $A$ is the pullback of the original square, there exists a unique $a_i$ such that $F(a_i) = x_i$ and $R(a_i) = x'_{g^{-1}(i)}$. Define $J \colon X \to \coeqsig{P}{A}{n}$ on objects by 
+\[
+J(x) = [u; a_1, \ldots, a_n].
+\]
+We compute
+\begin{align*}
+\coeqb{1}{F^n}{\Sigma_{n}}\circ J(x) & = \coeqb{1}{F^n}{\Sigma_{n}}[u; a_1, \ldots, a_n] \\
+& = [u; Fa_1, \ldots, Fa_n] \\
+& = [u; x_1, \ldots, x_n]\\
+& = K(x), \\
+\coeqb{1}{R^n}{\Sigma_{n}}\circ J(x) & = \coeqb{1}{R^n}{\Sigma_{n}}[u; a_1, \ldots, a_n] \\
+& = [u; Ra_1, \ldots, Ra_n] \\
+& = [u; x'_{g^{-1}(1)}, \ldots, x'_{g^{-1}(n)}]\\
+& = [u; g \cdot(x'_1, \ldots, x'_n)] \\
+& = [u \cdot g; x'_1, \ldots, x'_n] \\
+& = [v; x'_1, \ldots, x'_n] \\
+& = L(x).
+\end{align*}
+The same uniqueness arguments, using \cref{lem:coeq-lem} and \cref{rem:operadcoeq-as-quotient}, show that this is the unique assignment on objects making both $\coeqb{1}{F^n}{\Sigma_{n}}\circ J = K$ and $\coeqb{1}{R^n}{\Sigma_{n}}\circ J = L$ hold at the level of objects. The argument above applies equally to morphisms, and it is simple to show that the resulting $J$ is the unique functor $X \to \coeqsig{P}{A}{n}$ satisfying $\coeqb{1}{F^n}{\Sigma_{n}}\circ J = K$ and $\coeqb{1}{R^n}{\Sigma_{n}}\circ J = L$. Therefore $\coeqsig{P}{A}{n}$ is the pullback as required, completing the proof.
 
-Taking such an object, we send it to the pair
-    \[
-        \left(\left[p;c_1,\ldots,c_n\right],[p;b_1,\ldots,b_n]\right),
-    \]
-and note that it lies in the pullback since the identity in $\Sigma_n$ satisfies the condition given earlier. An inverse to this sends a pair of equivalence classes in $Q'$ to the single equivalence class
-    \[
-        \left[p;\left(c_1,b_{g^{-1}(1)}\right),\ldots,\left(c_n,b_{g^{-1}(n)}\right)\right]
-    \]
-in $\coeqsig{P}{A}{n}$. If we apply the map into $Q'$ we get the pair
-    \[
-        \left(\left[p;c_1,\ldots,c_n\right],\left[p;b_{g^{-1}(1)},\ldots,b_{g^{-1}(n)}\right]\right)
-    \]
-which is equal to the original pair since $p \cdot g = q$; the other composite is trivially an identity. A similar calculation on morphisms finishes the proof that $\coeqsig{P}{A}{n}$ is the pullback as required.
+%The pullback of the functors $\coeqb{1}{H^n}{\Sigma_{n}}$ and $\coeqb{1}{S^n}{\Sigma_{n}}$ is a category consisting of pairs of objects $[p;\underline{c}]$ and $[q;\underline{b}]$, where $\underline{b}$ and $\underline{c}$ represent lists of elements in $B$ and $C$, respectively, that satisfy the property that
+%    \[
+%        \left[p;\underline{H(c)}\right] = \left[q; \underline{S(b)}\right]
+%    \]
+%    in $\coeqsig{P}{D}{n}$.
+%Since the action is free by hypothesis, Lemma \ref{lem:coeq-lem} implies that a pair
+%    \[
+%        \left(\left[p;\underline{c}\right], \left[q;\underline{b}\right]\right)
+%    \]
+%is in the pullback if and only if there exists a necessarily unique element $g \in \Sigma_n$ such that $p \cdot g = q$ and $Hc_i = Sb_{g^{-1}(i)}$. 
+%The morphisms in the pullback admit a similar description.
+%
+%Using this we can define mutual inverses between $\coeqsig{P}{A}{n}$ and the pullback $Q'$. Considering the category $A$ as the pullback of the diagram we started with, we can consider objects of $\coeqsig{P}{A}{n}$ as being equivalence classes
+%    \[
+%        [p;(b_1,c_1),\ldots,(b_n,c_n)]
+%    \]
+%where $p \in P(n)$ and $Hc_i = Sb_i$ for all $i$.
+%
+%Taking such an object, we send it to the pair
+%    \[
+%        \left(\left[p;c_1,\ldots,c_n\right],[p;b_1,\ldots,b_n]\right),
+%    \]
+%and note that it lies in the pullback since the identity in $\Sigma_n$ satisfies the condition given earlier. An inverse to this sends a pair of equivalence classes in $Q'$ to the single equivalence class
+%    \[
+%        \left[p;\left(c_1,b_{g^{-1}(1)}\right),\ldots,\left(c_n,b_{g^{-1}(n)}\right)\right]
+%    \]
+%in $\coeqsig{P}{A}{n}$. If we apply the map into $Q'$ we get the pair
+%    \[
+%        \left(\left[p;c_1,\ldots,c_n\right],\left[p;b_{g^{-1}(1)},\ldots,b_{g^{-1}(n)}\right]\right)
+%    \]
+%which is equal to the original pair since $p \cdot g = q$; the other composite is trivially an identity. A similar calculation on morphisms finishes the proof that $\coeqsig{P}{A}{n}$ is the pullback as required.
 \end{proof}
+
+\ngnoteil{start here}
 
 \begin{prop}\label{prop:mu-2cart}
 Let $P$ be a symmetric operad. If the $\Sigma_n$-actions are all free, then the multiplication $\mu \colon  \underline{P}^{2} \Rightarrow \underline{P}$ of the associated monad is a cartesian transformation.
