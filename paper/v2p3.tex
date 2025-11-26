@@ -2190,9 +2190,10 @@ The action of $\Lambda(n)$ on $\EL(n)$ is free for all $n$, so in particular sat
 
 \section{Action Operads as Clubs}\label{sec:club}
 
-Kelly's theory of clubs \cite{kelly_club1, kelly_club0, kelly_club2} was designed to simplify and explain how coherence results for a $2$-monad $T$ can often be extracted from information about the 
+This is the second section to investigate the interaction of action operads and pullbacks using the clubs of Kelly \cite{kelly_club1, kelly_club0, kelly_club2}. Kelly's theory of clubs  was designed to simplify and explain how coherence results for a $2$-monad $T$ can often be extracted from information about the 
 %certain aspects of coherence results, namely the fact that many coherence results rely on extrapolating information about general free objects for a $2$-monad $T$ from information about the 
-specific free object $T1$ where $1$ denotes the terminal category. This occurs, for example, in the study of the many different types of monoidal category:  plain monoidal category, braided monoidal category, symmetric monoidal category, and so on. This section will explain how every action operad gives rise to a club, as well as compute the clubs that arise as the image of this procedure.
+specific free object $T1$, where $1$ denotes the terminal category. 
+We shall see that the $\Lambda$-monoidal structure on $\EL(1)$ recovers the entire action operad structure on $\Lambda$. Furthermore, the presentations of action operads from \cref{sec:pres-aop} match up with presentations of clubs from \cite[Section 3]{kelly_club1}. This fact gives a conceptual explanation for the calculations in \cref{ex:sigma-pres}.
 
 We begin by reminding the reader of the notion of a club, or more specifically what Kelly \cite{kelly_club1,kelly_club2} calls a club over $\mb{P}$. We will only be interested in clubs over $\mb{P}$, and thusly shorten the terminology to club from this point onward. We define clubs succinctly using Leinster's terminology of generalized operads \cite{leinster}.
 
@@ -2233,21 +2234,24 @@ Let $\Sigma$ be the operad of symmetric groups. This is the terminal object of t
 A \textit{club} is a $T$-operad in $\mb{Cat}$ for $T = \underline{E\Sigma}$.
 \end{Defi}
 
-\begin{rem}
+\begin{rem}[($\mb{P} = \underline{E\Sigma}(1)$)]
 The category $\mb{P}$ in Kelly's terminology is the result of applying $\underline{E\Sigma}$ to $1$, and can be identified with the category $B\Sigma$ of \cref{Defi:BLambda}.
 \end{rem}
 
+\begin{rem}[(Explicit description of clubs)]
 It is useful to break down the definition of a club. A club consists of
 \begin{enumerate}
 \item a category $K$ together with a functor $\pi \colon K \rightarrow B \Sigma$,
 \item a multiplication map $K \circ K \rightarrow K$, and
 \item a unit map $1 \rightarrow K$,
 \end{enumerate}
-satisfying the axioms to be a monoid in the monoidal category of $E\Sigma$-collections. By the definition of $K \circ K$ as a pullback, objects are tuples of objects of $K$ $(x; y_{1}, \ldots, y_{n})$ where $\pi(x) = n$. A morphism
+satisfying the axioms to be a monoid in the monoidal category of $E\Sigma$-collections. The objects of $K \circ K$  are tuples of objects of $K$, written $(x; y_{1}, \ldots, y_{n})$, where $\pi(x) = n$. In order to describe the morphisms of $K \circ K$, recall the description of the hom-sets of $E\Sigma(K)$ from \cref{prop:hom-set-lemma}.
+A morphism
   \[
     (x; y_{1}, \ldots, y_{n}) \rightarrow (z; w_{1}, \ldots, w_{m})
   \]
-exists only when $n=m$ (since $B\Sigma$ only has endomorphisms) and then consists of a morphism $f \colon x \rightarrow z$ in $K$ together with morphisms $g_{i} \colon y_{i} \rightarrow z_{x(i)}$ in $K$.
+exists only when $n=m$ (since $B\Sigma$ only has endomorphisms) and then consists of a morphism $f \colon x \rightarrow z$ in $K$ together with morphisms $g_{i} \colon y_{i} \rightarrow z_{f(i)}$ in $K$; here we have written $f(i)$ for the permutation $\pi(f)$ applied to the element $i$.
+\end{rem}
 
 \begin{nota}\label{nota:clubmult}
 For a club $K$ and a morphism $(f; g_{1}, \ldots, g_{n})$ in $K \circ K$, we write $f(g_{1}, \ldots, g_{n})$ for the image of the morphism under the functor $K \circ K \rightarrow K$.
@@ -2257,7 +2261,7 @@ We will usually just refer to a club by its underlying category $K$.
 
 
 \begin{thm}
-Let $\Lambda$ be an action operad. Then the map of operads $\pi \colon \Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ the structure of a club.
+Let $\Lambda$ be an action operad. Then the map of operads $\pi \colon \Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ from \cref{Defi:BLambda} the structure of a club.
 \end{thm}
 \begin{proof}
 
