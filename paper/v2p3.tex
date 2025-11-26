@@ -1812,9 +1812,7 @@ While satisfying in its brevity, one would expect \cref{cor:coherence-for-ulP} t
 
 \section{Group Actions and Cartesian $2$-monads}\label{sec:cart}
 
-\textbf{Why do people care??}
-
-\ngnoteil{rewrite this section intro, maybe the whole point is the relationship between cartesian-ness and free group actions}
+\ngnoteil{I slightly rewrote this. It is better but not amazing.}
 
 This is the first of two sections to investigate the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in\ngnote{cite specific theorem} \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and an example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian. We prove in \cref{cor:cart_cor,thm:cart_thm} that $P$ being 2-cartesian is equivalent to either free group actions, in the symmetric case, or a slight weakening of free group actions, in the general $\Lambda$-operad case.
 
@@ -2035,8 +2033,6 @@ The same uniqueness arguments, using \cref{lem:coeq-lem} and \cref{rem:operadcoe
 %which is equal to the original pair since $p \cdot g = q$; the other composite is trivially an identity. A similar calculation on morphisms finishes the proof that $\coeqsig{P}{A}{n}$ is the pullback as required.
 \end{proof}
 
-\ngnoteil{start here}
-
 \begin{prop}\label{prop:mu-2cart}
 Let $P$ be a symmetric operad. If the $\Sigma_n$-actions are all free, then the multiplication $\mu \colon  \underline{P}^{2} \Rightarrow \underline{P}$ of the associated monad is a cartesian transformation.
 \end{prop}
@@ -2075,8 +2071,8 @@ are pullbacks then the outside of the diagram
 is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares below is a pullback.
     \[
         \xy
-            (0,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(\coeqsig{P}{X}{{k_i}}\right)}="00";
-            (60,0)*+{\coprod P(m) \times_{\Sigma_m} \prod_i \left(P(k_i) / \Sigma_{k_i}\right)}="10";
+            (0,0)*+{\coprod_{m} P(m) \otimes_{\Sigma_m} \prod_{k_1+\cdots+k_m=n} \left(\coeqsig{P}{X}{{k_i}}\right)}="00";
+            (60,0)*+{\coprod P(m) \otimes_{\Sigma_m} \prod_i \left(P(k_i) / \Sigma_{k_i}\right)}="10";
             (0,-20)*+{\coeqsig{P}{X}{n}}="01";
             (60,-20)*+{P(n) / \Sigma_{n}}="11";
             {\ar "00" ; "10"};
@@ -2085,35 +2081,58 @@ is also a pullback and so each of the naturality squares for $\mu$ must therefor
             {\ar "10" ; "11"};
         \endxy
     \]
-The map along the bottom is the obvious one, sending $[p; x_1, \ldots, x_n]$ simply to the equivalence class $[p]$. Along the right hand side the map is the one corresponding to operadic composition, sending $[q;[p_1],\ldots,[p_m]]$ to $[\mu^P(q;p_1,\ldots,p_n)]$. The pullback of these maps would be the category consisting of pairs
+The map along the bottom is the obvious one, sending $[p; x_1, \ldots, x_n]$ simply to the equivalence class $[p]$. The map along the right hand side is induced by operadic composition, and sends $[q;[p_1],\ldots,[p_m]]$ to $[\mu^P(q;p_1,\ldots,p_n)]$. The pullback of these maps would be the category consisting of pairs
     \[
-        \left([p;x_1,\ldots,x_{\Sigma k_i}],[q;[p_1],\ldots,[p_n]]\right),
+        \left([p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]]\right),
     \]
-where $q \in P(n)$, $p_i \in P(k_i)$, $p \in P(\Sigma k_i)$, and for which $[p] = [\mu^P(q;p_1,\ldots,p_n)]$. The upper left category in the diagram, which we will refer to here as $Q$, has objects
+where $q \in P(m)$, $p_i \in P(k_i)$, $k_1 + \cdots + k_m = n$, $p \in P(n)$, and for which $[p] = [\mu^P(q;p_1,\ldots,p_n)]$; we will denote the pullback by $U$. The upper left category in the diagram, which we denote by $Q$, has objects
     \[
-        \left[q;\left[p_1;\underline{x}_1\right],\ldots,\left[p_n;\underline{x}_n\right]\right].
+        \left[q;\left[p_1;\underline{x}_1\right],\ldots,\left[p_m;\underline{x}_m\right]\right].
     \]
 
-% QQQ (Describe these.)
-There are obvious maps out of $Q$ making the diagram commute and as such inducing a functor from $Q$ into the pullback via the universal property. This functor sends an object such as the one just described to the pair
+The uniquely induced functor $F \colon Q \to U$ is defined on objects by the formula
+%There are obvious maps out of $Q$ making the diagram commute and as such inducing a functor from $Q$ into the pullback via the universal property. This functor sends an object such as the one just described to the pair
     \[
-        \left(\left[\mu^P(q;p_1,\ldots,p_n);\underline{x}\right], [q;[p_1],\ldots,[p_n]]\right).
+F\Big(\big[q;\left[p_1;\underline{x}_1\right],\ldots,\left[p_m;\underline{x}_m\right]\big] \Big) =          \left(\left[\mu^P(q;p_1,\ldots,p_m);\underline{x}\right], \big[q;[p_1],\ldots,[p_m]\big]\right),
     \]
-Given an object in the pullback, we then have a pair, as described above, which has $[p] = [\mu^P(q;p_1,\ldots,p_n)]$ meaning that we can find an element $g \in \Sigma_{\Sigma k_i}$ such that $p  = \mu^P(q;p_1,\ldots,p_n) \cdot g$. Thus we can describe an inverse to the induced functor by sending a pair in the pullback to the object
+where the list $\underline{x}$ is the concatenation $\underline{x}_1, \ldots, \underline{x}_m$.
+We define an inverse $G \colon U \to Q$ as follows.
+Let 
     \[
-        [q;[p_1;\pi(g)(\underline{x})_1],\ldots,[p_n;\pi(g)(\underline{x})_n]],
+        \left([p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]]\right)
     \]
-where $\pi(g)(\underline{x})_i$ denotes the $i$th block of $\underline{x}$ after applying the permutation $\pi(g)$. For example, if $\underline{x} = (x_{11}, x_{12}, x_{21}, x_{22}, x_{23}, x_{31})$ and $\pi(g) = (1\, \, 3 \, \, 5)$, then
-    \[
-        \pi(g)(\underline{x}) = (x_{23}, x_{12}, x_{11}, x_{22}, x_{21}, x_{31}).
-    \]
-Thus $\pi(g)(\underline{x})_1 = (x_{23}, x_{12})$, $\pi(g)(\underline{x})_2 = (x_{11}, x_{22}, x_{21})$ and $\pi(g)(\underline{x})_3 = (x_{31})$.
+be an object of $U$, with $p_i \in P(k_i)$ as above. 
+Since the action of $\Sigma_n$ on $P(n)$ is free, there is a unique $g \in \Sigma_n$ such that $p  = \mu^P(q;p_1,\ldots,p_m) \cdot g$. Then
+\begin{align*}
+[p; x_1, \ldots, x_n] & = \big[ \mu^P(q;p_1,\ldots,p_m) \cdot g; x_1, \ldots, x_n \big] \\
+& = \big[ \mu^P(q;p_1,\ldots,p_m); x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)} \big],
+\end{align*}
+so by reindexing the $x_i$'s if necessary we can assume that $p =  \mu^P(q;p_1,\ldots,p_m)$.
+Then define
+\[
+G\Big( [p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]] \Big) = \big[ q; [p_1; \underline{y}_1], \ldots, [p_m; \underline{y}_m] \big],
+\]
+where 
+\[
+\underline{y_j} = x_{k_1 + \cdots + k_{j-1} + 1}, \ldots, x_{k_1 + \cdots + k_{j-1} + k_j}.
+\]
+The reader can check that this is well-defined, and an inverse to $F$ on objects. A similar formula holds for morphisms. The functor $G$ is an inverse to $F$, so the desired square is a pullback, completing the proof.
 
-Now applying the induced functor we find that we get back an object in the pullback for which the first entry is $[q;[p_1],\ldots,[p_n]]$ and whose second entry is
-    \[
-       \left[\mu^P(q;p_1,\ldots,p_n);\pi(g)(\underline{x})\right] = \left[\mu^P(q;p_1,\ldots,p_n) \cdot g;\underline{x}\right] = [p;\underline{x}],
-    \]
-which is what we started with. Showing the other composite is an identity is similar, here using the fact that the identity acts trivially on $\mu^P(q;p_1,\ldots,p_n)$. Taking the coproduct of these squares then gives us the original diagram that we wanted to show was a pullback and, since each individual square is a pullback, so is the original.
+%Given an object in the pullback, we then have a pair, as described above, which has $[p] = [\mu^P(q;p_1,\ldots,p_n)]$ meaning that we can find an element $g \in \Sigma_{\Sigma k_i}$ such that $p  = \mu^P(q;p_1,\ldots,p_n) \cdot g$. Thus we can describe an inverse to the induced functor by sending a pair in the pullback to the object
+%    \[
+%        [q;[p_1;\pi(g)(\underline{x})_1],\ldots,[p_n;\pi(g)(\underline{x})_n]],
+%    \]
+%where $\pi(g)(\underline{x})_i$ denotes the $i$th block of $\underline{x}$ after applying the permutation $\pi(g)$. For example, if $\underline{x} = (x_{11}, x_{12}, x_{21}, x_{22}, x_{23}, x_{31})$ and $\pi(g) = (1\, \, 3 \, \, 5)$, then
+%    \[
+%        \pi(g)(\underline{x}) = (x_{23}, x_{12}, x_{11}, x_{22}, x_{21}, x_{31}).
+%    \]
+%Thus $\pi(g)(\underline{x})_1 = (x_{23}, x_{12})$, $\pi(g)(\underline{x})_2 = (x_{11}, x_{22}, x_{21})$ and $\pi(g)(\underline{x})_3 = (x_{31})$.
+%
+%Now applying the induced functor we find that we get back an object in the pullback for which the first entry is $[q;[p_1],\ldots,[p_n]]$ and whose second entry is
+%    \[
+%       \left[\mu^P(q;p_1,\ldots,p_n);\pi(g)(\underline{x})\right] = \left[\mu^P(q;p_1,\ldots,p_n) \cdot g;\underline{x}\right] = [p;\underline{x}],
+%    \]
+%which is what we started with. Showing the other composite is an identity is similar, here using the fact that the identity acts trivially on $\mu^P(q;p_1,\ldots,p_n)$. Taking the coproduct of these squares then gives us the original diagram that we wanted to show was a pullback and, since each individual square is a pullback, so is the original.
 \end{proof}
 
 Collecting these results together gives the following corollary.
@@ -2125,23 +2144,34 @@ The $2$-monad associated to a symmetric operad $P$ is $2$-cartesian if and only 
 We require one simple technical lemma before giving a complete characterization of $\Lambda$-operads that induce cartesian $2$-monads.
 
 \begin{lem}\label{lem:kernel_lem}
-Let $C$ be a category with a right action of some group $\Lambda$, and let $\pi \colon  \Lambda \rightarrow \Sigma$ be a group homomorphism to any other group $\Sigma$. Then the right $\Sigma$-action on $\coeqb{C}{\Sigma}{\Lambda}$ is free if and only if the only elements of $\Lambda$ that fix an object of $C$ lie in the kernel of $\pi$.
+Let $C$ be a category with a right action of some group $\Lambda$ via $\mu \colon C \times \Lambda \to C$, and let $\pi \colon  \Lambda \rightarrow \Sigma$ be a group homomorphism to any other group $\Sigma$. Then the right $\Sigma$-action on the category $\coeqb{C}{\Sigma}{\Lambda}$, defined as the coequalizer below
+    \[
+        \xy
+            (0,0)*+{C \times \Lambda \times \Sigma}="00";
+            (30,0)*+{C \times \Sigma}="10";
+            (60,0)*+{\coeqb{C}{\Sigma}{\Lambda}}="20";
+            {\ar@<1ex>^{m \circ 1 \times \pi} "00" ; "10"};
+            {\ar@<-1ex>_{\mu \times 1} "00" ; "10"};
+            {\ar^{\varepsilon} "10" ; "20"};
+        \endxy
+    \]
+where $m \colon \Sigma \times \Sigma \to \Sigma$ is the group multiplication,
+is free if and only if the kernel of $\pi$ contains all the elements of $\Lambda$ that fix any object of $C$.
 \end{lem}
 \begin{proof}
-First, note that a group action on a category is free if and only if it is free on objects as fixing a morphism requires fixing its source and target. Thus our arguments need only concern the objects involved.
-\ngnoteil{replace above with \cref{lem:free-on-obj}}
+By \cref{lem:free-on-obj}, we only need to check that the action is free on objects.
+Since the set of objects functor preserves colimits, the objects of $\coeqb{C}{\Sigma}{\Lambda}$ are equivalence classes $[c;g]$ where $c \in C$ and $g \in \Sigma$, with $[c\cdot r;g] = [c; \pi(r)g]$. 
+These classes can also be described as: $[c_1; \sigma_1] = [c_2; \sigma_2]$ if and only if there exists an $r \in \Lambda$ such that $ c_1 \cdot r = c_2$ and $\sigma_1 = \pi(r^{-1})\sigma_2$.
 
-Since the set of objects functor preserves colimits, the objects of $\coeqb{C}{\Sigma}{\Lambda}$ are equivalence classes $[c;g]$ where $c \in C$ and $g \in \Sigma$, with $[c\cdot r;g] = [c; \pi(r)g]$. First assume the $\Sigma$-action is free. Then noting that $[c;e]\cdot g =[c;g]$, we have if $[c;g] = [c;e]$ then $g=e$. Let $r \in \Lambda$ be an element such that $c\cdot r = c$. Then
+First assume the $\Sigma$-action is free. Then noting that $[c;e]\cdot g =[c;g]$, we have if $[c;g] = [c;e]$ then $g=e$. Let $r \in \Lambda$ be an element such that $c\cdot r = c$. Then
   \[
     [c;e] = [c\cdot r; e] = [c; \pi(r)],
   \]
 so $\pi(r) = e$.
 
-Now assume that every element of $\Lambda$ fixing an object lies in the kernel of $\pi$. Let $\tau \in \Sigma$, and assume it fixes $[p; \sigma]$. Without loss of generality, we can take $\sigma = e$, so that
-  \[
-    [p; \tau] = [p;e]\cdot \tau = [p;e].
-  \]
-Since the objects of $\coeqb{C}{\Sigma}{\Lambda}$ are equivalence classes as above, there exists an element $r \in \Lambda$ such that $p\cdot r^{-1} = p$ and $\tau = \pi(r)$. But by assumption, we must have $r^{-1}$, and hence $r$, in the kernel, so $\tau = e$ and the $\Sigma$-action is free.
+Now assume that every element of $\Lambda$ fixing an object lies in the kernel of $\pi$. Let $\tau \in \Sigma$, and assume it fixes $[p; \sigma]$, so that $[p; \sigma] = [p; \sigma \tau]$.
+Then there exists an element $r \in \Lambda$ such that $p\cdot r = p$ and $\sigma = \pi(r^{-1})\sigma\tau$. 
+Then $r$ fixes $p$, so lies in the kernel of $\pi$, and the second equation reduces to $\sigma = \sigma \tau$ which immediately implies that $\tau = e$. Therefore the action of $\Sigma$ is free on $\coeqb{C}{\Sigma}{\Lambda}$.
 \end{proof}
 
 \begin{thm}\label{thm:cart_thm}
