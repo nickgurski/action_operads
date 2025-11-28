@@ -2497,16 +2497,13 @@ $[0,1] \times [-\varepsilon, \varepsilon] \rightarrow \mathbb{R}^{3}$. This intr
 
 \section{Pseudocommutativity}\label{sec:pscomm}
 
-\ngnoteil{shorter intro, get to the point here, maybe move some of this to paper intro}
-
-This section gives conditions sufficient to equip the $2$-monad $\underline{P}$ induced by a $\Lambda$-operad $P$ in $\mb{Cat}$ with a pseudo-commutative structure. Such a pseudo-commutativity will then give the $2$-category $\mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$ some additional structure that we briefly explain here. For a field $k$, the category $\mb{Vect}$ of vector spaces over $k$ has many nice features. Of particular interest to us are the following three structures. First, the category $\mb{Vect}$ is monoidal using the tensor product $\otimes_{k}$. Second, the set of linear maps $V \rightarrow W$ is itself a vector space which we denote $[V,W]$. Third, there is a notion of multilinear map $V_{1} \times \cdots \times V_{n} \rightarrow W$, with linear maps being the $1$-ary version. While these three structures are each useful in isolation, they are tied together by natural isomorphisms
-  \[
-    \mb{Vect}(V_{1} \otimes V_{2}, W) \cong \mb{Vect}(V_{1}, [V_{2}, W]) \cong \mb{Bilin}(V_{1} \times V_{2}, W)
-  \]
-expressing that $\otimes$ gives a closed monoidal structure which represents the multicategory of multilinear maps. Moreover, the adjunction between $\mb{Vect}$ and $\mb{Sets}$ respects all of this structure in the appropriate way. This incredibly rich interplay between the tensor product, the internal mapping space, and the multicategory of multilinear maps all arises from the free vector space monad on $\mb{Sets}$ being a \textit{commutative} monad \cite{kock-monads, kock-closed, kock-strong}. The notion of a pseudo-commutative $2$-monad \cite{HP} is then a generalization of this machinery to a $2$-categorical context, and can be viewed as a starting point for importing tools from linear algebra into category theory.
-
-The aim of this section is to give conditions that ensure that the $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ has a pseudo-commutative structure. We give the definition of pseudo-commutativity as in \cite{HP} but before doing so we require the definition of a strength for a $2$-monad.
-
+This section gives conditions sufficient to equip the $2$-monad $\underline{P}$ induced by a $\Lambda$-operad $P$ in $\mb{Cat}$ with a pseudo-commutative structure in the sense of \cite{HP}. Such a pseudo-commutativity will then give the $2$-category $\mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$ a closed monoidal structure, as well as construct a two-dimensional analogue of a multicategory for which $\mb{Ps}\mbox{-}\underline{P}\mbox{-}\mb{Alg}$ is the underlying 2-category.
+%it is some additional structure that we briefly explain here. For a field $k$, the category $\mb{Vect}$ of vector spaces over $k$ has many nice features. Of particular interest to us are the following three structures. First, the category $\mb{Vect}$ is monoidal using the tensor product $\otimes_{k}$. Second, the set of linear maps $V \rightarrow W$ is itself a vector space which we denote $[V,W]$. Third, there is a notion of multilinear map $V_{1} \times \cdots \times V_{n} \rightarrow W$, with linear maps being the $1$-ary version. While these three structures are each useful in isolation, they are tied together by natural isomorphisms
+%  \[
+%    \mb{Vect}(V_{1} \otimes V_{2}, W) \cong \mb{Vect}(V_{1}, [V_{2}, W]) \cong \mb{Bilin}(V_{1} \times V_{2}, W)
+%  \]
+%expressing that $\otimes$ gives a closed monoidal structure which represents the multicategory of multilinear maps. Moreover, the adjunction between $\mb{Vect}$ and $\mb{Sets}$ respects all of this structure in the appropriate way. 
+The 1-dimensional version of this theory is that of commutative monads, as developed by Kock \cite{kock-closed, kock-monads, kock-strong}.
 
 \begin{Defi}\label{Defi:strengths}
 A \textit{left strength} for an endo-$2$-functor $T \colon \m{K} \rightarrow \m{K}$ on a $2$-category with products and terminal object $1$ consists of a $2$-natural transformation $d$ with components
@@ -2571,8 +2568,8 @@ The strengths for the associated $2$-monad $\underline{P}$ are quite simple to d
 which sends an object $(a, [p;b_1,\ldots,b_n])$ to the object $[p;(a,b_1),\ldots,(a,b_n)]$. We also define the right strength similarly, sending an object $([p;a_1,\ldots,a_n],b)$ to the object which is an equivalence class $[p;(a_1,b), \ldots, (a_n, b)]$. Both the left and the right strengths are defined in the obvious way on morphisms.
 % QQQ (Check obviousness.)
 
-\begin{remark}\label{rem:strength}
-In a subtle change of terminology, what we refer to as a \emph{right} strength in \cref{Defi:strengths} is in \cite[Section 3.1]{HP} simply a strength, while our \emph{left} strength corresponds to a right strength. We stress this difference to match more contemporary usage \cite[Definition 3.3]{mu-strong}, avoiding the confusion that a prefix of `co-' generally means a reversal of directions.
+\begin{remark}[(Change of terminology: costrengths)]\label{rem:strength}
+In a minor change of terminology, what we refer to as a \emph{right} strength in \cref{Defi:strengths} is in \cite[Section 3.1]{HP} simply a strength, while our \emph{left} strength corresponds to a right strength\ngnote{costrength?}. We stress this difference to match more contemporary usage \cite[Definition 3.3]{mu-strong}, avoiding the confusion that a prefix of `co-' generally means a reversal of directions.
 \end{remark}
 
 \begin{rem}\label{rem:strength-nonsym}
@@ -2684,8 +2681,8 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
     \end{enumerate}
 \end{Defi}
 
-\begin{rem}
-    It is noted in \cite[Proposition 1]{HP} that this definition has some redundancy and therein it is claimed that any two of the strength axioms (Axioms 1 - 3) immediately implies the third. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold (Axioms 4-6), as well as the following associativity axiom:
+\begin{rem}[(Redundancy)]
+    It is noted in \cite[Proposition 1]{HP} that this definition has some redundancy and therein it is claimed that any two of the strength axioms (Axioms 1 - 3) immediately implies the third. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold (Axioms 4-6) as well as the following associativity axiom:
         \[
             \gamma_{A,B \times C} \circ (1_{TA} \times \gamma_{B,C}) = \gamma_{A \times B,C} \times (\gamma_{A,B} \times 1_{TC}).
         \]
@@ -2717,7 +2714,7 @@ The permutation $\tau_{m,n} \in \Sigma_{mn}$ is defined uniquely by the property
 \end{Defi}
 
 % \ngnoteil{probably shorten all this exposition}
-By construction, we have $\tau_{n,m} = \tau_{m,n}^{-1}$. We illustrate these permutations with a couple of examples.
+We illustrate these permutations with a couple of examples.
     \[
         \xy
             {\ar@{-} (0,0) ; (0,-10)};
@@ -2739,7 +2736,14 @@ By construction, we have $\tau_{n,m} = \tau_{m,n}^{-1}$. We illustrate these per
         \endxy
     \]
 
-Note then that $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$. This has the effect of rearranging $m$ groups of $n$ things into $n$ groups of $m$ things.
+\begin{rem}
+We make the following elementary remarks about the transposition permutations $\tau_{m,n}$.
+\begin{itemize}
+\item By construction, we have $\tau_{m,n} = \tau_{n,m}^{-1}$.  
+\item We call these transposition permutations as $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$. 
+\item The permutation $\tau_{m,n}$ has the effect of rearranging $m$ groups of $n$ things into $n$ groups of $m$ things.
+\end{itemize}
+\end{rem}
 %   \[
 %       \begin{bmatrix}
 %         \textcolor{myorange}{(a_1,b_1)} & \textcolor{myorange}{(a_1,b_2)} & \textcolor{myorange}{(a_1,b_3)} \\
@@ -2760,6 +2764,8 @@ Note then that $\tau_{m,n}$ is the permutation given by taking the transpose of 
 % \includegraphics[width=0.8\columnwidth]{4-monoidal_structures/t-5-3.pdf}
 % \end{figure}
 % We now give sufficient conditions for equipping the $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ with a pseudo-commutative structure. Let $\mathbb{N}_{+}$ denote the set of positive natural numbers.
+
+\ngnoteil{start here}
 
 We now define what it means for a $\Lambda$-operad to be pseudo-commuative, before then showing that such an operad yields a pseudo-commutative structure on the corresponding $2$-monad $\underline{P}$. 
 
