@@ -2068,7 +2068,9 @@ are pullbacks then the outside of the diagram
             {\ar_{\mu_Y} "10" ; "11"};
         \endxy
     \]
-is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares below is a pullback.
+is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. 
+
+Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares below is a pullback.
     \[
         \xy
             (0,0)*+{\coprod_{m} P(m) \otimes_{\Sigma_m} \prod_{k_1+\cdots+k_m=n} \left(\coeqsig{P}{X}{{k_i}}\right)}="00";
@@ -2135,7 +2137,11 @@ The reader can check that this is well-defined, and an inverse to $F$ on objects
 %which is what we started with. Showing the other composite is an identity is similar, here using the fact that the identity acts trivially on $\mu^P(q;p_1,\ldots,p_n)$. Taking the coproduct of these squares then gives us the original diagram that we wanted to show was a pullback and, since each individual square is a pullback, so is the original.
 \end{proof}
 
-Collecting these results together gives the following corollary.
+\begin{rem}[(Pullback cancellation)]\label{rem:pb-cancel}
+We call the technique in the first paragraph of the previous proof \emph{pullback cancellation}.
+\end{rem}
+
+Collecting \cref{prop:cart_unit,prop:P-2cart,prop:mu-2cart} together gives the following corollary.
 
 \begin{cor}\label{cor:cart_cor}
 The $2$-monad associated to a symmetric operad $P$ is $2$-cartesian if and only if the action of $\Sigma_n$ is free on each $P(n)$.
@@ -2250,7 +2256,7 @@ A morphism
   \[
     (x; y_{1}, \ldots, y_{n}) \rightarrow (z; w_{1}, \ldots, w_{m})
   \]
-exists only when $n=m$ (since $B\Sigma$ only has endomorphisms) and then consists of a morphism $f \colon x \rightarrow z$ in $K$ together with morphisms $g_{i} \colon y_{i} \rightarrow z_{f(i)}$ in $K$; here we have written $f(i)$ for the permutation $\pi(f)$ applied to the element $i$.
+exists only when $n=m$ (since $B\Sigma$ only has endomorphisms) and then consists of a morphism $f \colon x \rightarrow z$ in $K$ together with morphisms $g_{i} \colon y_{i} \rightarrow w_{f(i)}$ in $K$; here we have written $f(i)$ for the permutation $\pi(f)$ applied to the element $i$, following \cref{nota:perm_shorthand}.
 \end{rem}
 
 \begin{nota}\label{nota:clubmult}
@@ -2259,14 +2265,18 @@ For a club $K$ and a morphism $(f; g_{1}, \ldots, g_{n})$ in $K \circ K$, we wri
 
 We will usually just refer to a club by its underlying category $K$.
 
+\begin{Defi}\label{Defi:2monad-from-club}
+Let $K$ be a club. The 2-monad $K^{\textrm{m}}$ on $\mb{Cat}$ is defined as follows.
+\begin{itemize}
+\item The underlying 2-functor of $K^{\textrm{m}}$ is given by $K^{\textrm{m}}(X) = K \circ X$, where the category $X$ is equipped with the $\underline{E\Sigma}$-collection structure $X \stackrel{!}{\to} 1 \stackrel{\eta}{\to} E\Sigma(1)$.
+\item The multiplication and unit are induced from $K$, using its multiplication and unit as a club.
+\end{itemize}
+\end{Defi}
 
 \begin{thm}
 Let $\Lambda$ be an action operad. Then the map of operads $\pi \colon \Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ from \cref{Defi:BLambda} the structure of a club.
 \end{thm}
 \begin{proof}
-
-\ngnoteil{This probably needs a bit of a rewrite, using the to-be-updated 12.23}
-
 To give the functor $B\pi \colon B\Lambda \rightarrow B \Sigma$ the structure of a club it suffices (see\ngnote{find specific thm number} \cite{leinster}) to show that
 \begin{itemize}
 \item the induced monad, which we will show to be $\underline{\EL}$, is a cartesian monad on $\mb{Cat}$,
@@ -2295,45 +2305,61 @@ The monad $\underline{\EL}$ is always cartesian by \cref{cor:EL-2cart}. The tran
   \]
 Naturality is immediate, and since $\pi$ is a map of operads $\tilde{\pi}$ also commutes with the monad structures.
 
-It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $\underline{\EL}$. Since the monads $\underline{\EL}$ and $\underline{E\Sigma}$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
-  \[
+It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $\underline{\EL}$. 
+By pullback cancellation (\cref{rem:pb-cancel}), these will both follow if we prove that $\EL(X) \cong B\Lambda \circ X$, or equivalently if
+ \[
     \xy
-      (0,0)*+{\coeq{\EL}{X}{\Lambda}{n}} ="00";
-      (0,-10)*+{B\Lambda(n)} ="01";
-      (35,0)*+{E\Sigma_{n} \otimes_{\Sigma_{n}} X^n} ="10";
-      (35,-10)*+{B\Sigma_{n}} ="11";
+      (0,0)*+{E\Lambda(X)} ="00";
+      (0,-10)*+{B\Lambda} ="01";
+      (35,0)*+{E\Sigma(X)} ="10";
+      (35,-10)*+{B\Sigma} ="11";
       {\ar^{} "00" ; "10"};
       {\ar^{} "10" ; "11"};
       {\ar^{} "00" ; "01"};
       {\ar^{} "01" ; "11"};
     \endxy
   \]
-By \cref{coeq-lem}
-%(QQQ happy with this reference? QQQ Seems like the right thing?)
-, this amounts to showing that the square below is a pullback.
-  \[
-    \xy
-      (0,0)*+{\left(\ELn \times X^n\right)/\Lambda(n)} ="00";
-      (0,-10)*+{B\Lambda(n)} ="01";
-      (35,0)*+{\left(E\Sigma_{n} \times X^n\right)/\Sigma_{n}} ="10";
-      (35,-10)*+{B\Sigma_{n}} ="11";
-      {\ar^{} "00" ; "10"};
-      {\ar^{} "10" ; "11"};
-      {\ar^{} "00" ; "01"};
-      {\ar^{} "01" ; "11"};
-    \endxy
-  \]
-Here, $(A \times B)/G$ is the category whose objects are equivalence classes of pairs $(a,b)$ where $(a,b) \sim (ag, g^{-1}b)$, and similarly for morphisms. Now the bottom map is clearly bijective on objects since these categories only have one object. An object in the top right is an equivalence class
-  \[
-    [\sigma; x_{1}, \ldots, x_{n}] = \left[e; x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}\right].
-  \]
-A similar description holds for objects in the top left, with $g \in \Lambda(n)$ replacing $\sigma$ and $\pi(g)^{-1}$ replacing $\sigma^{-1}$ in the subscripts. The map along the top sends $[g; x_{1}, \ldots, x_{n}]$ to $[\pi(g); x_{1}, \ldots, x_{n}]$, and thus sends $[e; x_{1}, \ldots, x_{n}]$ to $[e; x_{1}, \ldots, x_{n}]$, giving a bijection on objects.
+  is a pullback. This fact follows immediately from the description of the free objects in \cref{prop:hom-set-lemma}.
 
-Now a morphism in $(\ELn \times X^{n})/\Lambda(n)$ can be given as
-  \[
-    [e; x_{1}, \ldots, x_{n}] \stackrel{[!; f_{i}]}{\longrightarrow} [g; y_{1}, \ldots, y_{n}].
-  \]
-Mapping down to $B\Lambda(n)$ gives $ge^{-1} = g$, while mapping over to $(E\Sigma_{n} \times X^{n})/\Sigma_{n}$ gives $[!; f_{i}]$ where $! \colon e \rightarrow \pi(g)$ is now a morphism in $E\Sigma_{n}$. In other words, a morphism in the upper left corner of our putative pullback square is determined completely by its images along the top and lefthand functors. Furthermore, given $g \in \Lambda(n)$, $\tau = \pi(g)$, and morphisms $f_{i} \colon x_{i} \rightarrow y_{i}$ in $X$, the morphism $[! \colon e \rightarrow g; f_{i}]$ maps to the pair $(g, [! \colon e \rightarrow \tau; f_{i}])$, completing the proof that this square is indeed a pullback.
+%Since the monads $\underline{\EL}$ and $\underline{E\Sigma}$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
+%  \[
+%    \xy
+%      (0,0)*+{\coeq{\EL}{X}{\Lambda}{n}} ="00";
+%      (0,-10)*+{B\Lambda(n)} ="01";
+%      (35,0)*+{E\Sigma_{n} \otimes_{\Sigma_{n}} X^n} ="10";
+%      (35,-10)*+{B\Sigma_{n}} ="11";
+%      {\ar^{} "00" ; "10"};
+%      {\ar^{} "10" ; "11"};
+%      {\ar^{} "00" ; "01"};
+%      {\ar^{} "01" ; "11"};
+%    \endxy
+%  \]
+%By \cref{lem:coeq-lem}
+%%(QQQ happy with this reference? QQQ Seems like the right thing?)
+%, this amounts to showing that the square below is a pullback.
+%  \[
+%    \xy
+%      (0,0)*+{\left(\EL(n) \times X^n\right)/\Lambda(n)} ="00";
+%      (0,-10)*+{B\Lambda(n)} ="01";
+%      (35,0)*+{\left(E\Sigma_{n} \times X^n\right)/\Sigma_{n}} ="10";
+%      (35,-10)*+{B\Sigma_{n}} ="11";
+%      {\ar^{} "00" ; "10"};
+%      {\ar^{} "10" ; "11"};
+%      {\ar^{} "00" ; "01"};
+%      {\ar^{} "01" ; "11"};
+%    \endxy
+%  \]
+%Now the bottom map is clearly bijective on objects since these categories only have one object. An object in the top right is an equivalence class
+%  \[
+%    [\sigma; x_{1}, \ldots, x_{n}] = \left[e; x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)}\right].
+%  \]
+%A similar description holds for objects in the top left, with $g \in \Lambda(n)$ replacing $\sigma$ and $\pi(g)^{-1}$ replacing $\sigma^{-1}$ in the subscripts. The map along the top sends $[g; x_{1}, \ldots, x_{n}]$ to $[\pi(g); x_{1}, \ldots, x_{n}]$, and thus sends $[e; x_{1}, \ldots, x_{n}]$ to $[e; x_{1}, \ldots, x_{n}]$, giving a bijection on objects.
+%
+%Now a morphism in $(\ELn \times X^{n})/\Lambda(n)$ can be given as
+%  \[
+%    [e; x_{1}, \ldots, x_{n}] \stackrel{[!; f_{i}]}{\longrightarrow} [g; y_{1}, \ldots, y_{n}].
+%  \]
+%Mapping down to $B\Lambda(n)$ gives $ge^{-1} = g$, while mapping over to $(E\Sigma_{n} \times X^{n})/\Sigma_{n}$ gives $[!; f_{i}]$ where $! \colon e \rightarrow \pi(g)$ is now a morphism in $E\Sigma_{n}$. In other words, a morphism in the upper left corner of our putative pullback square is determined completely by its images along the top and lefthand functors. Furthermore, given $g \in \Lambda(n)$, $\tau = \pi(g)$, and morphisms $f_{i} \colon x_{i} \rightarrow y_{i}$ in $X$, the morphism $[! \colon e \rightarrow g; f_{i}]$ maps to the pair $(g, [! \colon e \rightarrow \tau; f_{i}])$, completing the proof that this square is indeed a pullback.
 \end{proof}
 
 The club, which we now denote $K_{\Lambda}$, associated to $\EL$ has the following properties. First, the functor $K_{\Lambda} \rightarrow B\Sigma$ is a functor between groupoids. Second, the functor $K_{\Lambda} \rightarrow B\Sigma$ is  bijective-on-objects. We claim that these properties characterize those clubs which arise from action operads. Thus the clubs arising from action operads are a special class of PROPs \cite{mac_prop, markl_prop}.
@@ -2373,12 +2399,13 @@ of the category of action operads into the category of clubs. Let $f, f' \colon 
 and the functor $B$ from groups to categories is faithful, so $K_{-}$ is also faithful. Now let $f \colon K_{\Lambda} \rightarrow K_{\Lambda'}$ be a maps of clubs. We clearly get group homomorphisms $f_{n} \colon \Lambda(n) \rightarrow \Lambda'(n)$ such that $\pi^{\Lambda}_{n} = \pi^{\Lambda'}_{n} f_{n}$, so we must only show that the $f_{n}$ also constitute an operad map. Using the description of the club structure above in terms of the maps $\beta, \delta$, we are able to see that commuting with the club multiplication implies commuting with both of these, which in turn is equivalent to commuting with operad multiplication. Thus $K_{-}$ is full as well.
 \end{proof}
 
-\begin{rem}
-\ngnoteil{shorten?}
+\begin{rem}[(Relaxing the hypotheses in \cref{thm:club=operad})]
 First, one should note that being a club over $B\Sigma$ means that every $K$-algebra has an underlying strict monoidal structure. Second, requiring that $K \rightarrow B\Sigma$ be bijective on objects ensures that $K$ does not have  operations other than $\otimes$, such as duals or internal hom-objects, from which to build new types of objects. Finally, $K$ being a groupoid ensures that all of the ``constraint morphisms'' that exist in algebras for $K$ are invertible.
 
-These hypotheses could be relaxed somewhat. Instead of having a club over $B\Sigma$, we could have a club over the free symmetric monoidal category on one object (note that the free symmetric monoidal category monad on $\mb{Cat}$ is still cartesian). This would produce $K$-algebras with underlying monoidal structures which are not necessarily strict. This change should have relatively little impact on how the theory is developed. Changing $K$ to be a category instead of a groupoid would likely have a larger impact, as the resulting action operads would have monoids instead of groups at each level. We have made repeated use of inverses throughout the proofs in the basic theory of action operads, and these would have to be revisited if groups were replaced by monoids in the definition of action operads.
+These hypotheses could be relaxed somewhat. Instead of having a club over $B\Sigma$, we could have a club over the free symmetric monoidal category on one object (note that the free symmetric monoidal category monad on $\mb{Cat}$ is still cartesian). This would produce $K$-algebras with underlying monoidal structures that are not necessarily strict. This change should have relatively little impact on how the theory is developed. Changing $K$ to be a category instead of a groupoid would likely have a larger impact, as the resulting action operads would have monoids instead of groups at each level. We have made repeated use of inverses throughout the proofs in the basic theory of action operads, and these would have to be revisited if groups were replaced by monoids in the definition of action operads.
 \end{rem}
+
+\ngnoteil{skipping the rest of this section for now}
 
 \ngnoteil{need specific references in Kelly}
 
