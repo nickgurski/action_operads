@@ -2681,7 +2681,7 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
     \end{enumerate}
 \end{Defi}
 
-\begin{rem}[(Redundancy)]
+\begin{rem}[(Redundant axioms)]
     It is noted in \cite[Proposition 1]{HP} that this definition has some redundancy and therein it is claimed that any two of the strength axioms (Axioms 1 - 3) immediately implies the third. Furthermore, the three strength axioms are equivalent when the $\eta$ and $\mu$ axioms hold (Axioms 4-6) as well as the following associativity axiom:
         \[
             \gamma_{A,B \times C} \circ (1_{TA} \times \gamma_{B,C}) = \gamma_{A \times B,C} \times (\gamma_{A,B} \times 1_{TC}).
@@ -2765,33 +2765,43 @@ We make the following elementary remarks about the transposition permutations $\
 % \end{figure}
 % We now give sufficient conditions for equipping the $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ with a pseudo-commutative structure. Let $\mathbb{N}_{+}$ denote the set of positive natural numbers.
 
-\ngnoteil{start here}
-
-We now define what it means for a $\Lambda$-operad to be pseudo-commuative, before then showing that such an operad yields a pseudo-commutative structure on the corresponding $2$-monad $\underline{P}$. 
-
 \begin{nota}
 Let $\mathbb{N}_{+}$ denote the set of positive integers.
 \end{nota}
 
-\ngnoteil{Need to look back at how we structured other definitions, make it consistent}
 \begin{Defi}\label{def:ps-comm_operad}
-Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. A pseudo-commutative structure on $P$ consists of the following data.
+Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. A \emph{pseudo-commutative structure} on $P$ consists of the following data.
 \ngnoteil{From before: Rewrite all this using the beta and delta operations, so it's consistent with before. This seems to be partially done, but need to recheck details}
     \begin{itemize}
         \item For each pair $(m,n) \in \mathbb{N}_{+}^2$, an element $t_{m,n} \in \Lambda(mn)$ such that $\pi(t_{m,n}) = \tau_{m,n}$.
-        \item For each $p \in P(n)$, $q \in P(m)$, a natural isomorphism\ngnote{natural where/how?}
+        \item For each object $p \in P(n)$ and object $q \in P(m)$, a natural isomorphism
             \[
                 \lambda_{p,q} \colon \mu(p;q,\ldots,q) \cdot t_{m,n} \cong \mu(q;p,\ldots,p).
             \]
+            Naturality of $\lambda_{p,q}$ means that for all $f \colon p \to p'$ in $P(n)$ and $g \colon q \to q'$ in $P(m)$, the following square commutes.
+             \[
+    \xy
+      (0,0)*+{\mu(p;q,\ldots,q) \cdot t_{m,n}} ="00";
+      (0,-10)*+{\mu(p';q',\ldots,q') \cdot t_{m,n}} ="01";
+      (40,0)*+{\mu(q;p,\ldots,p)} ="10";
+      (40,-10)*+{\mu(q';p',\ldots,p')} ="11";
+      {\ar^{\lambda_{p,q}} "00" ; "10"};
+      {\ar^{\mu(g; f, \ldots, f)} "10" ; "11"};
+      {\ar_{\mu(f; g, \ldots, g) \cdot t_{m,n}} "00" ; "01"};
+      {\ar_{\lambda_{p',q'}} "01" ; "11"};
+    \endxy
+  \]
+            
             We write this as $\lambda_{p,q}\colon \mu(p; \underline{q}) \cdot t_{m,n} \cong \mu(q; \underline{p})$.
     \end{itemize}
-These are required to satisfy the following axioms:  
+These data are required to satisfy the following axioms:  
     \begin{enumerate}
-        \item\label{axiom:t_id} For all $n \in \mathbb{N}_+$,
+        \item\label{axiom:t_id} For all $m,n \in \mathbb{N}_+$,
             \[
-                t_{1,n} = e_n = t_{n,1}
+                t_{1,n} = e_n = t_{m,1}.
             \]
-             and for all $p \in P(n)$, the isomorphism $\lambda_{p, \id}\colon p \cdot e_n \cong p$ is the identity map.
+             For all $p \in P(n)$, the isomorphism $\lambda_{p, \id}\colon p \cdot t_{1,n} \cong p$ is the identity map.
+             For all $q \in P(m)$, the isomorphism $\lambda_{\id, q}\colon q \cdot t_{m,1} \cong q$ is the identity map.
         % \item\label{axiom:t_equiv} QQQ Equivariance axiom - we decided this was just naturality in the end! (See Remark 11.2 in \cite{guillou_multiplicative}.) QQQ It's basically `compose, act, switch' is the same as `compose, switch, act', but can't actually see where it's used in the proof:
         %   \[
         %     \lambda_{p \cdot g, q \cdot h} \circ \mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
@@ -2811,23 +2821,23 @@ These are required to satisfy the following axioms:
         %     \endxy
         %   \]
         \item\label{axiom:t_sumR} For all $l, m_1, \ldots, m_l, n \in \mathbb{N}_+$, with $M = \Sigma m_i$,
+%            \[
+%                \mu^{\Lambda}\left(e_l; t_{m_1,n}, \ldots, t_{m_l,n}\right) \cdot \mu^{\Lambda}\left(t_{l,n};\underline{e_{m_1},\ldots,e_{m_l}}\right) = t_{n,M}.
+%            \]
+%            \acnoteil{check below is same as above, then delete above}
             \[
-                \mu^{\Lambda}\left(e_l; t_{m_1,n}, \ldots, t_{m_l,n}\right) \cdot \mu^{\Lambda}\left(t_{l,n};\underline{e_{m_1},\ldots,e_{m_l}}\right) = t_{n,M}.
+              \beta(t_{n,m_1},\ldots,t_{n,m_l}) \cdot \delta_{M,\ldots,M}(t_{n,l}) = t_{n,M}.
             \]
-            \acnoteil{check below is same as above, then delete above}
-            \[
-              \beta(t_{n,m_1},\ldots,t_{n,m_l}) \cdot \delta_{\underline{m_i},\ldots,\underline{m_i}}(t_{n,l}) = t_{n,M}.
-            \]
-            Here $\underline{e_{m_1},\ldots,e_{m_l}}$ is the list $e_{m_{1}}, \ldots, e_{m_{l}}$ repeated $n$ times.
+%            Here $\underline{e_{m_1},\ldots,e_{m_l}}$ is the list $e_{m_{1}}, \ldots, e_{m_{l}}$ repeated $n$ times.
         \item\label{axiom:t_sumL} For all $l, m, n_1,\ldots, n_m \in \mathbb{N}_+$, with $N = \Sigma n_i$,
-            \[
-                \mu^{\Lambda}\left(t_{m,l};\underline{e_{n_1}},\ldots,\underline{e_{n_m}}\right) \cdot \mu^{\Lambda}\left(e_m;t_{n_1,l},\ldots,t_{n_m,l}\right) = t_{N,l}.
-            \]
-            \acnoteil{check below is same as above, then delete above}
+%            \[
+%                \mu^{\Lambda}\left(t_{m,l};\underline{e_{n_1}},\ldots,\underline{e_{n_m}}\right) \cdot \mu^{\Lambda}\left(e_m;t_{n_1,l},\ldots,t_{n_m,l}\right) = t_{N,l}.
+%            \]
+%            \acnoteil{check below is same as above, then delete above}
             \[
               \delta_{\underline{n_1},\ldots,\underline{n_m}}(t_{m,l}) \cdot \beta(t_{n_1,l},\ldots,t_{n_m,l}) = t_{N,l}.
             \]
-            Here $\underline{e_{n_{i}}}$ indicates that each $e_{n_{i}}$ is repeated $l$ times.
+            Here $\underline{n_{i}}$ indicates that each subscript $n_{i}$ is repeated $l$ times.
         \item\label{axiom:t_diagR} For any $l, m_i, n \in \mathbb{N}_+$, with $1 \leq i \leq n$, and $p \in P(l)$, $q_i \in P(m_i)$ and $r \in P(n)$, the following diagram commutes. (Note that we maintain the convention that anything underlined indicates a list, and double underlining indicates a list of lists. Each instance should have an obvious meaning from context and the equations appearing above.)
           \[
             \xy
@@ -2877,12 +2887,14 @@ These are required to satisfy the following axioms:
     \end{enumerate}
 \end{Defi}
 
+\ngnoteil{start here, now I think this remark is wrong}
+
 \begin{remark}
-Remark 11.2 of \cite{guillou_multiplicative} describes the need for an extra equivariance axiom in the pseudo-commutative structure definition, some detail of which is also described in \cite{guillou_symmetric}. We also believed this to be true until a realisation that the equivariance axiom of \cite{guillou_multiplicative}[11.1, Axiom (iii)] becomes the following requirement:
+Remark 11.2 of \cite{guillou_multiplicative} describes the need for an extra equivariance axiom in the pseudo-commutative structure definition, some detail of which is also described in \cite{guillou_symmetric}. We also believed this to be true until a realisation that the equivariance axiom of \cite[Axiom (iii) of 11.1]{guillou_multiplicative} becomes the following requirement:
           \[
             \lambda_{p \cdot g, q \cdot h} \circ \left(\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
           \]
-On closer inspection, this equation is an instance of naturality for $\lambda$, as shown in the naturality square below.\ngmpar{What are the morphisms $p \to p \cdot g$ that this is naturality wrt? Probably the unique $e \to g$ acting on $p$, but we should explain.}
+On closer inspection, this equation is an instance of naturality for $\lambda$, as shown in the naturality square below.\ngmpar{What are the morphisms $p \to p \cdot g$ that this is naturality wrt? Probably the unique $e \to g$ acting on $p$, but we should explain.}\ngmpar{We have an action of $\Lambda(n)$ on $P(n)$, not an action of $E\Lambda(n)$, so I don't think there is a morphism $e \to g$. Now I need to go read the Guillou paper again}
           \[
             \xy
               (-20,10)*+{\mu^P\left(p;\underline{q}\right) \cdot t_{m,n}}="a";
