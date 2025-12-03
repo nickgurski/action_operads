@@ -2,7 +2,7 @@
 
 \section{Background: (something about Cat or 2-categories)}\label{sec:backgr-cat}
 
-We assume familiarity with basic $2$-category theory\ngnote{cite johnson-yau book, kelly-street paper}, but recall some 1- and 2-dimensional aspects of $\mb{Cat}$ itself here.
+We assume familiarity with basic $2$-category theory \cite{jy-2dim,KS}, but recall some 1- and 2-dimensional aspects of $\mb{Cat}$ itself here.
 
 \begin{conv}[(Sets and discrete categories)]\label{conv:set-disc}
 %Throughout the rest of this text, $\Lambda$ will be an action operad in the category of sets.
@@ -499,7 +499,7 @@ Let $T$ be a $2$-monad.
 \section{\texorpdfstring{$\Lambda$}{L}-Operads in Cat as $2$-monads}
 
 This section begins our study of algebras over a $\Lambda$-operad $P$ in $\mb{Cat}$.
-This theory blends together standard results in both $2$-monad theory\ngnote{lack codescent, bkp} and operad theory\ngnote{may geometry of iterated loops}.
+This theory blends together standard results in both $2$-monad theory \cite{lack-cod,BKP} and operad theory \cite{maygeom}.
 
 
 
@@ -1697,7 +1697,7 @@ where $y_i = \underline{x_{i1} \cdots x_{ik_i}}$ and the two unlabeled isomorphi
 \end{Defi}
 
 \begin{nota}
-By coherence for monoidal functors in the form \cite{gj-pseudo} \ngnote{ref gurski-johnson pseudomorphisms paper}, every monoidal functor $(F, F_2, F_0)$ induces a unique isomorphism
+By coherence for monoidal functors in the form \cite{gj-pseudo}, every monoidal functor $(F, F_2, F_0)$ induces a unique isomorphism
 \[
 F_n \colon \underline{Fx_1 \cdots Fx_n} \cong F(\underline{x_1 \cdots x_n}).
 \]
@@ -1740,7 +1740,7 @@ The 2-category in \cref{prop:2cat-of-weaklambda} is called the \emph{2-category 
 \end{nota}
 
 \begin{rem}\label{rem:eq-in-wlmc}
-The internal equivalences in $\wlmc$ are, by definition, those weak $\Lambda$-monoidal functors $F \colon M \to N$ for which there exists a weak $\Lambda$-monoidal functor $G \colon N \to M$ and invertible monoidal transformations $GF \cong 1_M$, $FG \cong 1_N$. By a generalization of the standard argument for plain monoidal functors\ngnote{can we put a ref here?}, a weak $\Lambda$-monoidal functor $F$ is an internal equivalence if and only if the underlying functor of $F$ is an equivalence of categories.
+The internal equivalences in $\wlmc$ are, by definition, those weak $\Lambda$-monoidal functors $F \colon M \to N$ for which there exists a weak $\Lambda$-monoidal functor $G \colon N \to M$ and invertible monoidal transformations $GF \cong 1_M$, $FG \cong 1_N$. By a generalization of the standard argument for plain monoidal functors\ngnote{can we put a ref here?}\acnote{I think this is one of those things that is not written down anywhere - best I can find is Remark 2.4.10 in "Tensor Categories", Etingof et al.}, a weak $\Lambda$-monoidal functor $F$ is an internal equivalence if and only if the underlying functor of $F$ is an equivalence of categories.
 \end{rem}
 
 
@@ -1814,7 +1814,7 @@ While satisfying in its brevity, one would expect \cref{cor:coherence-for-ulP} t
 
 \ngnoteil{I slightly rewrote this. It is better but not amazing.}
 
-This is the first of two sections to investigate the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in\ngnote{cite specific theorem} \cite{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and an example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian. We prove in \cref{cor:cart_cor,thm:cart_thm} that $P$ being 2-cartesian is equivalent to either free group actions, in the symmetric case, or a slight weakening of free group actions, in the general $\Lambda$-operad case.
+This is the first of two sections to investigate the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in \cite[Appendix C]{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and an example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian. We prove in \cref{cor:cart_cor,thm:cart_thm} that $P$ being 2-cartesian is equivalent to either free group actions, in the symmetric case, or a slight weakening of free group actions, in the general $\Lambda$-operad case.
 
 
 
@@ -2569,7 +2569,7 @@ which sends an object $(a, [p;b_1,\ldots,b_n])$ to the object $[p;(a,b_1),\ldots
 % QQQ (Check obviousness.)
 
 \begin{remark}[(Change of terminology: costrengths)]\label{rem:strength}
-In a minor change of terminology, what we refer to as a \emph{right} strength in \cref{Defi:strengths} is in \cite[Section 3.1]{HP} simply a strength, while our \emph{left} strength corresponds to a right strength\ngnote{costrength?}. We stress this difference to match more contemporary usage \cite[Definition 3.3]{mu-strong}, avoiding the confusion that a prefix of `co-' generally means a reversal of directions.
+In a minor change of terminology, what we refer to as a \emph{right} strength in \cref{Defi:strengths} is in \cite[Section 3.1]{HP} simply a strength, while our \emph{left} strength corresponds to a costrength. We stress this difference to match more contemporary usage \cite[Definition 3.3]{mu-strong}, avoiding the confusion that a prefix of `co-' generally means a reversal of directions.
 \end{remark}
 
 \begin{rem}\label{rem:strength-nonsym}

@@ -67,6 +67,47 @@
       \verb http://dx.doi.org/10.1017/CBO9780511600579
       \endverb
     \endentry
+    \entry{accg-actionclones}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=756df9b714c6e9734487cfaa34e2e2f6}{%
+           family={Aramayona},
+           familyi={A\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5ec8683fffdf055f80c91114ee14b54c}{%
+           family={Cantero},
+           familyi={C\bibinitperiod},
+           given={Federico},
+           giveni={F\bibinitperiod}}}%
+        {{hash=443b14df782289c9a27217ab5b32dfcd}{%
+           family={Carmona},
+           familyi={C\bibinitperiod},
+           given={Víctor},
+           giveni={V\bibinitperiod}}}%
+        {{hash=526ed392d22c3b150c334efadd613ce0}{%
+           family={Gutiérrez},
+           familyi={G\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{2b0243d6bf9bfa1405986ef0d3b1ef36}
+      \strng{fullhash}{2b0243d6bf9bfa1405986ef0d3b1ef36}
+      \strng{fullhashraw}{2b0243d6bf9bfa1405986ef0d3b1ef36}
+      \strng{bibnamehash}{2b0243d6bf9bfa1405986ef0d3b1ef36}
+      \strng{authorbibnamehash}{2b0243d6bf9bfa1405986ef0d3b1ef36}
+      \strng{authornamehash}{2b0243d6bf9bfa1405986ef0d3b1ef36}
+      \strng{authorfullhash}{2b0243d6bf9bfa1405986ef0d3b1ef36}
+      \strng{authorfullhashraw}{2b0243d6bf9bfa1405986ef0d3b1ef36}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Publicacions Matemàtiques}
+      \field{title}{Cloning systems and action operads}
+      \field{year}{2025}
+      \field{pages}{To appear}
+      \range{pages}{-1}
+    \endentry
     \entry{bat-eh}{article}{}{}
       \name{author}{1}{}{%
         {{hash=a5c8d06abc41f5510f042c78f80d4134}{%
@@ -319,7 +360,6 @@
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{math.CT}
       \field{eprinttype}{arXiv}
       \field{title}{Operads with general groups of equivariance, and some 2-categorical aspects of operads in Cat}
       \field{year}{2014}
@@ -375,9 +415,6 @@
            given={Matteo},
            giveni={M\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {arXiv}%
-      }
       \strng{namehash}{bb7acbfa58d5163fd3f0f9fb435410c5}
       \strng{fullhash}{bb7acbfa58d5163fd3f0f9fb435410c5}
       \strng{fullhashraw}{bb7acbfa58d5163fd3f0f9fb435410c5}
@@ -390,14 +427,17 @@
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{preprint, arXiv:2204.08188}
+      \field{eprinttype}{arXiv}
       \field{title}{Local wild mapping class groups and cabled braids}
       \field{year}{2025}
+      \verb{eprint}
+      \verb 2204.08188v3
+      \endverb
       \verb{urlraw}
-      \verb http://arxiv.org/abs/2204.08188
+      \verb https://arxiv.org/abs/2204.08188
       \endverb
       \verb{url}
-      \verb http://arxiv.org/abs/2204.08188
+      \verb https://arxiv.org/abs/2204.08188
       \endverb
     \endentry
     \entry{drin-quasihopf}{article}{}{}
@@ -783,46 +823,36 @@
       \verb http://dx.doi.org/10.1016/S0022-4049(02)00133-0
       \endverb
     \endentry
-    \entry{accg-actionclones}{article}{}{}
-      \name{author}{4}{}{%
-        {{hash=96b8d2c3ea6d1de49347d63121a6ed5f}{%
-           given={javier},
-           giveni={j\bibinitperiod},
-           prefix={aramayona\bibnamedelima javier},
-           prefixi={a\bibinitperiod\bibinitdelim j\bibinitperiod}}}%
-        {{hash=5ec8683fffdf055f80c91114ee14b54c}{%
-           family={Cantero},
-           familyi={C\bibinitperiod},
-           given={Federico},
-           giveni={F\bibinitperiod}}}%
-        {{hash=443b14df782289c9a27217ab5b32dfcd}{%
-           family={Carmona},
-           familyi={C\bibinitperiod},
-           given={Víctor},
-           giveni={V\bibinitperiod}}}%
-        {{hash=526ed392d22c3b150c334efadd613ce0}{%
-           family={Gutiérrez},
-           familyi={G\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod}}}%
+    \entry{jy-2dim}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=166fab741c534bea5af4f3ce208b01e2}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Niles},
+           giveni={N\bibinitperiod}}}%
+        {{hash=c272ee37f752428d2d26faea0c4d2f18}{%
+           family={Yau},
+           familyi={Y\bibinitperiod},
+           given={Donald},
+           giveni={D\bibinitperiod}}}%
       }
-      \strng{namehash}{31e8ba97f05a4df147c3e197edf3489f}
-      \strng{fullhash}{31e8ba97f05a4df147c3e197edf3489f}
-      \strng{fullhashraw}{31e8ba97f05a4df147c3e197edf3489f}
-      \strng{bibnamehash}{31e8ba97f05a4df147c3e197edf3489f}
-      \strng{authorbibnamehash}{31e8ba97f05a4df147c3e197edf3489f}
-      \strng{authornamehash}{31e8ba97f05a4df147c3e197edf3489f}
-      \strng{authorfullhash}{31e8ba97f05a4df147c3e197edf3489f}
-      \strng{authorfullhashraw}{31e8ba97f05a4df147c3e197edf3489f}
-      \field{sortinit}{j}
+      \list{publisher}{1}{%
+        {Oxford University Press (UK)}%
+      }
+      \strng{namehash}{d288920663cae2566206009cf2e79307}
+      \strng{fullhash}{d288920663cae2566206009cf2e79307}
+      \strng{fullhashraw}{d288920663cae2566206009cf2e79307}
+      \strng{bibnamehash}{d288920663cae2566206009cf2e79307}
+      \strng{authorbibnamehash}{d288920663cae2566206009cf2e79307}
+      \strng{authornamehash}{d288920663cae2566206009cf2e79307}
+      \strng{authorfullhash}{d288920663cae2566206009cf2e79307}
+      \strng{authorfullhashraw}{d288920663cae2566206009cf2e79307}
+      \field{sortinit}{J}
       \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Publicacions Matemàtiques}
-      \field{title}{Cloning systems and action operads}
-      \field{year}{2025}
-      \field{pages}{To appear}
-      \range{pages}{-1}
+      \field{title}{2-dimensional categories}
+      \field{year}{2021}
     \endentry
     \entry{js}{article}{}{}
       \name{author}{2}{}{%
@@ -926,45 +956,6 @@
       \field{pages}{vi+137}
       \range{pages}{-1}
     \endentry
-    \entry{kelly-elem}{article}{}{}
-      \name{author}{1}{}{%
-        {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
-           family={Kelly},
-           familyi={K\bibinitperiod},
-           given={G.\bibnamedelimi M.},
-           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-      }
-      \strng{namehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \strng{fullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \strng{fullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \strng{bibnamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \strng{authorbibnamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{3}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{0004-9727}
-      \field{journaltitle}{Bull. Austral. Math. Soc.}
-      \field{number}{2}
-      \field{title}{Elementary observations on {$2$}-categorical limits}
-      \field{volume}{39}
-      \field{year}{1989}
-      \field{pages}{301\bibrangedash 317}
-      \range{pages}{17}
-      \verb{doi}
-      \verb 10.1017/S0004972700002781
-      \endverb
-      \verb{urlraw}
-      \verb http://dx.doi.org/10.1017/S0004972700002781
-      \endverb
-      \verb{url}
-      \verb http://dx.doi.org/10.1017/S0004972700002781
-      \endverb
-    \endentry
     \entry{kelly_club0}{incollection}{}{}
       \name{author}{1}{}{%
         {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
@@ -984,7 +975,7 @@
       \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{4}
+      \field{extraname}{3}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -1014,7 +1005,7 @@
       \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{5}
+      \field{extraname}{4}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -1041,7 +1032,7 @@
       \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhashraw}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{6}
+      \field{extraname}{5}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -1053,6 +1044,43 @@
       \field{year}{2005}
       \field{pages}{1\bibrangedash 13}
       \range{pages}{13}
+    \endentry
+    \entry{KS}{incollection}{}{}
+      \name{author}{2}{}{%
+        {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
+           family={Kelly},
+           familyi={K\bibinitperiod},
+           given={G.\bibnamedelimi M.},
+           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=faea870f61e1c45828077d18a31465d2}{%
+           family={Street},
+           familyi={S\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{433edeb3657a0cacba8421f4923c7f23}
+      \strng{fullhash}{433edeb3657a0cacba8421f4923c7f23}
+      \strng{fullhashraw}{433edeb3657a0cacba8421f4923c7f23}
+      \strng{bibnamehash}{433edeb3657a0cacba8421f4923c7f23}
+      \strng{authorbibnamehash}{433edeb3657a0cacba8421f4923c7f23}
+      \strng{authornamehash}{433edeb3657a0cacba8421f4923c7f23}
+      \strng{authorfullhash}{433edeb3657a0cacba8421f4923c7f23}
+      \strng{authorfullhashraw}{433edeb3657a0cacba8421f4923c7f23}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Category {S}eminar ({P}roc. {S}em., {S}ydney, 1972/1973)}
+      \field{title}{Review of the elements of {$2$}-categories}
+      \field{year}{1974}
+      \field{pages}{75\bibrangedash 103. Lecture Notes in Math.\bibrangessep Vol. 420}
+      \range{pages}{-1}
     \endentry
     \entry{kock-closed}{article}{}{}
       \name{author}{1}{}{%
@@ -1968,7 +1996,7 @@
       \verb https://www.worldscientific.com/worldscibooks/10.1142/12687
       \endverb
     \endentry
-    \entry{yoshida2018group}{article}{}{}
+    \entry{yoshida2018group}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=d3ed1ef4eddb42f3c8d458601dbca810}{%
            family={Yoshida},
@@ -1988,9 +2016,18 @@
       \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:1806.03012}
+      \field{eprinttype}{arXiv}
       \field{title}{Group operads as crossed interval groups}
-      \field{year}{2018}
+      \field{year}{2014}
+      \verb{eprint}
+      \verb 1806.03012
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1806.03012
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1806.03012
+      \endverb
     \endentry
     \entry{zaremsky2017user}{inproceedings}{}{}
       \name{author}{1}{}{%
@@ -2039,9 +2076,18 @@
       \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{preprint, arXiv:1111.7090v2}
+      \field{eprinttype}{arXiv}
       \field{title}{Group operads and homotopy theory}
       \field{year}{2012}
+      \verb{eprint}
+      \verb 1111.7090v2
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1111.7090v2
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1111.7090v2
+      \endverb
     \endentry
   \enddatalist
   \missing{cg}
