@@ -115,6 +115,11 @@ where the equality labeled $c$ is a consequence of $F$ coequalizing $\mu, \pi_2$
 %This is also unique and so we find that $(A \times B)/G$ satisfies the universal property of the coequalizer.
 \end{proof}
 
+\begin{rem}[(Free versus non-free actions)]\label{rem:obj-coeq}
+\ngmpar{not entirely sure what I want to say here, or if this is enough}
+We note that if the action of $G$ on $C$ is not free, then the description of the set of objects of the coequalizer of $\mu$ and $\pi_2$ is still the set of orbits of $G$ acting on the objects of $C$ because the set of objects functor is a left adjoint.
+\end{rem}
+
 \begin{Defi}[(2-limits)]\label{Defi:2limit}
 \ngnoteil{put in definition here}
 \acnoteil{I put in the really spelled-out version, hopefully correctly}
@@ -2991,8 +2996,8 @@ Let $P$ be a $\Lambda$-operad in $\mb{Cat}$ equipped with a pseudo-commutative s
 % \end{thm}
 
 \begin{proof}
-\ngnoteil{go through details again}
-We refer to the Axioms in \cref{def:ps-comm_operad} throughout. We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$. Such a transformation $\gamma_{A,B}$ has components with source
+We refer to the Axioms in \cref{def:ps-comm_operad} throughout. We begin the proof by defining an invertible modification $\gamma$ for the pseudo-commutativity for which the components are natural transformations $\gamma_{A,B}$. Let $[p;a_1,\ldots,a_n]$ be an object of $\coeq{P}{A}{\Lambda}{n}$ and $[q;b_1,\ldots,b_m]$ be an object of $\coeq{P}{B}{\Lambda}{m}$.
+The required transformation $\gamma_{A,B}$ has a component at the pair $\big([p;a_1,\ldots,a_n], [q;b_1,\ldots,b_m] \big)$ with source
   \[
     \left[\mu\left(p; \underline{q}\right); \underline{(a, \underline{b})}\right]
   \]
@@ -3006,8 +3011,13 @@ Now $ \lambda_{p,q} \colon \mu(p;q,\ldots,q) \cdot t_{m,n} \cong \mu(q;p,\ldots,
   \]
 so we define $(\gamma_{A,B})_{[p;a_1,\ldots,a_n],[q;b_1,\ldots,b_m]}$ to be the morphism which is the image of $(\lambda_{p,q}\cdot t_{m,n}^{-1}, 1)$ under the map
   \[
-    \coprod P(n) \times (A \times B)^{n} \rightarrow \coprod \coeq{P}{A \times B}{\Lambda}{n}.
+   P(nm) \times (A \times B)^{nm} \rightarrow  \coeq{P}{(A \times B)}{\Lambda}{nm}.
   \]
+  \ngnoteil{start here}
+  \ngnoteil{the point of the GMMO Axiom ii in 11.1 is to ensure that this is well-defined on equivalence classes of object}
+  
+  Do I need \cref{rem:obj-coeq}?
+  
 Naturality of $\gamma_{A,B}$ follows from that of each $\lambda_{p,q}$. We will write this morphism as $[\lambda_{p,q}t_{m,n}^{-1}, 1]$. In the case that either $p$ or $q$ is an identity then we choose the component of $\gamma$ to be the isomorphism involving the appropriate identity element using Axiom \eqref{axiom:t_id} above.
 
 There are two things to note about the definition above before we continue. First, it is easy to check that
