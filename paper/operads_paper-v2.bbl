@@ -853,34 +853,6 @@
       \verb http://dx.doi.org/10.1006/aima.1993.1055
       \endverb
     \endentry
-    \entry{kelly-doc}{inproceedings}{}
-      \name{author}{1}{}{%
-        {{hash=3b0121398b442ccbf23b357f19f3ebf9}{%
-           family={Kelly},
-           familyi={K\bibinitperiod},
-           given={G\bibnamedelima Max},
-           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-      }
-      \list{organization}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{3b0121398b442ccbf23b357f19f3ebf9}
-      \strng{fullhash}{3b0121398b442ccbf23b357f19f3ebf9}
-      \strng{bibnamehash}{3b0121398b442ccbf23b357f19f3ebf9}
-      \strng{authorbibnamehash}{3b0121398b442ccbf23b357f19f3ebf9}
-      \strng{authornamehash}{3b0121398b442ccbf23b357f19f3ebf9}
-      \strng{authorfullhash}{3b0121398b442ccbf23b357f19f3ebf9}
-      \field{extraname}{1}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Category Seminar: Proceedings Sydney Category Theory Seminar 1972/1973}
-      \field{title}{Doctrinal adjunction}
-      \field{year}{2006}
-      \field{pages}{257\bibrangedash 280}
-      \range{pages}{24}
-    \endentry
     \entry{kelly_club1}{incollection}{}
       \name{author}{1}{}{%
         {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
@@ -890,7 +862,7 @@
            giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Springer, Berlin}%
+        {Springer Berlin}%
       }
       \strng{namehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{fullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
@@ -898,7 +870,7 @@
       \strng{authorbibnamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{2}
+      \field{extraname}{1}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -923,7 +895,7 @@
       \strng{authorbibnamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
-      \field{extraname}{3}
+      \field{extraname}{2}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -936,6 +908,34 @@
       \field{pages}{vi+137}
       \range{pages}{-1}
     \endentry
+    \entry{kelly-doc}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
+           family={Kelly},
+           familyi={K\bibinitperiod},
+           given={G.\bibnamedelimi M.},
+           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin}%
+      }
+      \strng{namehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{fullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{bibnamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{authorbibnamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{authornamehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \strng{authorfullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
+      \field{extraname}{3}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Category {S}eminar ({P}roc. {S}em., {S}ydney, 1972/1973)}
+      \field{title}{Doctrinal adjunction}
+      \field{year}{1974}
+      \field{pages}{257\bibrangedash 280. Lecture Notes in Math.\bibrangessep Vol. 420}
+      \range{pages}{-1}
+    \endentry
     \entry{kelly_club0}{incollection}{}
       \name{author}{1}{}{%
         {{hash=fac02deffedd4dbcbb6d46f097ca9c7d}{%
@@ -945,7 +945,7 @@
            giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Springer, Berlin}%
+        {Springer Berlin}%
       }
       \strng{namehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{fullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
@@ -973,7 +973,7 @@
            giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Springer, Berlin}%
+        {Springer Berlin}%
       }
       \strng{namehash}{fac02deffedd4dbcbb6d46f097ca9c7d}
       \strng{fullhash}{fac02deffedd4dbcbb6d46f097ca9c7d}
@@ -1032,11 +1032,8 @@
            given={Ross},
            giveni={R\bibinitperiod}}}%
       }
-      \list{location}{1}{%
-        {Berlin}%
-      }
       \list{publisher}{1}{%
-        {Springer}%
+        {Springer Berlin}%
       }
       \strng{namehash}{433edeb3657a0cacba8421f4923c7f23}
       \strng{fullhash}{433edeb3657a0cacba8421f4923c7f23}
@@ -1540,11 +1537,8 @@
            given={J.\bibnamedelimi P.},
            giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
       }
-      \list{location}{1}{%
-        {Berlin}%
-      }
       \list{publisher}{1}{%
-        {Springer-Verlag}%
+        {Springer Berlin}%
       }
       \strng{namehash}{11149a42a90779df0bd6b6539568f5ed}
       \strng{fullhash}{11149a42a90779df0bd6b6539568f5ed}
