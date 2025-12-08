@@ -117,7 +117,7 @@ where the equality labeled $c$ is a consequence of $F$ coequalizing $\mu, \pi_2$
 
 \begin{rem}[(Free versus non-free actions)]\label{rem:obj-coeq}
 \ngmpar{not entirely sure what I want to say here, or if this is enough}
-We note that if the action of $G$ on $C$ is not free, then the description of the set of objects of the coequalizer of $\mu$ and $\pi_2$ is still the set of orbits of $G$ acting on the objects of $C$ because the set of objects functor is a left adjoint.
+We note that if the action of $G$ on $C$ is not free, then the description of the set of objects of the coequalizer of $\mu$ and $\pi_2$ is still the set of orbits of $G$ acting on the objects of $C$ because the set of objects functor is a left adjoint. In particular, if $P$ is a $\Lambda$-operad and the action of $\Lambda(n)$ on $P(n)$ is not free, then the set of  objects of $\coeq{P}{A}{\Lambda}{n}$ is given by quotienting that set $\textrm{ob}P(n) \times \textrm{ob}A^n$ by the action of $\Lambda(n)$.
 \end{rem}
 
 \begin{Defi}[(2-limits)]\label{Defi:2limit}
@@ -2713,6 +2713,10 @@ Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, 
 The notation $(a, \underline{b})$ is meant to indicate that there is a single $a$ but a list of $b$'s, so then $\underline{(a, \underline{b})}$ would represent a list which itself consists of lists of that form. 
 \end{rem}
 
+\begin{nota}[(Constant lists)]\label{nota:constant-list}
+When $x$ is a single element, and $n$ is a given natural number, we write $\underline{x}$ for the list $x, x, \ldots, x$ of length $n$.
+\end{nota}
+
 \begin{Defi}[(The transposition permutation, $\tau$)]\label{Defi:tau}
 Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two ordered finite lists. 
 The permutation $\tau_{m,n} \in \Sigma_{mn}$ is defined uniquely by the property that $\tau_{m,n}(i) = j$ if the $i$th element of the ordered set $\underline{(a, \underline{b})}$ is equal to the $j$th element of the ordered set $\underline{(\underline{a}, b)}$.
@@ -2745,9 +2749,12 @@ We illustrate these permutations with a couple of examples.
 We make the following elementary remarks about the transposition permutations $\tau_{m,n}$.
 \begin{itemize}
 \item By construction, we have $\tau_{m,n} = \tau_{n,m}^{-1}$.  
-\item We call these transposition permutations as $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$. 
-\item The permutation $\tau_{m,n}$ has the effect of rearranging $m$ groups of $n$ things into $n$ groups of $m$ things.
-\item \ngnoteil{include the tensor product commutativity relation from GMMO in its action operadic incarnation}
+\item We call these transposition permutations as $\tau_{m,n}$ is the permutation given by taking the transpose of the $m \times n$ matrix with entries $(a_{i}, b_{j})$, where the entries are ordered lexicographically. In other words, the permutation $\tau_{m,n}$ has the effect of rearranging $m$ groups of $n$ things into $n$ groups of $m$ things.
+\item The transposition permutations $\tau_{m,n}$ satisfy an additional naturality-type relation. For $\alpha \in \Sigma_n$ and $\beta \in \Sigma_m$, we have the equality
+\[
+\mu(\alpha; \underline{\beta}) \tau_{m,n} = \tau_{m,n} \mu(\beta; \underline{\alpha}).
+\]
+This equation is 3.9 in \cite{guillou_multiplicative}\ngnote{check this is the multiplicative equivariant one}.
 \end{itemize}
 \end{rem}
 %   \[
@@ -2779,7 +2786,7 @@ Let $\mathbb{N}_{+}$ denote the set of positive integers.
 Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. A \emph{pseudo-commutative structure} on $P$ consists of the following data.
 \ngnoteil{From before: Rewrite all this using the beta and delta operations, so it's consistent with before. This seems to be partially done, but need to recheck details}
     \begin{itemize}
-        \item For each pair $(m,n) \in \mathbb{N}_{+}^2$, an element $t_{m,n} \in \Lambda(mn)$ such that $\pi(t_{m,n}) = \tau_{m,n}$.
+        \item For each pair $(m,n) \in \mathbb{N}_{+}^2$, an element $t_{m,n} \in \Lambda(mn)$ such that  $\pi(t_{m,n}) = \tau_{m,n}$.     
         \item For each object $p \in P(n)$ and object $q \in P(m)$, a natural isomorphism
             \[
                 \lambda_{p,q} \colon \mu(p;q,\ldots,q) \cdot t_{m,n} \cong \mu(q;p,\ldots,p).
@@ -2797,10 +2804,9 @@ Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. A \emph{pseudo-commutative structur
       {\ar_{\lambda_{p',q'}} "01" ; "11"};
     \endxy
   \]
-            
-            We write this as $\lambda_{p,q}\colon \mu(p; \underline{q}) \cdot t_{m,n} \cong \mu(q; \underline{p})$.
+Using \cref{nota:constant-list}, we write this as $\lambda_{p,q}\colon \mu(p; \underline{q}) \cdot t_{m,n} \cong \mu(q; \underline{p})$.
     \end{itemize}
-These data are required to satisfy the following axioms:  
+These data are required to satisfy the following axioms.  
     \begin{enumerate}
         \item\label{axiom:t_id} For all $m,n \in \mathbb{N}_+$,
             \[
@@ -2808,6 +2814,16 @@ These data are required to satisfy the following axioms:
             \]
              For all $p \in P(n)$, the isomorphism $\lambda_{p, \id}\colon p \cdot t_{1,n} \cong p$ is the identity map.
              For all $q \in P(m)$, the isomorphism $\lambda_{\id, q}\colon q \cdot t_{m,1} \cong q$ is the identity map.
+             \item\label{axiom:t_nat} For all $g \in \Lambda(n)$ and $h \in \Lambda(m)$, the equality
+        \[
+        \mu^{\Lambda}(g; \underline{h}) t_{m,n} = t_{m,n} \mu^{\Lambda}(h; \underline{g})
+        \]
+        holds in $\Lambda(mn)$.
+        \item\label{axiom:t_equiv} For all $p \in P(n)$, $g \in \Lambda(n)$, $q \in P(m)$, and $h \in \Lambda(m)$, the equality of morphisms
+        \[
+        \lambda_{p,q} \cdot \mu^{\Lambda}(h; \underline{g}) = \lambda_{p\cdot g, q \cdot h}
+        \]
+        holds. The source of the left morphism is $\mu(p; \underline{q}) \cdot t_{m,n} \cdot \mu^{\Lambda}(h; \underline{g})$ and the source of the right morphism is $\mu(p \cdot g; \underline{q \cdot h}) \cdot t_{m,n}$, and these are equal by Axiom \eqref{axiom:t_nat} and the $\Lambda$-operad axioms; the target of the left morphism is $\mu(q; \underline{p}) \cdot \mu^{\Lambda}(h; \underline{g})$ and the target of the right morphism is $\mu(q \cdot h; \underline{p \cdot g})$, and these are equal by the $\Lambda$-operad axioms.
         % \item\label{axiom:t_equiv} QQQ Equivariance axiom - we decided this was just naturality in the end! (See Remark 11.2 in \cite{guillou_multiplicative}.) QQQ It's basically `compose, act, switch' is the same as `compose, switch, act', but can't actually see where it's used in the proof:
         %   \[
         %     \lambda_{p \cdot g, q \cdot h} \circ \mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
@@ -2826,7 +2842,7 @@ These data are required to satisfy the following axioms:
         %       {\ar_{\lambda_{p \cdot g, q \cdot h}} "c" ; "d"};
         %     \endxy
         %   \]
-        \item\label{axiom:t_sumR} For all $l, m_1, \ldots, m_l, n \in \mathbb{N}_+$, with $M = \Sigma m_i$,
+        \item\label{axiom:t_sumR} For all $l, m_1, \ldots, m_l, n \in \mathbb{N}_+$, with $M = \sum m_i$,
 %            \[
 %                \mu^{\Lambda}\left(e_l; t_{m_1,n}, \ldots, t_{m_l,n}\right) \cdot \mu^{\Lambda}\left(t_{l,n};\underline{e_{m_1},\ldots,e_{m_l}}\right) = t_{n,M}.
 %            \]
@@ -2835,7 +2851,7 @@ These data are required to satisfy the following axioms:
               \beta(t_{n,m_1},\ldots,t_{n,m_l}) \cdot \delta_{M,\ldots,M}(t_{n,l}) = t_{n,M}.
             \]
 %            Here $\underline{e_{m_1},\ldots,e_{m_l}}$ is the list $e_{m_{1}}, \ldots, e_{m_{l}}$ repeated $n$ times.
-        \item\label{axiom:t_sumL} For all $l, m, n_1,\ldots, n_m \in \mathbb{N}_+$, with $N = \Sigma n_i$,
+        \item\label{axiom:t_sumL} For all $l, m, n_1,\ldots, n_m \in \mathbb{N}_+$, with $N = \sum n_i$,
 %            \[
 %                \mu^{\Lambda}\left(t_{m,l};\underline{e_{n_1}},\ldots,\underline{e_{n_m}}\right) \cdot \mu^{\Lambda}\left(e_m;t_{n_1,l},\ldots,t_{n_m,l}\right) = t_{N,l}.
 %            \]
@@ -2893,28 +2909,28 @@ These data are required to satisfy the following axioms:
     \end{enumerate}
 \end{Defi}
 
-\ngnoteil{start here, now I think this remark is wrong}
-
-\begin{remark}
-Remark 11.2 of \cite{guillou_multiplicative} describes the need for an extra equivariance axiom in the pseudo-commutative structure definition, some detail of which is also described in \cite{guillou_symmetric}. We also believed this to be true until a realisation that the equivariance axiom of \cite[Axiom (iii) of 11.1]{guillou_multiplicative} becomes the following requirement:
-          \[
-            \lambda_{p \cdot g, q \cdot h} \circ \left(\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
-          \]
-On closer inspection, this equation is an instance of naturality for $\lambda$, as shown in the naturality square below.\ngmpar{What are the morphisms $p \to p \cdot g$ that this is naturality wrt? Probably the unique $e \to g$ acting on $p$, but we should explain.}\ngmpar{We have an action of $\Lambda(n)$ on $P(n)$, not an action of $E\Lambda(n)$, so I don't think there is a morphism $e \to g$. Now I need to go read the Guillou paper again}
-          \[
-            \xy
-              (-20,10)*+{\mu^P\left(p;\underline{q}\right) \cdot t_{m,n}}="a";
-              (20,10)*+{\mu^P\left(q;\underline{p}\right)}="b";
-              (-20,-10)*+{\mu^P\left(p \cdot g; \underline{q \cdot h}\right) \cdot t_{m,n}}="c";
-              (20,-10)*+{\mu^P\left(q \cdot h; \underline{p \cdot g}\right)}="d";
-              %
-              {\ar^{\lambda_{p,q}} "a" ; "b"};
-              {\ar^{\mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right)} "b" ; "d"};
-              {\ar_{\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}} "a" ; "c"};
-              {\ar_{\lambda_{p \cdot g, q \cdot h}} "c" ; "d"};
-            \endxy
-          \]
-\end{remark}
+%\ngnoteil{start here, now I think this remark is wrong}
+%
+%\begin{remark}
+%Remark 11.2 of \cite{guillou_multiplicative} describes the need for an extra equivariance axiom in the pseudo-commutative structure definition, some detail of which is also described in \cite{guillou_symmetric}. We also believed this to be true until a realisation that the equivariance axiom of \cite[Axiom (iii) of 11.1]{guillou_multiplicative} becomes the following requirement:
+%          \[
+%            \lambda_{p \cdot g, q \cdot h} \circ \left(\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}\right) = \mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right) \circ \lambda_{p,q}.
+%          \]
+%On closer inspection, this equation is an instance of naturality for $\lambda$, as shown in the naturality square below.\ngmpar{What are the morphisms $p \to p \cdot g$ that this is naturality wrt? Probably the unique $e \to g$ acting on $p$, but we should explain.}\ngmpar{We have an action of $\Lambda(n)$ on $P(n)$, not an action of $E\Lambda(n)$, so I don't think there is a morphism $e \to g$. Now I need to go read the Guillou paper again}
+%          \[
+%            \xy
+%              (-20,10)*+{\mu^P\left(p;\underline{q}\right) \cdot t_{m,n}}="a";
+%              (20,10)*+{\mu^P\left(q;\underline{p}\right)}="b";
+%              (-20,-10)*+{\mu^P\left(p \cdot g; \underline{q \cdot h}\right) \cdot t_{m,n}}="c";
+%              (20,-10)*+{\mu^P\left(q \cdot h; \underline{p \cdot g}\right)}="d";
+%              %
+%              {\ar^{\lambda_{p,q}} "a" ; "b"};
+%              {\ar^{\mu^P\left(\id_q \cdot h; \underline{\id_p \cdot g}\right)} "b" ; "d"};
+%              {\ar_{\mu^P\left(\id_p \cdot g; \underline{\id_q \cdot h}\right) \cdot t_{m,n}} "a" ; "c"};
+%              {\ar_{\lambda_{p \cdot g, q \cdot h}} "c" ; "d"};
+%            \endxy
+%          \]
+%\end{remark}
 
 \begin{thm}\label{thm:pscomm}
 Let $P$ be a $\Lambda$-operad in $\mb{Cat}$ equipped with a pseudo-commutative structure. Then $\underline{P}$ has a pseudo-commutativity.
@@ -3014,18 +3030,39 @@ so we define $(\gamma_{A,B})_{[p;a_1,\ldots,a_n],[q;b_1,\ldots,b_m]}$ to be the 
   \[
    P(nm) \times (A \times B)^{nm} \rightarrow  \coeq{P}{(A \times B)}{\Lambda}{nm}.
   \]
-  \ngnoteil{start here}
-  \ngnoteil{the point of the GMMO Axiom ii in 11.1 is to ensure that this is well-defined on equivalence classes of object}
+  We will write this morphism as $[\lambda_{p,q}t_{m,n}^{-1}, 1]$.
   
-  Do I need \cref{rem:obj-coeq}?
-  
-Naturality of $\gamma_{A,B}$ follows from that of each $\lambda_{p,q}$. We will write this morphism as $[\lambda_{p,q}t_{m,n}^{-1}, 1]$. In the case that either $p$ or $q$ is an identity then we choose the component of $\gamma$ to be the isomorphism involving the appropriate identity element using Axiom \eqref{axiom:t_id} above.
+We must first verify that $[\lambda_{p,q}t_{m,n}^{-1}, 1]$ is well-defined. Let $g \in \Lambda(n)$ and $h \in \Lambda(m)$, and consider the objects $[p \cdot g; \underline{a}] = [p; g \cdot \underline{a}]$ in $\coeq{P}{A}{\Lambda}{n}$ and $[q \cdot h; \underline{b}] = [q; h \cdot \underline{b}]$ in $\coeq{P}{B}{\Lambda}{m}$ (see \cref{rem:obj-coeq}). We will verify that the morphisms
+\[
+[\lambda_{p \cdot g, q \cdot h} \cdot t_{m,n}^{-1}, 1] \colon   \left[\mu\left(p \cdot g; \underline{q \cdot h}\right); \underline{(a, \underline{b})}\right] \to  \left[\mu\left(q \cdot h; \underline{p \cdot g}\right); \underline{(\underline{a},b)}\right]
+\]
+and
+\[
+[\lambda_{p, q} \cdot t_{m,n}^{-1}, 1] \colon   \left[\mu\left(p; \underline{q}\right); g \cdot \underline{(a, h \cdot \underline{ b})}\right] \to  \left[\mu\left(q; \underline{p}\right); h \cdot \underline{(g \cdot \underline{a},b)}\right]
+\]
+are equal.
+It is a straightforward calculation to show that these have the same source and target, using Axiom \eqref{axiom:t_nat}. By Axiom \eqref{axiom:t_equiv} followed by Axiom \eqref{axiom:t_nat}, we obtain
+\begin{align*}
+\lambda_{p \cdot g, q \cdot h} \cdot t_{m,n}^{-1} & = \lambda_{p,q} \cdot \mu^{\Lambda}(h; \underline{g}) \cdot t_{m,n}^{-1} \\
+& = \lambda_{p,q} \cdot t_{m,n}^{-1} \cdot \mu^{\Lambda}(g; \underline{h}).
+\end{align*}
+Thus we conclude that the morphism $[\lambda_{p \cdot g, q \cdot h} \cdot t_{m,n}^{-1}, 1]$ above is equal to $
+[\lambda_{p,q} \cdot t_{m,n}^{-1} \cdot \mu^{\Lambda}(g; \underline{h}), 1]$, and using the equality $[f \cdot \sigma, g] = [f, \sigma \cdot g]$ in $\coeq{P}{(A \times B)}{\Lambda}{nm}$ it is therefore equal to
+\begin{align*}
+%[\lambda_{p,q} \cdot t_{m,n}^{-1}, 1] \colon 
+\left[\mu\left(p; \underline{q}\right); \mu^{\Lambda}(g; \underline{h}) \cdot \underline{(a, \underline{b})}\right] & \stackrel{[\lambda_{p,q} \cdot t_{m,n}^{-1}, 1]}{\longrightarrow}  \left[\mu\left(q; \underline{p}\right) \cdot t_{m,n}^{-1}; \mu^{\Lambda}(g; \underline{h})\cdot \underline{(\underline{a},b)}\right] \\
+& = \left[\mu\left(q; \underline{p}\right); t_{m,n}^{-1} \cdot \mu^{\Lambda}(g; \underline{h})\cdot \underline{(\underline{a},b)}\right] \\
+& =\left[\mu\left(q; \underline{p}\right); \mu^{\Lambda}(h; \underline{g})\cdot \underline{(a,\underline{b})}\right].
+\end{align*}
+The reader can verify that the sources and targets in this calculation match those of $[\lambda_{p, q} \cdot t_{m,n}^{-1}, 1]$, proving the desired equality. Thus the components of $\gamma_{A,B}$ are well-defined.
+Naturality of the components of $\gamma_{A,B}$ in the objects $[p;a_1,\ldots,a_n],[q;b_1,\ldots,b_m]$ follows from that of each $\lambda_{p,q}$.  
+%In the case that either $p$ or $q$ is an identity then we choose the component of $\gamma$ to be the isomorphism involving the appropriate identity element using Axiom \eqref{axiom:t_id} above.
 
-There are two things to note about the definition above before we continue. First, it is easy to check that
-  \[
-    t_{m,n}^{-1} \cdot \underline{\left(a, \underline{b}\right)} = \underline{\left(\underline{a},b\right)}
-  \]
-since $\pi(t_{m,n}) = \tau_{m,n}$; this ensures that $\gamma$ has the correct target. Second, the morphism above has second component the identity. This is actually forced upon us by the requirement that $\gamma$ be a modification:  in the case that $A,B$ are discrete categories, the only possible morphism is an identity, and the modification axiom then forces that statement to be true for general $A,B$ by considering the inclusion $A_{0} \times B_{0} \hookrightarrow A \times B$ where $A_{0}, B_{0}$ are the discrete categories with the same objects as $A, B$.
+%There are two things to note about the definition above before we continue. First, it is easy to check that
+%  \[
+%    t_{m,n}^{-1} \cdot \underline{\left(a, \underline{b}\right)} = \underline{\left(\underline{a},b\right)}
+%  \]
+%since $\pi(t_{m,n}) = \tau_{m,n}$; this ensures that $\gamma$ has the correct target. Second, the morphism above has second component the identity. This is actually forced upon us by the requirement that $\gamma$ be a modification:  in the case that $A,B$ are discrete categories, the only possible morphism is an identity, and the modification axiom then forces that statement to be true for general $A,B$ by considering the inclusion $A_{0} \times B_{0} \hookrightarrow A \times B$ where $A_{0}, B_{0}$ are the discrete categories with the same objects as $A, B$.
 
 We show that this is a modification by noting that it does not rely on objects in the lists $a_1, \ldots, a_n$ or $b_1, \ldots, b_m$, only on their lengths and the operations $p$ and $q$. As a result, if there are functors $f \colon A \rightarrow A'$ and $g \colon B \rightarrow B'$, then it is clear that
     \[
@@ -3057,9 +3094,9 @@ It is straightforward to compute that each of these maps is the image of $\left(
   \]
 The other two strength axioms follow by analogous calculations for other whiskerings of $\gamma$ with $d$ or $d^{*}$.
 
-For the unit axioms, we must compute the components of $\gamma$ precomposed with $\eta \times 1$ for the first axiom and $1 \times \eta$ for the second. Thus for the first unit axiom, we must compute the component of $\gamma$ at $\left( [e;a], [p; b_{1}, \ldots, b_{m}] \right)$. By definition, this is the image of $(\lambda_{e,p}\cdot t^{-1}_{m,1}, 1)$ under the map to the coequalizer, and by Axiom \eqref{axiom:t_id} of \ref{def:ps-comm_operad} know that $t^{-1}_{m,1}$ is the identity element and this isomorphism is the identity as well, so this component of $\gamma$ is also the identity. The second unit axiom follows similarly, using that $t^{-1}_{1,n}$ is the identity.
+For the unit axioms, we must compute the components of $\gamma$ precomposed with $\eta \times 1$ for the first axiom and $1 \times \eta$ for the second. Thus for the first unit axiom, we must compute the component of $\gamma$ at $\left( [\id;a], [q; b_{1}, \ldots, b_{m}] \right)$. By definition, this is the image of $(\lambda_{\id,q}\cdot t^{-1}_{m,1}, 1)$, and by Axiom \eqref{axiom:t_id} of \ref{def:ps-comm_operad} this is the identity. The second unit axiom follows similarly, using that $\lambda_{p, \id}$ and $t^{-1}_{1,n}$ are both the identity.
 
-For the multiplication axioms, first note that Axiom \eqref{axiom:t_sumR} is necessary in order to ensure the existence of the top horizontal equality in the diagram of Axiom \eqref{axiom:t_diagR} for the pseudo-commutative structure; the same goes for Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL}. We now explain how Axioms \ref{axiom:t_sumR} and \ref{axiom:t_diagR} for the pseudo-commutative structure ensure that the first multiplication axiom holds, with the same reasoning showing that Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL} imply the second multiplication axiom.
+For the multiplication axioms, first note that Axiom \eqref{axiom:t_sumR} is necessary in order to ensure the existence of the top horizontal equality in the diagram of Axiom \eqref{axiom:t_diagR} for the pseudo-commutative structure; the same goes for Axioms \eqref{axiom:t_sumL} and \eqref{axiom:t_diagL}. We now explain how Axioms \eqref{axiom:t_sumR} and \eqref{axiom:t_diagR} for the pseudo-commutative structure ensure that the first multiplication axiom holds, with the same reasoning showing that Axioms \eqref{axiom:t_sumL} and \eqref{axiom:t_diagL} imply the second multiplication axiom.
 
 We begin by studying the pasting diagram in the first multiplication axiom, but computing its values using the strengths for the non-symmetric operad underlying $P$; this means that we evaluate on objects of the form $(p; a_{1}, \ldots, a_{n})$ rather than on their equivalence classes. Let $p \in P(l), q_{i} \in P(m_{i})$ for $1 \leq i \leq l$, and $r \in P(n)$. Computing the top and right leg around the pasting diagram gives the function on objects which sends
   \[
@@ -3104,7 +3141,7 @@ Next we compute the source of $(\mu \circ Td^{*})*\gamma$, the other $2$-cell in
     \endxy
   \]
 
-We cannot compose these morphisms in $\coprod P(n) \times (A \times B)^{n}$ as they do not have matching source and target, but we can in $\coprod P(n) \times_{\Lambda} (A \times B)^{n}$. The resulting morphism has first component given by the image of
+We cannot compose these morphisms in $\coprod P(n) \times (A \times B)^{n}$ as they do not have matching source and target, but we can in $\coprod P(n) \otimes_{\Lambda} (A \times B)^{n}$. The resulting morphism has first component given by the image of
   \[
     \xy
       {\ar^{\scriptstyle \mu\left(1; \lambda_{q_{1}, r} t^{-1}_{n,m_{1}}, \ldots, \lambda_{q_{1}, r} t^{-1}_{n,m_{l}}\right)} (0,0)*+{\scriptstyle \mu\left(p; \mu\left(q_{1}; \un{r}\right), \ldots, \mu\left(q_{n}; \un{r}\right)\right)}; (75,0)*+{\scriptstyle \mu\left(p; \mu\left(r; \un{q_{1}}\right) t^{-1}_{n,m_{1}}, \ldots, \mu\left(r; \un{q_{l}}\right) t^{-1}_{n,m_{l}} \right)} };
@@ -3119,14 +3156,13 @@ is equal to
   \[
     \mu\left(\mu(r; \un{p}); \un{q_{1}, \ldots, q_{l}}\right) \cdot \mu(t^{-1}_{n,l}; \un{e}) \cdot \mu(e_{l}; t^{-1}_{n,m_{1}}, \ldots, t^{-1}_{n,m_{l}}).
   \]
-This composite of two morphisms, together with the necessary identities coming from operad axioms, is precisely the left and bottom leg of the diagram in Axiom \eqref{axiom:t_diagR}. Using the same method, one then verifies that $\gamma * (\mu \times 1)$ has its first component the image of the morphism appearing along the top and right leg of the diagram in \ref{axiom:t_diagR}. The second component of these morphisms are all identities arising from $\Lambda$-equivariance, so the first multiplication axiom is a consequence of Axioms \ref{axiom:t_sumR} and \ref{axiom:t_diagR} for the pseudo-commutative structure. We leave the calculations for the second multiplication axiom to the reader as they are of the same nature, using Axioms \ref{axiom:t_sumL} and \ref{axiom:t_diagL}.
+This composite of two morphisms, together with the necessary identities coming from operad axioms, is precisely the left and bottom leg of the diagram in Axiom \eqref{axiom:t_diagR}. Using the same method, one then verifies that $\gamma * (\mu \times 1)$ has its first component the image of the morphism appearing along the top and right leg of the diagram in Axiom \eqref{axiom:t_diagR}. The second component of these morphisms are all identities arising from $\Lambda$-equivariance, so the first multiplication axiom is a consequence of Axioms \eqref{axiom:t_sumR} and \eqref{axiom:t_diagR} for the pseudo-commutative structure. We leave the calculations for the second multiplication axiom to the reader as they are of the same nature, using Axioms \eqref{axiom:t_sumL} and \eqref{axiom:t_diagL}.
 \end{proof}
 
 \begin{cor}\label{cor:not-pc}
-Let $P$ be a non-symmetric operad. Then the induced monad $\underline{P}$ is never pseudo-commutative.
+Let $P$ be a non-symmetric operad, ie, a $\Lambda$-operad over the terminal action operad $T$. Then the induced monad $\underline{P}$ is never pseudo-commutative.
 \end{cor}
 \begin{proof}
-\ngnoteil{go through details again}
 In the non-symmetric case, the $2$-monad is just given using coproducts and products, i.e., there is no coequalizer. In order to define $\gamma$, we then need an isomorphism
   \[
     \left(\mu(p; \underline{q}); \underline{(a, \underline{b})}\right) \cong \left(\mu(q; \underline{p}); \underline{(\underline{a},b)}\right).
@@ -3174,18 +3210,20 @@ Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. We say that $P$ is \textit{contract
 \end{Defi}
 
 \begin{cor}\label{cor:contract-to-psc}
-If $P$ is contractible and there exist $t_{m,n}$ as in \cref{def:ps-comm_operad}, then $\underline{P}$ acquires a pseudo-commutativity. Furthermore, it is symmetric if $t_{n,m} = t_{m,n}^{-1}$.
+If $P$ is contractible and there exist $t_{m,n}$ as in \cref{def:ps-comm_operad}, then $P$ acquires a pseudo-commutative structure. Furthermore, it is symmetric if $t_{n,m} = t_{m,n}^{-1}$.
 \end{cor}
 \begin{proof}
 The only thing left to define is the collection of natural isomorphisms $\lambda_{p,q}$. But since each $P(n)$ is contractible, $\lambda_{p,q}$ must be the unique isomorphism between its source and target, and furthermore the last two axioms hold since any pair of parallel arrows are equal in a contractible category.
 \end{proof}
 
 \begin{cor}\label{cor:contractplussym-to-psc}
-If $P$ is a contractible symmetric operad then $\underline{P}$ has a symmetric pseudo-commutativity.
+If $P$ is a contractible symmetric operad then the operad $P$ has a unique pseudo-commutative structure. The 2-monad $\underline{P}$ then obtains a symmetric pseudo-commutativity.
 \end{cor}
 \begin{proof}
-We choose $t_{m,n} = \tau_{m,n}$.
+The only possible choice of the elements $t_{m,n}$ is $t_{m,n} = \tau_{m,n}$.
 \end{proof}
+
+\ngnoteil{start here}
 
 \begin{rem}\label{rem:symm-and-contract}
 If a $\Lambda$-operad $P$ is contractible, it is not the case that its symmetrization $S(P)$ (see \cref{thm_sym}) will also be contractible.

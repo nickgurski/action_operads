@@ -2490,23 +2490,21 @@
     <bcf:citekey order="106" intorder="1">mu-strong</bcf:citekey>
     <bcf:citekey order="107" intorder="1">HP</bcf:citekey>
     <bcf:citekey order="108" intorder="1">guillou_multiplicative</bcf:citekey>
-    <bcf:citekey order="109" intorder="1">guillou_symmetric</bcf:citekey>
-    <bcf:citekey order="110" intorder="1">guillou_multiplicative</bcf:citekey>
-    <bcf:citekey order="111" intorder="1">HP</bcf:citekey>
-    <bcf:citekey order="112" intorder="1">drin-quasihopf</bcf:citekey>
-    <bcf:citekey order="113" intorder="1">hk-cobound</bcf:citekey>
-    <bcf:citekey order="113" intorder="2">hk-quantum</bcf:citekey>
-    <bcf:citekey order="114" intorder="1">hk-cobound</bcf:citekey>
-    <bcf:citekey order="115" intorder="1">savage-braidcob</bcf:citekey>
-    <bcf:citekey order="116" intorder="1">drin-quasihopf</bcf:citekey>
+    <bcf:citekey order="109" intorder="1">HP</bcf:citekey>
+    <bcf:citekey order="110" intorder="1">drin-quasihopf</bcf:citekey>
+    <bcf:citekey order="111" intorder="1">hk-cobound</bcf:citekey>
+    <bcf:citekey order="111" intorder="2">hk-quantum</bcf:citekey>
+    <bcf:citekey order="112" intorder="1">hk-cobound</bcf:citekey>
+    <bcf:citekey order="113" intorder="1">savage-braidcob</bcf:citekey>
+    <bcf:citekey order="114" intorder="1">drin-quasihopf</bcf:citekey>
+    <bcf:citekey order="115" intorder="1">hk-cobound</bcf:citekey>
+    <bcf:citekey order="116" intorder="1">maclane-catwork</bcf:citekey>
     <bcf:citekey order="117" intorder="1">hk-cobound</bcf:citekey>
-    <bcf:citekey order="118" intorder="1">maclane-catwork</bcf:citekey>
-    <bcf:citekey order="119" intorder="1">hk-cobound</bcf:citekey>
-    <bcf:citekey order="120" intorder="1">hk-cobound</bcf:citekey>
-    <bcf:citekey order="121" intorder="1">HP</bcf:citekey>
-    <bcf:citekey order="122" intorder="1">fie-br</bcf:citekey>
-    <bcf:citekey order="123" intorder="1">js</bcf:citekey>
-    <bcf:citekey order="124" intorder="1">EM2</bcf:citekey>
+    <bcf:citekey order="118" intorder="1">hk-cobound</bcf:citekey>
+    <bcf:citekey order="119" intorder="1">HP</bcf:citekey>
+    <bcf:citekey order="120" intorder="1">fie-br</bcf:citekey>
+    <bcf:citekey order="121" intorder="1">js</bcf:citekey>
+    <bcf:citekey order="122" intorder="1">EM2</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
