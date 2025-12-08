@@ -2498,7 +2498,289 @@ This example can be extended to include ribbon braided categories as well. A \te
 $[0,1] \times [-\varepsilon, \varepsilon] \rightarrow \mathbb{R}^{3}$. This introduces the possibility of performing a full twist on a ribbon, and one can describe ribbon braided categories using generators and relations by introducing a natural twist isomorphism $\tau_{A} \colon A \rightarrow A$ and imposing one relation between the twist and the braid $\gamma_{A,B} \colon A \otimes B \rightarrow B \otimes A$. In \cite{sal-wahl}, the authors show that the ribbon braid groups give an action operad $RB$, and that (strict) ribbon braided categories are precisely the algebras for $ERB$.
 \end{example}
 
+\section{Extended Example: Coboundary Categories}\label{sec:exex-cactus}
 
+\ngnoteil{This section could still move somewhere else. I have a presentation for the symmetric groups as an action operad in section 7, and this doesn't use much more than that.}
+
+We now turn to an example that is not as widely known in the categorical literature, that of coboundary categories \cite{drin-quasihopf}. These arise in the representation theory of quantum groups and in the theory of crystals \cite{hk-cobound, hk-quantum}. Our goal here is to refine the relationship between coboundary categories and the operad of $n$-fruit cactus groups in \cite{hk-cobound} by using the theory of action operads\ngnote{I think in particular we want to do this via presentations} and our Borel construction. We begin by recalling the definition of a coboundary category.
+
+
+\begin{Defi}\label{def:cobcat}
+A \textit{coboundary category} is a monoidal category $C$ equipped with a natural isomorphism $\sigma_{x,y} \colon x \otimes y \rightarrow y \otimes x$ (called the \textit{commutor}) such that
+\begin{itemize}
+\item $\sigma_{y,x} \circ \sigma_{x,y} = 1_{x \otimes y}$ and
+\item the diagram below, called the \emph{cactus relation}, commutes (in which the unlabeled morphisms are an associator and an inverse associator).
+  \[
+    \xy
+      (0,0)*+{(x \otimes y) \otimes z} ="00";
+      (35,0)*+{x \otimes (y \otimes z)} ="10";
+      (70,0)*+{x \otimes (z \otimes y)} ="20";
+      (0,-15)*+{(y \otimes x) \otimes z} ="01";
+      (35,-15)*+{z \otimes (y \otimes x)} ="11";
+      (70,-15)*+{(z \otimes y )\otimes x} ="21";
+      {\ar "00"; "10" };
+      {\ar^{1 \sigma_{y,z}} "10"; "20" };
+      {\ar^{\sigma_{x,zy}} "20"; "21" };
+      {\ar_{\sigma_{x,y}1} "00"; "01" };
+      {\ar_{\sigma_{yx,z}} "01"; "11" };
+      {\ar "11"; "21" };
+    \endxy
+  \]
+\end{itemize}
+\end{Defi}
+
+\begin{example}\label{ex:cobcats}
+\begin{enumerate}
+\item As noted by Savage \cite{savage-braidcob}, any braiding automatically satisfies the cactus relation (the diagram in \cref{def:cobcat}). However, since braidings need not be involutions this does not mean that any braided monoidal category is a coboundary category. However, it should then be clear that any symmetric monoidal category is also a coboundary category.
+\item The name coboundary category comes from the original work of Drinfeld \cite{drin-quasihopf} in which he shows that the category of representations of a coboundary Hopf algebra has the structure of coboundary category.
+\item Henriques and Kamnitzer \cite{hk-cobound} show that the category of crystals for a finite dimensional complex reductive Lie algebra has the structure of a coboundary category. 
+\end{enumerate}
+\end{example}
+
+\begin{rem}
+By \cref{thm:wlmc-to-lmc}, we restrict ourself to the case in which the underlying monoidal structure is strict.
+\end{rem}
+
+%\ngnoteil{replace what follows with a discussion/reference to }
+%
+%Our interest is in strict coboundary categories by which we mean coboundary categories with strict underlying monoidal category. Under the assumption of strictness, the second axiom above does not include associations for the tensor product and reduces to a square. To show that every coboundary category is equivalent to a strict coboundary category, we must introduce the $2$-category $\mb{CobCat}$ of coboundary categories.
+%
+%\begin{Defi}
+%Let $(C,\sigma), (C', \sigma')$ be coboundary categories. A \emph{coboundary functor} $F \colon C \rightarrow C'$ is a strong monoidal functor (with invertible constraints $\varphi_{0}$ for the unit and $\varphi_{x,y}$ for the tensor product) such that the following diagram commutes for all objects $x$, $y \in \m{C}$.
+%  \[
+%    \xy
+%      (0,0)*+{Fx \otimes Fy}="00";
+%      (25,0)*+{F(x \otimes y)}="10";
+%      (0,-20)*+{Fy \otimes Fx}="01";
+%      (25,-20)*+{F(y \otimes x)}="11";
+%      %
+%      {\ar^{\varphi_{x,y}} "00";"10"};
+%      {\ar^{F\sigma_{x,y}} "10";"11"};
+%      {\ar_{\sigma_{Fx,Fy}} "00";"01"};
+%      {\ar_{\varphi_{y,x}} "01";"11"};
+%    \endxy
+%  \]
+%  % \[
+%  %   F\sigma_{x,y} \circ \varphi_{x,y} = \varphi_{y,x} \circ \sigma_{Fx,Fy}'
+%  % \]
+%\end{Defi}
+%
+%Coboundary functors are composed just as strong monoidal functors are, giving the following.
+%
+%\begin{lem}
+%Coboundary categories, coboundary functors, and monoidal transformations form a $2$-category, which we denote $\mb{CobCat}$.
+%\end{lem}
+%
+%
+%\begin{prop}
+%Let $(C, \sigma)$ be a coboundary category. Then there exists a strict coboundary category $(C', \sigma')$ which is equivalent to $(C, \sigma)$ in $\mb{CobCat}$.
+%\end{prop}
+%\begin{proof}
+%Consider the underlying monoidal category of $(C, \sigma)$, which we will just write as $C$. We can find a strict monoidal category $C'$ by coherence for monoidal categories together with an equivalence, as monoidal categories, between $C$ and $C'$. By standard methods \cite{maclane-catwork}, this can be improved to an adjoint equivalence between $C$ and $C'$ in the $2$-category of monoidal categories, strong monoidal functors, and monoidal transformations. Let $F \colon  C \rightarrow C', G \colon C' \rightarrow C$ be the functors in this adjoint equivalence, and $\eta \colon 1 \Rightarrow FG$ the unit (which we note for emphasis is invertible since it the unit of an adjoint equivalence). For objects $x,y \in C'$, we define a commutor $\sigma'$ for $C'$ as the following composite.
+%  % \begin{align*}
+%  %   xy & \stackrel{\eta \otimes \eta}{\longrightarrow} FGxFGy \\
+%  %   & \stackrel{\cong}{\longrightarrow} F(GxGy) \\
+%  %   & \stackrel{F\sigma}{\longrightarrow} F(GyGx) \\
+%  %   & \stackrel{\cong}{\longrightarrow}  FGyFGx \\
+%  %   & \stackrel{\eta^{-1} \otimes \eta^{-1}}{\longrightarrow} yx.
+%  % \end{align*}
+%  % \begin{align*}
+%  %   xy &\xrightarrow{\eta \otimes \eta} FGxFGy \\
+%  %   &\xrightarrow{\cong} F(GxGy) \\
+%  %   &\xrightarrow{F\sigma} F(GyGx) \\
+%  %   &\xrightarrow{\cong} FGyFGx \\
+%  %   &\xrightarrow{\eta^{-1} \otimes \eta^{-1}} yx
+%  % \end{align*}
+%  \[
+%    xy \xrightarrow{\eta \otimes \eta} FGxFGy
+%    \xrightarrow{\cong} F(GxGy)
+%    \xrightarrow{F\sigma} F(GyGx)
+%    \xrightarrow{\cong} FGyFGx
+%    \xrightarrow{\eta^{-1} \otimes \eta^{-1}} yx
+%  \]
+%We then leave to the reader, if they wish, the computations to show that $\sigma'$ is a commutor for $C'$ and that $F,G$ become coboundary functors using $\sigma'$.
+%\end{proof}
+
+We now turn to the operadic description of strict coboundary categories.
+
+\begin{Defi}[(Contains, disjoint)]
+Fix $n>1$, and let $1 \leq p < q \leq n$, $1 \leq k < l \leq n$.
+\begin{enumerate}
+\item $p<q$ is \textit{disjoint} from $k<l$ if $q<k$ or $l<p$.
+\item $p<q$ \textit{contains} $k<l$ if $p \leq k < l \leq q$.
+\end{enumerate}
+\end{Defi}
+
+\begin{Defi}
+Let $1 \leq p < q \leq n$, and define $\hat{s}_{p,q} \in \Sigma_{n}$ to be the permutation defined below.
+  \[
+    \begin{array}{r|ccccccccccccc}
+      i & 1 & 2 & \cdots & p-1 & p & p+1 & p+2 & \cdots & q-1 & q & q+1 & \cdots & n \\
+      \hat{s}_{p,q}(i) & 1 & 2 & \cdots & p-1 & q & q-1 & q-2 & \cdots & p+1 & p & q+1 & \cdots & n
+    \end{array}
+  \]
+\end{Defi}
+
+The $n$-fruit cactus group is then defined as follows.
+
+\begin{Defi}\label{Defi:defcactus}
+Let $J_{n}$ be the group generated by symbols $s_{p,q}$ for $1 \leq p < q \leq n$ subject to the following relations.
+  \begin{enumerate}
+    \item For all $p < q$, $s_{p,q}^{2}=e$.
+    \item If $p<q$ is disjoint from $k<l$, then $s_{p,q}s_{k,l} = s_{k,l}s_{p,q}$.
+    \item If $p<q$ contains $k<l$, then $s_{p,q}s_{k,l} = s_{m,n}s_{p,q}$ where
+      \begin{itemize}
+        \item $m = \hat{s}_{p,q}(l)$ and
+        \item $n = \hat{s}_{p,q}(k)$.
+      \end{itemize}
+  \end{enumerate}
+\end{Defi}
+
+It is easy to check that the elements $\hat{s}_{p,q} \in \Sigma_{n}$ satisfy the three relations in \cref{Defi:defcactus}, so $s_{p,q} \mapsto \hat{s}_{p,q}$ extends to a group homomorphism $\pi_{n} \colon J_{n} \rightarrow \Sigma_{n}$. This is the first step in proving the following.
+
+\begin{thm}\label{thm:J_aop}
+The collection of groups $J = \{ J_{n} \}$ form an action operad.
+\end{thm}
+\begin{proof}
+We will use \cref{thm:charAOp} to determine the rest of the action operad structure. Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, group homomorphisms $\beta \colon J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}$ and functions $\delta \colon J_{n} \rightarrow J_{K}$ satisfying nine axioms. We define both of these on generators, starting with $\beta$.
+
+Let $s_{p_{i}, q_{i}} \in J_{k_{i}}$. Let $r_{i} = k_{1} + k_{2} + \cdots + k_{i-1}$ for $i > 1$. Define $\beta$ by
+  \[
+    \beta(s_{p_{1}, q_{1}}, \ldots, s_{p_{n}, q_{n}}) = s_{p_{1}, q_{1}} s_{p_{2}+r_{2}, q_{2}+r_{2}} \cdots s_{p_{n}+r_{n}, q_{n}+r_{n}}.
+  \]
+Note that $s_{p_{i}+r_{i}, q_{i}+r_{i}}$ and $s_{p_{j}+r_{j}, q_{j}+r_{j}}$ are disjoint when $i \neq j$.
+
+It is easy to check that this disjointness property ensures that $\beta$ gives a well-defined group homomorphism
+  \[
+    J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}.
+  \]
+
+To define $\delta \colon J_{n} \rightarrow J_{K}$ for natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, let $t_{k} = s_{1,k} \in J_{k}$. Then we start by defining
+  \[
+    \delta(t_{n}) = t_{K} \cdot \beta(t_{k_{1}}, t_{k_{2}}, \ldots, t_{k_{n}}).
+  \]
+Note that, by Axiom \eqref{eq8} of \cref{thm:charAOp}, this is equal to
+  \[
+    \beta(t_{k_{n}}, t_{k_{n-1}}, \ldots, t_{k_{1}}) \cdot t_{K}.
+  \]
+Now $s_{p,q} \in J_{n}$ is equal to $\beta(e_{p-1}, t_{q-p+1}, e_{n-q})$ (here $e_{i}$ is the identity element in $J_{i}$) by definition of the $t_{i}$ and $\beta$, so we can define $\delta$ on any generator $s_{p,q}$ by
+  \[
+    \delta(s_{p,q}) = \beta ( e_{A}, M, e_{B} )
+  \]
+with
+  \begin{itemize}
+    \item $A = k_{1} + k_{2} + \cdots + k_{p-1}$,
+    \item $M = t_{k_{p}+ \cdots +k_{q}} \cdot \beta(t_{k_{p}}, t_{k_{p+1}}, \ldots, t_{k_{q}})$, and
+    \item $B = k_{q+1} + k_{q+2} + \cdots + k_{n}$.
+  \end{itemize}
+Unpacking this yields the following formula:
+  % \[
+  %   \resizebox{\textwidth}{!}{$\delta(s_{p,q}) = s_{k_{1}+\cdots+k_{p-1}+1, k_{1}+\cdots+k_{q}} \cdot \beta(e_{k_{1}+\cdots+k_{p-1}}, m_{k_{p}}, \ldots, m_{k_{q}}, e_{k_{q+1}+\cdots+k_{n}}).$}
+  % \]
+  \[
+  \delta(s_{p,q}) = s_{k_{1}+\cdots+k_{p-1}+1, k_{1}+\cdots+k_{q}} \cdot \beta(e_{k_{1}+\cdots+k_{p-1}}, t_{k_{p}}, \ldots, t_{k_{q}}, e_{k_{q+1}+\cdots+k_{n}}).
+  \]
+
+We extend $\delta$ to arbitrary elements of $J_n$ using \cref{thm:charAOp}. 
+Now $\delta$ is not a group homomorphism, but it does satisfy a twisted version in Axiom \eqref{eq6}.
+Define
+  \[
+    \delta_{n; j_1,\ldots,j_n}(gh) = \delta_{n; k_1,\ldots,k_n}(g)\delta_{n; j_1,\ldots,j_n}(h)
+  \]
+where $k_{i} = j_{\pi(h)^{-1}(i)}$. There are three relations we must verify for compatibility.\ngmpar{check these relations more explicitly}
+\begin{itemize}
+\item We must show that $\delta_{n; j_1,\ldots,j_n}\left(s_{p,q}^{2}\right) = e$. By definition, we have
+  \[
+    \delta_{n; j_1,\ldots,j_n}\left(s_{p,q}^{2}\right) = \delta_{n; k_1,\ldots,k_n}\left(s_{p,q}\right)\delta_{n; j_1,\ldots,j_n}\left(s_{p,q}\right)
+  \]
+which is
+  \[
+    t_{j_1 + \cdots + j_n}\beta(t_{j_{n}}, \ldots, t_{j_{1}}) t_{\underline{j}} \beta(t_{j_{1}}, \ldots, t_{j_{n}}).
+  \]
+By the remarks above in the definition of $\delta$ and the fact that $s_{p,q}^{2}=e$, the element above is easily seen to be the identity.
+\item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{k,l}s_{p,q})$ when $(p,q)$ is disjoint from $(k,l)$. This is another simple calculation using the definition of $\delta$ and the disjointness of the terms involved.
+\item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{a,b}s_{p,q})$,  where $a = \hat{s}_{p,q}(l), b = \hat{s}_{p,q}(k)$, if $p < k < l < q$. In this case, we use all of the relations in the cactus groups to show that each side is equal to
+  % \[
+  %   \resizebox{\textwidth}{!}{$\beta\left(e_{j_{1}}, \ldots, e_{j_{p-1}}, m_{j_{p}+\cdots + j_{q}} \cdot \beta \left(m_{j_{p}}, \ldots m_{j_{k-1}}, m_{j_{k}+ \cdots j_{l}}, m_{j_{l+1}}, \ldots, m_{j_{q}}\right), m_{j_{q+1}}, \ldots, m_{j_{n}}\right).$}
+  % \]
+  \[
+    \beta\left(\underline{e}, t_{j_{p}+\cdots + j_{q}} \cdot \beta \left(t_{j_{p}}, \ldots t_{j_{k-1}}, t_{j_{k}+ \cdots +j_{l}}, t_{j_{l+1}}, \ldots, t_{j_{q}}\right), t_{j_{q+1}}, \ldots, t_{j_{n}}\right)
+  \]
+where $\underline{e} = e_{j_{1}}, \ldots, e_{j_{p-1}}$.
+\end{itemize}
+In order to show that this gives a well-defined function on products of three or more generators, a straightforward induction argument shows that $\delta\left((fg)h\right) = \delta\left(f(gh)\right)$ using the formula above. This concludes the definition of the family of functions $\delta_{n; j_{i}}$.
+
+There are now nine axioms to check in \cref{thm:charAOp}. Axioms \eqref{eq1} - \eqref{eq3} all concern $\beta$, and are immediate from the defining formula. Axiom \eqref{eq4} is obvious for the elements $t_{k}$, from which it follows in general by the formulas defining $\delta$. For Axiom \eqref{eq5}, one can check easily that
+  \[
+    \delta_{n; 1, \ldots, 1}(t_{n}) = t_{n}, \quad \delta_{n;k_1,\ldots,k_n}(e_n) = e_{k_1 + \cdots + k_n}
+  \]
+following the description of $\delta$ above and once again the general case follows from these. Axiom \eqref{eq6} holds by the construction of $\delta$. Axiom \eqref{eq8} can be verified with only one $h_{i}$ nontrivial at a time, and then it is a simple consequence of the second and third relations for $J_{n}$.
+
+Axiom \eqref{eq9} is straightforward to check when only a single $g_{i}$ is a generator and the rest are identities using the defining formulas, and the general case then follows using Axiom \eqref{eq6}. Using Axiom \eqref{eq9}, we can then prove Axiom \eqref{eq7} as follows; we suppress the subscripts on different $\delta$'s for clarity. We must show
+  \[
+    \delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{m}}}\left( \delta_{n; m_{1}, \ldots, m_{n}}(f) \right) = \delta_{n; P_{1}, \ldots, P_{n}}(f),
+  \]
+and we do so on $t_{n}$. By definition, we have
+  \[
+    \delta \left( \delta(t_{n}) \right) = \delta \left( t_{K} \beta(t_{k_{1}}, \ldots, t_{k_{n}}) \right),
+  \]
+which by Axiom \eqref{eq6} is equal to
+  \[
+    t_{P_{1} + \cdots + P_{n}} \cdot \beta(t_{p_{11}}, \ldots, t_{p_{n,m_{n}}}) \cdot \delta\left( \beta(t_{k_{1}}, \ldots, t_{k_{n}}) \right).
+  \]
+Now this last term is equal to $\beta \left( \delta(t_{k_{1}}), \ldots, \delta(t_{k_{n}}) \right)$ by Axiom \eqref{eq9}, which is then equal to
+  \[
+    \beta \left( t_{P_{1}}\cdot \beta(t_{p_{11}}, \ldots, t_{p_{1,m_{1}}}), \ldots,  t_{P_{n}}\cdot \beta(t_{p_{n1}}, \ldots, t_{p_{1,m_{n}}}) \right).
+  \]
+Taken all together, the left hand side of Axiom \eqref{eq9} is then
+  % \[
+  %   \resizebox{\textwidth}{!}{$m_{P_{1} + \cdots + P_{n}} \cdot \beta(m_{p_{11}}, \ldots, m_{p_{n,m_{n}}}) \cdot \beta \left( m_{P_{1}}\cdot \beta(m_{p_{11}}, \ldots, m_{p_{1,m_{1}}}), \ldots,  m_{P_{n}}\cdot \beta(m_{p_{n1}}, \ldots, m_{p_{1,m_{n}}}) \right).$}
+  % \]
+  % \[
+  %   m_{P_{1} + \cdots + P_{n}} \cdot \beta(m_{p_{11}}, \ldots, m_{p_{n,m_{n}}}) \cdot \beta \left( m_{P_{1}}\cdot \beta(m_{p_{11}}, \ldots, m_{p_{1,m_{1}}}), \ldots,  m_{P_{n}}\cdot \beta(m_{p_{n1}}, \ldots, m_{p_{1,m_{n}}}) \right).
+  % \]
+  \[
+    t_{P_{1} + \cdots + P_{n}} \cdot \beta(t_{p_{11}}, \ldots, t_{p_{n,m_{n}}}) \cdot \beta \left( t_{P_{1}}\cdot \beta(\underline{t_{p_{1}}}), \ldots,  t_{P_{n}}\cdot \beta(\underline{t_{p_{n}}}) \right).
+  \]
+where $\underline{t_{p_{i}}} = t_{p_{i,1}}, \ldots, t_{i,m_{i}}$
+All of the terms coming from an $t_{p_{ij}}$ can be collected together, and since $s_{p,q}^{2} = e$ for all $p,q$, these cancel. This leaves
+  \[
+    t_{P_{1} + \cdots + P_{n}} \cdot \beta \left( t_{P_{1}}, \ldots,  t_{P_{n}} \right)
+  \]
+which is the right hand side of Axiom \eqref{eq9} as desired.
+\end{proof}
+
+\begin{lem}
+The $2$-monad $C$ for strict coboundary categories is a club.
+\end{lem}
+\begin{proof}
+This is obvious by \cref{cor:pres2}.
+\end{proof}
+
+\begin{thm}
+The free coboundary category on one element, $C1$, is isomorphic to $BJ = \coprod BJ_{n}$.
+\end{thm}
+\begin{proof}
+We must give $BJ$ the structure of a strict coboundary category and then prove that, for any strict coboundary category $X$, there is a natural isomorphism between strict coboundary functors $F \colon BJ \to X$ and objects of $X$. We note here that a strict coboundary functor is a strict monoidal functor mapping the commutor of its source to the commutor of its target.
+
+
+The category $BJ$ has natural numbers as objects, and addition as its tensor product. The tensor product of two morphisms is given by $\beta$ as in \cref{J_aop}, and it is simple to check that this is a strict monoidal structure. The commutor $\sigma_{m,n}$ is defined to be the product $s_{1, m+n}s_{1,m}s_{m+1,m+n}$. Using the relations in $J_{n}$, it is clear that $\sigma_{m,n}\sigma_{n,m}$ is the identity, so we only have one more axiom to verify in order to give a coboundary structure. By definition, this axiom is equivalent to the equation
+  \[
+    \sigma_{m, p+n}\cdot \beta(e_{m}, \sigma_{n,p}) = \sigma_{n+m,p}\cdot \beta(\sigma_{m,n},e_{p})
+  \]
+holding for all $m,n,p$. Each side has six terms when written out using the definitions of $\sigma$ and $\beta$, two terms on each side cancel using $s_{p,q}^{2} = e$ and the disjointness relation, and the other four terms match after using the disjointness relation. This establishes the coboundary structure on $BJ$; note that $\sigma_{1,1} = s_{1,2}$, the nontrivial element of $J(2)$.
+
+Every strict coboundary functor $F \colon BJ \rightarrow X$ determines an object of $X$ by evaluation at $1$. Conversely, given an object $x$ of a strict coboundary category $X$, there is a group homomorphism of $J_{n} \to X(x^{n},x^{n})$ by Theorem 7 of \cite{hk-cobound}. The proof in \cite{hk-cobound} shows that these group homomorphisms are compatible with the homomorphisms $\beta \colon J_n \times J_m \to J_{n+m}$, and so define a strict monoidal functor $\overline{x} \colon BJ \rightarrow X$ with $\overline{x}(1) = x$. By construction, this strict monoidal functor is in fact a strict coboundary functor since it sends the commutor $\sigma_{1,1}$ in $BJ$ to $\sigma_{x,x}$ in $X$. In fact, the calculations in \cite{hk-cobound} leading up to Theorem 7 show that every element of $J_{n}$ is given as an operadic composition of $\sigma$'s, so requiring $\overline{x}$ to be a strict coboundary functor with $\overline{x}(1) = x$ determines the rest of the functor uniquely. This observation establishes the bijection between strict coboundary functors $F \colon BJ \rightarrow X$ and objects of $X$. Naturality is immediate from the construction, so $BJ$ is the free strict coboundary category on one object.
+\end{proof}
+
+\begin{cor}\label{cor:J=coboundary}
+The $2$-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=operad}, to the action operad $J$.
+\end{cor}
+
+\begin{rem}[(Comparision of presentations)]
+As with the symmetric groups, we have two different presentations: presentations for each individual group given separately but in a uniform fashion, and a single presentation for the entire action operad.
+The calculations in \cref{ex:sigma-pres} unify those two presentations for $\Sigma$, and those in \cref{thm:J_aop} and \cite{hk-cobound} combine via \cref{cor:J=coboundary} and \cref{thm:club=operad} to do the same for $J$.
+\end{rem}
 
 \section{Pseudocommutativity}\label{sec:pscomm}
 
@@ -3234,283 +3516,6 @@ Thus we see that a given $\Lambda$-operad $P$ might satisfy the hypotheses of \c
 %  \]
 %but unless $p\cdot g = p$ in $P(n)$, there will be a unique isomorphism between them that will not be the identity, and hence will define a nontrivial automorphism of $[p,e]$ in  $\coequ{P}{\Sigma}{\Lambda}{n}$. The existence of such ensures that $\coequ{P}{\Sigma}{\Lambda}{n}$ is not contractible.
 \end{rem}
-
-
-
-\section{Extended Example: Coboundary Categories}\label{sec:exex-cactus}
-
-\ngnoteil{This section could still move somewhere else. I have a presentation for the symmetric groups as an action operad in section 7, and this doesn't use much more than that.}
-
-We now turn to an example that is not as widely known in the categorical literature, that of coboundary categories \cite{drin-quasihopf}. These arise in the representation theory of quantum groups and in the theory of crystals \cite{hk-cobound, hk-quantum}. Our goal here is to refine the relationship between coboundary categories and the operad of $n$-fruit cactus groups in \cite{hk-cobound} by using the theory of action operads\ngnote{I think in particular we want to do this via presentations} and our Borel construction. We begin by recalling the definition of a coboundary category.
-
-
-\begin{Defi}\label{def:cobcat}
-A \textit{coboundary category} is a monoidal category $C$ equipped with a natural isomorphism $\sigma_{x,y} \colon x \otimes y \rightarrow y \otimes x$ (called the \textit{commutor}) such that
-\begin{itemize}
-\item $\sigma_{y,x} \circ \sigma_{x,y} = 1_{x \otimes y}$ and
-\item the diagram
-  \[
-    \xy
-      (0,0)*+{(x \otimes y) \otimes z} ="00";
-      (35,0)*+{x \otimes (y \otimes z)} ="10";
-      (70,0)*+{x \otimes (z \otimes y)} ="20";
-      (0,-15)*+{(y \otimes x) \otimes z} ="01";
-      (35,-15)*+{z \otimes (y \otimes x)} ="11";
-      (70,-15)*+{(z \otimes y )\otimes x} ="21";
-      {\ar "00"; "10" };
-      {\ar^{1 \sigma_{y,z}} "10"; "20" };
-      {\ar^{\sigma_{x,zy}} "20"; "21" };
-      {\ar_{\sigma_{x,y}1} "00"; "01" };
-      {\ar_{\sigma_{yx,z}} "01"; "11" };
-      {\ar "11"; "21" };
-    \endxy
-  \]
-commutes (in which the unlabeled morphisms are an associator and an inverse associator).
-\end{itemize}
-\end{Defi}
-
-\begin{example}\label{ex:cobcats}
-\begin{enumerate}
-\item As noted by Savage \cite{savage-braidcob}, any braiding automatically satisfies the cactus relation (the diagram in \cref{def:cobcat}). However, since braidings need not be involutions this does not mean that any braided monoidal category is a coboundary category. However, it should then be clear that any symmetric monoidal category is also a coboundary category.
-\item The name coboundary category comes from the original work of Drinfeld \cite{drin-quasihopf} in which he shows that the category of representations of a coboundary Hopf algebra has the structure of coboundary category.
-\item Henriques and Kamnitzer \cite{hk-cobound} show that the category of crystals for a finite dimensional complex reductive Lie algebra has the structure of a coboundary category. 
-\end{enumerate}
-\end{example}
-
-\ngnoteil{replace what follows with a discussion/reference to \cref{thm:wlmc-to-lmc}}
-
-Our interest is in strict coboundary categories by which we mean coboundary categories with strict underlying monoidal category. Under the assumption of strictness, the second axiom above does not include associations for the tensor product and reduces to a square. To show that every coboundary category is equivalent to a strict coboundary category, we must introduce the $2$-category $\mb{CobCat}$ of coboundary categories.
-
-\begin{Defi}
-Let $(C,\sigma), (C', \sigma')$ be coboundary categories. A \emph{coboundary functor} $F \colon C \rightarrow C'$ is a strong monoidal functor (with invertible constraints $\varphi_{0}$ for the unit and $\varphi_{x,y}$ for the tensor product) such that the following diagram commutes for all objects $x$, $y \in \m{C}$.
-  \[
-    \xy
-      (0,0)*+{Fx \otimes Fy}="00";
-      (25,0)*+{F(x \otimes y)}="10";
-      (0,-20)*+{Fy \otimes Fx}="01";
-      (25,-20)*+{F(y \otimes x)}="11";
-      %
-      {\ar^{\varphi_{x,y}} "00";"10"};
-      {\ar^{F\sigma_{x,y}} "10";"11"};
-      {\ar_{\sigma_{Fx,Fy}} "00";"01"};
-      {\ar_{\varphi_{y,x}} "01";"11"};
-    \endxy
-  \]
-  % \[
-  %   F\sigma_{x,y} \circ \varphi_{x,y} = \varphi_{y,x} \circ \sigma_{Fx,Fy}'
-  % \]
-\end{Defi}
-
-Coboundary functors are composed just as strong monoidal functors are, giving the following.
-
-\begin{lem}
-Coboundary categories, coboundary functors, and monoidal transformations form a $2$-category, which we denote $\mb{CobCat}$.
-\end{lem}
-
-
-\begin{prop}
-Let $(C, \sigma)$ be a coboundary category. Then there exists a strict coboundary category $(C', \sigma')$ which is equivalent to $(C, \sigma)$ in $\mb{CobCat}$.
-\end{prop}
-\begin{proof}
-Consider the underlying monoidal category of $(C, \sigma)$, which we will just write as $C$. We can find a strict monoidal category $C'$ by coherence for monoidal categories together with an equivalence, as monoidal categories, between $C$ and $C'$. By standard methods \cite{maclane-catwork}, this can be improved to an adjoint equivalence between $C$ and $C'$ in the $2$-category of monoidal categories, strong monoidal functors, and monoidal transformations. Let $F \colon  C \rightarrow C', G \colon C' \rightarrow C$ be the functors in this adjoint equivalence, and $\eta \colon 1 \Rightarrow FG$ the unit (which we note for emphasis is invertible since it the unit of an adjoint equivalence). For objects $x,y \in C'$, we define a commutor $\sigma'$ for $C'$ as the following composite.
-  % \begin{align*}
-  %   xy & \stackrel{\eta \otimes \eta}{\longrightarrow} FGxFGy \\
-  %   & \stackrel{\cong}{\longrightarrow} F(GxGy) \\
-  %   & \stackrel{F\sigma}{\longrightarrow} F(GyGx) \\
-  %   & \stackrel{\cong}{\longrightarrow}  FGyFGx \\
-  %   & \stackrel{\eta^{-1} \otimes \eta^{-1}}{\longrightarrow} yx.
-  % \end{align*}
-  % \begin{align*}
-  %   xy &\xrightarrow{\eta \otimes \eta} FGxFGy \\
-  %   &\xrightarrow{\cong} F(GxGy) \\
-  %   &\xrightarrow{F\sigma} F(GyGx) \\
-  %   &\xrightarrow{\cong} FGyFGx \\
-  %   &\xrightarrow{\eta^{-1} \otimes \eta^{-1}} yx
-  % \end{align*}
-  \[
-    xy \xrightarrow{\eta \otimes \eta} FGxFGy
-    \xrightarrow{\cong} F(GxGy)
-    \xrightarrow{F\sigma} F(GyGx)
-    \xrightarrow{\cong} FGyFGx
-    \xrightarrow{\eta^{-1} \otimes \eta^{-1}} yx
-  \]
-We then leave to the reader, if they wish, the computations to show that $\sigma'$ is a commutor for $C'$ and that $F,G$ become coboundary functors using $\sigma'$.
-\end{proof}
-
-We now turn to the operadic description of strict coboundary categories; we note from this point onwards, all our coboundary categories are assumed to be strict.
-
-\begin{Defi}
-Fix $n>1$, and let $1 \leq p < q \leq n$, $1 \leq k < l \leq n$.
-\begin{enumerate}
-\item $p<q$ is \textit{disjoint} from $k<l$ if $q<k$ or $l<p$.
-\item $p<q$ \textit{contains} $k<l$ if $p \leq k < l \leq q$.
-\end{enumerate}
-\end{Defi}
-
-\begin{Defi}
-Let $1 \leq p < q \leq n$, and define $\hat{s}_{p,q} \in \Sigma_{n}$ to be the permutation defined below.
-  \[
-    \begin{array}{r|ccccccccccccc}
-      i & 1 & 2 & \cdots & p-1 & p & p+1 & p+2 & \cdots & q-1 & q & q+1 & \cdots & n \\
-      \hat{s}_{p,q}(i) & 1 & 2 & \cdots & p-1 & q & q-1 & q-2 & \cdots & p+1 & p & q+1 & \cdots & n
-    \end{array}
-  \]
-\end{Defi}
-
-The $n$-fruit cactus group is then defined as follows.
-
-\begin{Defi}\label{Defi:defcactus}
-Let $J_{n}$ be the group generated by symbols $s_{p,q}$ for $1 \leq p < q \leq n$ subject to the following relations.
-  \begin{enumerate}
-    \item For all $p < q$, $s_{p,q}^{2}=e$.
-    \item If $p<q$ is disjoint from $k<l$, then $s_{p,q}s_{k,l} = s_{k,l}s_{p,q}$.
-    \item If $p<q$ contains $k<l$, then $s_{p,q}s_{k,l} = s_{m,n}s_{p,q}$ where
-      \begin{itemize}
-        \item $m = \hat{s}_{p,q}(l)$ and
-        \item $n = \hat{s}_{p,q}(k)$.
-      \end{itemize}
-  \end{enumerate}
-\end{Defi}
-
-It is easy to check that the elements $\hat{s}_{p,q} \in \Sigma_{n}$ satisfy the three relations in \cref{Defi:defcactus}, so $s_{p,q} \mapsto \hat{s}_{p,q}$ extends to a group homomorphism $\pi_{n} \colon J_{n} \rightarrow \Sigma_{n}$. This is the first step in proving the following.
-
-\begin{thm}\label{J_aop}
-The collection of groups $J = \{ J_{n} \}$ form an action operad.
-\end{thm}
-\begin{proof}
-\ngnoteil{This is the part where instead we could check that the group presentations match the action operad presentation that we extract from the definition/the end of Sec 15}
-We will use \cref{thm:charAOp} to determine the rest of the action operad structure. Thus we must give, for any collection of natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, group homomorphisms $\beta \colon J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}$ and functions $\delta \colon J_{n} \rightarrow J_{K}$ satisfying nine axioms. We define both of these on generators, starting with $\beta$.
-
-Let $s_{p_{i}, q_{i}} \in J_{k_{i}}$. Let $r_{i} = k_{1} + k_{2} + \cdots + k_{i-1}$ for $i > 1$. Define $\beta$ by
-  \[
-    \beta(s_{p_{1}, q_{1}}, \ldots, s_{p_{n}, q_{n}}) = s_{p_{1}, q_{1}} s_{p_{2}+r_{2}, q_{2}+r_{2}} \cdots s_{p_{n}+r_{n}, q_{n}+r_{n}}.
-  \]
-Note that $s_{p_{i}+r_{i}, q_{i}+r_{i}}$ and $s_{p_{j}+r_{j}, q_{j}+r_{j}}$ are disjoint when $i \neq j$.
-
-It is easy to check that this disjointness property ensures that $\beta$ gives a well-defined group homomorphism
-  \[
-    J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}.
-  \]
-
-To define $\delta \colon J_{n} \rightarrow J_{K}$ for natural numbers $n, k_{1}, \ldots, k_{n}$ and $K = \sum k_{i}$, let $t_{k} = s_{1,k} \in J_{k}$. Then we start by defining
-  \[
-    \delta(t_{n}) = t_{K} \cdot \beta(t_{k_{1}}, t_{k_{2}}, \ldots, t_{k_{n}}).
-  \]
-Note that, by Axiom \eqref{eq8} of \cref{thm:charAOp}, this is equal to
-  \[
-    \beta(t_{k_{n}}, t_{k_{n-1}}, \ldots, t_{k_{1}}) \cdot t_{K}.
-  \]
-Now $s_{p,q} \in J_{n}$ is equal to $\beta(e_{p-1}, t_{q-p+1}, e_{n-q})$ (here $e_{i}$ is the identity element in $J_{i}$) by definition of the $t_{i}$ and $\beta$, so we can define $\delta$ on any generator $s_{p,q}$ by
-  \[
-    \delta(s_{p,q}) = \beta ( e_{A}, M, e_{B} )
-  \]
-with
-  \begin{itemize}
-    \item $A = k_{1} + k_{2} + \cdots + k_{p-1}$,
-    \item $M = t_{k_{p}+ \cdots +k_{q}} \cdot \beta(t_{k_{p}}, t_{k_{p+1}}, \ldots, t_{k_{q}})$, and
-    \item $B = k_{q+1} + k_{q+2} + \cdots + k_{n}$.
-  \end{itemize}
-Unpacking this yields the following formula:
-  % \[
-  %   \resizebox{\textwidth}{!}{$\delta(s_{p,q}) = s_{k_{1}+\cdots+k_{p-1}+1, k_{1}+\cdots+k_{q}} \cdot \beta(e_{k_{1}+\cdots+k_{p-1}}, m_{k_{p}}, \ldots, m_{k_{q}}, e_{k_{q+1}+\cdots+k_{n}}).$}
-  % \]
-  \[
-  \delta(s_{p,q}) = s_{k_{1}+\cdots+k_{p-1}+1, k_{1}+\cdots+k_{q}} \cdot \beta(e_{k_{1}+\cdots+k_{p-1}}, t_{k_{p}}, \ldots, t_{k_{q}}, e_{k_{q+1}+\cdots+k_{n}}).
-  \]
-
-We extend $\delta$ to products of generators using Axiom \eqref{eq6} of \cref{thm:charAOp}. As before, we must check that this gives a well-defined function on products of two generators in each of the relations of the cactus groups, and we must also check that this is well-defined on products of three or more generators. Thus we define
-  \[
-    \delta_{n; j_1,\ldots,j_n}(gh) = \delta_{n; k_1,\ldots,k_n}(g)\delta_{n; j_1,\ldots,j_n}(h)
-  \]
-where $k_{i} = j_{\pi(h)^{-1}(i)}$. There are three relations we must verify for compatibility.
-\begin{itemize}
-\item We must show that $\delta_{n; j_1,\ldots,j_n}\left(s_{p,q}^{2}\right) = e$. By definition, we have
-  \[
-    \delta_{n; j_1,\ldots,j_n}\left(s_{p,q}^{2}\right) = \delta_{n; k_1,\ldots,k_n}\left(s_{p,q}\right)\delta_{n; j_1,\ldots,j_n}\left(s_{p,q}\right)
-  \]
-which is
-  \[
-    t_{j_1 + \cdots + j_n}\beta(t_{j_{n}}, \ldots, t_{j_{1}}) t_{\underline{j}} \beta(t_{j_{1}}, \ldots, t_{j_{n}}).
-  \]
-By the remarks above in the definition of $\delta$ and the fact that $s_{p,q}^{2}=e$, the element above is easily seen to be the identity.
-\item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{k,l}s_{p,q})$ when $(p,q)$ is disjoint from $(k,l)$. This is another simple calculation using the definition of $\delta$ and the disjointness of the terms involved.
-\item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{a,b}s_{p,q})$,  where $a = \hat{s}_{p,q}(l), b = \hat{s}_{p,q}(k)$, if $p < k < l < q$. In this case, we use all of the relations in the cactus groups to show that each side is equal to
-  % \[
-  %   \resizebox{\textwidth}{!}{$\beta\left(e_{j_{1}}, \ldots, e_{j_{p-1}}, m_{j_{p}+\cdots + j_{q}} \cdot \beta \left(m_{j_{p}}, \ldots m_{j_{k-1}}, m_{j_{k}+ \cdots j_{l}}, m_{j_{l+1}}, \ldots, m_{j_{q}}\right), m_{j_{q+1}}, \ldots, m_{j_{n}}\right).$}
-  % \]
-  \[
-    \beta\left(\underline{e}, t_{j_{p}+\cdots + j_{q}} \cdot \beta \left(t_{j_{p}}, \ldots t_{j_{k-1}}, t_{j_{k}+ \cdots +j_{l}}, t_{j_{l+1}}, \ldots, t_{j_{q}}\right), t_{j_{q+1}}, \ldots, t_{j_{n}}\right)
-  \]
-where $\underline{e} = e_{j_{1}}, \ldots, e_{j_{p-1}}$.
-\end{itemize}
-In order to show that this gives a well-defined function on products of three or more generators, one proceeds inductively to show that $\delta\left((fg)h\right) = \delta\left(f(gh)\right)$ using the formula above. This is simply a matter of keeping track of the permutations used to define the subscripts for the different $\delta$'s and we leave it to the reader, should they desire to see the details. This concludes the definition of the family of functions $\delta_{n; j_{i}}$.
-
-There are now nine axioms to check in \cref{thm:charAOp}. Axioms \eqref{eq1} - \eqref{eq3} all concern $\beta$, and are immediate from the defining formula. Axiom \eqref{eq4} is obvious for the elements $t_{k}$, from which it follows in general by the formulas defining $\delta$. For Axiom \eqref{eq5}, one can check easily that
-  \[
-    \delta_{n; 1, \ldots, 1}(t_{n}) = t_{n}, \quad \delta_{n;k_1,\ldots,k_n}(e_n) = e_{k_1 + \cdots + k_n}
-  \]
-following the description of $\delta$ above and once again the general case follows from these. Axiom \eqref{eq6} holds by the construction of $\delta$. Axiom \eqref{eq8} can be verified with only one $h_{i}$ nontrivial at a time, and then it is a simple consequence of the second and third relations for $J_{n}$.
-
-Axiom \eqref{eq9} is straightforward to check when only a single $g_{i}$ is a generator and the rest are identities using the defining formulas, and the general case then follows using Axiom \eqref{eq6}. Using Axiom \eqref{eq9}, we can then prove Axiom \eqref{eq7} as follows; we suppress the subscripts on different $\delta$'s for clarity. We must show
-  \[
-    \delta_{m_1 + \cdots + m_n; p_{11}, \ldots, p_{1m_{1}}, p_{21}, \ldots, p_{nm_{m}}}\left( \delta_{n; m_{1}, \ldots, m_{n}}(f) \right) = \delta_{n; P_{1}, \ldots, P_{n}}(f),
-  \]
-and we do so on $t_{n}$. By definition, we have
-  \[
-    \delta \left( \delta(t_{n}) \right) = \delta \left( t_{K} \beta(t_{k_{1}}, \ldots, t_{k_{n}}) \right),
-  \]
-which by Axiom \eqref{eq6} is equal to
-  \[
-    t_{P_{1} + \cdots + P_{n}} \cdot \beta(t_{p_{11}}, \ldots, t_{p_{n,m_{n}}}) \cdot \delta\left( \beta(t_{k_{1}}, \ldots, t_{k_{n}}) \right).
-  \]
-Now this last term is equal to $\beta \left( \delta(t_{k_{1}}), \ldots, \delta(t_{k_{n}}) \right)$ by Axiom \eqref{eq9}, which is then equal to
-  \[
-    \beta \left( t_{P_{1}}\cdot \beta(t_{p_{11}}, \ldots, t_{p_{1,m_{1}}}), \ldots,  t_{P_{n}}\cdot \beta(t_{p_{n1}}, \ldots, t_{p_{1,m_{n}}}) \right).
-  \]
-Taken all together, the left hand side of Axiom \eqref{eq9} is then
-  % \[
-  %   \resizebox{\textwidth}{!}{$m_{P_{1} + \cdots + P_{n}} \cdot \beta(m_{p_{11}}, \ldots, m_{p_{n,m_{n}}}) \cdot \beta \left( m_{P_{1}}\cdot \beta(m_{p_{11}}, \ldots, m_{p_{1,m_{1}}}), \ldots,  m_{P_{n}}\cdot \beta(m_{p_{n1}}, \ldots, m_{p_{1,m_{n}}}) \right).$}
-  % \]
-  % \[
-  %   m_{P_{1} + \cdots + P_{n}} \cdot \beta(m_{p_{11}}, \ldots, m_{p_{n,m_{n}}}) \cdot \beta \left( m_{P_{1}}\cdot \beta(m_{p_{11}}, \ldots, m_{p_{1,m_{1}}}), \ldots,  m_{P_{n}}\cdot \beta(m_{p_{n1}}, \ldots, m_{p_{1,m_{n}}}) \right).
-  % \]
-  \[
-    t_{P_{1} + \cdots + P_{n}} \cdot \beta(t_{p_{11}}, \ldots, t_{p_{n,m_{n}}}) \cdot \beta \left( t_{P_{1}}\cdot \beta(\underline{t_{p_{1}}}), \ldots,  t_{P_{n}}\cdot \beta(\underline{t_{p_{n}}}) \right).
-  \]
-where $\underline{t_{p_{i}}} = t_{p_{i,1}}, \ldots, t_{i,m_{i}}$
-All of the terms coming from an $t_{p_{ij}}$ can be collected together, and since $s_{p,q}^{2} = e$ for all $p,q$, these cancel. This leaves
-  \[
-    t_{P_{1} + \cdots + P_{n}} \cdot \beta \left( t_{P_{1}}, \ldots,  t_{P_{n}} \right)
-  \]
-which is the right hand side of Axiom \eqref{eq9} as desired.
-\end{proof}
-
-\begin{lem}
-The $2$-monad $C$ for strict coboundary categories is a club.
-\end{lem}
-\begin{proof}
-This is obvious by \cref{pres2}.
-\end{proof}
-
-\begin{thm}
-The free coboundary category on one element, $C1$, is isomorphic to $BJ = \coprod BJ_{n}$.
-\end{thm}
-\begin{proof}
-The universal property we desire is with respect to strict coboundary functors (i.e., coboundary functors whose underlying monoidal functor is strict), so we must give $BJ$ the structure of a strict coboundary category and then check that to give a strict coboundary functor $BJ \rightarrow X$ to any other strict coboundary category is the same as giving an object of $X$.
-
-The category $BJ$ has natural numbers as objects, and addition as its tensor product. The tensor product of two morphisms is given by $\beta$ as in \cref{J_aop}, and it is simple to check that this is a strict monoidal structure. The commutor $\sigma_{m,n}$ is $s_{1, m+n}s_{1,m}s_{m+1,m+n}$. Using the relations in $J_{n}$, it is clear that $\sigma_{m,n}\sigma_{n,m}$ is the identity, so we only have one more axiom to verify in order to give a coboundary structure. By definition, this axiom is equivalent to the equation
-  \[
-    \sigma_{m, p+n}\cdot \beta(e_{m}, \sigma_{n,p}) = \sigma_{n+m,p}\cdot \beta(\sigma_{m,n},e_{p})
-  \]
-holding for all $m,n,p$. Each side has six terms when written out using the definitions of $\sigma$ and $\beta$, two terms on each side cancel using $s_{p,q}^{2} = e$ and the disjointness relation, and the other four terms match after using the disjointness relation. This establishes the coboundary structure on $BJ$; note that $\sigma_{1,1} = s_{1,2}$, the nontrivial element of $J(2)$.
-
-Every strict coboundary functor $F \colon BJ \rightarrow X$ determines an object of $X$ by evaluation at $1$. Conversely, given an object $x$ of a strict coboundary category $X$, there is an action of $J_{n}$ on $X(x^{n},x^{n})$ by Theorem 7 of \cite{hk-cobound} and therefore a strict monoidal functor $\overline{x} \colon BJ \rightarrow X$ with $\overline{x}(1) = x$. By construction, this strict monoidal functor is in fact a strict coboundary functor since it sends the commutor $\sigma_{1,1}$ in $BJ$ to $\sigma_{x,x}$ in $X$. In fact, the calculations in \cite{hk-cobound} leading up to Theorem 7 show that every element of $J_{n}$ is given as an operadic composition of $\sigma$'s, so requiring $\overline{x}$ to be a strict coboundary functor with $\overline{x}(1) = x$ determines the rest of the functor uniquely. This establishes the bijection between strict coboundary functors $F \colon BJ \rightarrow X$ and objects of $X$ which proves that $BJ$ is the free strict coboundary category on one object.
-\end{proof}
-
-\begin{cor}
-The $2$-monad $C$ for coboundary categories corresponds, using  \cref{thm:club=operad}, to the action operad $J$.
-\end{cor}
-
 
 
 \section{Extended Example: Braided Monoidal Categories}
