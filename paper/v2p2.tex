@@ -262,7 +262,7 @@ The category in \cref{prop:cat-of-Palg} is called the \emph{category of $P$-alge
 \end{nota}
 
 The final goal of this section is to recast the category of algebras over a $\Lambda$-operad $P$ using the endomorphism operad of \cref{ex:endo}.
-We begin by sketching a change-of-action operad result.
+We begin by proving a change-of-action operad result.
 
 \begin{thm}\label{thm:pbaop}
 Let $f \colon \Lambda \rightarrow \Lambda'$ be a map of action operads. 
@@ -488,7 +488,13 @@ so is also the identity. These two calculations verify the triangle identities, 
 %We leave verification of the associativity, unit, and equivariance axioms to the reader; they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\Lambda$-operad axioms for $P$. It is then straightforward to check the bijection between $\Lambda$-operad maps $P \rightarrow \pi^{*}Q$ and symmetric operad maps $S(P) \rightarrow Q$, thus establishing the adjunction.
 \end{proof}
 
-We will examine the adjunction from \cref{thm:pbaop} further in the case that the map $f$ is the underlying permutation map $\pi \colon \Lambda \to \Sigma$ for an action operad $(\Lambda, \pi)$. Using the formulas in the proof above, we examine the unit and counit separately.
+
+
+We will examine the adjunction from \cref{thm:pbaop} further in the case that the map $f$ is the underlying permutation map $\pi \colon \Lambda \to \Sigma$ for an action operad $(\Lambda, \pi)$. 
+
+\begin{Defi}\label{Defi:symmetrization}
+Let $(\Lambda, \pi)$ be an action operad. The left adjoint $\pi_{!}$ from \cref{thm:pbaop} is called the \emph{symmetrization functor}.
+\end{Defi}
 
 \begin{prop}\label{prop:unit-pi-star}
 Let $(\Lambda, \pi)$ be an action operad. The unit of the adjunction $\pi_{!} \dashv \pi^*$ from \cref{thm:pbaop} is an isomorphism if and only if $\Lambda \cong \Sigma$ via $\pi$.
