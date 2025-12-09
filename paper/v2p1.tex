@@ -1463,7 +1463,7 @@ For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is defined t
 \[
 \gamma \cdot (a_1, \ldots, a_n) = (a_{\gamma^{-1}(1)}, \ldots, a_{\gamma^{-1}(n)}).
 \]
-Alternatively, $RB_n$ can be described as the group of isotopy classes of braids equipped with a framing\ngnote{ref on the framed braid group papers on the nlab page}. A purely algebraic presentation of $RB_n$ is given by generators
+Alternatively, $RB_n$ can be described as the group of isotopy classes of braids equipped with a framing \cite{KS-framed,KS-framed2,MT-framed}. A purely algebraic presentation of $RB_n$ is given by generators
     \[
         \sigma_1, \ldots, \sigma_{n-1}, t_1, \ldots, t_n
     \]
@@ -1485,14 +1485,14 @@ For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is the group
     b_i \cdot t_i &= t_{i+1} \cdot b_i,\\
     b_i \cdot t_{i+1} &= t_i \cdot b_i.
   \end{align*}
-The \emph{ribbon braid operad} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{broperad}, but with some additional rules for dealing with twists. With regards to the tensor product, we have that for any twist $t_i \in RB_{n}$,
+The \emph{ribbon braid operad} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{Defi:broperad}, but with some additional rules for dealing with twists. With regards to the tensor product\acnote{tensor product? does this need rewriting with $\beta$ and $\delta$?}, we have that for any twist $t_i \in RB_{n}$,
   \[
     t_i = e_{i-1} \otimes t \otimes e_{n-i}
   \]
 where $t$ is the sole twist in $RB_1$, and for the `block twists' $t_{(m)}$ we again work recursively:
   \[
     t_{(0)} = e_n, \quad \quad \quad t_{(m+m')} = \left(t_{(m)} \otimes t_{(m')}\right) \cdot b_{(m', m)} \cdot b_{(m, m')}
-  \]
+  \]\acnote{not sure what this notation $b_{(m,m')}$ is either?}
 \end{example}
 
 % \ngnoteil{as much as I like the picture, I am commenting out the twist}
