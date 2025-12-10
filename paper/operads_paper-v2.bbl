@@ -650,6 +650,31 @@
       \endverb
       \keyw{-theory,Multicategories,Multifunctors,Multiplicative equivariant infinite loop spaces,Operads}
     \endentry
+    \entry{coh3d}{book}{}
+      \name{author}{1}{}{%
+        {{hash=1914a66bd22aa6062848dd8ecd14c605}{%
+           family={Gurski},
+           familyi={G\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{fullhash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{bibnamehash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{authorbibnamehash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{authornamehash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{authorfullhash}{1914a66bd22aa6062848dd8ecd14c605}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Cambridge Tracts in Mathematics}
+      \field{title}{Coherence in Three-Dimensional Category Theory}
+      \field{year}{2013}
+    \endentry
     \entry{gj-pseudo}{article}{}
       \name{author}{2}{}{%
         {{hash=1914a66bd22aa6062848dd8ecd14c605}{%
