@@ -968,9 +968,9 @@ Let $(\Lambda, \pi)$ be an action operad. The map $\pi \colon \Lambda \rightarro
 
 
 We now study some of the structure on the groups $\Lambda(n)$ for small values of $n$. Recall from \cref{nota:e_identity} that we write $e_{n}$ for the identity element in the group $\Lambda(n)$.
-Many of our proofs rely on the following version of the Eckmann-Hilton argument.
+Many of our proofs rely on the following version of the Eckmann-Hilton argument \cite{eh}.
 
-\begin{prop}[(Eckmann-Hilton argument)]\label{prop:EH}
+\begin{prop}[Eckmann-Hilton argument]\label{prop:EH}
 Let $G$ be a group with identity element $e$, and suppose $\varphi \colon G \times G \to G$ is a function. If $\varphi$ is a homomorphism, meaning that
 \[
 \varphi(g',h') \cdot \varphi(g,h) = \varphi(g' \cdot g, h' \cdot h),
@@ -1562,7 +1562,8 @@ In particular, the families of cyclic groups $\{ C_n \}$, reflexive groups $\Lam
 \end{example}
 
 \begin{example}[(Non-example: hyperoctahedral groups)]\label[example]{ex:counterex2}
-In Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad. We clarify that counterexample here, while also describing another. The group $H_n$ can be described in many ways: as permutations $\pi$ of the set $\{-n, 1-n, \ldots, -1, 1, \ldots, n-1, n\}$ such that $\pi(i) = -\pi(-i)$ for all $i$, as the subgroup of $O(n)$ consisting of those matrices with all integer coefficients, or as invertible $n \times n$-matrices whose entries consist of $-1$, $0$, or $1$ and in which each row and column has exactly one non-zero entry. 
+In Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad. We clarify that counterexample here, while also describing another. The group $H_n$ can be described in many ways, but we will use the description of them as signed permutation matrices, i.e., invertible $n \times n$-matrices whose entries consist of $-1$, $0$, or $1$ and in which each row and column has exactly one non-zero entry, similar to the permutation matrices in \Cref{rem:perm_matrices}.
+ % as permutations $\pi$ of the set $\{-n, 1-n, \ldots, -1, 1, \ldots, n-1, n\}$ such that $\pi(i) = -\pi(-i)$ for all $i$, as the subgroup of $O(n)$ consisting of those matrices with all integer coefficients, or as invertible $n \times n$-matrices whose entries consist of $-1$, $0$, or $1$ and in which each row and column has exactly one non-zero entry. 
 %E.g., we can consider an element of $H_3$ as a permutation matrix and a $3$-tuple of elements of $C_2 = \{-1,1\}$, or simply as a signed permutation matrix:
 %  \[
 %    \left(\trans{2}{3}
@@ -1585,7 +1586,7 @@ In Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequen
 %    \in H_3.
 %  \]
 
-In order to describe the hyperoctahedral groups as an action operad, we could use \cref{thm:charAOp} and define maps $\pi$, $\beta$, and $\delta$. The obvious map $\pi_n \colon H_n \rightarrow \Sigma_n$ takes the `absolute value' of a signed permutation matrix, giving back the underlying permutation. It seems obvious then to define $\beta$ to be the block sum of signed permutation matrices in much the same way as for the symmetric groups. 
+In order to describe the hyperoctahedral groups as an action operad, we could use \cref{thm:charAOp} and define maps $\pi$, $\beta$, and $\delta$. The obvious map $\pi_n \colon H_n \rightarrow \Sigma_n$ takes the `absolute value' of a signed permutation matrix, giving back the underlying permutation. We then define $\beta$ to be the block sum of signed permutation matrices in much the same way as for the symmetric groups.
 %E.g.,
 %  \[
 %    \beta\left(
@@ -1609,7 +1610,7 @@ In order to describe the hyperoctahedral groups as an action operad, we could us
 %    \end{bmatrix}.
 %  \]
 
-For the maps $\delta$ there seem to be two sensible options to try. The first captures Zhang's counterexample by first taking $r_n$ to be the order-reversing signed permutation matrix where all entries are $-1$, i.e., the $n \times n$ matrix with $-1$ in every entry of the anti-diagonal. Then we can define $\delta_{n;k_1,\ldots,k_n}(\sigma)$ to be the block sum $\beta(r_{k_1},\ldots,r_{k_n})$ acted on by the product of $r_n$ and $\sigma$. For example,
+For the maps $\delta$ there seem to be two sensible options to try. The first captures Zhang's counterexample by first taking $r_n$ to be the order-reversing signed permutation matrix where all entries are $-1$, i.e., the $n \times n$ matrix with $-1$ in every entry of the anti-diagonal. Then we define $\delta_{n;k_1,\ldots,k_n}(\sigma)$ to be the block sum $\beta(r_{k_1},\ldots,r_{k_n})$ acted on by the product of $r_n$ and $\sigma$. For example,
   \begin{align*}
     \delta_{3;2,1,3}\left(
     \begin{bmatrix}
