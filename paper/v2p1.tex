@@ -545,7 +545,11 @@ The set $O(n)$ in \cref{Defi:sym-op} is called the set of \emph{$n$-ary operatio
 \end{term}
 
 \begin{rem}\label[rem]{rem:nary-ops-V}
-If $O$ is an operad in a category other than $\mb{Sets}$ (see \cref{rem:V-and-coll}), then we would call $O(n)$ the \emph{object} of $n$-ary operations.
+One can change from operads in $\mb{Sets}$ to operads in another (symmetric) monoidal category $\mathcal{V}$ by requiring each $O(n)$ to be an object of $\mathcal{V}$ and replacing all instances of cartesian product with the appropriate tensor product in $\mathcal{V}$. One would also the element $\id \in O(1)$ with a map $I \rightarrow O(1)$ from the unit object of $\mathcal{V}$ to $O(1)$. In the case of symmetric operads, one would also express the right group actions as homomorphisms
+\[
+\Sigma_n^{op} \to \mathcal{V}\big( O(n), O(n) \big).
+\]
+If $O$ is an operad in a category other than $\mb{Sets}$, then we would call $O(n)$ the \emph{object} of $n$-ary operations.
 \end{rem}
 
 %\begin{rem}\label{Rem:sigma_conditions}
@@ -563,11 +567,11 @@ If $O$ is an operad in a category other than $\mb{Sets}$ (see \cref{rem:V-and-co
 Here are two important examples of symmetric operads.
 
 \begin{example}[(Symmetric operad of symmetric groups)]\label[example]{ex:Sigma}
-The canonical example of \emph{a} symmetric operad is \emph{the} symmetric operad which we write as $\Sigma$. The set $\Sigma(n)$ is the set of elements of the symmetric group $\Sigma_{n}$, and the group action is just multiplication on the right. The identity element $\id \in \Sigma(1)$ is just the identity permutation on a one-element set. Operadic composition in $\Sigma$ will then be given by a function
+The canonical example of \emph{a} symmetric operad is \emph{the} symmetric operad and we write as $\Sigma$. The set $\Sigma(n)$ is the set of elements of the symmetric group $\Sigma_{n}$, and the group action is just multiplication on the right. The identity element $\id \in \Sigma(1)$ is just the identity permutation on a one-element set. Operadic composition in $\Sigma$ will then be given by a function
   \[
     \Sigma(n) \times \Sigma(k_{1}) \times \cdots \times \Sigma(k_{n}) \rightarrow \Sigma(k_{1} + \cdots + k_{n})
   \]
-which takes permutations $\sigma \in \Sigma_{n}, \tau_{i} \in \Sigma_{k_{i}}$ and produces the following permutation in $\Sigma_{k_{1} + \cdots + k_{n}}$:
+that takes permutations $\sigma \in \Sigma_{n}, \tau_{i} \in \Sigma_{k_{i}}$ and produces the following permutation in $\Sigma_{k_{1} + \cdots + k_{n}}$:
   \[
     \mu(\sigma; \tau_{1}, \ldots, \tau_{n}) = \delta(\sigma) \cdot \beta(\tau_1,\ldots,\tau_n),
   \]
@@ -616,11 +620,7 @@ evaluated on the element $\left( (1 \,\, 2 \,\, 3); \trans{1}{2},\trans{1}{2}\tr
   %   \endxy
   % \]
   
- \ngnoteil{End this example here, with labels, move the rest to after 2.26.}
-
-
-
-  
+ 
 %Note that $\trans{1}{2}\trans{3}{4} \in \Sigma(4)$ is actually $\mu(e_{2}; \trans{1}{2}, \trans{1}{2})$, where $e_{2} \in \Sigma_{2}$ is the identity permutation. Using this and operad associativity, one can easily check that
 %  \[
 %    \mu \left( (1 \, 2 \, 3); \trans{1}{2}, \trans{1}{2}\trans{3}{4}, \trans{1}{3} \right) = \mu \left( (1 \, 2 \, 3 \, 4); \trans{1}{2}, \trans{1}{2}, \trans{1}{2}, \trans{1}{3} \right),
@@ -674,13 +674,7 @@ satisfying axioms 1 and 2 from \cref{Defi:sym-op}.
 \end{Defi}
 
 \begin{rem}\label[rem]{rem:V-and-coll}
-\begin{enumerate}
-\item One can change from operads in $\mb{Sets}$ to operads in another (symmetric) monoidal category $\mathcal{V}$ by requiring each $O(n)$ to be an object of $\mathcal{V}$ and replacing all instances of cartesian product with the appropriate tensor product in $\mathcal{V}$. One would also the element $\id \in O(1)$ with a map $I \rightarrow O(1)$ from the unit object of $\mathcal{V}$ to $O(1)$. In the case of symmetric operads, one would also express the right group actions as homomorphisms
-\[
-\Sigma_n^{op} \to \mathcal{V}\big( O(n), O(n) \big).
-\]
-\item Every symmetric operad has an underlying \textit{symmetric collection} which consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps. The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in \cref{operad=monoid}. A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
-\end{enumerate}
+ Every symmetric operad has an underlying \textit{symmetric collection} that consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps. The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in \cref{operad=monoid}. A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
 \end{rem}
 
 % \acnote{Another example of non-symmetric operad is the operad of \emph{pure} braid groups: see James Griffin's comment below the old \href{https://golem.ph.utexas.edu/category/2014/03/operads_of_finite_groups.html}{blog post}.}
@@ -698,6 +692,7 @@ In seeking a definition of weak $n$-category which can be described through iter
         \item composition is described by substitution and reparameterisation.
     \end{itemize}
 More details about Trimble's operad $E$ can be found in \cite[Definition $T_R$]{leinster-survey} and \cite[Example 1.7]{cg-comparison}, with variants considered in \cite{cg-cobordism}.
+This is a non-symmetric operad in $\mb{Top}$ that, to the author's knowledge, does not admit the structure of a symmetric operad.
 \end{example}
 
 In the original topological applications \cite{maygeom}, symmetric operads were the central figures. A further kind of operad was studied by Fiedorowicz in \cite{fie-br}, that of a \emph{braided} operad in which the braid groups take the place of the symmetric groups. We sketch that definition below.
@@ -764,7 +759,7 @@ Let $O, O'$ be symmetric operads in $\mb{Sets}$. Then a \textit{map of symmetric
 
 The next proposition states that symmetric operads and their maps form a category. We leave the proof to the reader.
 
-\ngnoteil{let's use the following prop/notation pair as a template for how to define categories}
+%\ngnoteil{let's use the following prop/notation pair as a template for how to define categories}
 \begin{prop}\label[prop]{prop:cat-of-sym-op}
 There is a category with 
 \begin{itemize}
@@ -811,7 +806,7 @@ In order for this to be a well-defined function, the right group action axioms f
 These functions are not forced to be group homomorphisms, but do satisfy some additional axioms.
 \end{enumerate}
 In this section, we define \emph{action operads} in \cref{Defi:aop} in order to present a unified treatment of a family of groups satisfying the conditions above. 
-In \cref{part:op-with-eq}, we define for each action operad $\Lambda$ a notion of $\Lambda$-operad; symmetric operads will arise when $\Lambda = \Sigma$, non-symmetric operads will arise when $\Lambda$ is the action operad of trivial groups, and braided operads will arise when $\Lambda = B$.
+In \cref{sec:forward-op}, we define for each action operad $\Lambda$ a notion of $\Lambda$-operad; symmetric operads will arise when $\Lambda = \Sigma$, non-symmetric operads will arise when $\Lambda$ is the action operad of trivial groups, and braided operads will arise when $\Lambda = B$.
 Our definition of an action operad will not mention $\beta$ or $\delta$, but will instead use a single axiom relating the group structure, operadic multiplication, and underlying permutations. 
 The main result of this section is \cref{thm:charAOp} in which we prove that action operads can be described entirely in terms of the functions $\beta, \delta$ as above.
 We will give two examples of action operads (the symmetric groups and the trivial groups) in this section, and postpone the rest to \cref{sec:aop-examples}.
@@ -1141,7 +1136,9 @@ An action operad $\Lambda$ determines, and is uniquely determined by, the follow
   \[
     \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) \stackrel{\beta}{\longrightarrow} \Lambda(k_{1} + \cdots + k_{n}),
   \]
-for each $n > 0$ and $k_{1}, \ldots, k_{n}$\ngnote{Used to have: together with the degenerate case of $n=0$ which then is a group homomorphism $1 \rightarrow \Lambda(0)$. Do we need this?}\acnote{Think the $n=0$ case just tells us that $e_0 \cdot e_0 = e_0$?}, and
+for each $n > 0$ and $k_{1}, \ldots, k_{n}$
+%\ngnote{Used to have: together with the degenerate case of $n=0$ which then is a group homomorphism $1 \rightarrow \Lambda(0)$. Do we need this?}\acnote{Think the $n=0$ case just tells us that $e_0 \cdot e_0 = e_0$?}
+, and
 \item a function of sets
   \[
     \Lambda(n) \stackrel{\delta_{n; k_{1}, \ldots, k_{n}}}{\longrightarrow} \Lambda(k_{1} + \cdots + k_{n})
@@ -1304,8 +1301,8 @@ By the definition of $\mu$,
 which is itself equal to
 \begin{eqn}\label{eqn:opass2}
 \delta\big(\delta(f)\big) \delta\big(\beta(g_{1}, \ldots, g_{m})\big)
-\end{eqn}
-by Axiom \eqref{eq6} above. \acnote{Why is there a tiny indent after every equation environment? Can't get rid of it.} 
+\end{eqn}\noindent
+by Axiom \eqref{eq6} above. \acnote{Why is there a tiny indent after every equation environment? Can't get rid of it.}\ngnote{we can put slash noindent (see above) after the end eqn} 
 Now the $\delta(f)$ on the left side of \cref{eqn:opass} uses $\delta_{n; P_{1}, \ldots, P_{n}}$, while the $\delta(\delta(f))$ in \cref{eqn:opass2} is actually
   \[
     \delta_{m_1 + \cdots + m_{n}; q_{ij}}(\delta_{n; m_{1}, \ldots, m_{n}} (f))
@@ -1459,7 +1456,7 @@ Yau checks that these groups and functions satisfy the axioms of an action opera
 
 \begin{example}[(Action operad of ribbon braid groups)]\label{example:aop-rbraid}
 \ngnoteil{new:}
-For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is defined to be the semidirect product $\mathbb{Z}^n \trianglelefteq B_n$\acnote{is this usual notation for a semidirect product? I though it would be $\mathbb{Z}^n \rtimes B_n$?}, where the action of $B_n$ on $\mathbb{Z}^n$ is given, using the underlying permutation of a braid $\gamma$, by the formula\ngmpar{Okay, I think there are some issues with inverses in all the literature, or maybe everyone is secretly using a right action. I am attempting to fix that, but maybe no one cares}\acnote{\cite{KS-framed2} says they use a right action of $\Sigma_n$ on the first page, before def of framed braid groups - seems to be inconsistent with their other paper \cite{KS-framed}}
+For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is defined to be the semidirect product $\mathbb{Z}^n \rtimes B_n$, where the action of $B_n$ on $\mathbb{Z}^n$ is given, using the underlying permutation of a braid $\gamma$, by the formula\ngmpar{Okay, I think there are some issues with inverses in all the literature, or maybe everyone is secretly using a right action. I am attempting to fix that, but maybe no one cares}\acnote{\cite{KS-framed2} says they use a right action of $\Sigma_n$ on the first page, before def of framed braid groups - seems to be inconsistent with their other paper \cite{KS-framed}}\ngnote{I am going to leave this one for you to fix}
 \[
 \gamma \cdot (a_1, \ldots, a_n) = (a_{\gamma^{-1}(1)}, \ldots, a_{\gamma^{-1}(n)}).
 \]
@@ -1652,7 +1649,7 @@ For the maps $\delta$ there seem to be two sensible options to try. The first ca
       r_2 & 0 & 0
       \end{bmatrix}.
     \end{align*}
-In particular, this gives $\delta_{1;n}([-1]) = r_n$ as in \cite{zhang-grp}. Taking $\sigma = (\trans{2}{3};-1,1,-1)$, as above, we can show that Axiom \eqref{eq8} fails in \cref{thm:charAOp}
+This choice gives $\delta_{1;n}([-1]) = r_n$ as in \cite{zhang-grp}. Taking $\sigma = (\trans{2}{3};-1,1,-1)$, as above, we can show that Axiom \eqref{eq8} fails in \cref{thm:charAOp}
 % \ngnote{I got confused reading this, the calculations don't match what I expect}\acnote{fixed, I think? and cut down a bit}
 . The left-hand side of the axiom would be $\delta_{1;3}([-1])\beta(\sigma) = r_n \cdot \sigma = ((1 \,\, 3 \,\, 2); 1, -1, 1)$.
         % \[
@@ -1739,6 +1736,7 @@ While hyperoctahedral groups do not form an action operad in the sense of \cref{
 %\end{example}
 
 \begin{rem}[(Crossed Simplicial Groups)]\label[remark]{rem:crossed}
+\ngnoteil{This is for you to fix}
 The crossed simplicial groups of Krasauskas \cite{Kra87} and Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. 
 On objects, we define a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$ from the category of action operads to the category of crossed simplicial groups by defining $C(\Lambda)(n) = \Lambda(n+1)$. \acnote{Why do we shift the index here? Doesn't this cause us to lose informatino about $\Lambda(0)$?}
 The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition of $\Lambda$ as in \cite[Construction~1.1]{Kra96} or \cite[Section~2]{ber-simplicial}. Zhang \cite[Section 2.4]{zhang-grp} also describes this connection with action operads in more detail, while Yoshida \cite{yoshida2018group} connects action operads with the related notion of crossed interval groups \cite{bm-crossed}. 
