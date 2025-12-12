@@ -1190,7 +1190,7 @@ holds, where $\underline{h_i} = h_{i1},\ldots,h_{ij_i}$.
   \]
 
 
-\item\label{eq5} The function $\delta_{n; 1, \ldots, 1} \colon \Lambda(n) \rightarrow \Lambda(n)$ is the identity. The function $\delta_{n;k_1,\ldots,k_n} \colon \Lambda(1) \to \Lambda(n)$ maps $e_n$ to $e_{k_1 + \cdots + k_n}$
+\item\label{eq5} The function $\delta_{n; 1, \ldots, 1} \colon \Lambda(n) \rightarrow \Lambda(n)$ is the identity. The function $\delta_{n;k_1,\ldots,k_n} \colon \Lambda(n) \to \Lambda(k_1 + \cdots + k_n)$ maps $e_n$ to $e_{k_1 + \cdots + k_n}$
 \item\label{eq6} The equation $\delta_{n; k_1, \ldots, k_n}(g) \delta_{n; j_1, \ldots, j_n}(h) = \delta_{n; j_1,\ldots,j_n}(gh)$ holds when
 
   \[
@@ -1460,7 +1460,7 @@ For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is defined t
 \[
 \gamma \cdot (a_1, \ldots, a_n) = (a_{\gamma^{-1}(1)}, \ldots, a_{\gamma^{-1}(n)}).
 \]
-Alternatively, $RB_n$ can be described as the group of isotopy classes of braids equipped with a framing \cite{KS-framed,KS-framed2,MT-framed}. A purely algebraic presentation of $RB_n$ is given by generators
+Alternatively, $RB_n$ can be described as the group of isotopy classes of braids equipped with a framing \cite{KS-framed,KS-framed2,MT-framed}. In \cite{KS-framed,KS-framed2} the action above is described without inverses, but we choose to present it this way for consistency with \Cref{Defi:broperad}. A purely algebraic presentation of $RB_n$ is given by generators
     \[
         \sigma_1, \ldots, \sigma_{n-1}, t_1, \ldots, t_n
     \]
@@ -1474,7 +1474,9 @@ t_i t_j & = t_j t_i, \\
 \end{align*}
 for all $i, j$\ngnote{check these equations agree with yours below, and if they don't figure out if yours also have the issue about inverses from above}.
 \end{itemize}
+In particular, for any given braid $\sigma \in B_n$, the relations imply that $\sigma t_i = t_{\sigma^{-1}(i)} \sigma$.
 
+The action operad structure is described much like that for the braid groups. Each ribbon braid has an underlying permutation from its underlying braid and the operation $\beta$ is the disjoint union of ribbon braids in the same way as for braids. The `cabling' operation $\delta$ for ribbon braids is slightly more intricate, however, than that for braids. A ribbon braid without any twists is simple enough to describe and is the same as the standard cabling operation: $\delta_{n;k_1,\ldots,k_n}$ replaces the first ribbon with $k_1$ ribbons, the second with $k_2$ ribbons, and so on, before these are braided in groups according to the underlying braid. If twists are involved, then we must take care to describe this carefully. 
 
 \ngnoteil{old:}
 For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is the group whose presentation is the same as that of the braid group $B_{n}$, except with the addition of $n$ new generators $t_1, \ldots, t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
