@@ -561,6 +561,54 @@
       \field{pages}{57\bibrangedash 87}
       \range{pages}{31}
     \endentry
+    \entry{garside}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=04945dac668a82524dca6d22ffb01bfc}{%
+           family={Garside},
+           familyi={G\bibinitperiod},
+           given={F.\bibnamedelimi A.},
+           giveni={F\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{04945dac668a82524dca6d22ffb01bfc}
+      \strng{fullhash}{04945dac668a82524dca6d22ffb01bfc}
+      \strng{fullhashraw}{04945dac668a82524dca6d22ffb01bfc}
+      \strng{bibnamehash}{04945dac668a82524dca6d22ffb01bfc}
+      \strng{authorbibnamehash}{04945dac668a82524dca6d22ffb01bfc}
+      \strng{authornamehash}{04945dac668a82524dca6d22ffb01bfc}
+      \strng{authorfullhash}{04945dac668a82524dca6d22ffb01bfc}
+      \strng{authorfullhashraw}{04945dac668a82524dca6d22ffb01bfc}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{F. A. GARSIDE; THE BRAID GROUP AND OTHER GROUPS, The Quarterly Journal of Mathematics, Volume 20, Issue 1, 1 January 1969, Pages 235–254, https://doi.org/1}
+      \field{issn}{0033-5606}
+      \field{journaltitle}{The Quarterly Journal of Mathematics}
+      \field{month}{1}
+      \field{note}{Publisher: Oxford Academic}
+      \field{number}{1}
+      \field{title}{The braid group and other groups}
+      \field{urlday}{13}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{volume}{20}
+      \field{year}{1969}
+      \field{urldateera}{ce}
+      \field{pages}{235\bibrangedash 254}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1093/qmath/20.1.235
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.1093/qmath/20.1.235
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.1093/qmath/20.1.235
+      \endverb
+    \endentry
     \entry{guillou_symmetric}{article}{}{}
       \name{author}{4}{}{%
         {{hash=1b5ac16f5c5e07453052212e10163d0d}{%
