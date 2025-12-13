@@ -133,7 +133,7 @@ Throughout we will be using maps $\pi_n \colon O(n) \rightarrow \Sigma_n$, where
 For any $\sigma \in O(n)$, we will write $\sigma(i)$ for $\pi_n(\sigma)(i)$, the image of $i$ with respect to the underlying permutation of $\sigma$; the notation $\sigma^{-1}(i)$ will be used for the inverse image of $i$ with respect to the underlying permutation of $\sigma$.
 \end{nota}
 
-\begin{rem}[(Left action of symmetric groups on tuples)]\label[rem]{rem:Sn-tuples}
+\begin{rem}[(Left action of symmetric groups on tuples)]\label{rem:Sn-tuples}
 The most common group action we will encounter is the left action of the symmetric group $\Sigma_n$ on a set of the form $X^n$.
 We write this action as $\sigma \cdot (x_1, \ldots, x_n)$, and emphasize that it is given by the formula
 \[
@@ -157,7 +157,7 @@ Define
 \]
 \end{Defi}
 
-\begin{rem}\label[rem]{rem:beta-s}
+\begin{rem}\label{rem:beta-s}
 The formula above expresses the idea that $\beta( \sigma_1, \ldots, \sigma_n )$ permutes the first $k_1$ elements using $\sigma_1$, the next $k_2$ elements using $\sigma_2$, and so on.
 \end{rem}
 
@@ -177,7 +177,7 @@ Define
 \]
 \end{Defi}
 
-\begin{rem}\label[rem]{rem:delta-s}
+\begin{rem}\label{rem:delta-s}
 The formula above for $\delta_{n; k_1, \ldots, k_n}(\sigma)$ is best explained by drawing the graph of $\sigma$ as follows. The function $\sigma$ can be represented by drawing two rows of $n$ dots each, and connecting dot $i$ in the top row to dot $\sigma(i)$ in the bottom row. Then $\delta_{n; k_1, \ldots, k_n}(\sigma)$ is obtained by 
 \begin{itemize}
 \item replacing dot $i$ in the top row with $k_i$ dots,
@@ -189,7 +189,7 @@ Thus we see that the $i$th entry for $\sigma$ is duplicated $k_i$ times in $\del
 
 % \ngnoteil{moved this remark here, fix and maybe shorten?}
 
-\begin{remark}\label[rem]{rem:perm_matrices}
+\begin{remark}\label{rem:perm_matrices}
 Permutations, as elements of $\Sigma_n$, can be considered as permutation \emph{matrices} with exactly one $1$ in each row and column. E.g., the permutation $(1 \,\, 3 \,\, 2) \in \Sigma_3$ can be considered as a matrix which permutes three elements $\begin{bmatrix} a & b & c \end{bmatrix}$ upon pre-multiplication:
   \[
   \begin{bmatrix}
@@ -449,7 +449,7 @@ holds, where $\delta_{n; k_1, \ldots, k_n}$ is the function from \cref{Defi:delt
 The functions $\mu$ in \cref{Defi:sym-op} are called \emph{operadic multiplication} or \emph{operadic composition} maps.
 \end{term}
 
-\begin{rem}\label[rem]{rem:op-def}
+\begin{rem}\label{rem:op-def}
 One is intended to think that $x \in O(n)$ is a function with $n$ inputs and a single output, as below.
   \begin{center}
   \begin{tikzpicture}
@@ -544,7 +544,7 @@ Operadic composition is then a generalization of function composition, with the 
 The set $O(n)$ in \cref{Defi:sym-op} is called the set of \emph{$n$-ary operations} of $O$.
 \end{term}
 
-\begin{rem}\label[rem]{rem:nary-ops-V}
+\begin{rem}\label{rem:nary-ops-V}
 One can change from operads in $\mb{Sets}$ to operads in another (symmetric) monoidal category $\mathcal{V}$ by requiring each $O(n)$ to be an object of $\mathcal{V}$ and replacing all instances of cartesian product with the appropriate tensor product in $\mathcal{V}$. One would also the element $\id \in O(1)$ with a map $I \rightarrow O(1)$ from the unit object of $\mathcal{V}$ to $O(1)$. In the case of symmetric operads, one would also express the right group actions as homomorphisms
 \[
 \Sigma_n^{op} \to \mathcal{V}\big( O(n), O(n) \big).
@@ -567,7 +567,7 @@ If $O$ is an operad in a category other than $\mb{Sets}$, then we would call $O(
 Here are two important examples of symmetric operads.
 
 \begin{example}[(Symmetric operad of symmetric groups)]\label[example]{ex:Sigma}
-The canonical example of \emph{a} symmetric operad is \emph{the} symmetric operad and we write as $\Sigma$. The set $\Sigma(n)$ is the set of elements of the symmetric group $\Sigma_{n}$, and the group action is just multiplication on the right. The identity element $\id \in \Sigma(1)$ is just the identity permutation on a one-element set. Operadic composition in $\Sigma$ will then be given by a function
+The canonical example of \emph{a} symmetric operad is \emph{the} symmetric operad and we write this as $\Sigma$. The set $\Sigma(n)$ is the set of elements of the symmetric group $\Sigma_{n}$, and the group action is just multiplication on the right. The identity element $\id \in \Sigma(1)$ is just the identity permutation on a one-element set. Operadic composition in $\Sigma$ will then be given by a function
   \[
     \Sigma(n) \times \Sigma(k_{1}) \times \cdots \times \Sigma(k_{n}) \rightarrow \Sigma(k_{1} + \cdots + k_{n})
   \]
@@ -673,7 +673,7 @@ A \emph{non-symmetric operad} $O$ consists of
 satisfying axioms 1 and 2 from \cref{Defi:sym-op}.
 \end{Defi}
 
-\begin{rem}\label[rem]{rem:V-and-coll}
+\begin{rem}\label{rem:V-and-coll}
  Every symmetric operad has an underlying \textit{symmetric collection} that consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps. The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in \cref{operad=monoid}. A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
 \end{rem}
 
@@ -733,7 +733,7 @@ holds.%, where $\delta_{n; k_1, \ldots, k_n}$ is the function from \cref{Defi:de
 %   \end{itemize}
 \end{Defi}
 
-\begin{rem}\label[rem]{rem:br-op-needed}
+\begin{rem}\label{rem:br-op-needed}
 The above sketch omits the definitions of $\beta, \delta$ for braids. 
 Formulas for these can be found in \cite[Examples~5.1.11,~5.1.13]{yau_infinity_2021}, although the geometric interpretations are simple: $\beta$ takes the disjoint union of braids, and $\delta_{n; k_1, \ldots, k_n}(\tau)$ is obtained by replacing the $i$th strand of $\tau$ by $k_i$ parallel strands.
 These operations are sometimes referred to as `cabling' operations for braids, as described in, for example, \cite{doucot_local_2025}.
@@ -1476,7 +1476,29 @@ for all $i, j$\ngnote{check these equations agree with yours below, and if they 
 \end{itemize}
 In particular, for any given braid $\sigma \in B_n$, the relations imply that $\sigma t_i = t_{\sigma^{-1}(i)} \sigma$.
 
-The action operad structure is described much like that for the braid groups. Each ribbon braid has an underlying permutation from its underlying braid and the operation $\beta$ is the disjoint union of ribbon braids in the same way as for braids. The `cabling' operation $\delta$ for ribbon braids is slightly more intricate, however, than that for braids. A ribbon braid without any twists is simple enough to describe and is the same as the standard cabling operation: $\delta_{n;k_1,\ldots,k_n}$ replaces the first ribbon with $k_1$ ribbons, the second with $k_2$ ribbons, and so on, before these are braided in groups according to the underlying braid. If twists are involved, then we must take care to describe this carefully. 
+The action operad structure is described much like that for the braid groups in \cref{rem:br-op-needed}. Each ribbon braid has an underlying permutation from its underlying braid and the operation $\beta$ is the disjoint union of ribbon braids in the same way as for braids. The `cabling' operation $\delta$ for ribbon braids is slightly more intricate, however, than that for braids. A ribbon braid without any twists is simple enough to describe and is the same as the standard cabling operation: $\delta_{n;k_1,\ldots,k_n}$ replaces the first ribbon with $k_1$ ribbons, the second with $k_2$ ribbons, and so on, before these are braided in groups according to the underlying braid. If twists are involved, then we must take care to describe this carefully.
+
+\acnoteil{Feeling out how much detail we need for ribbon braid groups to be officially `checked' as an action operad. I'm quite happy with the details, but we might get away with a diagram and some comments to hold off all the checking.}
+For a ribbon braid $t_1^{m_1}\cdots t_n^{m_n}\sigma$ and the Garside twist
+    \[
+        \gamma_n = (\sigma_1 \sigma_2 \cdots \sigma_n)(\sigma_1 \sigma_2 \cdots \sigma_{n-1})\cdots(\sigma_1 \sigma_2)(\sigma_1),
+    \]
+it's something like this:
+    \[
+        \delta^{RB}_{n;k_1,\ldots,k_n}(t_1^{m_1}\cdots t_n^{m_n}\sigma) = \beta(\beta(\underline{t})^{m_1}\gamma_{k_1}^{2m_1},\ldots,\beta(\underline{t})^{m_n}\gamma_{k_n}^{2m_n})\delta^B_{n;k_1,\ldots,k_n}(\sigma)
+    \]
+A lot of the axioms rely on general braids commuting with the full Garside twist on the same number of strands and the fact that $\pi_n(\gamma_n^2) = e_n$ and $\pi(t) = e_1$.
+E.g., for the ribbon braid $\alpha = t_1^2t_2t_3\sigma_1\sigma_2\sigma_2$ and $\delta_{3;3,1,2}$ we get
+    \begin{align*}
+        \delta(\alpha) &= \beta(\beta(t,t,t)^2\gamma_3^4,\beta(t),\beta(t,t)\gamma_2^2)\delta(\sigma_1\sigma_2\sigma_2)\\
+        &= \beta(t^2,t^2,t^2,t,t,t)\beta(\gamma_3^4,e_1,\gamma_2^2)\delta(\sigma_1\sigma_2\sigma_2).
+    \end{align*}
+Actually this might give a better simplification of the formula for $\delta$:
+    \[
+        \delta^{RB}_{n;k_1,\ldots,k_n}(t_1^{m_1},\ldots,t_n^{m_n}\sigma) = \beta(\underline{t^{m_1}},\ldots,\underline{t^{m_n}})\beta(\gamma_{k_1}^{2m_1},\ldots,\gamma_{k_n}^{2m_n})\delta^B_{n;k_1,\ldots,k_n}(\sigma)
+    \]
+where $\underline{t^{m_i}}$ is $t_{m_i}$ repeated $k_i$ times.
+\acnoteil{Something where $\delta_{1;n}(t) = $ `full Garside twist', e.g., $\delta_{1;3}(t) = \beta(t,t,t)(\sigma_1 \sigma_2 \sigma_3)(\sigma_1 \sigma_2)(\sigma_1)(\sigma_1 \sigma_2 \sigma_3)(\sigma_1 \sigma_2)(\sigma_1)$, whichever the right way round is. I don't like the lack of details in Wahl's thesis to deal with the twists for our purposes, so I'm trying to fill them in - there it's mostly just `similar to the symmetric and braid case' apart from some hidden details in proofs. I've mostly written it out and checked Theorem 4.15. but it depends how much detail we want to go into. It's on the level of the cactus operad proof.}
 
 \ngnoteil{old:}
 For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is the group whose presentation is the same as that of the braid group $B_{n}$, except with the addition of $n$ new generators $t_1, \ldots, t_n$, known as the \emph{twists}. These twists all commute with one other, and also commute with all braids except in the following cases:
@@ -1484,7 +1506,7 @@ For each $n \in \mathbb{N}$, the \emph{ribbon braid group} $RB_{n}$ is the group
     b_i \cdot t_i &= t_{i+1} \cdot b_i,\\
     b_i \cdot t_{i+1} &= t_i \cdot b_i.
   \end{align*}
-The \emph{ribbon braid operad} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{Defi:broperad}, but with some additional rules for dealing with twists. With regards to the tensor product\acnote{tensor product? does this need rewriting with $\beta$ and $\delta$?}, we have that for any twist $t_i \in RB_{n}$,
+The \emph{ribbon braid operad} $RB$ is then the operad made up of these groups in a way that extends the definition of the braid operad. In other words, the identity is still $e_1 \in RB_1$, and the operadic multiplication is built up in stages in exactly the same ways as in \cref{rem:br-op-needed}, but with some additional rules for dealing with twists. With regards to the tensor product\acnote{tensor product? does this need rewriting with $\beta$ and $\delta$?}, we have that for any twist $t_i \in RB_{n}$,
   \[
     t_i = e_{i-1} \otimes t \otimes e_{n-i}
   \]
@@ -2107,11 +2129,11 @@ Thus as an action operad, $\Sigma$ is generated by the single element $\sigma_{1
 
 We now define the relations for this presentation of $\Sigma$ as an action operad.
 The first relation is 
-\begin{equation}\label[eq]{eq:rel1}
+\begin{equation}\label{eq:rel1}
 \sigma^2 = e_2.
 \end{equation}
 The second relation is
-\begin{equation}\label[eq]{eq:rel2}
+\begin{equation}\label{eq:rel2}
 \mu(\sigma; e_1, e_2) = \mu(e_2; e_1, \sigma) \cdot \mu(e_2; \sigma, e_1).
 \end{equation}
 We therefore claim that $\Sigma$ has a presentation given by
@@ -2138,7 +2160,7 @@ Let $\Lambda$ be an action operad, and $f \colon F\mathbf{g} \to \Lambda$ a map 
 We construct a unique map of action operads $\tilde{f} \colon \Sigma \to \Lambda$ such that $f = \tilde{f} \circ t$.
 If such an $\tilde{f}$ exists, it must map the transposition $\sigma_{1;2} = (1 \ 2) \in \Sigma_2$ to $f(\sigma)$.
 Since each other generator (of $\Sigma_n$ as a group) $\sigma_{i;n}$ is the image
-\begin{equation}\label[eq]{eq:sig-in}
+\begin{equation}\label{eq:sig-in}
 \sigma_{i;n} = \beta(e_{i-1}, \sigma_{1;2}, e_{n-i-1}) = \mu(e_3; e_{i-1}, \sigma_{1;2}, e_{n-i-1})
 \end{equation}
 of $\sigma_{1;2}$ under an operadic multiplication, any map of action operads $\tilde{f}$ satisfying $f = \tilde{f} \circ t$ is unique if it exists, and $\tilde{f}_n$ must be 
@@ -2155,7 +2177,7 @@ In order to show that the formula
 defines a unique homomorphism $\tilde{f}_n \colon \Sigma_n \to \Lambda(n)$, we must check that it respects the relations in the presentation of $\Sigma_n$ given above.
 We only check the third axiom, and only in the case $i=1, n=3$; the rest we leave as a simple exercise for the reader.
 In order to verify that $\tilde{f}_3$ respects this relation, we must show that
-\begin{equation}\label[eq]{eq:3term}
+\begin{equation}\label{eq:3term}
 \tilde{f}_3( \sigma_{1;3}) \ \tilde{f}_3(\sigma_{2;3} ) \ \tilde{f}_3(\sigma_{1;3} ) = \tilde{f}_3(\sigma_{2;3} ) \ \tilde{f}_3(\sigma_{1;3} ) \ \tilde{f}_3( \sigma_{2;3}).
 \end{equation}
 By \cref{lem:e0-unit}, the left side of the above is 
