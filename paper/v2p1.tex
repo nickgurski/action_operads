@@ -1492,7 +1492,7 @@ where $m_i \in \mathbb{Z}$ and $\sigma \in B_n$: we interpret this as $t_i^{m_i}
     \[
         \delta^{RB}_{n;k_1\cdots k_n}(t_1^{m_1},\ldots,t_n^{m_n}\sigma) = \beta(\underline{t^{m_1}},\ldots,\underline{t^{m_n}})\beta(\gamma_{k_1}^{2m_1},\ldots,\gamma_{k_n}^{2m_n})\delta^B_{n;k_1,\ldots,k_n}(\sigma).
     \]
-Abstractly, when a twist is `duplicated' each new ribbon gains a full twist and then all of the ribbons in that block are braided via a full Garside twist. Physically, this corresponds to putting a full twist in a large wide ribbon before cutting it into $k$ new ribbons whilst preserving the endpoints, before shuffling the twists on each new ribbon to the top of the ribbon braid. A similar interpretation with many examples is described in \cite[Chapter 6]{yau_infinity_2021}. We hold off in checking the axioms as they are mostly straightforward, being similar to the braid groups, and only requiring some slight subtleties in dealing with commuting braids and twists which often reduces to using the commutativity properties of the full Garside twist.
+Abstractly, when a twist is `duplicated' each new ribbon gains a full twist and then all of the ribbons in that block are braided via a full Garside twist. Physically, this corresponds to putting a full twist in a large wide ribbon before cutting it into $k$ new ribbons whilst preserving the endpoints, before shuffling the twists on each new ribbon to the top of the ribbon braid. A similar interpretation with many examples is described in \cite[Chapter 6]{yau_infinity_2021}. We do not check the axioms in detail here as they are mostly straightforward, being similar to the braid groups, and only requiring some slight subtleties in dealing with commuting braids and twists which often reduces to using the commutativity properties of the full Garside twist.
 
 % \acnoteil{Feeling out how much detail we need for ribbon braid groups to be officially `checked' as an action operad. I'm quite happy with the details, but we might get away with a diagram and some comments to hold off all the checking.}
 % For a ribbon braid $t_1^{m_1}\cdots t_n^{m_n}\sigma$ and the Garside twist
@@ -1777,8 +1777,9 @@ While hyperoctahedral groups do not form an action operad in the sense of \cref{
 
 \begin{rem}[(Crossed Simplicial Groups)]\label[remark]{rem:crossed}
 \ngnoteil{This is for you to fix}
+\acnote{Think if we check this directly it's all instances of Axiom 7. It's just fiddling around massively with the indices. Got my head into it, just need to get through it.}
 The crossed simplicial groups of Krasauskas \cite{Kra87} and Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. 
-On objects, we define a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$ from the category of action operads to the category of crossed simplicial groups by defining $C(\Lambda)(n) = \Lambda(n+1)$. \acnote{Why do we shift the index here? Doesn't this cause us to lose informatino about $\Lambda(0)$?}
+On objects, we define a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$ from the category of action operads to the category of crossed simplicial groups by defining $C(\Lambda)(n) = \Lambda(n+1)$. \acnote{Why do we shift the index here? Doesn't this cause us to lose information about $\Lambda(0)$?}
 The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition of $\Lambda$ as in \cite[Construction~1.1]{Kra96} or \cite[Section~2]{ber-simplicial}. Zhang \cite[Section 2.4]{zhang-grp} also describes this connection with action operads in more detail, while Yoshida \cite{yoshida2018group} connects action operads with the related notion of crossed interval groups \cite{bm-crossed}. 
 On morphisms, something\ngnote{is it just $C(f)(n) = f_{n+1}$? That seems conservative to me}.
 This functor is neither faithful nor conservative.
