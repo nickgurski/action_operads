@@ -2026,6 +2026,39 @@
       \field{pages}{229\bibrangedash 251}
       \range{pages}{23}
     \endentry
+    \entry{semidetnov}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=44447fb7db3c4b1e1d8d7ec2c79727bd}{%
+           family={Semidetnov},
+           familyi={S\bibinitperiod},
+           given={Artem},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{44447fb7db3c4b1e1d8d7ec2c79727bd}
+      \strng{fullhash}{44447fb7db3c4b1e1d8d7ec2c79727bd}
+      \strng{fullhashraw}{44447fb7db3c4b1e1d8d7ec2c79727bd}
+      \strng{bibnamehash}{44447fb7db3c4b1e1d8d7ec2c79727bd}
+      \strng{authorbibnamehash}{44447fb7db3c4b1e1d8d7ec2c79727bd}
+      \strng{authornamehash}{44447fb7db3c4b1e1d8d7ec2c79727bd}
+      \strng{authorfullhash}{44447fb7db3c4b1e1d8d7ec2c79727bd}
+      \strng{authorfullhashraw}{44447fb7db3c4b1e1d8d7ec2c79727bd}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{title}{The operad associated to a crossed simplicial group}
+      \field{year}{2025}
+      \verb{eprint}
+      \verb 2512.14498
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2512.14498
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2512.14498
+      \endverb
+    \endentry
     \entry{street-quantum}{book}{}{}
       \name{author}{1}{}{%
         {{hash=faea870f61e1c45828077d18a31465d2}{%
