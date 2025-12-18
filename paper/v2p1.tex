@@ -1806,9 +1806,15 @@ Checking the simplicial identities amounts to repeated use of Axiom \eqref{eq7}.
     \[
         \delta^j_{n;\underline{1},0,\underline{1}}(\delta^i_{n;\underline{1},0,\underline{1}}(g)) = \delta^i_{n;\underline{1},0,\underline{1}}(\delta^{j+1}_{n;\underline{1},0,\underline{1}}(g)).
     \]
-In terms of Axiom \eqref{eq7} this is found to be the case by taking $m_a = 0$ when $a = g^{-1}(i)$ and $P_a = p_a = 0$ when $a = \delta^i(g)^{-1}(j)$ on the left hand side and $m_a = 0$ when $a = g^{-1}(j+1)$ and $P_a = p_a = 0$ when $a = \delta^{j+1}(g)^{-1}(i)$ on the right hand side. Both of these are equal to the same element, from which the identity follows.
-\acnoteil{Something is weird about this. (Check the note on Axiom \eqref{eq7}.) We need the lists in the indices of $\delta$ to allow empty lists, contributing 0 to the sum of the list. I just can't get my head around the indices at the moment -- almost got it.}
-Zhang \cite[Section 2.4]{zhang-grp} also describes this connection with action operads in more detail, while Yoshida \cite{yoshida2018group} connects action operads with the related notion of crossed interval groups \cite{bm-crossed}. QQQ As does \cite{semidetnov}.
+In terms of Axiom \eqref{eq7} this is found to be the case by taking $m_{g^{-1}(i)}=0$, $p_{g^{-1}(i)} = \emptyset$, and $P_{g^{-1}(i)}=0$ on the left hand side and $m_{{g^{-1}(j+1)}} = 0$ when $a = g^{-1}(j+1)$, $p_{g^{-1}(j+1)} = \emptyset$, and $P_{g^{-1}(j+1)}=0$ on the right hand side. Since $i \leq j$, both of these are equal to the same element
+    \[
+        \delta_{n+1;\underline{1},0,\underline{1},0,\underline{1}(g)},
+    \]
+where the $0$s are in positions $g^{-1}(i) = (\delta_{n;\underline{1},0,\underline{1}}^j(g))^{-1}(i)$ and $g^{-1}(j+1) = (\delta_{n;\underline{1},0,\underline{1}}^{i})^{-1}(j)$, from which the identity follows. A similar argument gives the remaining simplicial identities, again using Axiom \eqref{eq7}.
+
+QQQ Check the remaining CSG axioms - can we just check dd = d and ss = s (which is just Axiom \eqref{eq6}) or do we have to check Prop 1.6 in Fiedorowicz-Loday?
+\acnoteil{Something is weird about this: check the note on Axiom \eqref{eq7} - we need the lists in the indices of $\delta$ to allow empty lists, contributing 0 to the sum of the list. I'm happy that this all works, but I'm worried that all of my indices and permutations are off-by-one.}
+Zhang \cite[Section 2.4]{zhang-grp} also describes this connection with action operads in more detail, while Yoshida \cite{yoshida2018group} connects action operads with the related notion of crossed interval groups \cite{bm-crossed}. Semidetnov's \emph{operadic} crossed simplicial groups likely correspond to action operads \cite[Definition 2.4]{semidetnov}. \acnote{Reword, erugh}
 \end{rem}
 
 \begin{rem}[(Cloning Systems)]\label[remark]{rem:cloning}
