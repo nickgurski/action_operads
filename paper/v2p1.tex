@@ -1805,17 +1805,18 @@ In terms of Axiom \eqref{eq7} this is found to be the case by taking $m_{g^{-1}(
     \[
         \delta_{n+1;\underline{1},0,\underline{1},0,\underline{1}}(g),
     \]
-where each $0$ is in position $g^{-1}(i) = (\delta_{n;\underline{1},0,\underline{1}}^j(g))^{-1}(i)$ and $g^{-1}(j+1) = (\delta_{n;\underline{1},0,\underline{1}}^{i})^{-1}(j)$, from which the identity follows. Similar arguments gives the remaining simplicial identities, again using Axiom \eqref{eq7}.
+where each $0$ is in position $g^{-1}(i) = (\delta_{n;\underline{1},0,\underline{1}}^j(g))^{-1}(i)$ and $g^{-1}(j+1) = (\delta_{n;\underline{1},0,\underline{1}}^{i})^{-1}(j)$, from which the identity follows. Similar arguments gives the remaining simplicial identities, again using Axiom \eqref{eq7} and Axiom \eqref{eq5}.
 
 Following \cite[Definition~1.3]{Kra87} or \cite[Proposition~1.7]{FL91}, it remains to check the following axioms:
     \begin{itemize}
-        \item the maps $C(\pi)_n = \pi_{n+1} \colon \Lambda_{n+1} \rightarrow \Sigma_{n+1}$ constitute a simplicial map,
+        \item the maps $\pi^{C(\Lambda)}_n = \pi^\Lambda_{n+1} \colon \Lambda_{n+1} \rightarrow \Sigma_{n+1}$ constitute a simplicial map,
+        \item each $\pi^{C(\Lambda)}_n$ is a homomorphism,
         \item $d_{n;i}(gh) = d_{n;i}(g)d_{n;g^{-1}(i)(h)}$,
         \item $s_{n;i}(gh) = s_{n;i}(g)d_{n;g^{-1}(i)(h)}$.
     \end{itemize}
-The latter two axioms follow immediately from Axiom \eqref{eq6}, while the first requires the commutativity of the following diagrams:
+The latter two axioms follow immediately from Axiom \eqref{eq6}, the second is immediate, while the first requires the commutativity of the following diagrams:
 
-\acnote{diagrams}
+\acnote{diagrams: do these just follow after a fashion from Axiom \eqref{eq4}?}
 
 On morphisms, for a map of action operads $f \colon \Lambda \rightarrow \Lambda'$, we define $C(f)_n = f_{n+1}$. From the axioms in \Cref{Defi:mapaop} we automatically have that $\pi^{\Lambda'}_n \circ f_n = \pi^{\Lambda}_n$ for each $n$ and that each $f_n$ is a homomorphism. Functoriality follows directly.
 
