@@ -1777,19 +1777,14 @@ While hyperoctahedral groups do not form an action operad in the sense of \cref{
 %\end{enumerate}
 %\end{example}
 
-\begin{rem}[(Crossed Simplicial Groups)]\label[remark]{rem:crossed}
+\begin{rem}[(Crossed Simplicial Groups)]\label[remark]{rem:crossed}\acnote{This is getting a bit long, should this be a remark and a proposition?}
 \ngnoteil{This is for you to fix}
 \acnoteil{This is much worse than I thought it would be. It's a mess right now, but I'm in the swing of it.}
-The crossed simplicial groups of Krasauskas \cite{Kra87} and Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. 
-On objects, we define a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$ from the category of action operads to the category of crossed simplicial groups by defining $C(\Lambda)(n) = \Lambda(n+1)$.
-The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition of $\Lambda$ as in \cite[Construction~1.1]{Kra96} or \cite[Section~2]{ber-simplicial}. Zhang \cite[Section 2.4]{zhang-grp} also describes this connection with action operads in more detail, while Yoshida \cite{yoshida2018group} connects action operads with the related notion of crossed interval groups \cite{bm-crossed}. 
-On morphisms, something\ngnote{is it just $C(f)(n) = f_{n+1}$? That seems conservative to me}.
-This functor is neither faithful nor conservative.
 
 \acnoteil{Something: \cite{semidetnov} turns each \emph{operadic} crossed simplicial group into an operad in groupoids. Their Def 3.5 is very similar to a $\ML$-operad: their two axioms correspond to the two axioms in \Cref{Defi:lamop}. Think 2.1.1 claims that homotopy braids and welded braids would form action operads too. Possibly their \emph{operadic crossed simplicial groups} are equivalent to action operads, though we'd need to specify morphisms in that case. Or at least it seems like there's probably an adjunction since we'd need to create a trivial $\Lambda_0$ and there's extra structure on the action operad side. Might really be two remarks going on here, one coming after \Cref{Defi:lamop}.}
 \acnoteil{New:}
 The crossed simplicial groups of Krasauskas \cite{Kra87} and Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. 
-On objects, we define a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$ from the category of action operads to the category of crossed simplicial groups by defining $C(\Lambda)(n) = \Lambda(n+1)$. QQQ On maps... The face and degeneracy maps of the underlying simplicial structure are defined using the operadic composition of $\Lambda$ as in \cite[Construction~1.1]{Kra96} and \cite[Section~2]{ber-simplicial}. We can interpret these maps in terms of the map $\delta$ of \Cref{thm:charAOp}, where we consider $g \in \Lambda_n$ to act via $\pi_n(g) \in \Sigma_n$ on indices $\{0,\ldots,n-1\}$, as for the standard indexing for simplicial sets, instead of $\{1,\ldots,n\}$ :
+On objects, we define a functor $C \colon \mathbf{AOp} \rightarrow \mathbf{CSGrp}$ from the category of action operads to the category of crossed simplicial groups by defining $C(\Lambda)(n) = \Lambda(n+1)$. We must check that the family of groups $\{\Lambda_n\}_{n \in \mathbb{N}}$ forms a simplcial set. The face and degeneracy maps are defined using the operadic composition of $\Lambda$ as in \cite[Construction~1.1]{Kra96}\acnote{I don't have this to check now} and \cite[Section~2]{ber-simplicial}. We can interpret these maps in terms of the map $\delta$ of \Cref{thm:charAOp}, where we consider $g \in \Lambda_n$ to act via $\pi_n(g) \in \Sigma_n$ on indices $\{0,\ldots,n-1\}$, as for the standard indexing for simplicial sets, instead of $\{1,\ldots,n\}$ :
     \begin{itemize}
         \item The face maps $d_{n;i} \colon \Lambda_{n+1} \rightarrow \Lambda_n$, $i \in \{0,\ldots,n\}$, are defined as
             \[
@@ -1806,13 +1801,26 @@ Checking the simplicial identities amounts to repeated use of Axiom \eqref{eq7}.
     \[
         \delta^j_{n;\underline{1},0,\underline{1}}(\delta^i_{n;\underline{1},0,\underline{1}}(g)) = \delta^i_{n;\underline{1},0,\underline{1}}(\delta^{j+1}_{n;\underline{1},0,\underline{1}}(g)).
     \]
-In terms of Axiom \eqref{eq7} this is found to be the case by taking $m_{g^{-1}(i)}=0$, $p_{g^{-1}(i)} = \emptyset$, and $P_{g^{-1}(i)}=0$ on the left hand side and $m_{{g^{-1}(j+1)}} = 0$ when $a = g^{-1}(j+1)$, $p_{g^{-1}(j+1)} = \emptyset$, and $P_{g^{-1}(j+1)}=0$ on the right hand side. Since $i \leq j$, both of these are equal to the same element
+In terms of Axiom \eqref{eq7} this is found to be the case by taking $m_{g^{-1}(i)}=0$, $p_{g^{-1}(i)} = \emptyset$, and $P_{g^{-1}(i)}=0$ on the left hand side and $m_{{g^{-1}(j+1)}} = 0$, $p_{g^{-1}(j+1)} = \emptyset$, and $P_{g^{-1}(j+1)}=0$ on the right hand side. For example, the left-most function is being interpreted here as $\delta^j_{n;\underline{1},\emptyset,\underline{1},0,\underline{1}}$. Since $i \leq j$, both of these are equal to the same element
     \[
-        \delta_{n+1;\underline{1},0,\underline{1},0,\underline{1}(g)},
+        \delta_{n+1;\underline{1},0,\underline{1},0,\underline{1}}(g),
     \]
-where the $0$s are in positions $g^{-1}(i) = (\delta_{n;\underline{1},0,\underline{1}}^j(g))^{-1}(i)$ and $g^{-1}(j+1) = (\delta_{n;\underline{1},0,\underline{1}}^{i})^{-1}(j)$, from which the identity follows. Similar arguments gives the remaining simplicial identities, again using Axiom \eqref{eq7}.
+where each $0$ is in position $g^{-1}(i) = (\delta_{n;\underline{1},0,\underline{1}}^j(g))^{-1}(i)$ and $g^{-1}(j+1) = (\delta_{n;\underline{1},0,\underline{1}}^{i})^{-1}(j)$, from which the identity follows. Similar arguments gives the remaining simplicial identities, again using Axiom \eqref{eq7}.
 
-QQQ Check the remaining CSG axioms - can we just check dd = d and ss = s (which is just Axiom \eqref{eq6}) or do we have to check Prop 1.6 in Fiedorowicz-Loday?\acnote{I asked Dan Graves and we can just check a much simpler Proposition from \cite{FL91}, which is in a book somewhere, instead of Prop 1.6 - it's Prop 1.7 in some form. So should have this tidied up by the end of the weekend.}
+Following \cite[Definition~1.3]{Kra87} or \cite[Proposition~1.7]{FL91}, it remains to check the following axioms:
+    \begin{itemize}
+        \item the maps $C(\pi)_n = \pi_{n+1} \colon \Lambda_{n+1} \rightarrow \Sigma_{n+1}$ constitute a simplicial map,
+        \item $d_{n;i}(gh) = d_{n;i}(g)d_{n;g^{-1}(i)(h)}$,
+        \item $s_{n;i}(gh) = s_{n;i}(g)d_{n;g^{-1}(i)(h)}$.
+    \end{itemize}
+The latter two axioms follow immediately from Axiom \eqref{eq6}, while the first requires the commutativity of the following diagrams:
+
+\acnote{diagrams}
+
+On morphisms, for a map of action operads $f \colon \Lambda \rightarrow \Lambda'$, we define $C(f)_n = f_{n+1}$. From the axioms in \Cref{Defi:mapaop} we automatically have that $\pi^{\Lambda'}_n \circ f_n = \pi^{\Lambda}_n$ for each $n$ and that each $f_n$ is a homomorphism. Functoriality follows directly.
+
+On morphisms, something\ngnote{is it just $C(f)(n) = f_{n+1}$? That seems conservative to me}.
+This functor is neither faithful nor conservative.\acnote{Check properties of the functor: conservative my only concern is that we lose $\Lambda_0$, so are there any examples where $C(\Lambda) \cong C(\Lambda')$ but $\Lambda_0 \neq \Lambda'_0$? Or does this come for free?}
 \acnoteil{Something is weird about this: check the note on Axiom \eqref{eq7} - we need the lists in the indices of $\delta$ to allow empty lists, contributing 0 to the sum of the list. I'm happy that this all works, but I'm worried that all of my indices and permutations are off-by-one.}
 Zhang \cite[Section 2.4]{zhang-grp} also describes this connection with action operads in more detail, while Yoshida \cite{yoshida2018group} connects action operads with the related notion of crossed interval groups \cite{bm-crossed}. Semidetnov's \emph{operadic} crossed simplicial groups likely correspond to action operads \cite[Definition 2.4]{semidetnov}. \acnote{Reword, erugh}
 \end{rem}
