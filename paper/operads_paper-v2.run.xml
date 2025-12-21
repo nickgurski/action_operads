@@ -79,7 +79,7 @@
       <file>operads_paper-v2.bcf</file>
     </requires>
     <requires type="editable">
-      <file>action_op_ref.bib</file>
+      <file>./action_op_ref.bib</file>
     </requires>
   </external>
 </requests>
