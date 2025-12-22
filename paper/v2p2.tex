@@ -1,22 +1,24 @@
 %!TEX root = ../operads_paper-v2.tex
 %\artpart{Operads with Equivariance}\label{part:op-with-eq}
 
-\ngnoteil{merging part 2 into part 1, move this intro?}
+%\ngnoteil{merging part 2 into part 1, move this intro?}
+%
+%In the second part of this paper, we study $\Lambda$-operads: these are operads $P$ equipped with group actions of the form $P(n) \times \Lambda(n) \to P(n)$ and satisfying equivariance axioms similar to those for symmetric operads (\cref{Defi:sym-op}). \cref{sec:forward-op} presents the definitions of $\Lambda$-operads and their algebras.\cref{sec:lop-monad} studies the monads associated to $\Lambda$-operads. \cref{sec:sub} shows that $\Lambda$-operads are the monoids in a category of $\Lambda$-collections via the substitution product.
 
-In the second part of this paper, we study $\Lambda$-operads: these are operads $P$ equipped with group actions of the form $P(n) \times \Lambda(n) \to P(n)$ and satisfying equivariance axioms similar to those for symmetric operads (\cref{Defi:sym-op}). \cref{sec:forward-op} presents the definitions of $\Lambda$-operads and their algebras.\cref{sec:lop-monad} studies the monads associated to $\Lambda$-operads. \cref{sec:sub} shows that $\Lambda$-operads are the monoids in a category of $\Lambda$-collections via the substitution product.
+%\begin{rem}\label{rem:lop-Venriched}
+%\ngnoteil{maybe move this slightly for better visibility/numbering}
+%The material in this part is presented in the case when the $\Lambda$-operads $P$ have underlying \emph{sets} $P(n)$, but it can be easily generalized. In fact, \cref{part:op-in-cat} deals almost exclusively when the operad $P$ is an operad in $\cat$. Here are the changes required to account for operads in another monoidal category $\mathcal{V}$.
+%\begin{itemize}
+%\item $\mathcal{V}$ should be a closed, symmetric monoidal category. It is possible to relax the closed condition to merely requiring that $X \otimes -$, and therefore also $- \otimes X$ by symmetry, preserves colimits.
+%\item Any right group action $P(n) \times \Lambda(n) \to P(n)$ should be interpretted as a monoid homomorphism
+%\[
+%\Lambda(n)^{op} \to \mathcal{V} \big( P(n), P(n) \big),
+%\]
+%or equivalently repackaged as an action $P(n) \cdot \Lambda(n) \to P(n)$ using the copower $\cdot$.
+%\end{itemize}
+%\end{rem}
 
-\begin{rem}\label{rem:lop-Venriched}
-\ngnoteil{maybe move this slightly for better visibility/numbering}
-The material in this part is presented in the case when the $\Lambda$-operads $P$ have underlying \emph{sets} $P(n)$, but it can be easily generalized. In fact, \cref{part:op-in-cat} deals almost exclusively when the operad $P$ is an operad in $\cat$. Here are the changes required to account for operads in another monoidal category $\mathcal{V}$.
-\begin{itemize}
-\item $\mathcal{V}$ should be a closed, symmetric monoidal category. It is possible to relax the closed condition to merely requiring that $X \otimes -$, and therefore also $- \otimes X$ by symmetry, preserves colimits.
-\item Any right group action $P(n) \times \Lambda(n) \to P(n)$ should be interpretted as a monoid homomorphism
-\[
-\Lambda(n)^{op} \to \mathcal{V} \big( P(n), P(n) \big),
-\]
-or equivalently repackaged as an action $P(n) \cdot \Lambda(n) \to P(n)$ using the copower $\cdot$.
-\end{itemize}
-\end{rem}
+\ngnoteil{commented out some enrichment stuff, can get it back if we need it}
 
 %Moved this comment, needs intro and something like below: ``most of this stuff admits an enriched variant''
 %\begin{rem}
@@ -77,12 +79,12 @@ Using \cref{eqn:mu-from-betadelta} from the proof of \cref{thm:charAOp}, the two
 \end{rem}
 
 \begin{rem}\label{oscg}
-The operadic crossed simplicial groups of Semidetnov appear to correspond to action operads with trivial $\Lambda_0$ and his $G_\ast$-shifted operads \cite[Definition 3.5]{semidetnov} satisfy two axioms which are the same as those for $\Lambda$-operads in \Cref{Defi:lamop}. While the operads of Semidetnov are defined using circle-$i$ notation, the correspondence seems quite clear.\acnote{reword more better}
+The operadic crossed simplicial groups of Semidetnov appear to correspond to action operads with trivial $\Lambda_0$, although they are defined using $\circ_i$ operations instead of an operadic composition $\mu$. Continuing the comparison, his $G_\ast$-shifted operads \cite[Definition 3.5]{semidetnov} satisfy two axioms that are the same as those for $\Lambda$-operads in \Cref{Defi:lamop}. %While the operads of Semidetnov are defined using circle-$i$ notation, the correspondence seems quite clear.\acnote{reword more better}
 \end{rem}
 
 
 \begin{Defi}[(Map of $\Lambda$-operads)]\label{Defi:aop_map}
-Let $P$ and $Q$ be $\Lambda$-operads. A \emph{map $f \colon P \rightarrow Q$ of $\Lambda$-operads} consists of an operad map (\cref{Defi:aop_map}) that is levelwise equivariant with respect to the $\Lambda(n)$-actions, i.e., for each $n \in \mathbb{N}$ the following diagram commutes.
+Let $P$ and $Q$ be $\Lambda$-operads. A \emph{map $f \colon P \rightarrow Q$ of $\Lambda$-operads} consists of an operad map (\cref{rem:cat-of-nonsym-op}) that is levelwise equivariant with respect to the $\Lambda(n)$-actions, i.e., for each $n \in \mathbb{N}$ the following diagram commutes.
   \[
     \xy
       (0,0)*+{P(n) \times \Lambda(n)}="00";
@@ -134,7 +136,7 @@ A further example of a $\Lambda$-operad is given by the underlying operad, $\Lam
 Let $\Lambda$ be an action operad. Then the operad $\Lambda$ is itself a $\Lambda$-operad.
 \end{prop}
 \begin{proof}
-The underlying operad $\Lambda$ is of course an operad in $\mb{Sets}$. The action $\Lambda(n) \times \Lambda(n) \rightarrow \Lambda(n)$ is given simply by the group multiplication in $\Lambda(n)$. The two equivariance axioms are then both instances of the action operad axiom of $\Lambda$.
+The underlying operad $\Lambda$ is of course an operad in $\mb{Sets}$. The right group action $\Lambda(n) \times \Lambda(n) \rightarrow \Lambda(n)$ is given simply by the group multiplication in $\Lambda(n)$. The two equivariance axioms are then both instances of the action operad axiom of $\Lambda$.
 \end{proof}
 
 An operad is intended to be an abstract description of a certain type of algebraic structure, and the particular instances of that structure are the algebras for that operad. 
@@ -156,7 +158,7 @@ Thus we would write
 g \cdot (x_1, \ldots, x_n) = (x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)})
 \]
 using \cref{nota:perm_shorthand}.
-\item Following the previous item, we define $\coeq{P}{X}{\Lambda}{n}$ as in \cref{conv:coeq}. As the definition of an algebra over $P$ will involve maps with source object $\coeq{P}{X}{\Lambda}{n}$, we remind the reader of the tilde notation for maps respecting coequalizers, \cref{conv:equiv-maps}.
+\item Following the previous item, we define $\coeq{P}{X}{\Lambda}{n}$ as in \cref{conv:coeq}. An algebra over $P$ will involve maps with source object $\coeq{P}{X}{\Lambda}{n}$, so we remind the reader of the tilde notation for maps respecting coequalizers, \cref{conv:equiv-maps}.
 \end{enumerate}
 \end{rem}
 
@@ -226,7 +228,7 @@ for all $x \in X$.
 %  \]
 
 \begin{rem}
-It is worth reiterating that the equivariance required for a $P$-algebra is built into the definition above by requiring the existence of the maps $\alpha_{n}$ to be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying non-symmetric operad (see \cref{thm:pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
+It is worth reiterating that the equivariance required for a $P$-algebra is built into the definition above by requiring that the maps $\alpha_{n}$ be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying non-symmetric operad (see \cref{thm:pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
 \end{rem}
 
 \begin{example}[(Algebras over non-symmetric, symmetric, and braided operads as $\Lambda$-operads)]\label{ex:lop-alg-exs}
@@ -266,7 +268,8 @@ There is a category with
 The category in \cref{prop:cat-of-Palg} is called the \emph{category of $P$-algebras (in $\mb{Sets}$)}, and is denoted $P\mbox{-}\mb{Alg}$.
 \end{nota}
 
-The final goal of this section is to recast the category of algebras over a $\Lambda$-operad $P$ using the endomorphism operad of \cref{ex:endo}.
+The final goal of this section is to explore the adjunctions induced by a map of action operads. 
+Using these, we will recast the category of algebras over a $\Lambda$-operad $P$ using the endomorphism operad of \cref{ex:endo}.
 We begin by proving a change-of-action operad result.
 
 \begin{thm}\label{thm:pbaop}
@@ -535,7 +538,7 @@ Now assume that $\pi \colon \Lambda \to \Sigma$ is surjective, and assume that $
 \[
 q_1 \cdot \tau_1 = q_2 \cdot \tau_2.
 \]
-We must check that $[q_1, \tau_1] = [q_2, \tau_2]$. Then for any $\lambda \in \Lambda(n)$ such that $\pi(\lambda) = \tau_1 \tau_2^{1}$, we have
+We must check that $[q_1, \tau_1] = [q_2, \tau_2]$. Then for any $\lambda \in \Lambda(n)$ such that $\pi(\lambda) = \tau_1 \tau_2^{-1}$, we have
 \begin{align*}
 [q_1, \tau_1] & = [q_1, \pi(\lambda)\pi(\lambda^{-1})\tau_1] \\
 & = [q_1 \pi(\lambda), \pi(\lambda^{-1})\tau_1] \\
@@ -552,11 +555,15 @@ proving that $\varepsilon^Q_n$ is injective and completing the proof that if $\p
 %define on morphisms, check functoriality
 %\end{proof}
 
+The following statement appears in \cite{maygeom} as Lemma 1.4.
 \begin{lem}\label{lem:alg=map}
 Let $P$ be a symmetric operad and $X$ be a set. $P$-algebra structures on $X$, given by $\{ \alpha_n \colon  \coeq{P}{X}{\Sigma}{n} \rightarrow X\}$ as in \cref{Defi:aop-alg}, are in bijection with maps of symmetric operads $\alpha \cn P \to \mathcal{E}_X$.
 \end{lem}
 \begin{proof}
-\ngnoteil{This is almost in May GILS, but doesn't have enough details. We should provide a few.}
+A function $\tilde{\alpha}_n \colon P(n) \times X^n \to X$ corresponds, under the hom-tensor adjunction $- \times X^n \dashv [X^n, -]$, to a function $\hat{\alpha}_n \colon P(n) \to \mathcal{E}_X(n)$. 
+The unit axiom in \cref{Defi:sym_op_map} for the function $\hat{\alpha}_1$ corresponds to the first axiom in \cref{Defi:aop-alg} for $P$ as a nonsymmetric operad.
+The associativity axiom in \cref{Defi:sym_op_map} for the functions $\hat{\alpha}_n$ corresponds to the second axiom in \cref{Defi:aop-alg} for $P$ as a nonsymmetric operad.
+The function $\hat{\alpha}_n$ commutes with the right $\Sigma_n$-actions if and only if the function $\tilde{\alpha}_n$ is obtained as in \cref{conv:equiv-maps} from a function $\alpha_n \colon \coeq{P}{X}{\Sigma}{n} \rightarrow X$, completing the proof of the bijection.
 \end{proof}
 
 \begin{cor}\label{cor:pi-star}
@@ -612,7 +619,7 @@ Let $P$ be a $\Lambda$-operad. Then $P$ induces an endofunctor of $\mb{Sets}$, d
   \]
 \end{Defi}
 
-We now have the following proposition; its proof is standard\ngnote{But maybe there actually is no proof in GILS??} \cite{maygeom}, and we leave it to the reader.
+We now have the following proposition; its proof is standard (see the discussion in Construction 2.4 of \cite{maygeom}), and we leave it to the reader.
 
 \begin{prop}\label{prop:op=monad1}  Let $P$ be a $\Lambda$-operad.
   \begin{enumerate}
@@ -628,9 +635,13 @@ Let $\Lambda$ be an action operad. The category of algebras for $\Lambda$ taken 
 \end{prop}
 \begin{proof}
 The category of monoids is $\underline{T}\mbox{-}\mb{Alg}$ where $T$ is the terminal action operad, so we will produce an isomorphism of monads $R \colon \underline{T} \cong \underline{\Lambda}$.
-For a set $X$, $\underline{T}(X)$ is $\coprod_n \coeq{T}{X}{T}{n} \cong \coprod_n X^n$, while $\underline{\Lambda}(X)$ is
+For a set $X$, 
 \[
-\coprod_n \coeq{\Lambda}{X}{\Lambda}{n}.
+\underline{T}(X) = \coprod_n \coeq{T}{X}{T}{n} \cong \coprod_n X^n, 
+\]
+while 
+\[
+\underline{\Lambda}(X) = \coprod_n \coeq{\Lambda}{X}{\Lambda}{n}.
 \]
 The elements of the coequalizer $\coeq{\Lambda}{X}{\Lambda}{n}$ are equivalence classes $[g; x_1, \ldots, x_n]$ under the equivalence relation
 	\[
