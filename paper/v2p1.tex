@@ -81,10 +81,9 @@ We generically write $\{ \Lambda(n) \}_{n \in \N}$ for a $\N$-indexed family of 
 
 \begin{conv}[(Products and quotients)]\label[conv]{conv:coeq}
 We will often be interested in elements of a product of the form
-\[
+$
 A \times B(1) \times \cdots \times B(n) \times C
-\]
-(or similar, for example without $C$). We will write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, where $b_i \in B(i)$. 
+$ (or similar, for example without $A$ or $C$). We write elements of this set as $(a; b_{1}, \ldots, b_{n}; c)$, where $b_i \in B(i)$. 
 In the case that we need to consider equivalence classes of such elements, these classes will be written as $[a; b_{1}, \ldots, b_{n}; c]$. 
 The most common situation in which we consider such equivalence classes is that of a coequalizer of left and right group actions in the following sense. 
 A coequalizer of maps
@@ -256,9 +255,9 @@ Then the block sum $\beta$ (\cref{Defi:beta-s}) corresponds to the process of ta
   \end{bmatrix}
   % &= \trans{1}{2}(3)(4 \,\, 5 \,\, 6).
   \]
-which corresponds to the permutation $\trans{1}{2}(3)(4 \,\, 5 \,\, 6)$.
+and is the permutation $\trans{1}{2}(3)(4 \,\, 5 \,\, 6)$ in cycle notation.
 
-Similarly, we can describe the duplication $\delta$ (\cref{Defi:delta-s}) as an operation on permutation matrices. The idea here being that for $\sigma \in \Sigma_n$, $\delta_{n;k_1,\ldots,k_n}(\sigma)$ takes a block diagonal of identity matrices $I_{k_1}$, $\ldots$, $I_{k_n}$ (which corresponds to $\beta(e_{k_1},\ldots,e_{k_n}) \in \Sigma_{k_1+\ldots+k_n}$), and permutes these according to the effect of the permutation $\sigma$. For example, given $\sigma = (1 \,\, 2 \,\, 3)$, then
+Similarly, we can describe the duplication $\delta$ (\cref{Defi:delta-s}) as an operation on permutation matrices. For $\sigma \in \Sigma_n$, $\delta_{n;k_1,\ldots,k_n}(\sigma)$ takes a block diagonal of identity matrices $I_{k_1}$, $\ldots$, $I_{k_n}$ (which corresponds to $\beta(e_{k_1},\ldots,e_{k_n}) \in \Sigma_{k_1+\ldots+k_n}$), and permutes these according to the effect of the permutation $\sigma$. For example, given $\sigma = (1 \,\, 2 \,\, 3)$, then
   \[
     \delta_{3;2,1,3}(\sigma) =
     \sigma
@@ -573,7 +572,7 @@ The canonical example of \emph{a} symmetric operad is \emph{the} symmetric opera
   \]
 that takes permutations $\sigma \in \Sigma_{n}, \tau_{i} \in \Sigma_{k_{i}}$ and produces the following permutation in $\Sigma_{k_{1} + \cdots + k_{n}}$:
   \[
-    \mu(\sigma; \tau_{1}, \ldots, \tau_{n}) = \delta(\sigma) \cdot \beta(\tau_1,\ldots,\tau_n),
+    \mu(\sigma; \tau_{1}, \ldots, \tau_{n}) = \delta_{n; k_1, \ldots, k_n}(\sigma) \cdot \beta(\tau_1,\ldots,\tau_n),
   \]
 with $\beta$ and $\delta$ as in \cref{Defi:beta-s,Defi:delta-s}.
 
@@ -653,7 +652,7 @@ We leave verification of the axioms to the reader.
 %, or recommend\ngnote{may-GoILS, find specific ref number}.\acnote{May doesn't check the axioms. Not in Leinster either. Done in some detail using circle $i$ notation in Ján Pulmann, Operads and Field Theory.}
 \end{example}
 
-\begin{rem}
+\begin{rem}[(Algebras and endomorphism operads)]
 The intuition in \cref{rem:op-def} is connected with \cref{ex:endo} through the concept of an algebra, see \cref{sec:forward-op}.
 \end{rem}
 
@@ -673,13 +672,14 @@ A \emph{non-symmetric operad} $O$ consists of
 satisfying axioms 1 and 2 from \cref{Defi:sym-op}.
 \end{Defi}
 
-\begin{rem}\label{rem:V-and-coll}
- Every symmetric operad has an underlying \textit{symmetric collection} that consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps. The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in \cref{operad=monoid}. A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
+\begin{rem}[(Underlying collections)]\label{rem:V-and-coll}
+ Every symmetric operad has an underlying \textit{symmetric collection} that consists of the natural number-indexed set $\{ O(n) \}_{n \in \N}$ together with symmetric group actions, but without a chosen identity element or composition maps. The category of symmetric collections is a presheaf category, and we will equip it with a monoidal structure in which monoids are precisely operads in \cref{thm:operad=monoid}. A similar construction, but without reference to group actions, shows that every non-symmetric operad has an underlying (non-symmetric) collection which is now merely a $\N$-indexed collection of sets.
 \end{rem}
 
 % \acnote{Another example of non-symmetric operad is the operad of \emph{pure} braid groups: see James Griffin's comment below the old \href{https://golem.ph.utexas.edu/category/2014/03/operads_of_finite_groups.html}{blog post}.}
 \begin{example}[(Trimble's Operad $E$)]\label[example]{ex:non-sym}
-In seeking a definition of weak $n$-category which can be described through iterated enrichment, Trimble defined an operad $E$ as follows:
+In order to define weak $n$-categories through iterated enrichment, 
+Trimble constructed an operad $E$ as follows:
     \begin{itemize}
         \item for $n \geq 0$, $E(n)$ is the space of continuous endpoint-preserving maps
             \[
@@ -692,10 +692,11 @@ In seeking a definition of weak $n$-category which can be described through iter
         \item composition is described by substitution and reparameterisation.
     \end{itemize}
 More details about Trimble's operad $E$ can be found in \cite[Definition $T_R$]{leinster-survey} and \cite[Example 1.7]{cg-comparison}, with variants considered in \cite{cg-cobordism}.
-This is a non-symmetric operad in $\mb{Top}$ that, to the author's knowledge, does not admit the structure of a symmetric operad.
+This is a non-symmetric operad in $\mb{Top}$ that, to the authors' knowledge, does not admit the structure of a symmetric operad.
 \end{example}
 
-In the original topological applications \cite{maygeom}, symmetric operads were the central figures. A further kind of operad was studied by Fiedorowicz in \cite{fie-br}, that of a \emph{braided} operad in which the braid groups take the place of the symmetric groups. We sketch that definition below.
+In the original topological applications \cite{maygeom}, symmetric operads were the central figures. 
+In \cite{fie-br} Fiedorowicz studied braided operads, in which the braid groups take the place of the symmetric groups. We sketch that definition below.
 
 \begin{Defi}[(Braided operad, sketch)]\label[Defi]{Defi:broperad}
 A \textit{braided operad} consists of
@@ -733,14 +734,17 @@ holds.%, where $\delta_{n; k_1, \ldots, k_n}$ is the function from \cref{Defi:de
 %   \end{itemize}
 \end{Defi}
 
-\begin{rem}\label{rem:br-op-needed}
+\begin{rem}[(Block sum and duplication for braid groups)]\label{rem:br-op-needed}
 The above sketch omits the definitions of $\beta, \delta$ for braids. 
 Formulas for these can be found in \cite[Examples~5.1.11,~5.1.13]{yau_infinity_2021}, although the geometric interpretations are simple: $\beta$ takes the disjoint union of braids, and $\delta_{n; k_1, \ldots, k_n}(\tau)$ is obtained by replacing the $i$th strand of $\tau$ by $k_i$ parallel strands.
 These operations are sometimes referred to as `cabling' operations for braids, as described in, for example, \cite{doucot_local_2025}.
 \end{rem}
 
-\begin{example}\label[example]{ex:braided-op}
-Example 3.1 of \cite{fie-br} shows that there is a braided operad structure on the spaces $\tilde{C}_2(n)$, obtained as the universal covers of the spaces $C_2(n)$ appearing in the little 2-disks operad. The other canonical example of a braided operad is the operad of braid groups $B_n$, as obtained by applying \cref{prop:gisgop}.
+\begin{example}[(Braided operads)]\label[example]{ex:braided-op}
+\begin{enumerate}
+\item Let $C_2(n)$ be the $n$th space of the little 2-disks operad, and $\widetilde{C_2(n)}$ it universal cover. Then Example 3.1 of \cite{fie-br} shows that there is a braided operad structure on the spaces $\widetilde{C_2(n)}$.
+\item The braid groups themselves define a braided operad, obtained by applying \cref{prop:gisgop}.
+\end{enumerate}
 \end{example}
 
 %\ngnoteil{can we prove that the operad of braid groups is NOT a symmetric operad?}
@@ -782,11 +786,11 @@ The category in \cref{prop:cat-of-sym-op} is called the \emph{category of symmet
 \end{nota}
 
 \begin{rem}[(The category of non-symmetric operads)]\label{rem:cat-of-nonsym-op}
-Omitting symmetries entirely, we can also form the category of non-symmetric operads (in $\mb{Sets}$), denoted $\mb{Op}$. The objects are non-symmetric operads (\cref{Defi:non-sym-op}) and the morphisms have the same data as maps of symmetric operads (\cref{Defi:sym_op_map}) but only satisfy the first two axioms as there is no group action to preserve. Composition and identites are defined exactly as for symmetric operads.
+Omitting symmetries entirely, we can also form the category of non-symmetric operads (in $\mb{Sets}$), denoted $\mb{Op}$. The objects are non-symmetric operads (\cref{Defi:non-sym-op}) and the morphisms have the same data as maps of symmetric operads (\cref{Defi:sym_op_map}) but only satisfy the first two axioms as there is no group action to preserve. Composition and identities are defined exactly as for symmetric operads.
 \end{rem}
 
 \begin{rem}[(The category of braided operads)]\label{rem:cat-of-br-op}
-Replacing symmetries with braids, we can form the category of braided operads (in $\mb{Sets}$), denoted $B\mbox{-}\mb{Op}$. The objects are braided operads (\cref{Defi:broperad}). The morphisms have the same data as maps of symmetric operads (\cref{Defi:sym_op_map}) and satisfy identical looking axioms so long as the equivariance axiom is interpretted using braids rather than symmetries. Composition and identites are defined exactly as for symmetric operads.
+Replacing symmetries with braids, we can form the category of braided operads (in $\mb{Sets}$), denoted $B\mbox{-}\mb{Op}$. The objects are braided operads (\cref{Defi:broperad}). The morphisms have the same data as maps of symmetric operads (\cref{Defi:sym_op_map}) and satisfy identical looking axioms so long as the equivariance axiom is interpretted using braids rather than symmetries. Composition and identities are defined exactly as for symmetric operads.
 \end{rem}
 
 \section{Action Operads}\label{sec:aop}
@@ -823,7 +827,14 @@ such that one additional axiom holds. Write
   \[
     \mu \colon  \Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}) \rightarrow \Lambda(k_{1} + \cdots + k_{n})
   \]
-for the multiplication in the operad $\Lambda$. Let $(g; f_1, \ldots, f_n)$ be an element of the product $\Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n})$ and let $(g'; f_1', \ldots f_n')$ be an element of the product $\Lambda(n) \times \Lambda(k_{g^{-1}(1)}) \times \cdots \times \Lambda(k_{g^{-1}(n)})$. We require that
+for the multiplication in the operad $\Lambda$. Let 
+\begin{align*}
+(g; f_1, \ldots, f_n) & \in \Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n}), \\
+(g'; f_1', \ldots f_n') & \in \Lambda(n) \times \Lambda(k_{g^{-1}(1)}) \times \cdots \times \Lambda(k_{g^{-1}(n)}).
+\end{align*}
+%
+%$(g; f_1, \ldots, f_n)$ be an element of the product $\Lambda(n) \times \Lambda(k_{1}) \times \cdots \times \Lambda(k_{n})$ and let $(g'; f_1', \ldots f_n')$ be an element of the product $\Lambda(n) \times \Lambda(k_{g^{-1}(1)}) \times \cdots \times \Lambda(k_{g^{-1}(n)})$. 
+We require that
   \begin{eqn}\label{eqn:ao_axiom}
     \mu\left(g'; f_1', \ldots f_n'\right)  \mu\left(g; f_1, \ldots, f_n\right) = \mu\left(g'g; f_{g(1)}'f_{1}, \ldots, f_{g(n)}'f_{n}\right)
   \end{eqn}
@@ -842,7 +853,7 @@ Our definition of an action operad is the same as the \emph{operads from familie
 We now give the two examples of action operads that have already appeared in this paper: the symmetric groups and the trivial groups.
 
 \begin{example}[(Action operad of symmetric groups)]\label{example:aop-sym}
-The symmetric operad $\Sigma$ has a canonical action operad structure. It is given by taking $\pi$ to be the identity map, and is the terminal object in the category of action operads.
+The symmetric operad $\Sigma$ has a canonical action operad structure. It is given by taking $\pi$ to be the identity map, and is the terminal object in the category of action operads (\cref{nota:cat_aop}).
 \end{example}
 
 \begin{example}[(Action operad of trivial groups)]\label{example:aop-triv}
@@ -926,8 +937,8 @@ The terminal operad $T$ in the category of sets has a unique action operad struc
     \draw (17,0) -- (18,-1) -- (17,-2) -- (14,-3) -- (17,-4);
     \draw (18,0) -- (17,-1) -- (18,-2) -- (15,-3) -- (18,-4);
     %
-    \node at (4.5,-4.5) {$\scriptstyle \mu\left((23);(12),(12), e_2\right) \cdot \mu\left((132); (12), e_2, (12)\right)$};
-    \node at (14.5,-4.5) {$\scriptstyle \mu\left((23)\cdot (132); e_2 \cdot (12), (12) \cdot e_2, (12) \cdot (12)\right)$};
+    \node at (4.5,-4.5) {$\scriptstyle \mu\big((23);(12),(12), e_2\big) \ \cdot \ \mu\big((132); (12), e_2, (12)\big)$};
+    \node at (14.5,-4.5) {$\scriptstyle \mu\big((23)\cdot (132); e_2 \cdot (12), (12) \cdot e_2, (12) \cdot (12)\big)$};
   \end{tikzpicture}
   \end{center}
 \end{itemize}
@@ -1042,7 +1053,7 @@ The equalities
 & = \mu\big( e_2; e_0, \mu(e_{n-1}; g_2, \ldots, g_n) \big)
 \end{align*}
 follow from the second part of \cref{lem:calclem}, operadic associativity, and the first part of \cref{lem:calclem}, respectively.
-Therefore the first equality in the lemma follows from the special case when $n=2$, the equality
+Therefore the first equality in the lemma follows from the special case when $n=2$ and the equality
 \begin{equation}\label{eq:n=2-e0}
 \mu(e_2; e_0, g) = g,
 \end{equation}
@@ -1203,8 +1214,8 @@ holds, where $\underline{h_i} = h_{i1},\ldots,h_{ij_i}$.
   \[
     \delta_{m_1 + \cdots + m_n; \underline{p_1},\ldots,\underline{p_n}}\left( \delta_{n; m_{1}, \ldots, m_{n}}(g) \right) = \delta_{n; P_{1}, \ldots, P_{n}}(g)
   \]
-holds, where $P_{i} = p_{i1} + \cdots + p_{im_{i}}$ and $\underline{p_i} = p_{i1}, \ldots, p_{im_i}$.
-\acnote{When all of the $m_i = 1$ except for one which is $0$, the equation doesn't typecheck any more. There is one too many $P_i$ and $\underline{p_i}$? Think we need to interpret this as allowing empty lists $\underline{p_i} = \emptyset$ which we take as summing to $P_i = 0$? Quite sure this works, but think it needs pointing out clearly, especially as we end up using it in the CSG example.}
+holds, where $P_{i} = p_{i1} + \cdots + p_{im_{i}}$ and $\underline{p_i} = p_{i1}, \ldots, p_{im_i}$. We note that when $m_i = 0$, then the list $\underline{p_i}$ is empty and $P_i$ is defined to be $0$.
+%\acnote{When all of the $m_i = 1$ except for one which is $0$, the equation doesn't typecheck any more. There is one too many $P_i$ and $\underline{p_i}$? Think we need to interpret this as allowing empty lists $\underline{p_i} = \emptyset$ which we take as summing to $P_i = 0$? Quite sure this works, but think it needs pointing out clearly, especially as we end up using it in the CSG example.}
 \item\label{eq8} The equation
   \[
     \delta_{n;k_1,\ldots,k_n}(g) \beta(h_{1}, \ldots, h_{n}) = \beta(h_{g^{-1}(1)}, \ldots,  h_{g^{-1}(n)}) \delta_{n;k_{g^{-1}(1)},\ldots,k_{g^{-1}(n)}}(g)
@@ -1328,6 +1339,7 @@ Writing $\mu(g;\underline{h}) = \mu\left(g; h_{1}, \ldots, h_{n}\right)= $ and $
 
 \begin{rem}\label{rem:edge_cases}
 \acnoteil{Carefully go through each axiom in previous theorem to look for weird edge cases. E.g., in \cref{rem:crossed} we need to allow for empty lists in Axiom \eqref{eq7}.}
+\ngnoteil{I added the empty list thing, and doodled on a piece of paper to check that I agree it is correct. I didn't feel the need to change the proof though}
 \end{rem}
 
 \begin{prop}[Corollary 2.17,  \cite{zhang-grp}]\label{prop:surjortriv} Let $\Lambda$ be an action operad. Then the homomorphisms $\pi_n \colon \Lambda(n) \rightarrow \Sigma_n$ are either all surjective or all the zero map.
@@ -1337,8 +1349,8 @@ We will prove each case separately. The two cases coincide for $n = 0, 1$ as bot
 
 Suppose that $\pi_2 \colon \Lambda(2) \rightarrow \Sigma_2$ is surjective, so there exists $g \in \Lambda(2)$ such that $\pi_2(g) = \trans{1}{2}$. Let $n>2$. Since $\Sigma_n$ is generated by the adjacent transpositions $\trans{a}{a+1}$, we will show that each such element is in the image of $\pi_n$. Write $\underline{x}^i$ for the $i$-tuple $x, x, \ldots, x$. Then $\trans{a}{a+1} = \beta(\underline{e_1}^{a-1} ,\trans{1}{2},\underline{e_1}^{n-a-1})$ in $\Sigma$, so
   \begin{align*}
-      \trans{a}{a+1} &= \beta(\underline{e_1}^{a-1},\trans{1}{2},\underline{e_1}^{n-a-1}) \\ &= \beta(\underline{\pi_1(e_1)}^{a-1},\pi_2(g),\underline{\pi_1(e_1)}^{n-a-1}) \\
-      &= \pi_n(\beta(\underline{e_1}^{a-1},g,\underline{e_1}^{n-a-1}))
+      \trans{a}{a+1} &= \beta(\underline{e_1}^{a-1},\trans{1}{2},\underline{e_1}^{n-a-1}) \\ &= \beta\big(\underline{\pi_1(e_1)}^{a-1},\pi_2(g),\underline{\pi_1(e_1)}^{n-a-1}\big) \\
+      &= \pi_n\big(\beta(\underline{e_1}^{a-1},g,\underline{e_1}^{n-a-1})\big)
   \end{align*}
 by Axiom \eqref{eq1} of \ref{thm:charAOp}.
 Thus $\pi_n$ is surjective for all $n>2$ if $\pi_2$ is surjective.
