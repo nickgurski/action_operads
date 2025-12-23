@@ -1548,7 +1548,7 @@ This section addresses questions of coherence for $2$-monads induced by $\Lambda
     \[
         \left( A \otimes B \right) \otimes C \cong A \otimes \left( B \otimes C \right)
     \]
-for all objects in the category. The coherence theorem tells us that, for any monoidal category $M$, there exists a strict monoidal category which is equivalent to $M$. In other words, we can treat the associators in $M$ as identities, and similarly for the unit isomorphisms.
+for all objects in the category. The coherence theorem tells us that, for any monoidal category $M$, there exists a strict monoidal category that is equivalent to $M$. In other words, we can treat the associators in $M$ as identities, and similarly for the unit isomorphisms.
 
 
 
@@ -1645,7 +1645,7 @@ The 2-category $\mb{Cat}$ has an enhanced factorization system in which the clas
 
 
 
-\begin{prop}
+\begin{prop}\label{prop:P-boo}
 For any $\Lambda$-operad $P$, the $2$-monad $\underline{P}$ preserves bijective-on-objects functors.
 \end{prop}
 \begin{proof}
@@ -1655,9 +1655,12 @@ This follows immediately from the description of $\EL$ in \cref{prop:hom-set-lem
 \begin{cor}\label{cor:coherence-for-ulP}
 Every pseudo-$\underline{P}$-algebra is equivalent to a strict $\underline{P}$-algebra.
 \end{cor}
+\begin{proof}
+We use the enhanced factorization system from \cref{lem:efs-cat}, and check the hypotheses of \cref{thm:power}. If a functor $r$ is full and faithful, and there exists a functor $s$ together with an isomorphism $\alpha \colon rs \cong 1$, then the components of $\alpha$ exhibit $r$ as essentially surjective. Thus $r$ is an equivalence of categories, and so there exists an isomorphism $\beta \colon sr \cong 1$ as required. For any bijective on objects functor $l$, \cref{prop:P-boo} shows that $\underline{P}l$ is also bijective on objects. Thus both of the hypotheses of \cref{thm:power} are satisfied, completing the proof.
+\end{proof}
 
-\begin{rem}[(Pseudo-$\EL$-algebras are unbiased)]\label{rem:ps-P-alg-unpack}
-The pseudo-$\EL$-algebras are a \emph{weak} and \emph{unbiased} form of $\Lambda$-monoidal categories.
+\begin{rem}[(Pseudo-$\EL$-algebras are weak, unbiased)]\label{rem:ps-P-alg-unpack}
+The translation between pseudoalgebras and traditional notions of non-strict monoidal categories is not that of a direct correspondence. The pseudo-$\EL$-algebras are a \emph{weak} and \emph{unbiased} form of $\Lambda$-monoidal categories.
 \begin{itemize}
 \item Here \emph{weak} means equational axioms at the level of objects are replaced by coherent isomorphisms. On its own, the reader might expect such a claim to mean that pseudo-$\EL$-algebras have an underlying monoidal, rather than strict monoidal, structure. This is not the case.
 \item These pseudoalgebras are also \emph{unbiased}, meaning they have prescribed $n$-ary tensor product operations $\otimes_n \colon X^n \to X$ for every $n \in \mathbb{N}$, and these are related by the isomorphisms in the previous point using operadic composition. Thus instead of an associativity isomorphism $(x \otimes y) \otimes z \cong x \otimes (y \otimes z)$, there is an isomorphism
@@ -1668,7 +1671,7 @@ The pseudo-$\EL$-algebras are a \emph{weak} and \emph{unbiased} form of $\Lambda
 We refer the reader to Section 3.1 of \cite{leinster} for a further discussion of the relationship between strict structures and unbiased, weak ones.
 \end{rem}
 
-
+We end this section by exploring a variant of $\Lambda$-monoidal categories in which the underlying monoidal structure is weak, but the tensor product is not unbiased as above.
 
 \begin{nota}[(Standard association)]\label{nota:standard-assoc}
 Let $(M, \otimes, I, a, l, r)$ be a monoidal category. The \emph{standard association} of a tuple $x_1, \ldots, x_n$ of objects is defined inductively as follows.
@@ -1693,7 +1696,7 @@ A \emph{weak $\Lambda$-monoidal category} consists of
 \]
 for each $g \in \Lambda(n)$
 \end{itemize}
-satisfying the following two axioms.
+satisfying the following three axioms.
 \begin{enumerate}
 \item Let $g, h \in \Lambda(n)$. The composite $[h] \circ [g]$ shown below
 \[
@@ -1768,7 +1771,10 @@ The 2-category in \cref{prop:2cat-of-weaklambda} is called the \emph{2-category 
 \end{nota}
 
 \begin{rem}\label{rem:eq-in-wlmc}
-The internal equivalences in $\wlmc$ are, by definition, those weak $\Lambda$-monoidal functors $F \colon M \to N$ for which there exists a weak $\Lambda$-monoidal functor $G \colon N \to M$ and invertible monoidal transformations $GF \cong 1_M$, $FG \cong 1_N$. By a generalization of the standard argument for plain monoidal functors\ngnote{can we put a ref here?}\acnote{I think this is one of those things that is not written down anywhere - best I can find is Remark 2.4.10 in "Tensor Categories", Etingof et al.},\acnote{Actually, is Prop 3.84 in Aguiar-Mahajan's book (Hopf Species, etc.) effectively doing this?}\acnote{Does it also sort of follow from Thm 5.1 in "Biequivs in Tricats"?}\acnote{Is it really all just doctrinal adjunction and mates somewhere? Theorem 1.5 in \cite{kelly-doc}?} a weak $\Lambda$-monoidal functor $F$ is an internal equivalence if and only if the underlying functor of $F$ is an equivalence of categories.
+The internal equivalences in $\wlmc$ are, by definition, those weak $\Lambda$-monoidal functors $F \colon M \to N$ for which there exists a weak $\Lambda$-monoidal functor $G \colon N \to M$ and invertible monoidal transformations $GF \cong 1_M$, $FG \cong 1_N$. By a generalization of the standard argument for plain monoidal functors,%\ngnote{can we put a ref here?}\acnote{I think this is one of those things that is not written down anywhere - best I can find is Remark 2.4.10 in "Tensor Categories", Etingof et al.},\acnote{Actually, is Prop 3.84 in Aguiar-Mahajan's book (Hopf Species, etc.) effectively doing this?}\acnote{Does it also sort of follow from Thm 5.1 in "Biequivs in Tricats"?}\acnote{Is it really all just doctrinal adjunction and mates somewhere? Theorem 1.5 in \cite{kelly-doc}?}
+ a weak $\Lambda$-monoidal functor $F$ is an internal equivalence if and only if the underlying functor of $F$ is an equivalence of categories (see 3.4 in\ngnote{Beck's theorem for pseudo-monads, link commented in tex filed
+ %https://www.sciencedirect.com/science/article/pii/S0022404902000385
+ }, for example).
 \end{rem}
 
 
@@ -1786,7 +1792,7 @@ the image of which consists of those weak $\Lambda$-monoidal categories for whic
 \begin{proof}
 Let $X$ be an $\EL$-algebra given by functors $\mu_n \colon \coeq{\EL}{X}{\Lambda}{n} \to X$, or equivalently a single functor $\mu \colon \underline{\EL}(X) \to X$. 
 We will equip $X$ with a strict monoidal structure, and then extend that to a weak $\Lambda$-monoidal category structure.
-Let $T$ be the trivial action operad, and let $T \to \Lambda$ be the unique map of action operads (see \cref{example:aop-triv}). Then $\underline{ET}$ is easily seen to the free monoid 2-monad on $\mb{Cat}$, and the description of $\EL$ in \cref{prop:hom-set-lemma} shows that $\underline{ET}(X)$ embeds as the subcategory of $\underline{\EL}(X)$ consisting of all the objects and morphisms in the summand corresponding to $e_n \in \Lambda(n)$. Thus $X$ obtains an $ET$-algebra structure via the composite
+Let $T$ be the trivial action operad, and let $T \to \Lambda$ be the unique map of action operads (see \cref{example:aop-triv}). Then $\underline{ET}$ is easily seen to the free monoid 2-monad on $\mb{Cat}$, and the description of $\EL$ in \cref{prop:hom-set-lemma} shows that $\underline{ET}(X)$ embeds as the subcategory of $\underline{\EL}(X)$ consisting of all the objects and but only the morphisms in each summand corresponding to $e_n \in \Lambda(n)$. Thus $X$ obtains an $ET$-algebra structure via the composite
 \[
 \underline{ET}(X) \hookrightarrow \underline{\EL}(X) \stackrel{\mu}{\to} X.
 \]
@@ -1800,7 +1806,7 @@ produces an isomorphism
 \[
 [\tilde{g}; \underline{\id}] \colon x_1 \otimes \cdots \otimes x_n \cong x_{g^{-1}(1)} \otimes \ldots \otimes x_{g^{-1}(n)}.
 \]
-Define $[g]$ to be $[\tilde{g}; \underline{\id}]$. The three axioms in \cref{Defi:wk-lmc} follow immediately from the action operad axioms, completing the construction of the 2-functor $i$ on objects. Similar arguments apply to strict $\EL$-morphisms and $\EL$-transformations, and we leave them to the reader. The arguments above and \cref{prop:hom-set-lemma} show that the resulting 2-functor $i$ has image those weak $\Lambda$-monoidal category with strict underlying monoidal structure, finishing the proof of the first claim.
+Define the isomorphism $[g]$ in \cref{Defi:wk-lmc} to be $[\tilde{g}; \underline{\id}]$. The three axioms in \cref{Defi:wk-lmc} follow immediately from the action operad axioms, completing the construction of the 2-functor $i$ on objects. Similar arguments apply to strict $\EL$-morphisms and $\EL$-transformations, and we leave them to the reader. The arguments above together with \cref{prop:hom-set-lemma} show that the resulting 2-functor $i$ has image those weak $\Lambda$-monoidal category with strict underlying monoidal structure, finishing the proof of the first claim.
 
 Now let $M$ be a weak $\Lambda$-monoidal category, and let $M_u$ denote its underlying monoidal category. By coherence for monoidal categories \cite{js,coh3d}, there is a strict monoidal category $\textrm{st} M_u$ and a monoidal equivalence $e \colon \textrm{st} M_u \to M_u$ given as follows.
 \begin{itemize}
@@ -1817,24 +1823,24 @@ We will equip $\textrm{st} M_u$ with the structure of a $\Lambda$-monoidal categ
 Let $y_i = (n_i; x_{i1}, \ldots, x_{in_i})$ be objects of $\textrm{st} M_u$ for $i=1, \ldots, m$. For an element $g \in \Lambda(k)$, define $[g]$ to be the isomorphism $[\delta_{m; k_1, \ldots, k_m}(g)]$ from \cref{Defi:wk-lmc}.
 We must now verify the three axioms from \cref{Defi:wk-lmc} using this definition of $[g]$ in $\textrm{st} M_u$.
 Each axiom follows from the characterization of action operads in \cref{thm:charAOp}.
-The first axiom is a consequence of \cref{eq6}, the second axiom is a consequence of \cref{eq9}, and the third axiom is a consequence of \cref{eq7}. We write $\textrm{st}^{\Lambda} M$ for this $\Lambda$-monoidal structure on $\textrm{st} M_u$. Since $\textrm{st} M_u$ is strict monoidal by construction and $e \colon \textrm{st} M_u \to M$ is known to be a monoidal equivalence, we can prove that $e$ is actually a $\Lambda$-monoidal equivalence $\textrm{st}^{\Lambda} M \to M$ by showing that $e$ is a $\Lambda$-monoidal functor. The single axiom in \cref{Defi:wk-lmf} requires the commutativity of the diagram below,
+The first axiom is a consequence of Axiom \eqref{eq6}, the second axiom is a consequence of Axiom \eqref{eq9}, and the third axiom is a consequence of Axiom \eqref{eq7}. We write $\textrm{st}^{\Lambda} M$ for this $\Lambda$-monoidal structure on $\textrm{st} M_u$. Since $\textrm{st} M_u$ is strict monoidal by construction and $e \colon \textrm{st} M_u \to M$ is known to be a monoidal equivalence, we can prove that $e$ is actually a $\Lambda$-monoidal equivalence $\textrm{st}^{\Lambda} M \to M$ by showing that $e$ is a $\Lambda$-monoidal functor. The single axiom in \cref{Defi:wk-lmf} requires the commutativity of the diagram below,
  \[
         \xy
             (0,0)*+{\underline{ey_1 \cdots ey_m}}="00";
             (50,0)*+{\underline{ey_{g^{-1}(1)} \cdots ey_{g^{-1}(m)}}}="10";
-            (0,-15)*+{e\underline{y_1 \cdots y_m}}="01";
-            (50,-15)*+{e\underline{y_{g^{-1}(1)} \cdots y_{g^{-1}(m)}}}="11";
+            (0,-15)*+{e\big(\underline{y_1 \cdots y_m}\big)}="01";
+            (50,-15)*+{e\big(\underline{y_{g^{-1}(1)} \cdots y_{g^{-1}(m)}}\big)}="11";
             {\ar^{[g]} "00" ; "10"};
             {\ar^{e_m} "10" ; "11"};
             {\ar_{e_m} "00" ; "01"};
             {\ar_{e[g]} "01" ; "11"};
         \endxy
      \]
-and that follows immediately from the third axiom in \cref{Defi:wk-lmc}. By \cref{rem:eq-in-wlmc}, this observation completes the proof that $e$ is an equivalence in the 2-category $\wlmc$.
+and that follows immediately from the third axiom in \cref{Defi:wk-lmc}. By \cref{rem:eq-in-wlmc}, this observation completes the proof that $e$ is an equivalence in the 2-category of weak $\Lambda$-monoidal categories.
 \end{proof}
 
 \begin{rem}[(Pseudo-$\EL$-algebras versus weak $\Lambda$-monoidal categories)]\label{rem:psELalg-vs-wlmc}
-While satisfying in its brevity, one would expect \cref{cor:coherence-for-ulP} to be less useful in practice than the second part of \cref{thm:wlmc-to-lmc}, as that is the case for plain monoidal categories.
+While \cref{cor:coherence-for-ulP} is satisfying in its brevity, one would expect it to be less useful in practice than the second part of \cref{thm:wlmc-to-lmc}, as that is the case for plain monoidal categories.
 \end{rem}
 
 
