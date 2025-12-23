@@ -1847,7 +1847,10 @@ While \cref{cor:coherence-for-ulP} is satisfying in its brevity, one would expec
 
 \ngnoteil{I slightly rewrote this. It is better but not amazing.}
 
-This is the first of two sections to investigate the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in \cite[Appendix C]{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and an example of where this fails is the symmetric operad for which the algebras are commutative monoids. In the case of $2$-monads we can consider the  strict $2$-limit analogous to the pullback, the $2$-pullback, and characterize when the induced $2$-monad from a $\Lambda$-operad is $2$-cartesian. We prove in \cref{cor:cart_cor,thm:cart_thm} that $P$ being 2-cartesian is equivalent to either free group actions, in the symmetric case, or a slight weakening of free group actions, in the general $\Lambda$-operad case.
+This is the first of two sections to investigate the interaction between operads and pullbacks. The monads arising from a non-symmetric operad are always cartesian, as described in \cite[Appendix C]{leinster}. The monads that arise from symmetric operads, however, are not always cartesian and an example of where this fails is the symmetric operad for which the algebras are commutative monoids. 
+Moving to the context of $2$-monads on a 2-category, we can consider those that are 2-cartesian (\cref{Defi:2cart-monad}).
+The goal of this section is to characterize those $\Lambda$-operads $P$ for which the induced 2-monad $\underline{P}$ is 2-cartesian. 
+We prove in \cref{cor:cart_cor,thm:cart_thm} that $P$ being 2-cartesian is equivalent to either free group actions, in the symmetric case, or a slight weakening of free group actions, in the general $\Lambda$-operad case.
 
 
 
@@ -1857,16 +1860,17 @@ This is the first of two sections to investigate the interaction between operads
 A $2$-monad $T \colon \mathcal{K} \rightarrow \mathcal{K}$ is said to be \textit{$2$-cartesian} if
     \begin{itemize}
         \item the $2$-category $\mathcal{K}$ has $2$-pullbacks,
-        \item the functor $T$ preserves $2$-pullbacks, and
+        \item the functor $T$ preserves $2$-pullbacks (up to isomorphism), and
         \item the naturality squares for the unit and multiplication of the $2$-monad are $2$-pullbacks.
     \end{itemize}
 \end{Defi}
 
 \begin{rem}
-As discussed in \cref{rem:lim-v-2lim}, the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$.\ngnote{kelly-elem citation used to be here, not sure if we need it}
+As discussed in \cref{rem:lim-v-2lim}, the  $2$-pullback of a diagram is actually the same as the ordinary pullback in $\mb{Cat}$. We will therefore drop the prefix 2-, and interpret cartesian to mean 2-cartesian.
 \end{rem}
 
 We begin our study of the cartesian property in the context of symmetric operads.
+We will individually examine when the unit for $\underline{P}$ is cartesian, when the multiplication for $\underline{P}$ is cartesian, and when $\underline{P}$ is a cartesian 2-functor.
 
 \begin{prop}\label{prop:cart_unit}
 Let $P$ be a symmetric operad. Then the unit $\eta \colon \id \Rightarrow \underline{P}$ for the associated monad is a cartesian transformation.
@@ -1902,6 +1906,116 @@ The pullback of this diagram is isomorphic to the coproduct of the pullbacks of 
 It is easy then to see that $X$ is the pullback of the $n=1$ cospan, and that the empty category is the pullback of each of the other cospans, making $X$ the pullback of the original diagram and verifying that $\eta$ is cartesian.
 \end{proof}
 
+
+
+
+\begin{prop}\label{prop:mu-2cart}
+Let $P$ be a symmetric operad. If the $\Sigma_n$-actions are all free, then the multiplication $\mu \colon  \underline{P}^{2} \Rightarrow \underline{P}$ of the associated monad is a cartesian transformation\ngnote{should try to think briefly about the converse}.
+\end{prop}
+\begin{proof}
+Note that if all of the diagrams
+    \[
+        \xy
+            (0,0)*+{\underline{P}^2(X)}="00";
+            (20,0)*+{\underline{P}^2(1)}="10";
+            (0,-15)*+{\underline{P}(X)}="01";
+            (20,-15)*+{\underline{P}(1)}="11";
+            {\ar^{\underline{P}^2(!)} "00" ; "10"};
+            {\ar^{\mu_1} "10" ; "11"};
+            {\ar_{\mu_X} "00" ; "01"};
+            {\ar_{\underline{P}(!)} "01" ; "11"};
+        \endxy
+    \]
+are pullbacks then the outside of the diagram
+    \[
+        \xy
+            (0,0)*+{\underline{P}^2(X)}="00";
+            (20,0)*+{\underline{P}^2(Y)}="10";
+            (40,0)*+{\underline{P}^2(1)}="20";
+            (0,-15)*+{\underline{P}(X)}="01";
+            (20,-15)*+{\underline{P}(Y)}="11";
+            (40,-15)*+{\underline{P}(1)}="21";
+            {\ar^{\underline{P}^2(f)} "00" ; "10"};
+            {\ar^{\underline{P}^2(!)} "10" ; "20"};
+            {\ar^{\mu_{1}} "20" ; "21"};
+            {\ar_{\mu_X} "00" ; "01"};
+            {\ar_{\underline{P}(f)} "01" ; "11"};
+            {\ar_{\underline{P}(!)} "11" ; "21"};
+            {\ar_{\mu_Y} "10" ; "11"};
+        \endxy
+    \]
+is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. 
+
+Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares below is a pullback.
+    \[
+        \xy
+            (0,0)*+{\coprod_{m} P(m) \otimes_{\Sigma_m} \prod_{k_1+\cdots+k_m=n} \left(\coeqsig{P}{X}{{k_i}}\right)}="00";
+            (60,0)*+{\coprod P(m) \otimes_{\Sigma_m} \prod_i \left(P(k_i) / \Sigma_{k_i}\right)}="10";
+            (0,-20)*+{\coeqsig{P}{X}{n}}="01";
+            (60,-20)*+{P(n) / \Sigma_{n}}="11";
+            {\ar "00" ; "10"};
+            {\ar "00" ; "01"};
+            {\ar "01" ; "11"};
+            {\ar "10" ; "11"};
+        \endxy
+    \]
+The map along the bottom is the obvious one, sending $[p; x_1, \ldots, x_n]$ simply to the equivalence class $[p]$. The map along the right hand side is induced by operadic composition, and sends $[q;[p_1],\ldots,[p_m]]$ to $[\mu^P(q;p_1,\ldots,p_n)]$. The pullback of these maps would be the category consisting of pairs
+    \[
+        \left([p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]]\right),
+    \]
+where $q \in P(m)$, $p_i \in P(k_i)$, $k_1 + \cdots + k_m = n$, $p \in P(n)$, and for which $[p] = [\mu^P(q;p_1,\ldots,p_n)]$; we will denote the pullback by $U$. The upper left category in the diagram, which we denote by $Q$, has objects
+    \[
+        \left[q;\left[p_1;\underline{x}_1\right],\ldots,\left[p_m;\underline{x}_m\right]\right].
+    \]
+
+The uniquely induced functor $F \colon Q \to U$ is defined on objects by the formula
+%There are obvious maps out of $Q$ making the diagram commute and as such inducing a functor from $Q$ into the pullback via the universal property. This functor sends an object such as the one just described to the pair
+    \[
+F\Big(\big[q;\left[p_1;\underline{x}_1\right],\ldots,\left[p_m;\underline{x}_m\right]\big] \Big) =          \left(\left[\mu^P(q;p_1,\ldots,p_m);\underline{x}\right], \big[q;[p_1],\ldots,[p_m]\big]\right),
+    \]
+where the list $\underline{x}$ is the concatenation $\underline{x}_1, \ldots, \underline{x}_m$.
+We define an inverse $G \colon U \to Q$ as follows.
+Let 
+    \[
+        \left([p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]]\right)
+    \]
+be an object of $U$, with $p_i \in P(k_i)$ as above. 
+Since the action of $\Sigma_n$ on $P(n)$ is free, there is a unique $g \in \Sigma_n$ such that $p  = \mu^P(q;p_1,\ldots,p_m) \cdot g$. Then
+\begin{align*}
+[p; x_1, \ldots, x_n] & = \big[ \mu^P(q;p_1,\ldots,p_m) \cdot g; x_1, \ldots, x_n \big] \\
+& = \big[ \mu^P(q;p_1,\ldots,p_m); x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)} \big],
+\end{align*}
+so by reindexing the $x_i$'s if necessary we can assume that $p =  \mu^P(q;p_1,\ldots,p_m)$.
+Then define
+\[
+G\Big( [p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]] \Big) = \big[ q; [p_1; \underline{y}_1], \ldots, [p_m; \underline{y}_m] \big],
+\]
+where 
+\[
+\underline{y_j} = x_{k_1 + \cdots + k_{j-1} + 1}, \ldots, x_{k_1 + \cdots + k_{j-1} + k_j}.
+\]
+The reader can check that this is well-defined, and an inverse to $F$ on objects. A similar formula holds for morphisms. The functor $G$ is an inverse to $F$, so the desired square is a pullback, completing the proof.
+
+%Given an object in the pullback, we then have a pair, as described above, which has $[p] = [\mu^P(q;p_1,\ldots,p_n)]$ meaning that we can find an element $g \in \Sigma_{\Sigma k_i}$ such that $p  = \mu^P(q;p_1,\ldots,p_n) \cdot g$. Thus we can describe an inverse to the induced functor by sending a pair in the pullback to the object
+%    \[
+%        [q;[p_1;\pi(g)(\underline{x})_1],\ldots,[p_n;\pi(g)(\underline{x})_n]],
+%    \]
+%where $\pi(g)(\underline{x})_i$ denotes the $i$th block of $\underline{x}$ after applying the permutation $\pi(g)$. For example, if $\underline{x} = (x_{11}, x_{12}, x_{21}, x_{22}, x_{23}, x_{31})$ and $\pi(g) = (1\, \, 3 \, \, 5)$, then
+%    \[
+%        \pi(g)(\underline{x}) = (x_{23}, x_{12}, x_{11}, x_{22}, x_{21}, x_{31}).
+%    \]
+%Thus $\pi(g)(\underline{x})_1 = (x_{23}, x_{12})$, $\pi(g)(\underline{x})_2 = (x_{11}, x_{22}, x_{21})$ and $\pi(g)(\underline{x})_3 = (x_{31})$.
+%
+%Now applying the induced functor we find that we get back an object in the pullback for which the first entry is $[q;[p_1],\ldots,[p_n]]$ and whose second entry is
+%    \[
+%       \left[\mu^P(q;p_1,\ldots,p_n);\pi(g)(\underline{x})\right] = \left[\mu^P(q;p_1,\ldots,p_n) \cdot g;\underline{x}\right] = [p;\underline{x}],
+%    \]
+%which is what we started with. Showing the other composite is an identity is similar, here using the fact that the identity acts trivially on $\mu^P(q;p_1,\ldots,p_n)$. Taking the coproduct of these squares then gives us the original diagram that we wanted to show was a pullback and, since each individual square is a pullback, so is the original.
+\end{proof}
+
+\begin{rem}[(Pullback cancellation)]\label{rem:pb-cancel}
+We call the technique in the first paragraph of the previous proof \emph{pullback cancellation}.
+\end{rem}
 
 \begin{prop}\label{prop:P-2cart}
 Let $P$ be a symmetric operad. Then the $2$-monad $\underline{P}$ preserves pullbacks if and only if $\Sigma_{n}$ acts freely on $P(n)$ for all $n$.
@@ -2066,118 +2180,10 @@ The same uniqueness arguments, using \cref{lem:coeq-lem} and \cref{rem:operadcoe
 %which is equal to the original pair since $p \cdot g = q$; the other composite is trivially an identity. A similar calculation on morphisms finishes the proof that $\coeqsig{P}{A}{n}$ is the pullback as required.
 \end{proof}
 
-\begin{prop}\label{prop:mu-2cart}
-Let $P$ be a symmetric operad. If the $\Sigma_n$-actions are all free, then the multiplication $\mu \colon  \underline{P}^{2} \Rightarrow \underline{P}$ of the associated monad is a cartesian transformation.
-\end{prop}
-\begin{proof}
-Note that if all of the diagrams
-    \[
-        \xy
-            (0,0)*+{\underline{P}^2(X)}="00";
-            (20,0)*+{\underline{P}^2(1)}="10";
-            (0,-15)*+{\underline{P}(X)}="01";
-            (20,-15)*+{\underline{P}(1)}="11";
-            {\ar^{\underline{P}^2(!)} "00" ; "10"};
-            {\ar^{\mu_1} "10" ; "11"};
-            {\ar_{\mu_X} "00" ; "01"};
-            {\ar_{\underline{P}(!)} "01" ; "11"};
-        \endxy
-    \]
-are pullbacks then the outside of the diagram
-    \[
-        \xy
-            (0,0)*+{\underline{P}^2(X)}="00";
-            (20,0)*+{\underline{P}^2(Y)}="10";
-            (40,0)*+{\underline{P}^2(1)}="20";
-            (0,-15)*+{\underline{P}(X)}="01";
-            (20,-15)*+{\underline{P}(Y)}="11";
-            (40,-15)*+{\underline{P}(1)}="21";
-            {\ar^{\underline{P}^2(f)} "00" ; "10"};
-            {\ar^{\underline{P}^2(!)} "10" ; "20"};
-            {\ar^{\mu_{1}} "20" ; "21"};
-            {\ar_{\mu_X} "00" ; "01"};
-            {\ar_{\underline{P}(f)} "01" ; "11"};
-            {\ar_{\underline{P}(!)} "11" ; "21"};
-            {\ar_{\mu_Y} "10" ; "11"};
-        \endxy
-    \]
-is also a pullback and so each of the naturality squares for $\mu$ must therefore be a pullback. 
-
-Now we can split up the square above, much like we did for $\eta$, and prove that each of the squares below is a pullback.
-    \[
-        \xy
-            (0,0)*+{\coprod_{m} P(m) \otimes_{\Sigma_m} \prod_{k_1+\cdots+k_m=n} \left(\coeqsig{P}{X}{{k_i}}\right)}="00";
-            (60,0)*+{\coprod P(m) \otimes_{\Sigma_m} \prod_i \left(P(k_i) / \Sigma_{k_i}\right)}="10";
-            (0,-20)*+{\coeqsig{P}{X}{n}}="01";
-            (60,-20)*+{P(n) / \Sigma_{n}}="11";
-            {\ar "00" ; "10"};
-            {\ar "00" ; "01"};
-            {\ar "01" ; "11"};
-            {\ar "10" ; "11"};
-        \endxy
-    \]
-The map along the bottom is the obvious one, sending $[p; x_1, \ldots, x_n]$ simply to the equivalence class $[p]$. The map along the right hand side is induced by operadic composition, and sends $[q;[p_1],\ldots,[p_m]]$ to $[\mu^P(q;p_1,\ldots,p_n)]$. The pullback of these maps would be the category consisting of pairs
-    \[
-        \left([p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]]\right),
-    \]
-where $q \in P(m)$, $p_i \in P(k_i)$, $k_1 + \cdots + k_m = n$, $p \in P(n)$, and for which $[p] = [\mu^P(q;p_1,\ldots,p_n)]$; we will denote the pullback by $U$. The upper left category in the diagram, which we denote by $Q$, has objects
-    \[
-        \left[q;\left[p_1;\underline{x}_1\right],\ldots,\left[p_m;\underline{x}_m\right]\right].
-    \]
-
-The uniquely induced functor $F \colon Q \to U$ is defined on objects by the formula
-%There are obvious maps out of $Q$ making the diagram commute and as such inducing a functor from $Q$ into the pullback via the universal property. This functor sends an object such as the one just described to the pair
-    \[
-F\Big(\big[q;\left[p_1;\underline{x}_1\right],\ldots,\left[p_m;\underline{x}_m\right]\big] \Big) =          \left(\left[\mu^P(q;p_1,\ldots,p_m);\underline{x}\right], \big[q;[p_1],\ldots,[p_m]\big]\right),
-    \]
-where the list $\underline{x}$ is the concatenation $\underline{x}_1, \ldots, \underline{x}_m$.
-We define an inverse $G \colon U \to Q$ as follows.
-Let 
-    \[
-        \left([p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]]\right)
-    \]
-be an object of $U$, with $p_i \in P(k_i)$ as above. 
-Since the action of $\Sigma_n$ on $P(n)$ is free, there is a unique $g \in \Sigma_n$ such that $p  = \mu^P(q;p_1,\ldots,p_m) \cdot g$. Then
-\begin{align*}
-[p; x_1, \ldots, x_n] & = \big[ \mu^P(q;p_1,\ldots,p_m) \cdot g; x_1, \ldots, x_n \big] \\
-& = \big[ \mu^P(q;p_1,\ldots,p_m); x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)} \big],
-\end{align*}
-so by reindexing the $x_i$'s if necessary we can assume that $p =  \mu^P(q;p_1,\ldots,p_m)$.
-Then define
-\[
-G\Big( [p;x_1,\ldots,x_{n}],[q;[p_1],\ldots,[p_m]] \Big) = \big[ q; [p_1; \underline{y}_1], \ldots, [p_m; \underline{y}_m] \big],
-\]
-where 
-\[
-\underline{y_j} = x_{k_1 + \cdots + k_{j-1} + 1}, \ldots, x_{k_1 + \cdots + k_{j-1} + k_j}.
-\]
-The reader can check that this is well-defined, and an inverse to $F$ on objects. A similar formula holds for morphisms. The functor $G$ is an inverse to $F$, so the desired square is a pullback, completing the proof.
-
-%Given an object in the pullback, we then have a pair, as described above, which has $[p] = [\mu^P(q;p_1,\ldots,p_n)]$ meaning that we can find an element $g \in \Sigma_{\Sigma k_i}$ such that $p  = \mu^P(q;p_1,\ldots,p_n) \cdot g$. Thus we can describe an inverse to the induced functor by sending a pair in the pullback to the object
-%    \[
-%        [q;[p_1;\pi(g)(\underline{x})_1],\ldots,[p_n;\pi(g)(\underline{x})_n]],
-%    \]
-%where $\pi(g)(\underline{x})_i$ denotes the $i$th block of $\underline{x}$ after applying the permutation $\pi(g)$. For example, if $\underline{x} = (x_{11}, x_{12}, x_{21}, x_{22}, x_{23}, x_{31})$ and $\pi(g) = (1\, \, 3 \, \, 5)$, then
-%    \[
-%        \pi(g)(\underline{x}) = (x_{23}, x_{12}, x_{11}, x_{22}, x_{21}, x_{31}).
-%    \]
-%Thus $\pi(g)(\underline{x})_1 = (x_{23}, x_{12})$, $\pi(g)(\underline{x})_2 = (x_{11}, x_{22}, x_{21})$ and $\pi(g)(\underline{x})_3 = (x_{31})$.
-%
-%Now applying the induced functor we find that we get back an object in the pullback for which the first entry is $[q;[p_1],\ldots,[p_n]]$ and whose second entry is
-%    \[
-%       \left[\mu^P(q;p_1,\ldots,p_n);\pi(g)(\underline{x})\right] = \left[\mu^P(q;p_1,\ldots,p_n) \cdot g;\underline{x}\right] = [p;\underline{x}],
-%    \]
-%which is what we started with. Showing the other composite is an identity is similar, here using the fact that the identity acts trivially on $\mu^P(q;p_1,\ldots,p_n)$. Taking the coproduct of these squares then gives us the original diagram that we wanted to show was a pullback and, since each individual square is a pullback, so is the original.
-\end{proof}
-
-\begin{rem}[(Pullback cancellation)]\label{rem:pb-cancel}
-We call the technique in the first paragraph of the previous proof \emph{pullback cancellation}.
-\end{rem}
-
 Collecting \cref{prop:cart_unit,prop:P-2cart,prop:mu-2cart} together gives the following corollary.
 
 \begin{cor}\label{cor:cart_cor}
-The $2$-monad associated to a symmetric operad $P$ is $2$-cartesian if and only if the action of $\Sigma_n$ is free on each $P(n)$.
+The $2$-monad associated to a symmetric operad $P$ is cartesian if and only if the action of $\Sigma_n$ is free on each $P(n)$.
 \end{cor}
 
 We require one simple technical lemma before giving a complete characterization of $\Lambda$-operads that induce cartesian $2$-monads.
@@ -2214,14 +2220,14 @@ Then $r$ fixes $p$, so lies in the kernel of $\pi$, and the second equation redu
 \end{proof}
 
 \begin{thm}\label{thm:cart_thm}
-The $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ is $2$-cartesian if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
+The $2$-monad $\underline{P}$ associated to a $\Lambda$-operad $P$ is cartesian if and only if whenever $p \cdot g = p$ for an object $p \in P(n)$, $g \in \textrm{Ker} \, \pi (n)$.
 \end{thm}
 \begin{proof}
 By \cref{cor:sym-preserve-alg}, the monad $\underline{P}$ is isomorphic to $\underline{\pi_{!}P}$, we need only verify when $\underline{\pi_{!}P}$ is $2$-cartesian. Thus the theorem is a direct consequence of \cref{lem:kernel_lem} and \cref{cor:cart_cor}.
 \end{proof}
 
 \begin{cor}\label{cor:EL-2cart}
-Let $\Lambda$ be an action operad in $\mb{Sets}$. Then the $2$-monad $\underline{\EL}$ is 2-cartesian.
+Let $\Lambda$ be an action operad in $\mb{Sets}$. Then the $2$-monad $\underline{\EL}$ is cartesian.
 \end{cor}
 \begin{proof}
 The action of $\Lambda(n)$ on $\EL(n)$ is free for all $n$, so in particular satisfies the conditions in \cref{thm:cart_thm}.
