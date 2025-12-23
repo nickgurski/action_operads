@@ -1771,10 +1771,9 @@ The 2-category in \cref{prop:2cat-of-weaklambda} is called the \emph{2-category 
 \end{nota}
 
 \begin{rem}\label{rem:eq-in-wlmc}
-The internal equivalences in $\wlmc$ are, by definition, those weak $\Lambda$-monoidal functors $F \colon M \to N$ for which there exists a weak $\Lambda$-monoidal functor $G \colon N \to M$ and invertible monoidal transformations $GF \cong 1_M$, $FG \cong 1_N$. By a generalization of the standard argument for plain monoidal functors,%\ngnote{can we put a ref here?}\acnote{I think this is one of those things that is not written down anywhere - best I can find is Remark 2.4.10 in "Tensor Categories", Etingof et al.},\acnote{Actually, is Prop 3.84 in Aguiar-Mahajan's book (Hopf Species, etc.) effectively doing this?}\acnote{Does it also sort of follow from Thm 5.1 in "Biequivs in Tricats"?}\acnote{Is it really all just doctrinal adjunction and mates somewhere? Theorem 1.5 in \cite{kelly-doc}?}
- a weak $\Lambda$-monoidal functor $F$ is an internal equivalence if and only if the underlying functor of $F$ is an equivalence of categories (see 3.4 in\ngnote{Beck's theorem for pseudo-monads, link commented in tex filed
+The internal equivalences in $\wlmc$ are, by definition, those weak $\Lambda$-monoidal functors $F \colon M \to N$ for which there exists a weak $\Lambda$-monoidal functor $G \colon N \to M$ and invertible monoidal transformations $GF \cong 1_M$, $FG \cong 1_N$. By a generalization of the standard argument for plain monoidal functors a weak $\Lambda$-monoidal functor $F$ is an internal equivalence if and only if the underlying functor of $F$ is an equivalence of categories, see\ngnote{Prop 3.4 in Beck's theorem for pseudo-monads, link commented in tex filed
  %https://www.sciencedirect.com/science/article/pii/S0022404902000385
- }, for example).
+ } or \cite[Corollary 7.4.2]{jy-2dim}, for example.
 \end{rem}
 
 
@@ -2716,7 +2715,7 @@ Define
   \[
     \delta_{n; j_1,\ldots,j_n}(gh) = \delta_{n; k_1,\ldots,k_n}(g)\delta_{n; j_1,\ldots,j_n}(h)
   \]
-where $k_{i} = j_{\pi(h)^{-1}(i)}$. There are three relations we must verify for compatibility.\ngmpar{check these relations more explicitly}
+where $k_{i} = j_{\pi(h)^{-1}(i)}$. There are three relations we must verify for compatibility.\ngmpar{check these relations more explicitly}\acmpar{going to try and start on this tomorrow afternoon  24/12(wed)}
 \begin{itemize}
 \item We must show that $\delta_{n; j_1,\ldots,j_n}\left(s_{p,q}^{2}\right) = e$. By definition, we have
   \[
