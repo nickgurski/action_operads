@@ -1374,6 +1374,10 @@ for any $g \in \Lambda(n)$. Moreover, since the action is free, there is an equa
 if and only if $x_i = y_i$ for all $i$. Thus the function assigning to each orbit the unique representative with group element the identity $e_n$ is an isomorphism from the set of objects of $\coeq{\EL}{X}{\Lambda}{n}$ to the set of objects of $X^n$. The formula for the morphisms given in \cref{lem:coeq-lem} then reduces to the one above.
 \end{proof}
 
+\begin{cor}\label{cor:el1=bl}
+Let $\Lambda$ be an action operad. The free $\Lambda$-monoidal category on one object, $\EL(1)$, has its underlying strict monoidal category given by $B\Lambda$ with the monoidal structure from \cref{prop:Gmonoidal}.
+\end{cor}
+
 \ngnoteil{I moved a bunch of stuff here, then commented it out. If something used to be here but is now gone, check the file.}
 
 %where the action of $\Lambda(n)$ on $\ELn$ is given by the obvious multiplication action on the right, and the action of $\Lambda(n)$ on $X^{n}$ is given using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the standard left action of $\Sigma_{n}$ on $X^{n}$ in any symmetric monoidal category. The $2$-monad $\underline{E\Sigma}$ is that for symmetric strict monoidal categories (see \cref{sec:examples} for this and further examples).
@@ -2242,7 +2246,7 @@ We shall see that the $\Lambda$-monoidal structure on $\EL(1)$ recovers the enti
 
 We begin by reminding the reader of the notion of a club, or more specifically what Kelly \cite{kelly_club1,kelly_club2} calls a club over $\mb{P}$. We will only be interested in clubs over $\mb{P}$, and thusly shorten the terminology to club from this point onward. We define clubs succinctly using Leinster's terminology of generalized operads \cite{leinster}.
 
-\begin{Defi}
+\begin{Defi}[($T$-Collections, $T$-operads)]\label{Defi:Tcoll-op}
 Let $C$ be a category with finite limits.
 \begin{enumerate}
 \item A monad $T \colon C \rightarrow C$ is \textit{cartesian} if the functor $T$ preserves pullbacks, and the naturality squares for the unit $\eta$ and the multiplication $\mu$ for $T$ are all pullbacks.
@@ -2270,32 +2274,33 @@ Let $C$ be a category with finite limits.
 \end{Defi}
 
 \begin{rem}
-Everything in the above definition can be $\mb{Cat}$-enriched without any substantial modifications. Thus we require our ground $2$-category to have finite limits in the enriched sense, and the slice and pullbacks are the $2$-categorical (and not bicategorical) versions. If we take this $2$-category to be $\mb{Cat}$, then in each case the underlying category of the $2$-categorical construction is given by the corresponding $1$-categorical version. From this point, we will not distinguish between the $1$-dimensional and $2$-dimensional theory. Our interest, of course, is in the $2$-dimensional version.
+Everything in the above definition can be $\mb{Cat}$-enriched without any substantial modifications. Thus we require our ground $2$-category to have finite limits in the enriched sense, and the slice and pullbacks are the $2$-categorical (and not bicategorical) versions. If we take this $2$-category to be $\mb{Cat}$, then in each case the underlying category of the $2$-categorical construction is given by the corresponding $1$-categorical version. From this point, we will not distinguish between the $1$-dimensional and $2$-dimensional theory. 
 \end{rem}
 
 Let $\Sigma$ be the operad of symmetric groups. This is the terminal object of the category of action operads, with each $\pi_{n}$ the identity map. Then $\underline{E\Sigma}$ is a $2$-monad on $\mb{Cat}$, and by \cref{cor:EL-2cart} it is cartesian.
 
-\begin{Defi}
+\begin{Defi}[(Club)]\label{Defi:club}
 A \textit{club} is a $T$-operad in $\mb{Cat}$ for $T = \underline{E\Sigma}$.
 \end{Defi}
 
-\begin{rem}[($\mb{P} = \underline{E\Sigma}(1)$)]
-The category $\mb{P}$ in Kelly's terminology is the result of applying $\underline{E\Sigma}$ to $1$, and can be identified with the category $B\Sigma$ of \cref{Defi:BLambda}.
+\begin{rem}[($\mb{P} = B\Sigma = \underline{E\Sigma}(1)$)]
+The category $\mb{P}$ in Kelly's notation (defined in \cite[Section 2]{kelly_club0}) is the category $B\Sigma$ of \cref{Defi:BLambda}, or equivalently
+ the result of applying $\underline{E\Sigma}$ to $1$ by \cref{prop:el1=bl}.
 \end{rem}
 
-\begin{rem}[(Explicit description of clubs)]
+\begin{rem}[(Explicit description of clubs)]\label{rem:exp-club}
 It is useful to break down the definition of a club. A club consists of
 \begin{enumerate}
-\item a category $K$ together with a functor $\pi \colon K \rightarrow B \Sigma$,
+\item a category $K$ together with a functor $k \colon K \rightarrow B \Sigma$,
 \item a multiplication map $K \circ K \rightarrow K$, and
 \item a unit map $1 \rightarrow K$,
 \end{enumerate}
-satisfying the axioms to be a monoid in the monoidal category of $E\Sigma$-collections. The objects of $K \circ K$  are tuples of objects of $K$, written $(x; y_{1}, \ldots, y_{n})$, where $\pi(x) = n$. In order to describe the morphisms of $K \circ K$, recall the description of the hom-sets of $E\Sigma(K)$ from \cref{prop:hom-set-lemma}.
+satisfying the axioms to be a monoid in the monoidal category of $E\Sigma$-collections. The objects of $K \circ K$  are tuples of objects of $K$, written $(x; y_{1}, \ldots, y_{n})$, where $k(x) = n$. In order to describe the morphisms of $K \circ K$, recall the description of the hom-sets of $E\Sigma(K)$ from \cref{prop:hom-set-lemma}.
 A morphism
   \[
     (x; y_{1}, \ldots, y_{n}) \rightarrow (z; w_{1}, \ldots, w_{m})
   \]
-exists only when $n=m$ (since $B\Sigma$ only has endomorphisms) and then consists of a morphism $f \colon x \rightarrow z$ in $K$ together with morphisms $g_{i} \colon y_{i} \rightarrow w_{f(i)}$ in $K$; here we have written $f(i)$ for the permutation $\pi(f)$ applied to the element $i$, following \cref{nota:perm_shorthand}.
+exists only when $n=m$ (since $B\Sigma$ only has endomorphisms) and then consists of a morphism $f \colon x \rightarrow z$ in $K$ together with morphisms $g_{i} \colon y_{i} \rightarrow w_{f(i)}$ in $K$; here we have written $f(i)$ for the permutation $k(f)$ applied to the element $i$, following \cref{nota:perm_shorthand}.
 \end{rem}
 
 \begin{nota}\label{nota:clubmult}
@@ -2312,11 +2317,11 @@ Let $K$ be a club. The 2-monad $K^{\textrm{m}}$ on $\mb{Cat}$ is defined as foll
 \end{itemize}
 \end{Defi}
 
-\begin{thm}
+\begin{thm}\label{thm:pi-club}
 Let $\Lambda$ be an action operad. Then the map of operads $\pi \colon \Lambda \rightarrow \Sigma$ gives the category $B\Lambda = \coprod B\Lambda(n)$ from \cref{Defi:BLambda} the structure of a club.
 \end{thm}
 \begin{proof}
-To give the functor $B\pi \colon B\Lambda \rightarrow B \Sigma$ the structure of a club it suffices (see\ngnote{find specific thm number} \cite{leinster}) to show that
+To give the functor $B\pi \colon B\Lambda \rightarrow B \Sigma$ the structure of a club it suffices (see \cite[Section 6.2]{leinster}) to show that
 \begin{itemize}
 \item the induced monad, which we will show to be $\underline{\EL}$, is a cartesian monad on $\mb{Cat}$,
 \item the transformation $\tilde{\pi} \colon \underline{\EL} \Rightarrow \underline{E\Sigma}$ induced by the functor $E\pi$ is cartesian, and
@@ -2346,7 +2351,7 @@ Naturality is immediate, and since $\pi$ is a map of operads $\tilde{\pi}$ also 
 
 It only remains to show that $\tilde{\pi}$ is cartesian and that the induced monad is actually $\underline{\EL}$. 
 By pullback cancellation (\cref{rem:pb-cancel}), these will both follow if we prove that $\EL(X) \cong B\Lambda \circ X$, or equivalently if
- \[
+ \begin{equation}\label{eqn:pb-club}
     \xy
       (0,0)*+{E\Lambda(X)} ="00";
       (0,-10)*+{B\Lambda} ="01";
@@ -2357,7 +2362,7 @@ By pullback cancellation (\cref{rem:pb-cancel}), these will both follow if we pr
       {\ar^{} "00" ; "01"};
       {\ar^{} "01" ; "11"};
     \endxy
-  \]
+  \end{equation}
   is a pullback. This fact follows immediately from the description of the free objects in \cref{prop:hom-set-lemma}.
 
 %Since the monads $\underline{\EL}$ and $\underline{E\Sigma}$ both decompose into a disjoint union of functors, we only have to show that, for any $n$, the square below is a pullback.
@@ -2401,63 +2406,82 @@ By pullback cancellation (\cref{rem:pb-cancel}), these will both follow if we pr
 %Mapping down to $B\Lambda(n)$ gives $ge^{-1} = g$, while mapping over to $(E\Sigma_{n} \times X^{n})/\Sigma_{n}$ gives $[!; f_{i}]$ where $! \colon e \rightarrow \pi(g)$ is now a morphism in $E\Sigma_{n}$. In other words, a morphism in the upper left corner of our putative pullback square is determined completely by its images along the top and lefthand functors. Furthermore, given $g \in \Lambda(n)$, $\tau = \pi(g)$, and morphisms $f_{i} \colon x_{i} \rightarrow y_{i}$ in $X$, the morphism $[! \colon e \rightarrow g; f_{i}]$ maps to the pair $(g, [! \colon e \rightarrow \tau; f_{i}])$, completing the proof that this square is indeed a pullback.
 \end{proof}
 
-The club, which we now denote $K_{\Lambda}$, associated to $\EL$ has the following properties. First, the functor $K_{\Lambda} \rightarrow B\Sigma$ is a functor between groupoids. Second, the functor $K_{\Lambda} \rightarrow B\Sigma$ is  bijective-on-objects. We claim that these properties characterize those clubs which arise from action operads. Thus the clubs arising from action operads are a special class of PROPs \cite{mac_prop, markl_prop}.
+Let $(\Lambda, \pi)$ be an action operad, and $B\Lambda$ the club from \cref{thm:pi-club}. The proof above shows that the 2-monad $\underline{\EL}$ is (isomorphic to) the 2-monad $B\Lambda^{\textrm{m}}$ from \cref{Defi:2monad-from-club}.
+The club $B\Lambda$ has the following properties. First, the category $B\Lambda$ is a groupoid. Second, the functor $B\pi \colon B\Lambda \rightarrow B\Sigma$ is  bijective on objects. We claim that these properties characterize those clubs that arise from action operads. Thus the clubs arising from action operads are a special class of PROPs \cite{mac_prop, markl_prop}.
 
 \begin{thm}\label{thm:club=operad}
-Let $K$ be a club such that
+Let $(K, k)$ be a club such that
 \begin{itemize}
-\item the map $K \rightarrow B\Sigma$ is bijective on objects and
+\item the map $k \colon K \rightarrow B\Sigma$ is bijective on objects and
 \item $K$ is a groupoid.
 \end{itemize}
-Then $K \cong K_{\Lambda}$ for some action operad $\Lambda$. The assignment $\Lambda \mapsto K_{\Lambda}$ is a full and faithful embedding of the category of action operads $\mb{AOp}$ into the category of clubs.
+Then $(K,k) \cong (B\Lambda, B\pi)$ for some action operad $\Lambda$. The assignment $\Lambda \mapsto (B\Lambda, B\pi)$ is a full and faithful embedding of the category of action operads $\mb{AOp}$ into the category of clubs.
 \end{thm}
 \begin{proof}
-\ngnoteil{shorten?}
-Let $K$ be such a club. Our hypotheses immediately imply that $K$ is a groupoid with objects in bijection with the natural numbers; we will now assume the functor $K \rightarrow B\Sigma$ is the identity on objects. Let $\Lambda(n) = K(n,n)$. Now $K$ comes equipped with a functor to $B\Sigma$, in other words group homomorphisms $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$. We claim that the club structure on $K$ makes the collection of groups $\{ \Lambda(n) \}$ an action operad. In order to do so, we will employ \cref{thm:charAOp}.
+Let $(K,k)$ be such a club. Our hypotheses immediately imply that $K$ is a groupoid with objects in bijection with the natural numbers; we will now assume the functor $K \rightarrow B\Sigma$ is the identity on objects. Furthermore, we can conclude that there is an isomorphism $m \cong n$ in $K$ if and only if $m = n$. Let $\Lambda(n) = K(n,n)$, so that $K = \coprod B\Lambda(n)$ as groupoids. Define $B\pi = k$, or equivalently define the homomorphism $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ to the morphism part of the composite
+\[
+B\Lambda(n) \hookrightarrow K \stackrel{k}{\to} B\Sigma.
+\]
+ We claim that the club structure on $K$ makes the collection of groups $\{ \Lambda(n) \}$ an action operad. In order to do so, we will employ \cref{thm:charAOp}.
 
-First, we give the group homomorphism $\beta$ using \cref{nota:clubmult}. Define
+First, we give the group homomorphism $\beta$ using \cref{rem:exp-club,nota:clubmult}. Define
   \[
     \beta(g_{1}, \ldots, g_{n}) = e_{n}(g_{1}, \ldots, g_{n})
   \]
- (see \ref{nota:clubmult}) where $e_{n}$ is the identity morphism $n \rightarrow n$ in $K(n,n)$. Functoriality of the club multiplication map immediately implies that this is a group homomorphism. Second, we define the function $\delta$ in a similar fashion:
+where $e_{n}$ is the identity morphism $n \rightarrow n$ in $K(n,n)$. Functoriality of the club multiplication map immediately implies that this is a group homomorphism. Second, we define the function $\delta$ in a similar fashion:
   \[
     \delta_{n; k_{1}, \ldots, k_{n}}(f) = f(e_{k_1}, \ldots, e_{k_n}),
   \]
 where here $e_{k_i}$ is the identity morphism of $k_{i}$ in $K$.
 
-There are now nine axioms to verify in \cref{thm:charAOp}. The club multiplication functor is a map of collections, so a map over $B\Sigma$; this fact immediately implies that Axioms \eqref{eq1} (using morphisms in $K \circ K$ with only $g_{i}$ parts) and \eqref{eq4} (using morphisms in $K \circ K$ with only $f$ parts) hold. The mere fact that multiplication is a functor also implies Axioms \eqref{eq6} (once again using morphisms with only $f$ parts) and \eqref{eq8} (by considering the composite of a morphism with only an $f$ with a morphism with only $g_{i}$'s). Axiom \eqref{eq2} is the equation $e_{1}(g) = g$ which is a direct consequence of the unit axiom for the club $K$; the same is true of Axiom \eqref{eq5}. Axioms \eqref{eq3}, \eqref{eq7},  and \eqref{eq9} all follow from the associativity of the club multiplication.
+There are now nine axioms to verify in \cref{thm:charAOp}. The club multiplication functor is a map of collections, so a map over $B\Sigma$; this fact immediately implies that Axioms \eqref{eq1} (using morphisms in $K \circ K$ with only $g_{i}$ parts) and \eqref{eq4} (using morphisms in $K \circ K$ with only $f$ parts) hold. The mere fact that multiplication is a functor also implies Axioms \eqref{eq6} (once again using morphisms with only $f$ parts) and \eqref{eq8} (by considering the composite of a morphism with only an $f$ with a morphism with only $g_{i}$'s). Axiom \eqref{eq2} is the equation $e_{1}(g) = g$ which is a direct consequence of the unit axiom for the club $K$; the same is true of Axiom \eqref{eq5}. Axioms \eqref{eq3}, \eqref{eq7},  and \eqref{eq9} all follow from the associativity of the club multiplication. Thus $(\Lambda, \pi)$ is an action operad, and using the pullback square \cref{eqn:pb-club} we see that $(K,k) \cong (B\Lambda, B\pi)$ as clubs.
 
-Finally, we would like to show that this gives a full and faithful embedding
-    \[
-        K_{-} \colon \mb{AOp} \rightarrow \mb{Club}
-    \]
-of the category of action operads into the category of clubs. Let $f, f' \colon \Lambda \rightarrow \Lambda'$ be maps between action operads. Then if $K_{f} = K_{f'}$ as maps between clubs, then they must be equal as functors $K_{\Lambda} \rightarrow K_{\Lambda'}$. But these functors are nothing more than the coproducts of the functors
+Finally, we will show that the construction above gives a full and faithful embedding
+    \begin{equation}\label{eqn:B-aop}
+        B \colon \mb{AOp} \rightarrow \mb{Club}
+    \end{equation}
+of the category of action operads into the category of clubs. Let $f, f' \colon \Lambda \rightarrow \Lambda'$ be maps between action operads. Then if $Bf = Bf'$ as maps between clubs, then they must be equal as functors $B\Lambda \rightarrow B\Lambda'$. But these functors are nothing more than the coproducts of the functors
   \[
     B(f_{n}), B(f_{n}') \colon B\Lambda(n) \rightarrow B\Lambda'(n),
   \]
-and the functor $B$ from groups to categories is faithful, so $K_{-}$ is also faithful. Now let $f \colon K_{\Lambda} \rightarrow K_{\Lambda'}$ be a maps of clubs. We clearly get group homomorphisms $f_{n} \colon \Lambda(n) \rightarrow \Lambda'(n)$ such that $\pi^{\Lambda}_{n} = \pi^{\Lambda'}_{n} f_{n}$, so we must only show that the $f_{n}$ also constitute an operad map. Using the description of the club structure above in terms of the maps $\beta, \delta$, we are able to see that commuting with the club multiplication implies commuting with both of these, which in turn is equivalent to commuting with operad multiplication. Thus $K_{-}$ is full as well.
+and the functor $B$ from groups to categories is faithful, so \cref{eqn:B-aop} is also faithful. Now let $f \colon B\Lambda \rightarrow B\Lambda'$ be a maps of clubs. We clearly get group homomorphisms $f_{n} \colon \Lambda(n) \rightarrow \Lambda'(n)$ such that $\pi^{\Lambda}_{n} = \pi^{\Lambda'}_{n} f_{n}$, so we must only show that the $f_{n}$ also constitute an operad map. Using the description of the club structure above in terms of the maps $\beta, \delta$, we conclude that commuting with the club multiplication implies commuting with both of these, which in turn is equivalent to commuting with operad multiplication. Thus \cref{eqn:B-aop} is full as well.
 \end{proof}
 
 \begin{rem}[(Relaxing the hypotheses in \cref{thm:club=operad})]
-First, one should note that being a club over $B\Sigma$ means that every $K$-algebra has an underlying strict monoidal structure. Second, requiring that $K \rightarrow B\Sigma$ be bijective on objects ensures that $K$ does not have  operations other than $\otimes$, such as duals or internal hom-objects, from which to build new types of objects. Finally, $K$ being a groupoid ensures that all of the ``constraint morphisms'' that exist in algebras for $K$ are invertible.
+First, one should note that if $K$ is a club over $B\Sigma$, then every $K$-algebra has an underlying strict monoidal structure. Second, requiring that $K \rightarrow B\Sigma$ be bijective on objects ensures that $K$ does not have  operations other than $\otimes$, such as duals or internal hom-objects, from which to build new types of objects. Finally, $K$ being a groupoid ensures that all of the ``constraint morphisms'' that exist in algebras for $K$ are invertible.
 
 These hypotheses could be relaxed somewhat. Instead of having a club over $B\Sigma$, we could have a club over the free symmetric monoidal category on one object (note that the free symmetric monoidal category monad on $\mb{Cat}$ is still cartesian). This would produce $K$-algebras with underlying monoidal structures that are not necessarily strict. This change should have relatively little impact on how the theory is developed. Changing $K$ to be a category instead of a groupoid would likely have a larger impact, as the resulting action operads would have monoids instead of groups at each level. We have made repeated use of inverses throughout the proofs in the basic theory of action operads, and these would have to be revisited if groups were replaced by monoids in the definition of action operads.
 \end{rem}
 
 \ngnoteil{skipping the rest of this section for now}
 
-\ngnoteil{need specific references in Kelly}
+In \cite[Section 3]{kelly_club1}, Kelly discusses clubs given by generators and relations of the type that are relevant to our study of action operads; we call particular attention to his Theorem 3.1. His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible. In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $\EL$ are always strict monoidal categories with additional structure. 
 
-In \cite[Section 3]{kelly_club1}, Kelly discusses clubs given by generators and relations. His generators include functorial operations more general than what we are interested in here, and the natural transformations are not required to be invertible. In our case, the only generating operations we require are those of a unit and tensor product, as the algebras for $\EL$ are always strict monoidal categories with additional structure. Tracing through his discussion of generators and relations for a club gives the following theorem.
+\begin{nota}\label{nota:tensor-n}
+Suppose that $M$ is a monoidal category via $\otimes, I$. Write $\otimes_n$ for the functor $M^n \to M$ given inductively by
+\begin{itemize}
+\item $\otimes_0$ is the functor $1 \to M$ sending the unique object of the terminal category 1 to the unit $I \in M$, and
+\item given $\otimes_k$, define 
+\[
+\otimes_{k+1}(m_1, \ldots, m_k, m_{k+1}) = \otimes_2\big( m_1, \otimes_k(m_2, \ldots, m_{k+1}) \big).
+\]
+\end{itemize}
+We note that since $\mb{Cat}$ is a symmetric monoidal category under the cartesian product, for any $\sigma \in \Sigma_n$ there is an isomorphism $\sigma \colon M^n \to M^n$ given explicitly on objects by
+\[
+\sigma(m_1, \ldots, m_n) = \big( m_{\sigma^{-1}(1)}, \ldots, m_{\sigma^{-1}(n)} \big). 
+\]
+\end{nota}
+
+Tracing through Kelly's discussion of generators and relations for a club gives the following theorem.
 
 \ngmpar{I worry about the rigor of the next two results}
 \begin{thm}\label{thm:pres1}
 Let $\Lambda$ be an action operad with presentation given by $(\mathbf{g},\mathbf{r}, s_{i}, p)$. Then the club $\EL$ is generated by
 \begin{itemize}
   \item functors giving the unit object and tensor product, and
-  \item natural transformations given by the collection $\mathbf{g}$:  each element $x$ of $\mathbf{g}$ with $\pi(x) = \sigma_{x} \in \Sigma_{|x|}$ gives a natural transformation from the $n$th tensor power functor to itself,
+  \item natural transformations given by the set $\mathbf{g}$:  each element $x$ of $\mathbf{g}$ with $\pi(x) = \sigma_{x} \in \Sigma_{|x|}$ gives a natural transformation $\otimes_{|x|} \Rightarrow \otimes_{|x|} \circ \sigma$,
 \end{itemize}
-subject to relations such that the following axioms hold.
+subject to relations enforcing the following axioms.
 \begin{itemize}
   \item The monoidal structure given by the unit and tensor product is strict.
   \item The transformations given by the elements of $\mathbf{g}$ are all natural isomorphisms.
@@ -2465,10 +2489,85 @@ subject to relations such that the following axioms hold.
 \end{itemize}
 \end{thm}
 
-Bringing this down to a concrete level we have the following corollary.
+\ngmpar{new stuff starting here, we need to make sure I didn't miss anything}
+Recall from \cref{Defi:coll-over-SS} that a collection over $\SS$ is a set $X$ and a function $f \colon X \to \SS$ from $X$ to $\SS = \coprod \Sigma_n$. The function $f$ assigns to $x \in X$ its arity, consisting of both a natural number $n$ and a symmetry $\sigma \in \Sigma_n$.
+
+\begin{Defi}\label{Defi:formal-comps}
+Let $(X, f)$ be a collection over $\SS$. We define the \emph{collection of formal composites of $(X,f)$} as follows.
+\begin{enumerate}
+\item $\textrm{Comp}^0(X,f)$ is the collection $\{ e_0 \} \subseteq \SS$ consisting of the identity permutation in $\Sigma_0$; we denote the inclusion function above by $f_0$.
+\item $\textrm{Comp}^1(X,f)$ is the collection $(X,f) \coprod \{\id\} \stackrel{f_1}{\to} \SS$, where $f_1$ agrees with $f$ on $X$ and $f_1(\id) = e_1 \in \Sigma_1$. 
+\item Given $\textrm{Comp}^k(X,f)$ as a collection over $\SS$ via $f_k \colon \textrm{Comp}^k(X,f) \to \SS$, the elements of $\textrm{Comp}^{k+1}(X,f)$ are tuples $(x; y_1, \ldots, y_n)$ where
+\begin{itemize}
+\item $x \in \textrm{Comp}^1(X,f)$,
+\item each $y_i \in \textrm{Comp}^k(X,f)$ for $i=1, \ldots, n$, and
+\item $f(x) \in \Sigma_n$.
+\end{itemize}
+The function $f_{k+1} \colon \textrm{Comp}^{k+1}(X,f) \to \SS$ is defined by
+\[
+f_{k+1}(x; y_1, \ldots, y_n) = \mu^{\Sigma}\big( f(x); f_k(y_1), \ldots, f_k(y_n) \big),
+\]
+where $\mu^{\Sigma}$ is operadic composition in $\Sigma$.
+\end{enumerate}
+The collection of formal composites of $(X,f)$, denoted $\textrm{Comp}(X,f)$, is 
+\[
+\coprod_{k \in \mathbb{N}} \textrm{Comp}^k(X,f),
+\]
+computed as the coproduct in the category of collections over $\SS$.
+\end{Defi}
+
+\begin{Defi}\label{Defi:mon-schema}
+A \emph{monoidal schema} $\mathbb{S}$ consists of 
+\begin{itemize}
+\item a collection over $\SS$, $\pi \colon \mathcal{G} \to \SS$ (see \cref{Defi:coll-over-SS}), and
+\item a subset $\mathcal{R} \subseteq \textrm{Comp}(\mathcal{G}, \pi) \times_{\SS} \textrm{Comp}(\mathcal{G}, \pi)$ of the pullback below,
+ \begin{equation}\label{eqn:pb-schema}
+    \xy
+      (0,0)*+{\textrm{Comp}(\mathcal{G}, \pi) \times_{\SS} \textrm{Comp}(\mathcal{G}, \pi)} ="00";
+      (0,-15)*+{\textrm{Comp}(\mathcal{G}, \pi)} ="01";
+      (50,0)*+{\textrm{Comp}(\mathcal{G}, \pi)} ="10";
+      (50,-15)*+{\SS} ="11";
+      {\ar^{} "00" ; "10"};
+      {\ar^{} "10" ; "11"};
+      {\ar^{} "00" ; "01"};
+      {\ar^{} "01" ; "11"};
+    \endxy
+  \end{equation}
+\end{itemize}
+where both functions $\textrm{Comp}(\mathcal{G}, \pi) \to \SS$ are the coprod $\coprod \pi_k$ as in \cref{Defi:formal-comps}.
+\end{Defi}
+
+\begin{Defi}\label{Defi:S-moncat}
+Let $\mathbb{S} = (\mathcal{G}, \mathcal{R})$ be a monoidal schema. An \emph{$\mathbb{S}$-monoidal category} consists of
+\begin{itemize}
+\item a strict monoidal category $(M, \otimes, I)$; and
+\item for each $g \in \mathcal{G}$ with $\pi(g) \in \Sigma_n$, a natural isomorphism $[g] \colon \otimes_n \cong \otimes_n \circ \pi(g)$;
+\end{itemize}
+such that\ngnote{make sure identities work correctly} for each $(r,r') \in \mathcal{R}$ SOMETHINGSOMETHINGSOMETHING.
+\end{Defi}
+
+\begin{example}\label{ex:S-moncats}
+The above definition is meant to encapsulate the kinds of monoidal structures we regularly encounter.
+\begin{enumerate}
+\item Strict monoidal categories are the $\mathbb{T}$-monoidal categories for the monoidal schema $\mathbb{T}$ in which both $\mathcal{G}$ and $\mathcal{R}$ are empty.
+\item Symmetric strict monoidal categories are the $\mathbb{P}$-monoidal categories for which
+\begin{itemize}
+\item $\mathcal{G} = \{\beta\}$ with $\pi(\beta) = (1 \ 2) \in \Sigma_2$ and
+\item $\mathcal{R}$ consists of elements....
+\end{itemize}
+\item Braided strict monoidal categories are the $\mathbb{B}$-monoidal categories for which
+\begin{itemize}
+\item $\mathcal{G} = \{\beta\}$ with $\pi(\beta) = (1 \ 2) \in \Sigma_2$ and
+\item $\mathcal{R}$ consists of elements....
+\end{itemize}
+\end{enumerate}
+\end{example}
+
+\ngnoteil{insert summarizing comment}
 
 \begin{cor}\label{cor:pres2}
-Assume we have a notion $\mathcal{M}$ of strict monoidal category which is given by  a set natural isomorphisms
+\ngnoteil{rewrite: some club generated by $\mathbb{S}$ is the same as the action operad generated by $\mathbb{S}$}
+Assume we have a notion $\mathcal{M}$ of strict monoidal category that is given by  a set natural isomorphisms
   \[
     \mathcal{G} = \left\{ (f, \pi_{f}) \, | \,  x_{1} \otimes \cdots \otimes x_{n} \stackrel{f}{\longrightarrow} x_{\pi_{f}^{-1}(1)} \otimes \cdots \otimes x_{\pi_{f}^{-1}(n)} \right\}
   \]
@@ -2485,6 +2584,8 @@ such that the underlying permutation of $F$ equals the underlying permutation of
   \item $s_{2}$ given by mapping the generator $\left(\underline{f}, \underline{f}', F, F'\right)$ to the operadic composition of the $f_{i}'$ using $F'$ via $\beta, \delta$.
 \end{itemize}
 \end{cor}
+
+\ngnoteil{these are now redundant, but remark how the earlier calculation is just checking this. it is still interesting though bc translating between the group presentations and the aop presentation is nontrivial}
 
 \begin{example}
 \ngnoteil{shorten?}
