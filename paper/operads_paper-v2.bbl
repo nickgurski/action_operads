@@ -1493,6 +1493,60 @@
       \verb http://gateway.proquest.com/openurl?url_ver=Z39.88-2004&rft_val_fmt=info:ofi/fmt:kev:mtx:dissertation&res_dat=xri:pqdiss&rft_dat=xri:pqdiss:0203759
       \endverb
     \endentry
+    \entry{lcmv-psmonad}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=6e848fc07cb28696517e1eafa8c412f2}{%
+           family={Le\bibnamedelima Creurer},
+           familyi={L\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={I.\bibnamedelimi J.},
+           giveni={I\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=5a69e02a6d3215b427b93c605f07398d}{%
+           family={Marmolejo},
+           familyi={M\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=42ac1718edccc631fbd810d607616ae8}{%
+           family={Vitale},
+           familyi={V\bibinitperiod},
+           given={E.\bibnamedelimi M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7480308d521d4b22e6c6a02a49b72244}
+      \strng{fullhash}{7480308d521d4b22e6c6a02a49b72244}
+      \strng{fullhashraw}{7480308d521d4b22e6c6a02a49b72244}
+      \strng{bibnamehash}{7480308d521d4b22e6c6a02a49b72244}
+      \strng{authorbibnamehash}{7480308d521d4b22e6c6a02a49b72244}
+      \strng{authornamehash}{7480308d521d4b22e6c6a02a49b72244}
+      \strng{authorfullhash}{7480308d521d4b22e6c6a02a49b72244}
+      \strng{authorfullhashraw}{7480308d521d4b22e6c6a02a49b72244}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this work we establish a 2-categorical analogue of Beck's theorem characterizing monadic functors. We show that a 2-functor (a pseudo-functor) U is monadic iff it is a right pseudo-adjoint, it reflects adjoint equivalences and it creates U-absolute pseudo-coequalizers of codescent objects.}
+      \field{issn}{0022-4049}
+      \field{journaltitle}{Journal of Pure and Applied Algebra}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{Beck's theorem for pseudo-monads}
+      \field{urlday}{24}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{volume}{173}
+      \field{year}{2002}
+      \field{urldateera}{ce}
+      \field{pages}{293\bibrangedash 313}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1016/S0022-4049(02)00038-5
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0022404902000385
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0022404902000385
+      \endverb
+    \endentry
     \entry{leinster-survey}{article}{}{}
       \name{author}{1}{}{%
         {{hash=82417a4f76230e108804a8ce467246af}{%
