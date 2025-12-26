@@ -3011,7 +3011,7 @@ which sends an object $(a, [p;b_1,\ldots,b_n])$ to the object $[p;(a,b_1),\ldots
 In a minor change of terminology, what we refer to as a \emph{right} strength in \cref{Defi:strengths} is in \cite[Section 3.1]{HP} simply a strength, while our \emph{left} strength corresponds to a costrength. We stress this difference to match more contemporary usage \cite[Definition 3.3]{mu-strong}, avoiding the confusion that a prefix of `co-' generally means a reversal of directions.
 \end{remark}
 
-\begin{rem}\label{rem:strength-nonsym}
+\begin{rem}[(Strengths arise non-equivariantly)]\label{rem:strength-nonsym}
 It is crucial to note that the left strength $d$ and the right strength $d^{*}$ do not depend on the $\Lambda$-actions in the following sense. The $\Lambda$-operad $P$ has an underlying non-symmetric operad that we also denote $P$, and it has a left strength
   \[
     d_{A,B} \colon A \times \left(\amalg P(n) \times B^n\right) \rightarrow \amalg P(n) \times \left(A \times B \right)^n
@@ -3023,8 +3023,8 @@ given by essentially the same formula:
 The left strength for the $\Lambda$-equivariant $P$ is just the induced functor between coequalizers.
 \end{rem}
 
-\begin{Defi}\label{Defi:pscommute}
-    Given a $2$-monad $T \colon \m{K} \rightarrow \m{K}$ with left strength $d$ and right strength $d^{\ast}$, a \textit{pseudo-commutativity} consists of an invertible modification $\gamma$ with components
+\begin{Defi}[(Pseudo-commutative structure)]\label{Defi:pscommute}
+    Given a $2$-monad $T \colon \m{K} \rightarrow \m{K}$ with left strength $d$ and right strength $d^{\ast}$, a \textit{pseudo-commutative structure} consists of an invertible modification $\gamma$ with components
       \[
         \xy
             (0,0)*+{TA \times TB}="00";
@@ -3130,7 +3130,7 @@ satisfying the following three strength axioms, two unit (or $\eta$) axioms, and
 We need some further notation before stating our main theorem. 
 
 \begin{nota}[(Lexicographic and colexicographic orderings)]\label{nota:double-underlines}
-Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$ be two ordered finite lists. We use the following notation for the lexicographic and colexicographic orderings on the set $\underline{a} \times \underline{b} = \{ (a_{i}, b_{j})\}$. 
+Suppose we are given two finite ordered lists, $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, b_{n}$. We use the following notation for the lexicographic and colexicographic orderings on the set $\underline{a} \times \underline{b} = \{ (a_{i}, b_{j})\}$. 
 \begin{enumerate}
 \item The \emph{lexicographic ordering} is denoted $\underline{(a, \underline{b})}$, and has the order given by
   \[
@@ -3143,7 +3143,7 @@ Let $\underline{a} = a_{1}, \ldots , a_{m}$ and $\underline{b} = b_{1}, \ldots, 
 \end{enumerate}
 \end{nota}
 
-\begin{rem}
+\begin{rem}[(Intuition for underlining convention)]
 The notation $(a, \underline{b})$ is meant to indicate that there is a single $a$ but a list of $b$'s, so then $\underline{(a, \underline{b})}$ would represent a list which itself consists of lists of that form. 
 \end{rem}
 
@@ -3216,9 +3216,10 @@ This equation is 3.9 in \cite{guillou_multiplicative}.
 Let $\mathbb{N}_{+}$ denote the set of positive integers.
 \end{nota}
 
-\begin{Defi}\label{def:ps-comm_operad}
+\begin{Defi}[(Pseudo-commutative structure for operads)]\label{def:ps-comm_operad}
 Let $P$ be a $\Lambda$-operad in $\mb{Cat}$. A \emph{pseudo-commutative structure} on $P$ consists of the following data.
 \ngnoteil{From before: Rewrite all this using the beta and delta operations, so it's consistent with before. This seems to be partially done, but need to recheck details}
+\ngnoteil{From now: have we done as much of this as we want to do? I don't want to do any more.}
     \begin{itemize}
         \item For each pair $(m,n) \in \mathbb{N}_{+}^2$, an element $t_{m,n} \in \Lambda(mn)$ such that  $\pi(t_{m,n}) = \tau_{m,n}$.     
         \item For each object $p \in P(n)$ and object $q \in P(m)$, a natural isomorphism
@@ -3342,6 +3343,10 @@ These data are required to satisfy the following axioms.
           \]
     \end{enumerate}
 \end{Defi}
+
+\begin{rem}[(Updated axioms)]\label{rem:updated}
+Axioms \eqref{axiom:t_nat} and \eqref{axiom:t_equiv} were absent from the original definition we gave in the preprint \cite{cg-preprint}. The need for Axiom \eqref{axiom:t_nat} was noted in \cite{guillou_symmetric} and appears as \cite[Axiom (iii) of 11.1]{guillou_multiplicative}. Since the authors of \cite{guillou_multiplicative} only worked with contractible operads, they did not include Axiom \eqref{axiom:t_equiv}.
+\end{rem}
 
 %\ngnoteil{start here, now I think this remark is wrong}
 %

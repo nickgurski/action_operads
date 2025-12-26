@@ -1980,49 +1980,6 @@
       \field{title}{Equivariant Categorical Coherence Theory}
       \field{year}{2018}
     \endentry
-    \entry{sal-wahl}{article}{}{}
-      \name{author}{2}{}{%
-        {{hash=5fb1544aee733340db9ef2e511b5467d}{%
-           family={Salvatore},
-           familyi={S\bibinitperiod},
-           given={Paolo},
-           giveni={P\bibinitperiod}}}%
-        {{hash=66a0675635bef8e4bf51f2da23422364}{%
-           family={Wahl},
-           familyi={W\bibinitperiod},
-           given={Nathalie},
-           giveni={N\bibinitperiod}}}%
-      }
-      \strng{namehash}{61368ad9d21894b344a5b525367d758c}
-      \strng{fullhash}{61368ad9d21894b344a5b525367d758c}
-      \strng{fullhashraw}{61368ad9d21894b344a5b525367d758c}
-      \strng{bibnamehash}{61368ad9d21894b344a5b525367d758c}
-      \strng{authorbibnamehash}{61368ad9d21894b344a5b525367d758c}
-      \strng{authornamehash}{61368ad9d21894b344a5b525367d758c}
-      \strng{authorfullhash}{61368ad9d21894b344a5b525367d758c}
-      \strng{authorfullhashraw}{61368ad9d21894b344a5b525367d758c}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{0033-5606}
-      \field{journaltitle}{Q. J. Math.}
-      \field{number}{2}
-      \field{title}{Framed discs operads and {B}atalin-{V}ilkovisky algebras}
-      \field{volume}{54}
-      \field{year}{2003}
-      \field{pages}{213\bibrangedash 231}
-      \range{pages}{19}
-      \verb{doi}
-      \verb 10.1093/qjmath/54.2.213
-      \endverb
-      \verb{urlraw}
-      \verb http://dx.doi.org/10.1093/qjmath/54.2.213
-      \endverb
-      \verb{url}
-      \verb http://dx.doi.org/10.1093/qjmath/54.2.213
-      \endverb
-    \endentry
     \entry{savage-braidcob}{article}{}{}
       \name{author}{1}{}{%
         {{hash=2936fb68bbde94d11e1ee8650e432410}{%

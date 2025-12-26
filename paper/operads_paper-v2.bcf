@@ -2517,7 +2517,11 @@
     <bcf:citekey order="128" intorder="1">mu-strong</bcf:citekey>
     <bcf:citekey order="129" intorder="1">HP</bcf:citekey>
     <bcf:citekey order="130" intorder="1">guillou_multiplicative</bcf:citekey>
-    <bcf:citekey order="131" intorder="1">HP</bcf:citekey>
+    <bcf:citekey order="131" intorder="1">cg-preprint</bcf:citekey>
+    <bcf:citekey order="132" intorder="1">guillou_symmetric</bcf:citekey>
+    <bcf:citekey order="133" intorder="1">guillou_multiplicative</bcf:citekey>
+    <bcf:citekey order="134" intorder="1">guillou_multiplicative</bcf:citekey>
+    <bcf:citekey order="135" intorder="1">HP</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
