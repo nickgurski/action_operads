@@ -2654,9 +2654,7 @@ The examples above demonstrate that the presentations of well-known action opera
 
 \section{Extended Example: Coboundary Categories}\label{sec:exex-cactus}
 
-\ngnoteil{This section could still move somewhere else. I have a presentation for the symmetric groups as an action operad in section 7, and this doesn't use much more than that.}
-
-We now turn to an example that is not as widely known in the categorical literature, that of coboundary categories \cite{drin-quasihopf}. These arise in the representation theory of quantum groups and in the theory of crystals \cite{hk-cobound, hk-quantum}. Our goal here is to refine the relationship between coboundary categories and the operad of $n$-fruit cactus groups in \cite{hk-cobound} by using the theory of action operads\ngnote{I think in particular we want to do this via presentations} and our Borel construction. We begin by recalling the definition of a coboundary category.
+We now turn to an example that is not as widely known in the categorical literature, that of coboundary categories \cite{drin-quasihopf}. These arise in the representation theory of quantum groups and in the theory of crystals \cite{hk-cobound, hk-quantum}. Our goal here is to refine the relationship between coboundary categories and the operad of $n$-fruit cactus groups in \cite{hk-cobound} by using presentations of action operads. We begin by recalling the definition of a coboundary category.
 
 
 \begin{Defi}\label{def:cobcat}
@@ -2755,13 +2753,13 @@ By \cref{thm:wlmc-to-lmc}, we restrict ourself to the case in which the underlyi
 %We then leave to the reader, if they wish, the computations to show that $\sigma'$ is a commutor for $C'$ and that $F,G$ become coboundary functors using $\sigma'$.
 %\end{proof}
 
-We now turn to the operadic description of strict coboundary categories.
+We now turn to the operadic description of coboundary categories.
 
 \begin{Defi}[(Contains, disjoint)]
 Fix $n>1$, and let $1 \leq p < q \leq n$, $1 \leq k < l \leq n$.
 \begin{enumerate}
-\item $p<q$ is \textit{disjoint} from $k<l$ if $q<k$ or $l<p$.
 \item $p<q$ \textit{contains} $k<l$ if $p \leq k < l \leq q$.
+\item $p<q$ is \textit{disjoint} from $k<l$ if $q<k$ or $l<p$.
 \end{enumerate}
 \end{Defi}
 
@@ -2803,7 +2801,6 @@ Let $s_{p_{i}, q_{i}} \in J_{k_{i}}$. Let $r_{i} = k_{1} + k_{2} + \cdots + k_{i
     \beta(s_{p_{1}, q_{1}}, \ldots, s_{p_{n}, q_{n}}) = s_{p_{1}, q_{1}} s_{p_{2}+r_{2}, q_{2}+r_{2}} \cdots s_{p_{n}+r_{n}, q_{n}+r_{n}}.
   \]
 Note that $s_{p_{i}+r_{i}, q_{i}+r_{i}}$ and $s_{p_{j}+r_{j}, q_{j}+r_{j}}$ are disjoint when $i \neq j$.
-
 It is easy to check that this disjointness property ensures that $\beta$ gives a well-defined group homomorphism
   \[
     J_{k_{1}} \times \cdots \times J_{k_{n}} \rightarrow J_{K}.
@@ -2813,7 +2810,8 @@ To define $\delta \colon J_{n} \rightarrow J_{K}$ for natural numbers $n, k_{1},
   \[
     \delta(t_{n}) = t_{K} \cdot \beta(t_{k_{1}}, t_{k_{2}}, \ldots, t_{k_{n}}).
   \]
-Note that, by Axiom \eqref{eq8} of \cref{thm:charAOp}, this is equal to
+%Note that, by Axiom \eqref{eq8} of \cref{thm:charAOp}, 
+By the third axiom in \cref{Defi:defcactus}, this is equal to
   \[
     \beta(t_{k_{n}}, t_{k_{n-1}}, \ldots, t_{k_{1}}) \cdot t_{K}.
   \]
@@ -2841,7 +2839,7 @@ Define
   \[
     \delta_{n; j_1,\ldots,j_n}(gh) = \delta_{n; k_1,\ldots,k_n}(g)\delta_{n; j_1,\ldots,j_n}(h)
   \]
-where $k_{i} = j_{\pi(h)^{-1}(i)}$. There are three relations we must verify for compatibility.\ngmpar{check these relations more explicitly}\acmpar{didn't get round to checking yet}
+where $k_{i} = j_{h^{-1}(i)}$. There are three relations we must verify for compatibility.\ngmpar{check these relations more explicitly}\acmpar{didn't get round to checking yet}\ngmpar{I checked a bit, content for now}
 \begin{itemize}
 \item We must show that $\delta_{n; j_1,\ldots,j_n}\left(s_{p,q}^{2}\right) = e$. By definition, we have
   \[
@@ -2851,7 +2849,7 @@ which is
   \[
     t_{j_1 + \cdots + j_n}\beta(t_{j_{n}}, \ldots, t_{j_{1}}) t_{\underline{j}} \beta(t_{j_{1}}, \ldots, t_{j_{n}}).
   \]
-By the remarks above in the definition of $\delta$ and the fact that $s_{p,q}^{2}=e$, the element above is easily seen to be the identity.
+By the definition of $\delta$ and the fact that $s_{p,q}^{2}=e$, the element above is easily seen to be the identity.
 \item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{k,l}s_{p,q})$ when $(p,q)$ is disjoint from $(k,l)$. This is another simple calculation using the definition of $\delta$ and the disjointness of the terms involved.
 \item We must show that $\delta(s_{p,q}s_{k,l}) = \delta(s_{a,b}s_{p,q})$,  where $a = \hat{s}_{p,q}(l), b = \hat{s}_{p,q}(k)$, if $p < k < l < q$. In this case, we use all of the relations in the cactus groups to show that each side is equal to
   % \[
@@ -2918,7 +2916,7 @@ The free coboundary category on one element, $C1$, is isomorphic to $BJ = \copro
 We must give $BJ$ the structure of a strict coboundary category and then prove that, for any strict coboundary category $X$, there is a natural isomorphism between strict coboundary functors $F \colon BJ \to X$ and objects of $X$. We note here that a strict coboundary functor is a strict monoidal functor mapping the commutor of its source to the commutor of its target.
 
 
-The category $BJ$ has natural numbers as objects, and addition as its tensor product. The tensor product of two morphisms is given by $\beta$ as in \cref{J_aop}, and it is simple to check that this is a strict monoidal structure. The commutor $\sigma_{m,n}$ is defined to be the product $s_{1, m+n}s_{1,m}s_{m+1,m+n}$. Using the relations in $J_{n}$, it is clear that $\sigma_{m,n}\sigma_{n,m}$ is the identity, so we only have one more axiom to verify in order to give a coboundary structure. By definition, this axiom is equivalent to the equation
+The category $BJ$ has natural numbers as objects, and addition as its tensor product. The tensor product of two morphisms is given by $\beta$ as in \cref{thm:J_aop}, and it is simple to check that this is a strict monoidal structure. The commutor $\sigma_{m,n}$ is defined to be the product $s_{1, m+n}s_{1,m}s_{m+1,m+n}$. Using the relations in $J_{n}$, it is clear that $\sigma_{m,n}\sigma_{n,m}$ is the identity, so we only have one more axiom to verify in order to give a coboundary structure. By definition, this axiom is equivalent to the equation
   \[
     \sigma_{m, p+n}\cdot \beta(e_{m}, \sigma_{n,p}) = \sigma_{n+m,p}\cdot \beta(\sigma_{m,n},e_{p})
   \]
