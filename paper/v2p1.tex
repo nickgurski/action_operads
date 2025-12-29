@@ -50,6 +50,52 @@ Further acknowledgements:
 Alex needs to thank the LMS for a Research Reboot grant. Anybody else we've talked to about these things since their inception? Angelica? Niles? Dan Graves. Nathaniel Arkor.
 
 
+\ngnoteil{new intro starts here}
+
+Operads are by now an established tool in fields ranging from algebra \cite{loday-vallette} and combinatorics \cite{mendez} to homotopy theory \cite{fie-br} and mathematical physics \cite{mss-op}.
+First explicitly defined by May in \cite{maygeom}, following work of Whitehead \cite{whitehead}, Boardman-Vogt \cite{bv}, and Stasheff \cite{stasheff}, operads are one of many formalisms\footnote{Others include monads \cite{et-monads}, algebraic or Lawvere theories \cite{lawvere-thesis}, and PROPs \cite{mac_prop}.} used to give a presentation for an algebraic structure.
+An operad $P$ consists of objects $P(n)$, indexed by natural numbers, together with composition operations
+\[
+\mu \colon P(n) \times P(k_1) \times \cdots P(k_n) \to P(k_1 + \cdots + k_n)
+\]
+and a unit element $\id \in P(1)$.
+The prototypical operad is the endomorphism operad $\mathcal{E}_X$ on a set $X$ (see \cref{ex:endo}): the set $\mathcal{E}_X(n)$ consists of all functions $f \colon X^n \to X$, the composition operation is $n$-ary composition of functions
+\[
+\mu(g; f_1, \ldots, f_n)\big(x_{1,1}, \ldots, x_{1, k_1}, x_{2,1}, \ldots, x_{n, k_n}\big) = g \Big( f_1(x_{1,1}, \ldots, x_{1,k_1}), \ldots, f_n(x_{n,1}, \ldots, x_{n, k_n}) \Big),
+\]
+and the identity element is the identity function $1_X \colon X \to X$; the operad axioms were chosen to reflect the associativity and unit relations satisfied by the above structure.
+
+May's definition also included symmetric group actions of the form $P(n) \times \Sigma_n \to P(n)$, modeling the operation of permutating input variables; these are now often called \emph{symmetric operads} when the equivariance is being stressed.
+Fiedorowicz later generalized these symmetric group actions to braid group actions in \cite{fie-br}, where he studied operations on double loop spaces. 
+Wahl \cite{wahl-thesis} generalized these ideas further to ribbon braids and other families of groups in order to study spectra arising from stable mapping class groups.
+Each of these authors leverages different group actions on the operads involved in order to produce additional structure on the algebras over those operads.
+This paper, an updated version of the preprints \cite{cg-preprint,g-borel}, seeks to give a treatment of the fundamental algebraic structure present in the families of groups $\Lambda = \{ \Lambda(n) \}_{n \in \mathbb{N}}$ --- such as the symmetric groups, braid groups, and ribbon braid groups --- arising in operad theory, here called \emph{action operads}.
+
+\subsection*{Action operads}
+
+As the work of May, Fiedorowicz, and Wahl shows, varying the group actions on an operad $P$ can lead to different structure on the algebras over $P$.
+A given operad $P$ may have many different action operads $\Lambda$ acting upon it, with the simplest example being that any symmetric operad is also an operad in the non-symmetric sense, meaning that we can instead consider the group actions $P(n) \times T(n) \to P(n)$ where each $T(n)$ is the trivial group.
+Many of our later results, particularly in \cref{sec:cart,sec:pscomm}, take into account both the operad $P$ and the action operad $\Lambda$ acting upon it.
+Much of the operads literature has focused on the symmetric case, both because of its historical significance and its seeming universality.
+This universality is best explained by the existence of a symmetrization functor (\cref{Defi:symmetrization}) that preserves algebra structures (\cref{cor:pi-star,cor:sym-preserve-alg}).
+Unfortunately, symmetrization does not preserve all properties that one might desire on an operad, and \cref{rem:symm-and-contract} demonstrates this by examining how symmetrization interacts with contractability in the context of braided operads.
+We take this example as evidence that one should be flexible with the equivariance conditions imposed on an operad, and choose the combination of an action operad $\Lambda$ acting on an operad $P$ that best balances whatever properties are desired.
+To that end, we thoroughly investigate the basic algebra of action operads from both the elementary and categorical perspectives.
+
+
+\subsection*{What has changed?}
+
+As noted above, this paper synthesizes previous work of the authors \cite{cg-preprint,g-borel} that was, until now, available only in preprint form.
+Reading those preprints in chronological order will differ significantly from reading the present paper: the earlier \cite{cg-preprint} contained most of the material from Part II of this paper, while the later \cite{g-borel} contained most of the material that now comprises Part I.
+In each of these Parts, we have refined, expanded, reorganized, and sometimes removed material from those preprints, motivated by questions or comments by other researchers or, in one case, a later application of our work.
+These references to our preprints was one of the motivating factors for finally publishing this material.
+In particular, Yau \cite{yau_infinity_2021} has generalized much of our basic theory to an infinity-categorical context.
+Our work on pseudo-commutative structures was also used in \cite{guillou_symmetric,guillou_multiplicative} in the construction of equivariant multiplicative $K$-theory machines.
+Those authors identified a missing axiom as detailed in \cref{rem:updated}, the omission of which resulted in the error described in \cref{rem:EB-fail}; we have since removed the erroneous results.
+
+\subsection*{Overview and main results}
+
+
 \ngnoteil{Ref \cref{rem:symm-and-contract}}
 
 \section{Notation and Conventions}\label{sec:notation}
