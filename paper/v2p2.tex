@@ -1,34 +1,3 @@
-%!TEX root = ../operads_paper-v2.tex
-%\artpart{Operads with Equivariance}\label{part:op-with-eq}
-
-%\ngnoteil{merging part 2 into part 1, move this intro?}
-%
-%In the second part of this paper, we study $\Lambda$-operads: these are operads $P$ equipped with group actions of the form $P(n) \times \Lambda(n) \to P(n)$ and satisfying equivariance axioms similar to those for symmetric operads (\cref{Defi:sym-op}). \cref{sec:forward-op} presents the definitions of $\Lambda$-operads and their algebras.\cref{sec:lop-monad} studies the monads associated to $\Lambda$-operads. \cref{sec:sub} shows that $\Lambda$-operads are the monoids in a category of $\Lambda$-collections via the substitution product.
-
-%\begin{rem}\label{rem:lop-Venriched}
-%\ngnoteil{maybe move this slightly for better visibility/numbering}
-%The material in this part is presented in the case when the $\Lambda$-operads $P$ have underlying \emph{sets} $P(n)$, but it can be easily generalized. In fact, \cref{part:op-in-cat} deals almost exclusively when the operad $P$ is an operad in $\cat$. Here are the changes required to account for operads in another monoidal category $\mathcal{V}$.
-%\begin{itemize}
-%\item $\mathcal{V}$ should be a closed, symmetric monoidal category. It is possible to relax the closed condition to merely requiring that $X \otimes -$, and therefore also $- \otimes X$ by symmetry, preserves colimits.
-%\item Any right group action $P(n) \times \Lambda(n) \to P(n)$ should be interpretted as a monoid homomorphism
-%\[
-%\Lambda(n)^{op} \to \mathcal{V} \big( P(n), P(n) \big),
-%\]
-%or equivalently repackaged as an action $P(n) \cdot \Lambda(n) \to P(n)$ using the copower $\cdot$.
-%\end{itemize}
-%\end{rem}
-
-\ngnoteil{commented out some enrichment stuff, can get it back if we need it}
-
-%Moved this comment, needs intro and something like below: ``most of this stuff admits an enriched variant''
-%\begin{rem}
-%It is possible to consider $\Lambda$-operads in categories other than the category of sets. In this case we still use the notion of an action operad given above, but then take the operad $P$ to have objects $P(n)$ which are the objects of some closed symmetric monoidal category $\mathcal{V}$. We will rarely use anything that might require the closed structure as such, only the fact that the tensor product distributes over colimits in each variable. This is a consequence of the fact that both $X \otimes -$ and $- \otimes X$ are left adjoints in the case of a closed symmetric monoidal category. Thus while we set up the foundations using only operads in $\mb{Sets}$, the diligent reader could easily modify this theory for their closed symmetric monoidal category of choice. In fact, we will use the same theory in $\mb{Cat}$ with its cartesian structure, noting only that the same arguments work in $\mb{Cat}$ with essentially no modification.
-%\end{rem}
-%\begin{rem}
-%The above result can be interpreted for $\Lambda$-operads in an arbitrary cocomplete symmetric monoidal category $\mathcal{V}$ in which the tensor product distributes over colimits in each variable. In order to do so, the following changes must be made. First, cartesian products of objects $X(k)$ must be replaced by the tensor product in $\mathcal{V}$ of the same objects. Second, any product with a hom-set from $B\Lambda$ must be replaced by a copower with the same set (recall that the copower of a set $S$ with an object $X$ is given by the formula $S \odot X = \coprod_{S} X$). The same changes also allow one to interpret the results in the following chapter about algebras in such a category, unless noted otherwise.
-%\end{rem}
-
-
 \section{\texorpdfstring{$\Lambda$}{L}-Operads and their Algebras}\label{sec:forward-op}
 
 This section presents the definition of a $\Lambda$-operad (\cref{Defi:lamop}), where $\Lambda$ is an action operad.

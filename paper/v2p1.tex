@@ -60,9 +60,9 @@ An operad $P$ consists of objects $P(n)$, indexed by natural numbers, together w
 \]
 and a unit element $\id \in P(1)$.
 The prototypical operad is the endomorphism operad $\mathcal{E}_X$ on a set $X$ (see \cref{ex:endo}): the set $\mathcal{E}_X(n)$ consists of all functions $f \colon X^n \to X$, the composition operation is $n$-ary composition of functions
-\[
-\mu(g; f_1, \ldots, f_n)\big(x_{1,1}, \ldots, x_{1, k_1}, x_{2,1}, \ldots, x_{n, k_n}\big) = g \Big( f_1(x_{1,1}, \ldots, x_{1,k_1}), \ldots, f_n(x_{n,1}, \ldots, x_{n, k_n}) \Big),
-\]
+\begin{align*}
+\mu(g; f_1, \ldots, f_n)\big(x_{1,1}, \ldots, x_{1, k_1}, x_{2,1}, \ldots, x_{n, k_n}\big) \qquad \\ \qquad = g \Big( f_1(x_{1,1}, \ldots, x_{1,k_1}), \ldots, f_n(x_{n,1}, \ldots, x_{n, k_n}) \Big),
+\end{align*}
 and the identity element is the identity function $1_X \colon X \to X$; the operad axioms were chosen to reflect the associativity and unit relations satisfied by the above structure.
 
 May's definition also included symmetric group actions of the form $P(n) \times \Sigma_n \to P(n)$, modeling the operation of permutating input variables; these are now often called \emph{symmetric operads} when the equivariance is being stressed.
@@ -95,8 +95,30 @@ Those authors identified a missing axiom as detailed in \cref{rem:updated}, the 
 
 \subsection*{Overview and main results}
 
+The remainder of this preamble contains a short section of notation and conventions that we use throughout.
 
-\ngnoteil{Ref \cref{rem:symm-and-contract}}
+Part I studies action operads in generality. 
+\begin{itemize}
+\item \cref{sec:back-op} reviews the basic theory of operads, in their symmetric, plain (or non-symmetric), and braided variants.
+\item \cref{sec:aop} provides the definition of an action operad, as well as some basic examples. Much of this section is devoted to the elementary algebra of action operads, and \cref{thm:charAOp} characterizes action operads in terms of block sum and duplication operations instead of operadic composition. 
+\item \cref{sec:aop-examples} contains many of our key examples of action operads, together with a host of non-examples. 
+\item The short \cref{sec:extension} situates action operads in relation to operads in the category $\mb{Grp}$ of groups; we construct kernels and images of maps of actions operads, and show in \cref{cor:extension} that every action operad is either an operad in $\mb{Grp}$ or an extension of the symmetric groups by an operad in $\mb{Grp}$. 
+\item \cref{sec:pres-aop} is devoted to showing that the category of action operads is locally finitely presentable, and using that structure to establish a free action operad functor. This allows us to define presentations for action operads, and we explicitly compute a presentation for the symmetric groups as an action operad. 
+\item \cref{sec:forward-op} gives the definition of a $\Lambda$-operad for $\Lambda$ an action operad, as well as algebras over a $\Lambda$-operad. The main technical result of this section is a change-of-action-operad adjunction $f_{!} \dashv f^*$ associated to any map of action operads $f \colon \Lambda \to \Lambda'$, and we use this to define and then study the symmetrization functor. 
+\item In \cref{sec:sub} we express $\Lambda$-operads as monoids under a substitution product (\cref{thm:operad=monoid}) on the category of $\Lambda$-collections. We do so in a coend-forward fashion rather than by elementary calculation, leveraging the internal hom-functor that is adjoint to the substitution product.
+\end{itemize}
+
+Part II specializes the theory to operads in the category or 2-category $\mb{Cat}$. 
+\begin{itemize}
+\item We begin with two background sections: \cref{sec:backgr-cat} covers the constructions we will need related to group actions and limits/2-limits, while 
+\cref{sec:2monads} recalls the basic theory of 2-monads.
+\item \cref{sec:op-to-2monad} interprets the algebras over a $\Lambda$-operad in $\mb{Cat}$ from the 2-monadic point of view. The most important construction in this section is that of the operad $\EL$ in \cref{cor:elambda_lambdaop}, and the subsequent definition of $\Lambda$-monoidal categories in \cref{Defi:lmc}. We finish this section by computing the free $\Lambda$-monoidal category on a category $X$ in \cref{prop:hom-set-lemma}.
+\item \cref{sec:coherence} addresses two kinds of coherence theorems. The first is the abstract coherence theorem for the 2-monad induced by $\EL$, and is presented in \cref{cor:coherence-for-ulP}. The second is a standard strictification-type, and it appears as \cref{thm:wlmc-to-lmc}.
+\item \cref{sec:cart} studies the interaction between the group actions $P(n) \times \Lambda(n) \to P(n)$ and whether the 2-monad induced by $P$ is 2-cartesian. It is well-known in the categorical literature that every non-symmetric operad on $\mb{Sets}$ induces a cartesian monad, but that not every symmetric operad does. We characterize those symmetric operads in $\mb{Cat}$ that induce 2-cartesian 2-monads in \cref{cor:cart_cor} quite simply: they are the operads for which all the symmetric group actions are free. We extend this to other $\Lambda$ in \cref{thm:cart_thm}, and in particular show that the 2-monads induced by $\EL$ for any action operad $\Lambda$ are 2-cartesian in \cref{cor:EL-2cart}.
+\item \cref{sec:club} begins by reviewing Kelly's notion of club, and then goes on to show that every action operad induces a club. In \cref{thm:club=operad} we characterize which clubs arise from action operads, and then compare Kelly's presentations of clubs with our presentations of action operads in \cref{thm:pres1}. This theorem shows how the form of the definition for a type of monoidal structure (eg, symmetric monoidal or braided monoidal) can be easily translated into a presentation for the action operad $\Lambda$ such that the type of monoidal categories in question are precisely the $\EL$-algebras.
+\item \cref{sec:exex-cactus} gives an example of the theory in the previous section. We explain how previous calculations with coboundary categories in \cite{hk-cobound} can be interpretted as computing a presentation for the action operad of cactus groups.
+\item \cref{sec:pscomm} studies when a $\Lambda$-operad $P$ admits a pseudo-commutative structure. This additional structure equips the 2-category of algebras over $P$ with an additional tensor product and internal hom, making it closed monoidal in a 2-dimensional sense. We define a pseudo-commutative structure for a $\Lambda$-operad $P$ in \cref{Defi:ps-comm_operad}, and prove in \cref{thm:pscomm} that it induces a pseudo-commutative structure on the induced 2-monad. As a consequence, every contractible symmetric operad obtains a symmetric pseudo-commutative structure (\cref{cor:contractplussym-to-psc}).
+\end{itemize}
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -1883,7 +1905,7 @@ Witzel and Zerensky \cite{wz-cloning} define these in the context of studying ge
 
 
 
-\section{Action Operads as Extensions}
+\section{Action Operads as Extensions}\label{sec:extension}
 
 In this short section, we situate action operads between operads in the category of groups and symmetric operads.
 We prove two main results.
@@ -2385,4 +2407,3 @@ Since every generator $\sigma_{i;n}$ is an operadic composition of $\sigma_{1;2}
 By definition, $\tilde{f}(\sigma_{1;2}) = f(\sigma)$, and $f \colon F\mathbf{g} \to \Lambda$ is a map of action operads, so $\pi\big( f(\sigma) \big) = \sigma_{1;2}$ by the definition of $\mathbf{g}$ as a  collection over $\SS$. This step completes the proof that the homomorphisms $\tilde{f}_n$ define a map of action operads $\tilde{f} \colon \Sigma \to \Lambda$.
 \end{itemize}
 \end{example}
-

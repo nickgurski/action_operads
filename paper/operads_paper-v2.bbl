@@ -50,7 +50,6 @@
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{0-521-42261-2}
       \field{series}{London Mathematical Society Lecture Note Series}
       \field{title}{Locally presentable and accessible categories}
       \field{volume}{189}
@@ -273,6 +272,47 @@
       \verb{url}
       \verb http://dx.doi.org/10.1016/0022-4049(89)90160-6
       \endverb
+    \endentry
+    \entry{bv}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=d59c34faab96f269ef84e8f729fe34c2}{%
+           family={Boardman},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=1f36f68b803dcb21bb8b5a91cc1bddcf}{%
+           family={Vogt},
+           familyi={V\bibinitperiod},
+           given={R.\bibnamedelimi M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Springer, Cham}%
+      }
+      \strng{namehash}{9ba2853e5437b3bb604b0cd5801eba91}
+      \strng{fullhash}{9ba2853e5437b3bb604b0cd5801eba91}
+      \strng{fullhashraw}{9ba2853e5437b3bb604b0cd5801eba91}
+      \strng{bibnamehash}{9ba2853e5437b3bb604b0cd5801eba91}
+      \strng{authorbibnamehash}{9ba2853e5437b3bb604b0cd5801eba91}
+      \strng{authornamehash}{9ba2853e5437b3bb604b0cd5801eba91}
+      \strng{authorfullhash}{9ba2853e5437b3bb604b0cd5801eba91}
+      \strng{authorfullhashraw}{9ba2853e5437b3bb604b0cd5801eba91}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0075-8434}
+      \field{series}{Lect. Notes Math.}
+      \field{title}{Homotopy invariant algebraic structures on topological spaces}
+      \field{volume}{347}
+      \field{year}{1973}
+      \verb{doi}
+      \verb 10.1007/bfb0068547
+      \endverb
+      \keyw{55P35,55P15,55Q10,18C15,55-02}
     \endentry
     \entry{cg-comparison}{article}{}{}
       \name{author}{1}{}{%
@@ -504,6 +544,39 @@
       \field{year}{1962}
       \field{pages}{227\bibrangedash 255}
       \range{pages}{29}
+    \endentry
+    \entry{et-monads}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=f2610c257b5b4663bd3faa0550d75f93}{%
+           family={Eckmann},
+           familyi={E\bibinitperiod},
+           given={Beno},
+           giveni={B\bibinitperiod}}}%
+        {{hash=b52806ad188ef709135e996e45d93b28}{%
+           family={Tierney},
+           familyi={T\bibinitperiod},
+           given={Myles},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{f9ecec36cc2724909940775076cac3e0}
+      \strng{fullhash}{f9ecec36cc2724909940775076cac3e0}
+      \strng{fullhashraw}{f9ecec36cc2724909940775076cac3e0}
+      \strng{bibnamehash}{f9ecec36cc2724909940775076cac3e0}
+      \strng{authorbibnamehash}{f9ecec36cc2724909940775076cac3e0}
+      \strng{authornamehash}{f9ecec36cc2724909940775076cac3e0}
+      \strng{authorfullhash}{f9ecec36cc2724909940775076cac3e0}
+      \strng{authorfullhashraw}{f9ecec36cc2724909940775076cac3e0}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Repr. {Theory} {Appl}. {Categ}. 2008, {No}. 18, 1-303 (2008).}
+      \field{title}{Seminar on triples and categorical homology theory}
+      \field{year}{2008}
+      \keyw{18-06,18C05,18C15,18E25,18G10}
     \endentry
     \entry{fie-br}{misc}{}{}
       \name{author}{1}{}{%
@@ -751,6 +824,7 @@
       \strng{authornamehash}{1914a66bd22aa6062848dd8ecd14c605}
       \strng{authorfullhash}{1914a66bd22aa6062848dd8ecd14c605}
       \strng{authorfullhashraw}{1914a66bd22aa6062848dd8ecd14c605}
+      \field{extraname}{1}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{labelnamesource}{author}
@@ -758,6 +832,38 @@
       \field{series}{Cambridge Tracts in Mathematics}
       \field{title}{Coherence in Three-Dimensional Category Theory}
       \field{year}{2013}
+    \endentry
+    \entry{g-borel}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=1914a66bd22aa6062848dd8ecd14c605}{%
+           family={Gurski},
+           familyi={G\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{fullhash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{fullhashraw}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{bibnamehash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{authorbibnamehash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{authornamehash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{authorfullhash}{1914a66bd22aa6062848dd8ecd14c605}
+      \strng{authorfullhashraw}{1914a66bd22aa6062848dd8ecd14c605}
+      \field{extraname}{2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Preprint, {arXiv}:1508.04050 [math.{CT}] (2015)}
+      \field{title}{Operads, tensor products, and the categorical {Borel} construction}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1508.04050
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1508.04050
+      \endverb
+      \keyw{18D50,18D05,18D10,16D90,55N91}
     \endentry
     \entry{gj-pseudo}{article}{}{}
       \name{author}{2}{}{%
@@ -873,7 +979,6 @@
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{0-8218-2874-6}
       \field{series}{Graduate Studies in Mathematics}
       \field{title}{Introduction to quantum groups and crystal bases}
       \field{volume}{42}
@@ -1603,7 +1708,6 @@
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{0-521-53215-9}
       \field{series}{London Mathematical Society Lecture Note Series}
       \field{title}{Higher operads, higher categories}
       \field{volume}{298}
@@ -1619,6 +1723,53 @@
       \verb{url}
       \verb http://dx.doi.org/10.1017/CBO9780511525896
       \endverb
+    \endentry
+    \entry{loday-vallette}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=f849a5a56c8173c2bec598a49122cfbf}{%
+           family={Loday},
+           familyi={L\bibinitperiod},
+           given={Jean-Louis},
+           giveni={J\bibinithyphendelim L\bibinitperiod}}}%
+        {{hash=e88b5803723f1582c5156a52341288f8}{%
+           family={Vallette},
+           familyi={V\bibinitperiod},
+           given={Bruno},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Berlin: Springer}%
+      }
+      \strng{namehash}{f2220ef8277ac0b2d353294de1d1613b}
+      \strng{fullhash}{f2220ef8277ac0b2d353294de1d1613b}
+      \strng{fullhashraw}{f2220ef8277ac0b2d353294de1d1613b}
+      \strng{bibnamehash}{f2220ef8277ac0b2d353294de1d1613b}
+      \strng{authorbibnamehash}{f2220ef8277ac0b2d353294de1d1613b}
+      \strng{authornamehash}{f2220ef8277ac0b2d353294de1d1613b}
+      \strng{authorfullhash}{f2220ef8277ac0b2d353294de1d1613b}
+      \strng{authorfullhashraw}{f2220ef8277ac0b2d353294de1d1613b}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0072-7830}
+      \field{series}{Grundlehren Math. Wiss.}
+      \field{title}{Algebraic operads}
+      \field{volume}{346}
+      \field{year}{2012}
+      \verb{doi}
+      \verb 10.1007/978-3-642-30362-3
+      \endverb
+      \verb{urlraw}
+      \verb hdl.handle.net/21.11116/0000-0004-1D0F-D
+      \endverb
+      \verb{url}
+      \verb hdl.handle.net/21.11116/0000-0004-1D0F-D
+      \endverb
+      \keyw{18-02,18D50,18G50,55P48,57T30,16S37,16E99,18G55,55U35,17A32,17A30}
     \endentry
     \entry{loregian}{book}{}{}
       \name{author}{1}{}{%
@@ -1782,7 +1933,6 @@
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{0-8218-2134-2}
       \field{series}{Mathematical Surveys and Monographs}
       \field{title}{Operads in algebra, topology and physics}
       \field{volume}{96}
@@ -1918,6 +2068,41 @@
       \field{pages}{R3419}
       \range{pages}{-1}
     \endentry
+    \entry{mendez}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=e946b94d04747ed2262f762c19a444d9}{%
+           family={Méndez},
+           familyi={M\bibinitperiod},
+           given={Miguel\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Cham: Springer}%
+      }
+      \strng{namehash}{e946b94d04747ed2262f762c19a444d9}
+      \strng{fullhash}{e946b94d04747ed2262f762c19a444d9}
+      \strng{fullhashraw}{e946b94d04747ed2262f762c19a444d9}
+      \strng{bibnamehash}{e946b94d04747ed2262f762c19a444d9}
+      \strng{authorbibnamehash}{e946b94d04747ed2262f762c19a444d9}
+      \strng{authornamehash}{e946b94d04747ed2262f762c19a444d9}
+      \strng{authorfullhash}{e946b94d04747ed2262f762c19a444d9}
+      \strng{authorfullhashraw}{e946b94d04747ed2262f762c19a444d9}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2191-8198}
+      \field{series}{SpringerBriefs Math.}
+      \field{title}{Set operads in combinatorics and computer science}
+      \field{year}{2015}
+      \verb{doi}
+      \verb 10.1007/978-3-319-11713-3
+      \endverb
+      \keyw{18-02,18D50,68R05,05A15}
+    \endentry
     \entry{power-gen}{article}{}{}
       \name{author}{1}{}{%
         {{hash=1b56a8b84d4622f12fe641a23d4e1681}{%
@@ -2040,6 +2225,41 @@
       \verb https://arxiv.org/abs/2512.14498
       \endverb
     \endentry
+    \entry{stasheff}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=ed46d372a2365cd6531c37eb5e7e48e8}{%
+           family={Stasheff},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelima Dillon},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{ed46d372a2365cd6531c37eb5e7e48e8}
+      \strng{fullhash}{ed46d372a2365cd6531c37eb5e7e48e8}
+      \strng{fullhashraw}{ed46d372a2365cd6531c37eb5e7e48e8}
+      \strng{bibnamehash}{ed46d372a2365cd6531c37eb5e7e48e8}
+      \strng{authorbibnamehash}{ed46d372a2365cd6531c37eb5e7e48e8}
+      \strng{authornamehash}{ed46d372a2365cd6531c37eb5e7e48e8}
+      \strng{authorfullhash}{ed46d372a2365cd6531c37eb5e7e48e8}
+      \strng{authorfullhashraw}{ed46d372a2365cd6531c37eb5e7e48e8}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0002-9947}
+      \field{journaltitle}{Trans. Am. Math. Soc.}
+      \field{title}{Homotopy associativity of {{\(H\)}}-spaces. {I}, {II}}
+      \field{volume}{108}
+      \field{year}{1963}
+      \field{pages}{275\bibrangedash 292\bibrangessep 293\bibrangedash 312}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.2307/1993608
+      \endverb
+      \keyw{55-XX}
+    \endentry
     \entry{street-quantum}{book}{}{}
       \name{author}{1}{}{%
         {{hash=faea870f61e1c45828077d18a31465d2}{%
@@ -2063,7 +2283,6 @@
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{978-0-521-69524-4; 0-521-69524-4}
       \field{note}{A path to current algebra}
       \field{series}{Australian Mathematical Society Lecture Series}
       \field{title}{Quantum groups}
@@ -2135,6 +2354,39 @@
       \field{title}{Ribbon braids and related operads}
       \field{year}{2001}
     \endentry
+    \entry{whitehead}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=9131dcc0b7c52c07d7d95e489ba0a0f6}{%
+           family={Whitehead},
+           familyi={W\bibinitperiod},
+           given={Alfred\bibnamedelima North},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge: Cambridge University Press}%
+      }
+      \strng{namehash}{9131dcc0b7c52c07d7d95e489ba0a0f6}
+      \strng{fullhash}{9131dcc0b7c52c07d7d95e489ba0a0f6}
+      \strng{fullhashraw}{9131dcc0b7c52c07d7d95e489ba0a0f6}
+      \strng{bibnamehash}{9131dcc0b7c52c07d7d95e489ba0a0f6}
+      \strng{authorbibnamehash}{9131dcc0b7c52c07d7d95e489ba0a0f6}
+      \strng{authornamehash}{9131dcc0b7c52c07d7d95e489ba0a0f6}
+      \strng{authorfullhash}{9131dcc0b7c52c07d7d95e489ba0a0f6}
+      \strng{authorfullhashraw}{9131dcc0b7c52c07d7d95e489ba0a0f6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Reprint of the 1898 original}
+      \field{isbn}{978-1-108-00168-7}
+      \field{series}{Camb. Libr. Collect., Math.}
+      \field{title}{A treatise on universal algebra. {With} applications}
+      \field{year}{2009}
+      \keyw{15-03,01A75,01A60,03B35}
+    \endentry
     \entry{wz-cloning}{article}{}{}
       \name{author}{2}{}{%
         {{hash=3b56fe21834989a92626c71ca357bb81}{%
@@ -2191,7 +2443,6 @@
       \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{9789811250927 9789811250934}
       \field{title}{Infinity {Operads} and {Monoidal} {Categories} with {Group} {Equivariance}}
       \field{year}{2021}
       \verb{doi}
