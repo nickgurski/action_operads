@@ -5,22 +5,6 @@ This definition unifies the various types (non-symmetric, symmetric, and braided
 The different group actions arise from different choices of $\Lambda$.
 We also define algebras over a $\Lambda$-operad in \cref{Defi:aop-alg}, and prove a change-of-action operad result in \cref{thm:pbaop}.
 
-%Just as we had the definitions of operad, symmetric operad, and braided operad, we now come to the general definition of a $\Lambda$-operad,  Thereafter we begin to delve into the theory around $\Lambda$-operads. Beginning by recasting familiar operads as $\Lambda$-operads for particular choices of $\Lambda$, we then proceed to shadow standard operadic definitions for algebras and pseudoalgebras in this setting, characterising algebras using endomorphism $\Lambda$-operads, and deriving monads from $\Lambda$-operads. We show that there is an adjunction between $\Lambda\mbox{-}\mb{Op}$ and $\Sigma\mbox{-}\mb{Op}$, and prove some technical results regarding maps between monads induced by $\Lambda$-operads.
- 	% QQQ chapter: operads and algebras with general group actions
- 	% \begin{itemize}
- 	% 	\item defines $\Lambda$-operads
- 	% 	\item goes over familiar examples
- 	% 	\item recasts familar operad algebra stuff for $\Lambda$-operads
- 	% 	\begin{itemize}
-	%  		\item defines algebras and pseudoalgebras for $\Lambda$-operads
-	%  		\item characterises algebras using the endomorphism operads
-	%  		\item monads via operads
-	%  	\end{itemize}
-	%  	\item theorem about the adjunction between $\Lambda-\bf{Op}$ and $\bf{\Sigma}-\bf{Op}$
-	%  	\item technical results about monad maps
- 	% \end{itemize}
-
-
 \begin{Defi}[($\Lambda$-operads)]\label{Defi:lamop}
   Let $\Lambda$ be an action operad. A \textit{$\Lambda$-operad} $P$ (in $\mb{Sets}$) consists of
     \begin{itemize}
@@ -48,7 +32,7 @@ Using \cref{eqn:mu-from-betadelta} from the proof of \cref{thm:charAOp}, the two
 \end{rem}
 
 \begin{rem}\label{oscg}
-The operadic crossed simplicial groups of Semidetnov appear to correspond to action operads with trivial $\Lambda_0$, although they are defined using $\circ_i$ operations instead of an operadic composition $\mu$. Continuing the comparison, his $G_\ast$-shifted operads \cite[Definition 3.5]{semidetnov} satisfy two axioms that are the same as those for $\Lambda$-operads in \Cref{Defi:lamop}. %While the operads of Semidetnov are defined using circle-$i$ notation, the correspondence seems quite clear.\acnote{reword more better}
+The operadic crossed simplicial groups of Semidetnov appear to correspond to action operads with trivial $\Lambda_0$, although they are defined using $\circ_i$ operations instead of an operadic composition $\mu$. Continuing the comparison, his $G_\ast$-shifted operads \cite[Definition 3.5]{semidetnov} satisfy two axioms that are the same as those for $\Lambda$-operads in \Cref{Defi:lamop}. 
 \end{rem}
 
 
@@ -144,21 +128,6 @@ such that the maps $\tilde{\alpha}_{n}$ satisfy the following axioms.
   \]
 for all $x \in X$.
 \item The maps $\tilde{\alpha}_{n}$ are associative in the sense that the following diagram commutes.
-  %%Expanded diagram
-  % \[
-  %   \xy
-  %     (0,0)*+{O(n) \times O(k_{1}) \times X^{k_{1}} \times \cdots \times O(k_{n}) \times X^{k_{n}}}="ul";
-  %     (75,0)*+{O(n) \times X^{n}}="ur";
-  %     (0,-12)*+{O(n) \times O(k_{1}) \times \cdots \times O(k_{n}) \times X^{k_{1}} \times \cdots \times X^{k_{n}}}="ml";
-  %     (0,-24)*+{O(\sum k_{i}) \times X^{\sum k_{i}}}="bl";
-  %     (75,-24)*+{X}="br";
-  %     {\ar^>>>>>>>>>>>>>>{1 \times \alpha_{k_{1}} \times \cdots \alpha_{k_{n}}} "ul"; "ur"};
-  %     {\ar^{\alpha_{n}} "ur"; "br"};
-  %     {\ar_{\cong} "ul"; "ml"};
-  %     {\ar_{\mu \times 1} "ml"; "bl"};
-  %     {\ar_{\alpha_{\sum k_{i}}} "bl"; "br"};
-  %   \endxy
-  % \]
   \[
     \xy
       (0,0)*+{P(n) \times \prod_{i=1}^n \left(P(k_i) \times X^{k_i}\right)}="ul";
@@ -175,26 +144,6 @@ for all $x \in X$.
   \]
 \end{enumerate}
 \end{Defi}
-
-%\begin{Defi}\label{opalgax}
-%Let $O$ be a non-symmetric operad. An \textit{algebra} for $O$ consists of a set $X$ together with maps $\alpha_{n} \colon O(n) \times X^{n} \rightarrow X$ such that the following axioms hold.
-%
-%\end{Defi}
-%
-%$\coeq{P}{X}{\Lambda}{n}$
-%
-%Moving on to algebras for a $\Lambda$-operad, let $P$ be a $\Lambda$-operad and let $X$ be any set. Write $\coeq{P}{X}{\Lambda}{n}$ for the coequalizer of the pair of maps
-%  \[
-%    P(n) \times \Lambda(n) \times X^{n} \rightrightarrows P(n) \times X^{n}
-%  \]
-%of which the first map is the action of $\Lambda(n)$ on $P(n)$ and the second map is
-%  \[
-%    P(n) \times \Lambda(n) \times X^{n} \rightarrow P(n) \times \Sigma_{n} \times X^{n} \rightarrow P(n) \times X^{n}
-%  \]
-%using $\pi_{n} \colon \Lambda(n) \rightarrow \Sigma_{n}$ together with the canonical action of $\Sigma_{n}$ on $X^{n}$ by permutation of coordinates: $\sigma \cdot (x_{1}, \ldots, x_{n}) = (x_{\sigma^{-1}(1)}, \ldots, x_{\sigma^{-1}(n)})$. By the universal property of the coequalizer, a function $f \colon \coeq{P}{X}{\Lambda}{n} \rightarrow Y$ can be identified with a function $\tilde{f} \colon P(n) \times X^{n} \rightarrow Y$ such that
-%  \[
-%    \tilde{f}(p\cdot g; x_{1}, \ldots, x_{n}) = \tilde{f}\left(p; x_{g^{-1}(1)}, \ldots, x_{g^{-1}(n)}\right).
-%  \]
 
 \begin{rem}
 It is worth reiterating that the equivariance required for a $P$-algebra is built into the definition above by requiring that the maps $\alpha_{n}$ be defined on coequalizers, even though the algebra axioms then only use the maps $\tilde{\alpha}_{n}$. Since every $\Lambda$-operad has an underlying non-symmetric operad (see \cref{thm:pbaop}, applied to the unique map $T \rightarrow \Lambda$), this reflects the fact that the algebras for the $\Lambda$-equivariant version are always algebras for the plain version, but not conversely.
@@ -436,33 +385,6 @@ f^*\varepsilon^Q \circ \eta^{f^*Q}(q) & = f^*\varepsilon^Q[q,e_n] \\
 & = q,
 \end{align*}
 so is also the identity. These two calculations verify the triangle identities, and therefore prove that $f_{!} \dashv f^*$.
-%
-%
-%\ngnoteil{Moved from a proof that was below, needs rewriting:}
-%Given any map of monoids $f \colon M \rightarrow N$ in a monoidal category, there exists an adjunction between right $M$-modules and right $N$-modules given by $f^{*}$ as the right adjoint and $A \mapsto A \otimes_{M} N$ as the left adjoint. Thus we define
-%  \[
-%    S(P)(n) = \coequ{P}{\Sigma}{\Lambda}{n},
-%  \]
-%and this inherits a right $\Sigma_{n}$-action by multiplication. The unit of $S(P)$ is
-%  \[
-%    * \stackrel{\eta}{\longrightarrow} P(1) \longrightarrow \coequ{P}{\Sigma}{\Lambda}{1} \cong P(1)/\Lambda(1).
-%  \]
-%For the multiplication, let $K = k_1 + \cdots + k_n$, so we must define
-%% \[
-%% \mu \colon (\coequ{P}{\Sigma}{\Lambda}{n}) \times (P(k_1) \times_{\Lambda(k_1)} \Sigma_{k_1}) \times \cdots \times (P(k_n) \times_{\Lambda(k_n)} \Sigma_{k_n}) \rightarrow P(K) \times_{\Lambda(K)} \Sigma_{K}.
-%% \]
-%  \[
-%    \mu \colon \left(\coequ{P}{\Sigma}{\Lambda}{n}\right) \times \prod_{i=1}^n \left(\coequ{P}{\Sigma}{\Lambda}{k_i}\right) \rightarrow \coequ{P}{\Sigma}{\Lambda}{K}.
-%  \]
-%Using the universal property of the coequalizer, this is induced by the following composite.
-%
-%  \begin{align*}
-%    (P(n) \times \Sigma_{n}) \times \prod_{i=1}^n \left(P(k_i) \times \Sigma_{k_i}\right) &\cong \left(P(n) \times \prod_{i=1}^n P(k_{i}) \right) \times \left(\Sigma_{n} \times \prod_{i=1}^n \Sigma_{k_{i}} \right)\\
-%    &\xrightarrow{\mu^P \times \mu^{\Sigma}} P(K) \times \Sigma_{K}\\
-%    &\longrightarrow  \coequ{P}{\Sigma}{\Lambda}{K}
-%  \end{align*}
-%
-%We leave verification of the associativity, unit, and equivariance axioms to the reader; they are simple applications of the same axioms for $P$ and $\Sigma$ together with some colimit universal properties and the $\Lambda$-operad axioms for $P$. It is then straightforward to check the bijection between $\Lambda$-operad maps $P \rightarrow \pi^{*}Q$ and symmetric operad maps $S(P) \rightarrow Q$, thus establishing the adjunction.
 \end{proof}
 
 
@@ -517,13 +439,6 @@ We must check that $[q_1, \tau_1] = [q_2, \tau_2]$. Then for any $\lambda \in \L
 proving that $\varepsilon^Q_n$ is injective and completing the proof that if $\pi$ is surjective then $\varepsilon$ is an isomorphism.
 \end{proof}
 
-%\begin{prop}\label{prop:e-fun}
-%The assignment sending a set $X$ to its endomorphism operad $\mathcal{E}_X$ (\cref{ex:endo}) is the object part of a functor $\mathcal{E} \colon \mb{Sets} \to \Sigma\mbox{-}\mb{Op}$.
-%\end{prop}
-%\begin{proof}
-%define on morphisms, check functoriality
-%\end{proof}
-
 The following statement appears in \cite{maygeom} as Lemma 1.4.
 \begin{lem}\label{lem:alg=map}
 Let $P$ be a symmetric operad and $X$ be a set. $P$-algebra structures on $X$, given by $\{ \alpha_n \colon  \coeq{P}{X}{\Sigma}{n} \rightarrow X\}$ as in \cref{Defi:aop-alg}, are in bijection with maps of symmetric operads $\alpha \cn P \to \mathcal{E}_X$.
@@ -546,40 +461,7 @@ Let $\Lambda$ be an action operad with underlying permutation map $\pi \colon \L
 \begin{proof}
 By the definition of the $\Lambda(n)$-actions on $P(n)$ and $X^n$, the maps \[\coeq{P}{X}{\Lambda}{n} \rightarrow X\] defining a $P$-algebra structure in \cref{Defi:aop-alg} are in bijection with 
 $\Lambda(n)$-equivariant maps $P(n) \to \pi^*\mathcal{E}_X(n)$. The correspondence between the axioms in \cref{Defi:aop-alg} and the map of $\Lambda$-operad axioms (\cref{Defi:aop_map}) follows just as in the proof of \cref{lem:alg=map}. The equivalence between the $\Lambda$- and symmetric operads versions follows immediately from adjointness, \cref{thm:pbaop}.
-%\ngnoteil{this is the old stuff, need to rewrite}
-%Claim 1 is part one of \cref{thm:pbaop} applied to $\pi$ via \cref{prop:pi-in-aop}.
-%Claim 2 is part three of \cref{thm:pbaop} and part two of \cref{lem:alg=map}.
-%Claim 3\ngnote{follows from adjointness}.
 \end{proof}
-
-%\begin{lem}
-%Let $\Lambda$ be an action operad, and let $X$ be a set. Then $\mathcal{E}_{X}$ carries a canonical $\Lambda$-operad structure.
-%\end{lem}
-%\begin{proof}
-%$\mathcal{E}_{X}$ is a symmetric operad, so we define the actions by
-%  \[
-%    \mathcal{E}_{X}(n) \times \Lambda(n) \stackrel{1 \times \pi_{n}}{\longrightarrow} \mathcal{E}_{X}(n) \times \Sigma_{n} \rightarrow \mathcal{E}_{X}(n).
-%  \]
-%\end{proof}
-%
-%The previous result is really a change-of-structure-groups result. We record the general result as the following proposition.
-%
-%
-%
-%We can now use endomorphism operads to characterize algebra structures.
-%
-%\begin{prop}\label{endoalg}
-%Let $X$ be a set, and $P$ a $\Lambda$-operad. Then algebra structures on $X$ are in 1-to-1 correspondence with $\Lambda$-operad maps $P \rightarrow \mathcal{E}_{X}$.
-%\end{prop}
-%\begin{proof}
-%A map $P(k) \rightarrow \mathcal{E}_{X}(k)$ corresponds, using the closed structure on $\mb{Sets}$, to a map $P(k) \times X^{k} \rightarrow X$. The monoid homomorphism axioms give the unit and associativity axioms, and the requirement that $P \rightarrow \mathcal{E}_{X}$ be a map of $\Lambda$-operads gives the equivariance condition.
-%\end{proof}
-
-
-%\section{\texorpdfstring{$\Lambda$}{L}-Operads as Monads}\label{sec:lop-monad}
-%
-%This section revisits the theory of monads associated to operads, now in the context of $\Lambda$-operads.
-%For many purposes, the monad associated to a $\Lambda$-operad contains all the information that is needed, as we shall see below.
 
 \begin{Defi}[(Endofunctor induced by a $\Lambda$-operad)]\label{Defi:und-P}
 Let $P$ be a $\Lambda$-operad. Then $P$ induces an endofunctor of $\mb{Sets}$, denoted $\underline{P}$, by the following formula.
@@ -624,22 +506,6 @@ are bijections, and are easily seen to be natural in $X$.
 Define $R_X = \coprod_n R_{X;n}$.
 We leave it to the reader that these components also commute with the multiplication and unit of the monads $\underline{T}, \underline{\Lambda}$, so produce the desired isomorphism of monads.
 The isomorphism of monads $R$ then induces an isomorphism between categories of algebras, proving the desired claim.
-%
-%The key observation here is that, for each $n \in \mathbb{N}$,
-%	\[
-%		\coeq{\Lambda}{X}{\Lambda}{n} \cong X^n.
-%	\]
-%We will describe this bijection and leave the rest of the proof to the reader, which falls out of the various axioms either for being a monoid or for being a $\Lambda$-algebra.
-%
-%Recall that the elements of $\coeq{\Lambda}{X}{\Lambda}{n}$ are equivalence classes of the form $[g ; x_1, \ldots, x_n]$ for which
-%	\[
-%		(gh; x_1, \ldots, x_n) \sim \left(g; x_{h^{-1}(1)}, \ldots, x_{h^{-1}(n)}\right).
-%	\]
-%There is an obvious map $X^n \rightarrow \coeq{\Lambda}{X}{\Lambda}{n}$ sending $(x_1, \ldots, x_n)$ to the equivalence class $[e; x_1, \ldots, x_n]$. The inverse to this map is given by the map $\coeq{\Lambda}{X}{\Lambda}{n} \rightarrow X^n$ sending $[g;x_1,\ldots,x_n]$ to the element $(x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)})$. It is then clear that these are inverses, relying on the equivalence relation to see that
-%	\[
-%		[g;x_1,\ldots,x_n] = \left[e;x_{g^{-1}(1)},\ldots,x_{g^{-1}(n)}\right].
-%	\]
-%That the second map is well-defined is simple to show.
 \end{proof}
 
 The monad-theoretic incarnation of \cref{cor:pi-star} is then the following.
@@ -650,219 +516,7 @@ For any $\Lambda$-operad P, there exists a natural isomorphism of monads between
 \end{cor}
 \begin{proof}
 The isomorphism is induced by the universal property of the coequalizer by noting that $\coeq{P}{X}{\Lambda}{n}$, the $n$th summand in $\underline{P}(X)$, and $\big(\coequ{P}{\Sigma}{\Lambda}{n}\big)\otimes_{\Sigma_n} X^n$, the $n$th summand in $\underline{\pi_{!}P}(X)$, both satisfy the same universal property.
-%\ngnoteil{actually show the calculation, plus fix notation since $S$ is now $\pi_{!}$}
-%The first claim is a simple calculation using the coequalizer that defines $S(\pi^{*}Q)$, using that $Q(n)$ is itself the coequalizer of the obvious pair of maps $Q(n) \times \Sigma_{n} \times \Sigma_{n}$.
-%
-%\ngnoteil{actually show the calculation, again!}
-%For the second claim, we find a natural isomorphism
-%  \[
-%    \coeq{P}{X}{\Lambda}{n} \cong (\coequ{P}{\Sigma}{\Lambda}{n}) \times_{\Sigma_{n}} X^{n}
-%  \]
-%by the universal property of the colimits involved, so as functors $\underline{P} \cong \underline{S(P)}$. One can then easily verify that this isomorphism commutes with the unit and multiplication of the two monads involved using calculations similar to those used to establish the adjunction.
 \end{proof}
-
-%\begin{rem}
-%\begin{enumerate}
-%\item The adjunction alone is enough to establish that $P$ and $S(P)$ have isomorphic categories of algebras using \cref{endoalg}.
-%\item This theorem shows that semantically, one need never consider any kind of operad aside from symmetric operads: any other kind of operad can be symmetrized without altering the algebras. But as the operad should be considered a finer level of detail than the monad, restricting to symmetric operads misses the structure present in the more nuanced group actions.
-%
-%\item Furthermore, there is clearly an artifact left from only considering the algebras themselves as objects in a symmetric monoidal category. It is well-known that a braided structure is all that is required for non-symmetric operads, and so one is left to consider that the natural home for algebras over a $\Lambda$-operad might be a type of monoidal structure other than symmetric in which case the theorem above gives no insight.
-%\end{enumerate}
-%\end{rem}
-
-%\ngnoteil{I can't find where we use any of this stuff. I will leave it in for now, but am tempted to delete it.}
-%
-%We end this section by presenting some results which allow us to transfer operad or algebra structures to other categories. We will use the following standard definitions of monad maps and transformations, as per \cite{street-formal}.
-%
-%\begin{Defi}\label{defi:monad_map}
-%Let $S$ be a monad on a category $C$ and $T$ be a monad on a category $D$. A \emph{monad map} of from $S$ to $T$ is a functor $F \colon C \rightarrow D$ together with a natural transformation $\alpha \colon TF \Rightarrow FS$ such that the following diagrams commute.
-%
-% \[
-%    \xy
-%      (0,0)*+{FX}="a";
-%      (20,10)*+{TFX}="b";
-%      (20,-10)*+{FSX}="c";
-%      {\ar^{\eta^T_{FX}} "a" ; "b"};
-%      {\ar^{\alpha_X} "b" ; "c"};
-%      {\ar_{F\eta^S_X} "a" ; "c"};
-%      (40,0)*+{T^2FX}="a";
-%      (60,10)*+{TFSX}="b";
-%      (85,10)*+{FS^2X}="c";
-%      (60,-10)*+{TFX}="d";
-%      (85,-10)*+{FSX}="e";
-%      {\ar^{T\alpha_X} "a" ; "b"};
-%      {\ar^{\alpha_{SX}} "b" ; "c"};
-%      {\ar^{F\mu^S_X} "c" ; "e"};
-%      {\ar_{\mu^T_{FX}} "a" ; "d"};
-%      {\ar_{\alpha_X} "d" ; "e"};
-%    \endxy
-%  \]
-%
-%A \emph{transformation} $\Gamma \colon (F, \alpha) \Rightarrow (G, \beta)$ between monad maps is a natural transformation $\Gamma \colon F \Rightarrow G$ such that the following diagram commutes.
-%  
-%  \[
-%    \xy
-%      (0,0)*+{TFX}="a";
-%      (20,0)*+{TGX}="b";
-%      (0,-15)*+{FSX}="c";
-%      (20,-15)*+{GSX}="d";
-%      %
-%      {\ar^{T\Gamma_X} "a" ; "b"};
-%      {\ar^{\beta_X} "b" ; "d"};
-%      {\ar_{\alpha_X} "a" ; "c"};
-%      {\ar_{\Gamma_{SX}} "c" ; "d"};
-%    \endxy
-%  \]
-%\end{Defi}
-%
-%\begin{rem}
-%Every monad map $(F,\alpha)$ induces a functor $S\Alg \rightarrow T\Alg$ on the categories of algebras. An $S$-algebra $(X,\sigma)$ is sent to the $T$-algebra $(FX,F\sigma \cdot \alpha_X)$, as we now describe. For $(FX,F\sigma \cdot \alpha_X)$ to be a $T$-algebra we require the usual diagrams to commute, shown as the outside of the diagrams below.
-%
-%  \[
-%    \xy
-%      (0,0)*+{T^2FX}="a";
-%      (20,0)*+{TFSX}="b";
-%      (40,0)*+{TFX}="c";
-%      (0,-30)*+{TFX}="d";
-%      (20,-15)*+{FS^2X}="f";
-%      (20,-30)*+{FSX}="e";
-%      (40,-15)*+{FSX}="g";
-%      (40,-30)*+{FX}="h";
-%      {\ar^{T\alpha_X} "a" ; "b"};
-%      {\ar^{TF\sigma} "b" ; "c"};
-%      {\ar^{\alpha_X} "c" ; "g"};
-%      {\ar^{F\sigma} "g" ; "h"};
-%      {\ar_{\mu^T_{FX}} "a" ; "d"};
-%      {\ar_{\alpha_X} "d" ; "e"};
-%      {\ar_{F\sigma} "e" ; "h"};
-%      {\ar_{\alpha_{SX}} "b" ; "f"};
-%      {\ar_{F\mu^S_X} "f" ; "e"};
-%      {\ar^{FS\sigma} "f" ; "g"};
-%      (60,0)*+{FX}="a1";
-%      (85,0)*+{TFX}="b1";
-%      (85,-15)*+{FSX}="c1";
-%      (85,-30)*+{FX}="d1";
-%      {\ar^{\eta^T_{FX}} "a1" ; "b1"};
-%      {\ar^{\alpha_X} "b1" ; "c1"};
-%      {\ar^{F\sigma} "c1" ; "d1"};
-%      {\ar^{F\eta^S_X} "a1" ; "c1"};
-%      {\ar_{\id} "a1" ; "d1"};
-%    \endxy
-%  \]
-%
-%The first diagram commutes since the left hand side is the second diagram required to commute for $(F,\alpha)$ to be a monad map, the square at the top right is an instance of naturality for $\alpha$, while the bottom right square commutes since $(X,\sigma)$ is an $S$-algebra. The second diagram commutes since the top triangle is again a requirement of $\alpha$ being a transformation, with the lower triangle commuting again as a result of $(X,\sigma)$ being an $S$-algebra.
-%
-%A morphism $f \colon  (X, \sigma_X) \rightarrow (Y, \sigma_Y)$ of $S$-algebras is sent to the morphism
-%  \[
-%    Ff \colon  (FX, F\sigma_X \cdot \alpha_X) \rightarrow (FY, F\sigma_Y \cdot \alpha_Y),
-%  \]
-%this being a map of $T$-algebras following from the naturality of $\alpha$ and of $f$ being an $S$-algebra map. Functoriality follows from that of $F$.
-%\end{rem}
-%
-%Throughout the text we make reference to where results can be applied in a more general case where a symmetric monoidal category is cocomplete and for which the tensor product distributes over colimits in each variable. However, we include the following definition to be clear what is meant simply by a cocomplete symmetric monoidal category.
-%\begin{Defi}\label{cocom_symm_mon_cat}
-%A cocomplete symmetric monoidal category $\m{C}$ is a symmetric monoidal category for which the underlying category is cocomplete.
-%% and the endofunctor $- \otimes X \colon \m{C} \rightarrow \m{C}$ preserves colimits for all objects $X \in \m{C}$.
-%% QQQ Is this what we mean by a cocomplete symmetric monoidal category? The statement of the following theorem 3.3.7 then requires that the tensor product preserves colimits in each variable but the definition already includes this. QQQ
-%\end{Defi}
-%The following three results tie in with material in the coming chapters but are of a general nature which better in the context of this section.
-%
-%
-%\begin{prop}\label{monoidal_to_monadmap}
-%Let $C,D$ be cocomplete symmetric monoidal categories. Let $\Lambda$ be an action operad, and $P$ be a $\Lambda$-operad in $C$. Let $F \colon C \rightarrow D$ be a symmetric lax monoidal functor. Then $FP$ is a $\Lambda$-operad in $D$, and there exists a monad map $(F,\psi) \colon (C,\underline{P}) \rightarrow (D, \underline{FP})$.
-%\end{prop}
-%\begin{proof}
-%\cref{preserveGop} describes how the functor $F$ can be used to describe a functor
-%  \[
-%    \Lambda\mbox{-}\mb{Op}(C) \rightarrow \Lambda\mbox{-}\mb{Op}(D),
-%  \]
-%from which we see that $FP$ is a $\Lambda$-operad in $D$.
-%
-%The functor $F$ constitutes the $1$-cell of the monad map, while $\psi$ is required to be a natural transformation as below.
-%  \[
-%    \xy
-%      (0,0)*+{C}="a";
-%      (20,0)*+{D}="b";
-%      (0,-20)*+{C}="c";
-%      (20,-20)*+{D}="d";
-%      %
-%      {\ar^{F} "a" ; "b"};
-%      {\ar^{\underline{FP}} "b" ; "d"};
-%      {\ar_{\underline{P}} "a" ; "c"};
-%      {\ar_{F} "c" ; "d"};
-%      %
-%      {\ar@{=>}^{\psi} (12.5, -7.5) ; (7.5,-12.5)};
-%    \endxy
-%  \]
-%
-%We describe the components of this natural transformation at an object $X$ of $C$ below.
-%  \begin{align*}
-%    \underline{FP}(FX) &= \coprod_{n \in \mathbb{N}} FP(n) \otimes_{\Lambda(n)} (FX)^n \\
-%    &\rightarrow \coprod_{n \in \mathbb{N}} F\left(P(n) \otimes_{\Lambda(n)} X^n\right)\\
-%    &\rightarrow F\left(\coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n\right)\\
-%    &=F(\underline{P}(X))
-%  \end{align*}
-%The first morphism is a composite of the coherence cells of the type
-%  \[
-%    FX \otimes FY \rightarrow F(X \otimes Y)
-%  \]
-%for the symmetric lax monoidal functor $F$, while the second morphism is the induced morphism out of the coproduct. Naturality follows from that of the component morphisms. It is then straightforward to see that the monad morphism diagrams commute since the diagrams involved consist of instances of the coherence axioms for $F$ along with naturality of the coherence cells.
-%\end{proof}
-%
-%\begin{prop}\label{opmap_to_monadmap}
-%Let $C$ be a cocomplete symmetric monoidal category. Let $\Lambda$ be an action operad, and $P,Q$ be  $\Lambda$-operads in $C$ with a map $\sigma \colon P \rightarrow Q$ of $\Lambda$-operads between them. Then $\sigma$ induces a monad map $(\id, \sigma^*) \colon (C,\underline{Q}) \rightarrow (C,\underline{P})$ and hence a functor on categories of algebras.
-%\end{prop}
-%\begin{proof}
-%We will first describe the components of the natural transformation $\sigma^* \colon \underline{P} \Rightarrow \underline{Q}$. The component $\sigma^*_X$ at an object $X$ of $C$ is a morphism between the coproducts
-%  \[
-%    \sigma^*_X \colon \coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n \rightarrow \coprod_{n \in \mathbb{N}} Q(n) \otimes_{\Lambda(n)} X^n.
-%  \]
-%This is seen to be induced by the universal properties of the coequalizers and coproducts in the following diagram, where $\sigma_n$ denotes the $n$-ary component of the $\Lambda$-operad map $\sigma$ and $\lambda^P$, $\lambda^Q$, $\rho^P$, and $\rho^Q$ denote the usual left and right actions.
-%
-%  \[
-%    \xy
-%      (0,0)*+{P(n) \otimes \Lambda(n) \otimes X^n}="a";
-%      (50,0)*+{Q(n) \otimes \Lambda(n) \otimes X^n}="b";
-%      (0,-20)*+{P(n) \otimes X^n}="c";
-%      (50,-20)*+{Q(n) \otimes X^n}="d";
-%      (0,-40)*+{P(n) \otimes_{\Lambda(n)} X^n}="e";
-%      (50,-40)*+{Q(n) \otimes_{\Lambda(n)} X^n}="f";
-%      (0,-60)*+{\coprod_{n \in \mathbb{N}} P(n) \otimes_{\Lambda(n)} X^n}="g";
-%      (50,-60)*+{\coprod_{n \in \mathbb{N}} Q(n) \otimes_{\Lambda(n)} X^n}="h";
-%      %
-%      {\ar^{\rho^P} (2,-3)*{}; (2,-17)*{} };
-%      {\ar_{\lambda^P} (-2,-3)*{}; (-2,-17)*{} };
-%      {\ar^{\rho^Q} (52,-3)*{}; (52,-17)*{} };
-%      {\ar_{\lambda^Q} (48,-3)*{}; (48,-17)*{} };
-%      {\ar_{c^P_n} "c" ; "e"};
-%      {\ar^{c^Q_n} "d" ; "f"};
-%      {\ar "e" ; "g"};
-%      {\ar "f" ; "h"};
-%      %
-%      {\ar^{\sigma_n \otimes \id \otimes \id} "a" ; "b"};
-%      {\ar^{{\sigma_n} \otimes \id} "c" ; "d"};
-%      {\ar_{\exists! \sigma^*_{n,X}} "e" ; "f"};
-%      {\ar^{\exists! \sigma^*_X} "g" ; "h"};      
-%    \endxy
-%  \]
-%
-%The upper square which includes $\lambda^P$ and $\lambda^Q$ commutes due to $\sigma$ being a $\Lambda$-operad map, while the square with both $\rho$ actions commutes because the $\sigma_n$ and $\rho$ do not interact. Since $c^Q_n$ coequalizes $\lambda^Q$ and $\rho^Q$, then this commutativity shows that $c^Q_n \cdot (\sigma_n \otimes \id) \cdot \lambda^P = c^Q_n \cdot (\sigma_n \otimes \id) \cdot \rho^P$, hence the morphism $\sigma^*_{n,X}$ exists. The morphism $\sigma^*_X$ is then induced by the universal property of the coproduct $\underline{P}(X)$.
-%
-%It is then routine to check that these components are natural in $X$ and constitute a monad map. That a functor is then induced on the category of algebras follows from Lemma 6.1.1 of \cite{leinster}; the process is described above, following \cref{defi:monad_map}.
-%\end{proof}
-%We can combine these two propositions.
-%
-%\begin{cor}\label{monoidaladj_cor}
-%If $C, D, P, F$ are as in \cref{monoidal_to_monadmap}, and $F$ is part of a monoidal adjunction (i.e., an adjunction in which both functors are symmetric lax monoidal, and the unit and counit are monoidal transformations) $F \dashv U$, then $(F, \id)$ and $(U, \id)$ are both monad maps. The unit $\eta \colon 1 \Rightarrow UF$ induces an operad map $\eta \colon P \Rightarrow UFP$, and a transformation between monad maps
-%  \[
-%    (\id, \id) \Rightarrow (\id, \eta^*) \circ (U, \psi^U) \circ \left(F, \psi^F\right).
-%  \]
-%The counit $\epz \colon FU \Rightarrow 1$ induces an operad map $\epz \colon FUFP \Rightarrow FP$, and a transformation between monad maps
-%  \[
-%    \left(F, \psi^F\right) \circ (\id, \eta^*) \circ \left(U,\psi^U\right) \Rightarrow (\id, \id).
-%  \]
-%These constitute an adjunction $\left(F,\psi^F\right) \dashv (\id, \eta^*) \circ \left(U, \psi^U\right)$ in the $2$-category of monads, and hence induce an adjunction between $\underline{P}$-algebras in $C$ and $\underline{FP}$-algebras in $D$.
-%\end{cor}
 
 \section{The Substitution Product}\label{sec:sub}
 
@@ -889,15 +543,8 @@ with composition given by group multiplication and identities given by the eleme
 \end{enumerate}
 \end{Defi}
 
-%\begin{Defi}
-%Let $\Lambda$ be an action operad. The category $\Lambda\mb{\mbox{-}Coll}$ of $\Lambda$-collections has objects $X = \{ X(n) \}_{n \in \N}$ which consist of a set $X(n)$ for each natural number $n$ together with an action $X(n) \times \Lambda(n) \rightarrow X(n)$ of $\Lambda(n)$ on $X(n)$. A morphism $f \colon X \rightarrow Y$ in $\Lambda\mb{\mbox{-}Coll}$ consists of a $\Lambda(n)$-equivariant map $f_{n} \colon X(n) \rightarrow Y(n)$ for each natural number $n$.
-%\end{Defi}
-
 \begin{rem}
-%QQQ First instance of B\Lambda - replacing with B\Lambda
 The definition of $\Lambda\mb{\mbox{-}Coll}$ does not require that $\Lambda$ be an action operad, only that one has a natural number-indexed set of groups. 
-%Given any such collection of groups $\{ \Lambda(n) \}_{n \in \N}$, we can form the category $B\Lambda$ whose objects are natural numbers and whose hom-sets are given by $B\Lambda(m,n) = \emptyset$ if $m \neq n$ and $B\Lambda(n,n) = \Lambda(n)$ (where composition and units are given by group multiplication and identity elements, respectively). Then 
-%with the opposite category arising from our choice of right actions. A key step in explaining how $\Lambda$-operads arise as monoids in the category of $\Lambda$-collections is to show that being an action operad endows $B\Lambda$ with a monoidal structure.
 \end{rem}
 
 \begin{Defi}[(The substitution product $\circ$)]\label{Defi:sub-prod}
@@ -921,19 +568,6 @@ The group $\Lambda(k)$ acts on the right by multiplication,
 [x; y_1, \ldots, y_r; g] \cdot h = [x; y_1, \ldots, y_r; gh], 
 \]
 and this action is compatible with the equivalence relation above, so defines $X \circ Y$ as a presheaf on $B \Lambda$.
-%  \begin{align*}
-%   , \\
-%   
-%  \end{align*}
-%For the first relation above, we must have that the lefthand side is an element of
-%  \[
-%    X(r) \times Y(k_1) \times \cdots \times Y(k_r) \times \Lambda(n)
-%  \]
-%while the righthand side is an element of
-%  \[
-%    X(r) \times Y\left(k_{h^{-1}(1)}\right) \times \cdots \times Y\left(k_{h^{-1}(r)}\right) \times \Lambda(n);
-%  \]
-%for the second relation, we must have . The right $\Lambda(n)$-action on $X \circ Y(n)$ is given by multiplication on the final coordinate.
 \end{Defi}
 
 
@@ -953,14 +587,12 @@ Furthermore, we want to consider $\Lambda$-operads in categories other than sets
 Instead we will develop general machinery that will apply to $\Lambda$-operads in any cocomplete symmetric monoidal category, by which we mean a category that is cocomplete, equipped with a symmetric monoidal structure, and the functors $X \otimes -, - \otimes X$ preserve colimits for every object $X$ (as is the case if the monoidal structure is closed). 
 Our construction of the monoidal structure on the category of $\Lambda$-collections will require the Day convolution product \cite{day-thesis}, and we begin by proving that $B\Lambda$ has a monoidal structure.
 
-%. This is a general construction which produces a monoidal structure on the category of presheaves $[\mathcal{V}^{\textrm{op}}, \mb{Sets}]$ from a monoidal structure on the category $\mathcal{V}$. Since the category of $\Lambda$-collections is the presheaf category $[B\Lambda^{\textrm{op}}, \mb{Sets}]$, we need to show that 
 
 \begin{prop}\label{prop:Gmonoidal}
 The action operad structure of $\Lambda$ gives $B\Lambda$ a strict monoidal structure.
 \end{prop}
 \begin{proof}
 The tensor product on $B\Lambda$ is given by addition on objects, with unit object 0; we denote tensor product by $+$. 
-%The only thing to do is define the tensor product on morphisms and check naturality for the associativity and unit isomorphisms, which will both be identities. 
 On morphisms, $+$ must be given by a group homomorphism
   \[
     + \colon \Lambda(n) \times \Lambda(m) \rightarrow \Lambda(n+m),
@@ -970,27 +602,10 @@ On morphisms, $+$ must be given by a group homomorphism
     +(g,h) = \beta(g,h).
   \]
 By \cref{thm:charAOp}, $\beta$ is a homomorphism as desired, and we now write $+(g,h)$ as $g+h$.
-%We need that $+$ is a group homomorphism, and the second part of \cref{calclem} shows that it preserves identity elements. The final action operad axiom shows that it also preserves group multiplication since $\pi_{2}(e_{2}) = e_{2}$ (each $\pi_{n}$ is a group homomorphism) and therefore
-%  \begin{align*}
-%    \left(+(g,h)\right) \cdot \left(+(g',h')\right) &= \mu\left(e_{2}; g,h\right) \cdot\mu\left(e_{2}; g',h'\right) \\
-%    &= \mu\left(e_{2}e_{2}; gg', hh'\right) \\
-%    &= +\left(gg',hh'\right).
-%  \end{align*}
 
 Addition of objects is strictly associative and unital.
 Strict associativity at the level of morphisms follows from Axiom \eqref{eq3}, and strict unitality at the level of morphisms follows from Axiom \eqref{eq3} and \cref{lem:e0-unit}.
 Thus $B\Lambda$ is a strict monoidal category as desired, completing the proof.
-
-%For naturality of the associator, we must have $(f+g)+h = f+(g+h)$. By the operad axioms for both units and associativity, the lefthand side is given by
-%  \begin{align*}
-%    \mu(e_{2}; \mu(e_{2}; f,g), h) &= \mu(e_{2}; \mu(e_{2}; f,g), \mu(\id;h)) \\
-%    &= \mu(\mu(e_{2}; e_{2}, \id); f,g,h),
-%  \end{align*}
-%while the righthand side is then
-%  \[
-%    \mu(e_{2}; f, \mu(e_{2}; g,h)) = \mu(\mu(e_{2}; \id, e_{2}); f,g,h).
-%  \]
-%By \cref{calclem}, both of these are equal to $\mu(e_{3}; f,g,h)$, proving associativity. Naturality of the unit isomorphisms follows similarly, using $e_{0}$.
 \end{proof}
 
 Now that $B\Lambda$ has a monoidal structure, there is also a monoidal structure on the category of $B\Lambda$-collections using Day convolution, denoted $\star$. 
@@ -1033,17 +648,6 @@ Since the convolution product is given by a coend, it is the universal object wi
     \theta_{k_1, \ldots, k_n; k} \colon Y(k_{1}) \times \cdots \times Y(k_{n}) \times \Lambda(k) \rightarrow Y^{\star n}(k),
   \]
 for $k= k_1 + \cdots + k_n$, such that the following diagram commutes for every $g_{1} \in \Lambda(k_{1}), \ldots, g_{n} \in \Lambda(k_{n})$.
-  %%Expanded diagram
-  % \[
-  %   \xy
-  %     {\ar   (0,0)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n})}; (40,15)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n})} };
-  %     (9.5,10)*{\scriptstyle (-\cdot g_{1}, \ldots, -\cdot g_{n}) \times 1};
-  %     {\ar (40,15)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n})}; (80,0)*+{Y^{\star n}(k)} };
-  %     {\ar (0,0)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n})}; (40,-15)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n})} };
-  %     (9.5,-10)*+{\scriptstyle 1 \times \left( (g_{1} + \cdots + g_{n})\cdot - \right)};
-  %     {\ar (40,-15)*+{Y(k_{1}) \times \cdots \times Y(k_{n}) \times B\Lambda(k, k_{1} + \cdots + k_{n})}; (80,0)*+{Y^{\star n}(k)} };
-  %   \endxy
-  % \]
   \[
     \xy
       (0,0)*+{Y(k_1) \times \cdots \times Y(k_n)  \times \Lambda(k)}="a";
@@ -1057,12 +661,6 @@ for $k= k_1 + \cdots + k_n$, such that the following diagram commutes for every 
       {\ar_{\theta_{k_1, \ldots, k_n; k}} "d" ; "c"};
     \endxy
   \]
-%
-%The first map along the top acts using the $g_{i}$'s, while the first map along the bottom is given by
-%  \[
-%    h \mapsto \mu(e_{n}; g_{1}, \ldots, g_{n}) \cdot h
-%  \]
-%in the final coordinate.
 
 Let $f \in \Lambda(n)$, considered as a morphism $n \rightarrow n$ in $B\Lambda$. We induce a map 
 \[
@@ -1076,7 +674,6 @@ by
 \[
 f[k_1, \ldots, k_n](y_1, \ldots, y_n; g) = \big( y_{f^{-1}(1)}, \ldots, y_{f^{-1}(n)}; \delta_{n; k_1, \ldots, k_n}(f) g\big).
 \]
-% \ngmpar{the labels below need help, but I don't remember enough xypic to fix them}
 We now check that the following diagram commutes, where underlined elements represent lists of the indicated elements indexed from $1$ to $n$, e.g.,
   \[
       \beta(\underline{g_i}) = \beta(g_1,\cdots,g_n) = g_1 + \cdots + g_n.
@@ -1118,13 +715,6 @@ Therefore by the universality property, there is a unique map $f \bullet - \colo
 \end{equation}
 for all $k$ and $k_1, \ldots, k_n$ such that $k = k_1 + \cdots + k_n$.
 Given $f_1, f_2 \in \Lambda(n)$, we have
-%\begin{align*}
-%(f_2 \bullet -) \circ (f_1 \bullet -) \circ \theta_{k_1, \ldots, k_n; k} & = (f_2 \bullet -) \circ \theta_{k_{f_1^{-1}(1)}, \ldots, k_{f_1^{-1}(n)}; k} \circ f_1[k_1, \ldots, k_n] \\
-%& = \theta_{k_{f_1^{-1}(f_2^{-1}(1))}, \ldots, k_{f_1^{-1}(f_2^{-1}(n))}; k} \circ f_2[k_{f_1^{-1}(1)}, \ldots, k_{f_2^{-1}(n)}] \circ f_1[k_1, \ldots, k_n] \\
-%& = \theta_{k_{(f_2f_1)^{-1}(1)}, \ldots, k_{(f_2f_1)^{-1}(n)};k} \circ (f_2f_1)[k_1, \ldots, k_n] \\
-%& = \big( (f_2f_1) \bullet -\big) \circ \theta_{k_1, \ldots, k_n; k}
-%\end{align*}
-%\acnote{this spacing any better? similar lists to the diagram above - also is there a typo in the second line above? $f_2$ at end of the middle list should be $f_1$?}
 \begin{align*}
 (f_2 \bullet -) \circ (f_1 \bullet -) \circ \theta_{\underline{k_i};k} &= (f_2 \bullet -) \circ \theta_{\underline{k_{f_1^{-1}(i)}};k} \circ f_1\left[\underline{k_i}\right] \\
 &= \theta_{\underline{k_{f_1^{-1}(f_2^{-1}(i))}};k} \circ f_2\left[k_{f_1^{-1}(1)}, \ldots, k_{f_1^{-1}(n)}\right] \circ f_1\left[\underline{k_i}\right] \\
@@ -1132,15 +722,6 @@ Given $f_1, f_2 \in \Lambda(n)$, we have
 &= ((f_2f_1) \bullet -) \circ \theta_{\underline{k_i};k}
 \end{align*}
 by \cref{eq:fbullet} twice, the left action of $\Sigma_n$ on $n$-tuples as in \cref{rem:Sn-tuples}, and Axiom \eqref{eq6} from \cref{thm:charAOp}. By the universal property of the coend, we conclude that $(f_2 \bullet -) \circ (f_1 \bullet -) = \big( (f_2f_1) \bullet -\big)$, verifying functoriality and completing the proof.
-% using the collection of maps
-%  \[
-%    \prod_{i=1}^{n} Y(k_{i}) \times B\Lambda(k, k_{1} + \cdots + k_{n}) \rightarrow \prod_{i=1}^{n} Y(k_{\pi (f)^{-1}(i)}) \times B\Lambda(k, k_{1} + \cdots + k_{n})
-%  \]
-%by using the symmetry $\pi(f)$ on the first $n$ factors and left multiplication by the element $\mu(f; e_{k_{1}}, \ldots, e_{k_{n}})$ on $B\Lambda(k, k_{1} + \cdots + k_{n})$. To induce a map between the coends, we must show that these maps commute with the two lefthand maps in the diagram above. For the top map, this is merely functoriality of the product together with naturality of the symmetry. For the bottom map, this is the equation
-%  \[
-%    \mu(f; \overline{e}) \cdot \mu(e; g_{1}, \ldots, g_{n}) = \mu(e; g_{\pi (f)^{-1} 1}, \ldots, g_{\pi (f)^{-1} n}) \cdot \mu(f; \overline{e}).
-%  \]
-%Both of these are equal to $\mu(f; g_{1}, \ldots, g_{n})$ by the action operad axiom. Functoriality is then easy to check using that the maps inducing $(f_{1}f_{2}) \bullet -$ are given by the composite of the maps inducing $f_{1} \bullet (f_{2} \bullet -)$.
 \end{proof}
 
 \begin{rem}[(Yoneda via coends)]\label{rem:yoneda-coend}
@@ -1264,36 +845,9 @@ The associativity isomorphism is defined to be the one induced, by Yoneda, from 
 In order to finish the proof that $(\lcoll, \circ, I)$, with the unit and associativity isomorphisms above, is a monoidal category, we must check two axioms.
 These axioms follow immediately from the fact that the unit and associativity isomorphisms were all induced by the universal property of the colimit constructing their domains.
 
-%For associativity, we compute $(X \circ Y) \circ Z$ and $X \circ (Y \circ Z)$.
-%  \begin{align*}
-%    ((X \circ Y) \circ Z) (k) &= \int^{m} X \circ Y (m) \times Z^{\star m}(k) \\
-%    &= \int^{m} \left( \int^{l} X(l) \times Y^{\star l}(m) \right) \times Z^{\star m}(k) \\
-%    &\cong \int^{m,l} X(l) \times Y^{\star l}(m) \times Z^{\star m}(k) \\
-%    &\cong \int^{l} X(l) \times \int^{m} Y^{\star l}(m) \times Z^{\star m}(k)
-%  \end{align*}
-%The first isomorphism is from products distributing over colimits and hence coends, and the second is that fact plus the Fubini Theorem for coends \cite{maclane-catwork}. A similar calculation shows
-%  \[
-%    (X \circ (Y \circ Z))(k) \cong \int^{l} X(l) \times (Y \circ Z)^{\star l}(k).
-%  \]
-%Thus the associativity isomorphism will be induced once we construct an isomorphism $\int^{m} Y^{\star l}(m) \times Z^{\star m} \cong (Y \circ Z)^{\star l}$. We do this by induction, with the $l=1$ case being the isomorphism $Y^{\star 1} \cong Y$ together with the definition of $\circ.$  Assuming true for $l$, we prove the case for $l+1$ by the calculations below.
-%  \begin{align*}
-%    (Y \circ Z)^{\star (l+1)} &\cong (Y \circ Z) \star (Y \circ Z)^{\star l} \\
-%    &\cong (Y \circ Z) \star \left( \int^{m} Y^{\star l}(m) \times Z^{\star m} \right) \\
-%    &= \left( \int^{n} Y(n) \times Z^{\star n} \right) \star \left( \int^{m} Y^{\star l}(m) \times Z^{\star m} \right) \\
-%    &= \int^{a,b} \left( \int^{n} Y(n) \times Z^{\star n}(a) \right)  \times \left( \int^{m} Y^{\star l}(m) \times Z^{\star m}(b) \right) \times B\Lambda(-, a+b) \\
-%    &\cong \int^{a,b,n,m} Y(n) \times Y^{\star l}(m) \times Z^{\star n}(a) \times Z^{\star m}(b) \times  B\Lambda(-, a+b) \\
-%    &\cong \int^{n,m} Y(n) \times Y^{\star l}(m) \times Z^{\star (n+m)} \\
-%    &\cong \int^{j} \int^{n,m} Y(n) \times Y^{\star l}(m) \times B\Lambda(j, n+m) \times Z^{\star j} \\
-%    &\cong \int^{j} Y^{\star (l+1)}(j) \times Z^{\star j}
-%  \end{align*}
-%Each isomorphism above arises from the symmetric monoidal structure on $\mb{Sets}$ using products, the monoidal structure on presheaves using $\star$, the properties of the coend, or the fact that products distribute over colimits.
-
-%For the monoidal category axioms on $\widehat{B\Lambda}$, we only need to note that the unit and associativity isomorphisms arise, using the universal properties of the coend, from the unit and associativity isomorphisms on the category of sets together with the interaction between products and colimits. Hence the monoidal category axioms follow by those same axioms in $\mb{Sets}$ together with the universal property of the coend.
-
 Now we must show that monoids in $(\lcoll, \circ, I)$ are operads. By the Yoneda lemma, a map of $\Lambda$-collections $\eta \colon I \rightarrow X$ corresponds to an element $\id \in X(1)$ since $I = B\Lambda(-,1)$. A map $\mu \colon X \circ X \rightarrow X$ is given by, for each $k$, a $\Lambda(k)$-equivariant map $(X \circ X) (k) \rightarrow X(k)$. By the universal property of the coend, this is equivalent to giving maps
   \[
   \mu_{n; k_1, \ldots, k_n;k} \colon X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times \Lambda(k) \to X(k)
-%    \mu_{n, K} \colon X(n) \times X(k_{1}) \times \cdots \times X(k_{n}) \times B\Lambda(k, k_{1}+\cdots +k_{n}) \rightarrow X(k)
   \]
 that are compatible with the following group actions as specified.
 \begin{itemize}

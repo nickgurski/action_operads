@@ -2,7 +2,7 @@
 \section{Introduction}
 
 Operads are by now an established tool in fields ranging from algebra \cite{loday-vallette} and combinatorics \cite{mendez} to homotopy theory \cite{fie-br} and mathematical physics \cite{mss-op}.
-First explicitly defined by May in \cite{maygeom}, following work of Whitehead \cite{whitehead}, Boardman-Vogt \cite{bv}, and Stasheff \cite{stasheff}, operads are one of many formalisms\footnote{Others include monads \cite{et-monads}, algebraic or Lawvere theories \cite{lawvere-thesis}, and PROPs \cite{mac_prop}.} used to give a presentation for an algebraic structure.
+First explicitly defined by May in \cite{maygeom}, following work of Whitehead \cite{whitehead}, Stasheff \cite{stasheff}, and Boardman-Vogt \cite{bv}, operads are one of many formalisms\footnote{Others include monads \cite{et-monads}, algebraic or Lawvere theories \cite{lawvere-thesis}, and PROPs \cite{mac_prop}.} used to give a presentation for different types of algebraic structures.
 An operad $P$ consists of objects $P(n)$, indexed by natural numbers, together with composition operations
 \[
 \mu \colon P(n) \times P(k_1) \times \cdots P(k_n) \to P(k_1 + \cdots + k_n)
@@ -14,13 +14,23 @@ The prototypical operad is the endomorphism operad $\mathcal{E}_X$ on a set $X$ 
 \end{align*}
 and the identity element is the identity function $1_X \colon X \to X$; the operad axioms were chosen to reflect the associativity and unit relations satisfied by the above structure.
 
-May's definition also included symmetric group actions of the form $P(n) \times \Sigma_n \to P(n)$, modeling the operation of permutating input variables; these are now often called \emph{symmetric operads} when the equivariance is being stressed.
+May's definition also included symmetric group actions $P(n) \times \Sigma_n \to P(n)$, modeling the operation of permuting input variables; these operads are now often called \emph{symmetric operads} when the equivariance is being stressed.
 Fiedorowicz later generalized these symmetric group actions to braid group actions in \cite{fie-br}, where he studied operations on double loop spaces. 
 Wahl \cite{wahl-thesis} generalized these ideas further to ribbon braids and other families of groups in order to study spectra arising from stable mapping class groups.
-Each of these authors leverages different group actions on the operads involved in order to produce additional structure on the algebras over those operads.
+Each of these authors leveraged different group actions on the operads involved in order to produce additional structure on the algebras over those operads.
 This paper, an updated version of the preprints \cite{cg-preprint,g-borel}, seeks to give a treatment of the fundamental algebraic structure present in the families of groups $\Lambda = \{ \Lambda(n) \}_{n \in \mathbb{N}}$ --- such as the symmetric groups, braid groups, and ribbon braid groups --- arising in operad theory, here called \emph{action operads}.
 
 \subsection*{Action operads}
+
+Suppose that $\{ \Lambda(n) \}$ is a $\mathbb{N}$-indexed family of groups, acting on an operad $P$ via $P(n) \times \Lambda(n) \to P(n)$.
+It is natural to impose some compatiblity between these group actions and operadic composition, and this compatibility requires that the groups $\Lambda(n)$ themselves form an operad.
+We see from the example of the symmetric groups $\Sigma_n$ and May's symmetric operads that the operad consisting of the $\Lambda(n)$'s is not required to be an operad internal to the category of groups: operadic composition is not a group homomorphism, but rather satisfies a twisted version of the homomorphism axiom.
+These considerations lead to the definition of an action operad in \cref{Defi:aop}, consisting of 
+\begin{itemize}
+\item an operad $\Lambda$ of sets, with each $\Lambda(n)$ equipped with a group structure; and
+\item functions $\pi_n \colon \Lambda(n) \to \Sigma_n$ that are simultaneously group homomorphisms and assemble into a map of operads $\Lambda \to \Sigma$;
+\end{itemize}
+satisfying one additional axiom relating the operad and group structures.
 
 As the work of May, Fiedorowicz, and Wahl shows, varying the group actions on an operad $P$ can lead to different structure on the algebras over $P$.
 A given operad $P$ may have many different action operads $\Lambda$ acting upon it, with the simplest example being that any symmetric operad is also an operad in the non-symmetric sense, meaning that we can instead consider the group actions $P(n) \times T(n) \to P(n)$ where each $T(n)$ is the trivial group.
@@ -36,9 +46,9 @@ To that end, we thoroughly investigate the basic algebra of action operads from 
 
 As noted above, this paper synthesizes previous work of the authors \cite{cg-preprint,g-borel} that was, until now, available only in preprint form.
 Reading those preprints in chronological order will differ significantly from reading the present paper: the earlier \cite{cg-preprint} contained most of the material from Part II of this paper, while the later \cite{g-borel} contained most of the material that now comprises Part I.
-In each of these Parts, we have refined, expanded, reorganized, and sometimes removed material from those preprints, motivated by questions or comments by other researchers or, in one case, a later application of our work.
+In each of these Parts, we have refined, expanded, reorganized, and sometimes removed material from those preprints, motivated by questions or comments from other researchers or, in one case, a later application of our work.
 These references to our preprints was one of the motivating factors for finally publishing this material.
-In particular, Yau \cite{yau_infinity_2021} has generalized much of our basic theory to an infinity-categorical context.
+In particular, Yau \cite{yau_infinity_2021} has generalized much of our theory to an infinity-categorical context.
 Our work on pseudo-commutative structures was also used in \cite{guillou_symmetric,guillou_multiplicative} in the construction of equivariant multiplicative $K$-theory machines.
 Those authors identified a missing axiom as detailed in \cref{rem:updated}, the omission of which resulted in the error described in \cref{rem:EB-fail}; we have since removed the erroneous results.
 
@@ -52,7 +62,7 @@ Part I studies action operads in generality.
 \item \cref{sec:aop} provides the definition of an action operad, as well as some basic examples. Much of this section is devoted to the elementary algebra of action operads, and \cref{thm:charAOp} characterizes action operads in terms of block sum and duplication operations instead of operadic composition. 
 \item \cref{sec:aop-examples} contains many of our key examples of action operads, together with a host of non-examples. 
 \item The short \cref{sec:extension} situates action operads in relation to operads in the category $\mb{Grp}$ of groups; we construct kernels and images of maps of actions operads, and show in \cref{cor:extension} that every action operad is either an operad in $\mb{Grp}$ or an extension of the symmetric groups by an operad in $\mb{Grp}$. 
-\item \cref{sec:pres-aop} is devoted to showing that the category of action operads is locally finitely presentable, and using that structure to establish a free action operad functor. This allows us to define presentations for action operads, and we explicitly compute a presentation for the symmetric groups as an action operad. 
+\item \cref{sec:pres-aop} is devoted to showing that the category of action operads is locally finitely presentable, and using that structure to establish a free action operad functor. We use the resulting adjunction between action operads and collections to define presentations for action operads, and we explicitly compute a presentation for the symmetric groups as an action operad. 
 \item \cref{sec:forward-op} gives the definition of a $\Lambda$-operad for $\Lambda$ an action operad, as well as algebras over a $\Lambda$-operad. The main technical result of this section is a change-of-action-operad adjunction $f_{!} \dashv f^*$ associated to any map of action operads $f \colon \Lambda \to \Lambda'$, and we use this to define and then study the symmetrization functor. 
 \item In \cref{sec:sub} we express $\Lambda$-operads as monoids under a substitution product (\cref{thm:operad=monoid}) on the category of $\Lambda$-collections. We do so in a coend-forward fashion rather than by elementary calculation, leveraging the internal hom-functor that is adjoint to the substitution product.
 \end{itemize}
@@ -62,16 +72,16 @@ Part II specializes the theory to operads in the category or 2-category $\mb{Cat
 \item We begin with two background sections: \cref{sec:backgr-cat} covers the constructions we will need related to group actions and limits/2-limits, while 
 \cref{sec:2monads} recalls the basic theory of 2-monads.
 \item \cref{sec:op-to-2monad} interprets the algebras over a $\Lambda$-operad in $\mb{Cat}$ from the 2-monadic point of view. The most important construction in this section is that of the operad $\EL$ in \cref{cor:elambda_lambdaop}, and the subsequent definition of $\Lambda$-monoidal categories in \cref{Defi:lmc}. We finish this section by computing the free $\Lambda$-monoidal category on a category $X$ in \cref{prop:hom-set-lemma}.
-\item \cref{sec:coherence} addresses two kinds of coherence theorems. The first is the abstract coherence theorem for the 2-monad induced by $\EL$, and is presented in \cref{cor:coherence-for-ulP}. The second is a standard strictification-type, and it appears as \cref{thm:wlmc-to-lmc}.
+\item \cref{sec:coherence} addresses two kinds of coherence theorems. The first is the abstract coherence theorem for the 2-monad induced by $\EL$, and is presented in \cref{cor:coherence-for-ulP}. The second is a standard strictification-type theorem, and it appears as \cref{thm:wlmc-to-lmc}.
 \item \cref{sec:cart} studies the interaction between the group actions $P(n) \times \Lambda(n) \to P(n)$ and whether the 2-monad induced by $P$ is 2-cartesian. It is well-known in the categorical literature that every non-symmetric operad on $\mb{Sets}$ induces a cartesian monad, but that not every symmetric operad does. We characterize those symmetric operads in $\mb{Cat}$ that induce 2-cartesian 2-monads in \cref{cor:cart_cor} quite simply: they are the operads for which all the symmetric group actions are free. We extend this to other $\Lambda$ in \cref{thm:cart_thm}, and in particular show that the 2-monads induced by $\EL$ for any action operad $\Lambda$ are 2-cartesian in \cref{cor:EL-2cart}.
 \item \cref{sec:club} begins by reviewing Kelly's notion of club, and then goes on to show that every action operad induces a club. In \cref{thm:club=operad} we characterize which clubs arise from action operads, and then compare Kelly's presentations of clubs with our presentations of action operads in \cref{thm:pres1}. This theorem shows how the form of the definition for a type of monoidal structure (eg, symmetric monoidal or braided monoidal) can be easily translated into a presentation for the action operad $\Lambda$ such that the type of monoidal categories in question are precisely the $\EL$-algebras.
-\item \cref{sec:exex-cactus} gives an example of the theory in the previous section. We explain how previous calculations with coboundary categories in \cite{hk-cobound} can be interpretted as computing a presentation for the action operad of cactus groups.
+\item \cref{sec:exex-cactus} gives an example of the theory in the previous section. We explain how the calculations with coboundary categories in \cite{hk-cobound} can be interpretted as computing a presentation for the action operad of cactus groups.
 \item \cref{sec:pscomm} studies when a $\Lambda$-operad $P$ admits a pseudo-commutative structure. This additional structure equips the 2-category of algebras over $P$ with an additional tensor product and internal hom, making it closed monoidal in a 2-dimensional sense. We define a pseudo-commutative structure for a $\Lambda$-operad $P$ in \cref{Defi:ps-comm_operad}, and prove in \cref{thm:pscomm} that it induces a pseudo-commutative structure on the induced 2-monad. As a consequence, every contractible symmetric operad obtains a symmetric pseudo-commutative structure (\cref{cor:contractplussym-to-psc}).
 \end{itemize}
 
 \subsection*{Acknowledgements}
-This research was supported by EPSRC Early Career Fellowship 134023 and LMS Research Reboot XXX\ngnote{needs number}.
-\ngnoteil{Others? I have leaned away from thanking people here in papers, but we can include some if you want to.} 
+This research was supported by EPSRC Early Career Fellowship 134023 and LMS Research Reboot 42031.
+The authors would also like to thank Nathaniel Arkor,  Daniel Graves, and Ang\'elica Osorno.
 
 \section{Notation and Conventions}\label{sec:notation}
 
@@ -207,8 +217,6 @@ The formula above for $\delta_{n; k_1, \ldots, k_n}(\sigma)$ is best explained b
 Thus we see that the $i$th entry for $\sigma$ is duplicated $k_i$ times in $\delta_{n; k_1, \ldots, k_n}(\sigma)$.
 \end{rem}
 
-% \ngnoteil{moved this remark here, fix and maybe shorten?}
-
 \begin{remark}\label{rem:perm_matrices}
 Permutations, as elements of $\Sigma_n$, can be considered as permutation \emph{matrices} with exactly one $1$ in each row and column. E.g., the permutation $(1 \,\, 3 \,\, 2) \in \Sigma_3$ can be considered as a matrix which permutes three elements $\begin{bmatrix} a & b & c \end{bmatrix}$ upon pre-multiplication:
   \[
@@ -299,7 +307,6 @@ f(1^A) & = 1^B.
 \section{Background: Operads}\label{sec:back-op}
 
 This section will collect the basic background information on operads that we will later generalize in
-% \ngnote{ref later sections}
 \cref{sec:forward-op}. We begin with the most common type of operad, a symmetric operad, before defining two more types of operad: plain and braided. 
 
 \begin{Defi}[(Symmetric operad)]\label[Defi]{Defi:sym-op}
@@ -480,7 +487,6 @@ Let $X$ be a set. The \emph{endomorphism operad} of $X$, denoted $\mathcal{E}_X$
 \]
 \end{itemize}
 We leave verification of the axioms to the reader.
-%, or recommend\ngnote{may-GoILS, find specific ref number}.\acnote{May doesn't check the axioms. Not in Leinster either. Done in some detail using circle $i$ notation in Ján Pulmann, Operads and Field Theory.}
 \end{example}
 
 \begin{rem}[(Algebras and endomorphism operads)]
@@ -1129,13 +1135,13 @@ The map $\pi_n \colon A^\bullet(n) \rightarrow \Sigma_n$ is the zero map.
 
 The characterisation of action operads in terms of maps $\pi$, $\beta$, and $\delta$ as in the above \cref{thm:charAOp} allows us to more easily check for counterexamples, as we show below. Some of these, such as the cyclic groups, reflexive groups, and hyperoctahedral groups, do however form crossed simplicial groups which are discussed in relation to action operads in \cref{rem:crossed}.
 
-\begin{example}[(Non-examples: subgroups of symmetric groups)]\label{ex:counterex1}
+\begin{nonex}[(Subgroups of symmetric groups)]\label{nonex:counterex1}
 By \cref{prop:surjortriv}, the only action operad $\pi \colon \Lambda \to \Sigma$ for which the homomorphisms $\pi_n$ are injective but not surjective is the action operad of trivial groups. 
 Thus there is no family of proper, nontrivial subgroups of the symmetric groups that admits an action operad structure.
 In particular, the families of cyclic groups $\{ C_n \}$, reflexive groups $\Lambda(n) = C_2$ of \cite{Kra87}, and alternating groups $\{ A_n \}$ do not admit action operad structures.
-\end{example}
+\end{nonex}
 
-\begin{example}[(Non-example: hyperoctahedral groups)]\label[example]{ex:counterex2}
+\begin{nonex}[(Hyperoctahedral groups)]\label{nonex:counterex2}
 In Example 2.28 of \cite{zhang-grp}, Zhang describes one way in which the sequence of hyperoctahedral groups $H_n = C_2 \wr \Sigma_n$ do not form an action operad. We clarify that counterexample here, while also describing another. The group $H_n$ can be described in many ways, but we will use the description of them as signed permutation matrices, i.e., invertible $n \times n$-matrices whose entries consist of $-1$, $0$, or $1$ and in which each row and column has exactly one non-zero entry, similar to the permutation matrices in \Cref{rem:perm_matrices}.
 
 In order to describe the hyperoctahedral groups as an action operad, we could use \cref{thm:charAOp} and define maps $\pi$, $\beta$, and $\delta$. The obvious map $\pi_n \colon H_n \rightarrow \Sigma_n$ takes the `absolute value' of a signed permutation matrix, giving back the underlying permutation. We then define $\beta$ to be the block sum of signed permutation matrices in much the same way as for the symmetric groups.
@@ -1220,7 +1226,7 @@ An alternative way of defining $\delta$ is to take $\delta_{n;k_1,\ldots,k_n}(\s
   \end{align*}
 
 While hyperoctahedral groups do not form an action operad in the sense of \cref{Defi:aop}, this family of groups does satisfy the conditions of what is in \cite[Section 3.2]{accg-actionclones} called a \emph{general} action operad. 
-\end{example}
+\end{nonex}
 
 \begin{rem}[(Crossed Simplicial Groups)]\label{rem:crossed}
 The crossed simplicial groups of both Krasauskas \cite{Kra87} and Fiedoriwicz and Loday \cite{FL91} are related to action operads in the following way. 
